@@ -1,0 +1,19 @@
+{
+  "name": "KesselKrawall 3D",
+  "short_name": "KesselKrawall",
+  "description": "Ein magischer 3D-Autobattler für Desktop und Mobile.",
+  "lang": "de",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#17101c",
+  "theme_color": "#2b1b30",
+  "icons": [
+    {
+      "src": "./kessel-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
