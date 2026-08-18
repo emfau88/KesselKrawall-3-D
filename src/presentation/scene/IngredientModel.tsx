@@ -1,3 +1,7 @@
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Group, MathUtils } from "three";
+
 import { getItemDefinition } from "../../core/data";
 import type { ItemLevel } from "../../core/types";
 
@@ -28,15 +32,72 @@ function LevelDetails({ level, color }: { level: ItemLevel; color: string }) {
   );
 }
 
-export function IngredientModel({ itemId, level, faded = false }: {
+export function IngredientModel({ itemId, level, faded = false, active = false, animationKey = -1 }: {
   itemId: string;
   level: ItemLevel;
   faded?: boolean;
+  active?: boolean;
+  animationKey?: number;
 }) {
+  const actor = useRef<Group>(null);
+  const lastKey = useRef(animationKey);
+  const startedAt = useRef(0);
   const definition = getItemDefinition(itemId);
   const colors = FAMILY_COLORS[definition.family];
   const scale = (0.78 + level * 0.1) * (faded ? 0.78 : 1);
   const materialProps = { transparent: faded, opacity: faded ? 0.55 : 1 };
+
+  useFrame(({ clock }) => {
+    if (!actor.current) return;
+    if (lastKey.current !== animationKey) {
+      lastKey.current = animationKey;
+      startedAt.current = clock.elapsedTime;
+    }
+    const elapsed = clock.elapsedTime - startedAt.current;
+    const action = active
+      ? Math.sin(MathUtils.clamp(elapsed / 0.58, 0, 1) * Math.PI)
+      : 0;
+    const idle = Math.sin(clock.elapsedTime * 1.9 + itemId.length) * 0.025;
+    let scaleX = 1;
+    let scaleY = 1;
+    let scaleZ = 1;
+    let rotationX = 0;
+    let rotationY = Math.sin(clock.elapsedTime * 0.45 + itemId.length) * 0.08;
+    let rotationZ = 0;
+    let offsetY = idle;
+    let offsetZ = 0;
+
+    if (itemId === "chili" || itemId === "cinder-berry") {
+      rotationX = action * -0.48;
+      rotationZ = action * 0.22;
+      offsetZ = action * -0.24;
+      scaleY += action * 0.12;
+    } else if (itemId === "slime-shroom") {
+      scaleX += action * 0.24;
+      scaleZ += action * 0.24;
+      scaleY -= action * 0.3;
+      offsetY -= action * 0.08;
+    } else if (itemId === "egg-shell") {
+      rotationY += action * Math.PI * 1.2;
+      scaleX += action * 0.16;
+      scaleZ += action * 0.16;
+      offsetY += action * 0.18;
+    } else if (definition.family === "frost") {
+      rotationY += action * Math.PI * 0.85;
+      offsetY += action * 0.16;
+    } else if (definition.family === "echo") {
+      scaleX += action * 0.13;
+      scaleZ += action * 0.13;
+      rotationY += action * Math.PI * 0.7;
+    } else {
+      offsetY += action * 0.12;
+      rotationZ = action * 0.18;
+    }
+
+    actor.current.position.set(0, offsetY, offsetZ);
+    actor.current.rotation.set(rotationX, rotationY, rotationZ);
+    actor.current.scale.set(scaleX, scaleY, scaleZ);
+  });
 
   let model;
   switch (itemId) {
@@ -292,8 +353,10 @@ export function IngredientModel({ itemId, level, faded = false }: {
 
   return (
     <group scale={scale}>
-      {model}
-      <LevelDetails level={level} color={colors.accent} />
+      <group ref={actor}>
+        {model}
+        <LevelDetails level={level} color={colors.accent} />
+      </group>
     </group>
   );
 }

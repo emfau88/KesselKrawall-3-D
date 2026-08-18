@@ -42,6 +42,14 @@ import type {
 } from "./core/types";
 import { audioDirector, type SoundCue } from "./presentation/audio/audioDirector";
 import {
+  createCombatTimeline,
+  getBeatAt,
+  getPlaybackElapsedMs,
+  getTimelineProgress,
+  type BattlePlaybackSpeed,
+  type CombatTimeline,
+} from "./presentation/combat/combatPresentation";
+import {
   ERROR_MESSAGES,
   FAMILY_COPY,
   itemCopy,
@@ -53,7 +61,6 @@ import { Onboarding, ONBOARDING_STEP_COUNT } from "./presentation/ui/Onboarding"
 import { SceneErrorBoundary } from "./presentation/ui/SceneErrorBoundary";
 import { CampaignPicker } from "./presentation/ui/CampaignPicker";
 
-const BATTLE_PLAYBACK_SPEED = 3.4;
 const ONBOARDING_STORAGE_KEY = "kessel-krawall-3d-onboarding-v1";
 const AUDIO_STORAGE_KEY = "kessel-krawall-3d-audio-v1";
 
@@ -61,7 +68,11 @@ const GreyboxStage = lazy(() => import("./presentation/scene/GreyboxStage"));
 
 interface Playback {
   readonly result: CombatResult;
+  readonly timeline: CombatTimeline;
   readonly startedAt: number;
+  readonly offsetMs: number;
+  readonly speed: BattlePlaybackSpeed;
+  readonly paused: boolean;
 }
 
 function initialGame(): GameState {
@@ -126,6 +137,7 @@ function initialProgress(): PlayerProgress {
 }
 
 function combatSound(event: CombatEvent): SoundCue {
+  if (event.family === "fire" || event.sourceItemId === "chili") return "fire";
   if (event.kind === "poison" || event.kind === "poisonBurst") return "poison";
   if (event.kind === "shield" || event.kind === "cleanse") return "shield";
   if (event.kind === "heal") return "heal";
@@ -140,6 +152,7 @@ export function App() {
   const [notice, setNotice] = useState("Wähle eine Zutat. Gleiche Zutaten verschmelzen automatisch.");
   const [purchase, setPurchase] = useState<PurchaseVisual | null>(null);
   const [playback, setPlayback] = useState<Playback | null>(null);
+  const [battleSpeed, setBattleSpeed] = useState<BattlePlaybackSpeed>(1);
   const [combat, setCombat] = useState<CombatFrame | null>(null);
   const [lastResult, setLastResult] = useState<CombatResult | null>(null);
   const [audioEnabled, setAudioEnabled] = useState(initialAudioEnabled);
@@ -150,6 +163,7 @@ export function App() {
   const animationId = useRef(1);
   const lastAudioEvent = useRef(-1);
   const soundedResult = useRef<CombatResult | null>(null);
+  const resultRevealTimer = useRef<number | null>(null);
 
   const opponent = useMemo(() => getCurrentOpponent(game), [game]);
   const familyWeights = useMemo(() => getFamilyWeights(game.board), [game.board]);
@@ -183,42 +197,50 @@ export function App() {
   }, [progress]);
 
   useEffect(() => {
-    if (!playback) return;
+    if (!playback || playback.paused) return;
     const timer = window.setInterval(() => {
-      const elapsedMs = Math.min(
-        playback.result.duration,
-        (performance.now() - playback.startedAt) * BATTLE_PLAYBACK_SPEED,
+      const presentationElapsedMs = Math.min(
+        playback.timeline.durationMs,
+        getPlaybackElapsedMs(
+          playback.offsetMs,
+          playback.startedAt,
+          performance.now(),
+          playback.speed,
+          playback.paused,
+        ),
       );
-      let eventIndex = -1;
-      for (let index = 0; index < playback.result.events.length; index += 1) {
-        const event = playback.result.events[index];
-        if (!event || event.time > elapsedMs) break;
-        eventIndex = index;
-      }
-      const event = playback.result.events[eventIndex] ?? null;
+      const beat = getBeatAt(playback.timeline, presentationElapsedMs);
+      const event = beat?.event ?? null;
+      const snapshot = beat?.snapshot ?? null;
       setCombat({
-        eventIndex,
+        eventIndex: beat?.eventIndex ?? -1,
         event,
-        elapsedMs,
-        playerHp: event?.playerHp ?? playback.result.playerMaxHp,
-        playerShield: event?.playerShield ?? 0,
-        enemyHp: event?.enemyHp ?? playback.result.enemyMaxHp,
-        enemyShield: event?.enemyShield ?? 0,
+        elapsedMs: snapshot?.time ?? 0,
+        playbackProgress: getTimelineProgress(playback.timeline, presentationElapsedMs),
+        playerHp: snapshot?.playerHp ?? playback.result.playerMaxHp,
+        playerShield: snapshot?.playerShield ?? 0,
+        enemyHp: snapshot?.enemyHp ?? playback.result.enemyMaxHp,
+        enemyShield: snapshot?.enemyShield ?? 0,
       });
 
-      if (elapsedMs >= playback.result.duration) {
+      if (presentationElapsedMs >= playback.timeline.durationMs) {
         window.clearInterval(timer);
         setCombat({
           eventIndex: playback.result.events.length,
           event: playback.result.events.at(-1) ?? null,
           elapsedMs: playback.result.duration,
+          playbackProgress: 1,
           playerHp: playback.result.finalPlayerHp,
           playerShield: playback.result.finalPlayerShield,
           enemyHp: playback.result.finalEnemyHp,
           enemyShield: playback.result.finalEnemyShield,
         });
-        setGame((current) => showBattleResult(current));
         setPlayback(null);
+        if (resultRevealTimer.current !== null) window.clearTimeout(resultRevealTimer.current);
+        resultRevealTimer.current = window.setTimeout(() => {
+          setGame((current) => showBattleResult(current));
+          resultRevealTimer.current = null;
+        }, 950);
       }
     }, 45);
     return () => window.clearInterval(timer);
@@ -378,6 +400,10 @@ export function App() {
   }
 
   function handleStartBattle() {
+    if (resultRevealTimer.current !== null) {
+      window.clearTimeout(resultRevealTimer.current);
+      resultRevealTimer.current = null;
+    }
     const started = beginBattle(game);
     if (started.error) {
       playError(ERROR_MESSAGES[started.error]);
@@ -392,6 +418,7 @@ export function App() {
       eventIndex: -1,
       event: null,
       elapsedMs: 0,
+      playbackProgress: 0,
       playerHp: result.playerMaxHp,
       playerShield: 0,
       enemyHp: result.enemyMaxHp,
@@ -399,10 +426,61 @@ export function App() {
     });
     setGame(withResult);
     setLastResult(result);
-    setPlayback({ result, startedAt: performance.now() });
+    const speed: BattlePlaybackSpeed = game.round === 1 ? 1 : 2;
+    setBattleSpeed(speed);
+    setPlayback({
+      result,
+      timeline: createCombatTimeline(result.events),
+      startedAt: performance.now(),
+      offsetMs: 0,
+      speed,
+      paused: false,
+    });
     setNotice(`Kessel an! ${opponentName(nextOpponent.id)} ist bereit.`);
     lastAudioEvent.current = -1;
     audioDirector.play("battleStart");
+  }
+
+  function handleBattleSpeed(speed: BattlePlaybackSpeed) {
+    setBattleSpeed(speed);
+    setPlayback((current) => {
+      if (!current) return current;
+      const now = performance.now();
+      return {
+        ...current,
+        offsetMs: getPlaybackElapsedMs(
+          current.offsetMs,
+          current.startedAt,
+          now,
+          current.speed,
+          current.paused,
+        ),
+        startedAt: now,
+        speed,
+      };
+    });
+    audioDirector.play("select");
+  }
+
+  function handleBattlePause() {
+    setPlayback((current) => {
+      if (!current) return current;
+      const now = performance.now();
+      const offsetMs = getPlaybackElapsedMs(
+        current.offsetMs,
+        current.startedAt,
+        now,
+        current.speed,
+        current.paused,
+      );
+      return {
+        ...current,
+        offsetMs,
+        startedAt: now,
+        paused: !current.paused,
+      };
+    });
+    audioDirector.play("select");
   }
 
   function handleAdvance() {
@@ -447,9 +525,7 @@ export function App() {
   const battleResult = game.pendingBattle ?? lastResult;
   const playerHp = combat?.playerHp ?? battleResult?.finalPlayerHp ?? 100;
   const enemyHp = combat?.enemyHp ?? battleResult?.finalEnemyHp ?? opponent.baseHp;
-  const battleProgress = battleResult
-    ? Math.min(100, ((combat?.elapsedMs ?? 0) / Math.max(1, battleResult.duration)) * 100)
-    : 0;
+  const battleProgress = (combat?.playbackProgress ?? 0) * 100;
 
   return (
     <main className={`game-shell phase-${game.phase}`}>
@@ -468,7 +544,12 @@ export function App() {
               onSelectSlot: handleSelectSlot,
               onSelectReserve: handleSelectReserve,
             }}
-            arena={{ board: game.board, opponent, combat }}
+            arena={{
+              board: game.board,
+              opponent,
+              combat,
+              outcome: game.phase === "battle" && playback ? null : battleResult?.winner ?? null,
+            }}
           />
         </Suspense>
       </SceneErrorBoundary>
@@ -638,7 +719,20 @@ export function App() {
             <div><strong>Dein Kessel</strong><span>{playerHp} +{combat?.playerShield ?? 0}</span></div>
             <div className="health-track"><i style={{ width: hpPercent(playerHp, battleResult?.playerMaxHp ?? 100) }} /></div>
           </div>
-          <div className="battle-clock"><span>{Math.ceil(Math.max(0, (battleResult?.duration ?? 0) - (combat?.elapsedMs ?? 0)) / 1000)}s</span><i style={{ width: `${battleProgress}%` }} /></div>
+          <div className="battle-clock">
+            <span>{playback?.paused ? "PAUSE" : `${Math.ceil(Math.max(0, (battleResult?.duration ?? 0) - (combat?.elapsedMs ?? 0)) / 1000)}s`}</span>
+            <i style={{ width: `${battleProgress}%` }} />
+            <div className="battle-playback-controls" aria-label="Kampfgeschwindigkeit">
+              <button aria-label={playback?.paused ? "Kampf fortsetzen" : "Kampf pausieren"} aria-pressed={playback?.paused ?? false} onClick={handleBattlePause} type="button">
+                {playback?.paused ? "▶" : "Ⅱ"}
+              </button>
+              {([1, 2, 4] as const).map((speed) => (
+                <button aria-pressed={battleSpeed === speed} className={battleSpeed === speed ? "is-active" : undefined} key={speed} onClick={() => handleBattleSpeed(speed)} type="button">
+                  {speed}×
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="combatant enemy-health">
             <div><strong>{opponentName(opponent.id)}</strong><span>{enemyHp} +{combat?.enemyShield ?? 0}</span></div>
             <div className="health-track"><i style={{ width: hpPercent(enemyHp, battleResult?.enemyMaxHp ?? opponent.baseHp) }} /></div>

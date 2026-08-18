@@ -1,6 +1,6 @@
 import type { Vector3Tuple } from "three";
 
-import { CauldronGreybox } from "./CauldronGreybox";
+import { CauldronActor } from "./CauldronActor";
 import { IngredientModel } from "./IngredientModel";
 import { IngredientSlotGreybox } from "./IngredientSlotGreybox";
 import { PurchaseAnimation } from "./PurchaseAnimation";
@@ -117,7 +117,7 @@ export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
         <boxGeometry args={[6.7, 0.28, 0.32]} />
         <meshStandardMaterial color="#493126" roughness={0.9} />
       </mesh>
-      <CauldronGreybox accent="#d87442" position={[0, 1.45, -0.05]} scale={1.05} />
+      <CauldronActor accent="#d87442" position={[0, 1.45, -0.05]} scale={1.05} variant="player" />
       {SLOT_POSITIONS.map((position, index) => (
         <IngredientSlotGreybox
           key={index}

@@ -1,4 +1,5 @@
 import type {
+  BattleOutcome,
   Board,
   CombatEvent,
   ItemLevel,
@@ -19,6 +20,7 @@ export interface CombatFrame {
   readonly eventIndex: number;
   readonly event: CombatEvent | null;
   readonly elapsedMs: number;
+  readonly playbackProgress: number;
   readonly playerHp: number;
   readonly playerShield: number;
   readonly enemyHp: number;
@@ -41,4 +43,5 @@ export interface ArenaSceneState {
   readonly board: Board;
   readonly opponent: OpponentDefinition;
   readonly combat: CombatFrame | null;
+  readonly outcome: BattleOutcome | null;
 }

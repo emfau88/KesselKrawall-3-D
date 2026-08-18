@@ -17,6 +17,8 @@ export function GreyboxStage({
   workshop: WorkshopSceneState;
   arena: ArenaSceneState;
 }) {
+  const moorArena = mode === "arena" && arena.opponent.id === "moor-martha";
+  const background = mode === "workshop" ? "#251a29" : moorArena ? "#1c201b" : "#171322";
   return (
     <Canvas
       className="scene-canvas"
@@ -25,10 +27,10 @@ export function GreyboxStage({
       orthographic
       shadows="basic"
     >
-      <color attach="background" args={[mode === "workshop" ? "#251a29" : "#171322"]} />
-      <fog attach="fog" args={[mode === "workshop" ? "#251a29" : "#171322", 15, 30]} />
+      <color attach="background" args={[background]} />
+      <fog attach="fog" args={[background, 15, 30]} />
       <FixedCamera mode={mode} />
-      <LightingRig mode={mode} />
+      <LightingRig mode={mode} opponentId={mode === "arena" ? arena.opponent.id : undefined} />
       {mode === "workshop" ? (
         <WorkshopGreybox scene={workshop} />
       ) : (

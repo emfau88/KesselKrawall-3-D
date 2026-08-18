@@ -5,6 +5,7 @@ export type SoundCue =
   | "select"
   | "error"
   | "battleStart"
+  | "fire"
   | "damage"
   | "poison"
   | "shield"
@@ -78,6 +79,11 @@ class AudioDirector {
         case "battleStart":
           this.tone({ frequency: 110, endFrequency: 190, duration: 0.42, gain: 0.15, type: "sawtooth" });
           this.tone({ frequency: 330, endFrequency: 520, duration: 0.3, gain: 0.08, delay: 0.18, type: "triangle" });
+          break;
+        case "fire":
+          this.noise(0.14, 0.09, 2_600);
+          this.tone({ frequency: 220, endFrequency: 610, duration: 0.19, gain: 0.1, type: "sawtooth" });
+          this.tone({ frequency: 780, endFrequency: 420, duration: 0.13, gain: 0.055, delay: 0.11, type: "triangle" });
           break;
         case "damage":
           this.noise(0.11, 0.12, 950);
