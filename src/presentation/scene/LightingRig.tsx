@@ -5,8 +5,8 @@ export function LightingRig({ mode, opponentId }: { mode: GreyboxMode; opponentI
   const moor = !workshop && opponentId === "moor-martha";
   return (
     <>
-      <ambientLight color={workshop ? "#9e88b1" : "#756f9b"} intensity={workshop ? 0.72 : 0.6} />
-      <hemisphereLight args={[workshop ? "#ffdfaf" : "#b7b3df", "#261a31", workshop ? 1.35 : 1.15]} />
+      <ambientLight color={workshop ? "#b296ac" : "#77759b"} intensity={workshop ? 0.8 : 0.62} />
+      <hemisphereLight args={[workshop ? "#ffdfaf" : "#b7b3df", "#261a31", workshop ? 1.48 : 1.18]} />
       <directionalLight
         castShadow
         color={workshop ? "#ffd59a" : "#dad3ff"}
@@ -23,6 +23,7 @@ export function LightingRig({ mode, opponentId }: { mode: GreyboxMode; opponentI
       />
       <pointLight color={workshop ? "#d36a3c" : moor ? "#789e3e" : "#7a63cb"} intensity={workshop ? 5.5 : 8} position={[-4, 3.5, -3]} distance={13} />
       <pointLight color={workshop ? "#8d5bbd" : moor ? "#d29055" : "#bc7bd7"} intensity={4.2} position={[4.5, 2.4, -2.5]} distance={10} />
+      {workshop && <pointLight color="#ffc06f" intensity={9} position={[0, 4.8, -2.7]} distance={12} decay={2} />}
     </>
   );
 }

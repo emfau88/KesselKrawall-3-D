@@ -1,9 +1,11 @@
+import { Suspense } from "react";
 import type { Vector3Tuple } from "three";
 
 import { CauldronActor } from "./CauldronActor";
 import { IngredientModel } from "./IngredientModel";
 import { IngredientSlotGreybox } from "./IngredientSlotGreybox";
 import { PurchaseAnimation } from "./PurchaseAnimation";
+import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import type { WorkshopSceneState } from "./sceneTypes";
 import { RESERVE_POSITION, SLOT_POSITIONS } from "./workshopLayout";
 
@@ -89,20 +91,107 @@ function WorkshopBackdrop() {
   );
 }
 
+function WorkshopProductionEnvironment() {
+  return (
+    <group>
+      <ProductionAssetBoundary fallback={<WorkshopBackdrop />}>
+        <Suspense fallback={<WorkshopBackdrop />}>
+          <ProductionAsset asset="dungeon-wall-shelves" position={[-4, -0.66, -4.22]} />
+          <ProductionAsset asset="dungeon-wall-arched" position={[0, -0.66, -4.22]} />
+          <ProductionAsset asset="dungeon-wall-shelves" position={[4, -0.66, -4.22]} />
+          <ProductionAsset asset="dungeon-wall-cracked" position={[-5.72, -0.66, -2.38]} rotation={[0, Math.PI / 2, 0]} />
+          <ProductionAsset asset="dungeon-wall" position={[5.72, -0.66, -2.38]} rotation={[0, -Math.PI / 2, 0]} />
+          <ProductionAsset asset="dungeon-pillar" position={[-5.08, -0.66, -3.88]} scale={0.78} />
+          <ProductionAsset asset="dungeon-pillar" position={[5.08, -0.66, -3.88]} scale={0.78} />
+          <ProductionAsset asset="dungeon-floor-tile" position={[-2, -0.64, -2.15]} />
+          <ProductionAsset asset="dungeon-floor-tile" position={[2, -0.64, -2.15]} />
+          <ProductionAsset asset="dungeon-floor-wood" position={[0, 0.63, 0.5]} scale={[2, 1, 1.5]} />
+        </Suspense>
+      </ProductionAssetBoundary>
+      <mesh receiveShadow position={[0, -0.66, -0.1]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[6.7, 40]} />
+        <meshStandardMaterial color="#342a31" roughness={0.96} />
+      </mesh>
+    </group>
+  );
+}
+
+function BookStack({ position }: { position: Vector3Tuple }) {
+  return (
+    <group position={position} rotation={[0.04, -0.2, -0.03]}>
+      {[
+        [0, 0, "#4e2638", 1.22],
+        [0.08, 0.16, "#70513a", 1.05],
+        [-0.03, 0.31, "#3d3658", 1.14],
+      ].map(([x, y, color, width], index) => (
+        <group key={index} position={[Number(x), Number(y), 0]}>
+          <mesh castShadow>
+            <boxGeometry args={[Number(width), 0.14, 0.75]} />
+            <meshStandardMaterial color={String(color)} roughness={0.86} />
+          </mesh>
+          <mesh position={[Number(width) * 0.49, 0, 0]}>
+            <boxGeometry args={[0.035, 0.1, 0.63]} />
+            <meshStandardMaterial color="#d1b77b" roughness={0.8} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  );
+}
+
+function MortarAndPestle({ position }: { position: Vector3Tuple }) {
+  return (
+    <group position={position}>
+      <mesh castShadow scale={[1, 0.62, 1]}>
+        <sphereGeometry args={[0.42, 14, 9, 0, Math.PI * 2, Math.PI * 0.45, Math.PI * 0.55]} />
+        <meshStandardMaterial color="#5b5152" metalness={0.08} roughness={0.86} side={2} />
+      </mesh>
+      <mesh castShadow position={[0.18, 0.37, 0]} rotation={[0, 0.25, -0.72]}>
+        <cylinderGeometry args={[0.09, 0.13, 0.92, 10]} />
+        <meshStandardMaterial color="#75655d" roughness={0.78} />
+      </mesh>
+    </group>
+  );
+}
+
+function WorkshopProductionProps() {
+  return (
+    <ProductionAssetBoundary fallback={null}>
+      <Suspense fallback={null}>
+        <ProductionAsset asset="workshop-shelves" position={[-3.65, -0.45, -3.66]} scale={0.88} />
+        <ProductionAsset asset="workshop-shelves" position={[3.65, -0.45, -3.66]} scale={0.88} />
+        <ProductionAsset asset="workshop-bottle-green" position={[-4.05, 0.57, -3.08]} scale={0.72} />
+        <ProductionAsset asset="workshop-bottle-brown" position={[-3.46, 0.57, -3.08]} scale={0.64} />
+        <ProductionAsset asset="workshop-bottle-green" position={[3.43, 1.42, -3.08]} scale={0.66} />
+        <ProductionAsset asset="workshop-bottle-brown" position={[4.02, 0.57, -3.08]} scale={0.72} />
+        <ProductionAsset asset="workshop-candles" position={[-2.1, 0.67, -1.74]} scale={0.72} />
+        <ProductionAsset asset="workshop-candles" position={[2.18, 0.67, -1.78]} scale={0.68} />
+        <ProductionAsset asset="dungeon-crates" position={[-5.25, -0.63, -1.52]} rotation={[0, 0.28, 0]} scale={0.58} />
+        <ProductionAsset asset="dungeon-barrels" position={[5.02, -0.63, -1.7]} rotation={[0, -0.2, 0]} scale={0.62} />
+        <ProductionAsset asset="dungeon-torch-mounted" position={[-1.5, 2.46, -3.78]} scale={0.9} />
+        <ProductionAsset asset="dungeon-torch-mounted" position={[1.5, 2.46, -3.78]} scale={0.9} />
+      </Suspense>
+      <pointLight color="#ffad5b" intensity={3.2} distance={5.5} position={[-1.5, 2.85, -3.32]} />
+      <pointLight color="#ffad5b" intensity={3.2} distance={5.5} position={[1.5, 2.85, -3.32]} />
+      <BookStack position={[-3.15, 0.94, -0.98]} />
+      <MortarAndPestle position={[3.12, 1.02, -0.95]} />
+      <mesh castShadow position={[2.88, 0.96, 0.25]} rotation={[0.22, 0.48, 0.08]}>
+        <octahedronGeometry args={[0.42, 0]} />
+        <meshStandardMaterial color="#6d47a2" emissive="#7e51bd" emissiveIntensity={0.8} roughness={0.3} />
+      </mesh>
+    </ProductionAssetBoundary>
+  );
+}
+
 export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
   return (
     <group>
-      <WorkshopBackdrop />
+      <WorkshopProductionEnvironment />
+      <WorkshopProductionProps />
       <mesh castShadow receiveShadow position={[0, 0.26, 0.5]}>
         <boxGeometry args={[8.1, 0.52, 6]} />
         <meshStandardMaterial color="#704a31" roughness={0.82} />
       </mesh>
-      {[-2.2, -0.75, 0.7, 2.15].map((z, index) => (
-        <mesh key={z} receiveShadow position={[0, 0.535, z]}>
-          <boxGeometry args={[7.85, 0.018, 0.035]} />
-          <meshStandardMaterial color={index % 2 === 0 ? "#9a6841" : "#4d3529"} roughness={0.9} />
-        </mesh>
-      ))}
       {[-1, 1].flatMap((xSide) => [-1, 1].map((zSide) => (
         <mesh key={`${xSide}-${zSide}`} castShadow position={[xSide * 3.25, -0.85, zSide * 2.05 + 0.35]}>
           <boxGeometry args={[0.55, 2.25, 0.55]} />
@@ -161,8 +250,13 @@ export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
       {scene.purchase && (
         <PurchaseAnimation key={scene.purchase.id} purchase={scene.purchase} />
       )}
-      <PotionBottle color="#8bc857" position={[-3.25, 1.05, -1.55]} scale={1.15} />
-      <Candle position={[3.2, 0.92, -1.72]} />
+      <ProductionAssetBoundary fallback={null}>
+        <Suspense fallback={null}>
+          <ProductionAsset asset="workshop-bottle-green" position={[-3.25, 0.67, -1.55]} scale={0.86} />
+          <ProductionAsset asset="workshop-candles" position={[3.1, 0.67, -1.72]} scale={0.78} />
+        </Suspense>
+      </ProductionAssetBoundary>
+      <pointLight color="#ffb15d" intensity={2.4} distance={4.4} position={[3.1, 1.36, -1.72]} />
       <mesh castShadow position={[3.1, 1.03, -0.92]} rotation={[0.2, 0.35, 0.1]}>
         <dodecahedronGeometry args={[0.48, 0]} />
         <meshStandardMaterial color="#9a7044" roughness={0.8} />

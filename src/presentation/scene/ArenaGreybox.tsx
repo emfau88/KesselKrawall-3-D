@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Group, Mesh, type Vector3Tuple } from "three";
 
@@ -6,6 +6,7 @@ import { CauldronActor } from "./CauldronActor";
 import type { CauldronReaction } from "./CauldronActor";
 import { BattleVfx } from "./BattleVfx";
 import { IngredientModel } from "./IngredientModel";
+import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import type { ArenaSceneState } from "./sceneTypes";
 
 function reactionFor(
@@ -78,43 +79,6 @@ function RunePillar({ side }: { side: -1 | 1 }) {
   );
 }
 
-function ArenaBanner({ position, color, rune }: {
-  position: Vector3Tuple;
-  color: string;
-  rune: string;
-}) {
-  const cloth = useRef<Group>(null);
-  useFrame(({ clock }) => {
-    if (!cloth.current) return;
-    cloth.current.rotation.z = Math.sin(clock.elapsedTime * 0.72 + position[0]) * 0.025;
-    cloth.current.scale.y = 1 + Math.sin(clock.elapsedTime * 0.9 + position[0]) * 0.018;
-  });
-  return (
-    <group position={position}>
-      <mesh castShadow position={[0, 1.02, -0.08]}>
-        <cylinderGeometry args={[0.045, 0.045, 1.9, 8]} />
-        <meshStandardMaterial color="#8e6b43" metalness={0.38} roughness={0.48} />
-      </mesh>
-      <group ref={cloth}>
-        <mesh castShadow position={[0, 0.12, 0]}>
-          <boxGeometry args={[1.15, 1.75, 0.055]} />
-          <meshStandardMaterial color={color} roughness={0.88} />
-        </mesh>
-        <mesh position={[0, 0.18, 0.04]} rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[0.28, 0.045, 7, rune === "moor" ? 7 : 5]} />
-          <meshStandardMaterial color="#d7b26d" emissive="#8f6a38" emissiveIntensity={0.28} metalness={0.36} roughness={0.4} />
-        </mesh>
-        {rune === "moor" && (
-          <mesh position={[0, 0.18, 0.065]} scale={[0.48, 0.68, 0.2]}>
-            <dodecahedronGeometry args={[0.18, 0]} />
-            <meshStandardMaterial color="#9ebd4b" emissive="#6c8736" emissiveIntensity={0.45} />
-          </mesh>
-        )}
-      </group>
-    </group>
-  );
-}
-
 function ArenaBrazier({ position, poison = false }: {
   position: Vector3Tuple;
   poison?: boolean;
@@ -141,6 +105,7 @@ function ArenaBrazier({ position, poison = false }: {
         <octahedronGeometry args={[0.25, 1]} />
         <meshStandardMaterial color="#ffd073" emissive={color} emissiveIntensity={2.15} transparent opacity={0.9} />
       </mesh>
+      <pointLight color={color} intensity={4.8} distance={5.5} decay={2} position={[0, 0.82, 0]} />
     </group>
   );
 }
@@ -212,10 +177,40 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
     : undefined;
   return (
     <group>
-      <mesh receiveShadow position={[0, 2.6, -6.1]}>
-        <boxGeometry args={[13.5, 8, 0.35]} />
-        <meshStandardMaterial color="#242034" roughness={0.98} />
+      <mesh receiveShadow position={[0, -0.34, -0.3]}>
+        <cylinderGeometry args={[8.4, 8.8, 0.34, 40]} />
+        <meshStandardMaterial color={moor ? "#30352c" : "#302a37"} roughness={0.97} />
       </mesh>
+      {[6.05, 7.15].map((radius, index) => (
+        <mesh key={radius} receiveShadow position={[0, -0.155 + index * 0.004, -0.3]} rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[radius, 0.055, 7, 72]} />
+          <meshStandardMaterial color={moor ? "#596044" : "#55475f"} roughness={0.86} />
+        </mesh>
+      ))}
+      <ProductionAssetBoundary fallback={null}>
+        <Suspense fallback={null}>
+          <ProductionAsset asset="dungeon-wall-cracked" position={[-8, -0.38, -6.4]} />
+          <ProductionAsset asset="dungeon-wall" position={[-4, -0.38, -6.4]} />
+          <ProductionAsset asset="dungeon-wall-arched" position={[0, -0.38, -6.4]} />
+          <ProductionAsset asset="dungeon-wall" position={[4, -0.38, -6.4]} />
+          <ProductionAsset asset="dungeon-wall-cracked" position={[8, -0.38, -6.4]} />
+          <ProductionAsset asset="dungeon-wall" position={[-7.65, -0.38, -2.55]} rotation={[0, Math.PI / 2, 0]} />
+          <ProductionAsset asset="dungeon-wall" position={[7.65, -0.38, -2.55]} rotation={[0, -Math.PI / 2, 0]} />
+          {[-6, -2, 2, 6].map((x) => (
+            <ProductionAsset key={`rear-floor-${x}`} asset="dungeon-floor-tile" position={[x, -0.32, -4.1]} />
+          ))}
+          <ProductionAsset asset="dungeon-pillar" position={[-6.15, -0.38, -5.96]} scale={0.86} />
+          <ProductionAsset asset="dungeon-pillar" position={[6.15, -0.38, -5.96]} scale={0.86} />
+          <ProductionAsset asset={moor ? "arena-banner-blue" : "arena-banner-red"} position={[-3.55, 0.2, -5.82]} scale={0.92} />
+          <ProductionAsset asset="arena-banner-red" position={[3.55, 0.2, -5.82]} scale={0.92} />
+          <ProductionAsset asset="dungeon-torch-mounted" position={[-5.1, 2.45, -5.82]} scale={0.9} />
+          <ProductionAsset asset="dungeon-torch-mounted" position={[5.1, 2.45, -5.82]} scale={0.9} />
+          <ProductionAsset asset="dungeon-crates" position={[-6.2, -0.28, -2.7]} rotation={[0, 0.24, 0]} scale={0.58} />
+          <ProductionAsset asset="dungeon-barrels" position={[6.15, -0.28, -2.75]} rotation={[0, -0.2, 0]} scale={0.62} />
+        </Suspense>
+        <pointLight color="#ffad5b" intensity={4.1} distance={6.5} position={[-5.1, 2.86, -5.34]} />
+        <pointLight color="#ffad5b" intensity={4.1} distance={6.5} position={[5.1, 2.86, -5.34]} />
+      </ProductionAssetBoundary>
       {[1.35, 2.25].map((y, index) => (
         <mesh key={y} castShadow receiveShadow position={[0, y, -5.72]}>
           <boxGeometry args={[10.2 - index * 0.9, 0.22, 0.72]} />
@@ -223,14 +218,6 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
         </mesh>
       ))}
       <TournamentAudience moor={moor} />
-      {[-4.5, -1.5, 1.5, 4.5].map((x) => (
-        <mesh key={x} castShadow position={[x, 2.6, -5.85]}>
-          <cylinderGeometry args={[0.34, 0.48, 6.6, 10]} />
-          <meshStandardMaterial color="#3b3348" roughness={0.9} />
-        </mesh>
-      ))}
-      <ArenaBanner color={moor ? "#485433" : "#5d334e"} position={[-3.45, 3.3, -5.48]} rune={moor ? "moor" : "tournament"} />
-      <ArenaBanner color="#59402d" position={[3.45, 3.3, -5.48]} rune="tournament" />
       <mesh castShadow position={[0, 3.85, -5.5]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[1.05, 0.16, 8, 32, Math.PI]} />
         <meshStandardMaterial color="#6e5749" metalness={0.35} roughness={0.55} />
@@ -303,12 +290,6 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
       <ArenaBrazier poison={moor} position={[-3.4, 0.6, -4.25]} />
       <ArenaBrazier position={[3.4, 0.6, -4.25]} />
       {moor && <MoorMiasma />}
-      {[0, 1, 2].map((step) => (
-        <mesh key={step} castShadow receiveShadow position={[0, -0.18 - step * 0.14, 5.1 + step * 0.42]}>
-          <boxGeometry args={[4.2 + step * 0.55, 0.22, 0.78]} />
-          <meshStandardMaterial color="#403745" roughness={0.92} />
-        </mesh>
-      ))}
     </group>
   );
 }

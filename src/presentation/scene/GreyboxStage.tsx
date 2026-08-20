@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import { ACESFilmicToneMapping, PCFShadowMap } from "three";
 
 import { ArenaGreybox } from "./ArenaGreybox";
 import { FixedCamera } from "./FixedCamera";
@@ -18,17 +19,23 @@ export function GreyboxStage({
   arena: ArenaSceneState;
 }) {
   const moorArena = mode === "arena" && arena.opponent.id === "moor-martha";
-  const background = mode === "workshop" ? "#251a29" : moorArena ? "#1c201b" : "#171322";
+  const background = mode === "workshop" ? "#171016" : moorArena ? "#111712" : "#100d17";
   return (
     <Canvas
       className="scene-canvas"
       dpr={[1, 1.35]}
-      gl={{ alpha: false, antialias: true, powerPreference: "high-performance" }}
+      gl={{
+        alpha: false,
+        antialias: true,
+        powerPreference: "high-performance",
+        toneMapping: ACESFilmicToneMapping,
+        toneMappingExposure: 1.08,
+      }}
       orthographic
-      shadows="basic"
+      shadows={{ type: PCFShadowMap }}
     >
       <color attach="background" args={[background]} />
-      <fog attach="fog" args={[background, 15, 30]} />
+      <fog attach="fog" args={[background, 17, 34]} />
       <FixedCamera mode={mode} />
       <LightingRig mode={mode} opponentId={mode === "arena" ? arena.opponent.id : undefined} />
       {mode === "workshop" ? (

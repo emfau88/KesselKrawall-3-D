@@ -1,14 +1,14 @@
 # Asset- und Lizenzregister
 
-Stand: 18. August 2026
+Stand: 20. August 2026
 
 ## Shipping-Status
 
-**Der neue Rebuild enthält keine externen oder aus dem Legacy-Repo
-übernommenen Runtime-Assets.** Sämtliche sichtbaren Formen, Materialien,
-Animationen und Effekte entstehen aus eigenem Three.js-/R3F-Code. UI-Sounds
-und Kessel-Ambience werden zur Laufzeit mit der Web Audio API synthetisiert;
-es wird keine Audiodatei ausgeliefert.
+Der Rebuild enthält eine kuratierte Auswahl modularer glTF-Modelle samt
+gemeinsamem Texturatlas aus dem offiziellen KayKit Dungeon Pack 1.1. Kessel,
+Zutaten, Animationen und Effekte entstehen weiterhin aus eigenem
+Three.js-/R3F-Code. UI-Sounds und Kessel-Ambience werden zur Laufzeit mit der
+Web Audio API synthetisiert; es wird keine Audiodatei ausgeliefert.
 
 Das App-Symbol `public/kessel-mark.svg` ist eine für dieses Repository neu
 erstellte Eigenleistung. Vite erzeugt beim Produktionsbuild zusätzlich
@@ -61,21 +61,39 @@ dokumentiert ist.
 | `public/assets/backgrounds` | 5 WebP | REFERENCE ONLY | Alte 2D-Bühnen, keine Grundlage für echte 3D-Räume. |
 | weitere WebP-Art-Dateien | 2 WebP | REFERENCE ONLY | Keine dokumentierte Provenienz im Referenz-Repo. |
 
+## Externe Runtime-Assets
+
+| Datei | Urheber | Quelle/Version | Lizenz | Kommerziell/Bearbeitung geprüft | Attribution | Änderungen | Zielpfad |
+|---|---|---|---|---|---|---|---|
+| `wall`, `wall_arched`, `wall_shelves`, `wall_cracked` (`.gltf` + `.bin`) | Kay Lousberg | [KayKit Dungeon Pack 1.1](https://kaylousberg.itch.io/kaykit-dungeon-pack), 16.07.2026 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | ja | nicht erforderlich | kuratierte Auswahl; Runtime-Materialnormalisierung und Schatten | `public/assets/kaykit-dungeon/` |
+| `floor_tile_large`, `floor_wood_large`, `pillar_decorated` (`.gltf` + `.bin`) | Kay Lousberg | KayKit Dungeon Pack 1.1 | CC0 1.0 | ja | nicht erforderlich | kuratierte Architekturbauteile | `public/assets/kaykit-dungeon/` |
+| `shelves`, `candle_triple`, `bottle_A_green`, `bottle_A_brown` (`.gltf` + `.bin`) | Kay Lousberg | KayKit Dungeon Pack 1.1 | CC0 1.0 | ja | nicht erforderlich | kuratierte Werkstatt-Props | `public/assets/kaykit-dungeon/` |
+| `banner_patternC_blue`, `banner_patternC_red`, `torch_mounted` (`.gltf` + `.bin`) | Kay Lousberg | KayKit Dungeon Pack 1.1 | CC0 1.0 | ja | nicht erforderlich | kuratierte Arena-Props | `public/assets/kaykit-dungeon/` |
+| `crates_stacked`, `barrel_small_stack` (`.gltf` + `.bin`) | Kay Lousberg | KayKit Dungeon Pack 1.1 | CC0 1.0 | ja | nicht erforderlich | kuratierte Szenen-Props | `public/assets/kaykit-dungeon/` |
+| `dungeon_texture.png` | Kay Lousberg | KayKit Dungeon Pack 1.1 | CC0 1.0 | ja | nicht erforderlich | unveränderter gemeinsamer Texturatlas | `public/assets/kaykit-dungeon/dungeon_texture.png` |
+
+Die originale Lizenzdatei wird als
+`public/assets/kaykit-dungeon/License.txt` mit ausgeliefert. Nicht verwendete
+Modelle und das Downloadarchiv werden nicht in das Repository aufgenommen.
+
 ## Eigenassets im aktuellen Build
 
 Folgende Gruppen werden vollständig im Projektcode erzeugt:
 
-- Boden/Tischfläche,
+- tragende Werkbankkonstruktion,
 - zwei animierte Hero-Kessel mit Flüssigkeit, Blasen und Dampf,
 - fünf Ingredient-Podeste,
 - Shop-Sockel,
-- Werkstattregale, Flaschen, Kerzen, Holzdetails und Hintergrundarchitektur,
-- Arena-Ring, Runensteine, Pfeiler, Treppen und Hintergrundarchitektur,
+- Bücher, Mörser und ergänzende magische Werkstattdetails,
+- Arena-Ring, Runensteine, Publikum und Braziers,
 - fünf Familien-VFX und strukturierte Audio-Cues,
 - App-Symbol und Manifest.
 
 Diese Assets sind Eigenleistung innerhalb dieses Repositories und benötigen
 keine Drittanbieter-Attribution.
+
+Die drei unter `docs/reference-art/` abgelegten Mockups sind ausschließlich
+user-provided Qualitätsreferenzen und keine Runtime- oder Marketingassets.
 
 ## Vorlage für neue Einträge
 

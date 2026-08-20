@@ -26,10 +26,14 @@ function ProjectileShape({ itemId, color }: { itemId?: string; color: string }) 
           <dodecahedronGeometry args={[0.2, 0]} />
           <meshStandardMaterial color="#ffbd54" emissive={color} emissiveIntensity={2.2} roughness={0.26} />
         </mesh>
-        {[0, 1, 2].map((index) => (
-          <mesh key={index} position={[0, 0.22 + index * 0.16, 0]} scale={1 - index * 0.19}>
+        {[0, 1, 2, 3, 4].map((index) => (
+          <mesh
+            key={index}
+            position={[Math.sin(index * 2.2) * 0.07, 0.22 + index * 0.14, Math.cos(index * 1.7) * 0.06]}
+            scale={1 - index * 0.13}
+          >
             <octahedronGeometry args={[0.13, 0]} />
-            <meshStandardMaterial color={index === 2 ? "#b72d28" : "#ff7542"} emissive={color} emissiveIntensity={1.45} transparent opacity={0.82 - index * 0.16} />
+            <meshStandardMaterial color={index > 2 ? "#a82f29" : "#ff7542"} emissive={color} emissiveIntensity={1.55} transparent opacity={0.88 - index * 0.13} depthWrite={false} />
           </mesh>
         ))}
       </group>
@@ -87,6 +91,35 @@ function ImpactShape({ itemId, kind, color }: {
   color: string;
 }) {
   const shield = kind === "shield" || itemId === "egg-shell";
+  const fire = itemId === "chili" || itemId === "cinder-berry" || kind === "burn";
+  if (fire) {
+    return (
+      <group>
+        <mesh>
+          <sphereGeometry args={[0.34, 12, 8]} />
+          <meshStandardMaterial color="#ffe29a" emissive={color} emissiveIntensity={2.4} transparent opacity={0.82} depthWrite={false} />
+        </mesh>
+        {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => {
+          const angle = index * Math.PI / 4;
+          return (
+            <mesh
+              key={index}
+              position={[Math.cos(angle) * 0.54, Math.sin(index * 1.9) * 0.28, Math.sin(angle) * 0.54]}
+              rotation={[Math.sin(angle) * 0.6, angle, Math.cos(angle) * 0.6]}
+              scale={[0.58, 1.45, 0.58]}
+            >
+              <octahedronGeometry args={[0.18, 0]} />
+              <meshStandardMaterial color={index % 2 ? "#ffb34e" : "#ef5635"} emissive={color} emissiveIntensity={1.7} transparent opacity={0.84} depthWrite={false} />
+            </mesh>
+          );
+        })}
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[0.72, 0.055, 7, 32]} />
+          <meshStandardMaterial color="#ffd377" emissive={color} emissiveIntensity={1.8} transparent opacity={0.78} />
+        </mesh>
+      </group>
+    );
+  }
   if (shield) {
     return (
       <group>

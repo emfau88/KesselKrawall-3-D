@@ -1,6 +1,12 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Group, MathUtils } from "three";
+import {
+  CatmullRomCurve3,
+  Group,
+  MathUtils,
+  Vector2,
+  Vector3,
+} from "three";
 
 import { getItemDefinition } from "../../core/data";
 import type { ItemLevel } from "../../core/types";
@@ -12,6 +18,69 @@ const FAMILY_COLORS = {
   frost: { base: "#8bcddd", accent: "#d6f5f4", glow: "#73cce8" },
   echo: { base: "#8d6ab8", accent: "#d2a7f0", glow: "#a67ad9" },
 } as const;
+
+const CHILI_CURVE = new CatmullRomCurve3([
+  new Vector3(-0.08, 0.52, 0),
+  new Vector3(-0.18, 0.24, 0.02),
+  new Vector3(-0.13, -0.08, 0.04),
+  new Vector3(0.08, -0.36, 0.02),
+  new Vector3(0.34, -0.49, -0.02),
+]);
+
+const MUSHROOM_CAP_PROFILE = [
+  new Vector2(0, -0.15),
+  new Vector2(0.28, -0.13),
+  new Vector2(0.47, -0.06),
+  new Vector2(0.55, 0.03),
+  new Vector2(0.48, 0.16),
+  new Vector2(0.31, 0.27),
+  new Vector2(0.09, 0.32),
+  new Vector2(0, 0.31),
+];
+
+function ActivationAura({ family }: { family: keyof typeof FAMILY_COLORS }) {
+  const colors = FAMILY_COLORS[family];
+  if (family === "fire") {
+    return (
+      <group>
+        {[0, 1, 2, 3, 4].map((index) => {
+          const angle = index * Math.PI * 0.4;
+          return (
+            <mesh key={index} position={[Math.cos(angle) * 0.5, 0.12 + (index % 3) * 0.22, Math.sin(angle) * 0.34]}>
+              <octahedronGeometry args={[0.055 + (index % 2) * 0.025, 0]} />
+              <meshStandardMaterial color="#ffd779" emissive={colors.glow} emissiveIntensity={2.1} />
+            </mesh>
+          );
+        })}
+        <pointLight color={colors.glow} intensity={2.2} distance={2.2} />
+      </group>
+    );
+  }
+  if (family === "poison") {
+    return (
+      <group>
+        {[0, 1, 2, 3].map((index) => (
+          <mesh key={index} position={[(index - 1.5) * 0.24, 0.15 + (index % 2) * 0.34, (index % 2 ? 1 : -1) * 0.22]}>
+            <sphereGeometry args={[0.09 + index * 0.012, 8, 6]} />
+            <meshStandardMaterial color={colors.accent} emissive={colors.glow} emissiveIntensity={0.9} transparent opacity={0.48} depthWrite={false} />
+          </mesh>
+        ))}
+      </group>
+    );
+  }
+  if (family === "guard") {
+    return (
+      <group rotation={[Math.PI / 2, 0, 0]}>
+        <mesh>
+          <torusGeometry args={[0.62, 0.04, 7, 8]} />
+          <meshStandardMaterial color="#e9ffff" emissive={colors.glow} emissiveIntensity={1.7} transparent opacity={0.84} />
+        </mesh>
+        <pointLight color={colors.glow} intensity={1.5} distance={2} />
+      </group>
+    );
+  }
+  return null;
+}
 
 function LevelDetails({ level, color }: { level: ItemLevel; color: string }) {
   if (level === 1) return null;
@@ -104,14 +173,18 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
     case "chili":
     case "cinder-berry":
       model = (
-        <group rotation={[0.12, 0, -0.42]}>
-          <mesh castShadow scale={[0.42, 0.92, 0.42]}>
-            <sphereGeometry args={[0.42, 12, 8]} />
-            <meshStandardMaterial color={colors.base} roughness={0.58} {...materialProps} />
+        <group rotation={[0.08, -0.18, -0.28]}>
+          <mesh castShadow>
+            <tubeGeometry args={[CHILI_CURVE, 28, 0.17, 9, false]} />
+            <meshStandardMaterial color={colors.base} emissive="#6f1717" emissiveIntensity={0.16} roughness={0.46} {...materialProps} />
           </mesh>
-          <mesh castShadow position={[0.1, 0.5, 0]} rotation={[0, 0, -0.45]}>
-            <coneGeometry args={[0.12, 0.42, 7]} />
+          <mesh castShadow position={[-0.1, 0.66, 0]} rotation={[0.18, 0, -0.22]}>
+            <coneGeometry args={[0.12, 0.38, 7]} />
             <meshStandardMaterial color="#62733c" roughness={0.8} {...materialProps} />
+          </mesh>
+          <mesh position={[-0.16, 0.21, 0.14]} scale={[0.16, 0.62, 0.12]} rotation={[0, 0, -0.2]}>
+            <sphereGeometry args={[0.5, 8, 6]} />
+            <meshStandardMaterial color="#ff8c55" emissive={colors.glow} emissiveIntensity={0.38} transparent opacity={faded ? 0.25 : 0.42} />
           </mesh>
           {itemId === "cinder-berry" && (
             <mesh position={[-0.22, -0.15, 0.3]}>
@@ -153,17 +226,17 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
     case "slime-shroom":
       model = (
         <group>
-          <mesh castShadow position={[0, -0.18, 0]}>
-            <cylinderGeometry args={[0.17, 0.24, 0.66, 8]} />
-            <meshStandardMaterial color="#ddd0a7" roughness={0.88} {...materialProps} />
+          <mesh castShadow position={[0, -0.2, 0]} scale={[1, 1, 0.94]}>
+            <cylinderGeometry args={[0.16, 0.27, 0.64, 10]} />
+            <meshStandardMaterial color="#c9bd91" roughness={0.9} {...materialProps} />
           </mesh>
-          <mesh castShadow position={[0, 0.22, 0]} scale={[1, 0.52, 1]}>
-            <sphereGeometry args={[0.53, 12, 8]} />
-            <meshStandardMaterial color={colors.base} roughness={0.7} {...materialProps} />
+          <mesh castShadow position={[0, 0.18, 0]} scale={[1, 0.92, 1]}>
+            <latheGeometry args={[MUSHROOM_CAP_PROFILE, 20]} />
+            <meshStandardMaterial color={colors.base} emissive="#314d24" emissiveIntensity={0.14} roughness={0.62} {...materialProps} />
           </mesh>
-          {[[-0.2, 0.31, 0.26], [0.18, 0.35, 0.14]].map((position, index) => (
+          {[[-0.24, 0.36, 0.24], [0.17, 0.42, 0.18], [0.32, 0.25, -0.12]].map((position, index) => (
             <mesh key={index} position={position as [number, number, number]}>
-              <sphereGeometry args={[0.07, 7, 5]} />
+              <sphereGeometry args={[0.06 + index * 0.012, 7, 5]} />
               <meshStandardMaterial color={colors.accent} emissive={colors.glow} emissiveIntensity={0.5} {...materialProps} />
             </mesh>
           ))}
@@ -223,12 +296,21 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
       break;
     case "egg-shell":
       model = (
-        <group>
-          <mesh castShadow scale={[0.78, 1, 0.78]}>
-            <sphereGeometry args={[0.5, 12, 8, 0, Math.PI * 2, 0.4, Math.PI * 0.78]} />
-            <meshStandardMaterial color={colors.base} roughness={0.72} side={2} {...materialProps} />
+        <group rotation={[0.02, 0.15, 0]}>
+          <mesh castShadow scale={[0.82, 1.06, 0.82]} rotation={[Math.PI, 0, 0]}>
+            <sphereGeometry args={[0.52, 20, 12, 0, Math.PI * 2, 0.16, Math.PI * 0.62]} />
+            <meshStandardMaterial color={colors.base} roughness={0.64} side={2} {...materialProps} />
           </mesh>
-          <mesh position={[0, -0.02, 0.38]} rotation={[Math.PI / 2, 0, 0]}>
+          {[0, 1, 2, 3, 4, 5].map((index) => {
+            const angle = index * Math.PI / 3;
+            return (
+              <mesh key={index} castShadow position={[Math.cos(angle) * 0.39, 0.24 + (index % 2) * 0.05, Math.sin(angle) * 0.39]} rotation={[0.2, -angle, index % 2 ? -0.28 : 0.24]} scale={[0.7, 1, 0.46]}>
+                <tetrahedronGeometry args={[0.16, 0]} />
+                <meshStandardMaterial color={colors.base} roughness={0.68} {...materialProps} />
+              </mesh>
+            );
+          })}
+          <mesh position={[0, -0.02, 0.4]} rotation={[Math.PI / 2, 0, 0]}>
             <torusGeometry args={[0.2, 0.035, 6, 20]} />
             <meshStandardMaterial color={colors.accent} emissive={colors.glow} emissiveIntensity={0.9} {...materialProps} />
           </mesh>
@@ -355,6 +437,7 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
     <group scale={scale}>
       <group ref={actor}>
         {model}
+        {active ? <ActivationAura family={definition.family} /> : null}
         <LevelDetails level={level} color={colors.accent} />
       </group>
     </group>

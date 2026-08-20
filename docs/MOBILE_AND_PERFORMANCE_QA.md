@@ -1,6 +1,6 @@
 # Mobile- und Performance-QA
 
-Stand: 18. August 2026
+Stand: 20. August 2026
 
 ## Unterstützte Darstellung
 
@@ -33,20 +33,21 @@ Sie funktioniert mit Maus, Tastatur und Touch in Portrait und Landscape.
 
 ## Build-Budget
 
-Nach Lazy Loading und expliziter Vendor-Aufteilung (Produktionsbuild vom
-18.08.2026):
+Nach Lazy Loading, expliziter Vendor-Aufteilung und KayKit-Integration
+(Produktionsbuild vom 20.08.2026):
 
 | Chunk | minifiziert | gzip | Ladezeitpunkt |
 |---|---:|---:|---|
-| App/Core/UI | ca. 239 KB | ca. 75 KB | initial |
-| R3F-Laufzeit | ca. 167 KB | ca. 53 KB | mit 3D-Bühne |
-| Three.js | ca. 724 KB | ca. 185 KB | mit 3D-Bühne, langfristig cachebar |
-| eigene 3D-Szene | ca. 28 KB | ca. 6 KB | mit 3D-Bühne |
-| CSS | ca. 15 KB | ca. 4 KB | initial |
+| App/Core/UI | ca. 242 KB | ca. 76 KB | initial |
+| R3F-Laufzeit | ca. 169 KB | ca. 54 KB | mit 3D-Bühne |
+| Three.js | ca. 768 KB | ca. 197 KB | mit 3D-Bühne, langfristig cachebar |
+| eigene 3D-Szene | ca. 53 KB | ca. 12 KB | mit 3D-Bühne |
+| CSS | ca. 19 KB | ca. 5 KB | initial |
 
-Der initiale JavaScript-Chunk sank dadurch von ungefähr 1,13 MB auf ungefähr
-239 KB. Device Pixel Ratio ist auf 1,35 begrenzt, Schatten nutzen die günstige
-Basic-Variante und 768er Shadowmaps.
+Der initiale JavaScript-Chunk bleibt dadurch bei ungefähr 242 KB. KayKit-Modelle
+werden zusammen mit der 3D-Bühne nachgeladen und verwenden einen gemeinsamen
+17-KB-Texturatlas. Device Pixel Ratio ist auf 1,35 begrenzt; Schatten verwenden
+PCF-Filtering und 768er Shadowmaps.
 
 ## Verifikation
 
@@ -54,5 +55,7 @@ Basic-Variante und 768er Shadowmaps.
 - Vitest Core/Integration: Pflicht
 - Produktionsbuild mit relativem `base`: Pflicht
 - Third-Party-Lizenzbericht im Build: Pflicht
+- Browser-Smoke-Test Shop → Kauf → Arena → Ergebnis: bestanden
+- 1280×720 Desktop, 844×390 Landscape und 390×844 Portrait: bestanden
 - Physischer Mobile-Smoketest nach Deployment: empfohlen, insbesondere für
   iOS-Audiofreigabe, Android-Browserleisten und gerätespezifische Safe Areas
