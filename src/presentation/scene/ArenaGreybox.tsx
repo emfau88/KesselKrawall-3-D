@@ -114,7 +114,13 @@ function TournamentAudience({ moor }: { moor: boolean }) {
   const crowd = useRef<Group>(null);
   useFrame(({ clock }) => {
     if (!crowd.current) return;
-    crowd.current.position.y = Math.sin(clock.elapsedTime * 0.62) * 0.025;
+    crowd.current.children.forEach((member, index) => {
+      const baseY = Number(member.userData.baseY ?? member.position.y);
+      const phase = Number(member.userData.phase ?? index);
+      member.position.y = baseY + Math.sin(clock.elapsedTime * (0.9 + (index % 4) * 0.08) + phase) * 0.045;
+      member.rotation.z = Math.sin(clock.elapsedTime * 0.72 + phase * 1.7) * 0.035;
+      member.rotation.y = Math.sin(clock.elapsedTime * 0.38 + phase) * 0.08;
+    });
   });
   return (
     <group ref={crowd}>
@@ -124,15 +130,34 @@ function TournamentAudience({ moor }: { moor: boolean }) {
           const x = (index - (count - 1) / 2) * (row === 0 ? 0.72 : 0.82);
           const accent = moor && index % 4 === 0 ? "#829344" : index % 3 === 0 ? "#6e4f72" : "#4b3c52";
           return (
-            <group key={`${row}-${index}`} position={[x, y, -5.55]} scale={row === 0 ? 1 : 0.86}>
-              <mesh castShadow position={[0, -0.18, 0]}>
-                <capsuleGeometry args={[0.12, 0.3, 4, 7]} />
-                <meshStandardMaterial color={accent} roughness={0.92} />
+            <group
+              key={`${row}-${index}`}
+              position={[x, y, -5.55]}
+              scale={row === 0 ? 1 : 0.86}
+              userData={{ baseY: y, phase: index * 0.73 + row * 1.9 }}
+            >
+              <mesh castShadow position={[0, -0.2, 0]}>
+                <coneGeometry args={[0.2, 0.52, 7]} />
+                <meshStandardMaterial color={accent} roughness={0.88} />
               </mesh>
               <mesh castShadow position={[0, 0.13, 0]}>
-                <sphereGeometry args={[0.13, 8, 6]} />
-                <meshStandardMaterial color="#76636f" roughness={0.88} />
+                <sphereGeometry args={[0.115, 9, 7]} />
+                <meshStandardMaterial color={index % 2 ? "#9b7869" : "#75606b"} roughness={0.82} />
               </mesh>
+              <mesh castShadow position={[0, 0.3, 0]} rotation={[0, 0, (index % 3 - 1) * 0.08]}>
+                <coneGeometry args={[0.21, 0.42, 7]} />
+                <meshStandardMaterial color={index % 3 === 0 ? "#4c3158" : "#30283d"} roughness={0.9} />
+              </mesh>
+              <mesh position={[0, 0.16, 0.1]} rotation={[Math.PI / 2, 0, 0]}>
+                <torusGeometry args={[0.18, 0.025, 5, 16]} />
+                <meshStandardMaterial color={moor && index % 4 === 0 ? "#a5c44f" : "#b28b5b"} metalness={0.28} roughness={0.5} />
+              </mesh>
+              {[-1, 1].map((side) => (
+                <mesh key={side} castShadow position={[side * 0.16, -0.1 + (index % 3 === 0 ? 0.08 : 0), 0]} rotation={[0, 0, side * (index % 3 === 0 ? -0.72 : -0.35)]}>
+                  <cylinderGeometry args={[0.035, 0.045, 0.35, 6]} />
+                  <meshStandardMaterial color={accent} roughness={0.9} />
+                </mesh>
+              ))}
             </group>
           );
         }),
@@ -160,6 +185,52 @@ function MoorMiasma() {
           <meshStandardMaterial color={index % 2 ? "#78923d" : "#a1bd54"} emissive="#536b2d" emissiveIntensity={0.28} transparent opacity={0.09} depthWrite={false} />
         </mesh>
       ))}
+    </group>
+  );
+}
+
+function ArenaAmbientLife({ moor }: { moor: boolean }) {
+  const motes = useRef<Group>(null);
+  const astrolabe = useRef<Group>(null);
+  useFrame(({ clock }) => {
+    motes.current?.children.forEach((mote, index) => {
+      const baseY = Number(mote.userData.baseY ?? 1);
+      mote.position.y = baseY + Math.sin(clock.elapsedTime * (0.55 + index * 0.025) + index * 1.4) * 0.42;
+      const pulse = 0.72 + Math.sin(clock.elapsedTime * 1.7 + index) * 0.24;
+      mote.scale.setScalar(pulse);
+    });
+    if (astrolabe.current) {
+      astrolabe.current.rotation.y = clock.elapsedTime * 0.16;
+      astrolabe.current.rotation.z = Math.sin(clock.elapsedTime * 0.32) * 0.12;
+    }
+  });
+  const glow = moor ? "#9acb43" : "#9b6bd0";
+  return (
+    <group>
+      <group ref={motes}>
+        {Array.from({ length: 15 }, (_, index) => {
+          const x = -6.4 + (index % 8) * 1.82;
+          const y = 0.9 + (index % 5) * 0.54;
+          const z = -5.1 + (index % 3) * 0.55;
+          return (
+            <mesh key={index} position={[x, y, z]} userData={{ baseY: y }}>
+              <octahedronGeometry args={[0.035 + (index % 3) * 0.012, 0]} />
+              <meshStandardMaterial color="#f9e4a2" emissive={glow} emissiveIntensity={2.1} transparent opacity={0.82} depthWrite={false} />
+            </mesh>
+          );
+        })}
+      </group>
+      <group ref={astrolabe} position={[0, 4.15, -5.25]} rotation={[0.2, 0, 0]}>
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[0.78, 0.055, 7, 34]} />
+          <meshStandardMaterial color="#98704b" metalness={0.55} roughness={0.34} />
+        </mesh>
+        <mesh rotation={[0, Math.PI / 2, 0]}>
+          <torusGeometry args={[0.58, 0.035, 7, 30]} />
+          <meshStandardMaterial color={glow} emissive={glow} emissiveIntensity={0.72} />
+        </mesh>
+        <pointLight color={glow} intensity={2.4} distance={5} />
+      </group>
     </group>
   );
 }
@@ -218,6 +289,7 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
         </mesh>
       ))}
       <TournamentAudience moor={moor} />
+      <ArenaAmbientLife moor={moor} />
       <mesh castShadow position={[0, 3.85, -5.5]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[1.05, 0.16, 8, 32, Math.PI]} />
         <meshStandardMaterial color="#6e5749" metalness={0.35} roughness={0.55} />
@@ -234,37 +306,18 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
           </mesh>
         </group>
       ))}
-      <mesh castShadow receiveShadow position={[0, 0.08, 0]}>
-        <cylinderGeometry args={[5.2, 5.55, 0.42, 32]} />
-        <meshStandardMaterial color="#514552" roughness={0.86} />
-      </mesh>
-      <mesh receiveShadow position={[0, 0.29, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[4.75, 0.07, 8, 72]} />
-        <meshStandardMaterial color="#6e6070" metalness={0.18} roughness={0.58} />
-      </mesh>
-      <mesh receiveShadow position={[0, 0.31, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[3.85, 0.08, 8, 64]} />
-        <meshStandardMaterial color="#b89462" emissive="#805f3b" emissiveIntensity={0.25} />
-      </mesh>
-      {Array.from({ length: 16 }, (_, index) => {
-        const angle = (index / 16) * Math.PI * 2;
-        return (
-          <group key={index} position={[Math.cos(angle) * 4.3, 0.35, Math.sin(angle) * 4.3]} rotation={[0, -angle, 0]}>
-            <mesh castShadow>
-              <boxGeometry args={[0.52, 0.11, 0.28]} />
-              <meshStandardMaterial color="#67596a" roughness={0.8} />
-            </mesh>
-            <mesh position={[0, 0.065, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-              <ringGeometry args={[0.075, 0.11, 6]} />
-              <meshStandardMaterial color="#b485d8" emissive="#8a5cc0" emissiveIntensity={0.55} />
-            </mesh>
-          </group>
-        );
-      })}
-      <mesh position={[0, 0.33, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[0.48, 0.56, 8]} />
-        <meshStandardMaterial color="#d1a768" emissive="#96673b" emissiveIntensity={0.35} />
-      </mesh>
+      <ProductionAssetBoundary
+        fallback={(
+          <mesh castShadow receiveShadow position={[0, 0.08, 0]}>
+            <cylinderGeometry args={[5.2, 5.55, 0.42, 32]} />
+            <meshStandardMaterial color="#514552" roughness={0.86} />
+          </mesh>
+        )}
+      >
+        <Suspense fallback={null}>
+          <ProductionAsset asset="hero-arena-dais" position={[0, 0, 0]} />
+        </Suspense>
+      </ProductionAssetBoundary>
       <CauldronActor
         accent="#d87442"
         position={[0, 1.28, 2.25]}

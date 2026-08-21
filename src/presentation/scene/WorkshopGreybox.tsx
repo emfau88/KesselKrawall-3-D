@@ -105,7 +105,6 @@ function WorkshopProductionEnvironment() {
           <ProductionAsset asset="dungeon-pillar" position={[5.08, -0.66, -3.88]} scale={0.78} />
           <ProductionAsset asset="dungeon-floor-tile" position={[-2, -0.64, -2.15]} />
           <ProductionAsset asset="dungeon-floor-tile" position={[2, -0.64, -2.15]} />
-          <ProductionAsset asset="dungeon-floor-wood" position={[0, 0.63, 0.5]} scale={[2, 1, 1.5]} />
         </Suspense>
       </ProductionAssetBoundary>
       <mesh receiveShadow position={[0, -0.66, -0.1]} rotation={[-Math.PI / 2, 0, 0]}>
@@ -183,11 +182,9 @@ function WorkshopProductionProps() {
   );
 }
 
-export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
+function WorkbenchFallback() {
   return (
     <group>
-      <WorkshopProductionEnvironment />
-      <WorkshopProductionProps />
       <mesh castShadow receiveShadow position={[0, 0.26, 0.5]}>
         <boxGeometry args={[8.1, 0.52, 6]} />
         <meshStandardMaterial color="#704a31" roughness={0.82} />
@@ -198,14 +195,20 @@ export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
           <meshStandardMaterial color="#3e2b24" roughness={0.9} />
         </mesh>
       )))}
-      <mesh castShadow position={[0, -0.7, -1.7]}>
-        <boxGeometry args={[6.7, 0.28, 0.32]} />
-        <meshStandardMaterial color="#493126" roughness={0.9} />
-      </mesh>
-      <mesh castShadow position={[0, -0.7, 2.35]}>
-        <boxGeometry args={[6.7, 0.28, 0.32]} />
-        <meshStandardMaterial color="#493126" roughness={0.9} />
-      </mesh>
+    </group>
+  );
+}
+
+export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
+  return (
+    <group>
+      <WorkshopProductionEnvironment />
+      <WorkshopProductionProps />
+      <ProductionAssetBoundary fallback={<WorkbenchFallback />}>
+        <Suspense fallback={<WorkbenchFallback />}>
+          <ProductionAsset asset="hero-workbench" position={[0, 0.28, 0.5]} />
+        </Suspense>
+      </ProductionAssetBoundary>
       <CauldronActor accent="#d87442" position={[0, 1.45, -0.05]} scale={1.05} variant="player" />
       {SLOT_POSITIONS.map((position, index) => (
         <IngredientSlotGreybox

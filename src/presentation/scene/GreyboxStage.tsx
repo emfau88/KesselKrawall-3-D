@@ -29,7 +29,7 @@ export function GreyboxStage({
         antialias: true,
         powerPreference: "high-performance",
         toneMapping: ACESFilmicToneMapping,
-        toneMappingExposure: 1.08,
+        toneMappingExposure: 1.02,
       }}
       orthographic
       shadows={{ type: PCFShadowMap }}

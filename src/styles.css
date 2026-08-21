@@ -500,6 +500,162 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
 .onboarding-skip { border: 0; color: #b5a6b7; background: transparent; }
 .onboarding-next { border: 1px solid #e6b66e; color: #291a29; background: #e9bd77; }
 
+/* North-star fantasy UI: dark forged panels, warm brass edges and readable
+   parchment typography.  The DOM stays lightweight and touch friendly. */
+.game-shell::after {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 44%, transparent 38%, rgb(7 4 10 / 23%) 76%),
+    linear-gradient(90deg, rgb(8 4 9 / 18%), transparent 18% 82%, rgb(8 4 9 / 18%));
+  box-shadow: inset 0 0 7rem rgb(4 2 6 / 24%);
+  content: "";
+  pointer-events: none;
+}
+
+.game-title h1,
+.result-panel h2,
+.campaign-picker > h2,
+.combatant strong,
+.shop-heading > span {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: .025em;
+}
+
+.game-title h1 {
+  color: #fff4dd;
+  text-shadow: 0 2px 0 #3c241c, 0 4px 18px rgb(7 3 8 / 85%);
+}
+
+.game-title p {
+  color: #efbf70;
+  text-shadow: 0 1px 0 #2c1712, 0 0 12px rgb(239 171 80 / 22%);
+}
+
+.run-stats,
+.shop-ribbon,
+.selection-popover,
+.combatant,
+.battle-clock,
+.result-panel,
+.campaign-picker,
+.onboarding {
+  border-color: rgb(213 160 83 / 52%);
+  border-radius: .32rem;
+  background:
+    linear-gradient(145deg, rgb(45 31 30 / 94%), rgb(17 12 20 / 96%)),
+    #191018;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 224 164 / 8%),
+    inset 0 -10px 24px rgb(6 3 8 / 18%),
+    0 14px 40px rgb(5 2 7 / 48%);
+}
+
+.run-stats,
+.shop-ribbon,
+.result-panel,
+.campaign-picker,
+.onboarding,
+.selection-popover {
+  position: absolute;
+}
+
+.run-stats::before,
+.shop-ribbon::before,
+.result-panel::before,
+.campaign-picker::before,
+.onboarding::before,
+.selection-popover::before {
+  position: absolute;
+  inset: .2rem;
+  border: 1px solid rgb(246 206 132 / 12%);
+  border-radius: .16rem;
+  content: "";
+  pointer-events: none;
+}
+
+.run-stats div + div { border-left: 1px solid rgb(201 151 83 / 24%); }
+.run-stats strong { color: #ffe4a7; font-family: Georgia, "Times New Roman", serif; }
+
+.utility-controls button,
+.synergy,
+.board-controls,
+.battle-playback-controls {
+  border-color: rgb(196 147 80 / 32%);
+  border-radius: .3rem;
+  background: linear-gradient(180deg, rgb(47 32 36 / 86%), rgb(19 13 23 / 88%));
+  box-shadow: inset 0 1px rgb(255 229 178 / 7%), 0 6px 18px rgb(5 2 7 / 28%);
+}
+
+.synergy { border-left: 2px solid color-mix(in srgb, var(--family-color) 58%, #5c392b); }
+.synergy.is-active { box-shadow: inset 0 0 16px color-mix(in srgb, var(--family-color) 10%, transparent), 0 0 20px color-mix(in srgb, var(--family-color) 18%, transparent); }
+
+.shop-ribbon {
+  padding: .58rem;
+  border-width: 2px;
+  background:
+    linear-gradient(180deg, rgb(50 33 34 / 95%), rgb(19 13 22 / 97%)),
+    #1a111a;
+}
+
+.offer,
+.campaign-options article {
+  border-color: rgb(213 166 100 / 22%);
+  border-radius: .2rem;
+  background: linear-gradient(145deg, rgb(89 57 47 / 22%), rgb(21 15 25 / 72%));
+  box-shadow: inset 0 0 0 1px rgb(255 235 194 / 4%);
+}
+
+.offer:hover:not(:disabled), .offer:focus-visible {
+  box-shadow: inset 0 0 18px color-mix(in srgb, var(--offer-color) 9%, transparent), 0 0 18px color-mix(in srgb, var(--offer-color) 15%, transparent);
+}
+
+.offer-family {
+  border: 1px solid rgb(255 239 202 / 36%);
+  border-radius: 0;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.offer-copy strong { font-family: Georgia, "Times New Roman", serif; font-size: .82rem; letter-spacing: .01em; }
+.offer-cost { color: #f6cc70; text-shadow: 0 0 12px rgb(244 181 74 / 24%); }
+
+.battle-button,
+.result-panel button,
+.campaign-options article > button,
+.onboarding-next {
+  border-width: 2px;
+  border-radius: .22rem;
+  border-color: #f1c170;
+  color: #241518;
+  background: linear-gradient(180deg, #f5d68f 0%, #d89a4d 54%, #b66f34 100%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 46%), inset 0 -3px rgb(94 48 28 / 20%), 0 8px 20px rgb(217 145 60 / 18%);
+  text-shadow: 0 1px rgb(255 238 193 / 48%);
+}
+
+.health-track {
+  border: 1px solid rgb(230 191 126 / 16%);
+  background: #100b13;
+  box-shadow: inset 0 2px 5px rgb(0 0 0 / 50%);
+}
+.health-track i { box-shadow: inset 0 1px rgb(255 255 255 / 28%), 0 0 12px currentColor; }
+
+.campaign-picker,
+.result-panel { border-width: 2px; }
+.campaign-options article { border-left: 3px solid #9c673f; }
+.campaign-options article > strong { font-family: Georgia, "Times New Roman", serif; color: #ffe8bd; }
+
+.result-panel::after,
+.campaign-picker::after {
+  position: absolute;
+  top: .48rem;
+  right: .48rem;
+  bottom: .48rem;
+  left: .48rem;
+  border: 1px solid rgb(112 71 47 / 35%);
+  content: "";
+  pointer-events: none;
+}
+
 @media (max-width: 900px), (max-height: 580px) {
   .game-title { top: max(.66rem, env(safe-area-inset-top)); left: max(.78rem, env(safe-area-inset-left)); max-width: calc(100vw - 19rem); }
   .game-title span { display: none; }

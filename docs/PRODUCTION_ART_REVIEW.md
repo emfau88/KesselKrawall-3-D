@@ -1,28 +1,36 @@
 # Production-Art Vertical Slice – Review
 
-Stand: 20. August 2026
+Stand: 21. August 2026
 
 ## Ergebnis
 
-Der erste Production-Art-Vertical-Slice ersetzt die reine Greybox-Anmutung
-durch eine zusammenhängende, spielbare Alchemie-Werkstatt und Turnierarena. Die
-bestehende Core- und UI-Architektur blieb unverändert. Der Slice erfüllt das
-Minimum-Production-Ziel; das Final-North-Star-Mockup bleibt die Richtung für
-weitere individuelle Hero-Assets und zusätzliche Art-Polish-Runden.
+Der Production-Art-Vertical-Slice ersetzt die reine Greybox-Anmutung durch eine
+zusammenhängende, spielbare Alchemie-Werkstatt und Turnierarena. Die bestehende
+Core-Architektur blieb unverändert. Nach dem ersten öffentlichen Review wurde
+die frühere Einstufung „Minimum-Production-Ziel erfüllt“ bewusst revidiert und
+ein eigener Blender-/North-Star-Pass ergänzt. Der Slice liegt jetzt deutlich
+näher an der gewünschten Charakter-, Material- und UI-Sprache; das
+Final-North-Star-Mockup bleibt dennoch ein langfristiger Qualitätsmaßstab und
+keine Behauptung pixelgleicher Renderqualität.
 
 ## Umgesetzter Umfang
 
 - offizielles, CC0-lizenziertes KayKit Dungeon Pack 1.1 als glTF-Umgebung,
 - Asset-Katalog, Runtime-Wrapper, Schatten-/Materialnormalisierung und
   prozeduraler Fallback,
+- sieben originale GLB-Hero-Assets mit reproduzierbarer Blender-5.2-Pipeline,
 - frontalere Werkbankkamera mit eigener Mobile-Komposition,
 - belebte Werkstatt mit Regalen, Flaschen, Büchern, Kerzen, Mörser und
   magischen Akzenten,
-- charakteristischere Silhouetten für Glut-Chili, Schleimpilz und Runenschale,
-- individuelle Spieler- und Gegnerkessel inklusive Moor-Martha-Profil,
-- überarbeitete Fire-, Poison- und Guard-Aktivierungs- und Impact-Sprache,
-- geschlossene Arena mit Bodenstaffelung, Bannern, Publikum, Braziers und
-  Moor-Miasma,
+- charakteristische GLB-Silhouetten für Glut-Chili, Schleimpilz und Runenschale,
+- eigenständige GLB-Charaktermodelle für Spieler und Moor-Martha, weiterhin
+  gesteuert vom bestehenden Reaction-Interface,
+- Fire-, Poison- und Guard-Aktivierungen mit Antizipation, Trails, Flugkurven,
+  Impacts und Lichtreaktionen,
+- geschlossene Arena mit individuellem Ritual-Dais, Bannern, bewegtem
+  Alchemistenpublikum, Ambient-Motes, Braziers und Moor-Miasma,
+- Fantasy-UI-Pass mit dunklen Schmiedepaneelen, Messingkanten,
+  Parchment-Typografie und klarer Touch-Hierarchie,
 - GitHub-Pages-Build und responsive UI für Desktop, Landscape und Portrait.
 
 ## Asset-Entscheidung
@@ -39,12 +47,11 @@ Downloadarchiv und nicht verwendete Modelle befinden sich nicht im Repository.
 
 ## Blender-Entscheidung
 
-Blender ist für diesen Slice kein Blocker: Kessel, Zutaten und Kampfreaktionen
-sind eigenständige, optimierte Runtime-Modelle. Für den nächsten North-Star-Pass
-ist Blender dennoch sinnvoll, vor allem für einen noch stärker modellierten
-Hero-Kessel, ein vollständig individuelles Moor-Martha-Modell und gebackene
-Materialdetails. Die Entscheidung wird nach dem öffentlichen Screenshotreview
-getroffen, nicht vor der spielbaren Integration.
+Blender 5.2 LTS ist jetzt Teil des reproduzierbaren Art-Workflows. Die GLBs
+werden nicht blind per Script akzeptiert: jeder Export erhält Vorschaurenderings
+und anschließend einen In-Game-Screenshot-Gate. Runtime-Animation, VFX und
+Fallback bleiben bewusst in R3F; dadurch beeinflusst ein Assetfehler keine
+Spielregel.
 
 ## Qualitätsgates
 

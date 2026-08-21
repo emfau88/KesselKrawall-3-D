@@ -5,12 +5,12 @@ export function LightingRig({ mode, opponentId }: { mode: GreyboxMode; opponentI
   const moor = !workshop && opponentId === "moor-martha";
   return (
     <>
-      <ambientLight color={workshop ? "#b296ac" : "#77759b"} intensity={workshop ? 0.8 : 0.62} />
-      <hemisphereLight args={[workshop ? "#ffdfaf" : "#b7b3df", "#261a31", workshop ? 1.48 : 1.18]} />
+      <ambientLight color={workshop ? "#9f8297" : "#70698d"} intensity={workshop ? 0.48 : 0.42} />
+      <hemisphereLight args={[workshop ? "#ffd7a1" : "#b7afd8", "#1d1325", workshop ? 1.16 : 0.92]} />
       <directionalLight
         castShadow
         color={workshop ? "#ffd59a" : "#dad3ff"}
-        intensity={workshop ? 3.05 : 2.7}
+        intensity={workshop ? 3.35 : 3.05}
         position={workshop ? [4.5, 10, 7.5] : [5.5, 11, 4.5]}
         shadow-bias={-0.0004}
         shadow-camera-bottom={-7}
@@ -18,11 +18,11 @@ export function LightingRig({ mode, opponentId }: { mode: GreyboxMode; opponentI
         shadow-camera-left={-8}
         shadow-camera-right={8}
         shadow-camera-top={7}
-        shadow-mapSize-height={768}
-        shadow-mapSize-width={768}
+        shadow-mapSize-height={1024}
+        shadow-mapSize-width={1024}
       />
-      <pointLight color={workshop ? "#d36a3c" : moor ? "#789e3e" : "#7a63cb"} intensity={workshop ? 5.5 : 8} position={[-4, 3.5, -3]} distance={13} />
-      <pointLight color={workshop ? "#8d5bbd" : moor ? "#d29055" : "#bc7bd7"} intensity={4.2} position={[4.5, 2.4, -2.5]} distance={10} />
+      <pointLight color={workshop ? "#d35d32" : moor ? "#6fa23a" : "#7457c2"} intensity={workshop ? 6.4 : 8.8} position={[-4, 3.5, -3]} distance={13} />
+      <pointLight color={workshop ? "#8151b5" : moor ? "#d38747" : "#b96ed5"} intensity={4.8} position={[4.5, 2.4, -2.5]} distance={10} />
       {workshop && <pointLight color="#ffc06f" intensity={9} position={[0, 4.8, -2.7]} distance={12} decay={2} />}
     </>
   );

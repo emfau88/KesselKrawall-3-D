@@ -10,11 +10,11 @@ export function FixedCamera({ mode }: { mode: GreyboxMode }) {
   useLayoutEffect(() => {
     const portrait = size.height > size.width;
     if (mode === "workshop") {
-      camera.position.set(portrait ? 1.4 : 0.75, portrait ? 12.2 : 11.15, portrait ? 15.2 : 14.8);
-      camera.lookAt(0, portrait ? 0.75 : 0.72, 0.35);
+      camera.position.set(portrait ? 1.1 : 0.5, portrait ? 10.8 : 8.25, portrait ? 18.8 : 17.6);
+      camera.lookAt(0, portrait ? 0.62 : 0.5, 0.42);
     } else {
-      camera.position.set(portrait ? 2.1 : 1.15, portrait ? 12.8 : 11.55, portrait ? 16.1 : 15.25);
-      camera.lookAt(0, 0.62, 0);
+      camera.position.set(portrait ? 1.65 : 0.7, portrait ? 11.2 : 8.35, portrait ? 19.4 : 18.2);
+      camera.lookAt(0, portrait ? 0.68 : 0.58, -0.25);
     }
 
     if (camera instanceof OrthographicCamera) {

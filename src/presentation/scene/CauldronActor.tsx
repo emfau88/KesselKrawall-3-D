@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { Suspense, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import {
   Group,
@@ -7,6 +7,8 @@ import {
   Vector2,
   type Vector3Tuple,
 } from "three";
+
+import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 
 export type CauldronReaction =
   | "idle"
@@ -168,6 +170,25 @@ function MoorDetails() {
   );
 }
 
+function CauldronAssetFallback({ profile }: { profile: CauldronVisualProfile }) {
+  return (
+    <group position={[0, 0.22, 0]}>
+      <mesh castShadow receiveShadow scale={[1.1, 0.92, 1.05]}>
+        <sphereGeometry args={[0.96, 24, 16]} />
+        <meshStandardMaterial color={profile.body} metalness={0.38} roughness={0.58} />
+      </mesh>
+      <mesh castShadow position={[0, 0.78, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.84, 0.13, 10, 28]} />
+        <meshStandardMaterial color={profile.metal} metalness={0.5} roughness={0.4} />
+      </mesh>
+      <mesh position={[0, 0.77, 0]}>
+        <cylinderGeometry args={[0.74, 0.77, 0.08, 28]} />
+        <meshStandardMaterial color={profile.liquid} emissive={profile.liquid} emissiveIntensity={0.42} roughness={0.24} />
+      </mesh>
+    </group>
+  );
+}
+
 export function CauldronActor({
   accent,
   position,
@@ -269,6 +290,42 @@ export function CauldronActor({
   return (
     <group position={position} scale={scale}>
       <group ref={animated}>
+        {hero || moor ? (
+          <>
+            <ProductionAssetBoundary fallback={<CauldronAssetFallback profile={profile} />}>
+              <Suspense fallback={<CauldronAssetFallback profile={profile} />}>
+                <ProductionAsset
+                  asset={moor ? "hero-cauldron-moor" : "hero-cauldron-player"}
+                  position={[0, 0.24, 0]}
+                />
+              </Suspense>
+            </ProductionAssetBoundary>
+            <pointLight color={profile.liquid} intensity={moor ? 1.55 : 1.9} distance={3.8} position={[0, 1.18, 0]} />
+            {([[-0.32, 1.08, 0.14, 0.065], [0.18, 1.12, -0.18, 0.085], [0.4, 1.06, 0.12, 0.05]] as const)
+              .map(([x, y, z, radius], index) => (
+                <mesh key={index} position={[x, y, z]}>
+                  <sphereGeometry args={[radius, 8, 5]} />
+                  <meshStandardMaterial color={moor ? "#e1ef7c" : "#fff0bd"} emissive={profile.liquid} emissiveIntensity={0.95} roughness={0.22} />
+                </mesh>
+              ))}
+            <group ref={steam}>
+              {([[-0.32, 1.46, 0.04, 0.16], [0.18, 1.74, -0.05, 0.19], [0.42, 2.02, 0.02, 0.13]] as const)
+                .map(([x, y, z, radius], index) => (
+                  <mesh key={index} position={[x, y, z]} scale={[1, moor ? 1.75 : 1.45, 1]}>
+                    <sphereGeometry args={[radius, 9, 6]} />
+                    <meshStandardMaterial color={profile.steam} transparent opacity={moor ? 0.2 : 0.14} depthWrite={false} roughness={1} />
+                  </mesh>
+                ))}
+            </group>
+            <group ref={aura} position={[0, -0.7, 0.08]} rotation={[Math.PI / 2, 0, 0]}>
+              <mesh>
+                <torusGeometry args={[moor ? 1.16 : 1.1, 0.032, 7, 42]} />
+                <meshStandardMaterial color={profile.liquid} emissive={profile.liquid} emissiveIntensity={0.9} transparent opacity={0.58} />
+              </mesh>
+            </group>
+          </>
+        ) : (
+          <>
         <mesh castShadow receiveShadow>
           <latheGeometry args={[bodyProfile, 32]} />
           <meshStandardMaterial color={profile.body} metalness={moor ? 0.28 : 0.5} roughness={moor ? 0.68 : 0.46} />
@@ -325,6 +382,8 @@ export function CauldronActor({
             <meshStandardMaterial color={profile.liquid} emissive={profile.liquid} emissiveIntensity={0.75} transparent opacity={0.52} />
           </mesh>
         </group>
+          </>
+        )}
       </group>
     </group>
   );

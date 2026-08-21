@@ -179,11 +179,33 @@ function ImpactShape({ itemId, kind, color }: {
   );
 }
 
+function FlightTrail({ color, poison }: { color: string; poison: boolean }) {
+  return (
+    <>
+      {Array.from({ length: 8 }, (_, index) => (
+        <mesh key={index} scale={1 - index * 0.075}>
+          {poison ? <dodecahedronGeometry args={[0.105, 0]} /> : <octahedronGeometry args={[0.095, 0]} />}
+          <meshStandardMaterial
+            color={poison && index % 2 ? "#d5f178" : color}
+            emissive={color}
+            emissiveIntensity={poison ? 1.05 : 1.9}
+            transparent
+            opacity={0.78 - index * 0.065}
+            depthWrite={false}
+          />
+        </mesh>
+      ))}
+    </>
+  );
+}
+
 export function BattleVfx({ frame, sourcePosition }: {
   frame: CombatFrame;
   sourcePosition?: Vector3Tuple;
 }) {
   const projectile = useRef<Group>(null);
+  const trail = useRef<Group>(null);
+  const anticipation = useRef<Group>(null);
   const impact = useRef<Group>(null);
   const startedAt = useRef<number | null>(null);
   const event = frame.event;
@@ -197,20 +219,42 @@ export function BattleVfx({ frame, sourcePosition }: {
   const selfTargeted = event.actor === event.target;
 
   useFrame(({ clock }) => {
-    if (!projectile.current || !impact.current) return;
+    if (!projectile.current || !trail.current || !anticipation.current || !impact.current) return;
     startedAt.current ??= clock.elapsedTime;
     const elapsed = clock.elapsedTime - startedAt.current;
-    const flightDuration = event.sourceItemId === "slime-shroom" ? 0.54 : 0.46;
+    const flightDuration = event.sourceItemId === "slime-shroom" ? 0.68 : 0.58;
     const progress = MathUtils.clamp(elapsed / flightDuration, 0, 1);
     const sideArc = (frame.eventIndex % 2 === 0 ? 1 : -1) * Math.sin(progress * Math.PI) * 0.72;
+    const flightHeight = event.sourceItemId === "slime-shroom" ? 1.35 : 1.02;
+    anticipation.current.visible = elapsed < 0.3;
+    anticipation.current.position.set(...source);
+    const anticipationPulse = MathUtils.clamp(elapsed / 0.3, 0, 1);
+    anticipation.current.scale.setScalar(0.5 + Math.sin(anticipationPulse * Math.PI) * 0.62);
+    anticipation.current.rotation.z = elapsed * 4.2;
     projectile.current.visible = !selfTargeted && progress < 1;
     projectile.current.position.set(
       MathUtils.lerp(source[0], destination[0], progress) + sideArc,
-      MathUtils.lerp(source[1], destination[1], progress) + Math.sin(progress * Math.PI) * (event.sourceItemId === "slime-shroom" ? 1.25 : 0.88),
+      MathUtils.lerp(source[1], destination[1], progress) + Math.sin(progress * Math.PI) * flightHeight,
       MathUtils.lerp(source[2], destination[2], progress),
     );
     projectile.current.rotation.x += 0.11;
     projectile.current.rotation.y += event.sourceItemId === "chili" ? 0.26 : 0.16;
+
+    trail.current.visible = !selfTargeted && progress > 0.02 && progress < 1;
+    trail.current.children.forEach((particle, index) => {
+      const trailingProgress = MathUtils.clamp(progress - 0.038 - index * 0.047, 0, 1);
+      particle.visible = trailingProgress > 0 && progress < 1;
+      const trailingArc = (frame.eventIndex % 2 === 0 ? 1 : -1) * Math.sin(trailingProgress * Math.PI) * 0.72;
+      particle.position.set(
+        MathUtils.lerp(source[0], destination[0], trailingProgress) + trailingArc,
+        MathUtils.lerp(source[1], destination[1], trailingProgress) + Math.sin(trailingProgress * Math.PI) * flightHeight,
+        MathUtils.lerp(source[2], destination[2], trailingProgress),
+      );
+      const particleScale = Math.max(0.18, 0.92 - index * 0.085) * (0.84 + Math.sin(elapsed * 18 + index) * 0.12);
+      particle.scale.setScalar(particleScale);
+      particle.rotation.x += 0.08 + index * 0.006;
+      particle.rotation.y += 0.11;
+    });
 
     const impactProgress = selfTargeted
       ? MathUtils.clamp(elapsed / 0.72, 0, 1)
@@ -224,6 +268,21 @@ export function BattleVfx({ frame, sourcePosition }: {
 
   return (
     <group>
+      <group ref={anticipation} visible={false}>
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[0.48, 0.045, 7, event.kind === "shield" ? 6 : 28]} />
+          <meshStandardMaterial color="#fff0b1" emissive={color} emissiveIntensity={1.75} transparent opacity={0.88} />
+        </mesh>
+        {[0, 1, 2, 3].map((index) => (
+          <mesh key={index} position={[Math.cos(index * Math.PI / 2) * 0.48, 0.08, Math.sin(index * Math.PI / 2) * 0.48]}>
+            <octahedronGeometry args={[0.065, 0]} />
+            <meshStandardMaterial color="#fff4c9" emissive={color} emissiveIntensity={2} />
+          </mesh>
+        ))}
+      </group>
+      <group ref={trail} visible={false}>
+        <FlightTrail color={color} poison={event.kind === "poison" || event.kind === "poisonBurst" || event.sourceItemId === "slime-shroom"} />
+      </group>
       <group ref={projectile}>
         <ProjectileShape color={color} itemId={event.sourceItemId} />
         <pointLight color={color} intensity={1.3} distance={2.4} />

@@ -1,14 +1,16 @@
 # Asset- und Lizenzregister
 
-Stand: 20. August 2026
+Stand: 21. August 2026
 
 ## Shipping-Status
 
 Der Rebuild enthält eine kuratierte Auswahl modularer glTF-Modelle samt
-gemeinsamem Texturatlas aus dem offiziellen KayKit Dungeon Pack 1.1. Kessel,
-Zutaten, Animationen und Effekte entstehen weiterhin aus eigenem
-Three.js-/R3F-Code. UI-Sounds und Kessel-Ambience werden zur Laufzeit mit der
-Web Audio API synthetisiert; es wird keine Audiodatei ausgeliefert.
+gemeinsamem Texturatlas aus dem offiziellen KayKit Dungeon Pack 1.1. Die beiden
+Hero-Kessel, drei Referenzzutaten, Werkbank und Arena-Dais sind originale,
+reproduzierbar mit Blender erzeugte Projektassets. Animationen, Ambient-Leben
+und Effekte entstehen weiterhin aus eigenem Three.js-/R3F-Code. UI-Sounds und
+Kessel-Ambience werden zur Laufzeit mit der Web Audio API synthetisiert; es
+wird keine Audiodatei ausgeliefert.
 
 Das App-Symbol `public/kessel-mark.svg` ist eine für dieses Repository neu
 erstellte Eigenleistung. Vite erzeugt beim Produktionsbuild zusätzlich
@@ -76,16 +78,28 @@ Die originale Lizenzdatei wird als
 `public/assets/kaykit-dungeon/License.txt` mit ausgeliefert. Nicht verwendete
 Modelle und das Downloadarchiv werden nicht in das Repository aufgenommen.
 
+## Originale Blender-Runtime-Assets
+
+| Dateien | Urheber | Quelle | Lizenzstatus | Erzeugung/Bearbeitung | Zielpfad |
+|---|---|---|---|---|---|
+| `hero-cauldron-player.glb`, `hero-cauldron-moor.glb` | KesselKrawall-3-D Projekt | originale Geometrie und Materialien dieses Repositories | Project original | reproduzierbarer Blender-5.2-Export; Silhouette, Gesicht, Regalia, Moor-Bewuchs und Flüssigkeit projektspezifisch | `public/assets/hero/` |
+| `ingredient-chili.glb`, `ingredient-slime-shroom.glb`, `ingredient-rune-shell.glb` | KesselKrawall-3-D Projekt | originale Geometrie und Materialien dieses Repositories | Project original | reproduzierbarer Blender-5.2-Export; drei Familienreferenzen Fire, Poison und Guard | `public/assets/hero/` |
+| `hero-workbench.glb`, `hero-arena-dais.glb` | KesselKrawall-3-D Projekt | originale Geometrie und Materialien dieses Repositories | Project original | reproduzierbarer Blender-5.2-Export; dunkles Holz, Messing, Ritualringe und Runen | `public/assets/hero/` |
+
+Die vollständige Erzeugung ist in `art/blender/build_hero_assets.py`
+dokumentiert. Die drei alten 2D-Mockup-/Legacy-Bilder dienen ausschließlich als
+Art-Direction-Referenz; ihre Pixel oder Texturen wurden nicht in die GLBs
+übernommen.
+
 ## Eigenassets im aktuellen Build
 
-Folgende Gruppen werden vollständig im Projektcode erzeugt:
+Folgende Gruppen werden zusätzlich vollständig im Projektcode erzeugt:
 
-- tragende Werkbankkonstruktion,
-- zwei animierte Hero-Kessel mit Flüssigkeit, Blasen und Dampf,
 - fünf Ingredient-Podeste,
 - Shop-Sockel,
 - Bücher, Mörser und ergänzende magische Werkstattdetails,
-- Arena-Ring, Runensteine, Publikum und Braziers,
+- Kessel-Reaktionsanimationen, Blasen, Dampf und Auren um die GLB-Modelle,
+- Runensteine, animiertes Publikum, Ambient-Motes und Braziers,
 - fünf Familien-VFX und strukturierte Audio-Cues,
 - App-Symbol und Manifest.
 

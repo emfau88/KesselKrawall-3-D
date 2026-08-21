@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import {
   CatmullRomCurve3,
@@ -10,6 +10,7 @@ import {
 
 import { getItemDefinition } from "../../core/data";
 import type { ItemLevel } from "../../core/types";
+import { ProductionAsset, ProductionAssetBoundary, type ProductionAssetId } from "./ProductionAsset";
 
 const FAMILY_COLORS = {
   fire: { base: "#c9442f", accent: "#ffb13f", glow: "#e55b2f" },
@@ -433,10 +434,25 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
       );
   }
 
+  const heroAsset: ProductionAssetId | null = itemId === "chili"
+    ? "ingredient-chili"
+    : itemId === "slime-shroom"
+      ? "ingredient-slime-shroom"
+      : itemId === "egg-shell"
+        ? "ingredient-rune-shell"
+        : null;
+  const visibleModel = heroAsset ? (
+    <ProductionAssetBoundary fallback={model}>
+      <Suspense fallback={model}>
+        <ProductionAsset asset={heroAsset} opacity={faded ? 0.58 : 1} scale={0.98} />
+      </Suspense>
+    </ProductionAssetBoundary>
+  ) : model;
+
   return (
     <group scale={scale}>
       <group ref={actor}>
-        {model}
+        {visibleModel}
         {active ? <ActivationAura family={definition.family} /> : null}
         <LevelDetails level={level} color={colors.accent} />
       </group>
