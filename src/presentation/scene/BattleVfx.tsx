@@ -24,7 +24,7 @@ function ProjectileShape({ itemId, color }: { itemId?: string; color: string }) 
       <group rotation={[Math.PI / 2, 0, 0]}>
         <mesh scale={[0.82, 1.55, 0.82]}>
           <dodecahedronGeometry args={[0.2, 0]} />
-          <meshStandardMaterial color="#ffbd54" emissive={color} emissiveIntensity={2.2} roughness={0.26} />
+          <meshBasicMaterial color="#ffb02f" toneMapped={false} />
         </mesh>
         {[0, 1, 2, 3, 4].map((index) => (
           <mesh
@@ -33,7 +33,7 @@ function ProjectileShape({ itemId, color }: { itemId?: string; color: string }) 
             scale={1 - index * 0.13}
           >
             <octahedronGeometry args={[0.13, 0]} />
-            <meshStandardMaterial color={index > 2 ? "#a82f29" : "#ff7542"} emissive={color} emissiveIntensity={1.55} transparent opacity={0.88 - index * 0.13} depthWrite={false} />
+            <meshBasicMaterial color={index > 2 ? "#c93624" : "#ff642f"} toneMapped={false} transparent opacity={0.88 - index * 0.13} depthWrite={false} />
           </mesh>
         ))}
       </group>
@@ -44,12 +44,12 @@ function ProjectileShape({ itemId, color }: { itemId?: string; color: string }) 
       <group>
         <mesh scale={[1.2, 0.9, 1]}>
           <dodecahedronGeometry args={[0.2, 1]} />
-          <meshStandardMaterial color={color} emissive="#6f9e37" emissiveIntensity={1.25} roughness={0.38} />
+          <meshBasicMaterial color="#87c83e" toneMapped={false} />
         </mesh>
         {[-1, 1].map((side) => (
           <mesh key={side} position={[side * 0.17, 0.16, 0]}>
             <sphereGeometry args={[0.07, 7, 5]} />
-            <meshStandardMaterial color="#d9f27a" emissive={color} emissiveIntensity={1.1} />
+            <meshBasicMaterial color="#d9f27a" toneMapped={false} />
           </mesh>
         ))}
       </group>
@@ -59,7 +59,7 @@ function ProjectileShape({ itemId, color }: { itemId?: string; color: string }) 
     return (
       <mesh scale={[0.72, 1.55, 0.72]} rotation={[0.5, 0.2, 0.2]}>
         <octahedronGeometry args={[0.24, 0]} />
-        <meshStandardMaterial color="#d8fbff" emissive={color} emissiveIntensity={1.55} roughness={0.18} metalness={0.12} />
+        <meshBasicMaterial color="#bcefff" toneMapped={false} />
       </mesh>
     );
   }
@@ -68,11 +68,11 @@ function ProjectileShape({ itemId, color }: { itemId?: string; color: string }) 
       <group>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.2, 0.04, 7, 24]} />
-          <meshStandardMaterial color={color} emissive={color} emissiveIntensity={1.8} />
+          <meshBasicMaterial color={color} toneMapped={false} />
         </mesh>
         <mesh scale={0.58}>
           <octahedronGeometry args={[0.2, 0]} />
-          <meshStandardMaterial color="#f0d5ff" emissive={color} emissiveIntensity={1.5} />
+          <meshBasicMaterial color="#e7c2ff" toneMapped={false} />
         </mesh>
       </group>
     );
@@ -80,7 +80,7 @@ function ProjectileShape({ itemId, color }: { itemId?: string; color: string }) 
   return (
     <mesh>
       <octahedronGeometry args={[0.22, 0]} />
-      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={1.7} />
+      <meshBasicMaterial color={color} toneMapped={false} />
     </mesh>
   );
 }
@@ -97,7 +97,7 @@ function ImpactShape({ itemId, kind, color }: {
       <group>
         <mesh>
           <sphereGeometry args={[0.34, 12, 8]} />
-          <meshStandardMaterial color="#ffe29a" emissive={color} emissiveIntensity={2.4} transparent opacity={0.82} depthWrite={false} />
+          <meshBasicMaterial color="#ffb238" toneMapped={false} transparent opacity={0.76} depthWrite={false} />
         </mesh>
         {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => {
           const angle = index * Math.PI / 4;
@@ -109,13 +109,13 @@ function ImpactShape({ itemId, kind, color }: {
               scale={[0.58, 1.45, 0.58]}
             >
               <octahedronGeometry args={[0.18, 0]} />
-              <meshStandardMaterial color={index % 2 ? "#ffb34e" : "#ef5635"} emissive={color} emissiveIntensity={1.7} transparent opacity={0.84} depthWrite={false} />
+              <meshBasicMaterial color={index % 2 ? "#ffad32" : "#ff4d29"} toneMapped={false} transparent opacity={0.88} depthWrite={false} />
             </mesh>
           );
         })}
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.72, 0.055, 7, 32]} />
-          <meshStandardMaterial color="#ffd377" emissive={color} emissiveIntensity={1.8} transparent opacity={0.78} />
+          <meshBasicMaterial color="#ff7b24" toneMapped={false} transparent opacity={0.86} depthWrite={false} />
         </mesh>
       </group>
     );
@@ -125,16 +125,16 @@ function ImpactShape({ itemId, kind, color }: {
       <group>
         <mesh scale={[1.05, 1.18, 0.68]}>
           <sphereGeometry args={[0.72, 16, 10]} />
-          <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.5} transparent opacity={0.19} depthWrite={false} />
+          <meshBasicMaterial color={color} toneMapped={false} transparent opacity={0.2} depthWrite={false} />
         </mesh>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.6, 0.055, 7, 6]} />
-          <meshStandardMaterial color="#d8fbff" emissive={color} emissiveIntensity={1.3} transparent opacity={0.82} />
+          <meshBasicMaterial color="#aeeeff" toneMapped={false} transparent opacity={0.88} depthWrite={false} />
         </mesh>
         {[0, 1, 2, 3].map((index) => (
           <mesh key={index} position={[Math.cos(index * Math.PI / 2) * 0.58, Math.sin(index * Math.PI / 2) * 0.58, 0]} rotation={[0, 0, index * Math.PI / 2]}>
             <octahedronGeometry args={[0.085, 0]} />
-            <meshStandardMaterial color="#e9ffff" emissive={color} emissiveIntensity={1.6} />
+            <meshBasicMaterial color="#d8ffff" toneMapped={false} />
           </mesh>
         ))}
       </group>
@@ -151,7 +151,7 @@ function ImpactShape({ itemId, kind, color }: {
         ] as const).map(([x, y, z, size], index) => (
           <mesh key={index} position={[x, y, z]} scale={[1, 1.25, 0.72]}>
             <dodecahedronGeometry args={[size, 0]} />
-            <meshStandardMaterial color={index % 2 ? "#a9dc50" : "#709f39"} emissive={color} emissiveIntensity={0.72} transparent opacity={0.28} depthWrite={false} />
+            <meshBasicMaterial color={index % 2 ? "#b9e94f" : "#68a938"} toneMapped={false} transparent opacity={0.34} depthWrite={false} />
           </mesh>
         ))}
       </group>
@@ -161,18 +161,18 @@ function ImpactShape({ itemId, kind, color }: {
     <group>
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[0.55, 0.045, 7, 32]} />
-        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={1.35} transparent opacity={0.74} />
+        <meshBasicMaterial color={color} toneMapped={false} transparent opacity={0.82} depthWrite={false} />
       </mesh>
       {(kind === "heal" || kind === "cleanse") && (
         <mesh>
           <sphereGeometry args={[0.72, 12, 8]} />
-          <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.45} transparent opacity={0.17} depthWrite={false} />
+          <meshBasicMaterial color={color} toneMapped={false} transparent opacity={0.2} depthWrite={false} />
         </mesh>
       )}
       {[0, 1, 2, 3, 4, 5].map((index) => (
         <mesh key={index} position={[Math.cos(index * Math.PI / 3) * 0.56, Math.sin(index * 1.7) * 0.35, Math.sin(index * Math.PI / 3) * 0.3]}>
           <octahedronGeometry args={[0.055 + (index % 2) * 0.025, 0]} />
-          <meshStandardMaterial color="#fff0c2" emissive={color} emissiveIntensity={1.25} />
+          <meshBasicMaterial color="#fff0c2" toneMapped={false} />
         </mesh>
       ))}
     </group>
@@ -185,10 +185,9 @@ function FlightTrail({ color, poison }: { color: string; poison: boolean }) {
       {Array.from({ length: 8 }, (_, index) => (
         <mesh key={index} scale={1 - index * 0.075}>
           {poison ? <dodecahedronGeometry args={[0.105, 0]} /> : <octahedronGeometry args={[0.095, 0]} />}
-          <meshStandardMaterial
+          <meshBasicMaterial
             color={poison && index % 2 ? "#d5f178" : color}
-            emissive={color}
-            emissiveIntensity={poison ? 1.05 : 1.9}
+            toneMapped={false}
             transparent
             opacity={0.78 - index * 0.065}
             depthWrite={false}
@@ -212,8 +211,8 @@ export function BattleVfx({ frame, sourcePosition }: {
   if (!event) return null;
 
   const color = EVENT_COLORS[event.kind];
-  const playerPoint: Vector3Tuple = [0, 2.08, 3.05];
-  const enemyPoint: Vector3Tuple = [0, 1.92, -2.85];
+  const playerPoint: Vector3Tuple = [-0.28, 2.05, 4.02];
+  const enemyPoint: Vector3Tuple = [0.28, 1.92, -3.7];
   const source = sourcePosition ?? (event.actor === "player" ? playerPoint : enemyPoint);
   const destination = event.target === "player" ? playerPoint : enemyPoint;
   const selfTargeted = event.actor === event.target;
@@ -222,12 +221,12 @@ export function BattleVfx({ frame, sourcePosition }: {
     if (!projectile.current || !trail.current || !anticipation.current || !impact.current) return;
     startedAt.current ??= clock.elapsedTime;
     const elapsed = clock.elapsedTime - startedAt.current;
-    const castDuration = selfTargeted ? 0 : 0.2;
-    const flightDuration = event.sourceItemId === "slime-shroom" ? 0.46 : 0.38;
+    const castDuration = selfTargeted ? 0 : 0.26;
+    const flightDuration = event.sourceItemId === "slime-shroom" ? 0.64 : 0.56;
     const flightElapsed = elapsed - castDuration;
     const progress = MathUtils.clamp(flightElapsed / flightDuration, 0, 1);
-    const sideArc = (frame.eventIndex % 2 === 0 ? 1 : -1) * Math.sin(progress * Math.PI) * 0.72;
-    const flightHeight = event.sourceItemId === "slime-shroom" ? 1.35 : 1.02;
+    const sideArc = (frame.eventIndex % 2 === 0 ? 1 : -1) * Math.sin(progress * Math.PI) * 1.08;
+    const flightHeight = event.sourceItemId === "slime-shroom" ? 1.62 : 1.34;
     anticipation.current.visible = selfTargeted ? elapsed < 0.3 : elapsed < castDuration;
     anticipation.current.position.set(...source);
     const anticipationPulse = MathUtils.clamp(elapsed / Math.max(castDuration, 0.3), 0, 1);
@@ -246,7 +245,7 @@ export function BattleVfx({ frame, sourcePosition }: {
     trail.current.children.forEach((particle, index) => {
       const trailingProgress = MathUtils.clamp(progress - 0.038 - index * 0.047, 0, 1);
       particle.visible = trailingProgress > 0 && progress < 1;
-      const trailingArc = (frame.eventIndex % 2 === 0 ? 1 : -1) * Math.sin(trailingProgress * Math.PI) * 0.72;
+      const trailingArc = (frame.eventIndex % 2 === 0 ? 1 : -1) * Math.sin(trailingProgress * Math.PI) * 1.08;
       particle.position.set(
         MathUtils.lerp(source[0], destination[0], trailingProgress) + trailingArc,
         MathUtils.lerp(source[1], destination[1], trailingProgress) + Math.sin(trailingProgress * Math.PI) * flightHeight,
@@ -260,7 +259,7 @@ export function BattleVfx({ frame, sourcePosition }: {
 
     const impactProgress = selfTargeted
       ? MathUtils.clamp(elapsed / 0.72, 0, 1)
-      : MathUtils.clamp((elapsed - castDuration - flightDuration * 0.78) / 0.38, 0, 1);
+      : MathUtils.clamp((elapsed - castDuration - flightDuration * 0.78) / 0.3, 0, 1);
     impact.current.visible = impactProgress > 0 && impactProgress < 1;
     impact.current.position.set(...destination);
     const impactScale = event.kind === "poisonBurst" ? 2.55 : selfTargeted ? 2.15 : 1.72;
@@ -273,12 +272,12 @@ export function BattleVfx({ frame, sourcePosition }: {
       <group ref={anticipation} visible={false}>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.48, 0.045, 7, event.kind === "shield" ? 6 : 28]} />
-          <meshStandardMaterial color="#fff0b1" emissive={color} emissiveIntensity={1.75} transparent opacity={0.88} />
+          <meshBasicMaterial color={color} toneMapped={false} transparent opacity={0.9} depthWrite={false} />
         </mesh>
         {[0, 1, 2, 3].map((index) => (
           <mesh key={index} position={[Math.cos(index * Math.PI / 2) * 0.48, 0.08, Math.sin(index * Math.PI / 2) * 0.48]}>
             <octahedronGeometry args={[0.065, 0]} />
-            <meshStandardMaterial color="#fff4c9" emissive={color} emissiveIntensity={2} />
+            <meshBasicMaterial color="#fff1b0" toneMapped={false} />
           </mesh>
         ))}
       </group>

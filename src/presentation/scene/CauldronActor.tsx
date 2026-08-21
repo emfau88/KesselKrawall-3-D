@@ -136,6 +136,32 @@ function PlayerRegalia({ metal }: { metal: string }) {
   );
 }
 
+function PlayerBackSigil({ metal, glow }: { metal: string; glow: string }) {
+  return (
+    <group position={[0, -0.02, -1.34]}>
+      <mesh castShadow rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.56, 0.63, 0.12, 12]} />
+        <meshStandardMaterial color="#29212b" metalness={0.5} roughness={0.42} />
+      </mesh>
+      <mesh position={[0, 0, -0.08]}>
+        <torusGeometry args={[0.43, 0.055, 8, 28]} />
+        <meshStandardMaterial color={metal} metalness={0.6} roughness={0.3} />
+      </mesh>
+      <mesh position={[0, 0, -0.15]} rotation={[0, 0, Math.PI / 4]} scale={[1, 1, 0.38]}>
+        <boxGeometry args={[0.36, 0.36, 0.12]} />
+        <meshStandardMaterial color="#c9f8f4" emissive={glow} emissiveIntensity={2.1} metalness={0.12} roughness={0.2} />
+      </mesh>
+      {[-1, 1].map((side) => (
+        <mesh key={side} position={[side * 0.34, -0.36, -0.02]} rotation={[0, 0, side * 0.58]}>
+          <torusGeometry args={[0.2, 0.035, 6, 18, Math.PI * 1.25]} />
+          <meshStandardMaterial color={metal} metalness={0.58} roughness={0.34} />
+        </mesh>
+      ))}
+      <pointLight color={glow} intensity={1.8} distance={3.1} position={[0, 0, -0.38]} />
+    </group>
+  );
+}
+
 function MoorDetails() {
   return (
     <group>
@@ -182,6 +208,7 @@ function CauldronAssetFallback({ profile }: { profile: CauldronVisualProfile }) 
 export function CauldronActor({
   accent,
   position,
+  rotation,
   variant = "rival",
   scale = 1,
   reaction = "idle",
@@ -189,6 +216,7 @@ export function CauldronActor({
 }: {
   accent: string;
   position: Vector3Tuple;
+  rotation?: Vector3Tuple;
   variant?: string;
   scale?: number;
   reaction?: CauldronReaction;
@@ -281,7 +309,7 @@ export function CauldronActor({
   });
 
   return (
-    <group position={position} scale={scale}>
+    <group position={position} rotation={rotation} scale={scale}>
       <group ref={animated}>
         {quaterniusBody ? (
           <>
@@ -436,6 +464,7 @@ export function CauldronActor({
         </group>
           </>
         )}
+        {hero ? <PlayerBackSigil glow="#62d6e3" metal={profile.metal} /> : null}
       </group>
     </group>
   );

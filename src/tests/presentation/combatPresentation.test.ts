@@ -51,6 +51,12 @@ describe("combat presentation timeline", () => {
     expect(timeline.beats[0]!.durationMs).toBeGreaterThan(timeline.beats[1]!.durationMs);
   });
 
+  test("reserves enough presentation time for cast, travel, impact, and reaction", () => {
+    const timeline = createCombatTimeline([event()]);
+
+    expect(timeline.beats[0]?.durationMs).toBeGreaterThanOrEqual(1_050);
+  });
+
   test("keeps speed and pause independent from simulation time", () => {
     expect(getPlaybackElapsedMs(500, 1_000, 2_000, 1, false)).toBe(1_500);
     expect(getPlaybackElapsedMs(500, 1_000, 2_000, 2, false)).toBe(2_150);

@@ -10,6 +10,9 @@ Sie funktioniert mit Maus, Tastatur und Touch in Portrait und Landscape.
 - Kamera-Zoom berücksichtigt Breite und Höhe des tatsächlichen Canvas.
 - Portrait erhält ein zweizeiliges Shoplayout; Landscape nutzt eine kompakte
   horizontale Leiste.
+- Der Portrait-Kampf nutzt eine vertikale Duellachse mit Gegner oben,
+  freier VFX-Zone und Spieler-Rückansicht unten; Utility-Schalter weichen an
+  den unteren Rand aus und überdecken keine Lebensbalken.
 - Slotsteuerung liegt zusätzlich als semantische DOM-Schaltflächen vor.
 - Alle primären Touchziele sind bei grober Zeigereingabe mindestens 44×44 CSS-Pixel.
 - `env(safe-area-inset-*)` hält HUD und Aktionen aus Displayausschnitten heraus.
@@ -41,12 +44,12 @@ Nach Lazy Loading, expliziter Vendor-Aufteilung und Blender-/KayKit-Integration
 | App/Core/UI | ca. 242 KB | ca. 76 KB | initial |
 | R3F-Laufzeit | ca. 169 KB | ca. 54 KB | mit 3D-Bühne |
 | Three.js | ca. 768 KB | ca. 197 KB | mit 3D-Bühne, langfristig cachebar |
-| eigene 3D-Szene | ca. 59 KB | ca. 13 KB | mit 3D-Bühne |
+| eigene 3D-Szene | ca. 78 KB | ca. 16,6 KB | mit 3D-Bühne |
 | CSS | ca. 22 KB | ca. 5,6 KB | initial |
 
 Der initiale JavaScript-Chunk bleibt dadurch bei ungefähr 242 KB. Der aktuelle
-3D-Szenen-Chunk liegt nach dem Phase-2-Art-Pass bei rund 70 KB beziehungsweise
-15 KB gzip. KayKit bleibt als A/B-Fallback mit gemeinsamem 17-KB-Atlas
+3D-Szenen-Chunk liegt nach dem Combat-Staging-Pass bei rund 78 KB beziehungsweise
+16,6 KB gzip. KayKit bleibt als A/B-Fallback mit gemeinsamem 17-KB-Atlas
 enthalten. Die Quaternius-Auswahl umfasst 22 Modelle und 8,20 MiB
 mobiloptimierte Runtime-Dateien über alle drei Pakete; pro Szene werden nur die
 referenzierten Modelle und gemeinsamen Texturen geladen. Zwei kleine originale

@@ -732,6 +732,12 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   .selection-popover { top: auto; right: .55rem; bottom: 8.45rem; }
   .battle-hud { top: 4.4rem; grid-template-columns: 1fr 2.8rem 1fr; }
   .combatant > div:first-child strong { max-width: 6rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .phase-battle .utility-controls,
+  .phase-result .utility-controls {
+    top: auto;
+    right: max(.55rem, env(safe-area-inset-right));
+    bottom: max(.55rem, env(safe-area-inset-bottom));
+  }
 }
 
 @media (pointer: coarse) {

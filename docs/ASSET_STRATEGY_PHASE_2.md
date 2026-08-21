@@ -80,14 +80,25 @@ Donor-Texturen nicht in jedem Hero-GLB dupliziert.
 
 - Quaternius-Mauerwerk, Boden, Torrahmen, Fackeln, Banner, Rankpflanzen,
   Truhe/Fass und Nature-Dressing ersetzen den sichtbaren KayKit-Rahmen;
+- die Kamera zeigt den Spieler-Kessel nun konsequent von hinten mit eigenem
+  cyanfarbenem Rückensiegel; beide Kessel blicken einander über eine rund
+  7,7 Einheiten lange, freie Effektzone an;
+- beide Fünfer-Builds bleiben wie in der 2D-Referenz als räumliche Halbkreise
+  sichtbar: belegte Zutaten stehen auf animierten Cooldown-Runensockeln,
+  leere Plätze bleiben als schwache Runen lesbar und aktive Zutaten heben sich
+  vor dem Cast sichtbar ab;
 - Moor-Martha erhält tote Bäume, Pilze, Pflanzen, Felsen, grüne Miasma-
   Lichtstimmung und animierte Ambient-Motes;
 - Publikum, Astrolabium, Braziers und Ringarena bleiben projektspezifische
-  animierte Bühnenelemente;
+  animierte Bühnenelemente; Kerzengruppen, schwingende Banner, ein alchemistischer
+  Kronleuchter, Portalglühen und bei Treffern umlaufende Bodenrunen verdichten
+  die Arena, ohne die Kampfmitte zuzustellen;
+- das Publikum reagiert zusätzlich kurz auf neue Kampfbeats;
 - Kampfbeats besitzen jetzt klar getrennte Antizipation, Projektilflug und
   Einschlagphase;
 - Feuer, Gift und Guard behalten verschiedene Formen, Trails, Farben und
-  Impact-Silhouetten;
+  Impact-Silhouetten; farbstabile VFX-Materialien verhindern, dass starke
+  Emissionen durch Tone-Mapping ins Beige-Weiß ausbrennen;
 - längere Standard-/Hero-Beats geben Projektil und Trefferreaktion genug Raum,
   ohne die deterministische Simulation zu verändern; 1×, 2× und 4× bleiben
   bedienbar.
@@ -95,9 +106,11 @@ Donor-Texturen nicht in jedem Hero-GLB dupliziert.
 ### Mobile
 
 Der Portrait-Zoom priorisiert nun Kessel, Werkbank und Slots statt die gesamte
-Raumbreite mit großen Leerflächen zeigen zu wollen. Getestet wurden 1440×900,
-844×390 und 390×844. Landscape und Portrait blieben touchbedienbar; im Browser-
-Smoke-Test traten keine Lade- oder WebGL-Fehler auf.
+Raumbreite mit großen Leerflächen zeigen zu wollen. Im Kampf bildet Portrait
+eine klare vertikale Achse aus Gegner, Effektzone und Spieler-Rückansicht; die
+Utility-Schalter liegen dort unterhalb der Bühne statt über den Lebensbalken.
+Getestet wurden 1440×900, 844×390 und 390×844. Landscape und Portrait blieben
+touchbedienbar; im Browser-Smoke-Test traten keine Lade- oder WebGL-Fehler auf.
 
 ## Kontrollierter A/B/C-Vergleich
 
@@ -158,7 +171,7 @@ Produktions-QA.
 
 - Blender 5.2 Import, Kit-Export und Größen-/Triangle-Audit: bestanden
 - TypeScript strict: bestanden
-- Vitest: 8 Dateien, 33 Tests bestanden
+- Vitest: 8 Dateien, 34 Tests bestanden
 - Vite-Produktionsbuild: bestanden
 - Desktop Shop → Kampf → Ergebnis → nächste Runde: bestanden
 - Moor-Martha Runde 2 inklusive Sieg/Niederlage/Rückkehr: bestanden

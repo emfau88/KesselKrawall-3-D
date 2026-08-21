@@ -43,12 +43,12 @@ function emphasisFor(event: CombatEvent): CombatBeat["emphasis"] {
 function durationFor(emphasis: CombatBeat["emphasis"], eventCount: number): number {
   const base =
     emphasis === "boss"
-      ? 1_260
+      ? 1_420
       : emphasis === "hero"
-        ? 980
+        ? 1_220
         : emphasis === "standard"
-          ? 780
-          : 350;
+          ? 1_050
+          : 400;
   return base + Math.min(2, Math.max(0, eventCount - 1)) * 90;
 }
 
