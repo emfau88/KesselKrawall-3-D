@@ -212,8 +212,8 @@ export function BattleVfx({ frame, sourcePosition }: {
   if (!event) return null;
 
   const color = EVENT_COLORS[event.kind];
-  const playerPoint: Vector3Tuple = [0, 2.05, 2.2];
-  const enemyPoint: Vector3Tuple = [0, 2.05, -2.1];
+  const playerPoint: Vector3Tuple = [0, 2.08, 3.05];
+  const enemyPoint: Vector3Tuple = [0, 1.92, -2.85];
   const source = sourcePosition ?? (event.actor === "player" ? playerPoint : enemyPoint);
   const destination = event.target === "player" ? playerPoint : enemyPoint;
   const selfTargeted = event.actor === event.target;

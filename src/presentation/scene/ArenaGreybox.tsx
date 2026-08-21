@@ -34,7 +34,7 @@ function ArenaIngredients({ scene, side }: {
   side: "player" | "enemy";
 }) {
   const board = side === "player" ? scene.board : scene.opponent.board;
-  const z = side === "player" ? 3.65 : -3.55;
+  const z = side === "player" ? 4.05 : -3.9;
   return (
     <group>
       {board.map((item, index) => {
@@ -244,7 +244,7 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
     ? activeBoard.findIndex((item) => item?.uid === activeEvent.sourceUid)
     : -1;
   const sourcePosition = activeSlot >= 0
-    ? ([(activeSlot - 2) * 0.82, 1.02, activeEvent?.actor === "enemy" ? -3.55 : 3.65] as [number, number, number])
+    ? ([(activeSlot - 2) * 0.82, 1.02, activeEvent?.actor === "enemy" ? -3.9 : 4.05] as [number, number, number])
     : undefined;
   return (
     <group>
@@ -320,17 +320,17 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
       </ProductionAssetBoundary>
       <CauldronActor
         accent="#d87442"
-        position={[0, 1.28, 2.25]}
+        position={[0, 1.28, 3.05]}
         reaction={reactionFor("player", scene)}
         reactionKey={eventKey}
         variant="player"
       />
       <CauldronActor
         accent={scene.opponent.id === "moor-martha" ? "#91b640" : "#7f71ce"}
-        position={[0, 1.28, -2.15]}
+        position={[0, 1.18, -2.85]}
         reaction={reactionFor("enemy", scene)}
         reactionKey={eventKey}
-        scale={1.08}
+        scale={scene.opponent.id === "moor-martha" ? 0.86 : 0.9}
         variant={scene.opponent.id}
       />
       <ArenaIngredients scene={scene} side="player" />

@@ -21,11 +21,17 @@ läuft vollständig clientseitig und benötigt kein Konto.
 ## Aktueller Stand
 
 Legacy-Audit, renderer-neutraler Core, spielbarer 3D-Vertical-Slice und der
-erste Production-Art-Pass sowie Mobile-/UX-Polish sind umgesetzt. Der Lauf führt vom Drei-Angebote-Shop
-über Kauf, sichtbaren Merge, Synergieanzeige und Slot-Tausch in einen
-deterministisch simulierten 3D-Kampf mit HP, VFX, Ergebnis und Rückkehr zur
-Werkbank. Kein Legacy-Presentation-Code und kein Legacy-Asset wurde in den
-Runtime-Build übernommen.
+Blender-/North-Star-Art-Pass sowie Mobile-/UX-Polish sind umgesetzt. Der Lauf
+führt vom Drei-Angebote-Shop über Kauf, sichtbaren Merge, Synergieanzeige und
+Slot-Tausch in einen deterministisch simulierten 3D-Kampf mit HP, VFX, Ergebnis
+und Rückkehr zur Werkbank. Kein Legacy-Presentation-Code und kein
+Legacy-Runtime-Asset wurde übernommen.
+
+Der aktuelle Golden Slice besitzt originale GLB-Modelle für den Spieler-Kessel,
+Moor-Martha, Glut-Chili, Schleimpilz, Runenschale, Werkbank und Arena-Dais. Die
+reproduzierbare Blender-5.2-Pipeline liegt unter `art/blender/`. Hinzu kommen
+bewegtes Alchemistenpublikum, Ambient-Magie, Fire-/Poison-/Guard-Trails und
+Impacts sowie ein Fantasy-UI-Pass mit dunklen Schmiedepaneelen und Messingkanten.
 
 Zusätzlich enthalten sind Kampagnenwahl, Reservebedienung, gespeicherter
 Shop-Run und Kampagnenfortschritt, Kurzeinführung, synthetisierte Web-Audio-SFX,
