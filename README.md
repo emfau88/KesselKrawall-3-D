@@ -27,11 +27,15 @@ Slot-Tausch in einen deterministisch simulierten 3D-Kampf mit HP, VFX, Ergebnis
 und Rückkehr zur Werkbank. Kein Legacy-Presentation-Code und kein
 Legacy-Runtime-Asset wurde übernommen.
 
-Der aktuelle Golden Slice besitzt originale GLB-Modelle für den Spieler-Kessel,
-Moor-Martha, Glut-Chili, Schleimpilz, Runenschale, Werkbank und Arena-Dais. Die
-reproduzierbare Blender-5.2-Pipeline liegt unter `art/blender/`. Hinzu kommen
-bewegtes Alchemistenpublikum, Ambient-Magie, Fire-/Poison-/Guard-Trails und
-Impacts sowie ein Fantasy-UI-Pass mit dunklen Schmiedepaneelen und Messingkanten.
+Der aktuelle Golden Slice verwendet eine kuratierte, mobile-optimierte Auswahl
+aus Quaternius Fantasy Props, Medieval Village und Stylized Nature als
+gemeinsame visuelle Sprache. Spieler und Moor-Martha kombinieren einen
+hochwertigen texturierten Donor-Kessel mit originalen modularen Gesichtern,
+Regalia, Wurzeln, Moos und dynamischer Flüssigkeit. Die reproduzierbare
+Blender-5.2- und Asset-Aufbereitungspipeline liegt unter `art/blender/` und
+`scripts/`. Hinzu kommen bewegtes Alchemistenpublikum, Ambient-Magie, klar
+getrennte Cast-/Travel-/Impact-Phasen sowie ein Fantasy-UI-Pass mit dunklen
+Schmiedepaneelen und Messingkanten.
 
 Zusätzlich enthalten sind Kampagnenwahl, Reservebedienung, gespeicherter
 Shop-Run und Kampagnenfortschritt, Kurzeinführung, synthetisierte Web-Audio-SFX,
@@ -54,6 +58,7 @@ und die 2D-Sprite-Komposition nicht portiert.
 - [Art Direction](docs/ART_DIRECTION.md)
 - [Asset- und Lizenzregister](docs/ASSET_LICENSES.md)
 - [Asset-Strategie: Phase-1-Audit und Beschaffungsentscheidung](docs/ASSET_STRATEGY_PHASE_1.md)
+- [Asset-Strategie: Phase-2-Bake-off und Golden Slice](docs/ASSET_STRATEGY_PHASE_2.md)
 - [Bewusste Verhaltensunterschiede](docs/BEHAVIOR_DIFFERENCES.md)
 - [Mobile- und Performance-QA](docs/MOBILE_AND_PERFORMANCE_QA.md)
 - [Production-Art-Review](docs/PRODUCTION_ART_REVIEW.md)

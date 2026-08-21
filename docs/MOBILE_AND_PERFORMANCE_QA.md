@@ -44,12 +44,15 @@ Nach Lazy Loading, expliziter Vendor-Aufteilung und Blender-/KayKit-Integration
 | eigene 3D-Szene | ca. 59 KB | ca. 13 KB | mit 3D-Bühne |
 | CSS | ca. 22 KB | ca. 5,6 KB | initial |
 
-Der initiale JavaScript-Chunk bleibt dadurch bei ungefähr 242 KB. KayKit-Modelle
-werden zusammen mit der 3D-Bühne nachgeladen und verwenden einen gemeinsamen
-17-KB-Texturatlas. Die sieben originalen Hero-GLBs umfassen zusammen rund
-3,13 MB und erscheinen über sichtbare, weiterhin spielbare Suspense-Fallbacks,
-bis der Browser sie geladen und gecacht hat. Device Pixel Ratio ist auf 1,35
-begrenzt; Schatten verwenden PCF-Filtering und 1024er Shadowmaps.
+Der initiale JavaScript-Chunk bleibt dadurch bei ungefähr 242 KB. Der aktuelle
+3D-Szenen-Chunk liegt nach dem Phase-2-Art-Pass bei rund 70 KB beziehungsweise
+15 KB gzip. KayKit bleibt als A/B-Fallback mit gemeinsamem 17-KB-Atlas
+enthalten. Die Quaternius-Auswahl umfasst 22 Modelle und 23,65 MiB
+mobiloptimierte Runtime-Dateien über alle drei Pakete; pro Szene werden nur die
+referenzierten Modelle und gemeinsamen Texturen geladen. Zwei kleine originale
+Character-Kit-GLBs ergänzen den externen Donor, ohne dessen Texturen zu
+duplizieren. Device Pixel Ratio ist auf 1,35 begrenzt; Schatten verwenden
+PCF-Filtering und 1024er Shadowmaps.
 
 ## Verifikation
 
@@ -59,6 +62,9 @@ begrenzt; Schatten verwenden PCF-Filtering und 1024er Shadowmaps.
 - Third-Party-Lizenzbericht im Build: Pflicht
 - Browser-Smoke-Test Shop → Kauf → Arena → Ergebnis: bestanden
 - 1280×720 Desktop, 844×390 Landscape und 390×844 Portrait: bestanden
+- Phase-2-Browsermatrix mit `legacy`, `ecosystem` und `golden`: bestanden
+- Workshop mit drei belegten Slots, Moor-Martha sowie Fire-/Poison-VFX:
+  bestanden
 - Öffentlicher Pages-Smoke-Test mit Hero-GLB-Load, Kauf, Kampfstart und Pause:
   bestanden (`c19e502`)
 - Physischer Mobile-Smoketest nach Deployment: empfohlen, insbesondere für
