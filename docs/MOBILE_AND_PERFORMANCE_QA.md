@@ -47,7 +47,7 @@ Nach Lazy Loading, expliziter Vendor-Aufteilung und Blender-/KayKit-Integration
 Der initiale JavaScript-Chunk bleibt dadurch bei ungefähr 242 KB. Der aktuelle
 3D-Szenen-Chunk liegt nach dem Phase-2-Art-Pass bei rund 70 KB beziehungsweise
 15 KB gzip. KayKit bleibt als A/B-Fallback mit gemeinsamem 17-KB-Atlas
-enthalten. Die Quaternius-Auswahl umfasst 22 Modelle und 23,65 MiB
+enthalten. Die Quaternius-Auswahl umfasst 22 Modelle und 8,20 MiB
 mobiloptimierte Runtime-Dateien über alle drei Pakete; pro Szene werden nur die
 referenzierten Modelle und gemeinsamen Texturen geladen. Zwei kleine originale
 Character-Kit-GLBs ergänzen den externen Donor, ohne dessen Texturen zu

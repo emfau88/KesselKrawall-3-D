@@ -30,7 +30,7 @@ class Pack:
     license_path: PurePosixPath
     label: str
     models: tuple[str, ...]
-    texture_limit: int = 1024
+    texture_limit: int = 512
 
 
 PACKS = (

@@ -34,8 +34,8 @@ wirken.
 - 338 verfügbare Modelle visuell und technisch gesichtet;
 - nur 22 tatsächlich im Golden Slice benötigte Modelle ausgeliefert:
   13 Fantasy Props, 4 Village-Module und 5 Nature-Modelle;
-- Texturen reproduzierbar auf maximal 1024 px reduziert und PNG-optimiert;
-- Runtime-Payload aller Quaternius-Dateien: 23,65 MiB statt der drei
+- Texturen reproduzierbar auf maximal 512 px reduziert und PNG-optimiert;
+- Runtime-Payload aller Quaternius-Dateien: 8,20 MiB statt der drei
   vollständigen Archive mit zusammen rund 396 MiB;
 - Original-ZIPs per `.gitignore` ausgeschlossen; CC0-Lizenztexte und
   maschinenlesbares Manifest werden mit ausgeliefert.
@@ -150,7 +150,7 @@ Produktions-QA.
    früheren prozeduralen Stil als die neue Architektur.
 6. **Fantasy-UI/3D-Verzahnung:** Das HUD ist funktional und thematisch, wirkt
    jedoch noch stärker wie eine Schicht über dem Diorama als in den Mockups.
-7. **Texturkompression:** 1024-PNG ist Pages- und mobile-tauglich getestet;
+7. **Texturkompression:** 512-PNG ist Pages- und mobile-tauglich getestet;
    KTX2/BasisU wäre der nächste sinnvolle Speicher-/Transferpass vor größerem
    Contentausbau.
 
@@ -166,4 +166,3 @@ Produktions-QA.
 - Mobile Portrait 390×844: bestanden
 - Browserkonsole: keine Laufzeitfehler; nur bekannte Three.js-Clock-
   Deprecation-Warnung
-
