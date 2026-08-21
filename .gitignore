@@ -7,5 +7,7 @@ test-results/
 .DS_Store
 Thumbs.db
 *.local
+__pycache__/
 KayKit_*_FREE.zip
+*MegaKit[[]Standard[]].zip
 art/blender/previews/

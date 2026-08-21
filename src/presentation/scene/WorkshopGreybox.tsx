@@ -6,6 +6,7 @@ import { IngredientModel } from "./IngredientModel";
 import { IngredientSlotGreybox } from "./IngredientSlotGreybox";
 import { PurchaseAnimation } from "./PurchaseAnimation";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
+import { assetBakeoffMode } from "./assetBakeoff";
 import type { WorkshopSceneState } from "./sceneTypes";
 import { RESERVE_POSITION, SLOT_POSITIONS } from "./workshopLayout";
 
@@ -91,7 +92,7 @@ function WorkshopBackdrop() {
   );
 }
 
-function WorkshopProductionEnvironment() {
+function WorkshopKayKitEnvironment() {
   return (
     <group>
       <ProductionAssetBoundary fallback={<WorkshopBackdrop />}>
@@ -111,6 +112,34 @@ function WorkshopProductionEnvironment() {
         <circleGeometry args={[6.7, 40]} />
         <meshStandardMaterial color="#342a31" roughness={0.96} />
       </mesh>
+    </group>
+  );
+}
+
+function WorkshopQuaterniusEnvironment() {
+  return (
+    <group>
+      <ProductionAssetBoundary fallback={<WorkshopBackdrop />}>
+        <Suspense fallback={<WorkshopBackdrop />}>
+          {[-6.4, -3.2, 0, 3.2, 6.4].map((x) => (
+            <ProductionAsset
+              key={`quaternius-workshop-wall-${x}`}
+              asset="quaternius-wall-brick"
+              position={[x, -0.66, -4.25]}
+              scale={[1.64, 1.5, 1]}
+            />
+          ))}
+          <ProductionAsset asset="quaternius-banner" position={[0, 1.72, -4.02]} scale={1.12} tint="#9876aa" />
+          {[-6, -2, 2, 6].flatMap((x) => [-2.25, 1.75].map((z) => (
+            <ProductionAsset
+              key={`quaternius-workshop-floor-${x}-${z}`}
+              asset="quaternius-floor-brick"
+              position={[x, -0.65, z]}
+              scale={[2.04, 1, 2.04]}
+            />
+          )))}
+        </Suspense>
+      </ProductionAssetBoundary>
     </group>
   );
 }
@@ -153,7 +182,7 @@ function MortarAndPestle({ position }: { position: Vector3Tuple }) {
   );
 }
 
-function WorkshopProductionProps() {
+function WorkshopKayKitProps() {
   return (
     <ProductionAssetBoundary fallback={null}>
       <Suspense fallback={null}>
@@ -182,6 +211,30 @@ function WorkshopProductionProps() {
   );
 }
 
+function WorkshopQuaterniusProps() {
+  return (
+    <ProductionAssetBoundary fallback={null}>
+      <Suspense fallback={null}>
+        <ProductionAsset asset="quaternius-bookcase" position={[-4.78, -0.62, -3.74]} scale={1.18} />
+        <ProductionAsset asset="quaternius-bookcase" position={[4.78, -0.62, -3.74]} rotation={[0, Math.PI, 0]} scale={1.18} />
+        <ProductionAsset asset="quaternius-shelf-bottles" position={[-2.75, 1.72, -3.94]} scale={1.28} />
+        <ProductionAsset asset="quaternius-shelf-bottles" position={[2.75, 1.72, -3.94]} scale={1.28} />
+        <ProductionAsset asset="quaternius-lantern" position={[-1.68, 1.58, -3.84]} scale={0.88} />
+        <ProductionAsset asset="quaternius-lantern" position={[1.68, 1.58, -3.84]} rotation={[0, Math.PI, 0]} scale={0.88} />
+        <ProductionAsset asset="quaternius-book-stand" position={[-3.32, 0.52, -0.86]} rotation={[0, 0.32, 0]} scale={0.62} />
+        <ProductionAsset asset="quaternius-candles" position={[2.85, 0.53, -0.9]} scale={1.3} />
+        <ProductionAsset asset="quaternius-potion-round" position={[-2.4, 0.54, -1.16]} scale={3.1} />
+        <ProductionAsset asset="quaternius-potion-tall" position={[3.5, 0.54, -1.18]} scale={2.2} />
+        <ProductionAsset asset="quaternius-chest" position={[-5.05, -0.61, -1.35]} rotation={[0, 0.28, 0]} scale={0.48} />
+        <ProductionAsset asset="quaternius-barrel" position={[5.04, -0.61, -1.42]} rotation={[0, -0.18, 0]} scale={1.05} />
+        <ProductionAsset asset="quaternius-vine" position={[-5.65, 0.5, -3.82]} rotation={[0, Math.PI / 2, 0]} scale={0.58} />
+      </Suspense>
+      <pointLight color="#ffb15d" intensity={3.4} distance={5.2} position={[-1.68, 2.58, -3.44]} />
+      <pointLight color="#ffb15d" intensity={3.4} distance={5.2} position={[1.68, 2.58, -3.44]} />
+    </ProductionAssetBoundary>
+  );
+}
+
 function WorkbenchFallback() {
   return (
     <group>
@@ -200,13 +253,19 @@ function WorkbenchFallback() {
 }
 
 export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
+  const bakeoff = assetBakeoffMode();
+  const legacy = bakeoff === "legacy";
   return (
     <group>
-      <WorkshopProductionEnvironment />
-      <WorkshopProductionProps />
+      {legacy ? <WorkshopKayKitEnvironment /> : <WorkshopQuaterniusEnvironment />}
+      {legacy ? <WorkshopKayKitProps /> : <WorkshopQuaterniusProps />}
       <ProductionAssetBoundary fallback={<WorkbenchFallback />}>
         <Suspense fallback={<WorkbenchFallback />}>
-          <ProductionAsset asset="hero-workbench" position={[0, 0.28, 0.5]} />
+          {legacy ? (
+            <ProductionAsset asset="hero-workbench" position={[0, 0.28, 0.5]} />
+          ) : (
+            <ProductionAsset asset="quaternius-workbench" position={[0, -0.62, 0.55]} scale={[4.05, 1.3, 4.65]} />
+          )}
         </Suspense>
       </ProductionAssetBoundary>
       <CauldronActor accent="#d87442" position={[0, 1.45, -0.05]} scale={1.05} variant="player" />
@@ -253,17 +312,21 @@ export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
       {scene.purchase && (
         <PurchaseAnimation key={scene.purchase.id} purchase={scene.purchase} />
       )}
-      <ProductionAssetBoundary fallback={null}>
-        <Suspense fallback={null}>
-          <ProductionAsset asset="workshop-bottle-green" position={[-3.25, 0.67, -1.55]} scale={0.86} />
-          <ProductionAsset asset="workshop-candles" position={[3.1, 0.67, -1.72]} scale={0.78} />
-        </Suspense>
-      </ProductionAssetBoundary>
-      <pointLight color="#ffb15d" intensity={2.4} distance={4.4} position={[3.1, 1.36, -1.72]} />
-      <mesh castShadow position={[3.1, 1.03, -0.92]} rotation={[0.2, 0.35, 0.1]}>
-        <dodecahedronGeometry args={[0.48, 0]} />
-        <meshStandardMaterial color="#9a7044" roughness={0.8} />
-      </mesh>
+      {legacy && (
+        <>
+          <ProductionAssetBoundary fallback={null}>
+            <Suspense fallback={null}>
+              <ProductionAsset asset="workshop-bottle-green" position={[-3.25, 0.67, -1.55]} scale={0.86} />
+              <ProductionAsset asset="workshop-candles" position={[3.1, 0.67, -1.72]} scale={0.78} />
+            </Suspense>
+          </ProductionAssetBoundary>
+          <pointLight color="#ffb15d" intensity={2.4} distance={4.4} position={[3.1, 1.36, -1.72]} />
+          <mesh castShadow position={[3.1, 1.03, -0.92]} rotation={[0.2, 0.35, 0.1]}>
+            <dodecahedronGeometry args={[0.48, 0]} />
+            <meshStandardMaterial color="#9a7044" roughness={0.8} />
+          </mesh>
+        </>
+      )}
     </group>
   );
 }

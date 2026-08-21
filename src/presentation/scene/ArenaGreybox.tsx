@@ -7,6 +7,7 @@ import type { CauldronReaction } from "./CauldronActor";
 import { BattleVfx } from "./BattleVfx";
 import { IngredientModel } from "./IngredientModel";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
+import { assetBakeoffMode } from "./assetBakeoff";
 import type { ArenaSceneState } from "./sceneTypes";
 
 function reactionFor(
@@ -237,6 +238,7 @@ function ArenaAmbientLife({ moor }: { moor: boolean }) {
 
 export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
   const moor = scene.opponent.id === "moor-martha";
+  const legacy = assetBakeoffMode() === "legacy";
   const eventKey = scene.combat?.eventIndex ?? -1;
   const activeEvent = scene.combat?.event;
   const activeBoard = activeEvent?.actor === "enemy" ? scene.opponent.board : scene.board;
@@ -260,24 +262,62 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
       ))}
       <ProductionAssetBoundary fallback={null}>
         <Suspense fallback={null}>
-          <ProductionAsset asset="dungeon-wall-cracked" position={[-8, -0.38, -6.4]} />
-          <ProductionAsset asset="dungeon-wall" position={[-4, -0.38, -6.4]} />
-          <ProductionAsset asset="dungeon-wall-arched" position={[0, -0.38, -6.4]} />
-          <ProductionAsset asset="dungeon-wall" position={[4, -0.38, -6.4]} />
-          <ProductionAsset asset="dungeon-wall-cracked" position={[8, -0.38, -6.4]} />
-          <ProductionAsset asset="dungeon-wall" position={[-7.65, -0.38, -2.55]} rotation={[0, Math.PI / 2, 0]} />
-          <ProductionAsset asset="dungeon-wall" position={[7.65, -0.38, -2.55]} rotation={[0, -Math.PI / 2, 0]} />
-          {[-6, -2, 2, 6].map((x) => (
-            <ProductionAsset key={`rear-floor-${x}`} asset="dungeon-floor-tile" position={[x, -0.32, -4.1]} />
-          ))}
-          <ProductionAsset asset="dungeon-pillar" position={[-6.15, -0.38, -5.96]} scale={0.86} />
-          <ProductionAsset asset="dungeon-pillar" position={[6.15, -0.38, -5.96]} scale={0.86} />
-          <ProductionAsset asset={moor ? "arena-banner-blue" : "arena-banner-red"} position={[-3.55, 0.2, -5.82]} scale={0.92} />
-          <ProductionAsset asset="arena-banner-red" position={[3.55, 0.2, -5.82]} scale={0.92} />
-          <ProductionAsset asset="dungeon-torch-mounted" position={[-5.1, 2.45, -5.82]} scale={0.9} />
-          <ProductionAsset asset="dungeon-torch-mounted" position={[5.1, 2.45, -5.82]} scale={0.9} />
-          <ProductionAsset asset="dungeon-crates" position={[-6.2, -0.28, -2.7]} rotation={[0, 0.24, 0]} scale={0.58} />
-          <ProductionAsset asset="dungeon-barrels" position={[6.15, -0.28, -2.75]} rotation={[0, -0.2, 0]} scale={0.62} />
+          {legacy ? (
+            <>
+              <ProductionAsset asset="dungeon-wall-cracked" position={[-8, -0.38, -6.4]} />
+              <ProductionAsset asset="dungeon-wall" position={[-4, -0.38, -6.4]} />
+              <ProductionAsset asset="dungeon-wall-arched" position={[0, -0.38, -6.4]} />
+              <ProductionAsset asset="dungeon-wall" position={[4, -0.38, -6.4]} />
+              <ProductionAsset asset="dungeon-wall-cracked" position={[8, -0.38, -6.4]} />
+              <ProductionAsset asset="dungeon-wall" position={[-7.65, -0.38, -2.55]} rotation={[0, Math.PI / 2, 0]} />
+              <ProductionAsset asset="dungeon-wall" position={[7.65, -0.38, -2.55]} rotation={[0, -Math.PI / 2, 0]} />
+              {[-6, -2, 2, 6].map((x) => (
+                <ProductionAsset key={`rear-floor-${x}`} asset="dungeon-floor-tile" position={[x, -0.32, -4.1]} />
+              ))}
+              <ProductionAsset asset="dungeon-pillar" position={[-6.15, -0.38, -5.96]} scale={0.86} />
+              <ProductionAsset asset="dungeon-pillar" position={[6.15, -0.38, -5.96]} scale={0.86} />
+              <ProductionAsset asset={moor ? "arena-banner-blue" : "arena-banner-red"} position={[-3.55, 0.2, -5.82]} scale={0.92} />
+              <ProductionAsset asset="arena-banner-red" position={[3.55, 0.2, -5.82]} scale={0.92} />
+              <ProductionAsset asset="dungeon-torch-mounted" position={[-5.1, 2.45, -5.82]} scale={0.9} />
+              <ProductionAsset asset="dungeon-torch-mounted" position={[5.1, 2.45, -5.82]} scale={0.9} />
+              <ProductionAsset asset="dungeon-crates" position={[-6.2, -0.28, -2.7]} rotation={[0, 0.24, 0]} scale={0.58} />
+              <ProductionAsset asset="dungeon-barrels" position={[6.15, -0.28, -2.75]} rotation={[0, -0.2, 0]} scale={0.62} />
+            </>
+          ) : (
+            <>
+              {[-7.8, -5.2, -2.6, 0, 2.6, 5.2, 7.8].map((x) => (
+                <ProductionAsset
+                  key={`quaternius-arena-wall-${x}`}
+                  asset="quaternius-wall-brick"
+                  position={[x, -0.4, -6.38]}
+                  scale={[1.33, 1.58, 1]}
+                />
+              ))}
+              <ProductionAsset asset="quaternius-door-frame" position={[0, -0.38, -6.1]} scale={[1.28, 1.58, 1.2]} />
+              {[-6, -2, 2, 6].map((x) => (
+                <ProductionAsset key={`quaternius-arena-floor-${x}`} asset="quaternius-floor-brick" position={[x, -0.31, -4.1]} scale={[2.05, 1, 2.05]} />
+              ))}
+              <ProductionAsset asset="quaternius-banner" position={[-3.55, 0.42, -5.96]} scale={1.02} tint={moor ? "#718e68" : "#9a6570"} />
+              <ProductionAsset asset="quaternius-banner" position={[3.55, 0.42, -5.96]} scale={1.02} tint={moor ? "#7e657f" : "#846c9f"} />
+              <ProductionAsset asset="quaternius-torch" position={[-5.02, 1.85, -5.92]} scale={1.45} />
+              <ProductionAsset asset="quaternius-torch" position={[5.02, 1.85, -5.92]} scale={1.45} />
+              <ProductionAsset asset="quaternius-chest" position={[-6.3, -0.3, -2.76]} rotation={[0, 0.22, 0]} scale={0.42} />
+              <ProductionAsset asset="quaternius-barrel" position={[6.15, -0.29, -2.72]} rotation={[0, -0.2, 0]} scale={1.05} />
+              <ProductionAsset asset="quaternius-vine" position={[-6.55, 0.46, -6.02]} scale={0.58} />
+              <ProductionAsset asset="quaternius-vine" position={[6.35, 0.34, -6.02]} rotation={[0, Math.PI, 0]} scale={0.48} />
+              {moor && (
+                <>
+                  <ProductionAsset asset="quaternius-dead-tree" position={[-6.55, -0.32, -5.35]} scale={0.34} />
+                  <ProductionAsset asset="quaternius-dead-tree" position={[6.42, -0.32, -5.42]} rotation={[0, -0.35, 0]} scale={0.31} />
+                  <ProductionAsset asset="quaternius-mushroom-shelf" position={[-5.62, -0.2, -2.75]} rotation={[0, 0.36, 0]} scale={0.68} />
+                  <ProductionAsset asset="quaternius-mushroom" position={[5.32, -0.2, -2.55]} rotation={[0, -0.22, 0]} scale={1.05} />
+                  <ProductionAsset asset="quaternius-plant" position={[-4.65, -0.22, -4.92]} scale={1.28} />
+                  <ProductionAsset asset="quaternius-plant" position={[4.38, -0.22, -5.02]} rotation={[0, 0.72, 0]} scale={1.12} />
+                  <ProductionAsset asset="quaternius-rock" position={[5.9, -0.34, -4.35]} scale={0.42} />
+                </>
+              )}
+            </>
+          )}
         </Suspense>
         <pointLight color="#ffad5b" intensity={4.1} distance={6.5} position={[-5.1, 2.86, -5.34]} />
         <pointLight color="#ffad5b" intensity={4.1} distance={6.5} position={[5.1, 2.86, -5.34]} />

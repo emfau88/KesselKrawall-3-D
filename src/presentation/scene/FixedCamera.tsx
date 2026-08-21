@@ -20,7 +20,9 @@ export function FixedCamera({ mode }: { mode: GreyboxMode }) {
     if (camera instanceof OrthographicCamera) {
       const heightZoom = size.height / (mode === "workshop" ? 8.65 : 8.7);
       const widthZoom = size.width / (mode === "workshop" ? 11.8 : 12);
-      camera.zoom = Math.max(27, Math.min(mode === "workshop" ? 72 : 84, heightZoom, widthZoom));
+      camera.zoom = portrait
+        ? Math.max(44, Math.min(mode === "workshop" ? 54 : 58, heightZoom * 0.55))
+        : Math.max(27, Math.min(mode === "workshop" ? 72 : 84, heightZoom, widthZoom));
       camera.near = 0.1;
       camera.far = 80;
       camera.updateProjectionMatrix();

@@ -1,16 +1,18 @@
 import type { GreyboxMode } from "./GreyboxStage";
+import { assetBakeoffMode } from "./assetBakeoff";
 
 export function LightingRig({ mode, opponentId }: { mode: GreyboxMode; opponentId?: string }) {
   const workshop = mode === "workshop";
   const moor = !workshop && opponentId === "moor-martha";
+  const productionArt = assetBakeoffMode() !== "legacy";
   return (
     <>
-      <ambientLight color={workshop ? "#9f8297" : "#70698d"} intensity={workshop ? 0.48 : 0.42} />
-      <hemisphereLight args={[workshop ? "#ffd7a1" : "#b7afd8", "#1d1325", workshop ? 1.16 : 0.92]} />
+      <ambientLight color={workshop ? "#9f8297" : productionArt ? "#9a7f73" : "#70698d"} intensity={workshop ? 0.48 : productionArt ? 0.52 : 0.42} />
+      <hemisphereLight args={[workshop ? "#ffd7a1" : productionArt ? "#f3d3b1" : "#b7afd8", "#1d1325", workshop ? 1.16 : productionArt ? 1.08 : 0.92]} />
       <directionalLight
         castShadow
-        color={workshop ? "#ffd59a" : "#dad3ff"}
-        intensity={workshop ? 3.35 : 3.05}
+        color={workshop ? "#ffd59a" : productionArt ? "#ffd0a0" : "#dad3ff"}
+        intensity={workshop ? 3.35 : productionArt ? 3.48 : 3.05}
         position={workshop ? [4.5, 10, 7.5] : [5.5, 11, 4.5]}
         shadow-bias={-0.0004}
         shadow-camera-bottom={-7}

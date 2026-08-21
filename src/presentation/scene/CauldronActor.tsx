@@ -9,6 +9,7 @@ import {
 } from "three";
 
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
+import { assetBakeoffMode } from "./assetBakeoff";
 
 export type CauldronReaction =
   | "idle"
@@ -135,27 +136,16 @@ function PlayerRegalia({ metal }: { metal: string }) {
   );
 }
 
-function Mushroom({ position, scale = 1 }: { position: Vector3Tuple; scale?: number }) {
-  return (
-    <group position={position} scale={scale}>
-      <mesh castShadow position={[0, -0.08, 0]}>
-        <cylinderGeometry args={[0.055, 0.075, 0.3, 7]} />
-        <meshStandardMaterial color="#b9a77c" roughness={0.9} />
-      </mesh>
-      <mesh castShadow position={[0, 0.1, 0]} scale={[1, 0.45, 1]}>
-        <sphereGeometry args={[0.19, 9, 6]} />
-        <meshStandardMaterial color="#96734d" roughness={0.88} />
-      </mesh>
-    </group>
-  );
-}
-
 function MoorDetails() {
   return (
     <group>
-      <Mushroom position={[-0.92, 0.42, 0.2]} scale={1.15} />
-      <Mushroom position={[0.92, -0.2, 0.28]} scale={0.9} />
-      <Mushroom position={[-0.72, -0.62, 0.54]} scale={0.72} />
+      <ProductionAssetBoundary fallback={null}>
+        <Suspense fallback={null}>
+          <ProductionAsset asset="quaternius-mushroom-shelf" position={[-0.98, 0.16, 0.16]} rotation={[0.08, 0, 0.35]} scale={0.38} />
+          <ProductionAsset asset="quaternius-mushroom" position={[0.9, -0.3, 0.32]} rotation={[-0.12, 0, -0.38]} scale={0.62} />
+          <ProductionAsset asset="quaternius-mushroom" position={[-0.66, -0.66, 0.56]} rotation={[0.16, 0, 0.22]} scale={0.46} />
+        </Suspense>
+      </ProductionAssetBoundary>
       {([
         [-0.56, 0.52, 0.73, 0.18],
         [0.5, 0.42, 0.77, 0.15],
@@ -211,6 +201,9 @@ export function CauldronActor({
   const lastKey = useRef(reactionKey);
   const startedAt = useRef(0);
   const profile = profileFor(variant, accent);
+  const bakeoff = assetBakeoffMode();
+  const quaterniusBody = bakeoff !== "legacy";
+  const goldenCharacter = bakeoff === "golden";
   const moor = profile.personality === "moor";
   const hero = profile.personality === "hero";
   const bodyProfile = useMemo(
@@ -290,7 +283,66 @@ export function CauldronActor({
   return (
     <group position={position} scale={scale}>
       <group ref={animated}>
-        {hero || moor ? (
+        {quaterniusBody ? (
+          <>
+            <ProductionAssetBoundary fallback={<CauldronAssetFallback profile={profile} />}>
+              <Suspense fallback={<CauldronAssetFallback profile={profile} />}>
+                <ProductionAsset
+                  asset="quaternius-cauldron-base"
+                  position={[0, -1.1, 0]}
+                  scale={2.35}
+                  tint={moor ? "#a5b184" : hero ? "#b7a0a6" : "#a79bb7"}
+                />
+              </Suspense>
+            </ProductionAssetBoundary>
+            <mesh ref={liquid} position={[0, 0.79, 0]} receiveShadow>
+              <cylinderGeometry args={[0.73, 0.76, 0.075, 32]} />
+              <meshStandardMaterial color={profile.liquid} emissive={profile.liquid} emissiveIntensity={moor ? 0.46 : 0.58} metalness={0.04} roughness={0.2} />
+            </mesh>
+            <pointLight color={profile.liquid} intensity={moor ? 1.55 : 1.9} distance={3.8} position={[0, 1.18, 0]} />
+            {([[-0.32, 0.88, 0.14, 0.065], [0.18, 0.92, -0.18, 0.085], [0.4, 0.86, 0.12, 0.05]] as const)
+              .map(([x, y, z, radius], index) => (
+                <mesh key={index} position={[x, y, z]}>
+                  <sphereGeometry args={[radius, 8, 5]} />
+                  <meshStandardMaterial color={moor ? "#e1ef7c" : "#fff0bd"} emissive={profile.liquid} emissiveIntensity={0.95} roughness={0.22} />
+                </mesh>
+              ))}
+            <group ref={steam}>
+              {([[-0.32, 1.32, 0.04, 0.16], [0.18, 1.6, -0.05, 0.19], [0.42, 1.88, 0.02, 0.13]] as const)
+                .map(([x, y, z, radius], index) => (
+                  <mesh key={index} position={[x, y, z]} scale={[1, moor ? 1.75 : 1.45, 1]}>
+                    <sphereGeometry args={[radius, 9, 6]} />
+                    <meshStandardMaterial color={profile.steam} transparent opacity={moor ? 0.2 : 0.14} depthWrite={false} roughness={1} />
+                  </mesh>
+                ))}
+            </group>
+            {goldenCharacter && (
+              <>
+                {hero || moor ? (
+                  <ProductionAssetBoundary fallback={null}>
+                    <Suspense fallback={null}>
+                      <ProductionAsset
+                        asset={moor ? "hero-cauldron-moor-kit" : "hero-cauldron-player-kit"}
+                        position={[0, 0.24, 0]}
+                      />
+                    </Suspense>
+                  </ProductionAssetBoundary>
+                ) : (
+                  <group position={[0, 0, 0.48]}>
+                    <CharacterFace profile={profile} />
+                  </group>
+                )}
+                {moor && <MoorDetails />}
+              </>
+            )}
+            <group ref={aura} position={[0, -1.02, 0.08]} rotation={[Math.PI / 2, 0, 0]}>
+              <mesh>
+                <torusGeometry args={[moor ? 1.16 : 1.1, 0.032, 7, 42]} />
+                <meshStandardMaterial color={profile.liquid} emissive={profile.liquid} emissiveIntensity={0.9} transparent opacity={0.58} />
+              </mesh>
+            </group>
+          </>
+        ) : hero || moor ? (
           <>
             <ProductionAssetBoundary fallback={<CauldronAssetFallback profile={profile} />}>
               <Suspense fallback={<CauldronAssetFallback profile={profile} />}>

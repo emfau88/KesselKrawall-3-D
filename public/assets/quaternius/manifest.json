@@ -1,0 +1,424 @@
+{
+  "generatedBy": "scripts/prepare_quaternius_assets.py",
+  "purpose": "KesselKrawall 3D Phase-2 Golden Slice",
+  "packs": {
+    "fantasy": {
+      "label": "Quaternius Fantasy Props MegaKit Standard",
+      "sourceZip": "Fantasy Props MegaKit[Standard].zip",
+      "license": "CC0-1.0",
+      "models": [
+        "Banner_1",
+        "Barrel",
+        "Bookcase_2",
+        "BookStand",
+        "CandleStick_Triple",
+        "Cauldron",
+        "Chest_Wood",
+        "Lantern_Wall",
+        "Potion_1",
+        "Potion_2",
+        "Shelf_Small_Bottles",
+        "Torch_Metal",
+        "Workbench"
+      ],
+      "textureLimit": 1024,
+      "sourceBytesReferenced": 169543420,
+      "runtimeBytes": 9918873,
+      "textures": {
+        "T_Trim_Furniture_Normal.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 3485710,
+          "runtimeBytes": 844848
+        },
+        "T_Trim_Furniture_BaseColor.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 2232961,
+          "runtimeBytes": 728774
+        },
+        "T_Trim_Furniture_ORM.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 2064585,
+          "runtimeBytes": 570028
+        },
+        "T_Trim_Metal_Normal.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 3625541,
+          "runtimeBytes": 926303
+        },
+        "T_Trim_Metal_BaseColor.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 1361221,
+          "runtimeBytes": 520721
+        },
+        "T_Trim_Metal_ORM.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 1871475,
+          "runtimeBytes": 551295
+        },
+        "T_Trim_Cloth_Normal.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 3920858,
+          "runtimeBytes": 976026
+        },
+        "T_Trim_Cloth_BaseColor.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 1936754,
+          "runtimeBytes": 586618
+        },
+        "T_Trim_Cloth_ORM.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 623426,
+          "runtimeBytes": 173692
+        },
+        "T_Trim_Props_Normal.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 4441458,
+          "runtimeBytes": 1213589
+        },
+        "T_Trim_Props_BaseColor.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 2263132,
+          "runtimeBytes": 831210
+        },
+        "T_Trim_Props_ORM.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 3017151,
+          "runtimeBytes": 885513
+        }
+      }
+    },
+    "village": {
+      "label": "Quaternius Medieval Village MegaKit Standard",
+      "sourceZip": "Medieval Village MegaKit[Standard].zip",
+      "license": "CC0-1.0",
+      "models": [
+        "DoorFrame_Round_Brick",
+        "Floor_UnevenBrick",
+        "Prop_Vine5",
+        "Wall_UnevenBrick_Straight"
+      ],
+      "textureLimit": 1024,
+      "sourceBytesReferenced": 41507041,
+      "runtimeBytes": 8934700,
+      "textures": {
+        "T_RockTrim_Normal.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 3925938,
+          "runtimeBytes": 1029992
+        },
+        "T_RockTrim_BaseColor.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 1908835,
+          "runtimeBytes": 620809
+        },
+        "T_RockTrim_ORM.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 1625807,
+          "runtimeBytes": 369360
+        },
+        "T_UnevenBrick_Normal.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 3866626,
+          "runtimeBytes": 1021874
+        },
+        "T_UnevenBrick_BaseColor.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 2945342,
+          "runtimeBytes": 859827
+        },
+        "T_UnevenBrick_Roughness.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 1246162,
+          "runtimeBytes": 291077
+        },
+        "T_VineLeaf_png.png": {
+          "sourceDimensions": [
+            512,
+            512
+          ],
+          "runtimeDimensions": [
+            512,
+            512
+          ],
+          "sourceBytes": 162432,
+          "runtimeBytes": 98934
+        },
+        "T_WoodTrim_Normal.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 3596501,
+          "runtimeBytes": 919393
+        },
+        "T_WoodTrim_BaseColor.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 2082310,
+          "runtimeBytes": 691026
+        },
+        "T_WoodTrim_Roughness.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 1697111,
+          "runtimeBytes": 406848
+        },
+        "T_Plaster_Normal.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 4607606,
+          "runtimeBytes": 1082464
+        },
+        "T_Plaster_BaseColor.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 3316410,
+          "runtimeBytes": 874807
+        },
+        "T_Plaster_ORM.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 2381579,
+          "runtimeBytes": 582037
+        }
+      }
+    },
+    "nature": {
+      "label": "Quaternius Stylized Nature MegaKit Standard",
+      "sourceZip": "Stylized Nature MegaKit[Standard].zip",
+      "license": "CC0-1.0",
+      "models": [
+        "DeadTree_3",
+        "Mushroom_Common",
+        "Mushroom_Laetiporus",
+        "Plant_7_Big",
+        "Rock_Medium_2"
+      ],
+      "textureLimit": 1024,
+      "sourceBytesReferenced": 18018623,
+      "runtimeBytes": 5946227,
+      "textures": {
+        "Bark_DeadTree_Normal.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 5728199,
+          "runtimeBytes": 1448297
+        },
+        "Bark_DeadTree.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 4228870,
+          "runtimeBytes": 1105210
+        },
+        "Mushrooms.png": {
+          "sourceDimensions": [
+            1024,
+            1024
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 1208660,
+          "runtimeBytes": 1169703
+        },
+        "Leaves.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 2586432,
+          "runtimeBytes": 739343
+        },
+        "Rocks_Diffuse.png": {
+          "sourceDimensions": [
+            2048,
+            2048
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "sourceBytes": 2517398,
+          "runtimeBytes": 943270
+        }
+      }
+    }
+  }
+}

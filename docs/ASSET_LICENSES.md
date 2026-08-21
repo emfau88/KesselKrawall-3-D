@@ -4,13 +4,16 @@ Stand: 21. August 2026
 
 ## Shipping-Status
 
-Der Rebuild enthält eine kuratierte Auswahl modularer glTF-Modelle samt
-gemeinsamem Texturatlas aus dem offiziellen KayKit Dungeon Pack 1.1. Die beiden
-Hero-Kessel, drei Referenzzutaten, Werkbank und Arena-Dais sind originale,
-reproduzierbar mit Blender erzeugte Projektassets. Animationen, Ambient-Leben
-und Effekte entstehen weiterhin aus eigenem Three.js-/R3F-Code. UI-Sounds und
-Kessel-Ambience werden zur Laufzeit mit der Web Audio API synthetisiert; es
-wird keine Audiodatei ausgeliefert.
+Der Golden Slice verwendet eine kuratierte, mobil optimierte Auswahl aus drei
+offiziellen Quaternius-Standard-Paketen als gemeinsame visuelle Muttersprache.
+KayKit Dungeon Pack 1.1 bleibt ausschließlich als reproduzierbarer
+`?art=legacy`-Vergleich und technischer Fallback enthalten. Die beiden
+Hero-Kessel kombinieren den texturierten Quaternius-Kesselkörper mit originalen,
+reproduzierbar in Blender modularisierten Gesichts- und Charakterteilen. Drei
+Referenzzutaten und der Arena-Dais bleiben originale Projektassets.
+Animationen, Ambient-Leben und Effekte entstehen weiterhin aus eigenem
+Three.js-/R3F-Code. UI-Sounds und Kessel-Ambience werden zur Laufzeit mit der
+Web Audio API synthetisiert; es wird keine Audiodatei ausgeliefert.
 
 Das App-Symbol `public/kessel-mark.svg` ist eine für dieses Repository neu
 erstellte Eigenleistung. Vite erzeugt beim Produktionsbuild zusätzlich
@@ -67,6 +70,9 @@ dokumentiert ist.
 
 | Datei | Urheber | Quelle/Version | Lizenz | Kommerziell/Bearbeitung geprüft | Attribution | Änderungen | Zielpfad |
 |---|---|---|---|---|---|---|---|
+| 13 Modelle: `Banner_1`, `Barrel`, `Bookcase_2`, `BookStand`, `CandleStick_Triple`, `Cauldron`, `Chest_Wood`, `Lantern_Wall`, `Potion_1`, `Potion_2`, `Shelf_Small_Bottles`, `Torch_Metal`, `Workbench` | Quaternius | [Fantasy Props MegaKit, Standard](https://quaternius.itch.io/fantasy-props-megakit), lokal bereitgestellt 21.08.2026 | CC0 1.0; enthaltene `License_Standard.txt` | ja | nicht erforderlich | kuratierte glTF-Auswahl; referenzierte Texturen auf maximal 1024 px verkleinert und PNG-optimiert | `public/assets/quaternius/fantasy/` |
+| 4 Modelle: `DoorFrame_Round_Brick`, `Floor_UnevenBrick`, `Prop_Vine5`, `Wall_UnevenBrick_Straight` | Quaternius | [Medieval Village MegaKit, Standard](https://quaternius.itch.io/medieval-village-megakit), lokal bereitgestellt 21.08.2026 | CC0 1.0; enthaltene `License_Standard.txt` | ja | nicht erforderlich | kuratierte glTF-Auswahl; referenzierte Texturen auf maximal 1024 px verkleinert und PNG-optimiert | `public/assets/quaternius/village/` |
+| 5 Modelle: `DeadTree_3`, `Mushroom_Common`, `Mushroom_Laetiporus`, `Plant_7_Big`, `Rock_Medium_2` | Quaternius | [Stylized Nature MegaKit, Standard](https://quaternius.itch.io/stylized-nature-megakit), lokal bereitgestellt 21.08.2026 | CC0 1.0; enthaltene `License_Standard.txt` | ja | nicht erforderlich | kuratierte glTF-Auswahl; referenzierte Texturen auf maximal 1024 px verkleinert und PNG-optimiert | `public/assets/quaternius/nature/` |
 | `wall`, `wall_arched`, `wall_shelves`, `wall_cracked` (`.gltf` + `.bin`) | Kay Lousberg | [KayKit Dungeon Pack 1.1](https://kaylousberg.itch.io/kaykit-dungeon-pack), 16.07.2026 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | ja | nicht erforderlich | kuratierte Auswahl; Runtime-Materialnormalisierung und Schatten | `public/assets/kaykit-dungeon/` |
 | `floor_tile_large`, `floor_wood_large`, `pillar_decorated` (`.gltf` + `.bin`) | Kay Lousberg | KayKit Dungeon Pack 1.1 | CC0 1.0 | ja | nicht erforderlich | kuratierte Architekturbauteile | `public/assets/kaykit-dungeon/` |
 | `shelves`, `candle_triple`, `bottle_A_green`, `bottle_A_brown` (`.gltf` + `.bin`) | Kay Lousberg | KayKit Dungeon Pack 1.1 | CC0 1.0 | ja | nicht erforderlich | kuratierte Werkstatt-Props | `public/assets/kaykit-dungeon/` |
@@ -74,22 +80,28 @@ dokumentiert ist.
 | `crates_stacked`, `barrel_small_stack` (`.gltf` + `.bin`) | Kay Lousberg | KayKit Dungeon Pack 1.1 | CC0 1.0 | ja | nicht erforderlich | kuratierte Szenen-Props | `public/assets/kaykit-dungeon/` |
 | `dungeon_texture.png` | Kay Lousberg | KayKit Dungeon Pack 1.1 | CC0 1.0 | ja | nicht erforderlich | unveränderter gemeinsamer Texturatlas | `public/assets/kaykit-dungeon/dungeon_texture.png` |
 
-Die originale Lizenzdatei wird als
-`public/assets/kaykit-dungeon/License.txt` mit ausgeliefert. Nicht verwendete
-Modelle und das Downloadarchiv werden nicht in das Repository aufgenommen.
+Die originalen Lizenzdateien werden in jedem Quaternius-Unterordner als
+`LICENSE.txt` sowie als `public/assets/kaykit-dungeon/License.txt` mit
+ausgeliefert. `public/assets/quaternius/manifest.json` dokumentiert Modelle,
+Texturauflösungen und Größen der reproduzierbaren Aufbereitung. Nicht
+verwendete Modelle und alle Downloadarchive werden nicht in das Repository
+aufgenommen. Die Erzeugung erfolgt über
+`scripts/prepare_quaternius_assets.py` aus den lokal bereitgestellten ZIPs.
 
 ## Originale Blender-Runtime-Assets
 
 | Dateien | Urheber | Quelle | Lizenzstatus | Erzeugung/Bearbeitung | Zielpfad |
 |---|---|---|---|---|---|
 | `hero-cauldron-player.glb`, `hero-cauldron-moor.glb` | KesselKrawall-3-D Projekt | originale Geometrie und Materialien dieses Repositories | Project original | reproduzierbarer Blender-5.2-Export; Silhouette, Gesicht, Regalia, Moor-Bewuchs und Flüssigkeit projektspezifisch | `public/assets/hero/` |
+| `hero-cauldron-player-kit.glb`, `hero-cauldron-moor-kit.glb` | KesselKrawall-3-D Projekt | modularisierte Charakterteile der beiden originalen Hero-GLBs | Project original; Laufzeit-Kitbash mit CC0-Donor | reproduzierbarer Blender-5.2-Export; alte prozedurale Kesselkörper/Ränder entfernt, Gesichter, Schuhe, Runen, Wurzeln und Moos als austauschbare Module erhalten | `public/assets/hero/` |
 | `ingredient-chili.glb`, `ingredient-slime-shroom.glb`, `ingredient-rune-shell.glb` | KesselKrawall-3-D Projekt | originale Geometrie und Materialien dieses Repositories | Project original | reproduzierbarer Blender-5.2-Export; drei Familienreferenzen Fire, Poison und Guard | `public/assets/hero/` |
 | `hero-workbench.glb`, `hero-arena-dais.glb` | KesselKrawall-3-D Projekt | originale Geometrie und Materialien dieses Repositories | Project original | reproduzierbarer Blender-5.2-Export; dunkles Holz, Messing, Ritualringe und Runen | `public/assets/hero/` |
 
-Die vollständige Erzeugung ist in `art/blender/build_hero_assets.py`
-dokumentiert. Die drei alten 2D-Mockup-/Legacy-Bilder dienen ausschließlich als
-Art-Direction-Referenz; ihre Pixel oder Texturen wurden nicht in die GLBs
-übernommen.
+Die vollständige Erzeugung ist in `art/blender/build_hero_assets.py` und die
+darauf aufbauende Modularisierung in
+`art/blender/build_cauldron_kits.py` dokumentiert. Die drei alten
+2D-Mockup-/Legacy-Bilder dienen ausschließlich als Art-Direction-Referenz;
+ihre Pixel oder Texturen wurden nicht in die GLBs übernommen.
 
 ## Eigenassets im aktuellen Build
 
