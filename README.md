@@ -53,6 +53,7 @@ und die 2D-Sprite-Komposition nicht portiert.
 - [Zielarchitektur](docs/ARCHITECTURE.md)
 - [Art Direction](docs/ART_DIRECTION.md)
 - [Asset- und Lizenzregister](docs/ASSET_LICENSES.md)
+- [Asset-Strategie: Phase-1-Audit und Beschaffungsentscheidung](docs/ASSET_STRATEGY_PHASE_1.md)
 - [Bewusste Verhaltensunterschiede](docs/BEHAVIOR_DIFFERENCES.md)
 - [Mobile- und Performance-QA](docs/MOBILE_AND_PERFORMANCE_QA.md)
 - [Production-Art-Review](docs/PRODUCTION_ART_REVIEW.md)
