@@ -24,8 +24,9 @@ Legacy-Audit, renderer-neutraler Core, spielbarer 3D-Vertical-Slice und der
 Blender-/North-Star-Art-Pass sowie Mobile-/UX-Polish sind umgesetzt. Der Lauf
 führt vom Drei-Angebote-Shop über Kauf, sichtbaren Merge, Synergieanzeige und
 Slot-Tausch in einen deterministisch simulierten 3D-Kampf mit HP, VFX, Ergebnis
-und Rückkehr zur Werkbank. Kein Legacy-Presentation-Code und kein
-Legacy-Runtime-Asset wurde übernommen.
+und Rückkehr zur Werkbank. Legacy-Presentation-Code und Legacy-Grafikassets
+bleiben ausgeschlossen; ausschließlich das separat lizenzierte und vollständig
+attribuierte Audiopaket wurde als kuratierter Runtime-Baustein übernommen.
 
 Der aktuelle Golden Slice verwendet eine kuratierte, mobile-optimierte Auswahl
 aus Quaternius Fantasy Props, Medieval Village und Stylized Nature als
@@ -46,9 +47,12 @@ Schild- und Statuseinblendungen am betroffenen Kessel sowie kompakte
 Buff-/Debuff-Badges in den Lebensleisten.
 
 Zusätzlich enthalten sind Kampagnenwahl, Reservebedienung, gespeicherter
-Shop-Run und Kampagnenfortschritt, Kurzeinführung, synthetisierte Web-Audio-SFX,
-Portrait-/Landscape-Layouts, Touchsteuerung und ein installierbares Web-App-
-Manifest.
+Shop-Run und Kampagnenfortschritt, Kurzeinführung, lizenzierte Musik,
+Kessel-Ambience sowie räumlich gemischte UI-/Kampfsounds, Portrait-/Landscape-
+Layouts, Touchsteuerung und ein installierbares Web-App-Manifest. Vor jedem
+Kampf lädt ein sichtbares Preparation-Gate die kritischen Modelle und Texturen,
+wartet auf den ersten vollständigen Arenaframe und startet erst dann die
+deterministische Kampftimeline.
 
 - Neues Arbeitsrepository: dieses Repository
 - Nur lesbare Referenz während der Migration: separates lokales
@@ -99,7 +103,7 @@ GitHub Pages veröffentlicht.
 3. 3D-Greybox für Kamera, Licht, Werkbank und Arena *(umgesetzt)*
 4. Shop, Merge, Synergie und deterministischen Kampf anbinden *(umgesetzt)*
 5. Visuellen Vertical Slice mit Production-Art und Kampf-VFX ausarbeiten *(umgesetzt)*
-6. Audio, Onboarding und Reaktionsqualität *(umgesetzt)*
-7. Responsive- und Performance-QA *(umgesetzt; physischer Gerätesmoketest empfohlen)*
+6. Audio, Onboarding und Reaktionsqualität *(umgesetzt; echter Musik-/SFX-Mix)*
+7. Responsive- und Performance-QA *(umgesetzt; Battle-Readiness-Gate und mobile Qualitätsstufe, physischer Gerätesmoketest empfohlen)*
 
 Jede Phase muss ihren eigenen Quality Gate bestehen, bevor die nächste beginnt.

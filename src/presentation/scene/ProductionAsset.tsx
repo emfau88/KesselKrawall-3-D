@@ -355,6 +355,10 @@ function polishMaterial(
   authored = false,
   opacity = 1,
 ): Material {
+  if (!tint && opacity === 1) {
+    const cached = polishedMaterialCache.get(material);
+    if (cached) return cached;
+  }
   const clone = material.clone();
   if (clone instanceof MeshStandardMaterial) {
     if (tint) clone.color.multiply(new Color(tint));
@@ -371,15 +375,18 @@ function polishMaterial(
       clone.depthWrite = false;
     }
   }
+  if (!tint && opacity === 1) polishedMaterialCache.set(material, clone);
   return clone;
 }
+
+const polishedMaterialCache = new WeakMap<Material, Material>();
 
 export function ProductionAsset({
   asset,
   position,
   rotation,
   scale = 1,
-  castShadow = true,
+  castShadow,
   receiveShadow = true,
   tint,
   opacity = 1,
@@ -397,11 +404,16 @@ export function ProductionAsset({
   const authoredMaterial = "materialPolicy" in definition && definition.materialPolicy === "authored";
   const gltf = useLoader(GLTFLoader, productionAssetUrl(asset));
   const model = useMemo(() => gltf.scene.clone(true), [gltf.scene]);
+  const resolvedCastShadow = castShadow ?? (
+    asset.startsWith("hero-") ||
+    asset.startsWith("ingredient-") ||
+    asset === "quaternius-cauldron-base"
+  );
 
   useLayoutEffect(() => {
     model.traverse((node) => {
       if (!(node instanceof Mesh)) return;
-      node.castShadow = castShadow;
+      node.castShadow = resolvedCastShadow;
       node.receiveShadow = receiveShadow;
       const originalMaterial = node.userData.productionSourceMaterial as Material | Material[] | undefined;
       const sourceMaterial = originalMaterial ?? node.material;
@@ -410,7 +422,7 @@ export function ProductionAsset({
         ? sourceMaterial.map((material) => polishMaterial(material, tint, authoredMaterial, opacity))
         : polishMaterial(sourceMaterial, tint, authoredMaterial, opacity);
     });
-  }, [authoredMaterial, castShadow, model, opacity, receiveShadow, tint]);
+  }, [authoredMaterial, model, opacity, receiveShadow, resolvedCastShadow, tint]);
 
   return (
     <group position={position} rotation={rotation} scale={scale}>

@@ -40,7 +40,13 @@ import type {
   LegacyFamily,
   PlayerProgress,
 } from "./core/types";
-import { audioDirector, type SoundCue } from "./presentation/audio/audioDirector";
+import {
+  audioDirector,
+  DEFAULT_AUDIO_SETTINGS,
+  normalizeAudioSettings,
+  type AudioSettings,
+  type SoundCue,
+} from "./presentation/audio/audioDirector";
 import {
   createEmptyCombatStatuses,
   createCombatTimeline,
@@ -65,13 +71,19 @@ import {
   opponentName,
 } from "./presentation/content/gameText";
 import type { GreyboxMode } from "./presentation/scene/GreyboxStage";
+import {
+  getBattleCriticalAssetIds,
+  preloadBattleAssets,
+  type AssetLoadProgress,
+} from "./presentation/scene/assetReadiness";
+import type { ProductionAssetId } from "./presentation/scene/ProductionAsset";
 import type { CombatFrame, PurchaseVisual } from "./presentation/scene/sceneTypes";
 import { Onboarding, ONBOARDING_STEP_COUNT } from "./presentation/ui/Onboarding";
 import { SceneErrorBoundary } from "./presentation/ui/SceneErrorBoundary";
 import { CampaignPicker } from "./presentation/ui/CampaignPicker";
 
 const ONBOARDING_STORAGE_KEY = "kessel-krawall-3d-onboarding-v1";
-const AUDIO_STORAGE_KEY = "kessel-krawall-3d-audio-v1";
+const AUDIO_STORAGE_KEY = "kessel-krawall-3d-audio-v2";
 const ROMAN_LEVEL = { 1: "I", 2: "II", 3: "III" } as const;
 
 const GreyboxStage = lazy(() => import("./presentation/scene/GreyboxStage"));
@@ -83,6 +95,18 @@ interface Playback {
   readonly offsetMs: number;
   readonly speed: BattlePlaybackSpeed;
   readonly paused: boolean;
+}
+
+interface BattlePreparation {
+  readonly id: number;
+  readonly stage: "loading" | "decoding" | "error";
+  readonly progress: AssetLoadProgress;
+  readonly state: GameState;
+  readonly result: CombatResult;
+  readonly timeline: CombatTimeline;
+  readonly opponent: ReturnType<typeof getCurrentOpponent>;
+  readonly criticalAssets: readonly ProductionAssetId[];
+  readonly errorMessage?: string;
 }
 
 function initialGame(): GameState {
@@ -130,11 +154,14 @@ function initialOnboardingStep(): number | null {
   }
 }
 
-function initialAudioEnabled(): boolean {
+function initialAudioSettings(): AudioSettings {
   try {
-    return window.localStorage.getItem(AUDIO_STORAGE_KEY) !== "muted";
+    const stored = window.localStorage.getItem(AUDIO_STORAGE_KEY);
+    if (stored) return normalizeAudioSettings(JSON.parse(stored) as Partial<AudioSettings>);
+    const legacy = window.localStorage.getItem("kessel-krawall-3d-audio-v1");
+    return { ...DEFAULT_AUDIO_SETTINGS, enabled: legacy !== "muted" };
   } catch {
-    return true;
+    return DEFAULT_AUDIO_SETTINGS;
   }
 }
 
@@ -224,12 +251,15 @@ export function App() {
   const [combat, setCombat] = useState<CombatFrame | null>(null);
   const [floatingNumbers, setFloatingNumbers] = useState<FloatingCombatNumber[]>([]);
   const [lastResult, setLastResult] = useState<CombatResult | null>(null);
-  const [audioEnabled, setAudioEnabled] = useState(initialAudioEnabled);
+  const [audioSettings, setAudioSettings] = useState<AudioSettings>(initialAudioSettings);
+  const [audioPanelOpen, setAudioPanelOpen] = useState(false);
+  const [battlePreparation, setBattlePreparation] = useState<BattlePreparation | null>(null);
   const [onboardingStep, setOnboardingStep] = useState<number | null>(initialOnboardingStep);
   const [progress, setProgress] = useState<PlayerProgress>(initialProgress);
   const [campaignPickerOpen, setCampaignPickerOpen] = useState(false);
   const [reserveSelected, setReserveSelected] = useState(false);
   const animationId = useRef(1);
+  const preparationId = useRef(1);
   const lastAudioEvent = useRef(-1);
   const lastFeedbackBeat = useRef<string | null>(null);
   const soundedResult = useRef<CombatResult | null>(null);
@@ -242,19 +272,47 @@ export function App() {
   const presentedBoard = presentedInventory.board;
   const presentedReserve = presentedInventory.reserve;
   const opponent = useMemo(() => getCurrentOpponent(game), [game]);
+  const stagedOpponent = battlePreparation?.opponent ?? opponent;
   const familyWeights = useMemo(() => getFamilyWeights(presentedBoard), [presentedBoard]);
   const power = useMemo(() => getPowerBreakdown(presentedBoard), [presentedBoard]);
-  const mode: GreyboxMode =
+  const mode: GreyboxMode = battlePreparation ? "arena" :
     game.phase === "battle" || game.phase === "result" ||
     game.phase === "victory" || game.phase === "gameover"
       ? "arena"
       : "workshop";
 
   useEffect(() => {
-    if (!audioEnabled) audioDirector.setEnabled(false);
-    // The initial preference is applied once; later changes use the explicit toggle.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    audioDirector.setSettings(audioSettings);
+    audioDirector.warm();
+  }, [audioSettings]);
+
+  useEffect(() => {
+    const scene = game.phase === "battle"
+      ? opponent.rank === "boss" ? "boss" : "battle"
+      : game.phase === "result" || game.phase === "victory" || game.phase === "gameover"
+        ? "result"
+        : "shop";
+    audioDirector.setScene(scene);
+  }, [game.phase, opponent.rank]);
+
+  useEffect(() => {
+    if (game.phase !== "shop" || battlePreparation) return;
+    void preloadBattleAssets(game.board, opponent.board, opponent.id).catch(() => undefined);
+  }, [battlePreparation, game.board, game.phase, opponent.board, opponent.id]);
+
+  useEffect(() => {
+    if (battlePreparation?.stage !== "loading" && battlePreparation?.stage !== "decoding") return;
+    const timer = window.setTimeout(() => {
+      setBattlePreparation((current) => current && current.id === battlePreparation.id
+        ? {
+            ...current,
+            stage: "error",
+            errorMessage: "Die Arena lädt ungewöhnlich lange. Du kannst sicher mit reduzierter Grafik fortfahren.",
+          }
+        : current);
+    }, 12_000);
+    return () => window.clearTimeout(timer);
+  }, [battlePreparation?.id, battlePreparation?.stage]);
 
   useEffect(() => {
     try {
@@ -334,8 +392,11 @@ export function App() {
     const event = combat?.event;
     if (!event || combat.eventIndex === lastAudioEvent.current) return;
     lastAudioEvent.current = combat.eventIndex;
-    audioDirector.play(combatSound(event));
-  }, [combat?.event, combat?.eventIndex]);
+    audioDirector.play(combatSound(event), {
+      emphasis: combat.emphasis === "boss" ? "hero" : combat.emphasis ?? "standard",
+      pan: event.actor === "player" ? -0.22 : 0.22,
+    });
+  }, [combat?.emphasis, combat?.event, combat?.eventIndex]);
 
   useEffect(() => {
     if (!combat?.beatId || combat.beatId === lastFeedbackBeat.current) return;
@@ -374,14 +435,14 @@ export function App() {
         if (current.phase === "flight") return { ...current, phase: "landing" };
         if (current.phase === "landing") {
           if (current.merges.length > 0) {
-            audioDirector.play("merge");
+            audioDirector.play(current.merges[0]?.toLevel === 3 ? "merge3" : "merge2");
             return { ...current, phase: "merge", mergeStepIndex: 0 };
           }
           return { ...current, phase: "reveal" };
         }
         if (current.phase === "merge") {
           if (current.mergeStepIndex + 1 < current.merges.length) {
-            audioDirector.play("merge");
+            audioDirector.play(current.merges[current.mergeStepIndex + 1]?.toLevel === 3 ? "merge3" : "merge2");
             return { ...current, mergeStepIndex: current.mergeStepIndex + 1 };
           }
           return { ...current, phase: "reveal" };
@@ -416,11 +477,22 @@ export function App() {
   }
 
   function handleAudioToggle() {
-    const enabled = !audioEnabled;
-    setAudioEnabled(enabled);
-    audioDirector.setEnabled(enabled);
+    const next = { ...audioSettings, enabled: !audioSettings.enabled };
+    setAudioSettings(next);
+    audioDirector.setSettings(next);
     try {
-      window.localStorage.setItem(AUDIO_STORAGE_KEY, enabled ? "enabled" : "muted");
+      window.localStorage.setItem(AUDIO_STORAGE_KEY, JSON.stringify(next));
+    } catch {
+      // Storage is optional; the in-memory setting still applies.
+    }
+  }
+
+  function handleAudioLevel(setting: "master" | "music" | "sfx" | "combat", value: number) {
+    const next = normalizeAudioSettings({ ...audioSettings, [setting]: value });
+    setAudioSettings(next);
+    audioDirector.setSettings(next);
+    try {
+      window.localStorage.setItem(AUDIO_STORAGE_KEY, JSON.stringify(next));
     } catch {
       // Storage is optional; the in-memory setting still applies.
     }
@@ -528,7 +600,7 @@ export function App() {
     setGame(result.state);
     setReserveSelected(false);
     setNotice("Reservezutat verkauft.");
-    audioDirector.play("purchase");
+    audioDirector.play("sell");
   }
 
   function handleSellSelected() {
@@ -542,11 +614,11 @@ export function App() {
     }
     setGame(result.state);
     setNotice(`${item ? itemCopy(item.itemId).name : "Zutat"} für ${item ? getSellValue(item) : 0} Gold verkauft.`);
-    audioDirector.play("purchase");
+    audioDirector.play("sell");
   }
 
   function handleStartBattle() {
-    if (purchase) return;
+    if (purchase || battlePreparation) return;
     if (resultRevealTimer.current !== null) {
       window.clearTimeout(resultRevealTimer.current);
       resultRevealTimer.current = null;
@@ -559,6 +631,9 @@ export function App() {
     const nextOpponent = getCurrentOpponent(started.state);
     const result = simulateBattle(started.state.board, nextOpponent);
     const withResult = recordBattleResult(started.state, result);
+    const timeline = createCombatTimeline(result.events);
+    const id = preparationId.current++;
+    const criticalAssets = getBattleCriticalAssetIds(started.state.board, nextOpponent.board, nextOpponent.id);
     setPurchase(null);
     setReserveSelected(false);
     setFloatingNumbers([]);
@@ -577,21 +652,71 @@ export function App() {
       enemyHp: result.enemyMaxHp,
       enemyShield: 0,
     });
-    setGame(withResult);
-    setLastResult(result);
+    setBattlePreparation({
+      id,
+      stage: "loading",
+      progress: { completed: 0, total: criticalAssets.length, percent: 0, currentAsset: null },
+      state: withResult,
+      result,
+      timeline,
+      opponent: nextOpponent,
+      criticalAssets,
+    });
+    setNotice(`Arena für ${opponentName(nextOpponent.id)} wird vorbereitet …`);
+    void preloadBattleAssets(
+      started.state.board,
+      nextOpponent.board,
+      nextOpponent.id,
+      (progress) => setBattlePreparation((current) => current?.id === id ? { ...current, progress } : current),
+    ).then((assets) => {
+      setBattlePreparation((current) => current?.id === id && current.stage === "loading"
+        ? { ...current, stage: "decoding", criticalAssets: assets }
+        : current);
+    }).catch((error: unknown) => {
+      setBattlePreparation((current) => current?.id === id
+        ? {
+            ...current,
+            stage: "error",
+            errorMessage: error instanceof Error ? error.message : "Die Arena konnte nicht vollständig geladen werden.",
+          }
+        : current);
+    });
+  }
+
+  function commitPreparedBattle(preparation: BattlePreparation) {
     const speed: BattlePlaybackSpeed = game.round === 1 ? 1 : 2;
+    setGame(preparation.state);
+    setLastResult(preparation.result);
     setBattleSpeed(speed);
     setPlayback({
-      result,
-      timeline: createCombatTimeline(result.events),
+      result: preparation.result,
+      timeline: preparation.timeline,
       startedAt: performance.now(),
       offsetMs: 0,
       speed,
       paused: false,
     });
-    setNotice(`Kessel an! ${opponentName(nextOpponent.id)} ist bereit.`);
+    setBattlePreparation(null);
+    setNotice(`Kessel an! ${opponentName(preparation.opponent.id)} ist bereit.`);
     lastAudioEvent.current = -1;
     audioDirector.play("battleStart");
+  }
+
+  function handleSceneReady(readinessKey: string) {
+    if (!battlePreparation || battlePreparation.stage !== "decoding") return;
+    if (readinessKey !== `${battlePreparation.id}:decoded`) return;
+    commitPreparedBattle(battlePreparation);
+  }
+
+  function handleReducedGraphicsStart() {
+    if (!battlePreparation) return;
+    commitPreparedBattle(battlePreparation);
+  }
+
+  function handlePreparationCancel() {
+    setBattlePreparation(null);
+    setCombat(null);
+    setNotice("Kampfvorbereitung abgebrochen. Deine Werkbank bleibt unverändert.");
   }
 
   function handleBattleSpeed(speed: BattlePlaybackSpeed) {
@@ -643,6 +768,7 @@ export function App() {
     setGame(advanced.state);
     setCombat(null);
     setPurchase(null);
+    setBattlePreparation(null);
     if (advanced.state.phase === "shop") setLastResult(null);
     if (advanced.state.phase === "victory") {
       setProgress((current) =>
@@ -668,6 +794,7 @@ export function App() {
     setPlayback(null);
     setCombat(null);
     setLastResult(null);
+    setBattlePreparation(null);
     setReserveSelected(false);
     setCampaignPickerOpen(false);
     setNotice("Neuer Lauf, neue Mischung. Wähle deine erste Zutat.");
@@ -678,17 +805,20 @@ export function App() {
   const selectedInsights = game.selectedSlot === null || !selectedItem
     ? null
     : getItemPlacementInsights(presentedBoard, game.selectedSlot);
-  const battleResult = game.pendingBattle ?? lastResult;
+  const battleResult = battlePreparation?.result ?? game.pendingBattle ?? lastResult;
   const playerHp = combat?.playerHp ?? battleResult?.finalPlayerHp ?? 100;
-  const enemyHp = combat?.enemyHp ?? battleResult?.finalEnemyHp ?? opponent.baseHp;
+  const enemyHp = combat?.enemyHp ?? battleResult?.finalEnemyHp ?? stagedOpponent.baseHp;
   const battleProgress = (combat?.playbackProgress ?? 0) * 100;
 
   return (
-    <main className={`game-shell phase-${game.phase}`}>
+    <main className={`game-shell phase-${game.phase}${battlePreparation ? " is-preparing-battle" : ""}`}>
       <SceneErrorBoundary>
         <Suspense fallback={<div className="scene-loading"><i /><span>Werkstatt wird angeheizt …</span></div>}>
           <GreyboxStage
             mode={mode}
+            criticalAssets={battlePreparation?.stage === "decoding" ? battlePreparation.criticalAssets : []}
+            onSceneReady={handleSceneReady}
+            readinessKey={battlePreparation?.stage === "decoding" ? `${battlePreparation.id}:decoded` : undefined}
             workshop={{
               board: presentedBoard,
               offers: game.offers,
@@ -701,10 +831,10 @@ export function App() {
               onSelectReserve: handleSelectReserve,
             }}
             arena={{
-              board: game.board,
-              opponent,
+              board: battlePreparation?.state.board ?? game.board,
+              opponent: stagedOpponent,
               combat,
-              outcome: game.phase === "battle" && playback ? null : battleResult?.winner ?? null,
+              outcome: battlePreparation || (game.phase === "battle" && playback) ? null : battleResult?.winner ?? null,
             }}
           />
         </Suspense>
@@ -712,7 +842,7 @@ export function App() {
 
       <header className="game-title" aria-live="polite">
         <p>KESSELKRAWALL 3D · RUNDE {game.round}</p>
-        <h1>{mode === "workshop" ? "Hexenwerkbank" : opponentName(opponent.id)}</h1>
+        <h1>{mode === "workshop" ? "Hexenwerkbank" : opponentName(stagedOpponent.id)}</h1>
         <span>{mode === "workshop" ? notice : eventText(combat?.event ?? null)}</span>
       </header>
 
@@ -724,13 +854,21 @@ export function App() {
 
       <nav className="utility-controls" aria-label="Spieleinstellungen">
         <button
-          aria-label={audioEnabled ? "Audio ausschalten" : "Audio einschalten"}
-          aria-pressed={audioEnabled}
+          aria-label={audioSettings.enabled ? "Audio ausschalten" : "Audio einschalten"}
+          aria-pressed={audioSettings.enabled}
           onClick={handleAudioToggle}
           type="button"
         >
-          {audioEnabled ? "♪" : "×"}
-          <span>{audioEnabled ? "Ton" : "Stumm"}</span>
+          {audioSettings.enabled ? "♪" : "×"}
+          <span>{audioSettings.enabled ? "Ton" : "Stumm"}</span>
+        </button>
+        <button
+          aria-label="Audiomischung öffnen"
+          aria-expanded={audioPanelOpen}
+          onClick={() => setAudioPanelOpen((open) => !open)}
+          type="button"
+        >
+          ≋<span>Mix</span>
         </button>
         <button
           aria-label="Kurzeinführung anzeigen"
@@ -747,6 +885,52 @@ export function App() {
           ↺<span>Lauf</span>
         </button>
       </nav>
+
+      {audioPanelOpen && (
+        <section className="audio-mixer" aria-label="Audiomischung">
+          <header><strong>Audiomischung</strong><button aria-label="Audiomischung schließen" onClick={() => setAudioPanelOpen(false)} type="button">×</button></header>
+          {([
+            ["master", "Gesamt"],
+            ["music", "Musik & Ambiente"],
+            ["sfx", "UI & Effekte"],
+            ["combat", "Kampfeffekte"],
+          ] as const).map(([setting, label]) => (
+            <label key={setting}>
+              <span>{label}</span><output>{Math.round(audioSettings[setting] * 100)}%</output>
+              <input
+                aria-label={`${label} Lautstärke`}
+                max="1"
+                min="0"
+                onChange={(event) => handleAudioLevel(setting, Number(event.currentTarget.value))}
+                step="0.01"
+                type="range"
+                value={audioSettings[setting]}
+              />
+            </label>
+          ))}
+        </section>
+      )}
+
+      {battlePreparation && (
+        <section className="battle-preparation" role="dialog" aria-modal="true" aria-label="Arena wird vorbereitet">
+          <div className="preparation-sigil" aria-hidden="true"><i /><b>◆</b></div>
+          <p>{battlePreparation.stage === "error" ? "ARENA NICHT VOLLSTÄNDIG" : "KESSEL WERDEN POSITIONIERT"}</p>
+          <h2>{opponentName(battlePreparation.opponent.id)}</h2>
+          {battlePreparation.stage === "error" ? (
+            <span>{battlePreparation.errorMessage}</span>
+          ) : (
+            <span>{battlePreparation.stage === "loading" ? "Modelle und Texturen werden geladen" : "Magie wird entzündet · erster Frame wird geprüft"}</span>
+          )}
+          <div className="preparation-progress" aria-label={`${battlePreparation.progress.percent} Prozent geladen`}>
+            <i style={{ width: `${battlePreparation.stage === "decoding" ? 100 : battlePreparation.progress.percent}%` }} />
+          </div>
+          <small>{battlePreparation.stage === "decoding" ? "Grafik wird aufgebaut …" : `${battlePreparation.progress.completed}/${battlePreparation.progress.total} kritische Pakete`}</small>
+          <div className="preparation-actions">
+            {battlePreparation.stage === "error" && <button className="continue-reduced" onClick={handleReducedGraphicsStart} type="button">Mit reduzierter Grafik starten</button>}
+            <button onClick={handlePreparationCancel} type="button">Zurück zur Werkbank</button>
+          </div>
+        </section>
+      )}
 
       {mode === "workshop" && (
         <>
@@ -912,7 +1096,7 @@ export function App() {
         </section>
       )}
 
-      {mode === "arena" && (
+      {mode === "arena" && !battlePreparation && (
         <section className="battle-hud" aria-label="Kampfstatus">
           <div className="combatant player-health">
             <div><strong>Dein Kessel</strong><span>{playerHp} +{combat?.playerShield ?? 0}</span></div>
@@ -939,7 +1123,7 @@ export function App() {
           </div>
           <div className="combatant enemy-health">
             <div><strong>{opponentName(opponent.id)}</strong><span>{enemyHp} +{combat?.enemyShield ?? 0}</span></div>
-            <div className="health-track"><i style={{ width: hpPercent(enemyHp, battleResult?.enemyMaxHp ?? opponent.baseHp) }} /></div>
+            <div className="health-track"><i style={{ width: hpPercent(enemyHp, battleResult?.enemyMaxHp ?? stagedOpponent.baseHp) }} /></div>
             <CombatStatusStrip
               elapsedMs={combat?.elapsedMs ?? 0}
               shield={combat?.enemyShield ?? 0}

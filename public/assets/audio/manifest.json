@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "sourceReferenceCommit": "5c4ec098b36d44d6dde4de31cba422de8b4f2b24",
+  "files": [
+    {
+      "path": "ambience/cauldron-bubbles.ogg",
+      "bytes": 45623,
+      "sha256": "c5238d9a54cf12c40af4ef6a6cdb9ed925cb1b79b76935ee800042683469f73c"
+    },
+    {
+      "path": "combat/echo.ogg",
+      "bytes": 14853,
+      "sha256": "fc4d9b0cb81307d3a1c322f74150ec5000f66350960c76868c7e167ded66d8d6"
+    },
+    {
+      "path": "combat/fire.ogg",
+      "bytes": 18617,
+      "sha256": "9f864338e86e1e43a77a7cd0b60da30b2da8e17389820b3f89e804a0e99f0d18"
+    },
+    {
+      "path": "combat/frost.ogg",
+      "bytes": 20032,
+      "sha256": "e7a8254fe8e3d2f7c716312f52b43cb916f5a1b8cb69cb55cc330d916baf3325"
+    },
+    {
+      "path": "combat/heal.ogg",
+      "bytes": 22764,
+      "sha256": "0d37eb54484da257f67919858f129d21015c239b53867ef70cea55fd75a4eb5b"
+    },
+    {
+      "path": "combat/hit.ogg",
+      "bytes": 12694,
+      "sha256": "8fdadfe1477b5673890cdc6e49bb6b46663b8be2290559b6371480ada874f002"
+    },
+    {
+      "path": "combat/poison.ogg",
+      "bytes": 17191,
+      "sha256": "0c0d9790889e01aef3f2624a3023e63e61237d6046cfb8cbff6b885e06f10d72"
+    },
+    {
+      "path": "combat/shield.ogg",
+      "bytes": 18938,
+      "sha256": "d174193bd50ed88f50cd13eba8500b832a9e5f8e0ae3f5b663d4e5e825bbc16f"
+    },
+    {
+      "path": "music/battle.ogg",
+      "bytes": 1579775,
+      "sha256": "bf16ad283830b07b07a70b9fa5712e9f1ae17ee1065016489409becc5c6b58e0"
+    },
+    {
+      "path": "music/boss.ogg",
+      "bytes": 1097869,
+      "sha256": "0efba292f13b2579be0f64fa9821c4cb573292148312fe2df824f21a43e58cad"
+    },
+    {
+      "path": "music/menu.ogg",
+      "bytes": 210166,
+      "sha256": "fadd2c4f4cee3f0605c83804bbb54f48b9d224a3b9ccb1506e3652bafe532394"
+    },
+    {
+      "path": "sfx/cauldron-full.ogg",
+      "bytes": 15991,
+      "sha256": "7df1ab1df560b418aab78bd20e8c9e743c3e29040575f638b82ba2c7bb193dc6"
+    },
+    {
+      "path": "sfx/coin-transfer.ogg",
+      "bytes": 12815,
+      "sha256": "803d824746692d080ed6ab2da835803c402e53f85670a1851ee20ef9f976cc63"
+    },
+    {
+      "path": "sfx/error.ogg",
+      "bytes": 15845,
+      "sha256": "c936ed23e43e9b9e8c03f0a2deb3519ee5003d3ed6730a8745728a75ac2d216e"
+    },
+    {
+      "path": "sfx/merge-level-2.ogg",
+      "bytes": 10412,
+      "sha256": "4cb7bbf6f747b88d94665731b44c5c1e1b577b0ab8b11e3a5647a25cf4943b25"
+    },
+    {
+      "path": "sfx/merge-level-3.ogg",
+      "bytes": 15979,
+      "sha256": "170e0456082b17a8a58eff9661ba71c4de3d1345ba54dad681e47a5bb6f5d4a3"
+    },
+    {
+      "path": "sfx/purchase.ogg",
+      "bytes": 17137,
+      "sha256": "99682a5ee447ce02de8a354d70837029f18a057fe3c40670461d5c4cdafb1ab0"
+    },
+    {
+      "path": "sfx/reroll.ogg",
+      "bytes": 15988,
+      "sha256": "a0d3a2d0227da0565e06a99fb0f6f6c3383f3ed5820f175edff791cefa0590e4"
+    },
+    {
+      "path": "sfx/result-defeat.ogg",
+      "bytes": 19260,
+      "sha256": "5b9c63235a041df0b355f28a4c3e9c57377ad34bde12a98e787ad311966a8f10"
+    },
+    {
+      "path": "sfx/result-victory.ogg",
+      "bytes": 17324,
+      "sha256": "cb9016156b6a7f67c3e7ea7692d573ea182e7d2729956c250a27f308f95ef754"
+    },
+    {
+      "path": "sfx/sell.ogg",
+      "bytes": 15046,
+      "sha256": "ddf72504b322f041faefe9a844f5f3fef760cbb6b12a971a008f001d23c0c248"
+    },
+    {
+      "path": "sfx/ui-click.ogg",
+      "bytes": 10096,
+      "sha256": "ac18b9c0d06afd69538570b8d6c4ab68df9e21e9a71b42576711d25df61815f0"
+    },
+    {
+      "path": "sfx/ui-select.ogg",
+      "bytes": 15267,
+      "sha256": "5d0a07b6118270730e7d324f851293a841d12b62ae0aa009fe9df0f3aad94357"
+    }
+  ]
+}

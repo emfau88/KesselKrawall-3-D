@@ -1,7 +1,7 @@
 import type { GreyboxMode } from "./GreyboxStage";
 import { assetBakeoffMode } from "./assetBakeoff";
 
-export function LightingRig({ mode, opponentId }: { mode: GreyboxMode; opponentId?: string }) {
+export function LightingRig({ mode, opponentId, shadowMapSize = 1024 }: { mode: GreyboxMode; opponentId?: string; shadowMapSize?: 512 | 1024 }) {
   const workshop = mode === "workshop";
   const moor = !workshop && opponentId === "moor-martha";
   const productionArt = assetBakeoffMode() !== "legacy";
@@ -20,8 +20,8 @@ export function LightingRig({ mode, opponentId }: { mode: GreyboxMode; opponentI
         shadow-camera-left={-8}
         shadow-camera-right={8}
         shadow-camera-top={7}
-        shadow-mapSize-height={1024}
-        shadow-mapSize-width={1024}
+        shadow-mapSize-height={shadowMapSize}
+        shadow-mapSize-width={shadowMapSize}
       />
       <pointLight color={workshop ? "#d35d32" : moor ? "#6fa23a" : "#7457c2"} intensity={workshop ? 6.4 : 8.8} position={[-4, 3.5, -3]} distance={13} />
       <pointLight color={workshop ? "#8151b5" : moor ? "#d38747" : "#b96ed5"} intensity={4.8} position={[4.5, 2.4, -2.5]} distance={10} />

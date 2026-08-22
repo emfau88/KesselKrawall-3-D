@@ -1,6 +1,6 @@
 # Asset- und Lizenzregister
 
-Stand: 21. August 2026
+Stand: 22. August 2026
 
 ## Shipping-Status
 
@@ -12,8 +12,11 @@ Hero-Kessel kombinieren den texturierten Quaternius-Kesselkörper mit originalen
 reproduzierbar in Blender modularisierten Gesichts- und Charakterteilen. Drei
 Referenzzutaten und der Arena-Dais bleiben originale Projektassets.
 Animationen, Ambient-Leben und Effekte entstehen weiterhin aus eigenem
-Three.js-/R3F-Code. UI-Sounds und Kessel-Ambience werden zur Laufzeit mit der
-Web Audio API synthetisiert; es wird keine Audiodatei ausgeliefert.
+Three.js-/R3F-Code. Musik, Kessel-Ambience, UI- und Kampfsounds werden als
+kuratierte Ogg-Derivate ausgeliefert und über einen eigenen Web-Audio-Mixer
+abgespielt. Die vollständige Attribution liegt unter
+`public/assets/audio/ATTRIBUTION.md`; `public/assets/audio/manifest.json`
+dokumentiert Größe und SHA-256 jeder ausgelieferten Audiodatei.
 
 Das App-Symbol `public/kessel-mark.svg` ist eine für dieses Repository neu
 erstellte Eigenleistung. Vite erzeugt beim Produktionsbuild zusätzlich
@@ -34,28 +37,30 @@ Vor jeder dauerhaften Asset-Aufnahme müssen dokumentiert sein:
 
 Ein Download oder eine Erwähnung in diesem Dokument gilt nicht als Freigabe.
 
-## Legacy-Audio – noch nicht übernommene Kandidaten
+## Übernommenes Audio aus dem Referenzprojekt
 
-Die folgende Provenienz ist im Legacy-Repo unter
-`public/assets/audio/ATTRIBUTION.md` dokumentiert. Sie wurde in Phase A noch
-nicht unabhängig verifiziert und keine Datei wurde kopiert.
+Die Quellen und Lizenzen wurden am 22.08.2026 gegen die angegebenen
+Primärseiten geprüft. Übernommen wurden ausschließlich die bereits für das
+Gameplay geschnittenen, loop-vorbereiteten und pegelangepassten Ogg-Derivate
+aus dem auditierten Referenz-Commit
+`5c4ec098b36d44d6dde4de31cba422de8b4f2b24`. Der Hash jedes Derivats ist im
+Runtime-Manifest festgeschrieben.
 
 | Werk / Pack | Urheber | Dokumentierte Quelle | Dokumentierte Lizenz | Legacy-Nutzung | Rebuild-Status |
 |---|---|---|---|---|---|
-| A Welcome Haunting | Fablefly Music | https://fablefly-music.itch.io/a-welcome-haunting | CC BY 4.0 | Menü-/Shopmusik | Kandidat, nicht übernommen; Attribution erforderlich |
-| Daydream of a Deity | Fablefly Music | https://fablefly-music.itch.io/daydream-of-a-deity | CC BY 4.0 | Bossmusik | Kandidat, nicht übernommen; Attribution erforderlich |
-| Fairy Battles | MintoDog | https://opengameart.org/content/fairy-battles | CC0 1.0 | Kampfmusik | Kandidat, nicht übernommen |
-| Interface SFX Pack 1 | ObsydianX | https://obsydianx.itch.io/interface-sfx-pack-1 | CC0 1.0 | UI, Reroll, Fehler | Kandidat, nicht übernommen |
-| Free SFX Pack Vol. 3 | HZSMITH | https://hzsmith.itch.io/free-sfx-pack-vol-3 | CC0 1.0 | Kauf-/Verkaufscoins | Kandidat, nicht übernommen |
-| Retro Magic Sound Effects | NSFRL | https://nsfrl.itch.io/retro-magic-sound-effects | CC0 1.0 | Merge, Result, Echo | Kandidat, nicht übernommen |
-| Bubble Sound Effects | BMacZero / Brian MacIntosh | https://opengameart.org/content/bubble-sound-effects | CC0 1.0 | Kessel-Ambience | Kandidat, nicht übernommen |
-| Basic Spell Impacts | Lentikula | https://lentikula.itch.io/freecc0-basic-spell-impacts-sfx | CC0 1.0 | Fire, Poison, Guard, Hit, Frost | Kandidat, nicht übernommen |
-| Healing Spell Impacts | Lentikula | https://lentikula.itch.io/healing-spell-impacts | CC0 1.0 | Heilung | Kandidat, nicht übernommen |
+| A Welcome Haunting | Fablefly Music | https://fablefly-music.itch.io/a-welcome-haunting | CC BY 4.0 | Menü-/Shopmusik | übernommen; Namensnennung und Bearbeitungshinweis ausgeliefert |
+| Daydream of a Deity | Fablefly Music | https://fablefly-music.itch.io/daydream-of-a-deity | CC BY 4.0 | Bossmusik | übernommen; Namensnennung und Bearbeitungshinweis ausgeliefert |
+| Fairy Battles | MintoDog | https://opengameart.org/content/fairy-battles | CC0 1.0 | Kampfmusik | übernommen |
+| Interface SFX Pack 1 | ObsydianX | https://obsydianx.itch.io/interface-sfx-pack-1 | CC0 1.0 | UI, Reroll, Fehler | übernommen |
+| Free SFX Pack Vol. 3 | HZSMITH | https://hzsmith.itch.io/free-sfx-pack-vol-3 | CC0 1.0 | Kauf-/Verkaufscoins | übernommen |
+| Retro Magic Sound Effects | NSFRL | https://nsfrl.itch.io/retro-magic-sound-effects | CC0 1.0 | Merge, Result, Echo | übernommen |
+| Bubble Sound Effects | BMacZero / Brian MacIntosh | https://opengameart.org/content/bubble-sound-effects | CC0 1.0 | Kessel-Ambience | übernommen |
+| Basic Spell Impacts | Lentikula | https://lentikula.itch.io/freecc0-basic-spell-impacts-sfx | CC0 1.0 | Fire, Poison, Guard, Hit, Frost | übernommen |
+| Healing Spell Impacts | Lentikula | https://lentikula.itch.io/healing-spell-impacts | CC0 1.0 | Heilung | übernommen |
 
-Die Legacy-Dateien sind bearbeitete OGG-Derivate (unter anderem getrimmt,
-loop-vorbereitet und pegelangepasst). Vor Übernahme ist zusätzlich zu klären,
-ob die Bearbeitungskette und Zuordnung jeder einzelnen Datei ausreichend
-dokumentiert ist.
+Die CC-BY-Attribution wird bewusst auch im gebauten `public`-Artefakt
+ausgeliefert. Die übrigen CC0-Credits bleiben aus Transparenzgründen erhalten,
+obwohl sie lizenzrechtlich nicht verlangt werden.
 
 ## Legacy-Bilder – nur Referenz
 

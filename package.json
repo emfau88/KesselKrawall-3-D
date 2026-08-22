@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc -b --pretty false"
+    "typecheck": "tsc -b --pretty false",
+    "audio:manifest": "node scripts/generate_audio_manifest.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "9.7.0",

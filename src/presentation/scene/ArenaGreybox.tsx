@@ -10,6 +10,7 @@ import type { CauldronReaction } from "./CauldronActor";
 import { BattleVfx } from "./BattleVfx";
 import { IngredientModel } from "./IngredientModel";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
+import { getRuntimeQualityProfile } from "./runtimeQuality";
 import { assetBakeoffMode } from "./assetBakeoff";
 import type { ArenaSceneState } from "./sceneTypes";
 
@@ -216,7 +217,7 @@ function ArenaBrazier({ position, poison = false }: {
   );
 }
 
-function TournamentAudience({ moor, reactionKey }: { moor: boolean; reactionKey: number }) {
+function TournamentAudience({ moor, reactionKey, detail = 1 }: { moor: boolean; reactionKey: number; detail?: number }) {
   const crowd = useRef<Group>(null);
   const lastReaction = useRef(reactionKey);
   const reactedAt = useRef(0);
@@ -239,8 +240,8 @@ function TournamentAudience({ moor, reactionKey }: { moor: boolean; reactionKey:
   return (
     <group ref={crowd}>
       {[1.72, 2.62].flatMap((y, row) =>
-        Array.from({ length: row === 0 ? 11 : 9 }, (_, index) => {
-          const count = row === 0 ? 11 : 9;
+        Array.from({ length: Math.max(6, Math.round((row === 0 ? 11 : 9) * detail)) }, (_, index) => {
+          const count = Math.max(6, Math.round((row === 0 ? 11 : 9) * detail));
           const x = (index - (count - 1) / 2) * (row === 0 ? 0.72 : 0.82);
           const accent = moor && index % 4 === 0 ? "#9aad58" : index % 3 === 0 ? "#87688b" : "#66566e";
           return (
@@ -315,7 +316,7 @@ function MoorMiasma() {
   );
 }
 
-function ArenaAmbientLife({ moor }: { moor: boolean }) {
+function ArenaAmbientLife({ moor, detail = 1 }: { moor: boolean; detail?: number }) {
   const motes = useRef<Group>(null);
   const astrolabe = useRef<Group>(null);
   useFrame(({ clock }) => {
@@ -334,7 +335,7 @@ function ArenaAmbientLife({ moor }: { moor: boolean }) {
   return (
     <group>
       <group ref={motes}>
-        {Array.from({ length: 15 }, (_, index) => {
+        {Array.from({ length: Math.max(8, Math.round(15 * detail)) }, (_, index) => {
           const x = -6.4 + (index % 8) * 1.82;
           const y = 0.9 + (index % 5) * 0.54;
           const z = -5.1 + (index % 3) * 0.55;
@@ -521,6 +522,7 @@ function ArenaChandelier() {
 }
 
 export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
+  const quality = getRuntimeQualityProfile();
   const moor = scene.opponent.id === "moor-martha";
   const legacy = assetBakeoffMode() === "legacy";
   const eventKey = scene.combat?.eventIndex ?? -1;
@@ -620,8 +622,8 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
         </mesh>
       ))}
       <ArenaPortal moor={moor} />
-      <TournamentAudience moor={moor} reactionKey={eventKey} />
-      <ArenaAmbientLife moor={moor} />
+      <TournamentAudience detail={quality.ambientDetail} moor={moor} reactionKey={eventKey} />
+      <ArenaAmbientLife detail={quality.ambientDetail} moor={moor} />
       <ArenaChandelier />
       <mesh castShadow position={[0, 3.85, -5.5]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[1.05, 0.16, 8, 32, Math.PI]} />

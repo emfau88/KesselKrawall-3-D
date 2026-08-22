@@ -1,29 +1,60 @@
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Suspense, useMemo, useRef } from "react";
 import { ACESFilmicToneMapping, PCFShadowMap } from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 import { ArenaGreybox } from "./ArenaGreybox";
 import { FixedCamera } from "./FixedCamera";
 import { LightingRig } from "./LightingRig";
+import { productionAssetUrl, ProductionAssetBoundary, type ProductionAssetId } from "./ProductionAsset";
+import { getRuntimeQualityProfile } from "./runtimeQuality";
 import { WorkshopGreybox } from "./WorkshopGreybox";
 import type { ArenaSceneState, WorkshopSceneState } from "./sceneTypes";
 
 export type GreyboxMode = "workshop" | "arena";
 
+function BattleAssetGate({
+  assets,
+  readinessKey,
+  onReady,
+}: {
+  assets: readonly ProductionAssetId[];
+  readinessKey: string;
+  onReady: (readinessKey: string) => void;
+}) {
+  const urls = useMemo(() => assets.map(productionAssetUrl), [assets]);
+  useLoader(GLTFLoader, urls);
+  const renderedFrames = useRef(0);
+  useFrame(() => {
+    renderedFrames.current += 1;
+    if (renderedFrames.current !== 2) return;
+    onReady(readinessKey);
+  });
+  return null;
+}
+
 export function GreyboxStage({
   mode,
   workshop,
   arena,
+  criticalAssets = [],
+  readinessKey,
+  onSceneReady,
 }: {
   mode: GreyboxMode;
   workshop: WorkshopSceneState;
   arena: ArenaSceneState;
+  criticalAssets?: readonly ProductionAssetId[];
+  readinessKey?: string;
+  onSceneReady?: (readinessKey: string) => void;
 }) {
+  const quality = getRuntimeQualityProfile();
   const moorArena = mode === "arena" && arena.opponent.id === "moor-martha";
   const background = mode === "workshop" ? "#171016" : moorArena ? "#111712" : "#100d17";
   return (
     <Canvas
       className="scene-canvas"
-      dpr={[1, 1.35]}
+      dpr={[1, quality.maxDpr]}
       gl={{
         alpha: false,
         antialias: true,
@@ -40,7 +71,18 @@ export function GreyboxStage({
         args={mode === "arena" ? [background, 25, 46] : [background, 17, 34]}
       />
       <FixedCamera mode={mode} />
-      <LightingRig mode={mode} opponentId={mode === "arena" ? arena.opponent.id : undefined} />
+      <LightingRig
+        mode={mode}
+        opponentId={mode === "arena" ? arena.opponent.id : undefined}
+        shadowMapSize={quality.shadowMapSize}
+      />
+      {readinessKey && onSceneReady && criticalAssets.length > 0 && (
+        <ProductionAssetBoundary fallback={null}>
+          <Suspense fallback={null}>
+            <BattleAssetGate assets={criticalAssets} onReady={onSceneReady} readinessKey={readinessKey} />
+          </Suspense>
+        </ProductionAssetBoundary>
+      )}
       {mode === "workshop" ? (
         <WorkshopGreybox scene={workshop} />
       ) : (
