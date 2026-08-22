@@ -225,7 +225,7 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   place-items: center;
   gap: .5rem;
   padding: 1.45rem 1.65rem;
-  border: 1px solid rgb(237 191 114 / 48%);
+  border: 1px solid color-mix(in srgb, var(--encounter-accent) 58%, #e9bc72);
   border-radius: 1.1rem;
   background:
     radial-gradient(circle at 50% 0%, rgb(114 73 119 / 30%), transparent 45%),
@@ -250,15 +250,15 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   width: 4.2rem;
   height: 4.2rem;
   place-items: center;
-  color: #f3c875;
+  color: var(--encounter-secondary);
 }
 
 .preparation-sigil i {
   position: absolute;
   inset: 0;
   border: .16rem solid rgb(240 196 116 / 18%);
-  border-top-color: #e7ae5c;
-  border-bottom-color: #9e6abb;
+  border-top-color: var(--encounter-accent);
+  border-bottom-color: var(--encounter-secondary);
   border-radius: 50%;
   animation: loading-spin 1.15s linear infinite;
 }
@@ -272,6 +272,16 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
 }
 
 .battle-preparation h2 { margin: 0; color: #fff0d0; font-family: Georgia, serif; font-size: 1.65rem; }
+.opponent-epithet {
+  display: block;
+  color: color-mix(in srgb, var(--encounter-secondary) 76%, #fff1d1);
+  font-size: .54rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.battle-preparation > .opponent-epithet { margin-top: -.28rem; font-size: .62rem; }
 .battle-preparation > span { min-height: 1.1rem; color: #c8b8c8; font-size: .75rem; }
 .battle-preparation > small { color: #9f8fa2; font-size: .62rem; }
 
@@ -289,7 +299,7 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #8e5bac, #e5ae5c 75%, #fff0b4);
+  background: linear-gradient(90deg, var(--encounter-accent), var(--encounter-secondary) 75%, #fff0b4);
   box-shadow: 0 0 1rem rgb(225 164 82 / 58%);
   transition: width 180ms ease;
 }
@@ -502,12 +512,47 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
 .family-guard { --offer-color: #6bcedd; }
 .family-frost { --offer-color: #8bdbf0; }
 .family-echo { --offer-color: #bc92ed; }
-.offer-family { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 50%; color: #171019; background: var(--offer-color); box-shadow: 0 0 18px color-mix(in srgb, var(--offer-color) 35%, transparent); font-weight: 900; }
+.ingredient-portrait {
+  position: relative;
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--offer-color) 58%, #f3d59a);
+  background:
+    radial-gradient(circle at 48% 38%, color-mix(in srgb, var(--offer-color) 18%, #3b2936), #171018 72%);
+  box-shadow: inset 0 0 0 2px rgb(255 238 204 / 6%), 0 0 18px color-mix(in srgb, var(--offer-color) 22%, transparent);
+  clip-path: polygon(50% 0, 92% 12%, 100% 50%, 88% 90%, 50% 100%, 10% 88%, 0 50%, 12% 10%);
+}
+.ingredient-portrait svg { width: 84%; height: 84%; overflow: visible; filter: drop-shadow(0 3px 4px rgb(0 0 0 / 54%)); }
+.ingredient-portrait > b { position: absolute; right: .15rem; bottom: .05rem; color: #fff0b8; font-size: .38rem; letter-spacing: -.12em; text-shadow: 0 0 6px var(--offer-color); }
 .offer-copy { min-width: 0; }
 .offer-copy strong, .offer-copy small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .offer-copy strong { color: #fff4df; font-size: .78rem; }
 .offer-copy small { margin-top: .18rem; color: #baaebe; font-size: .61rem; }
 .offer-cost { color: #f1cf80; font-size: .72rem; font-weight: 900; white-space: nowrap; }
+
+/* During combat the duel is the hierarchy. Workshop resources and setup
+   controls intentionally leave the screen until the result transition. */
+.phase-battle .game-title,
+.phase-result .game-title,
+.phase-victory .game-title,
+.phase-gameover .game-title,
+.phase-battle .run-stats,
+.phase-result .run-stats,
+.phase-victory .run-stats,
+.phase-gameover .run-stats,
+.phase-battle .utility-controls,
+.phase-result .utility-controls,
+.phase-victory .utility-controls,
+.phase-gameover .utility-controls,
+.phase-result .battle-hud,
+.phase-victory .battle-hud,
+.phase-gameover .battle-hud { display: none; }
+
+.phase-battle .battle-hud,
+.phase-result .battle-hud { top: max(.75rem, env(safe-area-inset-top)); }
 
 .battle-button, .result-panel button {
   border: 1px solid #f0b965;
@@ -553,12 +598,18 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   margin: auto;
 }
 .combatant { padding: .52rem .68rem; border: 1px solid rgb(255 255 255 / 16%); border-radius: .7rem; background: rgb(24 16 30 / 64%); backdrop-filter: blur(8px); }
-.combatant > div:first-child { display: flex; justify-content: space-between; gap: .6rem; font-size: .72rem; }
+.combatant > div:first-of-type { display: flex; justify-content: space-between; gap: .6rem; font-size: .72rem; }
 .combatant span { color: #d7c5d7; font-weight: 750; }
 .health-track { height: .42rem; margin-top: .38rem; overflow: hidden; border-radius: 999px; background: #291e2d; }
 .health-track i { display: block; height: 100%; border-radius: inherit; transition: width 160ms linear; }
 .player-health .health-track i { background: linear-gradient(90deg, #d7573b, #f5a453); }
-.enemy-health .health-track i { margin-left: auto; background: linear-gradient(90deg, #886bc6, #c284d8); }
+.enemy-health {
+  border-color: color-mix(in srgb, var(--encounter-accent) 58%, transparent);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--encounter-surface) 82%, rgb(24 16 30 / 92%)), rgb(15 11 18 / 92%));
+  box-shadow: inset 0 0 1.4rem color-mix(in srgb, var(--encounter-accent) 9%, transparent), 0 .8rem 2rem rgb(4 3 5 / 38%);
+}
+.enemy-health .health-track i { margin-left: auto; background: linear-gradient(90deg, var(--encounter-accent), var(--encounter-secondary)); }
+.enemy-health > .opponent-epithet { margin-bottom: .18rem; text-align: right; }
 .combat-status-strip {
   min-height: 1.42rem;
   margin-top: .28rem;
@@ -693,6 +744,7 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
 }
 .result-panel > p { color: #e9b96c; font-size: .66rem; font-weight: 900; letter-spacing: .18em; }
 .result-panel h2 { margin-top: .35rem; font-size: clamp(1.4rem, 4vw, 2.2rem); }
+.result-opponent { display: block; margin-top: -.05rem; color: var(--encounter-secondary); font-size: .6rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .result-stats { display: flex; justify-content: center; gap: .45rem; margin-top: .9rem; }
 .result-stats span { padding: .42rem .58rem; border-radius: .5rem; color: #cabdcb; background: rgb(255 255 255 / 6%); font-size: .65rem; }
 .result-panel button { min-height: 44px; margin-top: 1rem; padding: .68rem 1.2rem; }
@@ -774,13 +826,7 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
 .combat-ingredient strong { display: block; overflow: hidden; color: #fff0d4; font-family: Georgia, "Times New Roman", serif; font-size: .68rem; text-overflow: ellipsis; white-space: nowrap; }
 .combat-ingredient small { display: block; margin-top: .16rem; color: color-mix(in srgb, var(--ingredient-color) 78%, #d7cbd8); font-size: .49rem; font-weight: 850; letter-spacing: .04em; text-transform: uppercase; }
 
-.encounter-moor-martha .enemy-health {
-  border-color: rgb(168 210 82 / 58%);
-  background: linear-gradient(145deg, rgb(43 49 29 / 91%), rgb(15 16 14 / 92%));
-  box-shadow: inset 0 0 1.4rem rgb(111 151 50 / 9%), 0 .8rem 2rem rgb(4 7 3 / 38%);
-}
-.encounter-moor-martha .enemy-health .health-track i { background: linear-gradient(90deg, #647f2f, #b2db55); }
-.encounter-moor-martha .battle-clock { border-color: rgb(175 208 97 / 36%); }
+.phase-battle .battle-clock, .phase-result .battle-clock { border-color: color-mix(in srgb, var(--encounter-accent) 38%, transparent); }
 
 .ko-sequence {
   position: absolute;
@@ -870,6 +916,24 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
 .legacy-family-buttons { display: grid; gap: .3rem; margin-top: auto; }
 .legacy-family-buttons button { display: flex; gap: .45rem; align-items: center; padding: .35rem .5rem; color: #e4d4e5; background: rgb(255 255 255 / 5%); text-align: left; }
 .legacy-family-buttons button:hover, .legacy-family-buttons button:focus-visible { border-color: #f0ca88; background: rgb(255 255 255 / 9%); outline: none; }
+.campaign-roster {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .22rem;
+  margin: 0 0 .72rem;
+}
+.campaign-roster > span {
+  display: flex;
+  min-width: 0;
+  gap: .3rem;
+  align-items: center;
+  padding: .22rem .3rem;
+  border-left: 2px solid var(--roster-color);
+  color: #cdbfd0;
+  background: color-mix(in srgb, var(--roster-color) 7%, rgb(8 5 11 / 56%));
+}
+.campaign-roster i { display: grid; width: 1rem; height: 1rem; flex: 0 0 auto; place-items: center; color: var(--roster-color); font-size: .46rem; font-style: normal; font-weight: 900; }
+.campaign-roster b { overflow: hidden; font-size: .49rem; text-overflow: ellipsis; white-space: nowrap; }
 
 .onboarding {
   position: absolute;
@@ -1080,7 +1144,7 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   }
   .mobile-reroll small { display: block; font-size: .48rem; }
   .offer { min-height: 3.85rem; padding: .44rem .5rem; }
-  .offer-family { width: 1.65rem; height: 1.65rem; }
+  .ingredient-portrait { width: 2.75rem; height: 2.75rem; }
   .interaction-hint { display: none; }
   .board-controls { bottom: 5.8rem; }
   .onboarding { bottom: 5.85rem; }
@@ -1098,13 +1162,13 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   .shop-ribbon { right: .35rem; bottom: max(.35rem, env(safe-area-inset-bottom)); left: .35rem; grid-template-columns: minmax(0, 1fr) 3rem 6.7rem; gap: .3rem; padding: .32rem; }
   .offers { gap: .24rem; }
   .offer { grid-template-columns: auto minmax(0, 1fr); gap: .32rem; min-height: 3.4rem; padding: .34rem; }
-  .offer-family { width: 1.45rem; height: 1.45rem; font-size: .68rem; }
+  .ingredient-portrait { width: 2.35rem; height: 2.35rem; }
   .offer-copy strong { font-size: .64rem; }
   .offer-copy small, .offer-cost { display: none; }
   .battle-button { font-size: .64rem; }
   .battle-hud { right: .5rem; left: .5rem; grid-template-columns: 1fr 3.2rem 1fr; gap: .35rem; }
   .combatant { padding: .38rem .44rem; }
-  .combatant > div:first-child { font-size: .6rem; }
+  .combatant > div:first-of-type { font-size: .6rem; }
   .selection-popover { width: 11rem; }
   .board-controls { bottom: 5.15rem; }
   .board-controls button { width: 2.35rem; height: 2.35rem; }
@@ -1131,7 +1195,7 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   .onboarding { bottom: 8.45rem; }
   .selection-popover { top: auto; right: .55rem; bottom: 8.45rem; }
   .battle-hud { top: 4.4rem; grid-template-columns: 1fr 2.8rem 1fr; }
-  .combatant > div:first-child strong { max-width: 6rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .combatant > div:first-of-type strong { max-width: 6rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .phase-battle .utility-controls,
   .phase-result .utility-controls {
     top: auto;
@@ -1246,14 +1310,14 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
     background: linear-gradient(180deg, rgb(28 18 32 / 68%), rgb(14 10 18 / 54%));
   }
 
-  .phase-battle .combatant > div:first-child,
-  .phase-result .combatant > div:first-child {
+  .phase-battle .combatant > div:first-of-type,
+  .phase-result .combatant > div:first-of-type {
     gap: .25rem;
     font-size: .55rem;
   }
 
-  .phase-battle .combatant > div:first-child strong,
-  .phase-result .combatant > div:first-child strong { max-width: 5.2rem; }
+  .phase-battle .combatant > div:first-of-type strong,
+  .phase-result .combatant > div:first-of-type strong { max-width: 5.2rem; }
 
   .phase-battle .health-track,
   .phase-result .health-track { margin-top: .22rem; }

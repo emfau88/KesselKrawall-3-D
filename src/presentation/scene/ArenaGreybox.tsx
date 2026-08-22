@@ -4,12 +4,14 @@ import { Group, Mesh, type Vector3Tuple } from "three";
 
 import { getItemDefinition } from "../../core/data";
 import type { ItemInstance } from "../../core/types";
+import { getOpponentPresentation } from "../content/opponentPresentation";
 import { getAllPlacementInfluences } from "../shop/itemInsights";
 import { getIngredientCooldownStates, type IngredientCooldownState } from "../combat/ingredientCooldowns";
 import { CauldronActor } from "./CauldronActor";
 import type { CauldronReaction } from "./CauldronActor";
 import { BattleVfx } from "./BattleVfx";
 import { IngredientModel } from "./IngredientModel";
+import { OpponentArenaIdentity } from "./OpponentArenaIdentity";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import { getRuntimeQualityProfile } from "./runtimeQuality";
 import { assetBakeoffMode } from "./assetBakeoff";
@@ -210,9 +212,10 @@ function RunePillar({ side }: { side: -1 | 1 }) {
   );
 }
 
-function ArenaBrazier({ position, poison = false }: {
+function ArenaBrazier({ position, poison = false, flameColor }: {
   position: Vector3Tuple;
   poison?: boolean;
+  flameColor?: string;
 }) {
   const flame = useRef<Mesh>(null);
   useFrame(({ clock }) => {
@@ -221,7 +224,7 @@ function ArenaBrazier({ position, poison = false }: {
     flame.current.scale.set(0.72 - flicker * 0.3, 1 + flicker, 0.72 - flicker * 0.3);
     flame.current.rotation.y = clock.elapsedTime * 0.45;
   });
-  const color = poison ? "#9fc94e" : "#f3a34f";
+  const color = flameColor ?? (poison ? "#9fc94e" : "#f3a34f");
   return (
     <group position={position}>
       <mesh castShadow>
@@ -234,11 +237,11 @@ function ArenaBrazier({ position, poison = false }: {
       </mesh>
       <mesh ref={flame} position={[0, 0.76, 0]} scale={[0.72, 1, 0.72]}>
         <coneGeometry args={[0.16, 0.48, 8]} />
-        <meshBasicMaterial color={poison ? "#a8d747" : "#ff7a24"} toneMapped={false} transparent opacity={0.92} depthWrite={false} />
+        <meshBasicMaterial color={flameColor ?? (poison ? "#a8d747" : "#ff7a24")} toneMapped={false} transparent opacity={0.92} depthWrite={false} />
       </mesh>
       <mesh position={[0, 0.72, 0]} scale={[0.7, 1, 0.7]}>
         <coneGeometry args={[0.09, 0.3, 8]} />
-        <meshBasicMaterial color={poison ? "#e6f68a" : "#ffd36a"} toneMapped={false} transparent opacity={0.96} depthWrite={false} />
+        <meshBasicMaterial color={flameColor ? "#fff0b0" : poison ? "#e6f68a" : "#ffd36a"} toneMapped={false} transparent opacity={0.96} depthWrite={false} />
       </mesh>
       <pointLight color={color} intensity={4.8} distance={5.5} decay={2} position={[0, 0.82, 0]} />
     </group>
@@ -469,7 +472,7 @@ function OutcomeVfx({ outcome }: { outcome: NonNullable<ArenaSceneState["outcome
   );
 }
 
-function ArenaAmbientLife({ moor, detail = 1 }: { moor: boolean; detail?: number }) {
+function ArenaAmbientLife({ moor, detail = 1, glowOverride }: { moor: boolean; detail?: number; glowOverride?: string }) {
   const motes = useRef<Group>(null);
   const astrolabe = useRef<Group>(null);
   useFrame(({ clock }) => {
@@ -484,7 +487,7 @@ function ArenaAmbientLife({ moor, detail = 1 }: { moor: boolean; detail?: number
       astrolabe.current.rotation.z = Math.sin(clock.elapsedTime * 0.32) * 0.12;
     }
   });
-  const glow = moor ? "#9acb43" : "#9b6bd0";
+  const glow = glowOverride ?? (moor ? "#9acb43" : "#9b6bd0");
   return (
     <group>
       <group ref={motes}>
@@ -566,7 +569,7 @@ function ArenaCandleCluster({ position, scale = 1, light = false }: {
   );
 }
 
-function ArenaRunes({ moor, reactionKey }: { moor: boolean; reactionKey: number }) {
+function ArenaRunes({ moor, reactionKey, glowOverride }: { moor: boolean; reactionKey: number; glowOverride?: string }) {
   const runes = useRef<Group>(null);
   const lastReaction = useRef(reactionKey);
   const reactedAt = useRef(0);
@@ -585,7 +588,7 @@ function ArenaRunes({ moor, reactionKey }: { moor: boolean; reactionKey: number 
       rune.position.y = 0.035 + travellingPulse * 0.08;
     });
   });
-  const glow = moor ? "#9acb4b" : "#a979d4";
+  const glow = glowOverride ?? (moor ? "#9acb4b" : "#a979d4");
   return (
     <group ref={runes} position={[0, 0, -0.3]}>
       {Array.from({ length: 14 }, (_, index) => {
@@ -606,7 +609,7 @@ function ArenaRunes({ moor, reactionKey }: { moor: boolean; reactionKey: number 
   );
 }
 
-function ArenaPortal({ moor }: { moor: boolean }) {
+function ArenaPortal({ moor, glowOverride }: { moor: boolean; glowOverride?: string }) {
   const rings = useRef<Group>(null);
   useFrame(({ clock }) => {
     if (!rings.current) return;
@@ -614,7 +617,7 @@ function ArenaPortal({ moor }: { moor: boolean }) {
     const pulse = 1 + Math.sin(clock.elapsedTime * 1.25) * 0.035;
     rings.current.scale.set(pulse, pulse * 1.18, 1);
   });
-  const glow = moor ? "#82b83e" : "#8c63c5";
+  const glow = glowOverride ?? (moor ? "#82b83e" : "#8c63c5");
   return (
     <group position={[0, 2.08, -6.02]}>
       <mesh scale={[1.32, 1.92, 1]}>
@@ -677,6 +680,7 @@ function ArenaChandelier() {
 export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
   const quality = getRuntimeQualityProfile();
   const moor = scene.opponent.id === "moor-martha";
+  const presentation = getOpponentPresentation(scene.opponent.id);
   const legacy = assetBakeoffMode() === "legacy";
   const eventKey = scene.combat?.eventIndex ?? -1;
   const activeEvent = scene.combat?.event;
@@ -694,12 +698,12 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
     <group>
       <mesh receiveShadow position={[0, -0.34, -0.3]}>
         <cylinderGeometry args={[8.4, 8.8, 0.34, 40]} />
-        <meshStandardMaterial color={moor ? "#30352c" : "#302a37"} roughness={0.97} />
+        <meshStandardMaterial color={presentation.floor} roughness={0.97} />
       </mesh>
       {[6.05, 7.15].map((radius, index) => (
         <mesh key={radius} receiveShadow position={[0, -0.155 + index * 0.004, -0.3]} rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[radius, 0.055, 7, 72]} />
-          <meshStandardMaterial color={moor ? "#596044" : "#55475f"} roughness={0.86} />
+          <meshStandardMaterial color={presentation.trim} emissive={presentation.glow} emissiveIntensity={0.06} roughness={0.86} />
         </mesh>
       ))}
       <ProductionAssetBoundary fallback={null}>
@@ -718,7 +722,7 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
               ))}
               <ProductionAsset asset="dungeon-pillar" position={[-6.15, -0.38, -5.96]} scale={0.86} />
               <ProductionAsset asset="dungeon-pillar" position={[6.15, -0.38, -5.96]} scale={0.86} />
-              <ProductionAsset asset={moor ? "arena-banner-blue" : "arena-banner-red"} position={[-3.55, 0.2, -5.82]} scale={0.92} />
+              <ProductionAsset asset={moor ? "arena-banner-blue" : "arena-banner-red"} position={[-3.55, 0.2, -5.82]} scale={0.92} tint={presentation.banner} />
               <ProductionAsset asset="arena-banner-red" position={[3.55, 0.2, -5.82]} scale={0.92} />
               <ProductionAsset asset="dungeon-torch-mounted" position={[-5.1, 2.45, -5.82]} scale={0.9} />
               <ProductionAsset asset="dungeon-torch-mounted" position={[5.1, 2.45, -5.82]} scale={0.9} />
@@ -739,15 +743,15 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
               {[-6, -2, 2, 6].map((x) => (
                 <ProductionAsset key={`quaternius-arena-floor-${x}`} asset="quaternius-floor-brick" position={[x, -0.31, -4.1]} scale={[2.05, 1, 2.05]} />
               ))}
-              <SwayingBanner phase={0.4} position={[-3.55, 0.42, -5.96]} tint={moor ? "#718e68" : "#9a6570"} />
-              <SwayingBanner phase={2.1} position={[3.55, 0.42, -5.96]} tint={moor ? "#7e657f" : "#846c9f"} />
+              <SwayingBanner phase={0.4} position={[-3.55, 0.42, -5.96]} tint={presentation.banner} />
+              <SwayingBanner phase={2.1} position={[3.55, 0.42, -5.96]} tint={presentation.secondaryGlow} />
               <ProductionAsset asset="quaternius-torch" position={[-5.02, 1.85, -5.92]} scale={1.45} />
               <ProductionAsset asset="quaternius-torch" position={[5.02, 1.85, -5.92]} scale={1.45} />
               <ProductionAsset asset="quaternius-chest" position={[-6.3, -0.3, -2.76]} rotation={[0, 0.22, 0]} scale={0.42} />
               <ProductionAsset asset="quaternius-barrel" position={[6.15, -0.29, -2.72]} rotation={[0, -0.2, 0]} scale={1.05} />
               <ProductionAsset asset="quaternius-shelf-bottles" position={[-6.25, 0.9, -5.92]} scale={0.66} />
               <ProductionAsset asset="quaternius-book-stand" position={[5.82, -0.28, -4.72]} rotation={[0, -0.35, 0]} scale={0.44} />
-              <ProductionAsset asset="quaternius-potion-round" position={[-5.72, -0.12, -3.25]} scale={0.42} tint={moor ? "#8fb750" : "#9a6dd0"} />
+              <ProductionAsset asset="quaternius-potion-round" position={[-5.72, -0.12, -3.25]} scale={0.42} tint={presentation.glow} />
               <ProductionAsset asset="quaternius-potion-tall" position={[5.58, -0.12, -3.18]} scale={0.38} tint="#bc704c" />
               <ProductionAsset asset="quaternius-vine" position={[-6.55, 0.46, -6.02]} scale={0.58} />
               <ProductionAsset asset="quaternius-vine" position={[6.35, 0.34, -6.02]} rotation={[0, Math.PI, 0]} scale={0.48} />
@@ -771,13 +775,14 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
       {[1.35, 2.25].map((y, index) => (
         <mesh key={y} castShadow receiveShadow position={[0, y, -5.72]}>
           <boxGeometry args={[10.2 - index * 0.9, 0.22, 0.72]} />
-          <meshStandardMaterial color={index === 0 ? "#574859" : "#493c4e"} emissive={moor ? "#354124" : "#36243e"} emissiveIntensity={0.12} roughness={0.9} />
+          <meshStandardMaterial color={index === 0 ? presentation.trim : presentation.floor} emissive={presentation.glow} emissiveIntensity={0.12} roughness={0.9} />
         </mesh>
       ))}
-      <ArenaPortal moor={moor} />
+      <ArenaPortal glowOverride={presentation.glow} moor={moor} />
       <TournamentAudience detail={quality.ambientDetail} moor={moor} reactionKey={eventKey} />
-      <ArenaAmbientLife detail={quality.ambientDetail} moor={moor} />
+      <ArenaAmbientLife detail={quality.ambientDetail} glowOverride={presentation.glow} moor={moor} />
       {moor && <MoorSanctum detail={quality.ambientDetail} reactionKey={eventKey} />}
+      <OpponentArenaIdentity detail={quality.ambientDetail} opponentId={scene.opponent.id} reactionKey={eventKey} />
       <ArenaChandelier />
       <mesh castShadow position={[0, 3.85, -5.5]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[1.05, 0.16, 8, 32, Math.PI]} />
@@ -817,24 +822,24 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
         variant="player"
       />
       <CauldronActor
-        accent={scene.opponent.id === "moor-martha" ? "#91b640" : "#7f71ce"}
+        accent={presentation.liquid}
         position={ENEMY_POSITION}
         reaction={reactionFor("enemy", scene)}
         reactionKey={eventKey}
-        scale={scene.opponent.id === "moor-martha" ? 0.86 : 0.9}
+        scale={presentation.scale}
         variant={scene.opponent.id}
       />
       <ArenaIngredients scene={scene} side="player" />
       <ArenaIngredients scene={scene} side="enemy" />
       {scene.combat?.event && (
-        <BattleVfx key={scene.combat.eventIndex} frame={scene.combat} sourcePosition={sourcePosition} />
+        <BattleVfx key={scene.combat.eventIndex} frame={scene.combat} opponentId={scene.opponent.id} sourcePosition={sourcePosition} />
       )}
       {scene.outcome && <OutcomeVfx outcome={scene.outcome} />}
       <RunePillar side={-1} />
       <RunePillar side={1} />
-      <ArenaRunes moor={moor} reactionKey={eventKey} />
-      <ArenaBrazier poison={moor} position={[-4.2, 0.6, -3.62]} />
-      <ArenaBrazier position={[4.2, 0.6, -3.62]} />
+      <ArenaRunes glowOverride={presentation.glow} moor={moor} reactionKey={eventKey} />
+      <ArenaBrazier flameColor={presentation.glow} poison={moor} position={[-4.2, 0.6, -3.62]} />
+      <ArenaBrazier flameColor={presentation.secondaryGlow} position={[4.2, 0.6, -3.62]} />
       <ArenaCandleCluster light position={[-5.45, -0.15, -4.72]} scale={0.82} />
       <ArenaCandleCluster light position={[5.38, -0.15, -4.65]} scale={0.74} />
       <ArenaCandleCluster position={[-6.02, -0.18, -0.42]} scale={0.64} />

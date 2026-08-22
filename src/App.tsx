@@ -72,6 +72,7 @@ import {
   itemCopy,
   opponentName,
 } from "./presentation/content/gameText";
+import { getOpponentPresentation } from "./presentation/content/opponentPresentation";
 import type { GreyboxMode } from "./presentation/scene/GreyboxStage";
 import {
   getBattleCriticalAssetIds,
@@ -83,6 +84,7 @@ import type { CombatFrame, PurchaseVisual } from "./presentation/scene/sceneType
 import { Onboarding, ONBOARDING_STEP_COUNT } from "./presentation/ui/Onboarding";
 import { SceneErrorBoundary } from "./presentation/ui/SceneErrorBoundary";
 import { CampaignPicker } from "./presentation/ui/CampaignPicker";
+import { IngredientPortrait } from "./presentation/ui/IngredientPortrait";
 
 const ONBOARDING_STORAGE_KEY = "kessel-krawall-3d-onboarding-v1";
 const AUDIO_STORAGE_KEY = "kessel-krawall-3d-audio-v2";
@@ -347,6 +349,7 @@ export function App() {
   const presentedReserve = presentedInventory.reserve;
   const opponent = useMemo(() => getCurrentOpponent(game), [game]);
   const stagedOpponent = battlePreparation?.opponent ?? opponent;
+  const stagedPresentation = getOpponentPresentation(stagedOpponent.id);
   const familyWeights = useMemo(() => getFamilyWeights(presentedBoard), [presentedBoard]);
   const power = useMemo(() => getPowerBreakdown(presentedBoard), [presentedBoard]);
   const mode: GreyboxMode = battlePreparation ? "arena" :
@@ -469,8 +472,10 @@ export function App() {
     audioDirector.playCombat(combatSound(event), event.sourceItemId, {
       emphasis: combat.emphasis === "boss" ? "hero" : combat.emphasis ?? "standard",
       pan: event.actor === "player" ? -0.22 : 0.22,
+      opponentId: stagedOpponent.id,
+      enemyCast: event.actor === "enemy",
     });
-  }, [combat?.emphasis, combat?.event, combat?.eventIndex]);
+  }, [combat?.emphasis, combat?.event, combat?.eventIndex, stagedOpponent.id]);
 
   useEffect(() => {
     if (!combat?.beatId || combat.beatId === lastFeedbackBeat.current) return;
@@ -885,7 +890,15 @@ export function App() {
   const battleProgress = (combat?.playbackProgress ?? 0) * 100;
 
   return (
-    <main className={`game-shell phase-${game.phase} encounter-${stagedOpponent.id}${battlePreparation ? " is-preparing-battle" : ""}`}>
+    <main
+      className={`game-shell phase-${game.phase} encounter-${stagedOpponent.id}${battlePreparation ? " is-preparing-battle" : ""}`}
+      style={{
+        "--encounter-accent": stagedPresentation.glow,
+        "--encounter-secondary": stagedPresentation.secondaryGlow,
+        "--encounter-surface": stagedPresentation.floor,
+        "--encounter-banner": stagedPresentation.banner,
+      } as CSSProperties}
+    >
       <SceneErrorBoundary>
         <Suspense fallback={<div className="scene-loading"><i /><span>Werkstatt wird angeheizt …</span></div>}>
           <GreyboxStage
@@ -895,7 +908,6 @@ export function App() {
             readinessKey={battlePreparation?.stage === "decoding" ? `${battlePreparation.id}:decoded` : undefined}
             workshop={{
               board: presentedBoard,
-              offers: game.offers,
               selectedSlot: game.selectedSlot,
               reserve: presentedReserve,
               reserveUnlocked: game.round >= 5,
@@ -991,10 +1003,11 @@ export function App() {
           <div className="preparation-sigil" aria-hidden="true"><i /><b>◆</b></div>
           <p>{battlePreparation.stage === "error" ? "ARENA NICHT VOLLSTÄNDIG" : "KESSEL WERDEN POSITIONIERT"}</p>
           <h2>{opponentName(battlePreparation.opponent.id)}</h2>
+          <strong className="opponent-epithet">{stagedPresentation.title}</strong>
           {battlePreparation.stage === "error" ? (
             <span>{battlePreparation.errorMessage}</span>
           ) : (
-            <span>{battlePreparation.stage === "loading" ? "Modelle und Texturen werden geladen" : "Magie wird entzündet · erster Frame wird geprüft"}</span>
+            <span>{battlePreparation.stage === "loading" ? stagedPresentation.intro : "Magie wird entzündet · erster Frame wird geprüft"}</span>
           )}
           <div className="preparation-progress" aria-label={`${battlePreparation.progress.percent} Prozent geladen`}>
             <i style={{ width: `${battlePreparation.stage === "decoding" ? 100 : battlePreparation.progress.percent}%` }} />
@@ -1024,36 +1037,6 @@ export function App() {
                 </div>
               );
             })}
-          </section>
-
-          <section className="board-controls" aria-label="Zutatenplätze">
-            {presentedBoard.map((item, index) => (
-              <button
-                aria-label={item ? `Platz ${index + 1}: ${itemCopy(item.itemId).name}, Stufe ${item.level}` : `Platz ${index + 1}: leer`}
-                aria-pressed={game.selectedSlot === index}
-                className={game.selectedSlot === index ? "is-selected" : undefined}
-                disabled={Boolean(purchase) || (!item && game.selectedSlot === null)}
-                key={index}
-                onClick={() => handleSelectSlot(index)}
-                type="button"
-              >
-                <span>{item ? FAMILY_COPY[getItemDefinition(item.itemId).family].symbol : index + 1}</span>
-                <small>{item ? ROMAN_LEVEL[item.level] : "leer"}</small>
-              </button>
-            ))}
-            {game.round >= 5 && (
-              <button
-                aria-label={presentedReserve ? `Reserve: ${itemCopy(presentedReserve.itemId).name}, Stufe ${presentedReserve.level}` : "Reserve: leer"}
-                aria-pressed={reserveSelected}
-                className={reserveSelected ? "is-selected reserve-control" : "reserve-control"}
-                disabled={Boolean(purchase)}
-                onClick={handleSelectReserve}
-                type="button"
-              >
-                <span>{presentedReserve ? FAMILY_COPY[getItemDefinition(presentedReserve.itemId).family].symbol : "R"}</span>
-                <small>{presentedReserve ? ROMAN_LEVEL[presentedReserve.level] : "Reserve"}</small>
-              </button>
-            )}
           </section>
 
           {selectedItem && game.selectedSlot !== null && (
@@ -1125,7 +1108,7 @@ export function App() {
                     onClick={() => handleBuy(offer.uid)}
                     type="button"
                   >
-                    <span className="offer-family">{FAMILY_COPY[definition.family].symbol}</span>
+                    <IngredientPortrait itemId={offer.itemId} />
                     <span className="offer-copy">
                       <strong>{offer.bought ? "Verkauft" : copy.name}</strong>
                       <small>{preview ? `Stufe I + Bestand → Stufe ${ROMAN_LEVEL[preview.resultLevel]}${preview.mergeCount > 1 ? ` · ${preview.mergeCount}×` : ""}` : `Stufe I · ${copy.short}`}</small>
@@ -1197,7 +1180,8 @@ export function App() {
             </div>
           </div>
           <div className="combatant enemy-health">
-            <div><strong>{opponentName(opponent.id)}</strong><span>{enemyHp} +{combat?.enemyShield ?? 0}</span></div>
+            <small className="opponent-epithet">{stagedPresentation.title}</small>
+            <div><strong>{opponentName(stagedOpponent.id)}</strong><span>{enemyHp} +{combat?.enemyShield ?? 0}</span></div>
             <div className="health-track"><i style={{ width: hpPercent(enemyHp, battleResult?.enemyMaxHp ?? stagedOpponent.baseHp) }} /></div>
             <CombatStatusStrip
               elapsedMs={combat?.elapsedMs ?? 0}
@@ -1228,6 +1212,7 @@ export function App() {
         <section className="result-panel" role="dialog" aria-modal="true" aria-label="Kampfergebnis">
           <p>{battleResult.winner === "player" ? "KESSEL-SIEG" : battleResult.winner === "enemy" ? "KESSEL GESTÜRZT" : "GLEICHSTAND"}</p>
           <h2>{battleResult.winner === "player" ? "Sauber gebraut!" : battleResult.winner === "enemy" ? "Noch einmal umrühren." : "Beide Kessel dampfen noch."}</h2>
+          <small className="result-opponent">{opponentName(stagedOpponent.id)} · {stagedPresentation.title}</small>
           <div className="result-stats">
             <span>{Math.round(battleResult.duration / 100) / 10}s Kampf</span>
             <span>{battleResult.playerStats.reduce((sum, stat) => sum + stat.totalDamage, 0)} Schaden</span>

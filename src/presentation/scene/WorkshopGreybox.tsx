@@ -12,12 +12,6 @@ import { assetBakeoffMode } from "./assetBakeoff";
 import type { WorkshopSceneState } from "./sceneTypes";
 import { RESERVE_POSITION, SLOT_POSITIONS } from "./workshopLayout";
 
-const OFFER_POSITIONS: readonly Vector3Tuple[] = [
-  [-1.45, 0.47, 3.55],
-  [0, 0.47, 3.55],
-  [1.45, 0.47, 3.55],
-];
-
 function curvePoint(from: Vector3Tuple, to: Vector3Tuple, progress: number): Vector3Tuple {
   const inverse = 1 - progress;
   const controlY = Math.max(from[1], to[1]) + 1.05;
@@ -349,21 +343,6 @@ export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
           </mesh>
         </group>
       )}
-      {scene.offers.map((offer, index) => {
-        const position = OFFER_POSITIONS[index];
-        if (!position || offer.bought) return null;
-        return (
-          <group key={offer.uid} position={position}>
-            <mesh castShadow receiveShadow>
-              <cylinderGeometry args={[0.38, 0.48, 0.13, 12]} />
-              <meshStandardMaterial color="#3f303d" roughness={0.76} />
-            </mesh>
-            <group position={[0, 0.45, 0]} scale={0.55}>
-              <IngredientModel itemId={offer.itemId} level={1} faded />
-            </group>
-          </group>
-        );
-      })}
       {scene.purchase && (
         <PurchaseAnimation key={scene.purchase.id} purchase={scene.purchase} />
       )}

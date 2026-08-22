@@ -4,6 +4,7 @@ import { ACESFilmicToneMapping, PCFShadowMap } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 import { ArenaGreybox } from "./ArenaGreybox";
+import { getOpponentPresentation } from "../content/opponentPresentation";
 import { FixedCamera } from "./FixedCamera";
 import { LightingRig } from "./LightingRig";
 import { productionAssetUrl, ProductionAssetBoundary, type ProductionAssetId } from "./ProductionAsset";
@@ -49,8 +50,8 @@ export function GreyboxStage({
   onSceneReady?: (readinessKey: string) => void;
 }) {
   const quality = getRuntimeQualityProfile();
-  const moorArena = mode === "arena" && arena.opponent.id === "moor-martha";
-  const background = mode === "workshop" ? "#171016" : moorArena ? "#111712" : "#100d17";
+  const arenaPresentation = getOpponentPresentation(arena.opponent.id);
+  const background = mode === "workshop" ? "#171016" : arenaPresentation.background;
   return (
     <Canvas
       className="scene-canvas"
@@ -90,7 +91,7 @@ export function GreyboxStage({
       )}
       <mesh receiveShadow position={[0, -1.15, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[32, 32]} />
-        <meshStandardMaterial color="#1d1722" roughness={1} />
+        <meshStandardMaterial color={mode === "arena" ? arenaPresentation.floor : "#1d1722"} roughness={1} />
       </mesh>
     </Canvas>
   );

@@ -1,6 +1,8 @@
 import type { CampaignId, LegacyFamily, PlayerProgress } from "../../core/types";
 import type { CSSProperties } from "react";
-import { FAMILY_COPY } from "../content/gameText";
+import { GRAND_TOURNAMENT_OPPONENTS } from "../../core/data";
+import { FAMILY_COPY, opponentName } from "../content/gameText";
+import { getOpponentPresentation } from "../content/opponentPresentation";
 
 export function CampaignPicker({
   progress,
@@ -25,6 +27,17 @@ export function CampaignPicker({
             {(["fire", "poison", "guard"] as const).map((family) => (
               <i key={family} style={{ "--family-color": FAMILY_COPY[family].color } as CSSProperties}>{FAMILY_COPY[family].symbol}</i>
             ))}
+          </div>
+          <div className="campaign-roster" aria-label="Acht Gegner des großen Kesselturniers">
+            {GRAND_TOURNAMENT_OPPONENTS.map((opponent, index) => {
+              const presentation = getOpponentPresentation(opponent.id);
+              return (
+                <span key={opponent.id} style={{ "--roster-color": presentation.glow } as CSSProperties} title={`${opponentName(opponent.id)} · ${presentation.title}`}>
+                  <i>{index + 1}</i>
+                  <b>{opponentName(opponent.id)}</b>
+                </span>
+              );
+            })}
           </div>
           <button onClick={() => onStart("grand-tournament")} type="button">Turnier beginnen</button>
         </article>

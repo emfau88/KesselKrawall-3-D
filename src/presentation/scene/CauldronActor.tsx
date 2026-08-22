@@ -8,6 +8,7 @@ import {
   type Vector3Tuple,
 } from "three";
 
+import { getOpponentPresentation } from "../content/opponentPresentation";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import { assetBakeoffMode } from "./assetBakeoff";
 
@@ -40,30 +41,18 @@ const HERO_PROFILE: CauldronVisualProfile = {
   personality: "hero",
 };
 
-const MOOR_PROFILE: CauldronVisualProfile = {
-  body: "#34332b",
-  bodySecondary: "#514b36",
-  metal: "#80674a",
-  eye: "#c9d849",
-  liquid: "#91b640",
-  steam: "#b9d482",
-  personality: "moor",
-};
-
-const RIVAL_PROFILE: CauldronVisualProfile = {
-  body: "#332c3d",
-  bodySecondary: "#51445f",
-  metal: "#8b73a5",
-  eye: "#c28be7",
-  liquid: "#8170cf",
-  steam: "#ded3ec",
-  personality: "rival",
-};
-
 function profileFor(variant: string, accent: string): CauldronVisualProfile {
   if (variant === "player") return { ...HERO_PROFILE, liquid: accent };
-  if (variant === "moor-martha") return MOOR_PROFILE;
-  return { ...RIVAL_PROFILE, liquid: accent };
+  const presentation = getOpponentPresentation(variant);
+  return {
+    body: presentation.body,
+    bodySecondary: presentation.bodySecondary,
+    metal: presentation.metal,
+    eye: presentation.eye,
+    liquid: presentation.liquid,
+    steam: presentation.steam,
+    personality: variant === "moor-martha" ? "moor" : "rival",
+  };
 }
 
 function CharacterFace({ profile }: { profile: CauldronVisualProfile }) {
@@ -257,6 +246,123 @@ function MoorDetails() {
   );
 }
 
+function OpponentRegalia({
+  variant,
+  profile,
+  reaction,
+}: {
+  variant: string;
+  profile: CauldronVisualProfile;
+  reaction: CauldronReaction;
+}) {
+  const animated = useRef<Group>(null);
+  const presentation = getOpponentPresentation(variant);
+  useFrame(({ clock }) => {
+    if (!animated.current) return;
+    const action = reaction === "cast" || reaction === "victory" ? 1 : reaction === "hit" ? 0.5 : 0;
+    const pulse = 1 + Math.sin(clock.elapsedTime * (presentation.regalia === "lightning" ? 7.5 : 1.8)) * (0.025 + action * 0.025);
+    animated.current.scale.setScalar(pulse);
+    animated.current.rotation.y = Math.sin(clock.elapsedTime * 0.55 + variant.length) * 0.035;
+  });
+  if (presentation.regalia === "roots") return null;
+
+  let details;
+  switch (presentation.regalia) {
+    case "sparks":
+      details = (
+        <>
+          {[-1, 0, 1].map((side, index) => (
+            <group key={side} position={[side * 0.32, 1.12 + Math.abs(side) * -0.1, 0.15]} rotation={[0, 0, side * -0.28]}>
+              <mesh scale={[0.72, 1.3 + index * 0.08, 0.72]}><coneGeometry args={[0.13, 0.52, 7]} /><meshBasicMaterial color={index % 2 ? presentation.secondaryGlow : presentation.glow} toneMapped={false} /></mesh>
+              <pointLight color={presentation.glow} intensity={0.7} distance={1.8} />
+            </group>
+          ))}
+          {[-1, 1].map((side) => <mesh key={side} position={[side * 1.02, 0.05, 0.32]} rotation={[Math.PI / 2, 0, side * 0.25]}><torusGeometry args={[0.24, 0.055, 7, 18, Math.PI * 1.35]} /><meshStandardMaterial color={profile.metal} metalness={0.48} roughness={0.42} /></mesh>)}
+        </>
+      );
+      break;
+    case "bastion":
+      details = (
+        <>
+          <mesh castShadow position={[0, -0.22, 1.02]} scale={[0.82, 0.92, 0.28]} rotation={[0, 0, Math.PI / 4]}><boxGeometry args={[0.72, 0.72, 0.16]} /><meshStandardMaterial color={profile.metal} metalness={0.62} roughness={0.32} /></mesh>
+          <mesh position={[0, -0.2, 1.13]} rotation={[0, 0, Math.PI / 4]}><boxGeometry args={[0.28, 0.28, 0.08]} /><meshStandardMaterial color={presentation.glow} emissive={presentation.glow} emissiveIntensity={1.25} /></mesh>
+          {[-1, 1].map((side) => <mesh key={side} castShadow position={[side * 1.02, 0.35, 0.15]} rotation={[0.1, 0, side * -0.45]} scale={[1.2, 0.72, 0.82]}><dodecahedronGeometry args={[0.32, 0]} /><meshStandardMaterial color={profile.metal} metalness={0.5} roughness={0.42} /></mesh>)}
+          <mesh castShadow position={[0, 1.02, 0]} scale={[1.05, 0.34, 0.72]}><cylinderGeometry args={[0.48, 0.72, 0.34, 8]} /><meshStandardMaterial color={profile.bodySecondary} metalness={0.35} roughness={0.52} /></mesh>
+        </>
+      );
+      break;
+    case "lightning":
+      details = (
+        <>
+          {[-1, 1].map((side) => (
+            <group key={side} position={[side * 0.9, 0.62, 0]} rotation={[0, 0, side * -0.16]}>
+              <mesh castShadow><cylinderGeometry args={[0.055, 0.07, 1.22, 8]} /><meshStandardMaterial color={profile.metal} metalness={0.64} roughness={0.28} /></mesh>
+              <mesh position={[0, 0.72, 0]} scale={[0.8, 1.35, 0.8]}><octahedronGeometry args={[0.18, 0]} /><meshBasicMaterial color={side === 1 ? presentation.glow : presentation.secondaryGlow} toneMapped={false} /></mesh>
+              <pointLight color={presentation.glow} intensity={1.1} distance={2.3} position={[0, 0.72, 0]} />
+            </group>
+          ))}
+          <mesh position={[0, 0.1, -1.1]} rotation={[Math.PI / 2, 0, 0]}><torusKnotGeometry args={[0.42, 0.045, 46, 7, 2, 3]} /><meshStandardMaterial color={presentation.glow} emissive={presentation.glow} emissiveIntensity={1.1} /></mesh>
+        </>
+      );
+      break;
+    case "toxin":
+      details = (
+        <>
+          {[-1, 1].map((side) => (
+            <group key={side} position={[side * 0.9, 0.02, 0.42]}>
+              <mesh castShadow><cylinderGeometry args={[0.2, 0.24, 0.72, 10]} /><meshStandardMaterial color="#263126" metalness={0.24} roughness={0.66} /></mesh>
+              <mesh position={[0, 0.05, 0.12]}><cylinderGeometry args={[0.13, 0.15, 0.42, 10]} /><meshStandardMaterial color={presentation.glow} emissive={presentation.glow} emissiveIntensity={0.72} transparent opacity={0.72} /></mesh>
+              <mesh position={[side * -0.18, 0.42, 0]} rotation={[Math.PI / 2, 0, 0]}><torusGeometry args={[0.2, 0.045, 7, 18, Math.PI * 1.4]} /><meshStandardMaterial color={profile.metal} metalness={0.48} roughness={0.42} /></mesh>
+            </group>
+          ))}
+          {[[-0.42, 0.96, 0.18], [0.1, 1.22, -0.05], [0.45, 0.92, 0.12]].map((position, index) => <mesh key={index} position={position as Vector3Tuple}><sphereGeometry args={[0.08 + index * 0.018, 8, 6]} /><meshBasicMaterial color={presentation.glow} toneMapped={false} transparent opacity={0.72} depthWrite={false} /></mesh>)}
+        </>
+      );
+      break;
+    case "stone":
+      details = (
+        <>
+          {[-1, 1].flatMap((side) => [0, 1].map((row) => (
+            <mesh key={`${side}-${row}`} castShadow position={[side * (0.72 + row * 0.08), 0.34 - row * 0.72, 0.7]} rotation={[0, side * -0.24, side * (0.18 + row * 0.1)]} scale={[1.1, 0.62, 0.4]}><boxGeometry args={[0.56, 0.46, 0.22]} /><meshStandardMaterial color={row ? "#756451" : "#94806a"} roughness={0.94} /></mesh>
+          )))}
+          <mesh castShadow position={[0, 1.04, 0.05]} rotation={[0, 0, Math.PI / 4]}><boxGeometry args={[0.72, 0.72, 0.3]} /><meshStandardMaterial color="#806a55" roughness={0.92} /></mesh>
+          <mesh position={[0, 1.04, 0.24]}><octahedronGeometry args={[0.15, 0]} /><meshStandardMaterial color={presentation.glow} emissive={presentation.glow} emissiveIntensity={0.85} /></mesh>
+        </>
+      );
+      break;
+    case "archmage":
+      details = (
+        <>
+          <group position={[0, 1.02, 0.02]}>
+            {[-2, -1, 0, 1, 2].map((index) => <mesh key={index} position={[index * 0.2, Math.abs(index) * -0.07, 0]} rotation={[0, 0, index * -0.14]}><coneGeometry args={[0.11, 0.48 - Math.abs(index) * 0.04, 6]} /><meshStandardMaterial color={profile.metal} metalness={0.62} roughness={0.3} /></mesh>)}
+            <mesh position={[0, 0.28, 0.08]}><octahedronGeometry args={[0.13, 0]} /><meshStandardMaterial color={presentation.glow} emissive={presentation.glow} emissiveIntensity={1.5} /></mesh>
+          </group>
+          {[0, 1, 2].map((index) => <mesh key={index} position={[0, 0.05, -1.18]} rotation={[index * 0.72, index * 0.54, index * 0.9]}><torusGeometry args={[0.62 + index * 0.12, 0.025, 6, 34]} /><meshStandardMaterial color={index === 1 ? presentation.secondaryGlow : presentation.glow} emissive={presentation.glow} emissiveIntensity={0.76} transparent opacity={0.72} /></mesh>)}
+        </>
+      );
+      break;
+    case "champion":
+      details = (
+        <>
+          {[-1, 1].map((side) => <mesh key={side} castShadow position={[side * 0.72, 0.92, 0.05]} rotation={[0, 0, side * -0.65]} scale={[0.75, 1.45, 0.75]}><coneGeometry args={[0.18, 0.78, 7]} /><meshStandardMaterial color={profile.metal} metalness={0.54} roughness={0.36} /></mesh>)}
+          <mesh castShadow position={[0, 1.05, -0.02]} scale={[1.15, 0.34, 0.82]}><cylinderGeometry args={[0.48, 0.7, 0.4, 9]} /><meshStandardMaterial color="#4f2d2a" metalness={0.38} roughness={0.56} /></mesh>
+          <mesh position={[0, 1.18, 0.28]}><octahedronGeometry args={[0.18, 0]} /><meshStandardMaterial color={presentation.secondaryGlow} emissive={presentation.glow} emissiveIntensity={1.42} /></mesh>
+          <mesh position={[0, -0.5, 1.02]} rotation={[0, 0, Math.PI / 2]}><torusGeometry args={[0.72, 0.065, 7, 12, Math.PI]} /><meshStandardMaterial color={profile.metal} metalness={0.62} roughness={0.34} /></mesh>
+        </>
+      );
+      break;
+    default:
+      details = (
+        <>
+          <mesh position={[0, 1.05, 0]} rotation={[Math.PI / 2, 0, 0]}><torusGeometry args={[0.52, 0.055, 7, 24]} /><meshStandardMaterial color={presentation.glow} emissive={presentation.glow} emissiveIntensity={0.8} /></mesh>
+          <mesh position={[0, 1.05, 0.08]}><octahedronGeometry args={[0.16, 0]} /><meshStandardMaterial color={presentation.secondaryGlow} emissive={presentation.glow} emissiveIntensity={1.1} /></mesh>
+        </>
+      );
+  }
+
+  return <group ref={animated}>{details}</group>;
+}
+
 function CauldronAssetFallback({ profile }: { profile: CauldronVisualProfile }) {
   return (
     <group position={[0, 0.22, 0]}>
@@ -427,9 +533,7 @@ export function CauldronActor({
                     </Suspense>
                   </ProductionAssetBoundary>
                 ) : (
-                  <group position={[0, 0, 0.48]}>
-                    <CharacterFace profile={profile} />
-                  </group>
+                  <ExpressiveFace profile={profile} reaction={reaction} reactionKey={reactionKey} />
                 )}
                 {moor && <MoorDetails />}
                 {(hero || moor) && <ExpressiveFace profile={profile} reaction={reaction} reactionKey={reactionKey} />}
@@ -537,6 +641,7 @@ export function CauldronActor({
           </>
         )}
         {hero ? <PlayerBackSigil glow="#62d6e3" metal={profile.metal} /> : null}
+        {!hero ? <OpponentRegalia profile={profile} reaction={reaction} variant={variant} /> : null}
       </group>
     </group>
   );

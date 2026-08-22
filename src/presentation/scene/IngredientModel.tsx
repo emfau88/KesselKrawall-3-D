@@ -80,17 +80,38 @@ function ActivationAura({ family }: { family: keyof typeof FAMILY_COLORS }) {
       </group>
     );
   }
-  return null;
+  if (family === "frost") {
+    return (
+      <group>
+        {[0, 1, 2, 3, 4, 5].map((index) => {
+          const angle = index / 6 * Math.PI * 2;
+          return <mesh key={index} position={[Math.cos(angle) * 0.52, 0.1 + index % 2 * 0.22, Math.sin(angle) * 0.52]} rotation={[0, angle, 0]} scale={[0.44, 1.25, 0.44]}><octahedronGeometry args={[0.1, 0]} /><meshStandardMaterial color={index % 2 ? colors.accent : "#ffffff"} emissive={colors.glow} emissiveIntensity={1.6} transparent opacity={0.82} depthWrite={false} /></mesh>;
+        })}
+        <pointLight color={colors.glow} intensity={1.7} distance={2.2} />
+      </group>
+    );
+  }
+  return (
+    <group>
+      {[0, 1, 2].map((index) => <mesh key={index} rotation={[Math.PI / 2, index * 0.7, index * 0.65]} scale={0.72 + index * 0.28}><torusGeometry args={[0.5, 0.035, 6, 28]} /><meshStandardMaterial color={index === 1 ? "#f2ddff" : colors.accent} emissive={colors.glow} emissiveIntensity={1.4} transparent opacity={0.76 - index * 0.13} depthWrite={false} /></mesh>)}
+      <pointLight color={colors.glow} intensity={1.55} distance={2.15} />
+    </group>
+  );
 }
 
 function LevelDetails({ level, color }: { level: ItemLevel; color: string }) {
   return (
     <group>
       {level > 1 && (
-        <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, -0.35, 0]}>
-          <torusGeometry args={[0.37 + level * 0.035, level === 3 ? 0.04 : 0.025, 6, 28]} />
-          <meshStandardMaterial color={color} emissive={color} emissiveIntensity={level === 3 ? 1.35 : 0.9} />
-        </mesh>
+        <group>
+          {[0, 1].map((ring) => (
+            <mesh key={ring} rotation={[Math.PI / 2, ring * 0.22, 0]} position={[0, -0.35 + ring * 0.035, 0]}>
+              <torusGeometry args={[0.42 + level * 0.045 + ring * 0.08, level === 3 ? 0.045 : 0.034, 6, ring ? 8 : 28]} />
+              <meshStandardMaterial color={ring ? "#fff0bd" : color} emissive={color} emissiveIntensity={level === 3 ? 1.75 : 1.25} transparent opacity={ring ? 0.78 : 1} />
+            </mesh>
+          ))}
+          <pointLight color={color} intensity={level === 3 ? 1.6 : 0.85} distance={1.8} position={[0, 0.1, 0]} />
+        </group>
       )}
       {Array.from({ length: level }, (_, index) => (
         <mesh key={index} position={[(index - (level - 1) / 2) * 0.17, 0.48, 0.38]} rotation={[0, 0, Math.PI / 4]}>
@@ -121,7 +142,7 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
   const startedAt = useRef(0);
   const definition = getItemDefinition(itemId);
   const colors = FAMILY_COLORS[definition.family];
-  const scale = (0.78 + level * 0.1) * (faded ? 0.78 : 1);
+  const scale = (0.78 + level * 0.14) * (faded ? 0.78 : 1);
   const materialProps = { transparent: faded, opacity: faded ? 0.55 : 1 };
 
   useFrame(({ clock }) => {
@@ -149,16 +170,59 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
       rotationZ = action * 0.22;
       offsetZ = action * -0.24;
       scaleY += action * 0.12;
+    } else if (itemId === "dragon-tooth") {
+      rotationX = action * -0.72;
+      offsetZ = action * -0.38;
+      scaleY += action * 0.2;
+    } else if (itemId === "ember-core") {
+      const pulse = action * 0.28;
+      scaleX += pulse;
+      scaleY += pulse;
+      scaleZ += pulse;
+      rotationY += action * Math.PI;
     } else if (itemId === "slime-shroom") {
       scaleX += action * 0.24;
       scaleZ += action * 0.24;
       scaleY -= action * 0.3;
       offsetY -= action * 0.08;
+    } else if (itemId === "nightwing") {
+      offsetY += action * 0.32;
+      rotationZ = Math.sin(elapsed * 18) * action * 0.32;
+      rotationY += action * 0.5;
+    } else if (itemId === "witch-eye") {
+      offsetZ = action * -0.18;
+      scaleX += action * 0.28;
+      scaleY -= action * 0.14;
+    } else if (itemId === "venom-bulb" || itemId === "healing-tuber") {
+      scaleX += action * 0.18;
+      scaleZ += action * 0.18;
+      scaleY -= action * 0.16;
+      offsetY += action * 0.14;
     } else if (itemId === "egg-shell") {
       rotationY += action * Math.PI * 1.2;
       scaleX += action * 0.16;
       scaleZ += action * 0.16;
       offsetY += action * 0.18;
+    } else if (itemId === "gold-spoon" || itemId === "moon-salt" || itemId === "mirror-shard") {
+      rotationY += action * Math.PI * 1.45;
+      offsetY += action * 0.2;
+    } else if (itemId === "ice-bell" || itemId === "echo-bell") {
+      rotationZ = Math.sin(elapsed * 22) * action * 0.38;
+      offsetY += action * 0.16;
+    } else if (itemId === "winter-bloom") {
+      rotationY += action * Math.PI * 1.15;
+      scaleX += action * 0.18;
+      scaleZ += action * 0.18;
+    } else if (itemId === "rime-clock") {
+      rotationY += action * Math.PI * 0.65;
+      rotationZ = action * -0.36;
+    } else if (itemId === "rune-cup") {
+      offsetY += action * 0.3;
+      rotationZ = action * 0.16;
+    } else if (itemId === "time-thread") {
+      rotationX = action * Math.PI * 0.55;
+      rotationY += action * Math.PI * 1.2;
+      offsetY += action * 0.24;
     } else if (definition.family === "frost") {
       rotationY += action * Math.PI * 0.85;
       offsetY += action * 0.16;

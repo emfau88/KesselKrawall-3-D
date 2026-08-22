@@ -3,6 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { Group, MathUtils, type Vector3Tuple } from "three";
 
 import { getItemDefinition } from "../../core/data";
+import { getOpponentPresentation, type SignatureVfx } from "../content/opponentPresentation";
 import type { CombatFrame } from "./sceneTypes";
 
 const EVENT_COLORS = {
@@ -401,9 +402,39 @@ function FlightTrail({ color, poison }: { color: string; poison: boolean }) {
   );
 }
 
-export function BattleVfx({ frame, sourcePosition }: {
+function OpponentSignatureShape({ signature, color, secondary, phase }: {
+  signature: SignatureVfx;
+  color: string;
+  secondary: string;
+  phase: "cast" | "impact";
+}) {
+  const opacity = phase === "cast" ? 0.86 : 0.72;
+  if (signature === "ward") {
+    return <group>{[0, 1, 2].map((index) => <mesh key={index} rotation={[Math.PI / 2, index * 0.32, index * 0.5]} scale={0.72 + index * 0.3}><torusGeometry args={[0.46, 0.045, 7, 6]} /><meshBasicMaterial color={index === 1 ? secondary : color} toneMapped={false} transparent opacity={opacity - index * 0.14} depthWrite={false} /></mesh>)}</group>;
+  }
+  if (signature === "storm") {
+    return <group>{[-2, -1, 0, 1, 2].map((index) => <mesh key={index} position={[index * 0.18, Math.abs(index) * -0.09, 0]} rotation={[0, 0, index * 0.22]} scale={[0.44, 1.5 - Math.abs(index) * 0.12, 0.44]}><octahedronGeometry args={[0.19, 0]} /><meshBasicMaterial color={index % 2 ? secondary : color} toneMapped={false} transparent opacity={opacity} depthWrite={false} /></mesh>)}</group>;
+  }
+  if (signature === "venom" || signature === "spore") {
+    return <group>{Array.from({ length: 7 }, (_, index) => { const angle = index * 2.2; return <mesh key={index} position={[Math.cos(angle) * (0.24 + index * 0.045), Math.sin(index * 1.7) * 0.31, Math.sin(angle) * 0.25]} scale={0.58 + index % 3 * 0.2}>{signature === "spore" ? <dodecahedronGeometry args={[0.12, 0]} /> : <sphereGeometry args={[0.12, 7, 5]} />}<meshBasicMaterial color={index % 2 ? secondary : color} toneMapped={false} transparent opacity={opacity - index * 0.045} depthWrite={false} /></mesh>; })}</group>;
+  }
+  if (signature === "rubble") {
+    return <group>{Array.from({ length: 8 }, (_, index) => { const angle = index / 8 * Math.PI * 2; return <mesh key={index} position={[Math.cos(angle) * 0.48, Math.sin(index * 1.5) * 0.28, Math.sin(angle) * 0.48]} rotation={[index * 0.4, index * 0.7, index * 0.3]}><boxGeometry args={[0.19, 0.19, 0.19]} /><meshBasicMaterial color={index % 2 ? secondary : color} toneMapped={false} transparent opacity={opacity} depthWrite={false} /></mesh>; })}</group>;
+  }
+  if (signature === "arcane") {
+    return <group>{[0, 1, 2, 3].map((index) => <mesh key={index} rotation={[index % 2 ? Math.PI / 2 : 0, index * 0.64, index * 0.8]} scale={0.7 + index * 0.23}><torusGeometry args={[0.42, 0.032, 6, index % 2 ? 7 : 28]} /><meshBasicMaterial color={index % 2 ? secondary : color} toneMapped={false} transparent opacity={opacity - index * 0.11} depthWrite={false} /></mesh>)}</group>;
+  }
+  if (signature === "rage" || signature === "cinder") {
+    const count = signature === "rage" ? 10 : 7;
+    return <group>{Array.from({ length: count }, (_, index) => { const angle = index / count * Math.PI * 2; return <mesh key={index} position={[Math.cos(angle) * 0.46, Math.sin(index * 1.8) * 0.19, Math.sin(angle) * 0.46]} rotation={[Math.sin(angle) * 0.55, angle, Math.cos(angle) * 0.55]} scale={[0.52, signature === "rage" ? 1.65 : 1.25, 0.52]}><coneGeometry args={[0.16, 0.55, 6]} /><meshBasicMaterial color={index % 2 ? secondary : color} toneMapped={false} transparent opacity={opacity} depthWrite={false} /></mesh>; })}</group>;
+  }
+  return <group>{[0, 1, 2, 3, 4, 5].map((index) => { const angle = index / 6 * Math.PI * 2; return <mesh key={index} position={[Math.cos(angle) * 0.45, 0, Math.sin(angle) * 0.45]} scale={[0.52, 1.35, 0.52]}><octahedronGeometry args={[0.18, 0]} /><meshBasicMaterial color={index % 2 ? secondary : color} toneMapped={false} transparent opacity={opacity} depthWrite={false} /></mesh>; })}</group>;
+}
+
+export function BattleVfx({ frame, sourcePosition, opponentId }: {
   frame: CombatFrame;
   sourcePosition?: Vector3Tuple;
+  opponentId?: string;
 }) {
   const projectile = useRef<Group>(null);
   const trail = useRef<Group>(null);
@@ -413,6 +444,8 @@ export function BattleVfx({ frame, sourcePosition }: {
   const event = frame.event;
   if (!event) return null;
 
+  const opponentPresentation = getOpponentPresentation(opponentId ?? "rival");
+  const enemySignature = event.actor === "enemy";
   const color = eventColor(frame);
   const motion = event.sourceItemId ? ITEM_MOTION[event.sourceItemId] ?? DEFAULT_MOTION : DEFAULT_MOTION;
   const playerPoint: Vector3Tuple = [-0.28, 2.05, 4.02];
@@ -474,6 +507,7 @@ export function BattleVfx({ frame, sourcePosition }: {
   return (
     <group>
       <group ref={anticipation} visible={false}>
+        {enemySignature && <OpponentSignatureShape color={opponentPresentation.glow} phase="cast" secondary={opponentPresentation.secondaryGlow} signature={opponentPresentation.signature} />}
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.48, 0.045, 7, event.kind === "shield" ? 6 : 28]} />
           <meshBasicMaterial color={color} toneMapped={false} transparent opacity={0.9} depthWrite={false} />
@@ -493,6 +527,7 @@ export function BattleVfx({ frame, sourcePosition }: {
         <pointLight color={color} intensity={1.3} distance={2.4} />
       </group>
       <group ref={impact} visible={false}>
+        {enemySignature && <OpponentSignatureShape color={opponentPresentation.glow} phase="impact" secondary={opponentPresentation.secondaryGlow} signature={opponentPresentation.signature} />}
         <ImpactShape color={color} itemId={event.sourceItemId} kind={event.kind} />
         <pointLight color={color} intensity={1.75} distance={3.2} />
       </group>

@@ -11,11 +11,11 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
-![Sichtbare Verschmelzung zweier Zutaten zu Stufe II](docs/screenshots/workshop-merge.jpg)
+![Aufgeräumte Hexenwerkbank mit echten Zutatenporträts im Kaufband](docs/screenshots/workshop-desktop.png)
 
 <p align="center">
-  <img src="docs/screenshots/arena-combat-feedback.jpg" alt="Kampf mit klarer Schadenszahl und freier Effektzone" width="64%">
-  <img src="docs/screenshots/workshop-mobile-landscape.png" alt="Mobile Werkstatt" width="34%">
+  <img src="docs/screenshots/arena-schild-siggi.png" alt="Schild-Siggi in seiner Runenbastion mit freier HUD-Hierarchie" width="64%">
+  <img src="docs/screenshots/workshop-mobile-portrait.png" alt="Aufgeräumte Mobile-Werkstatt im Portraitformat" width="34%">
 </p>
 
 ## Aktueller Stand
@@ -43,6 +43,15 @@ Sumpf-Ritualarena, reaktionsfähige Kesselgesichter, große Zutaten mit echten
 Cooldown-Ringen, item-spezifische Flug- und Klangprofile für alle 20 Zutaten,
 eine gestufte K.-o.-Inszenierung und eine Ergebnis-Chronik, die Schaden,
 Schild, Heilung, Gift und Auslösungen pro Zutat aufschlüsselt.
+
+P2 rollt diesen Standard über die komplette erste Kampagne aus: Alle acht
+Gegner besitzen nun charakteristische Kessel-Regalia, Arenamotive,
+Farbdramaturgie, Signature-VFX und eigene Audioakzente. Der Shop zeigt echte,
+individuelle Zutatenporträts statt Familien-Platzhaltern und verzichtet auf die
+doppelte Angebotsdarstellung vor der Werkbank. Deutlich größere Modelle,
+Runenringe und Stufensteine unterscheiden Level II und III dauerhaft. Im Kampf
+haben Lebensleisten, Uhr, Effektbahn und Cooldowns Vorrang; Ressourcen und
+Werkstattsteuerung werden auf Desktop und Mobile konsequent ausgeblendet.
 
 Käufe werden als abgeschlossene Präsentationstransaktion gezeigt: Flug,
 Landung, jede Stufe einer Merge-Kaskade und erst danach die endgültige
@@ -81,6 +90,7 @@ und die 2D-Sprite-Komposition nicht portiert.
 - [Mobile- und Performance-QA](docs/MOBILE_AND_PERFORMANCE_QA.md)
 - [Production-Art-Review](docs/PRODUCTION_ART_REVIEW.md)
 - [P1: Moor-Martha Golden Encounter](docs/P1_GOLDEN_ENCOUNTER.md)
+- [P2: Golden-Encounter-Rollout des großen Kesselturniers](docs/P2_GRAND_TOURNAMENT_ROLLOUT.md)
 - [Production-Art-Referenzen](docs/reference-art/README.md)
 
 ## Lokale Checks

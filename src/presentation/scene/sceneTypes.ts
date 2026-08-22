@@ -6,7 +6,6 @@ import type {
   ItemLevel,
   MergeStep,
   OpponentDefinition,
-  ShopOffer,
 } from "../../core/types";
 import type { CombatBeat, CombatStatusSnapshot } from "../combat/combatPresentation";
 
@@ -43,7 +42,6 @@ export interface CombatFrame {
 
 export interface WorkshopSceneState {
   readonly board: Board;
-  readonly offers: readonly ShopOffer[];
   readonly selectedSlot: number | null;
   readonly reserve: import("../../core/types").ItemInstance | null;
   readonly reserveUnlocked: boolean;

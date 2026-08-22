@@ -35,6 +35,8 @@ export interface AudioPlayOptions {
   readonly emphasis?: "ambient" | "standard" | "hero";
   readonly gainScale?: number;
   readonly playbackRateScale?: number;
+  readonly opponentId?: string;
+  readonly enemyCast?: boolean;
 }
 
 interface ItemAudioProfile {
@@ -127,6 +129,17 @@ const ITEM_AUDIO_PROFILES: Readonly<Record<string, ItemAudioProfile>> = {
   "echo-bell": { rate: 0.88, gain: 1.08, accent: "echo", accentDelayMs: 152 },
   "rune-cup": { rate: 0.9, gain: 1.02, accent: "shield", accentDelayMs: 126 },
   "time-thread": { rate: 0.74, gain: 1.12, accent: "echo", accentDelayMs: 178 },
+};
+
+const OPPONENT_AUDIO_PROFILES: Readonly<Record<string, ItemAudioProfile>> = {
+  zischbert: { rate: 1.18, gain: 0.9, accent: "fire", accentDelayMs: 54 },
+  "moor-martha": { rate: 0.83, gain: 1.06, accent: "poison", accentDelayMs: 126 },
+  "schild-siggi": { rate: 0.78, gain: 1.12, accent: "shield", accentDelayMs: 138 },
+  "knister-klara": { rate: 1.1, gain: 0.98, accent: "echo", accentDelayMs: 62 },
+  "tox-toni": { rate: 0.72, gain: 1.12, accent: "poison", accentDelayMs: 164 },
+  "broesel-berta": { rate: 0.67, gain: 1.18, accent: "damage", accentDelayMs: 152 },
+  "meisterin-mirea": { rate: 0.91, gain: 1.08, accent: "echo", accentDelayMs: 118 },
+  grosskessel: { rate: 0.62, gain: 1.24, accent: "boss", accentDelayMs: 112 },
 };
 
 const SCENE_TRACKS: Readonly<Record<AudioScene, "menu" | "battle" | "boss" | null>> = {
@@ -243,18 +256,23 @@ class AudioDirector {
 
   playCombat(cue: SoundCue, itemId: string | undefined, options: AudioPlayOptions = {}): void {
     const profile = itemId ? ITEM_AUDIO_PROFILES[itemId] : undefined;
+    const opponentProfile = options.enemyCast && options.opponentId
+      ? OPPONENT_AUDIO_PROFILES[options.opponentId]
+      : undefined;
     this.play(cue, {
       ...options,
-      gainScale: (options.gainScale ?? 1) * (profile?.gain ?? 1),
-      playbackRateScale: (options.playbackRateScale ?? 1) * (profile?.rate ?? 1),
+      gainScale: (options.gainScale ?? 1) * (profile?.gain ?? 1) * (opponentProfile?.gain ?? 1),
+      playbackRateScale: (options.playbackRateScale ?? 1) * (profile?.rate ?? 1) * (opponentProfile?.rate ?? 1),
     });
-    if (!profile?.accent || profile.accent === cue) return;
-    window.setTimeout(() => this.play(profile.accent as SoundCue, {
+    const accent = opponentProfile?.accent ?? profile?.accent;
+    if (!accent || accent === cue) return;
+    const accentDelay = opponentProfile?.accentDelayMs ?? profile?.accentDelayMs ?? 100;
+    window.setTimeout(() => this.play(accent, {
       ...options,
       emphasis: options.emphasis === "hero" ? "hero" : "ambient",
-      gainScale: (options.gainScale ?? 1) * 0.48,
-      playbackRateScale: profile.rate,
-    }), profile.accentDelayMs ?? 100);
+      gainScale: (options.gainScale ?? 1) * (options.enemyCast ? 0.58 : 0.48),
+      playbackRateScale: opponentProfile?.rate ?? profile?.rate ?? 1,
+    }), accentDelay);
   }
 
   private ensureContext(): AudioContext {
