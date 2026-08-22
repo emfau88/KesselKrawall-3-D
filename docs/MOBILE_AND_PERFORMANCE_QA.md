@@ -76,7 +76,8 @@ PCF-Filtering und 1024er Shadowmaps.
 - Phase-2-Browsermatrix mit `legacy`, `ecosystem` und `golden`: bestanden
 - Workshop mit drei belegten Slots, Moor-Martha sowie Fire-/Poison-VFX:
   bestanden
-- Öffentlicher Pages-Smoke-Test mit Hero-GLB-Load, Kauf, Kampfstart und Pause:
-  bestanden (`c19e502`)
+- Öffentlicher Pages-Smoke-Test mit Asset-Load, verzögertem Kauf, Merge,
+  Platzierungsbuff, Kampfzahlen, Poison-Badge sowie Portrait-/Landscape-Layout:
+  bestanden (Runtime-Stand `6e0f273`)
 - Physischer Mobile-Smoketest nach Deployment: empfohlen, insbesondere für
   iOS-Audiofreigabe, Android-Browserleisten und gerätespezifische Safe Areas
