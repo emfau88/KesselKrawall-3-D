@@ -96,5 +96,9 @@ wiederverwendet.
 - Öffentlicher Pages-Smoke-Test mit Asset-Load, verzögertem Kauf, Merge,
   Platzierungsbuff, Kampfzahlen, Poison-Badge sowie Portrait-/Landscape-Layout:
   bestanden (Runtime-Stand `6e0f273`)
+- Öffentlicher P0-Pages-Smoke-Test: Run 12 erfolgreich; echtes Audio wird
+  ausgeliefert, das Preparation-Gate ist vor der Kampfuhr sichtbar und gibt
+  das Kampf-HUD erst nach dem Arenaframe frei; keine Browserfehler
+  (Runtime-Stand `f77276d`)
 - Physischer Mobile-Smoketest nach Deployment: empfohlen, insbesondere für
   iOS-Audiofreigabe, Android-Browserleisten und gerätespezifische Safe Areas
