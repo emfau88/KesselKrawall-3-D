@@ -8,6 +8,9 @@ test-results/
 Thumbs.db
 *.local
 __pycache__/
+.tmp-edge-qa/
+.tmp-qa/
+docs/qa/current/
 KayKit_*_FREE.zip
 *MegaKit[[]Standard[]].zip
 art/blender/previews/

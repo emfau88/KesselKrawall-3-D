@@ -1,6 +1,6 @@
 # Mobile- und Performance-QA
 
-Stand: 21. August 2026
+Stand: 22. August 2026
 
 ## Unterstützte Darstellung
 
@@ -13,6 +13,9 @@ Sie funktioniert mit Maus, Tastatur und Touch in Portrait und Landscape.
 - Der Portrait-Kampf nutzt eine vertikale Duellachse mit Gegner oben,
   freier VFX-Zone und Spieler-Rückansicht unten; Utility-Schalter weichen an
   den unteren Rand aus und überdecken keine Lebensbalken.
+- Im kompakten Kampf verschwinden nicht notwendige Titelpaneele. Runwerte und
+  Utilities sitzen in den unteren Safe Areas, während die Kamera Arena,
+  Publikum, Zutaten und die vollständige Projektilbahn freihält.
 - Slotsteuerung liegt zusätzlich als semantische DOM-Schaltflächen vor.
 - Alle primären Touchziele sind bei grober Zeigereingabe mindestens 44×44 CSS-Pixel.
 - `env(safe-area-inset-*)` hält HUD und Aktionen aus Displayausschnitten heraus.
@@ -37,19 +40,19 @@ Sie funktioniert mit Maus, Tastatur und Touch in Portrait und Landscape.
 ## Build-Budget
 
 Nach Lazy Loading, expliziter Vendor-Aufteilung und Blender-/KayKit-Integration
-(Produktionsbuild vom 21.08.2026):
+(Produktionsbuild vom 22.08.2026):
 
 | Chunk | minifiziert | gzip | Ladezeitpunkt |
 |---|---:|---:|---|
-| App/Core/UI | ca. 242 KB | ca. 76 KB | initial |
+| App/Core/UI | ca. 253 KB | ca. 78,8 KB | initial |
 | R3F-Laufzeit | ca. 169 KB | ca. 54 KB | mit 3D-Bühne |
 | Three.js | ca. 768 KB | ca. 197 KB | mit 3D-Bühne, langfristig cachebar |
-| eigene 3D-Szene | ca. 78 KB | ca. 16,6 KB | mit 3D-Bühne |
-| CSS | ca. 22 KB | ca. 5,6 KB | initial |
+| eigene 3D-Szene | ca. 84,6 KB | ca. 18,1 KB | mit 3D-Bühne |
+| CSS | ca. 29,6 KB | ca. 7,1 KB | initial |
 
-Der initiale JavaScript-Chunk bleibt dadurch bei ungefähr 242 KB. Der aktuelle
-3D-Szenen-Chunk liegt nach dem Combat-Staging-Pass bei rund 78 KB beziehungsweise
-16,6 KB gzip. KayKit bleibt als A/B-Fallback mit gemeinsamem 17-KB-Atlas
+Der initiale JavaScript-Chunk bleibt dadurch bei ungefähr 253 KB. Der aktuelle
+3D-Szenen-Chunk liegt nach dem Combat-Feedback-Pass bei rund 84,6 KB beziehungsweise
+18,1 KB gzip. KayKit bleibt als A/B-Fallback mit gemeinsamem 17-KB-Atlas
 enthalten. Die Quaternius-Auswahl umfasst 22 Modelle und 8,20 MiB
 mobiloptimierte Runtime-Dateien über alle drei Pakete; pro Szene werden nur die
 referenzierten Modelle und gemeinsamen Texturen geladen. Zwei kleine originale
@@ -60,11 +63,16 @@ PCF-Filtering und 1024er Shadowmaps.
 ## Verifikation
 
 - TypeScript strict: Pflicht
-- Vitest Core/Integration: Pflicht
+- Vitest Core/Integration: 43 Tests in 11 Dateien bestanden
 - Produktionsbuild mit relativem `base`: Pflicht
 - Third-Party-Lizenzbericht im Build: Pflicht
 - Browser-Smoke-Test Shop → Kauf → Arena → Ergebnis: bestanden
 - 1280×720 Desktop, 844×390 Landscape und 390×844 Portrait: bestanden
+- Automatisierter CDP-Durchlauf validiert Kaufverzögerung, Merge-Zwischenstand,
+  endgültige Stufe II, sichtbare Kampfzahl, Poison-Statusbadge,
+  Platzierungsbuff-Details und Layoutrechtecke: bestanden
+- Mobile Portrait und Landscape: kein horizontaler oder vertikaler Overflow;
+  HUD, Runwerte und Utilities bleiben vollständig innerhalb des Viewports
 - Phase-2-Browsermatrix mit `legacy`, `ecosystem` und `golden`: bestanden
 - Workshop mit drei belegten Slots, Moor-Martha sowie Fire-/Poison-VFX:
   bestanden

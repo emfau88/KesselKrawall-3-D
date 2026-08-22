@@ -89,6 +89,13 @@ BuyOffer
 Die 3D-Schicht darf daraus Flugbahn, Landung, Kesselreaktion und Merge-Impuls
 ableiten. Sie darf Gold, Zielslot oder Merge-Level nicht neu berechnen.
 
+Während dieser Präsentation projiziert `getPresentedInventory` den Zustand vor
+und nach dem bereits atomar abgeschlossenen Core-Command. In der Flug- und
+Landungsphase bleibt der alte Bestand sichtbar; aktive Merge-Teilnehmer werden
+während der Verschmelzung ausgeblendet; erst die Reveal-Phase zeigt das
+Endergebnis. Eingaben, die eine zweite Inventartransaktion auslösen könnten,
+bleiben bis dahin gesperrt.
+
 ### Combat Events
 
 `simulateBattle` löst den Kampf vollständig und deterministisch auf. Events
@@ -106,6 +113,11 @@ Audio: sound cue with throttling
 Ein separater Playback-Controller liest den bereits feststehenden Eventstream.
 Pause, Slowdown, Kameraimpulse und Animationsdauer verändern niemals die
 Simulationszeit oder das Ergebnis.
+
+Die Combat-Presentation rekonstruiert aus demselben Eventstream pro Beat einen
+Status-Snapshot und gebündelte Floating Numbers. Beides ist reine Ableitung:
+DOM-HUD, Kesselanimation, Audio und VFX konsumieren identische Events, ohne
+Schaden, Schild, Gift oder Buff-Dauern selbst zu simulieren.
 
 ### Daten und Texte
 

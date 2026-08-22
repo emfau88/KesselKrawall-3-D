@@ -11,10 +11,10 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
-![Production-Werkstatt](docs/screenshots/workshop-desktop.png)
+![Sichtbare Verschmelzung zweier Zutaten zu Stufe II](docs/screenshots/workshop-merge.jpg)
 
 <p align="center">
-  <img src="docs/screenshots/arena-moor-martha.png" alt="Kampf gegen Moor-Martha" width="64%">
+  <img src="docs/screenshots/arena-combat-feedback.jpg" alt="Kampf mit klarer Schadenszahl und freier Effektzone" width="64%">
   <img src="docs/screenshots/workshop-mobile-landscape.png" alt="Mobile Werkstatt" width="34%">
 </p>
 
@@ -36,6 +36,14 @@ Blender-5.2- und Asset-Aufbereitungspipeline liegt unter `art/blender/` und
 `scripts/`. Hinzu kommen bewegtes Alchemistenpublikum, Ambient-Magie, klar
 getrennte Cast-/Travel-/Impact-Phasen sowie ein Fantasy-UI-Pass mit dunklen
 Schmiedepaneelen und Messingkanten.
+
+Käufe werden als abgeschlossene Präsentationstransaktion gezeigt: Flug,
+Landung, jede Stufe einer Merge-Kaskade und erst danach die endgültige
+Inventaransicht. Zutaten tragen sichtbare Stufenmarker; ausgewählte Zutaten
+zeigen Takt, Wirkung und ihre ausgehenden beziehungsweise empfangenen Buffs
+direkt auf der Werkbank. Im Kampf erscheinen gebündelte Schadens-, Heilungs-,
+Schild- und Statuseinblendungen am betroffenen Kessel sowie kompakte
+Buff-/Debuff-Badges in den Lebensleisten.
 
 Zusätzlich enthalten sind Kampagnenwahl, Reservebedienung, gespeicherter
 Shop-Run und Kampagnenfortschritt, Kurzeinführung, synthetisierte Web-Audio-SFX,
