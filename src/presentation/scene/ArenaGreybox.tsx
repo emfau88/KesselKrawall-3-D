@@ -5,6 +5,7 @@ import { Group, Mesh, type Vector3Tuple } from "three";
 import { getItemDefinition } from "../../core/data";
 import type { ItemInstance } from "../../core/types";
 import { getAllPlacementInfluences } from "../shop/itemInsights";
+import { getIngredientCooldownStates, type IngredientCooldownState } from "../combat/ingredientCooldowns";
 import { CauldronActor } from "./CauldronActor";
 import type { CauldronReaction } from "./CauldronActor";
 import { BattleVfx } from "./BattleVfx";
@@ -59,12 +60,14 @@ function IngredientPedestal({
   animationKey,
   side,
   buffed,
+  cooldown,
 }: {
   item: ItemInstance | null;
   active: boolean;
   animationKey: number;
   side: "player" | "enemy";
   buffed: boolean;
+  cooldown: IngredientCooldownState | null;
 }) {
   const dial = useRef<Group>(null);
   const pulse = useRef<Group>(null);
@@ -83,7 +86,7 @@ function IngredientPedestal({
   });
 
   return (
-    <group scale={side === "player" ? 0.66 : 0.56}>
+    <group scale={side === "player" ? 0.74 : 0.64}>
       <mesh castShadow receiveShadow position={[0, -0.36, 0]}>
         <cylinderGeometry args={[0.68, 0.8, 0.22, 12]} />
         <meshStandardMaterial color={side === "player" ? "#342c31" : "#2c2834"} metalness={0.24} roughness={0.72} />
@@ -92,6 +95,24 @@ function IngredientPedestal({
         <torusGeometry args={[0.55, active ? 0.055 : 0.035, 7, 32]} />
         <meshStandardMaterial color={glow} emissive={glow} emissiveIntensity={active ? 1.8 : item ? 0.64 : 0.2} transparent opacity={item ? 0.9 : 0.34} />
       </mesh>
+      {item && cooldown && (
+        <group position={[0, -0.145, 0]} rotation={[-Math.PI / 2, 0, -Math.PI / 2]}>
+          <mesh>
+            <torusGeometry args={[0.7, 0.035, 6, 34]} />
+            <meshBasicMaterial color="#17121b" transparent opacity={0.76} depthWrite={false} />
+          </mesh>
+          <mesh>
+            <torusGeometry args={[0.7, active ? 0.075 : 0.052, 7, 40, Math.max(0.02, Math.PI * 2 * cooldown.progress)]} />
+            <meshBasicMaterial color={glow} toneMapped={false} transparent opacity={active ? 1 : 0.9} depthWrite={false} />
+          </mesh>
+          <group rotation={[0, 0, Math.PI * 2 * cooldown.progress]}>
+            <mesh position={[0.7, 0, 0]}>
+              <sphereGeometry args={[cooldown.ready ? 0.11 : 0.072, 8, 6]} />
+              <meshBasicMaterial color={cooldown.ready ? "#fff2b4" : glow} toneMapped={false} />
+            </mesh>
+          </group>
+        </group>
+      )}
       <group ref={dial} position={[0, -0.2, 0]}>
         {Array.from({ length: 8 }, (_, index) => {
           const angle = index * Math.PI / 4;
@@ -134,6 +155,12 @@ function ArenaIngredients({ scene, side }: {
   side: "player" | "enemy";
 }) {
   const board = side === "player" ? scene.board : scene.opponent.board;
+  const cooldowns = getIngredientCooldownStates(
+    board,
+    scene.events,
+    side,
+    scene.combat?.elapsedMs ?? 0,
+  );
   const buffedSlots = new Set(
     getAllPlacementInfluences(board)
       .filter((influence) => influence.sourceSlot !== influence.targetSlot)
@@ -154,6 +181,7 @@ function ArenaIngredients({ scene, side }: {
               item={item}
               side={side}
               buffed={buffedSlots.has(index)}
+              cooldown={cooldowns[index] ?? null}
             />
           </group>
         );
@@ -312,6 +340,131 @@ function MoorMiasma() {
           <meshStandardMaterial color={index % 2 ? "#78923d" : "#a1bd54"} emissive="#536b2d" emissiveIntensity={0.28} transparent opacity={0.09} depthWrite={false} />
         </mesh>
       ))}
+    </group>
+  );
+}
+
+function MoorSanctum({ reactionKey, detail = 1 }: { reactionKey: number; detail?: number }) {
+  const spores = useRef<Group>(null);
+  const pools = useRef<Group>(null);
+  const lastReaction = useRef(reactionKey);
+  const reactedAt = useRef(0);
+  useFrame(({ clock }) => {
+    if (lastReaction.current !== reactionKey) {
+      lastReaction.current = reactionKey;
+      reactedAt.current = clock.elapsedTime;
+    }
+    spores.current?.children.forEach((spore, index) => {
+      const baseY = Number(spore.userData.baseY ?? 1);
+      spore.position.y = baseY + Math.sin(clock.elapsedTime * (1.05 + index * 0.07) + index) * 0.28;
+      spore.position.x += Math.sin(clock.elapsedTime * 0.42 + index * 1.7) * 0.0009;
+      const pulse = 0.7 + Math.sin(clock.elapsedTime * 2.2 + index) * 0.25;
+      spore.scale.setScalar(pulse);
+    });
+    pools.current?.children.forEach((pool, index) => {
+      pool.rotation.z = clock.elapsedTime * (index % 2 ? -0.08 : 0.1);
+      const hitPulse = Math.max(0, 1 - (clock.elapsedTime - reactedAt.current) * 2.4);
+      pool.scale.setScalar(1 + Math.sin(clock.elapsedTime * 1.2 + index) * 0.035 + hitPulse * 0.08);
+    });
+  });
+  const sporeCount = Math.max(10, Math.round(18 * detail));
+  return (
+    <group>
+      <group ref={pools} position={[0, -0.115, -1.1]}>
+        {([
+          [-4.85, 0, -1.65, 1.05],
+          [4.72, 0, -1.5, 0.86],
+          [-3.52, 0, -3.9, 0.72],
+          [3.62, 0, -4.08, 0.82],
+        ] as const).map(([x, y, z, scale], index) => (
+          <group key={index} position={[x, y, z]} scale={scale}>
+            <mesh rotation={[-Math.PI / 2, 0, 0]}>
+              <circleGeometry args={[0.72, 20]} />
+              <meshStandardMaterial color="#27341f" emissive="#698d2f" emissiveIntensity={0.62} metalness={0.05} roughness={0.22} transparent opacity={0.84} />
+            </mesh>
+            <mesh position={[0, 0.015, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+              <torusGeometry args={[0.48, 0.025, 6, 28]} />
+              <meshBasicMaterial color="#b9e85d" toneMapped={false} transparent opacity={0.42} depthWrite={false} />
+            </mesh>
+          </group>
+        ))}
+      </group>
+      <group ref={spores}>
+        {Array.from({ length: sporeCount }, (_, index) => {
+          const angle = index * 2.399;
+          const radius = 3.3 + (index % 5) * 0.66;
+          const y = 0.55 + (index % 7) * 0.38;
+          return (
+            <mesh key={index} position={[Math.cos(angle) * radius, y, -2.25 + Math.sin(angle) * 2.3]} userData={{ baseY: y }}>
+              <sphereGeometry args={[0.035 + (index % 3) * 0.012, 6, 5]} />
+              <meshBasicMaterial color={index % 4 === 0 ? "#fff0a5" : "#b8ef56"} toneMapped={false} transparent opacity={0.88} depthWrite={false} />
+            </mesh>
+          );
+        })}
+      </group>
+      {[-1, 1].map((side) => (
+        <group key={side} position={[side * 2.5, 2.85, -5.34]} rotation={[0, 0, side * -0.16]}>
+          <mesh castShadow rotation={[0, 0, side * 0.48]}>
+            <torusGeometry args={[1.62, 0.16, 7, 26, Math.PI * 0.76]} />
+            <meshStandardMaterial color="#3d3025" roughness={0.96} />
+          </mesh>
+          <mesh position={[side * -0.62, -0.82, 0.08]}>
+            <sphereGeometry args={[0.18, 8, 6]} />
+            <meshStandardMaterial color="#9fc847" emissive="#79a936" emissiveIntensity={1.35} />
+          </mesh>
+          <pointLight color="#a9df4e" distance={4.4} intensity={2.8} position={[side * -0.62, -0.82, 0.16]} />
+        </group>
+      ))}
+      <group position={[0, 0.28, -4.12]}>
+        {Array.from({ length: 7 }, (_, index) => {
+          const angle = index / 7 * Math.PI * 2;
+          return (
+            <mesh key={index} position={[Math.cos(angle) * 1.42, 0.1 + (index % 2) * 0.12, Math.sin(angle) * 0.86]} rotation={[0, -angle, 0]}>
+              <coneGeometry args={[0.16, 0.82, 6]} />
+              <meshStandardMaterial color="#574a3b" emissive={index % 2 ? "#536b2d" : "#27351f"} emissiveIntensity={0.4} roughness={0.9} />
+            </mesh>
+          );
+        })}
+      </group>
+    </group>
+  );
+}
+
+function OutcomeVfx({ outcome }: { outcome: NonNullable<ArenaSceneState["outcome"]> }) {
+  const effect = useRef<Group>(null);
+  const startedAt = useRef<number | null>(null);
+  const defeated = outcome === "player" ? PLAYER_POSITION : ENEMY_POSITION;
+  useFrame(({ clock }) => {
+    if (!effect.current) return;
+    startedAt.current ??= clock.elapsedTime;
+    const elapsed = clock.elapsedTime - startedAt.current;
+    effect.current.children.forEach((child, index) => {
+      if (index === 0) {
+        const scale = Math.min(3.6, 0.3 + elapsed * 3.1);
+        child.scale.set(scale, scale, scale);
+      } else {
+        child.position.y = 0.55 + ((elapsed * (0.48 + index * 0.055) + index * 0.21) % 2.4);
+        child.rotation.y = elapsed * (0.8 + index * 0.1);
+        const orbit = 0.22 + index * 0.055;
+        child.position.x = Math.cos(elapsed * 1.9 + index) * orbit;
+        child.position.z = Math.sin(elapsed * 1.9 + index) * orbit;
+      }
+    });
+  });
+  if (outcome === "draw") return null;
+  return (
+    <group ref={effect} position={[defeated[0], 0.35, defeated[2]]}>
+      <mesh rotation={[-Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.62, 0.055, 7, 36]} />
+        <meshBasicMaterial color="#f5d78b" toneMapped={false} transparent opacity={0.72} depthWrite={false} />
+      </mesh>
+      {Array.from({ length: 9 }, (_, index) => (
+        <mesh key={index}>
+          <octahedronGeometry args={[0.07 + index % 3 * 0.018, 0]} />
+          <meshBasicMaterial color={index % 2 ? "#c3ef68" : "#f7d98a"} toneMapped={false} transparent opacity={0.78} depthWrite={false} />
+        </mesh>
+      ))}
+      <pointLight color="#f2c66f" intensity={4.2} distance={5.4} position={[0, 1.1, 0]} />
     </group>
   );
 }
@@ -624,6 +777,7 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
       <ArenaPortal moor={moor} />
       <TournamentAudience detail={quality.ambientDetail} moor={moor} reactionKey={eventKey} />
       <ArenaAmbientLife detail={quality.ambientDetail} moor={moor} />
+      {moor && <MoorSanctum detail={quality.ambientDetail} reactionKey={eventKey} />}
       <ArenaChandelier />
       <mesh castShadow position={[0, 3.85, -5.5]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[1.05, 0.16, 8, 32, Math.PI]} />
@@ -675,6 +829,7 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
       {scene.combat?.event && (
         <BattleVfx key={scene.combat.eventIndex} frame={scene.combat} sourcePosition={sourcePosition} />
       )}
+      {scene.outcome && <OutcomeVfx outcome={scene.outcome} />}
       <RunePillar side={-1} />
       <RunePillar side={1} />
       <ArenaRunes moor={moor} reactionKey={eventKey} />

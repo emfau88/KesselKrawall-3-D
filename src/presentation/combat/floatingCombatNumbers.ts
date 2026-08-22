@@ -1,4 +1,5 @@
 import type { CombatEvent, Side } from "../../core/types";
+import { itemCopy } from "../content/gameText";
 
 export type FloatingCombatNumberType =
   | "damage"
@@ -16,6 +17,7 @@ export interface FloatingCombatNumber {
   readonly type: FloatingCombatNumberType;
   readonly value: number;
   readonly positive: boolean;
+  readonly sourceItemId?: string;
   readonly hitCount: number;
   readonly createdAt: number;
   readonly lastHitAt: number;
@@ -53,6 +55,7 @@ export function createFloatingCombatNumbers(
       type,
       value: event.amount,
       positive: event.code === "item.poison" || event.code === "status.burnApplied" || event.kind === "heal" || event.kind === "shield" || event.kind === "synergy" || event.kind === "frost" || event.kind === "boss",
+      sourceItemId: event.code.startsWith("item.") ? event.sourceItemId : undefined,
       hitCount: 1,
       createdAt: now,
       lastHitAt: now,
@@ -105,14 +108,15 @@ export function mergeFloatingCombatNumbers(
 }
 
 export function formatFloatingCombatNumber(number: FloatingCombatNumber): { value: string; label: string } {
-  if (number.type === "heal") return { value: `+${number.value}`, label: "Heilung" };
-  if (number.type === "shield") return { value: `+${number.value}`, label: "Schild" };
+  const source = number.sourceItemId ? `${itemCopy(number.sourceItemId).name} · ` : "";
+  if (number.type === "heal") return { value: `+${number.value}`, label: `${source}Heilung` };
+  if (number.type === "shield") return { value: `+${number.value}`, label: `${source}Schild` };
   if (number.type === "cleanse") return { value: `−${number.value}`, label: "Gift gereinigt" };
   if (number.type === "frost") return { value: `+${(number.value / 1_000).toFixed(2).replace(".", ",")} s`, label: "Verzögert" };
   if (number.type === "boss") return { value: `+${number.value}%`, label: "Bossmacht" };
   if (number.type === "poison") {
-    return { value: `${number.positive ? "+" : "−"}${number.value}`, label: "Gift" };
+    return { value: `${number.positive ? "+" : "−"}${number.value}`, label: `${source}Gift` };
   }
   if (number.type === "burn") return { value: `${number.positive ? "+" : "−"}${number.value}`, label: "Brand" };
-  return { value: `−${number.value}`, label: "Schaden" };
+  return { value: `−${number.value}`, label: `${source}Schaden` };
 }

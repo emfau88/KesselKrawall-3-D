@@ -38,6 +38,12 @@ Blender-5.2- und Asset-Aufbereitungspipeline liegt unter `art/blender/` und
 getrennte Cast-/Travel-/Impact-Phasen sowie ein Fantasy-UI-Pass mit dunklen
 Schmiedepaneelen und Messingkanten.
 
+Der P1-Golden-Encounter gegen Moor-Martha ergänzt eine vollständig eigene
+Sumpf-Ritualarena, reaktionsfähige Kesselgesichter, große Zutaten mit echten
+Cooldown-Ringen, item-spezifische Flug- und Klangprofile für alle 20 Zutaten,
+eine gestufte K.-o.-Inszenierung und eine Ergebnis-Chronik, die Schaden,
+Schild, Heilung, Gift und Auslösungen pro Zutat aufschlüsselt.
+
 Käufe werden als abgeschlossene Präsentationstransaktion gezeigt: Flug,
 Landung, jede Stufe einer Merge-Kaskade und erst danach die endgültige
 Inventaransicht. Zutaten tragen sichtbare Stufenmarker; ausgewählte Zutaten
@@ -74,6 +80,7 @@ und die 2D-Sprite-Komposition nicht portiert.
 - [Bewusste Verhaltensunterschiede](docs/BEHAVIOR_DIFFERENCES.md)
 - [Mobile- und Performance-QA](docs/MOBILE_AND_PERFORMANCE_QA.md)
 - [Production-Art-Review](docs/PRODUCTION_ART_REVIEW.md)
+- [P1: Moor-Martha Golden Encounter](docs/P1_GOLDEN_ENCOUNTER.md)
 - [Production-Art-Referenzen](docs/reference-art/README.md)
 
 ## Lokale Checks

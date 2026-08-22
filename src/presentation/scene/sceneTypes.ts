@@ -57,5 +57,6 @@ export interface ArenaSceneState {
   readonly board: Board;
   readonly opponent: OpponentDefinition;
   readonly combat: CombatFrame | null;
+  readonly events: readonly CombatEvent[];
   readonly outcome: BattleOutcome | null;
 }

@@ -115,6 +115,77 @@ function CharacterFace({ profile }: { profile: CauldronVisualProfile }) {
   );
 }
 
+function ExpressiveFace({
+  profile,
+  reaction,
+  reactionKey,
+}: {
+  profile: CauldronVisualProfile;
+  reaction: CauldronReaction;
+  reactionKey: number;
+}) {
+  const eyes = useRef<Group>(null);
+  const brows = useRef<Group>(null);
+  const mouth = useRef<Group>(null);
+  const lastKey = useRef(reactionKey);
+  const reactedAt = useRef(0);
+  const moor = profile.personality === "moor";
+  useFrame(({ clock }) => {
+    if (lastKey.current !== reactionKey) {
+      lastKey.current = reactionKey;
+      reactedAt.current = clock.elapsedTime;
+    }
+    const elapsed = clock.elapsedTime - reactedAt.current;
+    const blink = reaction === "defeat"
+      ? 0.12
+      : reaction === "hit" && elapsed < 0.18
+        ? 0.08
+        : Math.sin(clock.elapsedTime * (moor ? 0.82 : 0.94) + (moor ? 1.2 : 0)) > 0.985 ? 0.08 : 1;
+    if (eyes.current) {
+      eyes.current.scale.y = MathUtils.lerp(eyes.current.scale.y, blink, 0.35);
+      eyes.current.position.y = reaction === "cast" ? Math.sin(Math.min(1, elapsed / 0.45) * Math.PI) * 0.035 : 0;
+    }
+    if (brows.current) {
+      const intent = reaction === "cast" ? 0.22 : reaction === "hit" || reaction === "defeat" ? -0.18 : moor ? 0.1 : 0;
+      brows.current.children.forEach((brow, index) => {
+        brow.rotation.z = (index === 0 ? -1 : 1) * intent;
+        brow.position.y = reaction === "defeat" ? 0.17 : 0.22;
+      });
+    }
+    if (mouth.current) {
+      const open = reaction === "cast" ? 1.55 : reaction === "hit" ? 1.35 : reaction === "victory" ? 0.65 : reaction === "defeat" ? 0.38 : 0.72;
+      mouth.current.scale.y = MathUtils.lerp(mouth.current.scale.y, open, 0.22);
+      mouth.current.rotation.z = reaction === "defeat" ? Math.PI : 0;
+    }
+  });
+  return (
+    <group position={[0, 0.48, 0.98]} scale={moor ? 0.86 : 0.9}>
+      <group ref={eyes}>
+        {[-1, 1].map((side) => (
+          <group key={side} position={[side * 0.29, 0.06, 0]}>
+            <mesh scale={[1, 1.2, 0.42]}><sphereGeometry args={[0.1, 10, 7]} /><meshBasicMaterial color="#fff2cf" toneMapped={false} /></mesh>
+            <mesh position={[side * 0.018, -0.005, 0.075]} scale={[0.68, 0.9, 0.42]}><sphereGeometry args={[0.065, 9, 6]} /><meshBasicMaterial color={profile.eye} toneMapped={false} /></mesh>
+          </group>
+        ))}
+      </group>
+      <group ref={brows}>
+        {[-1, 1].map((side) => (
+          <mesh key={side} position={[side * 0.29, 0.22, 0.055]}>
+            <boxGeometry args={[0.29, 0.055, 0.055]} />
+            <meshStandardMaterial color={moor ? "#443d2f" : "#34252d"} roughness={0.78} />
+          </mesh>
+        ))}
+      </group>
+      <group ref={mouth} position={[0, -0.2, 0.03]}>
+        <mesh rotation={[0, 0, Math.PI]}>
+          <torusGeometry args={[0.2, 0.035, 7, 20, Math.PI]} />
+          <meshBasicMaterial color="#21151a" toneMapped={false} />
+        </mesh>
+      </group>
+    </group>
+  );
+}
+
 function PlayerRegalia({ metal }: { metal: string }) {
   return (
     <group>
@@ -361,6 +432,7 @@ export function CauldronActor({
                   </group>
                 )}
                 {moor && <MoorDetails />}
+                {(hero || moor) && <ExpressiveFace profile={profile} reaction={reaction} reactionKey={reactionKey} />}
               </>
             )}
             <group ref={aura} position={[0, -1.02, 0.08]} rotation={[Math.PI / 2, 0, 0]}>

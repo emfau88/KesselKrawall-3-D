@@ -34,6 +34,14 @@ export interface AudioPlayOptions {
   readonly pan?: number;
   readonly emphasis?: "ambient" | "standard" | "hero";
   readonly gainScale?: number;
+  readonly playbackRateScale?: number;
+}
+
+interface ItemAudioProfile {
+  readonly rate: number;
+  readonly gain: number;
+  readonly accent?: SoundCue;
+  readonly accentDelayMs?: number;
 }
 
 type AudioBusName = "music" | "ambience" | "ui" | "combat";
@@ -96,6 +104,29 @@ const SOUND_SPECS: Readonly<Partial<Record<SoundCue, SoundSpec>>> = {
   boss: { path: "combat/hit.ogg", bus: "combat", gain: 0.9, cooldownMs: 320, maxVoices: 1, playbackRate: 0.72 },
   victory: { path: "sfx/result-victory.ogg", bus: "ui", gain: 0.92, cooldownMs: 1000, maxVoices: 1 },
   defeat: { path: "sfx/result-defeat.ogg", bus: "ui", gain: 0.88, cooldownMs: 1000, maxVoices: 1 },
+};
+
+const ITEM_AUDIO_PROFILES: Readonly<Record<string, ItemAudioProfile>> = {
+  chili: { rate: 1.12, gain: 0.94, accent: "damage", accentDelayMs: 92 },
+  "dragon-tooth": { rate: 0.78, gain: 1.12, accent: "damage", accentDelayMs: 128 },
+  "ember-core": { rate: 0.9, gain: 1.04, accent: "damage", accentDelayMs: 112 },
+  "cinder-berry": { rate: 1.04, gain: 1, accent: "damage", accentDelayMs: 96 },
+  "slime-shroom": { rate: 0.86, gain: 1.04, accent: "damage", accentDelayMs: 168 },
+  nightwing: { rate: 1.16, gain: 0.92, accent: "echo", accentDelayMs: 78 },
+  "witch-eye": { rate: 0.82, gain: 1.04, accent: "echo", accentDelayMs: 126 },
+  "venom-bulb": { rate: 0.76, gain: 1.1, accent: "damage", accentDelayMs: 154 },
+  "egg-shell": { rate: 1.08, gain: 0.94 },
+  "healing-tuber": { rate: 0.84, gain: 1.02, accent: "shield", accentDelayMs: 144 },
+  "gold-spoon": { rate: 1.2, gain: 0.9, accent: "heal", accentDelayMs: 86 },
+  "moon-salt": { rate: 1.13, gain: 0.94, accent: "frost", accentDelayMs: 102 },
+  "frost-shard": { rate: 1.18, gain: 0.94, accent: "damage", accentDelayMs: 76 },
+  "ice-bell": { rate: 0.94, gain: 1.02, accent: "shield", accentDelayMs: 118 },
+  "winter-bloom": { rate: 0.82, gain: 1.04, accent: "heal", accentDelayMs: 142 },
+  "rime-clock": { rate: 1.08, gain: 0.94, accent: "echo", accentDelayMs: 104 },
+  "mirror-shard": { rate: 1.2, gain: 0.94, accent: "damage", accentDelayMs: 82 },
+  "echo-bell": { rate: 0.88, gain: 1.08, accent: "echo", accentDelayMs: 152 },
+  "rune-cup": { rate: 0.9, gain: 1.02, accent: "shield", accentDelayMs: 126 },
+  "time-thread": { rate: 0.74, gain: 1.12, accent: "echo", accentDelayMs: 178 },
 };
 
 const SCENE_TRACKS: Readonly<Record<AudioScene, "menu" | "battle" | "boss" | null>> = {
@@ -210,6 +241,22 @@ class AudioDirector {
     }).catch(() => this.playFallbackTone(cue));
   }
 
+  playCombat(cue: SoundCue, itemId: string | undefined, options: AudioPlayOptions = {}): void {
+    const profile = itemId ? ITEM_AUDIO_PROFILES[itemId] : undefined;
+    this.play(cue, {
+      ...options,
+      gainScale: (options.gainScale ?? 1) * (profile?.gain ?? 1),
+      playbackRateScale: (options.playbackRateScale ?? 1) * (profile?.rate ?? 1),
+    });
+    if (!profile?.accent || profile.accent === cue) return;
+    window.setTimeout(() => this.play(profile.accent as SoundCue, {
+      ...options,
+      emphasis: options.emphasis === "hero" ? "hero" : "ambient",
+      gainScale: (options.gainScale ?? 1) * 0.48,
+      playbackRateScale: profile.rate,
+    }), profile.accentDelayMs ?? 100);
+  }
+
   private ensureContext(): AudioContext {
     if (this.context) return this.context;
     const Context = window.AudioContext ?? (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
@@ -287,7 +334,7 @@ class AudioDirector {
     const panner = this.context.createStereoPanner();
     const pitchVariation = spec.pitchVariation ?? 0;
     source.buffer = buffer;
-    source.playbackRate.value = (spec.playbackRate ?? 1) * (1 + (Math.random() * 2 - 1) * pitchVariation);
+    source.playbackRate.value = (spec.playbackRate ?? 1) * (options.playbackRateScale ?? 1) * (1 + (Math.random() * 2 - 1) * pitchVariation);
     voiceGain.gain.value = spec.gain * (options.gainScale ?? 1) * (options.emphasis === "hero" ? 1.08 : 1);
     panner.pan.value = Math.max(-0.4, Math.min(0.4, options.pan ?? 0));
     source.connect(voiceGain).connect(panner).connect(bus);

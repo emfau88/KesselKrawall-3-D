@@ -33,6 +33,7 @@ import {
 } from "./core/state";
 import type {
   CampaignId,
+  Board,
   CombatEvent,
   CombatResult,
   GameState,
@@ -62,6 +63,7 @@ import {
   mergeFloatingCombatNumbers,
   type FloatingCombatNumber,
 } from "./presentation/combat/floatingCombatNumbers";
+import { getIngredientCooldownStates } from "./presentation/combat/ingredientCooldowns";
 import { getPresentedInventory } from "./presentation/shop/purchasePresentation";
 import { getItemPlacementInsights } from "./presentation/shop/itemInsights";
 import {
@@ -230,12 +232,84 @@ function CombatNumberLayer({ numbers }: { numbers: readonly FloatingCombatNumber
         const copy = formatFloatingCombatNumber(number);
         return (
           <span
-            className={`combat-floating-number target-${number.target} number-${number.type} ${number.hitCount > 1 ? "is-bundle" : ""}`}
+            className={`combat-floating-number target-${number.target} number-${number.type} ${number.hitCount > 1 ? "is-bundle" : ""}${number.value >= 12 ? " is-hero-hit" : ""}`}
             key={number.id}
           >
             <strong>{copy.value}</strong>
             <small>{copy.label}{number.hitCount > 1 ? ` · ×${number.hitCount}` : ""}</small>
           </span>
+        );
+      })}
+    </div>
+  );
+}
+
+function CombatIngredientRail({
+  board,
+  events,
+  combat,
+}: {
+  board: Board;
+  events: readonly CombatEvent[];
+  combat: CombatFrame | null;
+}) {
+  const cooldowns = getIngredientCooldownStates(board, events, "player", combat?.elapsedMs ?? 0);
+  return (
+    <section className="combat-ingredient-rail" aria-label="Zutaten und Abklingzeiten">
+      {board.map((item, index) => {
+        if (!item) return null;
+        const definition = getItemDefinition(item.itemId);
+        const copy = itemCopy(item.itemId);
+        const cooldown = cooldowns[index];
+        const active = combat?.event?.sourceUid === item.uid;
+        const style = {
+          "--ingredient-color": FAMILY_COPY[definition.family].color,
+          "--cooldown-turn": `${Math.round((cooldown?.progress ?? 0) * 360)}deg`,
+        } as CSSProperties;
+        return (
+          <article className={`combat-ingredient family-${definition.family}${active ? " is-casting" : ""}`} key={item.uid} style={style}>
+            <div className="combat-ingredient-dial" aria-hidden="true">
+              <i>{FAMILY_COPY[definition.family].symbol}</i>
+            </div>
+            <span>
+              <strong>{copy.name}</strong>
+              <small>Stufe {ROMAN_LEVEL[item.level]} · {active ? "WIRKT" : `${Math.max(0, (cooldown?.remainingMs ?? 0) / 1_000).toFixed(1)}s`}</small>
+            </span>
+          </article>
+        );
+      })}
+    </section>
+  );
+}
+
+function IngredientContribution({ result }: { result: CombatResult }) {
+  const totalDamage = result.playerStats.reduce((sum, stat) => sum + stat.totalDamage, 0);
+  const maximumContribution = Math.max(
+    1,
+    ...result.playerStats.map((stat) => stat.totalDamage + stat.healing + stat.shield),
+  );
+  const ordered = [...result.playerStats].sort((left, right) =>
+    (right.totalDamage + right.healing + right.shield) - (left.totalDamage + left.healing + left.shield),
+  );
+  return (
+    <div className="result-contributions" aria-label="Zutatenbeiträge">
+      <header><strong>Zutaten-Chronik</strong><span>{totalDamage} Gesamtschaden</span></header>
+      {ordered.map((stat, index) => {
+        const definition = getItemDefinition(stat.itemId);
+        const score = stat.totalDamage + stat.healing + stat.shield;
+        const detail = [
+          stat.totalDamage > 0 ? `${stat.totalDamage} Schaden` : null,
+          stat.shield > 0 ? `${stat.shield} Schild` : null,
+          stat.healing > 0 ? `${stat.healing} Heilung` : null,
+          stat.poisonApplied > 0 ? `${stat.poisonApplied} Gift` : null,
+        ].filter(Boolean).join(" · ") || "Unterstützung";
+        return (
+          <article className={`family-${definition.family}`} key={stat.uid} style={{ "--contribution-width": `${Math.max(5, score / maximumContribution * 100)}%` } as CSSProperties}>
+            <b>{index === 0 ? "★" : FAMILY_COPY[definition.family].symbol}</b>
+            <span><strong>{itemCopy(stat.itemId).name} · {ROMAN_LEVEL[stat.level]}</strong><small>{detail}</small></span>
+            <em>{stat.triggers}×</em>
+            <i />
+          </article>
         );
       })}
     </div>
@@ -382,7 +456,7 @@ export function App() {
         resultRevealTimer.current = window.setTimeout(() => {
           setGame((current) => showBattleResult(current));
           resultRevealTimer.current = null;
-        }, 950);
+        }, 1_650);
       }
     }, 45);
     return () => window.clearInterval(timer);
@@ -392,7 +466,7 @@ export function App() {
     const event = combat?.event;
     if (!event || combat.eventIndex === lastAudioEvent.current) return;
     lastAudioEvent.current = combat.eventIndex;
-    audioDirector.play(combatSound(event), {
+    audioDirector.playCombat(combatSound(event), event.sourceItemId, {
       emphasis: combat.emphasis === "boss" ? "hero" : combat.emphasis ?? "standard",
       pan: event.actor === "player" ? -0.22 : 0.22,
     });
@@ -811,7 +885,7 @@ export function App() {
   const battleProgress = (combat?.playbackProgress ?? 0) * 100;
 
   return (
-    <main className={`game-shell phase-${game.phase}${battlePreparation ? " is-preparing-battle" : ""}`}>
+    <main className={`game-shell phase-${game.phase} encounter-${stagedOpponent.id}${battlePreparation ? " is-preparing-battle" : ""}`}>
       <SceneErrorBoundary>
         <Suspense fallback={<div className="scene-loading"><i /><span>Werkstatt wird angeheizt …</span></div>}>
           <GreyboxStage
@@ -834,6 +908,7 @@ export function App() {
               board: battlePreparation?.state.board ?? game.board,
               opponent: stagedOpponent,
               combat,
+              events: battleResult?.events ?? [],
               outcome: battlePreparation || (game.phase === "battle" && playback) ? null : battleResult?.winner ?? null,
             }}
           />
@@ -1135,6 +1210,20 @@ export function App() {
 
       {mode === "arena" && <CombatNumberLayer numbers={floatingNumbers} />}
 
+      {mode === "arena" && game.phase === "battle" && !battlePreparation && battleResult && (
+        <CombatIngredientRail board={game.board} combat={combat} events={battleResult.events} />
+      )}
+
+      {mode === "arena" && game.phase === "battle" && !playback && battleResult && (
+        <section className={`ko-sequence winner-${battleResult.winner} reason-${battleResult.reason}`} aria-live="assertive">
+          <span>{battleResult.reason === "knockout" ? "KESSEL" : "KAMPFZEIT"}</span>
+          <strong>{battleResult.reason === "knockout" ? "K. O." : "ENDE"}</strong>
+          <small>{battleResult.reason === "knockout"
+            ? battleResult.winner === "player" ? `${opponentName(stagedOpponent.id)} ist geschlagen` : "Dein Sud ist versiegt"
+            : battleResult.winner === "player" ? "Du führst nach Wirkung" : "Der Gegner führt nach Wirkung"}</small>
+        </section>
+      )}
+
       {(game.phase === "result" || game.phase === "victory" || game.phase === "gameover") && battleResult && (
         <section className="result-panel" role="dialog" aria-modal="true" aria-label="Kampfergebnis">
           <p>{battleResult.winner === "player" ? "KESSEL-SIEG" : battleResult.winner === "enemy" ? "KESSEL GESTÜRZT" : "GLEICHSTAND"}</p>
@@ -1144,6 +1233,7 @@ export function App() {
             <span>{battleResult.playerStats.reduce((sum, stat) => sum + stat.totalDamage, 0)} Schaden</span>
             <span>{getBattleReward(game, battleResult.winner)} Gold</span>
           </div>
+          <IngredientContribution result={battleResult} />
           {game.phase === "result" ? (
             <button type="button" onClick={handleAdvance}>Zurück zur Werkbank</button>
           ) : (
