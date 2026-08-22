@@ -84,13 +84,20 @@ function ActivationAura({ family }: { family: keyof typeof FAMILY_COLORS }) {
 }
 
 function LevelDetails({ level, color }: { level: ItemLevel; color: string }) {
-  if (level === 1) return null;
   return (
     <group>
-      <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, -0.35, 0]}>
-        <torusGeometry args={[0.37 + level * 0.035, 0.025, 6, 28]} />
-        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.9} />
-      </mesh>
+      {level > 1 && (
+        <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, -0.35, 0]}>
+          <torusGeometry args={[0.37 + level * 0.035, level === 3 ? 0.04 : 0.025, 6, 28]} />
+          <meshStandardMaterial color={color} emissive={color} emissiveIntensity={level === 3 ? 1.35 : 0.9} />
+        </mesh>
+      )}
+      {Array.from({ length: level }, (_, index) => (
+        <mesh key={index} position={[(index - (level - 1) / 2) * 0.17, 0.48, 0.38]} rotation={[0, 0, Math.PI / 4]}>
+          <octahedronGeometry args={[level === 3 ? 0.07 : 0.06, 0]} />
+          <meshStandardMaterial color="#fff2bd" emissive={color} emissiveIntensity={level === 3 ? 1.8 : 1.25} />
+        </mesh>
+      ))}
       {level === 3 &&
         [-1, 1].map((side) => (
           <mesh key={side} position={[side * 0.38, 0.28, 0]}>

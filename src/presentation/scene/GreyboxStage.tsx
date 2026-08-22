@@ -35,7 +35,10 @@ export function GreyboxStage({
       shadows={{ type: PCFShadowMap }}
     >
       <color attach="background" args={[background]} />
-      <fog attach="fog" args={[background, 17, 34]} />
+      <fog
+        attach="fog"
+        args={mode === "arena" ? [background, 25, 46] : [background, 17, 34]}
+      />
       <FixedCamera mode={mode} />
       <LightingRig mode={mode} opponentId={mode === "arena" ? arena.opponent.id : undefined} />
       {mode === "workshop" ? (

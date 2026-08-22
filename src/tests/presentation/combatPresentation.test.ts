@@ -69,4 +69,18 @@ describe("combat presentation timeline", () => {
     expect(getBeatAt(timeline, 260)?.event.sourceUid).toBe("chili-1");
     expect(getTimelineProgress(timeline, timeline.durationMs * 2)).toBe(1);
   });
+
+  test("carries poison, burn, delays and boss buffs as presentation status", () => {
+    const timeline = createCombatTimeline([
+      event({ kind: "poison", code: "item.poison", amount: 4 }),
+      event({ time: 1_500, kind: "burn", code: "status.burnApplied", amount: 3 }),
+      event({ time: 1_600, kind: "frost", code: "synergy.frostDelay", amount: 650 }),
+      event({ time: 1_700, kind: "boss", code: "boss.rage", actor: "enemy", target: "enemy", sourceUid: "boss-rage", amount: 25 }),
+    ]);
+    const status = timeline.beats.at(-1)?.statuses;
+    expect(status?.enemy.poison.stacks).toBe(4);
+    expect(status?.enemy.burn.stacks).toBe(3);
+    expect(status?.enemy.delayedUntil).toBe(2_250);
+    expect(status?.enemy.rage).toBe(true);
+  });
 });

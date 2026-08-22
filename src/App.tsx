@@ -42,6 +42,7 @@ import type {
 } from "./core/types";
 import { audioDirector, type SoundCue } from "./presentation/audio/audioDirector";
 import {
+  createEmptyCombatStatuses,
   createCombatTimeline,
   getBeatAt,
   getPlaybackElapsedMs,
@@ -49,6 +50,14 @@ import {
   type BattlePlaybackSpeed,
   type CombatTimeline,
 } from "./presentation/combat/combatPresentation";
+import {
+  createFloatingCombatNumbers,
+  formatFloatingCombatNumber,
+  mergeFloatingCombatNumbers,
+  type FloatingCombatNumber,
+} from "./presentation/combat/floatingCombatNumbers";
+import { getPresentedInventory } from "./presentation/shop/purchasePresentation";
+import { getItemPlacementInsights } from "./presentation/shop/itemInsights";
 import {
   ERROR_MESSAGES,
   FAMILY_COPY,
@@ -63,6 +72,7 @@ import { CampaignPicker } from "./presentation/ui/CampaignPicker";
 
 const ONBOARDING_STORAGE_KEY = "kessel-krawall-3d-onboarding-v1";
 const AUDIO_STORAGE_KEY = "kessel-krawall-3d-audio-v1";
+const ROMAN_LEVEL = { 1: "I", 2: "II", 3: "III" } as const;
 
 const GreyboxStage = lazy(() => import("./presentation/scene/GreyboxStage"));
 
@@ -147,6 +157,64 @@ function combatSound(event: CombatEvent): SoundCue {
   return "damage";
 }
 
+function CombatStatusStrip({
+  status,
+  shield,
+  elapsedMs,
+}: {
+  status: import("./presentation/combat/combatPresentation").CombatSideStatus;
+  shield: number;
+  elapsedMs: number;
+}) {
+  const timed = [
+    status.poison.stacks > 0
+      ? { key: "poison", symbol: "●", value: status.poison.stacks, label: "Gift", until: status.poison.nextTickAt - elapsedMs }
+      : null,
+    status.burn.stacks > 0
+      ? { key: "burn", symbol: "♨", value: status.burn.stacks, label: "Brand", until: status.burn.nextTickAt - elapsedMs }
+      : null,
+  ].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const permanent = [
+    shield > 0 ? { key: "shield", symbol: "◇", value: shield, label: "Schild" } : null,
+    status.rage ? { key: "rage", symbol: "!", value: "+25%", label: "Kesselwut" } : null,
+    status.timeFracture ? { key: "time", symbol: "⌛", value: "+15%", label: "Zeitbruch" } : null,
+    status.delayedUntil > elapsedMs ? { key: "delay", symbol: "❄", value: `${Math.max(0, (status.delayedUntil - elapsedMs) / 1_000).toFixed(1)}s`, label: "Verzögert" } : null,
+  ].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const entries = [...permanent, ...timed];
+  if (entries.length === 0) return null;
+  return (
+    <div className="combat-status-strip" aria-label="Aktive Kampfeffekte">
+      {entries.slice(0, 3).map((entry) => (
+        <span className={`combat-status-badge status-${entry.key}`} key={entry.key} title={`${entry.label}: ${entry.value}`}>
+          <i>{entry.symbol}</i><b>{entry.value}</b><small>{entry.label}</small>
+          {"until" in entry && typeof entry.until === "number" && <em>{Math.max(0, entry.until / 1_000).toFixed(1)}s</em>}
+        </span>
+      ))}
+      {entries.length > 3 && <span className="combat-status-more">+{entries.length - 3}</span>}
+    </div>
+  );
+}
+
+function CombatNumberLayer({ numbers }: { numbers: readonly FloatingCombatNumber[] }) {
+  if (numbers.length === 0) return null;
+  return (
+    <div className="combat-number-layer" aria-hidden="true">
+      {numbers.map((number) => {
+        const copy = formatFloatingCombatNumber(number);
+        return (
+          <span
+            className={`combat-floating-number target-${number.target} number-${number.type} ${number.hitCount > 1 ? "is-bundle" : ""}`}
+            key={number.id}
+          >
+            <strong>{copy.value}</strong>
+            <small>{copy.label}{number.hitCount > 1 ? ` · ×${number.hitCount}` : ""}</small>
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
 export function App() {
   const [game, setGame] = useState<GameState>(initialGame);
   const [notice, setNotice] = useState("Wähle eine Zutat. Gleiche Zutaten verschmelzen automatisch.");
@@ -154,6 +222,7 @@ export function App() {
   const [playback, setPlayback] = useState<Playback | null>(null);
   const [battleSpeed, setBattleSpeed] = useState<BattlePlaybackSpeed>(1);
   const [combat, setCombat] = useState<CombatFrame | null>(null);
+  const [floatingNumbers, setFloatingNumbers] = useState<FloatingCombatNumber[]>([]);
   const [lastResult, setLastResult] = useState<CombatResult | null>(null);
   const [audioEnabled, setAudioEnabled] = useState(initialAudioEnabled);
   const [onboardingStep, setOnboardingStep] = useState<number | null>(initialOnboardingStep);
@@ -162,12 +231,19 @@ export function App() {
   const [reserveSelected, setReserveSelected] = useState(false);
   const animationId = useRef(1);
   const lastAudioEvent = useRef(-1);
+  const lastFeedbackBeat = useRef<string | null>(null);
   const soundedResult = useRef<CombatResult | null>(null);
   const resultRevealTimer = useRef<number | null>(null);
 
+  const presentedInventory = useMemo(
+    () => getPresentedInventory(purchase, game.board, game.reserve),
+    [game.board, game.reserve, purchase],
+  );
+  const presentedBoard = presentedInventory.board;
+  const presentedReserve = presentedInventory.reserve;
   const opponent = useMemo(() => getCurrentOpponent(game), [game]);
-  const familyWeights = useMemo(() => getFamilyWeights(game.board), [game.board]);
-  const power = useMemo(() => getPowerBreakdown(game.board), [game.board]);
+  const familyWeights = useMemo(() => getFamilyWeights(presentedBoard), [presentedBoard]);
+  const power = useMemo(() => getPowerBreakdown(presentedBoard), [presentedBoard]);
   const mode: GreyboxMode =
     game.phase === "battle" || game.phase === "result" ||
     game.phase === "victory" || game.phase === "gameover"
@@ -213,8 +289,12 @@ export function App() {
       const event = beat?.event ?? null;
       const snapshot = beat?.snapshot ?? null;
       setCombat({
+        beatId: beat?.id ?? null,
         eventIndex: beat?.eventIndex ?? -1,
         event,
+        events: beat?.events ?? [],
+        emphasis: beat?.emphasis ?? null,
+        statuses: beat?.statuses ?? createEmptyCombatStatuses(),
         elapsedMs: snapshot?.time ?? 0,
         playbackProgress: getTimelineProgress(playback.timeline, presentationElapsedMs),
         playerHp: snapshot?.playerHp ?? playback.result.playerMaxHp,
@@ -226,8 +306,12 @@ export function App() {
       if (presentationElapsedMs >= playback.timeline.durationMs) {
         window.clearInterval(timer);
         setCombat({
+          beatId: playback.timeline.beats.at(-1)?.id ?? null,
           eventIndex: playback.result.events.length,
           event: playback.result.events.at(-1) ?? null,
+          events: playback.timeline.beats.at(-1)?.events ?? [],
+          emphasis: playback.timeline.beats.at(-1)?.emphasis ?? null,
+          statuses: playback.timeline.beats.at(-1)?.statuses ?? createEmptyCombatStatuses(),
           elapsedMs: playback.result.duration,
           playbackProgress: 1,
           playerHp: playback.result.finalPlayerHp,
@@ -254,10 +338,59 @@ export function App() {
   }, [combat?.event, combat?.eventIndex]);
 
   useEffect(() => {
+    if (!combat?.beatId || combat.beatId === lastFeedbackBeat.current) return;
+    lastFeedbackBeat.current = combat.beatId;
+    const now = performance.now();
+    const incoming = createFloatingCombatNumbers(combat.events, combat.beatId, now);
+    if (incoming.length === 0) return;
+    setFloatingNumbers((current) => mergeFloatingCombatNumbers(current, incoming, now));
+    window.setTimeout(() => {
+      const expiry = performance.now();
+      setFloatingNumbers((current) => current.filter((number) => number.expiresAt > expiry));
+    }, 1_180);
+  }, [combat?.beatId, combat?.events]);
+
+  useEffect(() => {
     if (game.phase !== "result" || !game.pendingBattle || soundedResult.current === game.pendingBattle) return;
     soundedResult.current = game.pendingBattle;
     audioDirector.play(game.pendingBattle.winner === "player" ? "victory" : "defeat");
   }, [game.pendingBattle, game.phase]);
+
+  useEffect(() => {
+    if (!purchase) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const duration = reducedMotion
+      ? purchase.phase === "merge" ? 140 : 90
+      : purchase.phase === "flight"
+        ? 680
+        : purchase.phase === "landing"
+          ? 180
+          : purchase.phase === "merge"
+            ? 620
+            : 260;
+    const timer = window.setTimeout(() => {
+      setPurchase((current) => {
+        if (!current || current.id !== purchase.id) return current;
+        if (current.phase === "flight") return { ...current, phase: "landing" };
+        if (current.phase === "landing") {
+          if (current.merges.length > 0) {
+            audioDirector.play("merge");
+            return { ...current, phase: "merge", mergeStepIndex: 0 };
+          }
+          return { ...current, phase: "reveal" };
+        }
+        if (current.phase === "merge") {
+          if (current.mergeStepIndex + 1 < current.merges.length) {
+            audioDirector.play("merge");
+            return { ...current, mergeStepIndex: current.mergeStepIndex + 1 };
+          }
+          return { ...current, phase: "reveal" };
+        }
+        return null;
+      });
+    }, duration);
+    return () => window.clearTimeout(timer);
+  }, [purchase]);
 
   function playError(message: string) {
     setNotice(message);
@@ -294,6 +427,7 @@ export function App() {
   }
 
   function handleBuy(offerUid: string) {
+    if (purchase) return;
     const offerIndex = game.offers.findIndex((offer) => offer.uid === offerUid);
     const result = buyOffer(game, offerUid);
     if (result.error) {
@@ -319,6 +453,13 @@ export function App() {
           : "reserve",
         resultLevel,
         merged: merges.length > 0,
+        merges: merges.flatMap((event) => event.type === "mergeResolved" ? [event.step] : []),
+        beforeBoard: game.board,
+        beforeReserve: game.reserve,
+        afterBoard: result.state.board,
+        afterReserve: result.state.reserve,
+        phase: "flight",
+        mergeStepIndex: 0,
       });
       const copy = itemCopy(committed.itemId);
       setNotice(
@@ -330,11 +471,12 @@ export function App() {
               ? `${copy.name} wartet in der Reserve.`
               : `${copy.name} landet auf der Werkbank.`,
       );
-      audioDirector.play(merges.length > 0 ? "merge" : "purchase");
+      audioDirector.play("purchase");
     }
   }
 
   function handleReroll() {
+    if (purchase) return;
     const result = rerollShop(game);
     if (result.error) {
       playError(ERROR_MESSAGES[result.error]);
@@ -349,18 +491,20 @@ export function App() {
   }
 
   function handleSelectSlot(slot: number) {
+    if (purchase) return;
     const result = selectOrSwapSlot(game, slot);
     setGame(result.state);
     setReserveSelected(false);
     audioDirector.play("select");
     if (game.selectedSlot !== null && game.selectedSlot !== slot) {
       setNotice("Zutatenplätze getauscht. Nachbarschaftseffekte wurden neu berechnet.");
-    } else if (game.board[slot]) {
-      setNotice(`${itemCopy(game.board[slot]?.itemId ?? "").name} ausgewählt.`);
+    } else if (presentedBoard[slot]) {
+      setNotice(`${itemCopy(presentedBoard[slot]?.itemId ?? "").name} ausgewählt.`);
     }
   }
 
   function handleSelectReserve() {
+    if (purchase) return;
     if (game.round < 5) return;
     if (game.selectedSlot !== null) {
       const result = swapSlotWithReserve(game, game.selectedSlot);
@@ -375,6 +519,7 @@ export function App() {
   }
 
   function handleSellReserve() {
+    if (purchase) return;
     const result = sellReserve(game);
     if (result.error) {
       playError(ERROR_MESSAGES[result.error]);
@@ -387,6 +532,7 @@ export function App() {
   }
 
   function handleSellSelected() {
+    if (purchase) return;
     if (game.selectedSlot === null) return;
     const item = game.board[game.selectedSlot];
     const result = sellSlot(game, game.selectedSlot);
@@ -400,6 +546,7 @@ export function App() {
   }
 
   function handleStartBattle() {
+    if (purchase) return;
     if (resultRevealTimer.current !== null) {
       window.clearTimeout(resultRevealTimer.current);
       resultRevealTimer.current = null;
@@ -414,9 +561,15 @@ export function App() {
     const withResult = recordBattleResult(started.state, result);
     setPurchase(null);
     setReserveSelected(false);
+    setFloatingNumbers([]);
+    lastFeedbackBeat.current = null;
     setCombat({
+      beatId: null,
       eventIndex: -1,
       event: null,
+      events: [],
+      emphasis: null,
+      statuses: createEmptyCombatStatuses(),
       elapsedMs: 0,
       playbackProgress: 0,
       playerHp: result.playerMaxHp,
@@ -521,7 +674,10 @@ export function App() {
     audioDirector.play("battleStart");
   }
 
-  const selectedItem = game.selectedSlot === null ? null : (game.board[game.selectedSlot] ?? null);
+  const selectedItem = game.selectedSlot === null ? null : (presentedBoard[game.selectedSlot] ?? null);
+  const selectedInsights = game.selectedSlot === null || !selectedItem
+    ? null
+    : getItemPlacementInsights(presentedBoard, game.selectedSlot);
   const battleResult = game.pendingBattle ?? lastResult;
   const playerHp = combat?.playerHp ?? battleResult?.finalPlayerHp ?? 100;
   const enemyHp = combat?.enemyHp ?? battleResult?.finalEnemyHp ?? opponent.baseHp;
@@ -534,10 +690,10 @@ export function App() {
           <GreyboxStage
             mode={mode}
             workshop={{
-              board: game.board,
+              board: presentedBoard,
               offers: game.offers,
               selectedSlot: game.selectedSlot,
-              reserve: game.reserve,
+              reserve: presentedReserve,
               reserveUnlocked: game.round >= 5,
               reserveSelected,
               purchase,
@@ -612,30 +768,31 @@ export function App() {
           </section>
 
           <section className="board-controls" aria-label="Zutatenplätze">
-            {game.board.map((item, index) => (
+            {presentedBoard.map((item, index) => (
               <button
                 aria-label={item ? `Platz ${index + 1}: ${itemCopy(item.itemId).name}, Stufe ${item.level}` : `Platz ${index + 1}: leer`}
                 aria-pressed={game.selectedSlot === index}
                 className={game.selectedSlot === index ? "is-selected" : undefined}
-                disabled={!item && game.selectedSlot === null}
+                disabled={Boolean(purchase) || (!item && game.selectedSlot === null)}
                 key={index}
                 onClick={() => handleSelectSlot(index)}
                 type="button"
               >
                 <span>{item ? FAMILY_COPY[getItemDefinition(item.itemId).family].symbol : index + 1}</span>
-                <small>{item ? `L${item.level}` : "leer"}</small>
+                <small>{item ? ROMAN_LEVEL[item.level] : "leer"}</small>
               </button>
             ))}
             {game.round >= 5 && (
               <button
-                aria-label={game.reserve ? `Reserve: ${itemCopy(game.reserve.itemId).name}, Stufe ${game.reserve.level}` : "Reserve: leer"}
+                aria-label={presentedReserve ? `Reserve: ${itemCopy(presentedReserve.itemId).name}, Stufe ${presentedReserve.level}` : "Reserve: leer"}
                 aria-pressed={reserveSelected}
                 className={reserveSelected ? "is-selected reserve-control" : "reserve-control"}
+                disabled={Boolean(purchase)}
                 onClick={handleSelectReserve}
                 type="button"
               >
-                <span>{game.reserve ? FAMILY_COPY[getItemDefinition(game.reserve.itemId).family].symbol : "R"}</span>
-                <small>{game.reserve ? `L${game.reserve.level}` : "Reserve"}</small>
+                <span>{presentedReserve ? FAMILY_COPY[getItemDefinition(presentedReserve.itemId).family].symbol : "R"}</span>
+                <small>{presentedReserve ? ROMAN_LEVEL[presentedReserve.level] : "Reserve"}</small>
               </button>
             )}
           </section>
@@ -643,21 +800,43 @@ export function App() {
           {selectedItem && game.selectedSlot !== null && (
             <aside className="selection-popover">
               <span>Platz {game.selectedSlot + 1}</span>
-              <strong>{itemCopy(selectedItem.itemId).name} · Stufe {selectedItem.level}</strong>
+              <strong>{itemCopy(selectedItem.itemId).name} · Stufe {ROMAN_LEVEL[selectedItem.level]}</strong>
               <p>{itemCopy(selectedItem.itemId).short}</p>
-              <button type="button" onClick={handleSellSelected}>
+              {selectedInsights && (
+                <div className="placement-insights">
+                  <span>
+                    <b>Takt</b>
+                    {selectedInsights.effectiveCooldownMs < selectedInsights.baseCooldownMs
+                      ? `${(selectedInsights.baseCooldownMs / 1_000).toFixed(1)}s → ${(selectedInsights.effectiveCooldownMs / 1_000).toFixed(1)}s`
+                      : `${(selectedInsights.baseCooldownMs / 1_000).toFixed(1)}s`}
+                  </span>
+                  <span className={selectedInsights.outgoing.length > 0 ? "is-active" : undefined}>
+                    <b>Wirkt auf</b>
+                    {selectedInsights.outgoing.length > 0
+                      ? `Platz ${selectedInsights.outgoing.map((entry) => entry.targetSlot + 1).join(", ")} · +${Math.round(Math.max(...selectedInsights.outgoing.map((entry) => entry.value)) * 100)}%`
+                      : "keine andere Zutat"}
+                  </span>
+                  <span className={selectedInsights.incoming.length > 0 ? "is-active" : undefined}>
+                    <b>Profitiert von</b>
+                    {selectedInsights.incoming.length > 0
+                      ? `Platz ${selectedInsights.incoming.map((entry) => entry.sourceSlot + 1).join(", ")}`
+                      : "keinem Platzierungsbuff"}
+                  </span>
+                </div>
+              )}
+              <button type="button" disabled={Boolean(purchase)} onClick={handleSellSelected}>
                 Verkaufen · +{getSellValue(selectedItem)} Gold
               </button>
             </aside>
           )}
 
-          {reserveSelected && game.reserve && (
+          {reserveSelected && presentedReserve && (
             <aside className="selection-popover reserve-popover">
               <span>Reserve</span>
-              <strong>{itemCopy(game.reserve.itemId).name} · Stufe {game.reserve.level}</strong>
+              <strong>{itemCopy(presentedReserve.itemId).name} · Stufe {ROMAN_LEVEL[presentedReserve.level]}</strong>
               <p>Wähle einen Werkbankplatz zum Tauschen oder verkaufe die Reservezutat.</p>
-              <button type="button" onClick={handleSellReserve}>
-                Verkaufen · +{getSellValue(game.reserve)} Gold
+              <button type="button" disabled={Boolean(purchase)} onClick={handleSellReserve}>
+                Verkaufen · +{getSellValue(presentedReserve)} Gold
               </button>
             </aside>
           )}
@@ -665,7 +844,7 @@ export function App() {
           <section className="shop-ribbon" aria-label="Zutatenladen">
             <div className="shop-heading">
               <span>Wanderladen</span>
-              <button type="button" onClick={handleReroll}>
+              <button type="button" disabled={Boolean(purchase)} onClick={handleReroll}>
                 Neu mischen · {game.rerollsUsed === 0 ? "gratis" : "1 Gold"}
               </button>
             </div>
@@ -674,15 +853,15 @@ export function App() {
                 const definition = getItemDefinition(offer.itemId);
                 const copy = itemCopy(offer.itemId);
                 const preview = getPurchaseMergePreview(
-                  game.board,
+                  presentedBoard,
                   offer.itemId,
-                  game.reserve,
+                  presentedReserve,
                   game.round >= 5,
                 );
                 return (
                   <button
                     className={`offer family-${definition.family}`}
-                    disabled={offer.bought}
+                    disabled={offer.bought || Boolean(purchase)}
                     key={offer.uid}
                     onClick={() => handleBuy(offer.uid)}
                     type="button"
@@ -690,19 +869,19 @@ export function App() {
                     <span className="offer-family">{FAMILY_COPY[definition.family].symbol}</span>
                     <span className="offer-copy">
                       <strong>{offer.bought ? "Verkauft" : copy.name}</strong>
-                      <small>{preview ? `Verschmilzt → Stufe ${preview.resultLevel}` : copy.short}</small>
+                      <small>{preview ? `Stufe I + Bestand → Stufe ${ROMAN_LEVEL[preview.resultLevel]}${preview.mergeCount > 1 ? ` · ${preview.mergeCount}×` : ""}` : `Stufe I · ${copy.short}`}</small>
                     </span>
                     <span className="offer-cost">{definition.cost} ◉</span>
                   </button>
                 );
               })}
             </div>
-            <button className="mobile-reroll" type="button" onClick={handleReroll} aria-label="Angebote neu mischen">
+            <button className="mobile-reroll" disabled={Boolean(purchase)} type="button" onClick={handleReroll} aria-label="Angebote neu mischen">
               ↻<small>{game.rerollsUsed === 0 ? "gratis" : "1 Gold"}</small>
             </button>
             <button
               className="battle-button"
-              disabled={!game.board.some(Boolean)}
+              disabled={!presentedBoard.some(Boolean) || Boolean(purchase)}
               onClick={handleStartBattle}
               type="button"
             >
@@ -713,11 +892,36 @@ export function App() {
         </>
       )}
 
+      {mode === "workshop" && purchase && purchase.phase !== "flight" && (
+        <section className={`purchase-feedback phase-${purchase.phase}`} aria-live="assertive">
+          {purchase.phase === "merge" ? (() => {
+            const step = purchase.merges[purchase.mergeStepIndex];
+            const definition = getItemDefinition(purchase.itemId);
+            if (!step) return null;
+            return (
+              <>
+                <span>VERSCHMELZUNG {purchase.merges.length > 1 ? `${purchase.mergeStepIndex + 1}/${purchase.merges.length}` : ""}</span>
+                <strong>{itemCopy(purchase.itemId).name} · Stufe {ROMAN_LEVEL[step.toLevel]}</strong>
+                <div><b>{ROMAN_LEVEL[step.fromLevel]}</b><i>+</i><b>{ROMAN_LEVEL[step.fromLevel]}</b><i>→</i><em>{ROMAN_LEVEL[step.toLevel]}</em></div>
+                <small>Wirkung {definition.values[step.fromLevel - 1]} → {definition.values[step.toLevel - 1]} · Takt {definition.cooldown[step.fromLevel - 1]}s → {definition.cooldown[step.toLevel - 1]}s</small>
+              </>
+            );
+          })() : (
+            <><span>{purchase.phase === "landing" ? "LANDUNG" : "BEREIT"}</span><strong>{itemCopy(purchase.itemId).name} · Stufe {ROMAN_LEVEL[purchase.resultLevel]}</strong></>
+          )}
+        </section>
+      )}
+
       {mode === "arena" && (
         <section className="battle-hud" aria-label="Kampfstatus">
           <div className="combatant player-health">
             <div><strong>Dein Kessel</strong><span>{playerHp} +{combat?.playerShield ?? 0}</span></div>
             <div className="health-track"><i style={{ width: hpPercent(playerHp, battleResult?.playerMaxHp ?? 100) }} /></div>
+            <CombatStatusStrip
+              elapsedMs={combat?.elapsedMs ?? 0}
+              shield={combat?.playerShield ?? 0}
+              status={combat?.statuses.player ?? createEmptyCombatStatuses().player}
+            />
           </div>
           <div className="battle-clock">
             <span>{playback?.paused ? "PAUSE" : `${Math.ceil(Math.max(0, (battleResult?.duration ?? 0) - (combat?.elapsedMs ?? 0)) / 1000)}s`}</span>
@@ -736,9 +940,16 @@ export function App() {
           <div className="combatant enemy-health">
             <div><strong>{opponentName(opponent.id)}</strong><span>{enemyHp} +{combat?.enemyShield ?? 0}</span></div>
             <div className="health-track"><i style={{ width: hpPercent(enemyHp, battleResult?.enemyMaxHp ?? opponent.baseHp) }} /></div>
+            <CombatStatusStrip
+              elapsedMs={combat?.elapsedMs ?? 0}
+              shield={combat?.enemyShield ?? 0}
+              status={combat?.statuses.enemy ?? createEmptyCombatStatuses().enemy}
+            />
           </div>
         </section>
       )}
+
+      {mode === "arena" && <CombatNumberLayer numbers={floatingNumbers} />}
 
       {(game.phase === "result" || game.phase === "victory" || game.phase === "gameover") && battleResult && (
         <section className="result-panel" role="dialog" aria-modal="true" aria-label="Kampfergebnis">
@@ -757,7 +968,7 @@ export function App() {
         </section>
       )}
 
-      {mode === "workshop" && !selectedItem && game.board.some(Boolean) && (
+      {mode === "workshop" && !selectedItem && presentedBoard.some(Boolean) && (
         <p className="interaction-hint">Zutat anklicken, dann einen zweiten Platz wählen: tauschen.</p>
       )}
 

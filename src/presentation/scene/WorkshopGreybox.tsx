@@ -1,6 +1,8 @@
-import { Suspense } from "react";
-import type { Vector3Tuple } from "three";
+import { Suspense, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Group, type Vector3Tuple } from "three";
 
+import { getItemPlacementInsights, type PlacementInfluence } from "../shop/itemInsights";
 import { CauldronActor } from "./CauldronActor";
 import { IngredientModel } from "./IngredientModel";
 import { IngredientSlotGreybox } from "./IngredientSlotGreybox";
@@ -15,6 +17,47 @@ const OFFER_POSITIONS: readonly Vector3Tuple[] = [
   [0, 0.47, 3.55],
   [1.45, 0.47, 3.55],
 ];
+
+function curvePoint(from: Vector3Tuple, to: Vector3Tuple, progress: number): Vector3Tuple {
+  const inverse = 1 - progress;
+  const controlY = Math.max(from[1], to[1]) + 1.05;
+  return [
+    from[0] * inverse + to[0] * progress,
+    inverse * inverse * from[1] + 2 * inverse * progress * controlY + progress * progress * to[1],
+    from[2] * inverse + to[2] * progress,
+  ];
+}
+
+function BuffLink({ influence }: { influence: PlacementInfluence }) {
+  const pulse = useRef<Group>(null);
+  const fromBase = SLOT_POSITIONS[influence.sourceSlot] ?? SLOT_POSITIONS[0]!;
+  const toBase = SLOT_POSITIONS[influence.targetSlot] ?? SLOT_POSITIONS[0]!;
+  const from: Vector3Tuple = [fromBase[0], fromBase[1] + 0.35, fromBase[2]];
+  const to: Vector3Tuple = [toBase[0], toBase[1] + 0.35, toBase[2]];
+  const color = influence.type === "powerAdjacent" ? "#efb869" : "#78dce9";
+  useFrame(({ clock }) => {
+    if (!pulse.current) return;
+    const progress = (clock.elapsedTime * 0.78 + influence.sourceSlot * 0.13) % 1;
+    pulse.current.position.set(...curvePoint(from, to, progress));
+    pulse.current.scale.setScalar(0.7 + Math.sin(progress * Math.PI) * 0.55);
+  });
+  return (
+    <group>
+      {Array.from({ length: 8 }, (_, index) => {
+        const point = curvePoint(from, to, (index + 1) / 9);
+        return (
+          <mesh key={index} position={point}>
+            <sphereGeometry args={[0.035 + index * 0.002, 7, 6]} />
+            <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.85} transparent opacity={0.5} />
+          </mesh>
+        );
+      })}
+      <group ref={pulse}>
+        <mesh><octahedronGeometry args={[0.095, 0]} /><meshStandardMaterial color="#fff4cd" emissive={color} emissiveIntensity={1.8} /></mesh>
+      </group>
+    </group>
+  );
+}
 
 function PotionBottle({ position, color, scale = 1 }: {
   position: Vector3Tuple;
@@ -255,6 +298,11 @@ function WorkbenchFallback() {
 export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
   const bakeoff = assetBakeoffMode();
   const legacy = bakeoff === "legacy";
+  const insights = scene.selectedSlot === null
+    ? null
+    : getItemPlacementInsights(scene.board, scene.selectedSlot);
+  const outgoingTargets = new Set(insights?.outgoing.map((influence) => influence.targetSlot) ?? []);
+  const incomingSources = new Set(insights?.incoming.map((influence) => influence.sourceSlot) ?? []);
   return (
     <group>
       {legacy ? <WorkshopKayKitEnvironment /> : <WorkshopQuaterniusEnvironment />}
@@ -277,7 +325,14 @@ export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
           onSelect={() => scene.onSelectSlot(index)}
           position={position}
           selected={scene.selectedSlot === index}
+          influence={outgoingTargets.has(index) ? "target" : incomingSources.has(index) ? "source" : null}
         />
+      ))}
+      {insights?.outgoing.map((influence) => (
+        <BuffLink influence={influence} key={`out-${influence.sourceSlot}-${influence.targetSlot}`} />
+      ))}
+      {insights?.incoming.map((influence) => (
+        <BuffLink influence={influence} key={`in-${influence.sourceSlot}-${influence.targetSlot}`} />
       ))}
       {scene.reserveUnlocked && (
         <group>

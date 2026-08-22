@@ -4,6 +4,7 @@ import { Group, Mesh, type Vector3Tuple } from "three";
 
 import { getItemDefinition } from "../../core/data";
 import type { ItemInstance } from "../../core/types";
+import { getAllPlacementInfluences } from "../shop/itemInsights";
 import { CauldronActor } from "./CauldronActor";
 import type { CauldronReaction } from "./CauldronActor";
 import { BattleVfx } from "./BattleVfx";
@@ -56,11 +57,13 @@ function IngredientPedestal({
   active,
   animationKey,
   side,
+  buffed,
 }: {
   item: ItemInstance | null;
   active: boolean;
   animationKey: number;
   side: "player" | "enemy";
+  buffed: boolean;
 }) {
   const dial = useRef<Group>(null);
   const pulse = useRef<Group>(null);
@@ -99,6 +102,12 @@ function IngredientPedestal({
           );
         })}
       </group>
+      {buffed && (
+        <group rotation={[Math.PI / 2, 0, 0]} position={[0, -0.16, 0]}>
+          <mesh><torusGeometry args={[0.43, 0.022, 6, 22, Math.PI * 1.65]} /><meshStandardMaterial color="#8ce3ec" emissive="#63cbdc" emissiveIntensity={1.1} transparent opacity={0.72} /></mesh>
+          <mesh rotation={[0, 0, Math.PI]}><torusGeometry args={[0.48, 0.014, 6, 22, Math.PI * 1.3]} /><meshStandardMaterial color="#efbd70" emissive="#d99048" emissiveIntensity={0.9} transparent opacity={0.58} /></mesh>
+        </group>
+      )}
       <group ref={pulse}>
         {item ? (
           <IngredientModel
@@ -124,6 +133,11 @@ function ArenaIngredients({ scene, side }: {
   side: "player" | "enemy";
 }) {
   const board = side === "player" ? scene.board : scene.opponent.board;
+  const buffedSlots = new Set(
+    getAllPlacementInfluences(board)
+      .filter((influence) => influence.sourceSlot !== influence.targetSlot)
+      .map((influence) => influence.targetSlot),
+  );
   return (
     <group>
       {board.map((item, index) => {
@@ -138,6 +152,7 @@ function ArenaIngredients({ scene, side }: {
               animationKey={scene.combat?.eventIndex ?? -1}
               item={item}
               side={side}
+              buffed={buffedSlots.has(index)}
             />
           </group>
         );
@@ -227,7 +242,7 @@ function TournamentAudience({ moor, reactionKey }: { moor: boolean; reactionKey:
         Array.from({ length: row === 0 ? 11 : 9 }, (_, index) => {
           const count = row === 0 ? 11 : 9;
           const x = (index - (count - 1) / 2) * (row === 0 ? 0.72 : 0.82);
-          const accent = moor && index % 4 === 0 ? "#829344" : index % 3 === 0 ? "#6e4f72" : "#4b3c52";
+          const accent = moor && index % 4 === 0 ? "#9aad58" : index % 3 === 0 ? "#87688b" : "#66566e";
           return (
             <group
               key={`${row}-${index}`}
@@ -241,11 +256,11 @@ function TournamentAudience({ moor, reactionKey }: { moor: boolean; reactionKey:
               </mesh>
               <mesh castShadow position={[0, 0.13, 0]}>
                 <sphereGeometry args={[0.115, 9, 7]} />
-                <meshStandardMaterial color={index % 2 ? "#9b7869" : "#75606b"} roughness={0.82} />
+                <meshStandardMaterial color={index % 2 ? "#b38b77" : "#927884"} roughness={0.82} />
               </mesh>
               <mesh castShadow position={[0, 0.3, 0]} rotation={[0, 0, (index % 3 - 1) * 0.08]}>
                 <coneGeometry args={[0.21, 0.42, 7]} />
-                <meshStandardMaterial color={index % 3 === 0 ? "#4c3158" : "#30283d"} roughness={0.9} />
+                <meshStandardMaterial color={index % 3 === 0 ? "#654070" : "#46394e"} roughness={0.9} />
               </mesh>
               <mesh position={[0, 0.16, 0.1]} rotation={[Math.PI / 2, 0, 0]}>
                 <torusGeometry args={[0.18, 0.025, 5, 16]} />
@@ -257,6 +272,18 @@ function TournamentAudience({ moor, reactionKey }: { moor: boolean; reactionKey:
                   <meshStandardMaterial color={accent} roughness={0.9} />
                 </mesh>
               ))}
+              {index % 4 === 0 && (
+                <group position={[0.27, -0.03, 0.02]} rotation={[0, 0, -0.08]}>
+                  <mesh castShadow><cylinderGeometry args={[0.018, 0.026, 0.82, 6]} /><meshStandardMaterial color="#8b6547" roughness={0.72} /></mesh>
+                  <mesh position={[0, 0.43, 0]}><octahedronGeometry args={[0.075, 0]} /><meshStandardMaterial color={moor ? "#c9ef68" : "#d2a2ff"} emissive={moor ? "#8dbd3f" : "#9a67cf"} emissiveIntensity={1.5} /></mesh>
+                </group>
+              )}
+              {index % 5 === 1 && (
+                <mesh position={[0, 0.36, 0]} rotation={[0, 0, (index % 2 ? 1 : -1) * 0.05]}>
+                  <coneGeometry args={[0.3, 0.38, 7]} />
+                  <meshStandardMaterial color={index % 2 ? "#6b4675" : "#4c526c"} roughness={0.88} />
+                </mesh>
+              )}
             </group>
           );
         }),
@@ -589,7 +616,7 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
       {[1.35, 2.25].map((y, index) => (
         <mesh key={y} castShadow receiveShadow position={[0, y, -5.72]}>
           <boxGeometry args={[10.2 - index * 0.9, 0.22, 0.72]} />
-          <meshStandardMaterial color={index === 0 ? "#443848" : "#392f40"} roughness={0.9} />
+          <meshStandardMaterial color={index === 0 ? "#574859" : "#493c4e"} emissive={moor ? "#354124" : "#36243e"} emissiveIntensity={0.12} roughness={0.9} />
         </mesh>
       ))}
       <ArenaPortal moor={moor} />
