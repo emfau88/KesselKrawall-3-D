@@ -85,10 +85,18 @@ import { Onboarding, ONBOARDING_STEP_COUNT } from "./presentation/ui/Onboarding"
 import { SceneErrorBoundary } from "./presentation/ui/SceneErrorBoundary";
 import { CampaignPicker } from "./presentation/ui/CampaignPicker";
 import { IngredientPortrait } from "./presentation/ui/IngredientPortrait";
+import { MainMenu } from "./presentation/ui/MainMenu";
 
 const ONBOARDING_STORAGE_KEY = "kessel-krawall-3d-onboarding-v1";
 const AUDIO_STORAGE_KEY = "kessel-krawall-3d-audio-v2";
 const ROMAN_LEVEL = { 1: "I", 2: "II", 3: "III" } as const;
+const TITLE_BOARD: Board = [
+  { uid: "title-chili", itemId: "chili", level: 2 },
+  { uid: "title-shroom", itemId: "slime-shroom", level: 2 },
+  { uid: "title-shell", itemId: "egg-shell", level: 2 },
+  null,
+  null,
+];
 
 const GreyboxStage = lazy(() => import("./presentation/scene/GreyboxStage"));
 
@@ -123,6 +131,15 @@ function initialGame(): GameState {
     // Local storage is an optional enhancement.
   }
   return enterOpeningShop(createInitialState(0x4b4b2026));
+}
+
+function initialHasResumableRun(): boolean {
+  try {
+    const stored = loadStoredGame(window.localStorage);
+    return stored?.phase === "shop" || stored?.phase === "intro";
+  } catch {
+    return false;
+  }
 }
 
 function eventText(event: CombatEvent | null): string {
@@ -320,6 +337,8 @@ function IngredientContribution({ result }: { result: CombatResult }) {
 
 export function App() {
   const [game, setGame] = useState<GameState>(initialGame);
+  const [screen, setScreen] = useState<"menu" | "game">("menu");
+  const [hasResumableRun, setHasResumableRun] = useState(initialHasResumableRun);
   const [notice, setNotice] = useState("Wähle eine Zutat. Gleiche Zutaten verschmelzen automatisch.");
   const [purchase, setPurchase] = useState<PurchaseVisual | null>(null);
   const [playback, setPlayback] = useState<Playback | null>(null);
@@ -364,13 +383,13 @@ export function App() {
   }, [audioSettings]);
 
   useEffect(() => {
-    const scene = game.phase === "battle"
+    const scene = screen === "menu" ? "shop" : game.phase === "battle"
       ? opponent.rank === "boss" ? "boss" : "battle"
       : game.phase === "result" || game.phase === "victory" || game.phase === "gameover"
         ? "result"
         : "shop";
     audioDirector.setScene(scene);
-  }, [game.phase, opponent.rank]);
+  }, [game.phase, opponent.rank, screen]);
 
   useEffect(() => {
     if (game.phase !== "shop" || battlePreparation) return;
@@ -392,12 +411,13 @@ export function App() {
   }, [battlePreparation?.id, battlePreparation?.stage]);
 
   useEffect(() => {
+    if (screen === "menu" && !hasResumableRun) return;
     try {
       persistGame(window.localStorage, game);
     } catch {
       // Private browsing or storage quotas must not block the game loop.
     }
-  }, [game]);
+  }, [game, hasResumableRun, screen]);
 
   useEffect(() => {
     try {
@@ -867,6 +887,24 @@ export function App() {
     );
   }
 
+  function handleContinueRun() {
+    setScreen("game");
+    setHasResumableRun(true);
+    setCampaignPickerOpen(false);
+    setAudioPanelOpen(false);
+    void audioDirector.activate();
+    audioDirector.play("select");
+  }
+
+  function handleOpenMainMenu() {
+    setScreen("menu");
+    setCampaignPickerOpen(false);
+    setAudioPanelOpen(false);
+    setReserveSelected(false);
+    void audioDirector.activate();
+    audioDirector.play("select");
+  }
+
   function startCampaign(campaignId: CampaignId, legacyFamily?: LegacyFamily) {
     setGame(enterOpeningShop(resetRun(Date.now() >>> 0, campaignId, legacyFamily)));
     setPurchase(null);
@@ -876,7 +914,10 @@ export function App() {
     setBattlePreparation(null);
     setReserveSelected(false);
     setCampaignPickerOpen(false);
+    setScreen("game");
+    setHasResumableRun(true);
     setNotice("Neuer Lauf, neue Mischung. Wähle deine erste Zutat.");
+    void audioDirector.activate();
     audioDirector.play("battleStart");
   }
 
@@ -888,6 +929,50 @@ export function App() {
   const playerHp = combat?.playerHp ?? battleResult?.finalPlayerHp ?? 100;
   const enemyHp = combat?.enemyHp ?? battleResult?.finalEnemyHp ?? stagedOpponent.baseHp;
   const battleProgress = (combat?.playbackProgress ?? 0) * 100;
+
+  if (screen === "menu") {
+    return (
+      <main className="game-shell screen-menu">
+        <SceneErrorBoundary>
+          <Suspense fallback={<div className="scene-loading"><i /><span>Große Halle wird geöffnet …</span></div>}>
+            <GreyboxStage
+              mode="workshop"
+              workshop={{
+                board: TITLE_BOARD,
+                selectedSlot: null,
+                reserve: null,
+                reserveUnlocked: false,
+                reserveSelected: false,
+                purchase: null,
+                onSelectSlot: () => undefined,
+                onSelectReserve: () => undefined,
+              }}
+              arena={{ board: game.board, opponent: stagedOpponent, combat: null, events: [], outcome: null }}
+            />
+          </Suspense>
+        </SceneErrorBoundary>
+        <MainMenu
+          audio={audioSettings}
+          game={game}
+          hasContinue={hasResumableRun}
+          onAudioLevel={handleAudioLevel}
+          onAudioToggle={handleAudioToggle}
+          onContinue={handleContinueRun}
+          onNavigate={() => {
+            void audioDirector.activate();
+            audioDirector.play("select");
+          }}
+          onPlay={() => {
+            void audioDirector.activate();
+            audioDirector.play("select");
+            setCampaignPickerOpen(true);
+          }}
+          progress={progress}
+        />
+        {campaignPickerOpen && <CampaignPicker onClose={() => setCampaignPickerOpen(false)} onStart={startCampaign} progress={progress} />}
+      </main>
+    );
+  }
 
   return (
     <main
@@ -965,11 +1050,11 @@ export function App() {
           ?<span>Hilfe</span>
         </button>
         <button
-          aria-label="Neuen Lauf und Kampagne wählen"
-          onClick={() => setCampaignPickerOpen(true)}
+          aria-label="Zum Hauptmenü"
+          onClick={handleOpenMainMenu}
           type="button"
         >
-          ↺<span>Lauf</span>
+          ⌂<span>Menü</span>
         </button>
       </nav>
 
@@ -1219,11 +1304,14 @@ export function App() {
             <span>{getBattleReward(game, battleResult.winner)} Gold</span>
           </div>
           <IngredientContribution result={battleResult} />
-          {game.phase === "result" ? (
-            <button type="button" onClick={handleAdvance}>Zurück zur Werkbank</button>
-          ) : (
-            <button type="button" onClick={() => setCampaignPickerOpen(true)}>Neue Kampagne wählen</button>
-          )}
+          <div className="result-actions">
+            {game.phase === "result" ? (
+              <button type="button" onClick={handleAdvance}>Zurück zur Werkbank</button>
+            ) : (
+              <button type="button" onClick={() => setCampaignPickerOpen(true)}>Neue Kampagne wählen</button>
+            )}
+            <button className="secondary" type="button" onClick={handleOpenMainMenu}>Hauptmenü</button>
+          </div>
         </section>
       )}
 

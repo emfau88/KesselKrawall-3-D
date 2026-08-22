@@ -11,7 +11,7 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
-![Aufgeräumte Hexenwerkbank mit echten Zutatenporträts im Kaufband](docs/screenshots/workshop-desktop.png)
+![Animiertes KesselKrawall-3D-Hauptmenü vor der lebendigen Hexenwerkbank](docs/screenshots/main-menu-desktop.png)
 
 <p align="center">
   <img src="docs/screenshots/arena-schild-siggi.png" alt="Schild-Siggi in seiner Runenbastion mit freier HUD-Hierarchie" width="64%">
@@ -53,6 +53,14 @@ Runenringe und Stufensteine unterscheiden Level II und III dauerhaft. Im Kampf
 haben Lebensleisten, Uhr, Effektbahn und Cooldowns Vorrang; Ressourcen und
 Werkstattsteuerung werden auf Desktop und Mobile konsequent ausgeblendet.
 
+P2.5A ergänzt eine vollständige Game-Shell vor dem eigentlichen Lauf: eine
+animierte 3D-Titelszene, Kampagnenwahl, zustandsabhängiges Fortsetzen,
+Zutatengrimoire, kompakte Spielanleitung, zentralisierte Audio-/Grafikoptionen
+sowie Credits und Asset-Lizenzen. Ein neuer Lauf überschreibt den gespeicherten
+Stand erst nach bewusster Kampagnenwahl; aus Werkbank und Ergebnisbildschirmen
+führt jederzeit ein klarer Weg zurück ins Hauptmenü. Desktop, Mobile Portrait
+und kurzes Landscape besitzen eigene, touchfreundliche Menükompositionen.
+
 Käufe werden als abgeschlossene Präsentationstransaktion gezeigt: Flug,
 Landung, jede Stufe einer Merge-Kaskade und erst danach die endgültige
 Inventaransicht. Zutaten tragen sichtbare Stufenmarker; ausgewählte Zutaten
@@ -91,6 +99,7 @@ und die 2D-Sprite-Komposition nicht portiert.
 - [Production-Art-Review](docs/PRODUCTION_ART_REVIEW.md)
 - [P1: Moor-Martha Golden Encounter](docs/P1_GOLDEN_ENCOUNTER.md)
 - [P2: Golden-Encounter-Rollout des großen Kesselturniers](docs/P2_GRAND_TOURNAMENT_ROLLOUT.md)
+- [P2.5A: Hauptmenü und Game-Shell](docs/P2_5_MAIN_MENU_GAME_SHELL.md)
 - [Production-Art-Referenzen](docs/reference-art/README.md)
 
 ## Lokale Checks
@@ -122,5 +131,6 @@ GitHub Pages veröffentlicht.
 5. Visuellen Vertical Slice mit Production-Art und Kampf-VFX ausarbeiten *(umgesetzt)*
 6. Audio, Onboarding und Reaktionsqualität *(umgesetzt; echter Musik-/SFX-Mix)*
 7. Responsive- und Performance-QA *(umgesetzt; Battle-Readiness-Gate und mobile Qualitätsstufe, physischer Gerätesmoketest empfohlen)*
+8. Hauptmenü und Game-Shell *(P2.5A umgesetzt; Save-aware Fortsetzen, Grimoire, Anleitung, Einstellungen und Credits)*
 
 Jede Phase muss ihren eigenen Quality Gate bestehen, bevor die nächste beginnt.
