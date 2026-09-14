@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    min-width: 320px;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    color: #f6e7cf;
+    background: #160d18;
+    font-family: Inter, ui-rounded, 'Segoe UI', system-ui, sans-serif;
+}
+
+canvas {
+    display: block;
+}
+
+.experiment-status {
+    position: fixed;
+    z-index: 10;
+    top: max(1rem, env(safe-area-inset-top));
+    left: max(1rem, env(safe-area-inset-left));
+    width: min(23rem, calc(100vw - 2rem));
+    padding: 1rem 1.1rem;
+    border: 1px solid rgb(232 187 112 / 42%);
+    color: #d9cad7;
+    background: linear-gradient(145deg, rgb(43 26 37 / 92%), rgb(18 11 21 / 86%));
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 36%);
+    pointer-events: none;
+    backdrop-filter: blur(12px);
+}
+
+.experiment-status small {
+    color: #e6ae60;
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+}
+.experiment-status h1 {
+    margin: 0.35rem 0 0.15rem;
+    font-family: Georgia, serif;
+    font-size: clamp(1.15rem, 3vw, 1.7rem);
+}
+.experiment-status p {
+    margin: 0 0 0.7rem;
+    color: #aa9bac;
+    font-size: 0.72rem;
+}
+.experiment-status dl {
+    display: grid;
+    gap: 0.3rem;
+    margin: 0;
+}
+.experiment-status dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid rgb(255 255 255 / 7%);
+    padding: 0.2rem 0;
+}
+.experiment-status dt {
+    color: #8f8190;
+    font-size: 0.6rem;
+}
+.experiment-status dd {
+    margin: 0;
+    color: #dec89f;
+    font-size: 0.6rem;
+    font-weight: 800;
+}
+.experiment-status code {
+    display: block;
+    margin-top: 0.7rem;
+    color: #8fd4d8;
+    font-size: 0.58rem;
+}
+
+.experiment-fallback {
+    display: grid;
+    min-height: 100dvh;
+    place-content: center;
+    padding: 1.5rem;
+    background: radial-gradient(circle, #3b2539, #160d18 70%);
+    text-align: center;
+}
+.experiment-fallback h1 {
+    margin: 0;
+    font-family: Georgia, serif;
+}
+.experiment-fallback p {
+    max-width: 34rem;
+    color: #c2b2c0;
+    line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+    .experiment-status {
+        top: auto;
+        right: 0.5rem;
+        bottom: max(0.5rem, env(safe-area-inset-bottom));
+        left: 0.5rem;
+        width: auto;
+        padding: 0.75rem;
+    }
+    .experiment-status dl {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .experiment-status dl div {
+        display: block;
+    }
+}

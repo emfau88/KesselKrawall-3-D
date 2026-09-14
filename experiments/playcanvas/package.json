@@ -1,0 +1,38 @@
+{
+    "name": "kessel-krawall-playcanvas-bakeoff",
+    "version": "0.0.0",
+    "private": true,
+    "description": "Isolated code-based PlayCanvas React rendering bakeoff for KesselKrawall 3D",
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "fmt": "prettier --check .",
+        "fmt:fix": "prettier --write .",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "start": "vite preview",
+        "test": "node --test",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@playcanvas/react": "0.11.5",
+        "kessel-krawall-3d": "file:../..",
+        "playcanvas": "2.22.2",
+        "react": "19.2.8",
+        "react-dom": "19.2.8"
+    },
+    "devDependencies": {
+        "@playcanvas/eslint-config": "3.0.0-beta.8",
+        "@types/react": "19.2.18",
+        "@types/react-dom": "19.2.7",
+        "@vitejs/plugin-react": "6.1.1",
+        "eslint": "9.39.5",
+        "prettier": "3.9.6",
+        "typescript": "6.0.3",
+        "vite": "8.2.2"
+    },
+    "engines": {
+        "node": ">=22.12.0"
+    }
+}

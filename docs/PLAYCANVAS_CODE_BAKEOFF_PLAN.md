@@ -1,7 +1,7 @@
 # Codebasierter PlayCanvas-Bakeoff — Umsetzungsplan
 
-Stand: 14. September 2026  
-Status: PC-C0 teilweise verifiziert; PC-C1 technisch umgesetzt  
+Stand: 14. September 2026
+Status: PC-C0 teilweise verifiziert; PC-C1 technisch umgesetzt
 Produktionsstand: `a640541` (`Add main menu game shell`)
 
 ## 1. Ziel und Entscheidung
@@ -177,9 +177,9 @@ KesselKrawall3D/
 
 # Bulk PC-C0 — Baseline, Branch und Experimentvertrag
 
-**Zweck:** Einen fairen und rückbaubaren Ausgangspunkt schaffen.  
-**Größe:** S  
-**Abhängigkeit:** keine  
+**Zweck:** Einen fairen und rückbaubaren Ausgangspunkt schaffen.
+**Größe:** S
+**Abhängigkeit:** keine
 **Exit:** Dokumentation und Messzustände sind reproduzierbar.
 
 ## Aufgaben
@@ -210,9 +210,9 @@ KesselKrawall3D/
 
 # Bulk PC-C1 — Isoliertes PlayCanvas-React-Unterpackage
 
-**Zweck:** Technische Machbarkeit beweisen, noch ohne Art-Direction-Arbeit.  
-**Größe:** S  
-**Abhängigkeit:** PC-C0  
+**Zweck:** Technische Machbarkeit beweisen, noch ohne Art-Direction-Arbeit.
+**Größe:** S
+**Abhängigkeit:** PC-C0
 **Exit:** Ein minimaler PlayCanvas-Build läuft isoliert lokal und in CI.
 
 ## Aufgaben
@@ -255,9 +255,9 @@ npm run pc:build
 
 # Bulk PC-C2 — Asset- und Szenenkalibrierung
 
-**Zweck:** Dieselben Rohassets korrekt und messbar darstellen.  
-**Größe:** M  
-**Abhängigkeit:** PC-C1  
+**Zweck:** Dieselben Rohassets korrekt und messbar darstellen.
+**Größe:** M
+**Abhängigkeit:** PC-C1
 **Exit:** Kessel, Workbench und drei Zutaten sind maßstäblich korrekt geladen.
 
 ## Aufgaben
@@ -290,9 +290,9 @@ npm run pc:build
 
 # Bulk PC-C3 — Responsive Perspective Camera
 
-**Zweck:** PlayCanvas’ räumliche Komposition isoliert beweisen.  
-**Größe:** M  
-**Abhängigkeit:** PC-C2  
+**Zweck:** PlayCanvas’ räumliche Komposition isoliert beweisen.
+**Größe:** M
+**Abhängigkeit:** PC-C2
 **Exit:** Drei reproduzierbare Kamera-Presets bestehen das Framing-Gate.
 
 ## Aufgaben
@@ -325,9 +325,9 @@ npm run pc:build
 # Bulk PC-C4 — Lighting, Environment und Farbmanagement
 
 **Zweck:** Material- und Formlesbarkeit mit einem kontrollierten Lichtsystem
-beweisen.  
-**Größe:** M–L  
-**Abhängigkeit:** PC-C3  
+beweisen.
+**Größe:** M–L
+**Abhängigkeit:** PC-C3
 **Exit:** Workshop besitzt Key/Fill/Rim, IBL und eine stabile Exposure-Basis.
 
 ## Aufgaben
@@ -360,9 +360,9 @@ beweisen.
 # Bulk PC-C5 — Gemeinsame Materialsprache
 
 **Zweck:** Asset-Pack-Grenzen innerhalb des PlayCanvas-Versuchs sichtbar
-auflösen.  
-**Größe:** L  
-**Abhängigkeit:** PC-C4  
+auflösen.
+**Größe:** L
+**Abhängigkeit:** PC-C4
 **Exit:** Hero-Assets und Environment folgen derselben Materialpolicy.
 
 ## Aufgaben
@@ -396,9 +396,9 @@ auflösen.
 # Bulk PC-C6 — Grounding und Postprocessing-Bakeoff
 
 **Zweck:** Finalen Renderinggewinn messen, ohne Effekte als Reparaturmittel zu
-verwenden.  
-**Größe:** M  
-**Abhängigkeit:** PC-C5  
+verwenden.
+**Größe:** M
+**Abhängigkeit:** PC-C5
 **Exit:** Schatten, SSAO und Bloom sind einzeln bewertet und profiliert.
 
 ## Aufgaben
@@ -472,10 +472,10 @@ Nach PC-C6 wird die Entwicklung gestoppt und bewertet.
 
 # Bulk PC-C7 — Core-Grenze und Integrationsadapter
 
-**Startbedingung:** PC-D1 = GO  
+**Startbedingung:** PC-D1 = GO
 **Zweck:** Beweisen, dass das Experiment den vorhandenen Core konsumiert, ohne
-ihn zu verbiegen.  
-**Größe:** M  
+ihn zu verbiegen.
+**Größe:** M
 **Exit:** TypeScript-Core wird unverändert aus dem Experiment verwendet.
 
 ## Aufgaben
@@ -505,10 +505,10 @@ ihn zu verbiegen.
 
 # Bulk PC-C8 — Minimaler Shop-, Kauf- und Merge-Loop
 
-**Startbedingung:** PC-C7 bestanden  
+**Startbedingung:** PC-C7 bestanden
 **Zweck:** Die reale Presentation-Grenze testen, ohne einen zweiten kompletten
-Spielclient zu bauen.  
-**Größe:** M–L  
+Spielclient zu bauen.
+**Größe:** M–L
 **Exit:** Ein kleiner, deterministischer Interaktionsloop ist vollständig.
 
 ## Aufgaben
@@ -542,9 +542,9 @@ Spielclient zu bauen.
 
 # Bulk PC-C9 — Vergleich, statischer Preview-Build und Go-/No-Go
 
-**Zweck:** Eine belastbare Produktentscheidung vorbereiten.  
-**Größe:** M  
-**Abhängigkeit:** PC-C8  
+**Zweck:** Eine belastbare Produktentscheidung vorbereiten.
+**Größe:** M
+**Abhängigkeit:** PC-C8
 **Exit:** Bericht und Preview sind reproduzierbar; keine Migration startet.
 
 ## Aufgaben

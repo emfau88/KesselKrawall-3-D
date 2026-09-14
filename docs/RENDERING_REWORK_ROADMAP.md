@@ -1,6 +1,6 @@
 # Rendering- und Art-Direction-Rework — Master-Roadmap
 
-Stand: 14. September 2026  
+Stand: 14. September 2026
 Ausgangsstand: `a640541` (`Add main menu game shell`)
 
 ## Zielentscheidung
@@ -90,8 +90,8 @@ Eine neue Variante gewinnt nur, wenn:
 
 ## Bulk R0 — Projektgrenzen und Messsystem
 
-**Zweck:** Vergleichbarkeit schaffen, bevor sich das Bild verändert.  
-**Größe:** S  
+**Zweck:** Vergleichbarkeit schaffen, bevor sich das Bild verändert.
+**Größe:** S
 **Abhängigkeit:** keine
 
 ### Aufgaben
@@ -129,8 +129,8 @@ Eine neue Variante gewinnt nur, wenn:
 
 ## Bulk R1 — Camera Bakeoff und Komposition
 
-**Zweck:** Den größten visuellen Hebel isoliert bewerten.  
-**Größe:** M  
+**Zweck:** Den größten visuellen Hebel isoliert bewerten.
+**Größe:** M
 **Abhängigkeit:** R0
 
 ### Technischer Zuschnitt
@@ -169,8 +169,8 @@ Eine neue Variante gewinnt nur, wenn:
 ## Bulk R2 — Lighting Rebuild
 
 **Zweck:** Form, Blickführung und Tiefe mit wenigen kontrollierbaren Quellen
-herstellen.  
-**Größe:** M–L  
+herstellen.
+**Größe:** M–L
 **Abhängigkeit:** freigegebene Kamera aus R1
 
 ### Audit
@@ -205,8 +205,8 @@ herstellen.
 
 ## Bulk R3 — Farbmanagement, Environment und IBL
 
-**Zweck:** PBR-Materialien erhalten eine gemeinsame indirekte Lichtwelt.  
-**Größe:** M  
+**Zweck:** PBR-Materialien erhalten eine gemeinsame indirekte Lichtwelt.
+**Größe:** M
 **Abhängigkeit:** R2
 
 ### Aufgaben
@@ -234,8 +234,8 @@ herstellen.
 
 ## Bulk R4 — Zentrale Materialsprache
 
-**Zweck:** Die unterschiedlichen Asset-Quellen zu einer Welt verbinden.  
-**Größe:** L  
+**Zweck:** Die unterschiedlichen Asset-Quellen zu einer Welt verbinden.
+**Größe:** L
 **Abhängigkeit:** R3
 
 ### Materialpolicy
@@ -301,8 +301,8 @@ Nach R4 wird nicht automatisch weitergebaut.
 
 ## Bulk R5 — Grounding, Contact Shadows und AO-Bakeoff
 
-**Zweck:** Gewicht und Kontakt herstellen, ohne die Szene zuzuschmutzen.  
-**Größe:** M  
+**Zweck:** Gewicht und Kontakt herstellen, ohne die Szene zuzuschmutzen.
+**Größe:** M
 **Abhängigkeit:** R4 beziehungsweise abgeschlossenes D1
 
 - [ ] Bestehende Echtzeitschatten auf Kessel, Workbench, Dais und Zutaten prüfen.
@@ -326,8 +326,8 @@ Nach R4 wird nicht automatisch weitergebaut.
 ## Bulk R6 — Hero-Asset-Entscheidung und drei Referenzzutaten
 
 **Zweck:** Erst nach fairer Darstellung entscheiden, was wirklich neu gebaut
-werden muss.  
-**Größe:** M bis XL, abhängig vom Gate  
+werden muss.
+**Größe:** M bis XL, abhängig vom Gate
 **Abhängigkeit:** R5
 
 ### Spieler-Kessel
@@ -364,8 +364,8 @@ drei Zutaten.
 
 ## Bulk R7 — Surface Variation und kontrolliertes Finish
 
-**Zweck:** Plastik-/Primitive-Wirkung reduzieren, ohne Detailrauschen.  
-**Größe:** M  
+**Zweck:** Plastik-/Primitive-Wirkung reduzieren, ohne Detailrauschen.
+**Größe:** M
 **Abhängigkeit:** R6
 
 - [ ] Subtile Holzfarb- und Roughness-Variation hinzufügen.
@@ -389,8 +389,8 @@ drei Zutaten.
 
 ## Bulk R8 — Mobile- und Performance-Härtung
 
-**Zweck:** Die neue Art Direction skalierbar und stabil ausliefern.  
-**Größe:** M–L  
+**Zweck:** Die neue Art Direction skalierbar und stabil ausliefern.
+**Größe:** M–L
 **Abhängigkeit:** R7
 
 ### Qualitätsprofile
@@ -428,8 +428,8 @@ drei Zutaten.
 
 ## Bulk R9 — Arena-Transfer und Gegneridentität
 
-**Zweck:** Die bewiesene Golden-Scene-Sprache auf den Kampf übertragen.  
-**Größe:** L  
+**Zweck:** Die bewiesene Golden-Scene-Sprache auf den Kampf übertragen.
+**Größe:** L
 **Abhängigkeit:** vollständig bestandenes R8
 
 - [ ] Gewählte Kamera- und Materialprinzipien auf die Arena übertragen.
@@ -455,8 +455,8 @@ drei Zutaten.
 
 ## Bulk R10 — Asset-Optimierung, Dokumentation und Release
 
-**Zweck:** Nur freigegebene Qualität produktionsreif ausliefern.  
-**Größe:** M  
+**Zweck:** Nur freigegebene Qualität produktionsreif ausliefern.
+**Größe:** M
 **Abhängigkeit:** R9
 
 - [ ] Ungenutzte Nodes, Materialien und Texturen aus finalen GLBs entfernen.

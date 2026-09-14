@@ -1,7 +1,7 @@
 # PlayCanvas-Bakeoff — PC-C0 Baseline
 
-Stand: 14. September 2026  
-Branch: `codex/playcanvas-bakeoff`  
+Stand: 14. September 2026
+Branch: `codex/playcanvas-bakeoff`
 Fixierter Produktionscommit: `a640541` (`Add main menu game shell`)
 
 ## Isolationsvertrag
