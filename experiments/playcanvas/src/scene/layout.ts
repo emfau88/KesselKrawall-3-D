@@ -34,12 +34,7 @@ export const WORKSHOP_LAYOUT = Object.freeze({
         { index: 2, position: [0, TABLE_SURFACE_Y, 2.62], ingredient: 'rune-shell' },
         { index: 3, position: [1.48, TABLE_SURFACE_Y, 2.28] },
         { index: 4, position: [2.75, TABLE_SURFACE_Y, 1.45] }
-    ] satisfies readonly IngredientSlot[],
-    camera: {
-        position: [0, 7.1, 13.4] as Vec3,
-        rotation: [-20, 0, 0] as Vec3,
-        fov: 39
-    }
+    ] satisfies readonly IngredientSlot[]
 });
 
 export function ingredientPlacement(slot: IngredientSlot): AssetPlacement | null {

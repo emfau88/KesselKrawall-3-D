@@ -1,7 +1,7 @@
 # Codebasierter PlayCanvas-Bakeoff — Umsetzungsplan
 
 Stand: 14. September 2026
-Status: PC-C0 teilweise verifiziert; PC-C1 technisch umgesetzt
+Status: PC-C3 technisch umgesetzt; visuelle Vergleichsgates ausstehend
 Produktionsstand: `a640541` (`Add main menu game shell`)
 
 ## 1. Ziel und Entscheidung
@@ -297,17 +297,17 @@ npm run pc:build
 
 ## Aufgaben
 
-- [ ] Kamera-Layout als Datenstruktur statt verstreuter Konstanten definieren.
-- [ ] Desktop-Preset für 16:9 und große Displays erstellen.
-- [ ] Landscape-Preset für 915×412 und 844×390 erstellen.
-- [ ] Portrait-Preset für 390×844 erstellen.
+- [x] Kamera-Layout als Datenstruktur statt verstreuter Konstanten definieren.
+- [x] Desktop-Preset für 16:9 und große Displays erstellen.
+- [x] Landscape-Preset für 915×412 und 844×390 erstellen.
+- [x] Portrait-Preset für 390×844 erstellen.
 - [ ] FOV-Varianten 35–40° und 40–45° vergleichen.
-- [ ] Kamera weiter zurückstellen, statt Weitwinkelverzerrung zu akzeptieren.
-- [ ] Explizites Look-Target und Nah-/Fern-Clipping kalibrieren.
-- [ ] Hero-Kessel, fünf Slots und relevante Werkbankkante priorisieren.
-- [ ] Randdeko darf aus dem Bild fallen; Kerninteraktionen nicht.
-- [ ] Reproduzierbaren Query-Schalter für Kamera- und Profilvarianten anbieten.
-- [ ] Resize und Orientation Change ohne sichtbaren Layoutsprung testen.
+- [x] Kamera weiter zurückstellen, statt Weitwinkelverzerrung zu akzeptieren.
+- [x] Explizites Look-Target und Nah-/Fern-Clipping kalibrieren.
+- [x] Hero-Kessel, fünf Slots und relevante Werkbankkante priorisieren.
+- [x] Randdeko darf aus dem Bild fallen; Kerninteraktionen nicht.
+- [x] Reproduzierbaren Query-Schalter für Kamera- und Profilvarianten anbieten.
+- [x] Resize und Orientation Change ohne sichtbaren Layoutsprung testen.
 - [ ] Direktvergleich mit dem zu PC-C0 fixierten R3F-Stand aufnehmen.
 
 ## Gate PC-C3
@@ -635,6 +635,7 @@ Spielclient zu bauen.
 - [x] `docs/qa/playcanvas-bakeoff/BASELINE.md`
 - [ ] `docs/qa/playcanvas-bakeoff/RENDERING_PROOF.md`
 - [x] `docs/qa/playcanvas-bakeoff/PC_C2_ASSET_CALIBRATION.md`
+- [x] `docs/qa/playcanvas-bakeoff/PC_C3_CAMERA.md`
 - [ ] `docs/qa/playcanvas-bakeoff/INTEGRATION_PROOF.md`
 - [ ] `docs/qa/playcanvas-bakeoff/PERFORMANCE.md`
 - [ ] `docs/qa/playcanvas-bakeoff/SCORECARD.md`

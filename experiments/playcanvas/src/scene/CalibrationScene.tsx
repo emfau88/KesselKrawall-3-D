@@ -1,8 +1,10 @@
 import { Entity } from '@playcanvas/react';
-import { Camera, Light, Render } from '@playcanvas/react/components';
+import { Light, Render } from '@playcanvas/react/components';
 import { Color, StandardMaterial } from 'playcanvas';
 
 import type { SharedAssetId } from '../assets/sharedAssets';
+import type { ResolvedCameraProfile } from '../camera/cameraProfiles';
+import { ResponsiveCamera } from '../camera/ResponsiveCamera';
 
 import { ingredientPlacement, WORKSHOP_LAYOUT } from './layout';
 import { SharedModel } from './SharedModel';
@@ -16,19 +18,14 @@ slotMaterial.gloss = 0.38;
 slotMaterial.update();
 
 type CalibrationSceneProps = {
+    cameraProfile: ResolvedCameraProfile;
     onAssetStateChange: (asset: SharedAssetId, state: AssetLoadState, error?: string) => void;
 };
 
-export function CalibrationScene({ onAssetStateChange }: CalibrationSceneProps) {
+export function CalibrationScene({ cameraProfile, onAssetStateChange }: CalibrationSceneProps) {
     return (
         <>
-            <Entity
-                name="calibration-camera"
-                position={[...WORKSHOP_LAYOUT.camera.position]}
-                rotation={[...WORKSHOP_LAYOUT.camera.rotation]}
-            >
-                <Camera clearColor="#120b14" fov={WORKSHOP_LAYOUT.camera.fov} nearClip={0.1} farClip={80} />
-            </Entity>
+            <ResponsiveCamera profile={cameraProfile} />
 
             <Entity name="key-light" rotation={[42, 32, 0]}>
                 <Light

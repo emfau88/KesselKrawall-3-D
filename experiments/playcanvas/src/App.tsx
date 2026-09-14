@@ -1,16 +1,18 @@
 import { Application } from '@playcanvas/react';
+import { FILLMODE_FILL_WINDOW, RESOLUTION_AUTO } from 'playcanvas';
 import { useCallback, useMemo, useState } from 'react';
 
-import { EXPERIMENT_CONTRACT } from './app/experimentContract';
 import { ExperimentErrorBoundary } from './app/ExperimentErrorBoundary';
 import { SHARED_ASSETS, SHARED_ASSET_IDS } from './assets/sharedAssets';
 import type { SharedAssetId } from './assets/sharedAssets';
+import { useResponsiveCameraProfile } from './camera/cameraProfiles';
 import { CalibrationScene } from './scene/CalibrationScene';
 import type { AssetLoadState } from './scene/SharedModel';
 
 type AssetStatus = { state: AssetLoadState; error?: string };
 
 function App() {
+    const cameraProfile = useResponsiveCameraProfile();
     const [assetStates, setAssetStates] = useState<Partial<Record<SharedAssetId, AssetStatus>>>({});
     const onAssetStateChange = useCallback((asset: SharedAssetId, state: AssetLoadState, error?: string) => {
         setAssetStates((current) => {
@@ -27,8 +29,8 @@ function App() {
 
     return (
         <ExperimentErrorBoundary>
-            <Application>
-                <CalibrationScene onAssetStateChange={onAssetStateChange} />
+            <Application fillMode={FILLMODE_FILL_WINDOW} resolutionMode={RESOLUTION_AUTO}>
+                <CalibrationScene cameraProfile={cameraProfile} onAssetStateChange={onAssetStateChange} />
             </Application>
             {!summary.complete ? (
                 <section
@@ -53,7 +55,7 @@ function App() {
             <aside className="experiment-status" aria-label="PlayCanvas-Experimentstatus">
                 <small>ISOLIERTER RENDERING-BAKEOFF</small>
                 <h1>KesselKrawall · PlayCanvas</h1>
-                <p>PC-C2 · Gemeinsame Assets &amp; Kalibrierung</p>
+                <p>PC-C3 · Responsive Perspektivkamera</p>
                 <dl>
                     <div>
                         <dt>Modelle</dt>
@@ -66,11 +68,19 @@ function App() {
                         <dd>public/assets</dd>
                     </div>
                     <div>
-                        <dt>Kopien</dt>
-                        <dd>Keine</dd>
+                        <dt>Kamera</dt>
+                        <dd>{cameraProfile.label}</dd>
+                    </div>
+                    <div>
+                        <dt>FOV</dt>
+                        <dd>{cameraProfile.fov}°</dd>
+                    </div>
+                    <div>
+                        <dt>Viewport</dt>
+                        <dd>{cameraProfile.viewport.join('×')}</dd>
                     </div>
                 </dl>
-                <code>{EXPERIMENT_CONTRACT.previewPath}</code>
+                <code>{cameraProfile.automatic ? 'AUTO' : 'FORCED'} · ?camera=portrait&amp;fov=42</code>
             </aside>
         </ExperimentErrorBoundary>
     );
