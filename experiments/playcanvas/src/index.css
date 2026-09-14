@@ -22,6 +22,64 @@ canvas {
     display: block;
 }
 
+.asset-loader {
+    position: fixed;
+    z-index: 20;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: radial-gradient(circle, rgb(52 29 49 / 74%), rgb(12 8 14 / 94%));
+    backdrop-filter: blur(8px);
+}
+
+.asset-loader__sigil {
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 0.22rem solid rgb(230 174 96 / 24%);
+    border-top-color: #e6ae60;
+    border-radius: 50%;
+    animation: asset-loader-spin 0.9s linear infinite;
+}
+
+.asset-loader small,
+.asset-loader strong {
+    display: block;
+}
+
+.asset-loader small {
+    margin-bottom: 0.25rem;
+    color: #e6ae60;
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+}
+
+.asset-loader strong {
+    font-family: Georgia, serif;
+    font-size: clamp(1rem, 3vw, 1.45rem);
+}
+
+.asset-loader p {
+    max-width: 36rem;
+    margin: 0.4rem 0 0;
+    color: #ffb4a8;
+    font-size: 0.75rem;
+}
+
+.asset-loader--error .asset-loader__sigil {
+    border-color: #8d3131;
+    animation: none;
+}
+
+@keyframes asset-loader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .experiment-status {
     position: fixed;
     z-index: 10;

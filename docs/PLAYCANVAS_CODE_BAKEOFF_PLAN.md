@@ -262,27 +262,27 @@ npm run pc:build
 
 ## Aufgaben
 
-- [ ] Assetpfade relativ und GitHub-Pages-tauglich auflösen.
-- [ ] Hero-Kessel, Workbench und drei Referenzzutaten laden.
-- [ ] GLB-Bounds, Pivot, Achsen, Einheitenskalierung und Materialslots protokollieren.
-- [ ] Pro Asset einen kalibrierten Wrapper statt Änderungen am Original-GLB
+- [x] Assetpfade relativ und GitHub-Pages-tauglich auflösen.
+- [x] Hero-Kessel, Workbench und drei Referenzzutaten laden.
+- [x] GLB-Bounds, Pivot, Achsen, Einheitenskalierung und Materialslots protokollieren.
+- [x] Pro Asset einen kalibrierten Wrapper statt Änderungen am Original-GLB
       erstellen.
-- [ ] Fehlende Assets klar anzeigen und nicht still durch andere Modelle ersetzen.
-- [ ] Loader-Status bis zum ersten vollständigen Frame sichtbar machen.
-- [ ] Fünf Slottransforms als zentrale Layoutdaten definieren.
-- [ ] Kessel-, Tisch- und Slotkoordinaten aus einem gemeinsamen Scene Layout lesen.
-- [ ] Referenzzustand mit Chili, Schleimpilz und Runenschale herstellen.
-- [ ] Schatten-Caster und Receiver zunächst konservativ zuweisen.
-- [ ] Assetinstanzen und Materialien nicht pro Renderframe neu erzeugen.
+- [x] Fehlende Assets klar anzeigen und nicht still durch andere Modelle ersetzen.
+- [x] Loader-Status bis zum ersten vollständigen Frame sichtbar machen.
+- [x] Fünf Slottransforms als zentrale Layoutdaten definieren.
+- [x] Kessel-, Tisch- und Slotkoordinaten aus einem gemeinsamen Scene Layout lesen.
+- [x] Referenzzustand mit Chili, Schleimpilz und Runenschale herstellen.
+- [x] Schatten-Caster und Receiver zunächst konservativ zuweisen.
+- [x] Assetinstanzen und Materialien nicht pro Renderframe neu erzeugen.
 - [ ] Assettransfers und Dekodierzeit dokumentieren.
 
 ## Gate PC-C2
 
-- [ ] Keine Assetdatei wurde dupliziert.
+- [x] Keine Assetdatei wurde dupliziert.
 - [ ] Alle Modelle stehen korrekt auf ihrer Fläche.
 - [ ] Größenverhältnisse entsprechen dem R3F-Vergleichszustand.
 - [ ] Fünf Slots sind in allen Pflichtseitenverhältnissen grundsätzlich sichtbar.
-- [ ] Keine Konsolen- oder Assetladefehler.
+- [x] Keine Konsolen- oder Assetladefehler.
 
 **Commit:** `Calibrate shared assets in PlayCanvas`
 
@@ -634,6 +634,7 @@ Spielclient zu bauen.
 
 - [x] `docs/qa/playcanvas-bakeoff/BASELINE.md`
 - [ ] `docs/qa/playcanvas-bakeoff/RENDERING_PROOF.md`
+- [x] `docs/qa/playcanvas-bakeoff/PC_C2_ASSET_CALIBRATION.md`
 - [ ] `docs/qa/playcanvas-bakeoff/INTEGRATION_PROOF.md`
 - [ ] `docs/qa/playcanvas-bakeoff/PERFORMANCE.md`
 - [ ] `docs/qa/playcanvas-bakeoff/SCORECARD.md`

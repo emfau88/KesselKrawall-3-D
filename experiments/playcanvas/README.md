@@ -4,7 +4,7 @@ Dieses Unterpackage ist der isolierte Rendering-Versuch aus
 [`docs/PLAYCANVAS_CODE_BAKEOFF_PLAN.md`](../../docs/PLAYCANVAS_CODE_BAKEOFF_PLAN.md).
 Es ersetzt weder die R3F-Anwendung noch den renderer-neutralen Core.
 
-## Aktueller Umfang: PC-C1
+## Aktueller Umfang: PC-C2
 
 - offizielles PlayCanvas-React-/TypeScript-Scaffold;
 - vollständig codebasiert, ohne Editor und MCP;
@@ -12,9 +12,12 @@ Es ersetzt weder die R3F-Anwendung noch den renderer-neutralen Core.
 - relativer statischer Build für einen späteren `/playcanvas/`-Unterpfad;
 - minimale technische Bühne mit Camera, Light und Render Component;
 - eigener Isolationstest und verständliche Initialisierungsfehleranzeige.
+- fünf direkt aus dem produktiven `public/assets` geladene Referenzmodelle;
+- zentrale Bounds-, Kalibrierungs- und Slotdaten ohne Änderung der GLBs;
+- deterministische Golden-Belegung mit Glut-Chili, Schleimpilz und Runenschale.
 
-Assets, Kameraarbeit und Art Direction beginnen erst mit PC-C2 beziehungsweise
-PC-C3. Der Core wird vor einem bestandenen Rendering-Gate nicht importiert.
+Responsive Kameraarbeit und Art Direction beginnen mit PC-C3. Der Core wird vor
+einem bestandenen Rendering-Gate nicht importiert.
 
 ## Isolation
 

@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 // https://vite.dev/config/
 export default defineConfig({
     base: './',
+    publicDir: '../../public',
     plugins: [react()],
     server: {
         host: '127.0.0.1',
@@ -12,6 +13,7 @@ export default defineConfig({
     },
     build: {
         outDir: 'dist',
-        emptyOutDir: true
+        emptyOutDir: true,
+        copyPublicDir: false
     }
 });
