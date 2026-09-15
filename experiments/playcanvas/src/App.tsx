@@ -6,6 +6,8 @@ import { ExperimentErrorBoundary } from './app/ExperimentErrorBoundary';
 import { SHARED_ASSETS, SHARED_ASSET_IDS } from './assets/sharedAssets';
 import type { SharedAssetId } from './assets/sharedAssets';
 import { useResponsiveCameraProfile } from './camera/cameraProfiles';
+import { useLightingProfile } from './lighting/lightingProfiles';
+import type { EnvironmentMetrics } from './lighting/ProceduralEnvironment';
 import { CalibrationScene } from './scene/CalibrationScene';
 import type { AssetLoadState } from './scene/SharedModel';
 
@@ -13,6 +15,8 @@ type AssetStatus = { state: AssetLoadState; error?: string };
 
 function App() {
     const cameraProfile = useResponsiveCameraProfile();
+    const lightingProfile = useLightingProfile(cameraProfile.id);
+    const [environmentMetrics, setEnvironmentMetrics] = useState<EnvironmentMetrics | null>(null);
     const [assetStates, setAssetStates] = useState<Partial<Record<SharedAssetId, AssetStatus>>>({});
     const onAssetStateChange = useCallback((asset: SharedAssetId, state: AssetLoadState, error?: string) => {
         setAssetStates((current) => {
@@ -26,13 +30,20 @@ function App() {
         const failed = SHARED_ASSET_IDS.filter((id) => assetStates[id]?.state === 'error');
         return { ready, failed, complete: ready.length === SHARED_ASSET_IDS.length };
     }, [assetStates]);
+    const onEnvironmentReady = useCallback((metrics: EnvironmentMetrics) => setEnvironmentMetrics(metrics), []);
+    const sceneReady = summary.complete && environmentMetrics !== null;
 
     return (
         <ExperimentErrorBoundary>
             <Application fillMode={FILLMODE_FILL_WINDOW} resolutionMode={RESOLUTION_AUTO}>
-                <CalibrationScene cameraProfile={cameraProfile} onAssetStateChange={onAssetStateChange} />
+                <CalibrationScene
+                    cameraProfile={cameraProfile}
+                    lightingProfile={lightingProfile}
+                    onAssetStateChange={onAssetStateChange}
+                    onEnvironmentReady={onEnvironmentReady}
+                />
             </Application>
-            {!summary.complete ? (
+            {!sceneReady ? (
                 <section
                     className={`asset-loader ${summary.failed.length ? 'asset-loader--error' : ''}`}
                     role="status"
@@ -42,7 +53,9 @@ function App() {
                     <div>
                         <small>{summary.failed.length ? 'ASSET-FEHLER' : 'WERKBANK WIRD VORBEREITET'}</small>
                         <strong>
-                            {summary.ready.length} / {SHARED_ASSET_IDS.length} Referenzmodelle geladen
+                            {environmentMetrics
+                                ? `${summary.ready.length} / ${SHARED_ASSET_IDS.length} Referenzmodelle geladen`
+                                : 'IBL wird vorbereitet'}
                         </strong>
                         {summary.failed.map((id) => (
                             <p key={id}>
@@ -55,7 +68,7 @@ function App() {
             <aside className="experiment-status" aria-label="PlayCanvas-Experimentstatus">
                 <small>ISOLIERTER RENDERING-BAKEOFF</small>
                 <h1>KesselKrawall · PlayCanvas</h1>
-                <p>PC-C3 · Responsive Perspektivkamera</p>
+                <p>PC-C4 · Licht, IBL &amp; Farbmanagement</p>
                 <dl>
                     <div>
                         <dt>Modelle</dt>
@@ -79,8 +92,20 @@ function App() {
                         <dt>Viewport</dt>
                         <dd>{cameraProfile.viewport.join('×')}</dd>
                     </div>
+                    <div>
+                        <dt>Licht</dt>
+                        <dd>{lightingProfile.label}</dd>
+                    </div>
+                    <div>
+                        <dt>IBL</dt>
+                        <dd>
+                            {environmentMetrics
+                                ? `${environmentMetrics.atlasSize}px · ${environmentMetrics.generationMs.toFixed(0)} ms`
+                                : 'lädt'}
+                        </dd>
+                    </div>
                 </dl>
-                <code>{cameraProfile.automatic ? 'AUTO' : 'FORCED'} · ?camera=portrait&amp;fov=42</code>
+                <code>{cameraProfile.automatic ? 'AUTO' : 'FORCED'} · ?light=neutral&amp;quality=mobile</code>
             </aside>
         </ExperimentErrorBoundary>
     );

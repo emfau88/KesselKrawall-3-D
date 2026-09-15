@@ -106,3 +106,38 @@ test('PC-C3 camera profiles mathematically contain the cauldron and all five slo
         }
     }
 });
+
+test('PC-C4 defines deterministic warm, neutral, desktop and mobile lighting profiles', () => {
+    const profiles = read('../src/lighting/lightingProfiles.ts');
+    assert.match(profiles, /requestedVariant === 'neutral' \? 'neutral' : 'warm'/);
+    assert.match(profiles, /camera === 'desktop' \? 'desktop' : 'mobile'/);
+    assert.match(profiles, /environmentSize: mobile \? 128 : 256/);
+    assert.match(profiles, /shadowResolution: mobile \? 1024 : 2048/);
+    assert.match(profiles, /reflectionSamples: mobile \? 32 : 64/);
+});
+
+test('PC-C4 uses ACES tone mapping, sRGB output and a prefiltered environment atlas', () => {
+    const camera = read('../src/camera/ResponsiveCamera.tsx');
+    assert.match(camera, /gammaCorrection=\{GAMMA_SRGB\}/);
+    assert.match(camera, /toneMapping=\{TONEMAP_ACES2\}/);
+
+    const environment = read('../src/lighting/ProceduralEnvironment.tsx');
+    assert.match(environment, /projection: TEXTUREPROJECTION_EQUIRECT/);
+    assert.match(environment, /srgb: true/);
+    assert.match(environment, /EnvLighting\.generateLightingSource/);
+    assert.match(environment, /EnvLighting\.generateAtlas/);
+    assert.match(environment, /atlas\.destroy\(\)/);
+    assert.match(environment, /lightingSource\.destroy\(\)/);
+    assert.match(environment, /source\.destroy\(\)/);
+});
+
+test('PC-C4 limits shadows to the key while retaining visible practical sources', () => {
+    const rig = read('../src/lighting/LightingRig.tsx');
+    // Four rig declarations plus one light inside a candle component instantiated twice.
+    assert.equal((rig.match(/<Light/g) ?? []).length, 5);
+    assert.equal((rig.match(/\scastShadows\n/g) ?? []).length, 1);
+    assert.match(rig, /shadowType=\{SHADOW_PCF3\}/);
+    assert.match(rig, /shadowBias=\{0\.18\}/);
+    assert.match(rig, /normalOffsetBias=\{0\.035\}/);
+    assert.equal((rig.match(/<CandlePractical position=/g) ?? []).length, 2);
+});

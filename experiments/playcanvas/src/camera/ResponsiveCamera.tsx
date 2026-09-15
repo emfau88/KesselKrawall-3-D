@@ -1,7 +1,7 @@
 import { Entity } from '@playcanvas/react';
 import { Camera } from '@playcanvas/react/components';
 import { useAppEvent } from '@playcanvas/react/hooks';
-import { Vec3 } from 'playcanvas';
+import { GAMMA_SRGB, TONEMAP_ACES2, Vec3 } from 'playcanvas';
 import type { Entity as PcEntity } from 'playcanvas';
 import { useLayoutEffect, useRef } from 'react';
 
@@ -37,7 +37,14 @@ export function ResponsiveCamera({ profile }: { profile: ResolvedCameraProfile }
 
     return (
         <Entity ref={entity} name={`camera-${profile.id}`}>
-            <Camera clearColor="#120b14" fov={profile.fov} nearClip={profile.nearClip} farClip={profile.farClip} />
+            <Camera
+                clearColor="#120b14"
+                fov={profile.fov}
+                nearClip={profile.nearClip}
+                farClip={profile.farClip}
+                gammaCorrection={GAMMA_SRGB}
+                toneMapping={TONEMAP_ACES2}
+            />
         </Entity>
     );
 }

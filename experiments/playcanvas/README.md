@@ -4,7 +4,7 @@ Dieses Unterpackage ist der isolierte Rendering-Versuch aus
 [`docs/PLAYCANVAS_CODE_BAKEOFF_PLAN.md`](../../docs/PLAYCANVAS_CODE_BAKEOFF_PLAN.md).
 Es ersetzt weder die R3F-Anwendung noch den renderer-neutralen Core.
 
-## Aktueller Umfang: PC-C3
+## Aktueller Umfang: PC-C4
 
 - offizielles PlayCanvas-React-/TypeScript-Scaffold;
 - vollständig codebasiert, ohne Editor und MCP;
@@ -19,8 +19,15 @@ Es ersetzt weder die R3F-Anwendung noch den renderer-neutralen Core.
 - explizites Look-Target sowie automatische Resize- und Orientation-Reaktion;
 - reproduzierbare Varianten über `?camera=desktop|landscape|portrait` und
   `?fov=35..45`.
+- kontrolliertes Key-/Fill-/Rim-System mit nur einem Schattenwerfer;
+- zwei sichtbare Kerzen-Practicals und ein dezentes Kessellicht;
+- prozedural erzeugtes, vorgefiltertes Environment/IBL ohne zusätzliches Asset;
+- ACES-2-Tone-Mapping, sRGB-Ausgabe und definierte Exposure-Basis;
+- getrennte Desktop-/Mobile-Budgets für IBL, Schatten und Samples;
+- reproduzierbare Lichtvarianten über `?light=warm|neutral` und
+  `?quality=desktop|mobile`.
 
-Lighting und Art Direction beginnen mit PC-C4. Der Core wird vor einem
+Die visuelle Materialkalibrierung beginnt mit PC-C5. Der Core wird vor einem
 bestandenen Rendering-Gate nicht importiert.
 
 ## Isolation

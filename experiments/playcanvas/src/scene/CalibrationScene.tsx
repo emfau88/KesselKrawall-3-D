@@ -1,10 +1,14 @@
 import { Entity } from '@playcanvas/react';
-import { Light, Render } from '@playcanvas/react/components';
+import { Render } from '@playcanvas/react/components';
 import { Color, StandardMaterial } from 'playcanvas';
 
 import type { SharedAssetId } from '../assets/sharedAssets';
 import type { ResolvedCameraProfile } from '../camera/cameraProfiles';
 import { ResponsiveCamera } from '../camera/ResponsiveCamera';
+import type { LightingProfile } from '../lighting/lightingProfiles';
+import { LightingRig } from '../lighting/LightingRig';
+import { ProceduralEnvironment } from '../lighting/ProceduralEnvironment';
+import type { EnvironmentMetrics } from '../lighting/ProceduralEnvironment';
 
 import { ingredientPlacement, WORKSHOP_LAYOUT } from './layout';
 import { SharedModel } from './SharedModel';
@@ -19,30 +23,22 @@ slotMaterial.update();
 
 type CalibrationSceneProps = {
     cameraProfile: ResolvedCameraProfile;
+    lightingProfile: LightingProfile;
     onAssetStateChange: (asset: SharedAssetId, state: AssetLoadState, error?: string) => void;
+    onEnvironmentReady: (metrics: EnvironmentMetrics) => void;
 };
 
-export function CalibrationScene({ cameraProfile, onAssetStateChange }: CalibrationSceneProps) {
+export function CalibrationScene({
+    cameraProfile,
+    lightingProfile,
+    onAssetStateChange,
+    onEnvironmentReady
+}: CalibrationSceneProps) {
     return (
         <>
             <ResponsiveCamera profile={cameraProfile} />
-
-            <Entity name="key-light" rotation={[42, 32, 0]}>
-                <Light
-                    color="#ffd0a0"
-                    intensity={1.35}
-                    type="directional"
-                    castShadows
-                    shadowDistance={24}
-                    shadowResolution={2048}
-                />
-            </Entity>
-            <Entity name="fill-light" rotation={[20, -145, 0]}>
-                <Light color="#8aa9d8" intensity={0.42} type="directional" castShadows={false} />
-            </Entity>
-            <Entity name="cauldron-practical" position={[0, 5.15, -0.15]}>
-                <Light color="#5ccfe0" intensity={2.2} range={5.5} type="omni" castShadows={false} />
-            </Entity>
+            <ProceduralEnvironment profile={lightingProfile} onReady={onEnvironmentReady} />
+            <LightingRig profile={lightingProfile} />
 
             <SharedModel {...WORKSHOP_LAYOUT.workbench} onStateChange={onAssetStateChange} />
             <SharedModel {...WORKSHOP_LAYOUT.cauldron} onStateChange={onAssetStateChange} />

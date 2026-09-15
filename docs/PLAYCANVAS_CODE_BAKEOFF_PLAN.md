@@ -1,7 +1,7 @@
 # Codebasierter PlayCanvas-Bakeoff — Umsetzungsplan
 
-Stand: 14. September 2026
-Status: PC-C3 technisch umgesetzt; visuelle Vergleichsgates ausstehend
+Stand: 15. September 2026
+Status: PC-C4 technisch umgesetzt; visuelle Vergleichsgates ausstehend
 Produktionsstand: `a640541` (`Add main menu game shell`)
 
 ## 1. Ziel und Entscheidung
@@ -332,18 +332,18 @@ beweisen.
 
 ## Aufgaben
 
-- [ ] sRGB-, Linear-, Tone-Mapping- und Exposure-Pfad dokumentieren.
-- [ ] Ein warmes Key Light auf Hero-Kessel und Werkbank setzen.
-- [ ] Ein weiches Fill Light zur kontrollierten Schattenzeichnung ergänzen.
-- [ ] Ein sparsames Rim Light für die Kesselsilhouette ergänzen.
-- [ ] Praktische Lichtquellen nur an sichtbare Feuer-/Kerzenquellen binden.
+- [x] sRGB-, Linear-, Tone-Mapping- und Exposure-Pfad dokumentieren.
+- [x] Ein warmes Key Light auf Hero-Kessel und Werkbank setzen.
+- [x] Ein weiches Fill Light zur kontrollierten Schattenzeichnung ergänzen.
+- [x] Ein sparsames Rim Light für die Kesselsilhouette ergänzen.
+- [x] Praktische Lichtquellen nur an sichtbare Feuer-/Kerzenquellen binden.
 - [ ] Neutrale und warme Environment-Variante vergleichen.
 - [ ] Environment-Intensität an Eisen, Messing, Holz und Glas kalibrieren.
-- [ ] Schattenauflösung, Bias, Normal Bias und Reichweite kalibrieren.
-- [ ] Desktop und Mobile erhalten dieselbe Lichtdramaturgie.
-- [ ] Mobile darf Schatten und Environment-Auflösung reduzieren.
-- [ ] Zahl und Kosten sichtbarer Lichter messen.
-- [ ] Varianten über Queryparameter einzeln reproduzierbar machen.
+- [x] Schattenauflösung, Bias, Normal Bias und Reichweite kalibrieren.
+- [x] Desktop und Mobile erhalten dieselbe Lichtdramaturgie.
+- [x] Mobile darf Schatten und Environment-Auflösung reduzieren.
+- [x] Zahl und Kosten sichtbarer Lichter dokumentieren.
+- [x] Varianten über Queryparameter einzeln reproduzierbar machen.
 
 ## Gate PC-C4
 
@@ -636,6 +636,7 @@ Spielclient zu bauen.
 - [ ] `docs/qa/playcanvas-bakeoff/RENDERING_PROOF.md`
 - [x] `docs/qa/playcanvas-bakeoff/PC_C2_ASSET_CALIBRATION.md`
 - [x] `docs/qa/playcanvas-bakeoff/PC_C3_CAMERA.md`
+- [x] `docs/qa/playcanvas-bakeoff/PC_C4_LIGHTING.md`
 - [ ] `docs/qa/playcanvas-bakeoff/INTEGRATION_PROOF.md`
 - [ ] `docs/qa/playcanvas-bakeoff/PERFORMANCE.md`
 - [ ] `docs/qa/playcanvas-bakeoff/SCORECARD.md`
