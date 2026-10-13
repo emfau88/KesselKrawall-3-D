@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "collectedOn": "2026-10-13",
+  "purpose": "Exact legacy full-body cauldron references for the user-requested image-to-3D character workflow.",
+  "sourceRepository": "https://github.com/emfau88/KesselKrawall",
+  "sourceRevision": "5c4ec098b36d44d6dde4de31cba422de8b4f2b24",
+  "campaign": {
+    "number": 1,
+    "id": "grand-tournament",
+    "name": "Der große Kessel-Wettstreit",
+    "orderEvidence": "app/game/campaigns.ts uses CAMPAIGN_OPPONENTS from app/game/data.ts; its first entries are zischbert and moor-martha."
+  },
+  "provenance": "Original project art supplied through the user's explicitly selected legacy repository. No standalone art license was found; this file does not claim a third-party license.",
+  "processing": "Unmodified binary copies. Original transparency, dimensions, pixel data and hashes preserved. Not runtime 2D overlays.",
+  "images": [
+    {
+      "campaignOrder": 1,
+      "id": "zischbert",
+      "name": "Zischbert",
+      "title": "Der Anheizer",
+      "file": "cauldron-zischbert.png",
+      "sourcePath": "public/assets/art/cauldron-zischbert.png",
+      "sourceUrl": "https://raw.githubusercontent.com/emfau88/KesselKrawall/5c4ec098b36d44d6dde4de31cba422de8b4f2b24/public/assets/art/cauldron-zischbert.png",
+      "verifiedHttpStatus": 200,
+      "bytes": 316361,
+      "dimensions": [512, 512],
+      "sha256": "b121fdd4672dac725fef199417f24583063e1db03ab317ed7af458c1f53206ec",
+      "imageType": "Single complete character on transparent background; not a spritesheet or UI portrait crop.",
+      "alphaBoundsThreshold8": [32, 47, 477, 456],
+      "cropRequired": false,
+      "designNotes": "Black volcanic cauldron, glowing lava fissures, orange liquid, flame-shaped rim, curled handles, aggressive eyes and pointed teeth."
+    },
+    {
+      "campaignOrder": 2,
+      "id": "moor-martha",
+      "name": "Moor-Martha",
+      "title": "Die Geduldige",
+      "file": "cauldron-moor-martha.png",
+      "sourcePath": "public/assets/art/cauldron-moor-martha.png",
+      "sourceUrl": "https://raw.githubusercontent.com/emfau88/KesselKrawall/5c4ec098b36d44d6dde4de31cba422de8b4f2b24/public/assets/art/cauldron-moor-martha.png",
+      "verifiedHttpStatus": 200,
+      "bytes": 289168,
+      "dimensions": [512, 512],
+      "sha256": "f79de449435282f8a0c2b8f448bdf8ea6ab3695b51edc1f36954968c09fb8d39",
+      "imageType": "Single complete character on transparent background; not a spritesheet or UI portrait crop.",
+      "alphaBoundsThreshold8": [52, 69, 466, 442],
+      "cropRequired": false,
+      "designNotes": "Aged riveted cauldron, crooked witch nose, sleepy green eyes, asymmetric smile, moss, mushroom growths, root handles and yellow-green brew."
+    }
+  ]
+}

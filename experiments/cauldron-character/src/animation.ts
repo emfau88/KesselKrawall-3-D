@@ -25,6 +25,7 @@ export interface CharacterPose {
   energy: number;
   liquidEnergy: number;
   splash: number;
+  neutral: number;
   smile: number;
   surprise: number;
   hurt: number;
@@ -46,6 +47,7 @@ export class CharacterAnimator {
     energy: 1,
     liquidEnergy: 1,
     splash: 0,
+    neutral: 0.85,
     smile: 0,
     surprise: 0,
     hurt: 0,
@@ -84,6 +86,7 @@ export class CharacterAnimator {
     p.energy = 1;
     p.liquidEnergy = 1;
     p.splash = 0;
+    p.neutral = 0.85;
     p.smile = 0;
     p.surprise = 0;
     p.hurt = 0;
@@ -99,7 +102,9 @@ export class CharacterAnimator {
 
     switch (mood) {
       case "joy": {
-        p.smile = smooth(0, 0.4, t);
+        const joy = smooth(0, 0.4, t);
+        p.neutral *= 1 - joy;
+        p.smile = joy * 0.35;
         p.gazeY += 0.005;
         p.liquidEnergy = 1.55;
         const hop = pulse(t, 0.4, 0.7) + pulse(t, 1.25, 0.7);
@@ -114,7 +119,7 @@ export class CharacterAnimator {
         p.glow = 1 + charge * 2.2;
         p.gazeX *= 0.2;
         p.gazeY = 0.006;
-        p.smile = charge * 0.16;
+        p.neutral = 0.85 + charge * 0.15;
         lean = -charge * 0.035;
         squash = -charge * 0.028 + Math.sin(t * 26) * 0.005 * charge;
         break;
@@ -128,7 +133,7 @@ export class CharacterAnimator {
         p.gazeX = 0;
         p.gazeY = 0.008;
         p.surprise = release * 0.7;
-        p.smile = recover * 0.3;
+        p.neutral = 1 - release * 0.55 - recover * 0.15;
         p.splash = release;
         p.liquidEnergy = 1 + anticipation * 2.1 + release * 2.5;
         p.glow = 1 + release * 3 + anticipation * 1.6;
@@ -139,6 +144,7 @@ export class CharacterAnimator {
         const recoil = Math.sin(t * 25) * Math.exp(-t * 2.9);
         p.surprise = shock;
         p.hurt = smooth(0.25, 0.7, t) * (1 - smooth(2.6, 4, t));
+        p.neutral = 0.85 * (1 - p.hurt);
         p.blink = Math.max(p.blink, shock * 0.85);
         p.gazeX = -0.008 * Math.exp(-t * 0.5);
         p.splash = shock;
@@ -153,7 +159,8 @@ export class CharacterAnimator {
         p.energy = 1 - slump * 0.9;
         p.liquidEnergy = 1 - slump * 0.83;
         p.glow = 1 - slump * 0.8;
-        p.hurt = slump * 0.9;
+        p.hurt = slump;
+        p.neutral = 0.85 * (1 - slump);
         p.blink = Math.max(p.blink, slump * 0.5);
         p.gazeY = -0.007 * slump;
         lean = slump * 0.15;
@@ -180,6 +187,7 @@ export class CharacterAnimator {
       this.setMorph(face, "Smile", p.smile);
       this.setMorph(face, "Surprise", p.surprise);
       this.setMorph(face, "Hurt", p.hurt);
+      this.setMorph(face, "FaceNeutral", p.neutral);
       this.setMorph(face, "Look_L", Math.max(0, -p.gazeX / 0.014));
       this.setMorph(face, "Look_R", Math.max(0, p.gazeX / 0.014));
     }

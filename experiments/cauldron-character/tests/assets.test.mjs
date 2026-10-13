@@ -6,11 +6,15 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 const repository = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
-const assetDirectory = resolve(repository, 'public/assets/characters/brasskin');
-const requiredNodes = [
-  'CharacterRoot', 'Body', 'LiquidRoot', 'LiquidSurface', 'CharmGlow',
-];
-const requiredMorphs = ['Blink_L', 'Blink_R', 'Smile', 'Surprise', 'Hurt', 'Look_L', 'Look_R'];
+const profileCatalog = {
+  brasskin: { minHeight: 0.8, charmRequired: true, expressionDifference: 0.005, defaultNeutral: 0.85 },
+  zischbert: { minHeight: 0.65, charmRequired: false, expressionDifference: 0.001 },
+  'moor-martha': { minHeight: 0.65, charmRequired: false, expressionDifference: 0.001 },
+};
+const profileNames = (process.env.CHARACTER_PROFILE ?? Object.keys(profileCatalog).join(',')).split(',');
+for (const name of profileNames) assert.ok(profileCatalog[name], `known character profile: ${name}`);
+const requiredNodes = ['CharacterRoot', 'Body', 'LiquidRoot', 'LiquidSurface'];
+const requiredMorphs = ['Blink_L', 'Blink_R', 'FaceNeutral', 'Smile', 'Surprise', 'Hurt', 'Look_L', 'Look_R'];
 const componentTypes = {
   5120: [1, 'getInt8'], 5121: [1, 'getUint8'],
   5122: [2, 'getInt16'], 5123: [2, 'getUint16'],
@@ -107,10 +111,11 @@ function nodeMatrix(node) {
   ];
 }
 
-function inspectAsset(asset) {
+function inspectAsset(asset, profile, contract) {
   const { document } = asset;
   const names = document.nodes.map((node) => node.name);
   for (const name of requiredNodes) assert.equal(names.filter((candidate) => candidate === name).length, 1, `${name} exists exactly once`);
+  if (profile.charmRequired) assert.equal(names.filter((name) => name === 'CharmGlow').length, 1, 'Brasskin charm exists exactly once');
   assert.ok(!names.some((name) => /source|original|duplicate/i.test(name)), 'source model is not duplicated in runtime asset');
   assert.ok(!names.some((name) => /^(FacePlate|EyeWhite|Iris|Pupil|LidUpper|Brow|Mouth)(_|$)/.test(name)), 'no replacement face modules cover the original sculpt');
   const seenNodes = new Set();
@@ -182,7 +187,7 @@ function inspectAsset(asset) {
   visit(scene.nodes[0], identity);
   assert.equal(seenNodes.size, document.nodes.length, 'no orphan source geometry');
   assert.ok(bounds.min[1] >= -0.04 && bounds.min[1] <= 0.04, 'Y-up feet are close to ground');
-  assert.ok(bounds.max[1] >= 0.8 && bounds.max[1] <= 1.35, 'character height is approximately one metre');
+  assert.ok(bounds.max[1] >= profile.minHeight && bounds.max[1] <= 1.35, 'character height is within its measured profile');
   assert.ok(nodeBounds.LiquidSurface.min[1] > bounds.max[1] * 0.6, 'liquid is in the upper bowl');
   const liquid = nodeBounds.LiquidSurface;
   const centerX = (liquid.min[0] + liquid.max[0]) / 2;
@@ -208,6 +213,15 @@ function inspectAsset(asset) {
     const mesh = document.meshes[node.mesh];
     const targetNames = mesh.extras?.targetNames ?? [];
     for (const morph of morphs) assert.ok(targetNames.includes(morph), `${name} exposes ${morph}`);
+    if (mesh.weights) assert.equal(mesh.weights.length, targetNames.length, 'exported defaults map one-to-one to named morph targets');
+    const declaredDefaults = contract.defaultWeights?.[name] ?? contract.defaultWeights ?? {};
+    for (const [index, targetName] of targetNames.entries()) {
+      const actual = mesh.weights?.[index] ?? 0;
+      const expected = declaredDefaults[targetName] ?? (targetName === 'FaceNeutral' ? profile.defaultNeutral ?? 0 : 0);
+      assert.ok(Number.isFinite(actual) && actual >= 0 && actual <= 1, `${targetName} has a valid exported default weight`);
+      if (targetName !== 'FaceNeutral') assert.equal(expected, 0, `${targetName} must not activate by default in a resting asset`);
+      assert.ok(Math.abs(actual - expected) < 1e-6, `${targetName} default ${actual} matches declared rest ${expected}`);
+    }
     for (const primitive of mesh.primitives) {
       assert.equal(primitive.targets.length, targetNames.length, 'all morph names map to targets');
       const basePositions = readAccessor(asset, primitive.attributes.POSITION);
@@ -225,29 +239,49 @@ function inspectAsset(asset) {
         }, 0) / affected.length;
         assert.ok(affectedFront > (nodeBounds.Body.min[2] + nodeBounds.Body.max[2]) / 2, `${morph} is on the +Z front of the character`);
       }
+      const neutral = readAccessor(asset, primitive.targets[targetNames.indexOf('FaceNeutral')].POSITION);
+      for (const alternative of ['Smile', 'Hurt']) {
+        const deltas = readAccessor(asset, primitive.targets[targetNames.indexOf(alternative)].POSITION);
+        const difference = Math.max(...deltas.map((delta, vertex) => Math.hypot(...delta.map((value, axis) => value - neutral[vertex][axis]))));
+        assert.ok(difference > profile.expressionDifference, `${alternative} is a distinct expression rather than a copy of the neutral mouth`);
+      }
     }
   }
   return { triangles, vertices, meshCount, bounds, nodeBounds };
 }
 
-const contract = JSON.parse(await readFile(resolve(assetDirectory, 'character-contract.json'), 'utf8'));
 const inspections = {};
-for (const [variant, budget] of [['desktop', 30_000], ['mobile', 20_000]]) {
-  test(`${variant} character is portable, animated, normalized and within geometry budget`, async () => {
-    const bytes = await readFile(resolve(assetDirectory, `brasskin-${variant}.glb`));
-    const inspection = inspectAsset(parseGlb(bytes));
-    assert.ok(inspection.triangles <= budget, `${inspection.triangles} triangles exceed ${budget}`);
-    assert.equal(inspection.triangles, contract.variants[variant].triangles, 'contract triangle count');
-    assert.equal(inspection.vertices, contract.variants[variant].vertices, 'contract vertex count');
-    assert.equal(inspection.meshCount, contract.variants[variant].meshCount, 'contract mesh count');
-    inspections[variant] = inspection;
-    console.log(`${variant}: ${inspection.triangles} triangles, ${inspection.vertices} vertices, ${inspection.meshCount} meshes`);
+for (const profileName of profileNames) {
+  const profile = profileCatalog[profileName];
+  const assetDirectory = resolve(repository, 'public/assets/characters', profileName);
+  const loadContract = async () => {
+    const contract = JSON.parse(await readFile(resolve(assetDirectory, 'character-contract.json'), 'utf8'));
+    assert.ok(requiredMorphs.every((name) => contract.morphs.Body.includes(name)), 'published contract includes the neutral rest expression');
+    return contract;
+  };
+  inspections[profileName] = {};
+  for (const [variant, budget] of [['desktop', 30_000], ['mobile', 20_000]]) {
+    test(`${profileName} ${variant} is portable, animated, normalized and within geometry budget`, async () => {
+      const contract = await loadContract();
+      const bytes = await readFile(resolve(assetDirectory, contract.variants[variant].file));
+      const inspection = inspectAsset(parseGlb(bytes), profile, contract);
+      assert.equal(bytes.length, contract.variants[variant].bytes, 'contract byte count');
+      if (contract.variants[variant].sha256) assert.equal(createHash('sha256').update(bytes).digest('hex'), contract.variants[variant].sha256, 'processed asset checksum');
+      assert.ok(inspection.triangles <= budget, `${inspection.triangles} triangles exceed ${budget}`);
+      assert.equal(inspection.triangles, contract.variants[variant].triangles, 'contract triangle count');
+      assert.equal(inspection.vertices, contract.variants[variant].vertices, 'contract vertex count');
+      assert.equal(inspection.meshCount, contract.variants[variant].meshCount, 'contract mesh count');
+      inspections[profileName][variant] = inspection;
+      console.log(`${profileName} ${variant}: ${inspection.triangles} triangles, ${inspection.vertices} vertices, ${inspection.meshCount} meshes`);
+    });
+  }
+
+  test(`${profileName} source is preserved byte-for-byte and mobile is a real optimized variant`, async () => {
+    const contract = await loadContract();
+    const source = await readFile(resolve(repository, contract.source.file));
+    assert.equal(createHash('sha256').update(source).digest('hex'), contract.source.sha256, 'source checksum');
+    assert.equal(source.length, contract.source.bytes, 'source byte count');
+    const variants = inspections[profileName];
+    if (variants.desktop && variants.mobile) assert.ok(variants.mobile.triangles < variants.desktop.triangles * 0.85, 'mobile removes meaningful geometry');
   });
 }
-
-test('source is preserved byte-for-byte and mobile is a real optimized variant', async () => {
-  const source = await readFile(resolve(repository, 'art/source/brasskin/source.glb'));
-  assert.equal(createHash('sha256').update(source).digest('hex'), contract.source.sha256, 'source checksum');
-  assert.equal(source.length, contract.source.bytes, 'source byte count');
-  if (inspections.desktop && inspections.mobile) assert.ok(inspections.mobile.triangles < inspections.desktop.triangles * 0.85, 'mobile removes meaningful geometry');
-});

@@ -9,7 +9,8 @@ It contains 53,269 triangles, one material and one embedded 1024×1024 color ima
 
 The input image, generation service and license receipt were not supplied.
 This folder records provenance; it does not assert a new license or authorship
-for the supplied model. The source is used in a local character development probe.
+for the supplied model. On the project owner's request it is now used as the
+player cauldron in the game as well as in the isolated character preview.
 
 The reproducible derivative builder is
 `art/blender/build_brasskin_morph_character.py`. It preserves the original face

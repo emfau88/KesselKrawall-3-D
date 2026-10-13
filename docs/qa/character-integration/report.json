@@ -1,0 +1,633 @@
+{
+  "target": "http://127.0.0.1:5173/",
+  "date": "2026-10-13T15:33:23.973Z",
+  "renderer": "Automated Chromium; inspect snapshot GPU. Not a physical-phone performance benchmark",
+  "cases": [
+    {
+      "name": "workshop-desktop",
+      "snapshot": {
+        "characters": [
+          {
+            "asset": "brasskin-desktop",
+            "position": [
+              0,
+              0.49855152224991883,
+              -0.05
+            ],
+            "front": [
+              -1.6940658945086005e-21,
+              0.005006257861019098,
+              0.9999874686125966
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0.05465673728284829,
+              "FaceNeutral": 0.85
+            },
+            "hasLiquid": true,
+            "bottom": 0.4954545325925193,
+            "top": 2.7222316583512147,
+            "meshes": [
+              "Body",
+              "CharmGlow",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          }
+        ],
+        "render": {
+          "calls": 80,
+          "triangles": 85263
+        },
+        "dpr": 1,
+        "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "battle-zischbert-desktop",
+      "snapshot": {
+        "characters": [
+          {
+            "asset": "brasskin-desktop",
+            "position": [
+              -0.28,
+              0.3086657111734208,
+              4.02
+            ],
+            "front": [
+              1.2245925042636525e-16,
+              -0.007810451213563415,
+              -0.9999694979607331
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0.08403981205898092,
+              "FaceNeutral": 0.85
+            },
+            "hasLiquid": true,
+            "bottom": 0.3050219251525524,
+            "top": 2.519320994612274,
+            "meshes": [
+              "Body",
+              "CharmGlow",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          },
+          {
+            "asset": "zischbert-desktop",
+            "position": [
+              0.28,
+              0.31278895347032876,
+              -3.7
+            ],
+            "front": [
+              1.694065894508601e-21,
+              -0.007810451213563415,
+              0.9999694979607332
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0,
+              "FaceNeutral": 1
+            },
+            "hasLiquid": true,
+            "bottom": 0.30639932858479396,
+            "top": 2.171994471628075,
+            "meshes": [
+              "Body",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          }
+        ],
+        "render": {
+          "calls": 735,
+          "triangles": 224528
+        },
+        "dpr": 1,
+        "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "result-and-return-desktop"
+    },
+    {
+      "name": "battle-moor-martha-desktop",
+      "snapshot": {
+        "characters": [
+          {
+            "asset": "brasskin-desktop",
+            "position": [
+              -0.28,
+              0.30267163132425917,
+              4.02
+            ],
+            "front": [
+              1.2246526466316964e-16,
+              0.002069644068914579,
+              -0.9999978582844203
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0,
+              "FaceNeutral": 1
+            },
+            "hasLiquid": true,
+            "bottom": 0.30045413458661635,
+            "top": 2.4930453619161925,
+            "meshes": [
+              "Body",
+              "CharmGlow",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          },
+          {
+            "asset": "moor-martha-desktop",
+            "position": [
+              0.28,
+              0.30783231051813736,
+              -3.7
+            ],
+            "front": [
+              -8.4703294725430015e-22,
+              0.002069644068914579,
+              0.9999978582844204
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0.02187962828959733,
+              "FaceNeutral": 0.85
+            },
+            "hasLiquid": true,
+            "bottom": 0.3098430949589925,
+            "top": 2.106551367975852,
+            "meshes": [
+              "Body",
+              "LiquidSurface",
+              "ReusablePotionBubbles"
+            ]
+          }
+        ],
+        "render": {
+          "calls": 821,
+          "triangles": 273088
+        },
+        "dpr": 1,
+        "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "damage-feedback-desktop",
+      "text": "+4Schleimpilz · Gift"
+    },
+    {
+      "name": "workshop-mobile-portrait",
+      "snapshot": {
+        "characters": [
+          {
+            "asset": "brasskin-mobile",
+            "position": [
+              0,
+              0.49980724986257175,
+              -0.05
+            ],
+            "front": [
+              0,
+              -0.003394982342845809,
+              0.99999423703084
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0.02900384361111368,
+              "FaceNeutral": 0.85
+            },
+            "hasLiquid": true,
+            "bottom": 0.4988261945078862,
+            "top": 2.736811679075101,
+            "meshes": [
+              "Body",
+              "CharmGlow",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          }
+        ],
+        "render": {
+          "calls": 75,
+          "triangles": 67260
+        },
+        "dpr": 1,
+        "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "battle-zischbert-mobile-portrait",
+      "snapshot": {
+        "characters": [
+          {
+            "asset": "brasskin-mobile",
+            "position": [
+              -0.28,
+              0.3081738187407098,
+              4.02
+            ],
+            "front": [
+              1.2246335015942177e-16,
+              0.004660089527535636,
+              -0.9999891417238467
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0.05767393232934104,
+              "FaceNeutral": 0.85
+            },
+            "hasLiquid": true,
+            "bottom": 0.305705571686866,
+            "top": 2.5123474856215697,
+            "meshes": [
+              "Body",
+              "CharmGlow",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          },
+          {
+            "asset": "zischbert-mobile",
+            "position": [
+              0.28,
+              0.3123821962663562,
+              -3.7
+            ],
+            "front": [
+              0,
+              0.004660089527535636,
+              0.9999891417238468
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0,
+              "FaceNeutral": 1
+            },
+            "hasLiquid": true,
+            "bottom": 0.3047737931608696,
+            "top": 2.1676314003678874,
+            "meshes": [
+              "Body",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          }
+        ],
+        "render": {
+          "calls": 596,
+          "triangles": 165099
+        },
+        "dpr": 1,
+        "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "result-and-return-mobile-portrait"
+    },
+    {
+      "name": "battle-moor-martha-mobile-portrait",
+      "snapshot": {
+        "characters": [
+          {
+            "asset": "brasskin-mobile",
+            "position": [
+              -0.28,
+              0.2988894089509069,
+              4.02
+            ],
+            "front": [
+              1.2223453848797917e-16,
+              0.061502659840156834,
+              -0.9981069195394778
+            ],
+            "morphs": {
+              "Blink_L": 0.6115270402269922,
+              "Blink_R": 0.6115270402269922,
+              "Smile": 0,
+              "Surprise": 0.2515995981836855,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0,
+              "FaceNeutral": 1
+            },
+            "hasLiquid": true,
+            "bottom": 0.2720345961225153,
+            "top": 2.4823474813005597,
+            "meshes": [
+              "Body",
+              "CharmGlow",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          },
+          {
+            "asset": "moor-martha-mobile",
+            "position": [
+              0.28,
+              0.3047047035555576,
+              -3.7
+            ],
+            "front": [
+              0,
+              -0.050143547151151525,
+              0.9987420210840736
+            ],
+            "morphs": {
+              "Blink_L": 0.6115270402269922,
+              "Blink_R": 0.6115270402269922,
+              "Smile": 0,
+              "Surprise": 0.16222857142984873,
+              "Hurt": 0.7300285714343193,
+              "Look_L": 0,
+              "Look_R": 0.09997218944863395,
+              "FaceNeutral": 0.24164285713806727
+            },
+            "hasLiquid": true,
+            "bottom": 0.25195693315424617,
+            "top": 2.0788391872524272,
+            "meshes": [
+              "Body",
+              "LiquidSurface",
+              "ReusablePotionBubbles"
+            ]
+          }
+        ],
+        "render": {
+          "calls": 685,
+          "triangles": 213955
+        },
+        "dpr": 1,
+        "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "damage-feedback-mobile-portrait",
+      "text": "+6Schleimpilz · Gift"
+    },
+    {
+      "name": "workshop-mobile-landscape",
+      "snapshot": {
+        "characters": [
+          {
+            "asset": "brasskin-mobile",
+            "position": [
+              0,
+              0.5000887767438291,
+              -0.05
+            ],
+            "front": [
+              0,
+              -0.003675265773341931,
+              0.9999932461879406
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0.03150344954300678,
+              "FaceNeutral": 0.85
+            },
+            "hasLiquid": true,
+            "bottom": 0.49892765709660836,
+            "top": 2.737876012628803,
+            "meshes": [
+              "Body",
+              "CharmGlow",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          }
+        ],
+        "render": {
+          "calls": 80,
+          "triangles": 68301
+        },
+        "dpr": 1,
+        "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "battle-zischbert-mobile-landscape",
+      "snapshot": {
+        "characters": [
+          {
+            "asset": "brasskin-mobile",
+            "position": [
+              -0.28,
+              0.29750943599067176,
+              4.02
+            ],
+            "front": [
+              1.224623860788564e-16,
+              -0.006661624376293217,
+              -0.9999778111341616
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0.09925531843891618,
+              "FaceNeutral": 0.85
+            },
+            "hasLiquid": true,
+            "bottom": 0.29689928586069375,
+            "top": 2.493657213985212,
+            "meshes": [
+              "Body",
+              "CharmGlow",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          },
+          {
+            "asset": "zischbert-mobile",
+            "position": [
+              0.28,
+              0.3035635720692093,
+              -3.7
+            ],
+            "front": [
+              -4.2351647362715008e-22,
+              -0.006661624376293216,
+              0.9999778111341615
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0.09925531843891618,
+              "FaceNeutral": 0.85
+            },
+            "hasLiquid": true,
+            "bottom": 0.3003727536677882,
+            "top": 2.148811275428211,
+            "meshes": [
+              "Body",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          }
+        ],
+        "render": {
+          "calls": 622,
+          "triangles": 181528
+        },
+        "dpr": 1,
+        "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "result-and-return-mobile-landscape"
+    },
+    {
+      "name": "battle-moor-martha-mobile-landscape",
+      "snapshot": {
+        "characters": [
+          {
+            "asset": "brasskin-mobile",
+            "position": [
+              -0.28,
+              0.3010638658290372,
+              4.02
+            ],
+            "front": [
+              1.220224054531017e-16,
+              0.08491082120331601,
+              -0.996388554953628
+            ],
+            "morphs": {
+              "Blink_L": 0,
+              "Blink_R": 0,
+              "Smile": 0,
+              "Surprise": 0.3351349450629358,
+              "Hurt": 0,
+              "Look_L": 0,
+              "Look_R": 0,
+              "FaceNeutral": 1
+            },
+            "hasLiquid": true,
+            "bottom": 0.2624975074352512,
+            "top": 2.489188318572089,
+            "meshes": [
+              "Body",
+              "CharmGlow",
+              "LiquidSurface",
+              "MouthInterior",
+              "ReusablePotionBubbles"
+            ]
+          },
+          {
+            "asset": "moor-martha-mobile",
+            "position": [
+              0.28,
+              0.3065028121278577,
+              -3.7
+            ],
+            "front": [
+              5.421010862427522e-20,
+              -0.044632729276273465,
+              0.9990034631958744
+            ],
+            "morphs": {
+              "Blink_L": 0.5494285714333611,
+              "Blink_R": 0.5494285714333611,
+              "Smile": 0,
+              "Surprise": 0.146514285715563,
+              "Hurt": 0.6593142857200334,
+              "Look_L": 0,
+              "Look_R": 0.09884790542210439,
+              "FaceNeutral": 0.3005714285666388
+            },
+            "hasLiquid": true,
+            "bottom": 0.29656614503936085,
+            "top": 2.104795908246048,
+            "meshes": [
+              "Body",
+              "LiquidSurface",
+              "ReusablePotionBubbles"
+            ]
+          }
+        ],
+        "render": {
+          "calls": 720,
+          "triangles": 230904
+        },
+        "dpr": 1,
+        "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "damage-feedback-mobile-landscape",
+      "text": "−9Glut-Chili · Schaden"
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

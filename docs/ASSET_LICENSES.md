@@ -110,6 +110,28 @@ ihre Pixel oder Texturen wurden nicht in die GLBs übernommen.
 
 ## Eigenassets im aktuellen Build
 
+### Nutzerbeauftragte Charakter-Rekonstruktionen (13.10.2026)
+
+Brasskin verwendet das vom Projektinhaber bereitgestellte GLB; Zischbert und
+Moor-Martha wurden auf ausdrücklichen Wunsch aus den originalen Einzelbildern
+des alten KesselKrawall-Repositories mit to3D erzeugt. Desktop- und
+Mobile-Ableitungen unter `public/assets/characters/` bewahren diese Farbtexturen
+und ergänzen reduzierte Geometrie, Normalen, lokale Gesichtsmorphs und getrennte
+Flüssigkeitsmeshes. Herkunft, Quell-Prüfsummen und Generierungsjobs stehen unter
+`art/source/brasskin/` und `art/source/enemies/`.
+
+Dies ist eine **dokumentierte Ausnahme** vom früheren Verbot, Legacy-Bildmaterial
+als Texturgrundlage zu verwenden. Es werden keine 2D-Sprite-Sticker in die neue
+Szene übernommen. Für die bereitgestellten Modelle bzw. Originalbilder liegt
+keine separat nachgewiesene kommerzielle Lizenzfreigabe vor. Weder CC0 noch neue
+Urheberschaft werden behauptet; die Quellen- und Dienstrechte sind vor einer
+kommerziellen Veröffentlichung zu bestätigen.
+
+Die zwölf Originalbilder der ersten Kampagnenzutaten unter
+`art/source/ingredients-campaign-1/` sind nur gesicherte Referenzen. Keine davon
+wurde zusätzlich in ein 3D-Modell umgewandelt oder als neue Runtime-Textur geladen;
+die vorhandenen Zutatenmodelle bleiben bestehen.
+
 Folgende Gruppen werden zusätzlich vollständig im Projektcode erzeugt:
 
 - fünf Ingredient-Podeste,

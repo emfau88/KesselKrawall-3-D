@@ -1,6 +1,8 @@
 import type { Board } from "../../core/types";
 import { assetBakeoffMode, type AssetBakeoffMode } from "./assetBakeoff";
 import { productionAssetUrl, type ProductionAssetId } from "./ProductionAsset";
+import { brasskinAssetId, characterAssetId } from "./character/brasskinAssets";
+import { getRuntimeQualityProfile, type RuntimeQualityProfile } from "./runtimeQuality";
 
 export interface AssetLoadProgress {
   readonly completed: number;
@@ -26,29 +28,26 @@ export function getBattleCriticalAssetIds(
   enemyBoard: Board,
   opponentId: string,
   mode: AssetBakeoffMode = assetBakeoffMode(),
+  qualityTier: RuntimeQualityProfile["tier"] = getRuntimeQualityProfile().tier,
 ): ProductionAssetId[] {
-  const assets: ProductionAssetId[] = ["hero-arena-dais"];
+  const assets: ProductionAssetId[] = ["hero-arena-dais", brasskinAssetId(qualityTier)];
+  const authoredOpponent = opponentId === "zischbert" || opponentId === "moor-martha";
+  if (authoredOpponent) assets.push(characterAssetId(opponentId, qualityTier));
 
   if (mode === "legacy") {
     assets.push(
       "dungeon-wall",
       "dungeon-wall-arched",
       "dungeon-floor-tile",
-      "hero-cauldron-player",
     );
-    if (opponentId === "moor-martha") assets.push("hero-cauldron-moor");
   } else {
     assets.push(
-      "quaternius-cauldron-base",
       "quaternius-wall-brick",
       "quaternius-door-frame",
       "quaternius-floor-brick",
       "quaternius-torch",
     );
-    if (mode === "golden") {
-      assets.push("hero-cauldron-player-kit");
-      if (opponentId === "moor-martha") assets.push("hero-cauldron-moor-kit");
-    }
+    if (!authoredOpponent) assets.push("quaternius-cauldron-base");
   }
 
   for (const item of [...playerBoard, ...enemyBoard]) {

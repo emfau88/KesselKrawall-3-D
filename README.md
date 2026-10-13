@@ -14,8 +14,8 @@ läuft vollständig clientseitig und benötigt kein Konto.
 ![Animiertes KesselKrawall-3D-Hauptmenü vor der lebendigen Hexenwerkbank](docs/screenshots/main-menu-desktop.png)
 
 <p align="center">
-  <img src="docs/screenshots/arena-schild-siggi.png" alt="Schild-Siggi in seiner Runenbastion mit freier HUD-Hierarchie" width="64%">
-  <img src="docs/screenshots/workshop-mobile-portrait.png" alt="Aufgeräumte Mobile-Werkstatt im Portraitformat" width="34%">
+  <img src="docs/screenshots/arena-zischbert-brasskin.png" alt="Brasskin von hinten im Kampf gegen den aus dem Original rekonstruierten Zischbert" width="64%">
+  <img src="docs/screenshots/workshop-mobile-portrait.png" alt="Brasskin mit neutraler Mimik und lebendigem Trank in der mobilen Werkbank" width="34%">
 </p>
 
 ## Aktueller Stand
@@ -24,15 +24,20 @@ Legacy-Audit, renderer-neutraler Core, spielbarer 3D-Vertical-Slice und der
 Blender-/North-Star-Art-Pass sowie Mobile-/UX-Polish sind umgesetzt. Der Lauf
 führt vom Drei-Angebote-Shop über Kauf, sichtbaren Merge, Synergieanzeige und
 Slot-Tausch in einen deterministisch simulierten 3D-Kampf mit HP, VFX, Ergebnis
-und Rückkehr zur Werkbank. Legacy-Presentation-Code und Legacy-Grafikassets
-bleiben ausgeschlossen; ausschließlich das separat lizenzierte und vollständig
+und Rückkehr zur Werkbank. Legacy-Presentation-Code und die alte
+2D-Sprite-Komposition bleiben ausgeschlossen. Das separat lizenzierte,
 attribuierte Audiopaket wurde als kuratierter Runtime-Baustein übernommen.
+Auf ausdrücklichen Nutzerwunsch dienen die ursprünglichen Einzelbilder von
+Zischbert und Moor-Martha nun außerdem als Vorlagen für echte 3D-Rekonstruktionen.
 
 Der aktuelle Golden Slice verwendet eine kuratierte, mobile-optimierte Auswahl
 aus Quaternius Fantasy Props, Medieval Village und Stylized Nature als
-gemeinsame visuelle Sprache. Spieler und Moor-Martha kombinieren einen
-hochwertigen texturierten Donor-Kessel mit originalen modularen Gesichtern,
-Regalia, Wurzeln, Moos und dynamischer Flüssigkeit. Die reproduzierbare
+gemeinsame visuelle Sprache. Der Spieler verwendet jetzt Brasskin: das
+bereitgestellte texturierte 3D-Modell mit erhaltener Originalmimik, neutraler
+Ruhestellung und getrenntem, dynamischem Trank. Zischbert und Moor-Martha
+wurden aus ihren ursprünglichen 2D-Einzelbildern rekonstruiert und bewahren
+ihre charakteristischen Formen. Die übrigen Gegner behalten vorerst die
+modularen Donor-Kessel. Die reproduzierbare
 Blender-5.2- und Asset-Aufbereitungspipeline liegt unter `art/blender/` und
 `scripts/`. Hinzu kommen bewegtes Alchemistenpublikum, Ambient-Magie, klar
 getrennte Cast-/Travel-/Impact-Phasen sowie ein Fantasy-UI-Pass mit dunklen
@@ -103,6 +108,7 @@ und die 2D-Sprite-Komposition nicht portiert.
 - [Rendering- und Art-Direction-Rework: Master-Roadmap](docs/RENDERING_REWORK_ROADMAP.md)
 - [Codebasierter PlayCanvas-Bakeoff: detaillierter Bulkplan](docs/PLAYCANVAS_CODE_BAKEOFF_PLAN.md)
 - [Brasskin: lokale Kessel-Charakterprobe mit Mimik und lebendigem Trank](experiments/cauldron-character/README.md)
+- [Charakter-Pipeline und Einbindung: Brasskin, Zischbert und Moor-Martha](docs/CHARACTER_RECONSTRUCTION.md)
 - [Production-Art-Referenzen](docs/reference-art/README.md)
 
 ## Lokale Checks

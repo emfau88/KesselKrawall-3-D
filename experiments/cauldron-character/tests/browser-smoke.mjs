@@ -35,9 +35,9 @@ const saveScreenshot = async (page, name) => {
   report.screenshots.push(name);
 };
 function recordErrors(page, expected = false) {
-  page.on('pageerror', (error) => report.errors.push({ expected, type: 'page', message: error.message }));
+  page.on('pageerror', (error) => report.errors.push({ expected: false, type: 'page', message: error.message }));
   page.on('console', (message) => {
-    if (message.type() === 'error') report.errors.push({ expected, type: 'console', message: message.text() });
+    if (message.type() === 'error') report.errors.push({ expected: typeof expected === 'function' ? expected(message.text()) : expected, type: 'console', message: message.text() });
   });
 }
 function assertReady(snapshot, variant) {
@@ -54,9 +54,24 @@ function assertReady(snapshot, variant) {
   assert.ok(snapshot.render.calls > 0 && snapshot.render.triangles > snapshot.triangleCount, 'character and environment rendered');
   assert.ok(snapshot.canvas.width > 250 && snapshot.canvas.height > 250, 'stage has a usable area');
   assert.ok(snapshot.faceMorphs?.Body, 'actual body morph weights are inspectable');
-  for (const name of ['Blink_L', 'Blink_R', 'Smile', 'Surprise', 'Hurt', 'Look_L', 'Look_R']) {
+  for (const name of ['Blink_L', 'Blink_R', 'FaceNeutral', 'Smile', 'Surprise', 'Hurt', 'Look_L', 'Look_R']) {
     const weight = snapshot.faceMorphs.Body[name];
     assert.ok(Number.isFinite(weight) && weight >= 0 && weight <= 1, `${name} has a valid applied weight`);
+  }
+}
+function assertMouth(snapshot, state) {
+  const face = snapshot.faceMorphs.Body;
+  if (state === 'idle') {
+    assert.ok(face.FaceNeutral >= 0.8, 'idle actively neutralizes the source grin');
+    assert.ok(face.Smile < 0.05 && face.Hurt < 0.05, 'idle is a resting expression');
+  } else if (state === 'joy') {
+    assert.ok(face.FaceNeutral < 0.05 && face.Hurt < 0.05, 'joy releases the neutral/sad expression');
+    assert.ok(face.Smile >= 0.3, 'joy visibly uses the happy expression');
+  } else if (state === 'hit' || state === 'defeat') {
+    assert.ok(face.Hurt >= (state === 'hit' ? 0.85 : 0.95), `${state} actively applies the sad mouth`);
+    assert.ok(face.Smile < 0.05, `${state} cannot retain a grin`);
+    assert.ok(face.FaceNeutral <= 0.15, `${state} crossfades from rest into hurt rather than stacking full mouth shapes`);
+    assert.ok(face.FaceNeutral + face.Hurt <= 1.01, `${state} mouth blend stays within one full expression`);
   }
 }
 async function assertLayout(page, label) {
@@ -96,7 +111,7 @@ try {
   await page.unroute('**/brasskin-desktop.glb');
   await page.locator('[data-view="front"]').click();
   const cases = [
-    ['idle', 0.7, null], ['joy', 1.0, ['smile', 0.9]],
+    ['idle', 0.7, ['neutral', 0.8]], ['joy', 1.0, ['smile', 0.3]],
     ['charge', 2.2, ['glow', 2]], ['attack', 0.95, ['splash', 0.7]],
     ['hit', 1.0, ['hurt', 0.9]], ['defeat', 2.1, ['hurt', 0.8]],
   ];
@@ -107,7 +122,7 @@ try {
     assert.equal(snapshot.expression, state);
     assert.equal(await page.locator(`[data-state="${state}"]`).getAttribute('aria-pressed'), 'true');
     if (expectedPose) assert.ok(snapshot.pose[expectedPose[0]] >= expectedPose[1], `${state}: expression/energy actually advances`);
-    if (state === 'joy') assert.ok(snapshot.faceMorphs.Body.Smile > 0.9, 'smile reaches actual mesh');
+    assertMouth(snapshot, state);
     if (state === 'attack') assert.ok(snapshot.faceMorphs.Body.Surprise > 0.6, 'attack reaches actual mouth deformation');
     if (state === 'hit' || state === 'defeat') assert.ok(snapshot.faceMorphs.Body.Hurt > 0.8, 'hurt reaches actual mesh');
     report.cases.push({ name: state, snapshot });
@@ -141,22 +156,28 @@ try {
       await waitReady(page);
       assert.equal((await readSnapshot(page)).variant, 'mobile', 'automatic quality chooses the mobile asset');
     }
-    await page.evaluate(() => { window.__CAULDRON_REVIEW__.setView('three-quarter'); window.__CAULDRON_REVIEW__.selectState('joy'); window.__CAULDRON_REVIEW__.seek(1); });
+    const state = label === 'mobile-portrait' ? 'idle' : 'hit';
+    const seconds = label === 'mobile-portrait' ? 0.7 : 1;
+    await page.evaluate(({ state, seconds }) => { window.__CAULDRON_REVIEW__.setView('three-quarter'); window.__CAULDRON_REVIEW__.selectState(state); window.__CAULDRON_REVIEW__.seek(seconds); }, { state, seconds });
     await page.waitForTimeout(100);
-    assertReady(await readSnapshot(page), 'mobile');
+    const snapshot = await readSnapshot(page);
+    assertReady(snapshot, 'mobile');
+    assertMouth(snapshot, state);
     await assertLayout(page, label);
+    report.cases.push({ name: `${label}-mouth`, snapshot });
     await saveScreenshot(page, `${label}.png`);
   }
   await page.locator('#reduced-motion').check();
   await page.evaluate(() => { window.__CAULDRON_REVIEW__.selectState('joy'); window.__CAULDRON_REVIEW__.seek(1); });
   const reduced = await readSnapshot(page);
   assert.equal(reduced.reducedMotion, true);
+  assertMouth(reduced, 'joy');
   report.cases.push({ name: 'reduced-motion', snapshot: reduced });
   await context.close();
 
   const failureContext = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const failurePage = await failureContext.newPage();
-  recordErrors(failurePage, true);
+  recordErrors(failurePage, (message) => /Failed to load resource: net::ERR_FAILED|Character preview: Failed to fetch/.test(message));
   await failurePage.route('**/brasskin-desktop.glb', (route) => route.abort('failed'));
   await failurePage.goto(`${target}${target.includes('?') ? '&' : '?'}quality=desktop`, { waitUntil: 'domcontentloaded' });
   await failurePage.locator('#retry-load').waitFor({ state: 'visible', timeout: 30_000 });

@@ -22,4 +22,9 @@ The frozen `window.__CAULDRON_REVIEW__` test interface provides `snapshot()`, `s
 
 The performance panel reports measured browser frame intervals and JS/render-call submission time, including averages and P95. It does not measure GPU time. Paused scenes redraw only for camera changes or explicit pose updates. Automated Chromium software rendering is functional evidence, not a mobile hardware benchmark.
 
-The root game, its menus and combat rules are not changed by this preview. See the repository's character QA documentation for asset checks, visual evidence and remaining limits.
+The preview remains an independent entry point. The root game's player now
+uses the same Brasskin GLBs and the shared `LivingLiquid` helper; combat motion
+is implemented separately in `src/presentation/scene/character/brasskinMotion.ts`.
+The game's menus and combat rules do not depend on this preview. See
+`docs/CHARACTER_RECONSTRUCTION.md` and the character QA documentation for
+integration checks, visual evidence and remaining limits.

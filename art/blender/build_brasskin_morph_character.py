@@ -14,7 +14,7 @@ PREVIEW=ROOT/'art/blender/previews/brasskin'
 OUTPUT.mkdir(parents=True,exist_ok=True)
 PREVIEW.mkdir(parents=True,exist_ok=True)
 OFFSET=.4168242812156677
-MORPHS=['Blink_L','Blink_R','Smile','Surprise','Hurt','Look_L','Look_R']
+MORPHS=['Blink_L','Blink_R','Smile','Surprise','Hurt','Look_L','Look_R','FaceNeutral']
 
 def material(name,rgb,roughness=.5,emission=0):
     m=bpy.data.materials.new(name);m.use_nodes=True
@@ -40,29 +40,59 @@ def eye_weight(co,cx,cz):
     t=min(1,max(0,(distance-.72)/.43))
     return (1-t*t*(3-2*t))*min(1,max(0,(-co.y-.275)/.04))
 
+def mouth_weight(co):
+    """Follow the sculpted curved mouth, with a flat core and soft lip boundary.
+
+    The former radial weight left the lifted corners almost untouched, so even
+    Hurt still read as a grin. This band includes lips/corners but excludes the
+    eyes, cheek armour, chin jewel and rear shell. UVs remain unchanged.
+    """
+    if co.y>-.245:return 0
+    x=abs(co.x)
+    edge=min(1,max(0,(x-.162)/.043))
+    center=OFFSET+.068+.075*min(1.4,(x/.17)**2)
+    vertical=min(1,max(0,(abs(co.z-center)-.042)/.058))
+    fade=lambda t:1-t*t*(3-2*t)
+    return fade(edge)*fade(vertical)*min(1,max(0,(-co.y-.245)/.065))
+
 def morphs(body):
     basis=body.shape_key_add(name='Basis')
     # Centers measured on the original sculpt, not guessed from the screen view.
     centers=[(-.080,OFFSET+.237),(.080,OFFSET+.237)]
     for name in MORPHS:
         k=body.shape_key_add(name=name)
+        # Blender can initialize a new relative shape key at 1. Reset explicitly
+        # so exported glTF weights never stack every expression on first import.
+        k.value=0
         for v,p in zip(basis.data,k.data):
             c=v.co;delta=Vector((0,0,0))
             eyes=[eye_weight(c,x,z) for x,z in centers]
-            mouth=weight(c,0,OFFSET+.096,.19,.095)
+            mouth=mouth_weight(c)
             brow=weight(c,0,OFFSET+.306,.185,.04)
             if name.startswith('Blink'):
                 side=0 if name.endswith('L') else 1
                 delta.z=(centers[side][1]-.01-c.z)*eyes[side]*.985
                 delta.y=.004*eyes[side]
-            elif name=='Smile':delta.z=(.018+.024*min(1,abs(c.x)/.13))*mouth
+            elif name=='Smile':delta.z=(.010+.014*min(1,abs(c.x)/.13))*mouth
             elif name=='Surprise':
                 delta.x=-c.x*.2*mouth
                 delta.z=(c.z-(OFFSET+.096))*.12*mouth+.011*brow
             elif name=='Hurt':
-                delta.z=-.019*mouth-.012*brow;delta.x=c.x*.07*mouth
+                # A complete expression from the original Basis. Crossfade
+                # with FaceNeutral; stacking both fully would close it twice.
+                corner=min(1.5,(abs(c.x)/.16)**2)
+                delta.z=(-.76*(c.z-(OFFSET+.120))-.043*corner)*mouth
+                delta.z+=(.012-.022*min(1,abs(c.x)/.10))*brow
+                delta.x=-c.x*.035*mouth
+            elif name=='FaceNeutral':
+                corner=min(1.5,(abs(c.x)/.16)**2)
+                delta.z=(-.78*(c.z-(OFFSET+.120))-.026*corner)*mouth
+                delta.x=-c.x*.025*mouth
             else:delta.x=(-.006 if name=='Look_L' else .006)*max(eyes)
             p.co=c+delta
+    # An imported derivative should start with the same restrained resting face
+    # as the game, not show the supplied sculpt's original open grin for a frame.
+    body.data.shape_keys.key_blocks['FaceNeutral'].value=.85
 
 def build():
     bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
@@ -152,24 +182,34 @@ def render():
         o.rotation_euler=(target-o.location).to_track_quat('-Z','Y').to_euler()
     bpy.ops.object.camera_add(location=(.8,-2.8,1.2));c=bpy.context.object
     c.rotation_euler=(target-c.location).to_track_quat('-Z','Y').to_euler();c.data.type='ORTHO';c.data.ortho_scale=1.22;s.camera=c
-    s.render.filepath=str(PREVIEW/'character-original-face.png');bpy.ops.render.render(write_still=True)
     body=bpy.data.objects.get('Body')
-    body.data.shape_keys.key_blocks['Blink_L'].value=1
-    body.data.shape_keys.key_blocks['Blink_R'].value=1
-    s.render.filepath=str(PREVIEW/'character-blink.png');bpy.ops.render.render(write_still=True)
-    body.data.shape_keys.key_blocks['Blink_L'].value=0
-    body.data.shape_keys.key_blocks['Blink_R'].value=0
+    expressions={
+        'original-face':{},
+        'neutral':{'FaceNeutral':.85},
+        'hurt':{'FaceNeutral':.1,'Hurt':.9,'Blink_L':.2,'Blink_R':.2},
+        'defeat':{'Hurt':1,'Blink_L':.5,'Blink_R':.5},
+        'joy':{'Smile':.35},
+        'blink':{'FaceNeutral':.85,'Blink_L':1,'Blink_R':1},
+    }
+    for label,values in expressions.items():
+        for k in body.data.shape_keys.key_blocks:k.value=values.get(k.name,0)
+        s.render.filepath=str(PREVIEW/f'character-{label}.png');bpy.ops.render.render(write_still=True)
+    for k in body.data.shape_keys.key_blocks:k.value=0
 
 root,body=build()
 variants={'desktop':export(body,'desktop',23500),'mobile':export(body,'mobile',15500)}
 morphs(body)
-contract={'version':2,'name':'Brasskin','faceStrategy':'original-textured-face-local-morphs',
+contract={'version':3,'name':'Brasskin','faceStrategy':'original-textured-face-local-morphs',
     'source':{'file':'art/source/brasskin/source.glb','sha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),'bytes':SOURCE.stat().st_size},
     'coordinates':{'up':'Y','front':'+Z','footPivot':0},'variants':variants,
     'liquid':{'node':'LiquidSurface','radius':.28,'height':OFFSET+.324},'morphs':{'Body':MORPHS},
     'expressions':['idle','joy','charge','attack','hit','defeat'],
+    'defaultWeights':{'Body':{'FaceNeutral':.85}},
+    'expressionWeights':{'idle':{'FaceNeutral':.85},'joy':{'Smile':.35},
+        'charge':{'FaceNeutral':1},'hit':{'FaceNeutral':.1,'Hurt':.9},'defeat':{'Hurt':1}},
     'notes':['Original face geometry and texture preserved; no replacement faceplate.',
-        'Local facial morphs; body movement and liquid animation are runtime effects.']}
+        'Local facial morphs; body movement and liquid animation are runtime effects.',
+        'FaceNeutral and Hurt are complete expressions from Basis; crossfade rather than stacking both at full weight.']}
 (OUTPUT/'character-contract.json').write_text(json.dumps(contract,indent=2),encoding='utf8')
 bpy.context.preferences.filepaths.save_version=0
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'art/blender/brasskin-character.blend'))

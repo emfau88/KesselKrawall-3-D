@@ -7,6 +7,7 @@ const workspace = fileURLToPath(new URL("../../", import.meta.url));
 
 export default defineConfig({
   root,
+  cacheDir: `${root}node_modules/.vite`,
   base: "./",
   publicDir: `${workspace}public`,
   server: {

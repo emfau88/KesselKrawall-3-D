@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "name": "Brasskin",
   "faceStrategy": "original-textured-face-local-morphs",
   "source": {
@@ -15,7 +15,7 @@
   "variants": {
     "desktop": {
       "file": "brasskin-desktop.glb",
-      "bytes": 3725788,
+      "bytes": 3952460,
       "triangles": 26452,
       "vertices": 20593,
       "meshCount": 4,
@@ -23,7 +23,7 @@
     },
     "mobile": {
       "file": "brasskin-mobile.glb",
-      "bytes": 3081420,
+      "bytes": 3242832,
       "triangles": 18451,
       "vertices": 15542,
       "meshCount": 4,
@@ -43,7 +43,8 @@
       "Surprise",
       "Hurt",
       "Look_L",
-      "Look_R"
+      "Look_R",
+      "FaceNeutral"
     ]
   },
   "expressions": [
@@ -54,8 +55,32 @@
     "hit",
     "defeat"
   ],
+  "defaultWeights": {
+    "Body": {
+      "FaceNeutral": 0.85
+    }
+  },
+  "expressionWeights": {
+    "idle": {
+      "FaceNeutral": 0.85
+    },
+    "joy": {
+      "Smile": 0.35
+    },
+    "charge": {
+      "FaceNeutral": 1
+    },
+    "hit": {
+      "FaceNeutral": 0.1,
+      "Hurt": 0.9
+    },
+    "defeat": {
+      "Hurt": 1
+    }
+  },
   "notes": [
     "Original face geometry and texture preserved; no replacement faceplate.",
-    "Local facial morphs; body movement and liquid animation are runtime effects."
+    "Local facial morphs; body movement and liquid animation are runtime effects.",
+    "FaceNeutral and Hurt are complete expressions from Basis; crossfade rather than stacking both at full weight."
   ]
 }
