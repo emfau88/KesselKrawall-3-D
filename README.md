@@ -102,6 +102,7 @@ und die 2D-Sprite-Komposition nicht portiert.
 - [P2.5A: Hauptmenü und Game-Shell](docs/P2_5_MAIN_MENU_GAME_SHELL.md)
 - [Rendering- und Art-Direction-Rework: Master-Roadmap](docs/RENDERING_REWORK_ROADMAP.md)
 - [Codebasierter PlayCanvas-Bakeoff: detaillierter Bulkplan](docs/PLAYCANVAS_CODE_BAKEOFF_PLAN.md)
+- [Brasskin: lokale Kessel-Charakterprobe mit Mimik und lebendigem Trank](experiments/cauldron-character/README.md)
 - [Production-Art-Referenzen](docs/reference-art/README.md)
 
 ## Lokale Checks

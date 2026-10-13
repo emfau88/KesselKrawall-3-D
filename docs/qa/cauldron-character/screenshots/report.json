@@ -1,0 +1,1228 @@
+{
+  "target": "http://127.0.0.1:5194/",
+  "generatedAt": "2026-10-13T13:43:13.715Z",
+  "renderer": "automated Chromium; timings are not real-device performance evidence",
+  "cases": [
+    {
+      "name": "pending-asset-gate",
+      "snapshot": {
+        "ready": false,
+        "variant": "desktop",
+        "expression": "idle",
+        "state": "idle",
+        "time": 0,
+        "paused": false,
+        "reducedMotion": false,
+        "view": "three-quarter",
+        "error": null,
+        "triangleCount": 0,
+        "meshNames": [],
+        "sceneMeshNames": [],
+        "meshVisibility": {},
+        "faceMorphs": {
+          "Body": {}
+        },
+        "liquidSurfaceCount": 0,
+        "frames": 3,
+        "pose": null,
+        "render": {
+          "triangles": 1586,
+          "calls": 4,
+          "textures": 4
+        },
+        "performance": {
+          "frameAverageMs": 0,
+          "frameP95Ms": 0,
+          "cpuAverageMs": 0,
+          "cpuP95Ms": 0,
+          "samples": 0
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "idle",
+      "snapshot": {
+        "ready": true,
+        "variant": "desktop",
+        "expression": "idle",
+        "state": "idle",
+        "time": 0.7,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "front",
+        "error": null,
+        "triangleCount": 26532,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 0,
+            "Surprise": 0,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0.06923503375446706
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 14,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 1,
+          "splash": 0,
+          "smile": 0,
+          "surprise": 0,
+          "hurt": 0,
+          "blink": 0,
+          "gazeX": 0.0009692904725625388,
+          "gazeY": 0,
+          "glow": 1
+        },
+        "render": {
+          "triangles": 54426,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 16.666667302449543,
+          "frameP95Ms": 16.700000762939453,
+          "cpuAverageMs": 2.016666611035665,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "joy",
+      "snapshot": {
+        "ready": true,
+        "variant": "desktop",
+        "expression": "joy",
+        "state": "joy",
+        "time": 1,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "front",
+        "error": null,
+        "triangleCount": 26532,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 1,
+            "Surprise": 0,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0.09704706115265747
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 14,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 1.55,
+          "splash": 0,
+          "smile": 1,
+          "surprise": 0,
+          "hurt": 0,
+          "blink": 0,
+          "gazeX": 0.0013586588561372048,
+          "gazeY": 0.005,
+          "glow": 1
+        },
+        "render": {
+          "triangles": 54426,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "charge",
+      "snapshot": {
+        "ready": true,
+        "variant": "desktop",
+        "expression": "charge",
+        "state": "charge",
+        "time": 2.2,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "front",
+        "error": null,
+        "triangleCount": 26532,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 0.15685185185185185,
+            "Surprise": 0,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0.03682934574404218
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 15,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 3.0586805555555556,
+          "splash": 0,
+          "smile": 0.15685185185185185,
+          "surprise": 0,
+          "hurt": 0,
+          "blink": 0,
+          "gazeX": 0.0005156108404165906,
+          "gazeY": 0.006,
+          "glow": 3.1567129629629633
+        },
+        "render": {
+          "triangles": 54426,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "attack",
+      "snapshot": {
+        "ready": true,
+        "variant": "desktop",
+        "expression": "attack",
+        "state": "attack",
+        "time": 0.95,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "front",
+        "error": null,
+        "triangleCount": 26532,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 0,
+            "Surprise": 0.7,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 16,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 3.5,
+          "splash": 1,
+          "smile": 0,
+          "surprise": 0.7,
+          "hurt": 0,
+          "blink": 0,
+          "gazeX": 0,
+          "gazeY": 0.008,
+          "glow": 4
+        },
+        "render": {
+          "triangles": 54426,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "hit",
+      "snapshot": {
+        "ready": true,
+        "variant": "desktop",
+        "expression": "hit",
+        "state": "hit",
+        "time": 1,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "front",
+        "error": null,
+        "triangleCount": 26532,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 0,
+            "Surprise": 0,
+            "Hurt": 1,
+            "Look_L": 0.3465889484072191,
+            "Look_R": 0
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 17,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 1,
+          "splash": 0,
+          "smile": 0,
+          "surprise": 0,
+          "hurt": 1,
+          "blink": 0,
+          "gazeX": -0.004852245277701068,
+          "gazeY": 0,
+          "glow": 1
+        },
+        "render": {
+          "triangles": 54426,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "defeat",
+      "snapshot": {
+        "ready": true,
+        "variant": "desktop",
+        "expression": "defeat",
+        "state": "defeat",
+        "time": 2.1,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "front",
+        "error": null,
+        "triangleCount": 26532,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0.5,
+            "Blink_R": 0.5,
+            "Smile": 0,
+            "Surprise": 0,
+            "Hurt": 0.9,
+            "Look_L": 0,
+            "Look_R": 0.17879488915152789
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 18,
+        "pose": {
+          "energy": 0.09999999999999998,
+          "liquidEnergy": 0.17000000000000004,
+          "splash": 0,
+          "smile": 0,
+          "surprise": 0,
+          "hurt": 0.9,
+          "blink": 0.5,
+          "gazeX": 0.0025031284481213906,
+          "gazeY": -0.007,
+          "glow": 0.19999999999999996
+        },
+        "render": {
+          "triangles": 54426,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "blink",
+      "snapshot": {
+        "ready": true,
+        "variant": "desktop",
+        "expression": "idle",
+        "state": "idle",
+        "time": 3.34,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "front",
+        "error": null,
+        "triangleCount": 26532,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 1,
+            "Blink_R": 1,
+            "Smile": 0,
+            "Surprise": 0,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0.2142856079285357
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 20,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 1,
+          "splash": 0,
+          "smile": 0,
+          "surprise": 0,
+          "hurt": 0,
+          "blink": 1,
+          "gazeX": 0.0029999985109995,
+          "gazeY": 0,
+          "glow": 1
+        },
+        "render": {
+          "triangles": 54426,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "desktop",
+      "layout": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scrollWidth": 1440,
+        "canvas": {
+          "x": 0,
+          "y": 76,
+          "width": 1090,
+          "height": 924
+        },
+        "buttons": [
+          {
+            "state": "idle",
+            "x": 1115,
+            "right": 1261.5,
+            "width": 146.5,
+            "height": 89.59375
+          },
+          {
+            "state": "joy",
+            "x": 1269.5,
+            "right": 1416,
+            "width": 146.5,
+            "height": 89.59375
+          },
+          {
+            "state": "charge",
+            "x": 1115,
+            "right": 1261.5,
+            "width": 146.5,
+            "height": 89.59375
+          },
+          {
+            "state": "attack",
+            "x": 1269.5,
+            "right": 1416,
+            "width": 146.5,
+            "height": 89.59375
+          },
+          {
+            "state": "hit",
+            "x": 1115,
+            "right": 1261.5,
+            "width": 146.5,
+            "height": 89.59375
+          },
+          {
+            "state": "defeat",
+            "x": 1269.5,
+            "right": 1416,
+            "width": 146.5,
+            "height": 89.59375
+          }
+        ]
+      }
+    },
+    {
+      "name": "switch-mobile",
+      "snapshot": {
+        "ready": true,
+        "variant": "mobile",
+        "expression": "idle",
+        "state": "idle",
+        "time": 0,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "three-quarter",
+        "error": null,
+        "triangleCount": 18531,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 0,
+            "Surprise": 0,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 22,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 1,
+          "splash": 0,
+          "smile": 0,
+          "surprise": 0,
+          "hurt": 0,
+          "blink": 0,
+          "gazeX": 0,
+          "gazeY": 0,
+          "glow": 1
+        },
+        "render": {
+          "triangles": 38424,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "switch-desktop",
+      "snapshot": {
+        "ready": true,
+        "variant": "desktop",
+        "expression": "idle",
+        "state": "idle",
+        "time": 0,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "three-quarter",
+        "error": null,
+        "triangleCount": 26532,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 0,
+            "Surprise": 0,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 22,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 1,
+          "splash": 0,
+          "smile": 0,
+          "surprise": 0,
+          "hurt": 0,
+          "blink": 0,
+          "gazeX": 0,
+          "gazeY": 0,
+          "glow": 1
+        },
+        "render": {
+          "triangles": 54426,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "switch-mobile",
+      "snapshot": {
+        "ready": true,
+        "variant": "mobile",
+        "expression": "idle",
+        "state": "idle",
+        "time": 0,
+        "paused": true,
+        "reducedMotion": false,
+        "view": "three-quarter",
+        "error": null,
+        "triangleCount": 18531,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 0,
+            "Surprise": 0,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 22,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 1,
+          "splash": 0,
+          "smile": 0,
+          "surprise": 0,
+          "hurt": 0,
+          "blink": 0,
+          "gazeX": 0,
+          "gazeY": 0,
+          "glow": 1
+        },
+        "render": {
+          "triangles": 38424,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 924,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "mobile-portrait",
+      "layout": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollWidth": 390,
+        "canvas": {
+          "x": 0,
+          "y": 56,
+          "width": 390,
+          "height": 489.515625
+        },
+        "buttons": [
+          {
+            "state": "idle",
+            "x": 20,
+            "right": 132,
+            "width": 112,
+            "height": 80.1875
+          },
+          {
+            "state": "joy",
+            "x": 139,
+            "right": 251,
+            "width": 112,
+            "height": 80.1875
+          },
+          {
+            "state": "charge",
+            "x": 258,
+            "right": 370,
+            "width": 112,
+            "height": 80.1875
+          },
+          {
+            "state": "attack",
+            "x": 20,
+            "right": 132,
+            "width": 112,
+            "height": 80.1875
+          },
+          {
+            "state": "hit",
+            "x": 139,
+            "right": 251,
+            "width": 112,
+            "height": 80.1875
+          },
+          {
+            "state": "defeat",
+            "x": 258,
+            "right": 370,
+            "width": 112,
+            "height": 80.1875
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile-landscape",
+      "layout": {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "scrollWidth": 844,
+        "canvas": {
+          "x": 0,
+          "y": 48,
+          "width": 544,
+          "height": 342
+        },
+        "buttons": [
+          {
+            "state": "idle",
+            "x": 563,
+            "right": 690.5,
+            "width": 127.5,
+            "height": 74.59375
+          },
+          {
+            "state": "joy",
+            "x": 698.5,
+            "right": 826,
+            "width": 127.5,
+            "height": 74.59375
+          },
+          {
+            "state": "charge",
+            "x": 563,
+            "right": 690.5,
+            "width": 127.5,
+            "height": 74.59375
+          },
+          {
+            "state": "attack",
+            "x": 698.5,
+            "right": 826,
+            "width": 127.5,
+            "height": 74.59375
+          },
+          {
+            "state": "hit",
+            "x": 563,
+            "right": 690.5,
+            "width": 127.5,
+            "height": 74.59375
+          },
+          {
+            "state": "defeat",
+            "x": 698.5,
+            "right": 826,
+            "width": 127.5,
+            "height": 74.59375
+          }
+        ]
+      }
+    },
+    {
+      "name": "reduced-motion",
+      "snapshot": {
+        "ready": true,
+        "variant": "mobile",
+        "expression": "joy",
+        "state": "joy",
+        "time": 1,
+        "paused": true,
+        "reducedMotion": true,
+        "view": "three-quarter",
+        "error": null,
+        "triangleCount": 18531,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 1,
+            "Surprise": 0,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0.09704706115265747
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 26,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 1.55,
+          "splash": 0,
+          "smile": 1,
+          "surprise": 0,
+          "hurt": 0,
+          "blink": 0,
+          "gazeX": 0.0013586588561372048,
+          "gazeY": 0.005,
+          "glow": 1
+        },
+        "render": {
+          "triangles": 38424,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 18.750000476837158,
+          "frameP95Ms": 33.20000076293945,
+          "cpuAverageMs": 1.9749999642372131,
+          "cpuP95Ms": 2.5999999046325684,
+          "samples": 8
+        },
+        "canvas": {
+          "width": 544,
+          "height": 342,
+          "pixelRatio": 1
+        }
+      }
+    },
+    {
+      "name": "failure-and-retry",
+      "failure": {
+        "ready": false,
+        "variant": "desktop",
+        "expression": "idle",
+        "state": "idle",
+        "time": 0,
+        "paused": false,
+        "reducedMotion": false,
+        "view": "three-quarter",
+        "error": "Failed to fetch",
+        "triangleCount": 0,
+        "meshNames": [],
+        "sceneMeshNames": [],
+        "meshVisibility": {},
+        "faceMorphs": {
+          "Body": {}
+        },
+        "liquidSurfaceCount": 0,
+        "frames": 3,
+        "pose": null,
+        "render": {
+          "triangles": 1586,
+          "calls": 4,
+          "textures": 4
+        },
+        "performance": {
+          "frameAverageMs": 0,
+          "frameP95Ms": 0,
+          "cpuAverageMs": 0,
+          "cpuP95Ms": 0,
+          "samples": 0
+        },
+        "canvas": {
+          "width": 930,
+          "height": 824,
+          "pixelRatio": 1
+        }
+      },
+      "recovered": {
+        "ready": true,
+        "variant": "desktop",
+        "expression": "idle",
+        "state": "idle",
+        "time": 0.1333000000000002,
+        "paused": false,
+        "reducedMotion": false,
+        "view": "three-quarter",
+        "error": null,
+        "triangleCount": 26532,
+        "meshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "sceneMeshNames": [
+          "Body",
+          "CharmGlow",
+          "LiquidSurface",
+          "MouthInterior",
+          "ReusablePotionBubbles"
+        ],
+        "meshVisibility": {
+          "Body": true,
+          "CharmGlow": true,
+          "LiquidSurface": true,
+          "MouthInterior": true,
+          "ReusablePotionBubbles": true
+        },
+        "faceMorphs": {
+          "Body": {
+            "Blink_L": 0,
+            "Blink_R": 0,
+            "Smile": 0,
+            "Surprise": 0,
+            "Hurt": 0,
+            "Look_L": 0,
+            "Look_R": 0.013416433350826255
+          }
+        },
+        "liquidSurfaceCount": 1,
+        "frames": 47,
+        "pose": {
+          "energy": 1,
+          "liquidEnergy": 1,
+          "splash": 0,
+          "smile": 0,
+          "surprise": 0,
+          "hurt": 0,
+          "blink": 0,
+          "gazeX": 0.0001878300669115676,
+          "gazeY": 0,
+          "glow": 1
+        },
+        "render": {
+          "triangles": 54426,
+          "calls": 13,
+          "textures": 7
+        },
+        "performance": {
+          "frameAverageMs": 20.825000762939453,
+          "frameP95Ms": 33.400001525878906,
+          "cpuAverageMs": 2.7500000596046448,
+          "cpuP95Ms": 4.800000190734863,
+          "samples": 4
+        },
+        "canvas": {
+          "width": 930,
+          "height": 824,
+          "pixelRatio": 1
+        }
+      }
+    }
+  ],
+  "errors": [
+    {
+      "expected": true,
+      "type": "console",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "expected": true,
+      "type": "console",
+      "message": "Character preview: Failed to fetch"
+    }
+  ],
+  "screenshots": [
+    "idle-desktop.png",
+    "joy-desktop.png",
+    "charge-desktop.png",
+    "attack-desktop.png",
+    "hit-desktop.png",
+    "defeat-desktop.png",
+    "blink-desktop.png",
+    "rear-desktop.png",
+    "mobile-portrait.png",
+    "mobile-landscape.png",
+    "load-error.png"
+  ],
+  "passed": true
+}
