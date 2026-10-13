@@ -148,6 +148,27 @@ keine Drittanbieter-Attribution.
 Die drei unter `docs/reference-art/` abgelegten Mockups sind ausschließlich
 user-provided Qualitätsreferenzen und keine Runtime- oder Marketingassets.
 
+## Neue Mockup-Umgebung: lokale opt-in Vergleichsansicht
+
+Neun Assettypen stammen aus individuell generierten Imagegen-Vorlagen,
+abgeleitet von den Nutzer-Mockups, und vom Nutzer separat konvertierten to3D-
+GLBs. Referenzbilder, exakte Prompts und unveränderte Rohmodelle liegen unter
+`art/source/batch-01/`, `batch-02/` und `batch-03/`. Technische Ableitungen unter
+`public/assets/environment/` ergänzen nur Normalen, nichtmetallische Materialwerte,
+Ursprünge, passende Dimensionen, Dochtanker und Desktop-/Mobile-LODs. Es werden
+keine CC0-Rechte oder eine vollständige kommerzielle Rechteprüfung behauptet.
+
+Der separat gelieferte Boden `stone_floor_2m_LOD0.glb` und seine LOD1-Version
+stammen aus einem referenzgeleiteten prozeduralen Export, nicht aus einem
+weiteren to3D-Auftrag. Das bereitgestellte Textur-Herkunftsdokument nennt
+Imagegen für die Materialvorlage. Geometrie, Vertexfarben, Normalen, Tangenten
+und alle drei eingebetteten PBR-PNGs bleiben unverändert; Runtime-Dateien
+ergänzen nur einen JSON-Transform zum Bodenursprung.
+
+Quelle, SHA-256, originale PNG-Hashes und tatsächliche LOD-Metriken:
+`art/source/mockup-runtime-manifest.json`. Die bisherigen Lizenzhinweise für
+Quaternius/KayKit und die Kesselcharaktere gelten weiterhin.
+
 ## Vorlage für neue Einträge
 
 | Datei | Urheber | Quelle/Version | Lizenz | Kommerziell/Bearbeitung geprüft | Attribution | Änderungen | Zielpfad |

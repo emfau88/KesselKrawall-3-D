@@ -1,0 +1,50 @@
+[
+  {
+    "file": "stone_floor_2m_LOD0.glb",
+    "vertices": 3144,
+    "triangles": 5072,
+    "bytes": 5680752,
+    "bounds_min": [
+      -1.0,
+      -0.18000000715255737,
+      -1.0
+    ],
+    "bounds_max": [
+      1.0,
+      -0.0015836295206099749,
+      1.0
+    ]
+  },
+  {
+    "file": "stone_floor_2m_LOD1.glb",
+    "vertices": 1560,
+    "triangles": 2432,
+    "bytes": 5563532,
+    "bounds_min": [
+      -1.0,
+      -0.18000000715255737,
+      -1.0
+    ],
+    "bounds_max": [
+      1.0,
+      -0.0015498922439292073,
+      1.0
+    ]
+  },
+  {
+    "file": "stone_floor_2m_collision.glb",
+    "vertices": 24,
+    "triangles": 12,
+    "bytes": 3344,
+    "bounds_min": [
+      -1.0,
+      -0.18000000715255737,
+      -1.0
+    ],
+    "bounds_max": [
+      1.0,
+      0.0,
+      1.0
+    ]
+  }
+]

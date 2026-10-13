@@ -1,0 +1,1033 @@
+{
+  "version": 1,
+  "date": "2026-10-13",
+  "purpose": "Local opt-in before/after environment review",
+  "status": "local-opt-in-preview-integrated-and-qa-passed",
+  "qaReport": "docs/qa/mockup-environment/report.json",
+  "review": "docs/qa/mockup-environment/README.md",
+  "productionDefaultChanged": false,
+  "generator": "art/blender/prepare_mockup_environment.py",
+  "coordinateSystem": "glTF Y-up, width X, front +Z, base Y=0",
+  "rawSourcesUnmodified": true,
+  "floorModule": {
+    "status": "supplied-source-integrated-in-local-preview",
+    "runtimeReplacementCreated": true,
+    "generator": "scripts/prepare_supplied_floor.mjs",
+    "source": "art/source/batch-03/dungeon-floor-module/source.glb",
+    "sourceSha256": "7da3f0fb962fda87e61284afb3ddeb44593a573255a0f084fe551227be2f1afa",
+    "tileSize": 2,
+    "bottomPivotY": 0,
+    "nominalTopY": 0.18,
+    "lods": {
+      "desktop": {
+        "path": "public/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+        "bytes": 5680772,
+        "sha256": "0db3549846630ea7d118b193f17e8690b86f4f6ab05ec1e5bcebd0c4c7d469b7",
+        "source": "art/source/batch-03/dungeon-floor-module/source.glb",
+        "sourceSha256": "7da3f0fb962fda87e61284afb3ddeb44593a573255a0f084fe551227be2f1afa",
+        "triangles": 5072,
+        "vertices": 3144,
+        "meshes": 1,
+        "materials": 1,
+        "images": 3,
+        "normalAttributesPresent": true,
+        "metallicFactor": 0,
+        "roughnessFactor": 1,
+        "sourceEmbeddedAtlasSha256": [
+          "5b57934e447b9a3d0aa1aa2cad55d35688498e80159969d34a6faa1e4994a9cb",
+          "405b624df649d4deb972fbc62841f15dfeeab24e9a6bdab7c8c4a9f59ca4a2f9",
+          "7d122032d5e1c1bf0dcf8ce93ebef3bec9ed05dab3889f284949239a55a11ee5"
+        ],
+        "embeddedAtlasSha256": [
+          "5b57934e447b9a3d0aa1aa2cad55d35688498e80159969d34a6faa1e4994a9cb",
+          "405b624df649d4deb972fbc62841f15dfeeab24e9a6bdab7c8c4a9f59ca4a2f9",
+          "7d122032d5e1c1bf0dcf8ce93ebef3bec9ed05dab3889f284949239a55a11ee5"
+        ],
+        "originalEncodedAtlasRetained": true,
+        "groundShiftY": 0.18000000715255737,
+        "anchors": {},
+        "boundsMinXYZ": [
+          -1,
+          0,
+          -1
+        ],
+        "boundsMaxXYZ": [
+          1,
+          0.1784163776319474,
+          1
+        ],
+        "binChunkRetained": true,
+        "authoredPbrMapsRetained": true
+      },
+      "mobile": {
+        "path": "public/assets/environment/dungeon-floor-module/dungeon-floor-module-mobile.glb",
+        "bytes": 5563552,
+        "sha256": "c664d265563cd09ff14d2eb9eddc328638b280268c8ec34ee705d4308bdfb5af",
+        "source": "art/source/batch-03/dungeon-floor-module/source-mobile.glb",
+        "sourceSha256": "2b80d4286ee81252bbaf4916807fee7769637263d4e9cf97f1d2e1ed07f8f27f",
+        "triangles": 2432,
+        "vertices": 1560,
+        "meshes": 1,
+        "materials": 1,
+        "images": 3,
+        "normalAttributesPresent": true,
+        "metallicFactor": 0,
+        "roughnessFactor": 1,
+        "sourceEmbeddedAtlasSha256": [
+          "5b57934e447b9a3d0aa1aa2cad55d35688498e80159969d34a6faa1e4994a9cb",
+          "405b624df649d4deb972fbc62841f15dfeeab24e9a6bdab7c8c4a9f59ca4a2f9",
+          "7d122032d5e1c1bf0dcf8ce93ebef3bec9ed05dab3889f284949239a55a11ee5"
+        ],
+        "embeddedAtlasSha256": [
+          "5b57934e447b9a3d0aa1aa2cad55d35688498e80159969d34a6faa1e4994a9cb",
+          "405b624df649d4deb972fbc62841f15dfeeab24e9a6bdab7c8c4a9f59ca4a2f9",
+          "7d122032d5e1c1bf0dcf8ce93ebef3bec9ed05dab3889f284949239a55a11ee5"
+        ],
+        "originalEncodedAtlasRetained": true,
+        "groundShiftY": 0.18000000715255737,
+        "anchors": {},
+        "boundsMinXYZ": [
+          -1,
+          0,
+          -1
+        ],
+        "boundsMaxXYZ": [
+          1,
+          0.17845011490862817,
+          1
+        ],
+        "binChunkRetained": true,
+        "authoredPbrMapsRetained": true
+      }
+    }
+  },
+  "limitations": [
+    "Single existing colored atlas per mesh; no new PBR normal/AO/MR textures",
+    "Workbench/wall/arch/platform are deliberately nonuniformly fitted; actual camera acceptance required",
+    "LOD acceptance and in-game placement/loading/performance remain separate checks",
+    "No new geometry or creative Blender replacements were generated"
+  ],
+  "assets": [
+    {
+      "slug": "ritual-platform",
+      "source": "art/source/batch-01/ritual-platform/source.glb",
+      "sourceSha256": "6d89d69f311093335fe448942e753b476e2dff01047fe31020cf3b50936daf28",
+      "sourceEmbeddedAtlasSha256": [
+        "f211aa678222b5b570803a096c27e9cf12d0760ff957440787fa40b3b66393d6"
+      ],
+      "sourceSizeXYZ": [
+        0.9996480345726013,
+        0.1160554327070713,
+        0.9996020495891571
+      ],
+      "rawSourceYawDegrees": 0,
+      "front": "+Z; shelf/arch/sconce source +X rotated to +Z",
+      "axisScaleXYZ": [
+        11.10390853881836,
+        3.618960380554199,
+        11.104418754577637
+      ],
+      "originBeforeScaleBlenderXYZ": [
+        -0.00008854269981384277,
+        0.000055983662605285645,
+        -0.05771777033805847
+      ],
+      "preparedSizeXYZ": [
+        11.100000381469727,
+        0.41999998688697815,
+        11.100000381469727
+      ],
+      "anchors": {},
+      "technical": {
+        "verticesBeforeWeld": 25072,
+        "verticesAfterWeld": 17025,
+        "normalHardEdgeAngleDegrees": 48
+      },
+      "roughnessFactor": 0.88,
+      "lods": {
+        "desktop": {
+          "path": "public/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "bytes": 1964168,
+          "sha256": "934bf4e753badfc203b688cea2dcb63bf25e0e0c8803695b3ceede569a9b966f",
+          "triangles": 19988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "f211aa678222b5b570803a096c27e9cf12d0760ff957440787fa40b3b66393d6"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": 0.00003864579775836319,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -5.550000190734863,
+            0,
+            -5.549388408660889
+          ],
+          "boundsMaxXYZ": [
+            5.5494561195373535,
+            0.42091888189315796,
+            5.550114154815674
+          ]
+        },
+        "mobile": {
+          "path": "public/assets/environment/ritual-platform/ritual-platform-mobile.glb",
+          "bytes": 1671232,
+          "sha256": "cc8f57e5ecdfb1a6c21d6205fd9bc5760b7eb6c9389fc9ffe83f195938bf8976",
+          "triangles": 9988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "f211aa678222b5b570803a096c27e9cf12d0760ff957440787fa40b3b66393d6"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.000809728167951107,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -5.55172872543335,
+            0,
+            -5.548830509185791
+          ],
+          "boundsMaxXYZ": [
+            5.551026821136475,
+            0.4196361005306244,
+            5.54807186126709
+          ]
+        }
+      }
+    },
+    {
+      "slug": "witch-workbench",
+      "source": "art/source/batch-01/witch-workbench/source.glb",
+      "sourceSha256": "45e6285c5381c6e27a2d92b7bf627a73dfa11ae2de3dbc5779e8ff7eba835aa6",
+      "sourceEmbeddedAtlasSha256": [
+        "4edacdc0c7d2dc34b181011630dc7b20ed5b0dc3a555cc20dbe710ae7173819c"
+      ],
+      "sourceSizeXYZ": [
+        1.001078188419342,
+        0.3064848929643631,
+        0.5704049468040466
+      ],
+      "rawSourceYawDegrees": 0,
+      "front": "+Z; shelf/arch/sconce source +X rotated to +Z",
+      "axisScaleXYZ": [
+        8.191168785095215,
+        3.8501083850860596,
+        11.220099449157715
+      ],
+      "originBeforeScaleBlenderXYZ": [
+        0.000370711088180542,
+        -0.00019824504852294922,
+        -0.15542791783809662
+      ],
+      "preparedSizeXYZ": [
+        8.199999809265137,
+        1.1799999475479126,
+        6.400000095367432
+      ],
+      "anchors": {},
+      "technical": {
+        "verticesBeforeWeld": 17624,
+        "verticesAfterWeld": 12880,
+        "normalHardEdgeAngleDegrees": 48
+      },
+      "roughnessFactor": 0.82,
+      "lods": {
+        "desktop": {
+          "path": "public/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "bytes": 1719700,
+          "sha256": "c5ba4bcbc7c4601fbfe753bb757033a43a783ad1dc94c1bef0f3618172200a3f",
+          "triangles": 15986,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "4edacdc0c7d2dc34b181011630dc7b20ed5b0dc3a555cc20dbe710ae7173819c"
+          ],
+          "atlasBorderUvCorrections": 1,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.00004774568151333369,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -4.099999904632568,
+            0,
+            -3.200000047683716
+          ],
+          "boundsMaxXYZ": [
+            4.099999904632568,
+            1.1802501678466797,
+            3.200000047683716
+          ]
+        },
+        "mobile": {
+          "path": "public/assets/environment/witch-workbench/witch-workbench-mobile.glb",
+          "bytes": 1503964,
+          "sha256": "d9f4ab8e7266c49b408f30c3a54ed358db789797602b865bd0730643c4a2354d",
+          "triangles": 7988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "4edacdc0c7d2dc34b181011630dc7b20ed5b0dc3a555cc20dbe710ae7173819c"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.00032636578544043005,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -4.099739074707031,
+            0,
+            -3.2002906799316406
+          ],
+          "boundsMaxXYZ": [
+            4.099999904632568,
+            1.179309606552124,
+            3.2013070583343506
+          ]
+        }
+      }
+    },
+    {
+      "slug": "triple-candleholder",
+      "source": "art/source/batch-01/triple-candleholder/source.glb",
+      "sourceSha256": "57ce8080b131600ad0fa759d6075f0a5e6abdcecf8838d000b60bd4bf51f2192",
+      "sourceEmbeddedAtlasSha256": [
+        "23e8bd60acbd8bbfff0b742511dfa1c20142a5cd2a357f55aef3dd3833477331"
+      ],
+      "sourceSizeXYZ": [
+        1.0001012086868286,
+        0.9989109337329865,
+        0.9287116527557373
+      ],
+      "rawSourceYawDegrees": 0,
+      "front": "+Z; shelf/arch/sconce source +X rotated to +Z",
+      "axisScaleXYZ": [
+        1.1011992692947388,
+        1.1011992692947388,
+        1.1011992692947388
+      ],
+      "originBeforeScaleBlenderXYZ": [
+        -0.00021636486053466797,
+        0.00006583333015441895,
+        -0.49973607063293457
+      ],
+      "preparedSizeXYZ": [
+        1.1013107299804688,
+        1.0999999046325684,
+        1.022696614265442
+      ],
+      "anchors": {
+        "Wick_L": [
+          -0.26797205209732056,
+          1.0990365743637085,
+          0.18176840245723724
+        ],
+        "Wick_C": [
+          0.0031212633475661278,
+          0.7528455853462219,
+          -0.26049602031707764
+        ],
+        "Wick_R": [
+          0.27833977341651917,
+          0.8556621074676514,
+          0.18312039971351624
+        ]
+      },
+      "technical": {
+        "verticesBeforeWeld": 42751,
+        "verticesAfterWeld": 33636,
+        "normalHardEdgeAngleDegrees": 75
+      },
+      "roughnessFactor": 0.76,
+      "lods": {
+        "desktop": {
+          "path": "public/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "bytes": 1483000,
+          "sha256": "6de03a7cfabc6a44cd39244b8367ad0a6e6539b4ea62c9fcb22f3a9902c19a64",
+          "triangles": 3988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "23e8bd60acbd8bbfff0b742511dfa1c20142a5cd2a357f55aef3dd3833477331"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.0001659191766520962,
+          "anchors": {
+            "Wick_L": [
+              -0.26797205209732056,
+              1.0988706350326538,
+              0.18176840245723724
+            ],
+            "Wick_C": [
+              0.0031212633475661278,
+              0.7526796460151672,
+              -0.26049602031707764
+            ],
+            "Wick_R": [
+              0.27833977341651917,
+              0.8554961681365967,
+              0.18312039971351624
+            ]
+          },
+          "boundsMinXYZ": [
+            -0.5469475984573364,
+            0,
+            -0.510787844657898
+          ],
+          "boundsMaxXYZ": [
+            0.5491868257522583,
+            1.0976332426071167,
+            0.5114744305610657
+          ]
+        },
+        "mobile": {
+          "path": "public/assets/environment/triple-candleholder/triple-candleholder-mobile.glb",
+          "bytes": 1415444,
+          "sha256": "91890562a3bd7c44681e22a2adfef02a57507684365273d741bdf3e13f6478c3",
+          "triangles": 1988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "23e8bd60acbd8bbfff0b742511dfa1c20142a5cd2a357f55aef3dd3833477331"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.000696432136464864,
+          "anchors": {
+            "Wick_L": [
+              -0.26797205209732056,
+              1.0983401536941528,
+              0.18176840245723724
+            ],
+            "Wick_C": [
+              0.0031212633475661278,
+              0.7521491646766663,
+              -0.26049602031707764
+            ],
+            "Wick_R": [
+              0.27833977341651917,
+              0.8549656867980957,
+              0.18312039971351624
+            ]
+          },
+          "boundsMinXYZ": [
+            -0.548904538154602,
+            0,
+            -0.5152995586395264
+          ],
+          "boundsMaxXYZ": [
+            0.5546882152557373,
+            1.0998573303222656,
+            0.5091134905815125
+          ]
+        }
+      }
+    },
+    {
+      "slug": "open-grimoire",
+      "source": "art/source/batch-01/open-grimoire/source.glb",
+      "sourceSha256": "a1e36ce715acbaeb38a3f8c523cb3d7a56338fcf1b3cd6900b281ef545ecedab",
+      "sourceEmbeddedAtlasSha256": [
+        "40f93eb56a0020892d27aec4a6808b73d3ad428d712173d16235cd8aa55d4ebd"
+      ],
+      "sourceSizeXYZ": [
+        0.9957596361637115,
+        0.15669994056224823,
+        0.6309140026569366
+      ],
+      "rawSourceYawDegrees": 0,
+      "front": "+Z; shelf/arch/sconce source +X rotated to +Z",
+      "axisScaleXYZ": [
+        1.6068135499954224,
+        1.6068135499954224,
+        1.6068135499954224
+      ],
+      "originBeforeScaleBlenderXYZ": [
+        0.0006144791841506958,
+        0.00006504356861114502,
+        -0.08505286276340485
+      ],
+      "preparedSizeXYZ": [
+        1.600000023841858,
+        0.25178757309913635,
+        1.0137611627578735
+      ],
+      "anchors": {},
+      "technical": {
+        "verticesBeforeWeld": 15033,
+        "verticesAfterWeld": 11361,
+        "normalHardEdgeAngleDegrees": 48
+      },
+      "roughnessFactor": 0.87,
+      "lods": {
+        "desktop": {
+          "path": "public/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "bytes": 1447884,
+          "sha256": "270c6ac498e9a0c887c0a6b36e6bd056e69a595defa903da3e09440c63178c2d",
+          "triangles": 5986,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "40f93eb56a0020892d27aec4a6808b73d3ad428d712173d16235cd8aa55d4ebd"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.00013587495777755976,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -0.7998242378234863,
+            0,
+            -0.5061973333358765
+          ],
+          "boundsMaxXYZ": [
+            0.8002357482910156,
+            0.25142407417297363,
+            0.5071095824241638
+          ]
+        },
+        "mobile": {
+          "path": "public/assets/environment/open-grimoire/open-grimoire-mobile.glb",
+          "bytes": 1356260,
+          "sha256": "3162c4c92fe238010aa7aede42398277dba8fb3e3cf08a7671cc8d6676ab55d9",
+          "triangles": 2988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "40f93eb56a0020892d27aec4a6808b73d3ad428d712173d16235cd8aa55d4ebd"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.00013932133151683956,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -0.7998242378234863,
+            0,
+            -0.5065240859985352
+          ],
+          "boundsMaxXYZ": [
+            0.800086498260498,
+            0.25142061710357666,
+            0.5068227052688599
+          ]
+        }
+      }
+    },
+    {
+      "slug": "dungeon-wall-module",
+      "source": "art/source/batch-02/dungeon-wall-module/source.glb",
+      "sourceSha256": "cb924480d8a510a9ae8b3d0f0441a50b19e0af3121afb8c201922837d22fbe32",
+      "sourceEmbeddedAtlasSha256": [
+        "84dec65a5757b830851ad40ace83eca3ae689829e99d1c7cbf7d736d43673fb0"
+      ],
+      "sourceSizeXYZ": [
+        0.9999241828918457,
+        0.7542491853237152,
+        0.19757387042045593
+      ],
+      "rawSourceYawDegrees": 0,
+      "front": "+Z; shelf/arch/sconce source +X rotated to +Z",
+      "axisScaleXYZ": [
+        3.200242519378662,
+        4.242629528045654,
+        2.5306990146636963
+      ],
+      "originBeforeScaleBlenderXYZ": [
+        -0.00002187490463256836,
+        -0.00008895993232727051,
+        -0.3764435052871704
+      ],
+      "preparedSizeXYZ": [
+        3.1999998092651367,
+        3.200000047683716,
+        0.5
+      ],
+      "anchors": {},
+      "technical": {
+        "verticesBeforeWeld": 19873,
+        "verticesAfterWeld": 14201,
+        "normalHardEdgeAngleDegrees": 48
+      },
+      "roughnessFactor": 0.9,
+      "lods": {
+        "desktop": {
+          "path": "public/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "bytes": 1552576,
+          "sha256": "53fa7e8597b9852b1736d8c27b3aecca983273f26eac5500665616eabedddfa1",
+          "triangles": 5988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "84dec65a5757b830851ad40ace83eca3ae689829e99d1c7cbf7d736d43673fb0"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.0002599602739792317,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -1.5993307828903198,
+            0,
+            -0.2514548897743225
+          ],
+          "boundsMaxXYZ": [
+            1.6000185012817383,
+            3.1988093852996826,
+            0.24962975084781647
+          ]
+        },
+        "mobile": {
+          "path": "public/assets/environment/dungeon-wall-module/dungeon-wall-module-mobile.glb",
+          "bytes": 1451532,
+          "sha256": "1b463f6d2c600f4ca550b710dac6f06732bb09d78269d7502b334fceb723eae1",
+          "triangles": 2988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "84dec65a5757b830851ad40ace83eca3ae689829e99d1c7cbf7d736d43673fb0"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.0009608136606402695,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -1.5993307828903198,
+            0,
+            -0.2500445544719696
+          ],
+          "boundsMaxXYZ": [
+            1.6000185012817383,
+            3.198791980743408,
+            0.24801351130008698
+          ]
+        }
+      }
+    },
+    {
+      "slug": "dungeon-stone-arch",
+      "source": "art/source/batch-02/dungeon-stone-arch/source.glb",
+      "sourceSha256": "9de460f913d0e4d9a214b375fbdaf90bb835ceb2e79bdb47dc8cdbf18f2e1ddb",
+      "sourceEmbeddedAtlasSha256": [
+        "b2f600b1f9c4adcdddef659a5fe8a460699a81650d95fc5d96fdbc2b23402a1d"
+      ],
+      "sourceSizeXYZ": [
+        0.20198467373847961,
+        0.9994503259658813,
+        0.7361502051353455
+      ],
+      "rawSourceYawDegrees": -90,
+      "front": "+Z; shelf/arch/sconce source +X rotated to +Z",
+      "axisScaleXYZ": [
+        3.8035714626312256,
+        4.4024200439453125,
+        2.970522880554199
+      ],
+      "originBeforeScaleBlenderXYZ": [
+        0.00015595555305480957,
+        0.00007080286741256714,
+        -0.49976885318756104
+      ],
+      "preparedSizeXYZ": [
+        2.799999952316284,
+        4.400000095367432,
+        0.6000000238418579
+      ],
+      "anchors": {},
+      "technical": {
+        "verticesBeforeWeld": 11459,
+        "verticesAfterWeld": 8442,
+        "normalHardEdgeAngleDegrees": 48
+      },
+      "roughnessFactor": 0.9,
+      "lods": {
+        "desktop": {
+          "path": "public/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "bytes": 1570520,
+          "sha256": "91560549f5ddf601f8e3ff2a0c09ffb54d0521520d51238dcd7cd46e7c0a9104",
+          "triangles": 7988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "b2f600b1f9c4adcdddef659a5fe8a460699a81650d95fc5d96fdbc2b23402a1d"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.00005637670983560383,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -1.4001140594482422,
+            0,
+            -0.29976534843444824
+          ],
+          "boundsMaxXYZ": [
+            1.3996330499649048,
+            4.399747371673584,
+            0.2995966374874115
+          ]
+        },
+        "mobile": {
+          "path": "public/assets/environment/dungeon-stone-arch/dungeon-stone-arch-mobile.glb",
+          "bytes": 1457588,
+          "sha256": "52319162ca05d893388e4763ed4d6c6ba2b7ec5b5e14c6067bc8f9d62504ba68",
+          "triangles": 3988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "b2f600b1f9c4adcdddef659a5fe8a460699a81650d95fc5d96fdbc2b23402a1d"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.000736396643333137,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -1.4002282619476318,
+            0,
+            -0.3007110357284546
+          ],
+          "boundsMaxXYZ": [
+            1.3994643688201904,
+            4.3988566398620605,
+            0.299654483795166
+          ]
+        }
+      }
+    },
+    {
+      "slug": "alchemy-shelf",
+      "source": "art/source/batch-02/alchemy-shelf/source.glb",
+      "sourceSha256": "e04f8ddcd4dda61f9b9f08b6ca4baa69af4023c5c81b9f307f200687f37e04a0",
+      "sourceEmbeddedAtlasSha256": [
+        "00548df76dd74afd2ce51fc9101d0b88d9536194c9ddb643732bca046df3ad24"
+      ],
+      "sourceSizeXYZ": [
+        0.2595980763435364,
+        1.0004927515983582,
+        0.6910085380077362
+      ],
+      "rawSourceYawDegrees": -90,
+      "front": "+Z; shelf/arch/sconce source +X rotated to +Z",
+      "axisScaleXYZ": [
+        2.9985222816467285,
+        2.9985222816467285,
+        2.9985222816467285
+      ],
+      "originBeforeScaleBlenderXYZ": [
+        0.00003199279308319092,
+        0.0016579777002334595,
+        -0.5003277659416199
+      ],
+      "preparedSizeXYZ": [
+        2.072004556655884,
+        3,
+        0.7784107327461243
+      ],
+      "anchors": {},
+      "technical": {
+        "verticesBeforeWeld": 27443,
+        "verticesAfterWeld": 19259,
+        "normalHardEdgeAngleDegrees": 65
+      },
+      "roughnessFactor": 0.8,
+      "lods": {
+        "desktop": {
+          "path": "public/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "bytes": 1664468,
+          "sha256": "aa7614841e52931a46a31329b743bd9f17cbbe96e531d4beb804643a582054fb",
+          "triangles": 11988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "00548df76dd74afd2ce51fc9101d0b88d9536194c9ddb643732bca046df3ad24"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.0001459664199501276,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -1.0368144512176514,
+            0,
+            -0.38857120275497437
+          ],
+          "boundsMaxXYZ": [
+            1.0358737707138062,
+            2.999474287033081,
+            0.38900479674339294
+          ]
+        },
+        "mobile": {
+          "path": "public/assets/environment/alchemy-shelf/alchemy-shelf-mobile.glb",
+          "bytes": 1480460,
+          "sha256": "7d72bdf3010d283f3bcbdae7d65c6446d191818edc29d91234d846b7e64f4218",
+          "triangles": 5988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "00548df76dd74afd2ce51fc9101d0b88d9536194c9ddb643732bca046df3ad24"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.00032176010427065194,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -1.0366096496582031,
+            0,
+            -0.38798364996910095
+          ],
+          "boundsMaxXYZ": [
+            1.0367597341537476,
+            2.998332977294922,
+            0.38845422863960266
+          ]
+        }
+      }
+    },
+    {
+      "slug": "wall-candle-sconce",
+      "source": "art/source/batch-02/wall-candle-sconce/source.glb",
+      "sourceSha256": "5af1032723e9381b10670d40d8011067c0a8b94fa5e95bb4977f32bcd98f0a07",
+      "sourceEmbeddedAtlasSha256": [
+        "b9cea8df1b4172ab6c26e317887594234db4b87e95f9ee21c52e943bb25b4c53"
+      ],
+      "sourceSizeXYZ": [
+        0.8347132205963135,
+        0.9972225725650787,
+        0.5114125609397888
+      ],
+      "rawSourceYawDegrees": -90,
+      "front": "+Z; shelf/arch/sconce source +X rotated to +Z",
+      "axisScaleXYZ": [
+        0.7019496560096741,
+        0.7019496560096741,
+        0.7019496560096741
+      ],
+      "originBeforeScaleBlenderXYZ": [
+        0.0001271963119506836,
+        -0.0024604499340057373,
+        -0.4974457621574402
+      ],
+      "preparedSizeXYZ": [
+        0.35898587107658386,
+        0.7000000476837158,
+        0.5859266519546509
+      ],
+      "anchors": {
+        "Wick": [
+          0.000004733415607915958,
+          0.6933746337890625,
+          0.12766647338867188
+        ]
+      },
+      "technical": {
+        "verticesBeforeWeld": 20696,
+        "verticesAfterWeld": 15393,
+        "normalHardEdgeAngleDegrees": 75
+      },
+      "roughnessFactor": 0.78,
+      "lods": {
+        "desktop": {
+          "path": "public/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "bytes": 1421380,
+          "sha256": "a7432c4f3a81478098daee93ce346e3138540bd61a7804c8f13dd71a0875112b",
+          "triangles": 2988,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "b9cea8df1b4172ab6c26e317887594234db4b87e95f9ee21c52e943bb25b4c53"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": 0.00033341048401780427,
+          "anchors": {
+            "Wick": [
+              0.000004733415607915958,
+              0.693708062171936,
+              0.12766647338867188
+            ]
+          },
+          "boundsMinXYZ": [
+            -0.1800294667482376,
+            0,
+            -0.29335811734199524
+          ],
+          "boundsMaxXYZ": [
+            0.17929553985595703,
+            0.7008129954338074,
+            0.29326558113098145
+          ]
+        },
+        "mobile": {
+          "path": "public/assets/environment/wall-candle-sconce/wall-candle-sconce-mobile.glb",
+          "bytes": 1370872,
+          "sha256": "fc590af3a666279200f7a6c25b9acd5b26c5ce91b9d43ccd0a9bee4d6b996ed2",
+          "triangles": 1488,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "b9cea8df1b4172ab6c26e317887594234db4b87e95f9ee21c52e943bb25b4c53"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": 0.00033341048401780427,
+          "anchors": {
+            "Wick": [
+              0.000004733415607915958,
+              0.693708062171936,
+              0.12766647338867188
+            ]
+          },
+          "boundsMinXYZ": [
+            -0.17927154898643494,
+            0,
+            -0.29335811734199524
+          ],
+          "boundsMaxXYZ": [
+            0.178961843252182,
+            0.7020853757858276,
+            0.2941047251224518
+          ]
+        }
+      }
+    },
+    {
+      "slug": "dungeon-stone-pillar",
+      "source": "art/source/batch-03/dungeon-stone-pillar/source.glb",
+      "sourceSha256": "fd74e54fd8bb3636e82043cf4c533ee54f683ea16ce76776f4ea7a97dcbfa4dd",
+      "sourceEmbeddedAtlasSha256": [
+        "0adcf2971731fa2031a40e8f23fbcc1fda49be1a17cbfc884b4ecfb484914e0b"
+      ],
+      "sourceSizeXYZ": [
+        0.3833252787590027,
+        0.9955173432826996,
+        0.38280704617500305
+      ],
+      "rawSourceYawDegrees": 0,
+      "front": "+Z; shelf/arch/sconce source +X rotated to +Z",
+      "axisScaleXYZ": [
+        4.419812202453613,
+        4.419812202453613,
+        4.419812202453613
+      ],
+      "originBeforeScaleBlenderXYZ": [
+        0.000016808509826660156,
+        0.00038515031337738037,
+        -0.49634620547294617
+      ],
+      "preparedSizeXYZ": [
+        1.694225788116455,
+        4.399999618530273,
+        1.6919353008270264
+      ],
+      "anchors": {},
+      "technical": {
+        "verticesBeforeWeld": 15999,
+        "verticesAfterWeld": 12332,
+        "normalHardEdgeAngleDegrees": 48
+      },
+      "roughnessFactor": 0.9,
+      "lods": {
+        "desktop": {
+          "path": "public/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "bytes": 1454888,
+          "sha256": "7198151d17eab8ab10390349bc2cb0eef95a2b659ce499f00e0b5633297cee1f",
+          "triangles": 5987,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "0adcf2971731fa2031a40e8f23fbcc1fda49be1a17cbfc884b4ecfb484914e0b"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": 0.0008295949664898217,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -0.8461394906044006,
+            0,
+            -0.8449663519859314
+          ],
+          "boundsMaxXYZ": [
+            0.8465238809585571,
+            4.400764465332031,
+            0.8445196151733398
+          ]
+        },
+        "mobile": {
+          "path": "public/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-mobile.glb",
+          "bytes": 1367092,
+          "sha256": "7a15e672f96fa165b28babf9618ae077bf11ca1401a7234bf79fec7ac0161016",
+          "triangles": 2987,
+          "meshes": 1,
+          "materials": 1,
+          "images": 1,
+          "normalAttributesPresent": true,
+          "metallicFactor": 0,
+          "embeddedAtlasSha256": [
+            "0adcf2971731fa2031a40e8f23fbcc1fda49be1a17cbfc884b4ecfb484914e0b"
+          ],
+          "atlasBorderUvCorrections": 0,
+          "originalEncodedAtlasRetained": true,
+          "groundShiftY": -0.003141406225040555,
+          "anchors": {},
+          "boundsMinXYZ": [
+            -0.8466506004333496,
+            0,
+            -0.8459088802337646
+          ],
+          "boundsMaxXYZ": [
+            0.8454570770263672,
+            4.395095348358154,
+            0.8430413007736206
+          ]
+        }
+      }
+    }
+  ]
+}

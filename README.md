@@ -11,12 +11,30 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
-![Animiertes KesselKrawall-3D-Hauptmenü vor der lebendigen Hexenwerkbank](docs/screenshots/main-menu-desktop.png)
+### Neuer Asset-Vergleich auf dem Arbeitsbranch
 
-<p align="center">
-  <img src="docs/screenshots/arena-zischbert-brasskin.png" alt="Brasskin von hinten im Kampf gegen den aus dem Original rekonstruierten Zischbert" width="64%">
-  <img src="docs/screenshots/workshop-mobile-portrait.png" alt="Brasskin mit neutraler Mimik und lebendigem Trank in der mobilen Werkbank" width="34%">
-</p>
+Neun individuell aus den Mockups abgeleitete und vom Nutzer mit to3D konvertierte
+Modelltypen und ein separat bereitgestellter 2-Meter-Steinboden sind jetzt als
+**opt-in Vergleichsansicht** in Werkbank und Arena spielbar: insgesamt zehn
+neue Assettypen. Die Original-GLBs und ihre Texturen bleiben erhalten; die technische
+Aufbereitung ergänzt Normalen, korrigierte Metallwerte, Dochtanker und
+Desktop-/Mobile-LODs. Die Bilder unten sind echte Spielaufnahmen mit gleichem
+Spielstand, gleichen Zutaten und gleicher Kameraperspektive – keine Mockups.
+
+Lokal: [neue Ansicht](http://127.0.0.1:5173/?art=mockup) ·
+[bisherige Ansicht](http://127.0.0.1:5173/?art=golden) ·
+[alle 18 Vergleichsaufnahmen](docs/qa/mockup-environment/README.md).
+Der bestehende GitHub-Pages-Link oben bleibt der veröffentlichte `master`-Stand;
+ein Push des Arbeitsbranchs ist noch kein Pages-Release.
+
+![Werkbank: links bisherige Umgebung, rechts neue GLBs und korrigierte Materialien](docs/qa/mockup-environment/compare-workshop-desktop.png)
+
+![Arena gegen Zischbert: links bisherige Umgebung, rechts neue Steinplattform, Architektur und Deko](docs/qa/mockup-environment/compare-arena-desktop.png)
+
+Der Steinboden ersetzt jetzt die Übergangsböden und bewahrt seine drei PBR-
+Texturen sowie die gelieferten LOD0-/LOD1-Geometrien. Der abschließende
+Licht-/VFX-/Material-Polish bleibt offen. Der Vergleich ist ein belastbarer
+Zwischenstand, noch keine Behauptung, das Mockup-Ziel sei vollständig erreicht.
 
 ## Aktueller Stand
 
@@ -93,6 +111,8 @@ und die 2D-Sprite-Komposition nicht portiert.
 
 ## Dokumentation
 
+- [Neue Mockup-Assetpipeline: Batch 1 – vier GLB-Quellen, Audit und offene Einbauschritte](art/source/batch-01/TECHNICAL_REVIEW.md)
+- [Neue Mockup-Assetpipeline: Batch 2 – priorisierte Raum-Assets und einzelne PNG-Vorlagen](art/source/batch-02/README.md)
 - [Legacy-Migrationsaudit](docs/LEGACY_MIGRATION_AUDIT.md)
 - [Zielarchitektur](docs/ARCHITECTURE.md)
 - [Art Direction](docs/ART_DIRECTION.md)

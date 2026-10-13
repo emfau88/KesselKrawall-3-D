@@ -9,6 +9,8 @@ import { IngredientSlotGreybox } from "./IngredientSlotGreybox";
 import { PurchaseAnimation } from "./PurchaseAnimation";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import { assetBakeoffMode } from "./assetBakeoff";
+import { MockupAsset, MockupCandles } from "./MockupAsset";
+import { MockupFloor } from "./MockupFloor";
 import type { WorkshopSceneState } from "./sceneTypes";
 import { RESERVE_POSITION, SLOT_POSITIONS } from "./workshopLayout";
 
@@ -289,9 +291,49 @@ function WorkbenchFallback() {
   );
 }
 
+function WorkshopMockupEnvironment() {
+  return (
+    <ProductionAssetBoundary fallback={<WorkshopBackdrop />}>
+      <Suspense fallback={<WorkshopBackdrop />}>
+        {[-6.4, -3.2, 3.2, 6.4].map((x) => (
+          <MockupAsset key={`wall-${x}`} asset="dungeon-wall-module" position={[x, -0.66, -4.25]} scale={[1, 1.375, 1]} castShadow={false} />
+        ))}
+        <MockupAsset asset="dungeon-stone-arch" position={[0, -0.66, -4.23]} castShadow={false} />
+        {[-1, 1].map((side) => (
+          <group key={side}>
+            <MockupAsset asset="dungeon-stone-pillar" position={[side * 5.98, -0.66, -3.98]} scale={0.91} />
+            <MockupAsset asset="dungeon-wall-module" position={[side * 6.9, -0.66, -1.92]} rotation={[0, side * -Math.PI / 2, 0]} scale={[1, 1.375, 1]} castShadow={false} />
+            <MockupAsset asset="alchemy-shelf" position={[side * 4.82, -0.64, -3.47]} />
+            <MockupCandles asset="wall-candle-sconce" position={[side * 1.95, 1.76, -3.94]} light />
+          </group>
+        ))}
+        <MockupFloor />
+        <ProductionAsset asset="quaternius-banner" position={[0, 2.52, -4.55]} scale={0.72} tint="#9876aa" castShadow={false} />
+      </Suspense>
+    </ProductionAssetBoundary>
+  );
+}
+
+function WorkshopMockupProps() {
+  return (
+    <ProductionAssetBoundary fallback={null}>
+      <Suspense fallback={null}>
+        <MockupAsset asset="open-grimoire" position={[-2.86, 0.535, -1.14]} rotation={[0, 0.12, 0]} />
+        <MockupCandles position={[2.86, 0.535, -1.08]} scale={0.72} light />
+        <ProductionAsset asset="quaternius-potion-round" position={[-3.55, 0.54, -1.16]} scale={2.15} />
+        <ProductionAsset asset="quaternius-potion-tall" position={[3.58, 0.54, -1.18]} scale={1.8} />
+        <MortarAndPestle position={[2.38, 0.57, -0.12]} />
+        <ProductionAsset asset="quaternius-chest" position={[-5.08, -0.62, -0.58]} rotation={[0, 0.28, 0]} scale={0.42} />
+        <ProductionAsset asset="quaternius-barrel" position={[5.1, -0.62, -0.58]} scale={0.86} />
+      </Suspense>
+    </ProductionAssetBoundary>
+  );
+}
+
 export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
   const bakeoff = assetBakeoffMode();
   const legacy = bakeoff === "legacy";
+  const mockup = bakeoff === "mockup";
   const insights = scene.selectedSlot === null
     ? null
     : getItemPlacementInsights(scene.board, scene.selectedSlot);
@@ -299,11 +341,13 @@ export function WorkshopGreybox({ scene }: { scene: WorkshopSceneState }) {
   const incomingSources = new Set(insights?.incoming.map((influence) => influence.sourceSlot) ?? []);
   return (
     <group>
-      {legacy ? <WorkshopKayKitEnvironment /> : <WorkshopQuaterniusEnvironment />}
-      {legacy ? <WorkshopKayKitProps /> : <WorkshopQuaterniusProps />}
+      {mockup ? <WorkshopMockupEnvironment /> : legacy ? <WorkshopKayKitEnvironment /> : <WorkshopQuaterniusEnvironment />}
+      {mockup ? <WorkshopMockupProps /> : legacy ? <WorkshopKayKitProps /> : <WorkshopQuaterniusProps />}
       <ProductionAssetBoundary fallback={<WorkbenchFallback />}>
         <Suspense fallback={<WorkbenchFallback />}>
-          {legacy ? (
+          {mockup ? (
+            <MockupAsset asset="witch-workbench" position={[0, -0.62, 0.55]} />
+          ) : legacy ? (
             <ProductionAsset asset="hero-workbench" position={[0, 0.28, 0.5]} />
           ) : (
             <ProductionAsset asset="quaternius-workbench" position={[0, -0.62, 0.55]} scale={[4.05, 1.3, 4.65]} />

@@ -51,5 +51,33 @@ describe("battle asset readiness", () => {
     expect(assets).not.toContain("zischbert-desktop");
     expect(assets).not.toContain("moor-martha-desktop");
   });
+
+  test("gates every visible new environment model in the opt-in mockup mode", () => {
+    const assets = getBattleCriticalAssetIds(heroBoard, emptyBoard, "zischbert", "mockup", "balanced");
+    expect(assets).toContain("mockup-ritual-platform-desktop");
+    expect(assets).toContain("mockup-wall-candle-sconce-desktop");
+    expect(assets).toContain("mockup-triple-candleholder-desktop");
+    expect(assets).toContain("mockup-dungeon-stone-arch-desktop");
+    expect(assets).toContain("mockup-alchemy-shelf-desktop");
+    expect(assets).toContain("mockup-dungeon-stone-pillar-desktop");
+    expect(assets).toContain("mockup-open-grimoire-desktop");
+    expect(assets).toContain("mockup-dungeon-wall-module-desktop");
+    expect(assets).toContain("mockup-dungeon-floor-module-desktop");
+    expect(assets).not.toContain("quaternius-floor-brick");
+    expect(assets).toContain("brasskin-desktop");
+    expect(assets).toContain("zischbert-desktop");
+    expect(assets).not.toContain("hero-arena-dais");
+    expect(assets).not.toContain("mockup-witch-workbench-desktop");
+    expect(assets).not.toContain("quaternius-wall-brick");
+    expect(new Set(assets).size).toBe(assets.length);
+  });
+
+  test("mockup gate loads only mobile environment LODs on constrained devices", () => {
+    const assets = getBattleCriticalAssetIds(emptyBoard, emptyBoard, "moor-martha", "mockup", "mobile");
+    expect(assets).toContain("mockup-ritual-platform-mobile");
+    expect(assets).toContain("mockup-dungeon-wall-module-mobile");
+    expect(assets.some(asset => asset.startsWith("mockup-") && asset.endsWith("desktop"))).toBe(false);
+    expect(assets).toContain("moor-martha-mobile");
+  });
 });
 

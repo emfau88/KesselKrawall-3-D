@@ -5,7 +5,12 @@
   "workflow": "individual imagegen extraction from user mockup -> individual to3D GLB -> technical cleanup only",
   "reference": "docs/reference-art/final-north-star.png",
   "tool": "built-in image_gen",
-  "status": "images-generated-and-reviewed",
+  "status": "integrated-in-local-opt-in-preview-qa-passed",
+  "technicalReview": "art/source/batch-01/TECHNICAL_REVIEW.md",
+  "runtimeIntegrated": true,
+  "runtimeMode": "art=mockup",
+  "runtimeManifest": "art/source/mockup-runtime-manifest.json",
+  "qaReport": "docs/qa/mockup-environment/report.json",
   "assets": [
     {
       "id": "B1-01",
@@ -15,7 +20,9 @@
       "prompt": "art/source/batch-01/ritual-platform/prompt.txt",
       "sourceModel": "art/source/batch-01/ritual-platform/source.glb",
       "imageAcceptance": "Complete isolated object, detailed mockup material language, real PNG alpha verified at image corners; no UI/characters/flames",
-      "modelStatus": "pending-conversion"
+      "modelStatus": "source-received-and-audited",
+      "uploadedFile": "task_b9f38196-4550-4c39-95ab-76f8698bc49e_model.glb",
+      "sourceSha256": "6d89d69f311093335fe448942e753b476e2dff01047fe31020cf3b50936daf28"
     },
     {
       "id": "B1-02",
@@ -25,7 +32,9 @@
       "prompt": "art/source/batch-01/witch-workbench/prompt.txt",
       "sourceModel": "art/source/batch-01/witch-workbench/source.glb",
       "imageAcceptance": "Complete isolated object, detailed mockup material language, real PNG alpha verified at image corners; no UI/characters/flames",
-      "modelStatus": "pending-conversion"
+      "modelStatus": "source-received-and-audited",
+      "uploadedFile": "task_f87f6fe1-203c-4e15-abd4-571abc1691fc_model.glb",
+      "sourceSha256": "45e6285c5381c6e27a2d92b7bf627a73dfa11ae2de3dbc5779e8ff7eba835aa6"
     },
     {
       "id": "B1-03",
@@ -35,7 +44,9 @@
       "prompt": "art/source/batch-01/triple-candleholder/prompt.txt",
       "sourceModel": "art/source/batch-01/triple-candleholder/source.glb",
       "imageAcceptance": "Complete isolated object, detailed mockup material language, real PNG alpha verified at image corners; no UI/characters/flames",
-      "modelStatus": "pending-conversion"
+      "modelStatus": "source-received-and-audited",
+      "uploadedFile": "task_c3c6cf97-6fc9-4fba-bba5-05c2b1ca48ed_model.glb",
+      "sourceSha256": "57ce8080b131600ad0fa759d6075f0a5e6abdcecf8838d000b60bd4bf51f2192"
     },
     {
       "id": "B1-04",
@@ -45,7 +56,9 @@
       "prompt": "art/source/batch-01/open-grimoire/prompt.txt",
       "sourceModel": "art/source/batch-01/open-grimoire/source.glb",
       "imageAcceptance": "Complete isolated object, detailed mockup material language, real PNG alpha verified at image corners; no UI/characters/flames",
-      "modelStatus": "pending-conversion"
+      "modelStatus": "source-received-and-audited",
+      "uploadedFile": "task_d8a5d1bd-8b50-4aca-908a-759337edf5d9_model.glb",
+      "sourceSha256": "a1e36ce715acbaeb38a3f8c523cb3d7a56338fcf1b3cd6900b281ef545ecedab"
     }
   ]
 }

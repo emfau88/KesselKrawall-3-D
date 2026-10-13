@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "batch": "B3",
+  "date": "2026-10-13",
+  "status": "two-requested-assets-integrated-in-local-preview",
+  "runtimeMode": "art=mockup",
+  "runtimeManifest": "art/source/mockup-runtime-manifest.json",
+  "assets": [
+    {
+      "id": "B3-01",
+      "slug": "dungeon-floor-module",
+      "image": "art/source/batch-03/dungeon-floor-module/reference.png",
+      "prompt": "art/source/batch-03/dungeon-floor-module/prompt.txt",
+      "sourceModel": "art/source/batch-03/dungeon-floor-module/source.glb",
+      "mobileSourceModel": "art/source/batch-03/dungeon-floor-module/source-mobile.glb",
+      "uploadedFile": "stone_floor_2m_LOD0.glb",
+      "sourceSha256": "7da3f0fb962fda87e61284afb3ddeb44593a573255a0f084fe551227be2f1afa",
+      "workflow": "User-supplied reference-guided procedural stone floor with PBR maps and LODs; only JSON bottom-pivot transform added",
+      "provenance": "art/source/batch-03/dungeon-floor-module/TEXTUR_HERKUNFT.txt",
+      "modelStatus": "source-preserved-runtime-integrated-and-technically-verified"
+    },
+    {
+      "id": "B3-02",
+      "slug": "dungeon-stone-pillar",
+      "image": "art/source/batch-03/dungeon-stone-pillar/reference.png",
+      "prompt": "art/source/batch-03/dungeon-stone-pillar/prompt.txt",
+      "sourceModel": "art/source/batch-03/dungeon-stone-pillar/source.glb",
+      "uploadedFile": "task_5e11d295-b0c9-42ec-8666-c4e5195ed46f_model.glb",
+      "sourceSha256": "fd74e54fd8bb3636e82043cf4c533ee54f683ea16ce76776f4ea7a97dcbfa4dd",
+      "workflow": "Individual imagegen extraction -> user to3D -> technical cleanup only",
+      "modelStatus": "source-preserved-runtime-integrated-and-technically-verified"
+    }
+  ]
+}

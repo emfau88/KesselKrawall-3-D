@@ -1,11 +1,13 @@
 import type { GreyboxMode } from "./GreyboxStage";
 import { assetBakeoffMode } from "./assetBakeoff";
 import { getOpponentPresentation } from "../content/opponentPresentation";
+import { MockupLighting } from "./MockupLighting";
 
 export function LightingRig({ mode, opponentId, shadowMapSize = 1024 }: { mode: GreyboxMode; opponentId?: string; shadowMapSize?: 512 | 1024 }) {
   const workshop = mode === "workshop";
   const presentation = getOpponentPresentation(opponentId ?? "rival");
   const productionArt = assetBakeoffMode() !== "legacy";
+  if (assetBakeoffMode() === "mockup") return <MockupLighting workshop={workshop} shadowMapSize={shadowMapSize} />;
   return (
     <>
       <ambientLight color={workshop ? "#9f8297" : presentation.steam} intensity={workshop ? 0.48 : productionArt ? 0.7 : 0.54} />

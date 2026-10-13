@@ -15,6 +15,7 @@ import { OpponentArenaIdentity } from "./OpponentArenaIdentity";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import { getRuntimeQualityProfile } from "./runtimeQuality";
 import { assetBakeoffMode } from "./assetBakeoff";
+import { MockupArenaEnvironment } from "./MockupArenaEnvironment";
 import type { ArenaSceneState } from "./sceneTypes";
 
 const PLAYER_POSITION: Vector3Tuple = [-0.28, 1.25, 4.02];
@@ -569,7 +570,7 @@ function ArenaCandleCluster({ position, scale = 1, light = false }: {
   );
 }
 
-function ArenaRunes({ moor, reactionKey, glowOverride }: { moor: boolean; reactionKey: number; glowOverride?: string }) {
+function ArenaRunes({ moor, reactionKey, glowOverride, height = 0 }: { moor: boolean; reactionKey: number; glowOverride?: string; height?: number }) {
   const runes = useRef<Group>(null);
   const lastReaction = useRef(reactionKey);
   const reactedAt = useRef(0);
@@ -590,7 +591,7 @@ function ArenaRunes({ moor, reactionKey, glowOverride }: { moor: boolean; reacti
   });
   const glow = glowOverride ?? (moor ? "#9acb4b" : "#a979d4");
   return (
-    <group ref={runes} position={[0, 0, -0.3]}>
+    <group ref={runes} position={[0, height, -0.3]}>
       {Array.from({ length: 14 }, (_, index) => {
         const angle = (index / 14) * Math.PI * 2;
         return (
@@ -609,7 +610,7 @@ function ArenaRunes({ moor, reactionKey, glowOverride }: { moor: boolean; reacti
   );
 }
 
-function ArenaPortal({ moor, glowOverride }: { moor: boolean; glowOverride?: string }) {
+function ArenaPortal({ moor, glowOverride, inset = false }: { moor: boolean; glowOverride?: string; inset?: boolean }) {
   const rings = useRef<Group>(null);
   useFrame(({ clock }) => {
     if (!rings.current) return;
@@ -619,7 +620,7 @@ function ArenaPortal({ moor, glowOverride }: { moor: boolean; glowOverride?: str
   });
   const glow = glowOverride ?? (moor ? "#82b83e" : "#8c63c5");
   return (
-    <group position={[0, 2.08, -6.02]}>
+    <group position={[0, inset ? 1.92 : 2.08, -6.02]} scale={inset ? [0.72, 0.84, 1] : 1}>
       <mesh scale={[1.32, 1.92, 1]}>
         <circleGeometry args={[1, 40]} />
         <meshStandardMaterial color="#17101c" emissive={glow} emissiveIntensity={0.78} transparent opacity={0.78} depthWrite={false} />
@@ -682,6 +683,7 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
   const moor = scene.opponent.id === "moor-martha";
   const presentation = getOpponentPresentation(scene.opponent.id);
   const legacy = assetBakeoffMode() === "legacy";
+  const mockup = assetBakeoffMode() === "mockup";
   const eventKey = scene.combat?.eventIndex ?? -1;
   const activeEvent = scene.combat?.event;
   const activeBoard = activeEvent?.actor === "enemy" ? scene.opponent.board : scene.board;
@@ -696,17 +698,17 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
     : undefined;
   return (
     <group>
-      <mesh receiveShadow position={[0, -0.34, -0.3]}>
+      {!mockup && <mesh receiveShadow position={[0, -0.34, -0.3]}>
         <cylinderGeometry args={[8.4, 8.8, 0.34, 40]} />
         <meshStandardMaterial color={presentation.floor} roughness={0.97} />
-      </mesh>
+      </mesh>}
       {[6.05, 7.15].map((radius, index) => (
         <mesh key={radius} receiveShadow position={[0, -0.155 + index * 0.004, -0.3]} rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[radius, 0.055, 7, 72]} />
           <meshStandardMaterial color={presentation.trim} emissive={presentation.glow} emissiveIntensity={0.06} roughness={0.86} />
         </mesh>
       ))}
-      <ProductionAssetBoundary fallback={null}>
+      {mockup ? <MockupArenaEnvironment /> : <ProductionAssetBoundary fallback={null}>
         <Suspense fallback={null}>
           {legacy ? (
             <>
@@ -771,47 +773,51 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
         </Suspense>
         <pointLight color="#ffad5b" intensity={4.1} distance={6.5} position={[-5.1, 2.86, -5.34]} />
         <pointLight color="#ffad5b" intensity={4.1} distance={6.5} position={[5.1, 2.86, -5.34]} />
-      </ProductionAssetBoundary>
-      {[1.35, 2.25].map((y, index) => (
+      </ProductionAssetBoundary>}
+      {!mockup && [1.35, 2.25].map((y, index) => (
         <mesh key={y} castShadow receiveShadow position={[0, y, -5.72]}>
           <boxGeometry args={[10.2 - index * 0.9, 0.22, 0.72]} />
           <meshStandardMaterial color={index === 0 ? presentation.trim : presentation.floor} emissive={presentation.glow} emissiveIntensity={0.12} roughness={0.9} />
         </mesh>
       ))}
-      <ArenaPortal glowOverride={presentation.glow} moor={moor} />
-      <TournamentAudience detail={quality.ambientDetail} moor={moor} reactionKey={eventKey} />
+      <ArenaPortal glowOverride={presentation.glow} moor={moor} inset={mockup} />
+      {!mockup && <TournamentAudience detail={quality.ambientDetail} moor={moor} reactionKey={eventKey} />}
       <ArenaAmbientLife detail={quality.ambientDetail} glowOverride={presentation.glow} moor={moor} />
       {moor && <MoorSanctum detail={quality.ambientDetail} reactionKey={eventKey} />}
       <OpponentArenaIdentity detail={quality.ambientDetail} opponentId={scene.opponent.id} reactionKey={eventKey} />
-      <ArenaChandelier />
-      <mesh castShadow position={[0, 3.85, -5.5]} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[1.05, 0.16, 8, 32, Math.PI]} />
-        <meshStandardMaterial color="#6e5749" metalness={0.35} roughness={0.55} />
-      </mesh>
-      {[-1, 1].map((side) => (
-        <group key={side} position={[side * 5.05, 2.7, -5.55]} rotation={[0, 0, side * -0.08]}>
-          <mesh castShadow>
-            <cylinderGeometry args={[0.18, 0.18, 4.8, 10]} />
-            <meshStandardMaterial color="#71513d" metalness={0.42} roughness={0.5} />
+      {!mockup && (
+        <>
+          <ArenaChandelier />
+          <mesh castShadow position={[0, 3.85, -5.5]} rotation={[Math.PI / 2, 0, 0]}>
+            <torusGeometry args={[1.05, 0.16, 8, 32, Math.PI]} />
+            <meshStandardMaterial color="#6e5749" metalness={0.35} roughness={0.55} />
           </mesh>
-          <mesh castShadow position={[side * -0.42, 1.6, 0]} rotation={[0, 0, Math.PI / 2]}>
-            <torusGeometry args={[0.42, 0.12, 8, 22, Math.PI]} />
-            <meshStandardMaterial color="#71513d" metalness={0.42} roughness={0.5} />
-          </mesh>
-        </group>
-      ))}
-      <ProductionAssetBoundary
-        fallback={(
-          <mesh castShadow receiveShadow position={[0, 0.08, 0]}>
-            <cylinderGeometry args={[5.2, 5.55, 0.42, 32]} />
-            <meshStandardMaterial color="#514552" roughness={0.86} />
-          </mesh>
-        )}
-      >
-        <Suspense fallback={null}>
-          <ProductionAsset asset="hero-arena-dais" position={[0, 0, 0]} />
-        </Suspense>
-      </ProductionAssetBoundary>
+          {[-1, 1].map((side) => (
+            <group key={side} position={[side * 5.05, 2.7, -5.55]} rotation={[0, 0, side * -0.08]}>
+              <mesh castShadow>
+                <cylinderGeometry args={[0.18, 0.18, 4.8, 10]} />
+                <meshStandardMaterial color="#71513d" metalness={0.42} roughness={0.5} />
+              </mesh>
+              <mesh castShadow position={[side * -0.42, 1.6, 0]} rotation={[0, 0, Math.PI / 2]}>
+                <torusGeometry args={[0.42, 0.12, 8, 22, Math.PI]} />
+                <meshStandardMaterial color="#71513d" metalness={0.42} roughness={0.5} />
+              </mesh>
+            </group>
+          ))}
+          <ProductionAssetBoundary
+            fallback={(
+              <mesh castShadow receiveShadow position={[0, 0.08, 0]}>
+                <cylinderGeometry args={[5.2, 5.55, 0.42, 32]} />
+                <meshStandardMaterial color="#514552" roughness={0.86} />
+              </mesh>
+            )}
+          >
+            <Suspense fallback={null}>
+              <ProductionAsset asset="hero-arena-dais" position={[0, 0, 0]} />
+            </Suspense>
+          </ProductionAssetBoundary>
+        </>
+      )}
       <CauldronActor
         accent="#d87442"
         position={PLAYER_POSITION}
@@ -835,17 +841,21 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
         <BattleVfx key={scene.combat.eventIndex} frame={scene.combat} opponentId={scene.opponent.id} sourcePosition={sourcePosition} />
       )}
       {scene.outcome && <OutcomeVfx outcome={scene.outcome} />}
-      <RunePillar side={-1} />
-      <RunePillar side={1} />
-      <ArenaRunes glowOverride={presentation.glow} moor={moor} reactionKey={eventKey} />
-      <ArenaBrazier flameColor={presentation.glow} poison={moor} position={[-4.2, 0.6, -3.62]} />
-      <ArenaBrazier flameColor={presentation.secondaryGlow} position={[4.2, 0.6, -3.62]} />
-      <ArenaCandleCluster light position={[-5.45, -0.15, -4.72]} scale={0.82} />
-      <ArenaCandleCluster light position={[5.38, -0.15, -4.65]} scale={0.74} />
-      <ArenaCandleCluster position={[-6.02, -0.18, -0.42]} scale={0.64} />
-      <ArenaCandleCluster position={[6.08, -0.18, 0.2]} scale={0.7} />
-      <ArenaCandleCluster position={[-4.62, -0.18, 3.66]} scale={0.56} />
-      <ArenaCandleCluster position={[4.72, -0.18, 3.48]} scale={0.62} />
+      {!mockup && <RunePillar side={-1} />}
+      {!mockup && <RunePillar side={1} />}
+      <ArenaRunes glowOverride={presentation.glow} moor={moor} reactionKey={eventKey} height={mockup ? 0.11 : 0} />
+      {!mockup && (
+        <>
+          <ArenaBrazier flameColor={presentation.glow} poison={moor} position={[-4.2, 0.6, -3.62]} />
+          <ArenaBrazier flameColor={presentation.secondaryGlow} position={[4.2, 0.6, -3.62]} />
+          <ArenaCandleCluster light position={[-5.45, -0.15, -4.72]} scale={0.82} />
+          <ArenaCandleCluster light position={[5.38, -0.15, -4.65]} scale={0.74} />
+          <ArenaCandleCluster position={[-6.02, -0.18, -0.42]} scale={0.64} />
+          <ArenaCandleCluster position={[6.08, -0.18, 0.2]} scale={0.7} />
+          <ArenaCandleCluster position={[-4.62, -0.18, 3.66]} scale={0.56} />
+          <ArenaCandleCluster position={[4.72, -0.18, 3.48]} scale={0.62} />
+        </>
+      )}
       {moor && <MoorMiasma />}
     </group>
   );

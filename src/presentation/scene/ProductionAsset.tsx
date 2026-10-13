@@ -10,8 +10,10 @@ import {
   type Vector3Tuple,
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { MOCKUP_ASSET_DEFINITIONS } from "./mockupAssetIds";
 
 export const PRODUCTION_ASSETS = {
+  ...MOCKUP_ASSET_DEFINITIONS,
   "dungeon-wall": {
     root: "kaykit-dungeon",
     file: "wall.gltf",
@@ -449,6 +451,7 @@ export function ProductionAsset({
   const resolvedCastShadow = castShadow ?? (
     asset.startsWith("hero-") ||
     asset.startsWith("ingredient-") ||
+    asset.startsWith("mockup-") ||
     asset === "quaternius-cauldron-base"
   );
 
@@ -467,7 +470,7 @@ export function ProductionAsset({
   }, [authoredMaterial, model, opacity, receiveShadow, resolvedCastShadow, tint]);
 
   return (
-    <group position={position} rotation={rotation} scale={scale}>
+    <group position={position} rotation={rotation} scale={scale} userData={{ productionAsset: asset }}>
       <primitive object={model} />
     </group>
   );

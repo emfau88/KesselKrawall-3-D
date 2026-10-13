@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KesselKrawall – echter Vorher-/Nachher-Vergleich</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;background:#171219;color:#f0dfc3;font:16px/1.5 system-ui,sans-serif}
+    main{max-width:1800px;margin:auto;padding:24px} h1{font-size:26px;margin:0 0 8px}
+    p{color:#bbae9d;margin:0 0 18px} nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+    a{color:#f5c47f} select{font:inherit;background:#2b2029;color:#f0dfc3;border:1px solid #806343;padding:9px;border-radius:6px}
+    .comparison{padding:14px;background:#211923;border:1px solid #614a32;border-radius:10px}
+    .comparison h2{font:600 20px/1.4 system-ui;margin:0 0 12px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    figure{margin:0} figcaption{margin-bottom:8px;color:#e7c18b;font-weight:600} img{width:100%;height:auto;display:block;border-radius:4px;background:#100d11}
+    .note{font-size:14px;margin-top:16px}.portrait .pair{max-width:850px;margin:auto}
+    @media(max-width:700px){main{padding:12px}.pair{grid-template-columns:1fr}h1{font-size:22px}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>KesselKrawall · Vorher / Nachher</h1>
+  <p>Echte Spielaufnahmen: gleiche Kamera, gleicher Spielstand und gleiche Zutaten. Neue Ansicht ist eine überprüfbare Vorschau, noch nicht das fertige Mockup-Ziel.</p>
+  <nav>
+    <label>Szene <select id="scene"><option value="workshop">Werkbank</option><option value="battle-zischbert">Arena · Zischbert</option><option value="battle-moor-martha">Arena · Moor-Martha</option></select></label>
+    <label>Ansicht <select id="profile"><option value="desktop">Desktop</option><option value="mobile-portrait">Mobile · Portrait</option><option value="mobile-landscape">Mobile · Landscape</option></select></label>
+    <a href="../../../?art=mockup">Neue Ansicht spielen</a><a href="../../../?art=golden">Bisherige Ansicht spielen</a>
+  </nav>
+  <section class="comparison" aria-label="Vorher und Nachher">
+    <h2 id="title">Werkbank · Desktop</h2>
+    <div class="pair">
+      <figure><figcaption>Vorher · bisherige Umgebung</figcaption><a id="before-link"><img id="before" alt="Spielaufnahme vor dem neuen Asset-Pass"></a></figure>
+      <figure><figcaption>Nachher · neue GLBs + korrigierte Materialien</figcaption><a id="after-link"><img id="after" alt="Spielaufnahme mit den neuen GLBs"></a></figure>
+    </div>
+  </section>
+  <p class="note">Zehn neue Modelltypen mit Desktop-/Mobile-Varianten, gemessenen Dochtankern und korrigierten Normalen/Metallwerten. Der gelieferte 2-Meter-Steinboden bewahrt seine PBR-Maps und LOD0/LOD1-Geometrien. Mobile-Bilder sind Viewport-/Touch-Emulation, kein physischer Smartphone-Benchmark. Bilder anklicken für die Originalgröße.</p>
+</main>
+<script>
+  const scene = document.querySelector('#scene');
+  const profile = document.querySelector('#profile');
+  function update(){
+    for(const [side,mode] of [['before','golden'],['after','mockup']]){
+      const path = `${scene.value}-${mode}-${profile.value}.png`;
+      document.querySelector(`#${side}`).src=path;
+      document.querySelector(`#${side}-link`).href=path;
+    }
+    document.querySelector('#title').textContent=`${scene.selectedOptions[0].textContent} · ${profile.selectedOptions[0].textContent}`;
+    document.querySelector('.comparison').classList.toggle('portrait',profile.value==='mobile-portrait');
+  }
+  scene.addEventListener('change',update);profile.addEventListener('change',update);update();
+</script>
+</body>
+</html>
