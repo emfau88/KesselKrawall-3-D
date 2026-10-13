@@ -1,0 +1,170 @@
+{
+  "version": 2,
+  "id": "zischbert",
+  "name": "Zischbert",
+  "faceStrategy": "original-textured-face-local-morphs",
+  "source": {
+    "file": "art/source/enemies/zischbert/source.glb",
+    "sha256": "6f3438275f61f8df6e82f6944f2d805d0698e90e83e74788e8f530aaad227896",
+    "bytes": 2440292
+  },
+  "coordinates": {
+    "up": "Y",
+    "front": "+Z",
+    "footPivot": 0,
+    "sourceFootOffset": 0.37731146812438965
+  },
+  "variants": {
+    "desktop": {
+      "file": "zischbert-desktop.glb",
+      "bytes": 3997156,
+      "sha256": "885e5efd468f01c43d5ed7ec2a58a98412a7cfd0be289bee5b902b8e281862c2",
+      "triangles": 28511,
+      "vertices": 20799,
+      "meshCount": 3,
+      "materialCount": 3
+    },
+    "mobile": {
+      "file": "zischbert-mobile.glb",
+      "bytes": 3104164,
+      "sha256": "8e9a9fddff0bbeb4fb56297089ff7233c9d288b29ea8871bb37a5630ae1dd929",
+      "triangles": 18512,
+      "vertices": 14618,
+      "meshCount": 3,
+      "materialCount": 3
+    }
+  },
+  "liquid": {
+    "node": "LiquidSurface",
+    "radius": 0.315,
+    "height": 0.5835,
+    "palette": "fire",
+    "removedBakedFaces": 532
+  },
+  "openingRays": [
+    {
+      "xy": [
+        0,
+        0
+      ],
+      "bodyHitHeight": 0.0010222196578979492,
+      "clear": true
+    },
+    {
+      "xy": [
+        0.1512,
+        0
+      ],
+      "bodyHitHeight": 0.013642549514770508,
+      "clear": true
+    },
+    {
+      "xy": [
+        -0.1512,
+        0
+      ],
+      "bodyHitHeight": 0.013697266578674316,
+      "clear": true
+    },
+    {
+      "xy": [
+        0,
+        0.1512
+      ],
+      "bodyHitHeight": 0.014252185821533203,
+      "clear": true
+    },
+    {
+      "xy": [
+        0,
+        -0.1512
+      ],
+      "bodyHitHeight": 0.28068578243255615,
+      "clear": true
+    },
+    {
+      "xy": [
+        0.1512,
+        0.1512
+      ],
+      "bodyHitHeight": 0.026749253273010254,
+      "clear": true
+    },
+    {
+      "xy": [
+        0.1512,
+        -0.1512
+      ],
+      "bodyHitHeight": 0.30572348833084106,
+      "clear": true
+    },
+    {
+      "xy": [
+        -0.1512,
+        0.1512
+      ],
+      "bodyHitHeight": 0.027082324028015137,
+      "clear": true
+    },
+    {
+      "xy": [
+        -0.1512,
+        -0.1512
+      ],
+      "bodyHitHeight": 0.3018920421600342,
+      "clear": true
+    }
+  ],
+  "morphs": {
+    "Body": [
+      "Blink_L",
+      "Blink_R",
+      "Smile",
+      "Surprise",
+      "Hurt",
+      "Look_L",
+      "Look_R",
+      "FaceNeutral"
+    ]
+  },
+  "defaultWeights": {
+    "Blink_L": 0,
+    "Blink_R": 0,
+    "Smile": 0,
+    "Surprise": 0,
+    "Hurt": 0,
+    "Look_L": 0,
+    "Look_R": 0,
+    "FaceNeutral": 0.85
+  },
+  "measuredFace": {
+    "eyesBlenderXZ": [
+      [
+        -0.14,
+        0.453
+      ],
+      [
+        0.14,
+        0.453
+      ]
+    ],
+    "mouthBlenderXZ": [
+      0,
+      0.319
+    ]
+  },
+  "expressions": [
+    "idle",
+    "joy",
+    "charge",
+    "attack",
+    "hit",
+    "defeat"
+  ],
+  "notes": [
+    "Original generated sculpt and embedded painted texture preserved; no generic replacement faceplate.",
+    "Facial weights are local to measured original features; source mouth identity is preserved.",
+    "Liquid cap removed from Body and replaced by a radial separate mesh with runtime deformation.",
+    "Only scalar metallic/roughness tuned; no claim of newly authored PBR texture maps."
+  ]
+}

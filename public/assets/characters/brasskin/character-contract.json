@@ -1,0 +1,86 @@
+{
+  "version": 3,
+  "name": "Brasskin",
+  "faceStrategy": "original-textured-face-local-morphs",
+  "source": {
+    "file": "art/source/brasskin/source.glb",
+    "sha256": "38a551e9d45d3856af33461c21ea86f4cffcd0d52476c2f241fb43ee6c2fe462",
+    "bytes": 2740208
+  },
+  "coordinates": {
+    "up": "Y",
+    "front": "+Z",
+    "footPivot": 0
+  },
+  "variants": {
+    "desktop": {
+      "file": "brasskin-desktop.glb",
+      "bytes": 3952460,
+      "triangles": 26452,
+      "vertices": 20593,
+      "meshCount": 4,
+      "materialCount": 4
+    },
+    "mobile": {
+      "file": "brasskin-mobile.glb",
+      "bytes": 3242832,
+      "triangles": 18451,
+      "vertices": 15542,
+      "meshCount": 4,
+      "materialCount": 4
+    }
+  },
+  "liquid": {
+    "node": "LiquidSurface",
+    "radius": 0.28,
+    "height": 0.7408242812156678
+  },
+  "morphs": {
+    "Body": [
+      "Blink_L",
+      "Blink_R",
+      "Smile",
+      "Surprise",
+      "Hurt",
+      "Look_L",
+      "Look_R",
+      "FaceNeutral"
+    ]
+  },
+  "expressions": [
+    "idle",
+    "joy",
+    "charge",
+    "attack",
+    "hit",
+    "defeat"
+  ],
+  "defaultWeights": {
+    "Body": {
+      "FaceNeutral": 0.85
+    }
+  },
+  "expressionWeights": {
+    "idle": {
+      "FaceNeutral": 0.85
+    },
+    "joy": {
+      "Smile": 0.35
+    },
+    "charge": {
+      "FaceNeutral": 1
+    },
+    "hit": {
+      "FaceNeutral": 0.1,
+      "Hurt": 0.9
+    },
+    "defeat": {
+      "Hurt": 1
+    }
+  },
+  "notes": [
+    "Original face geometry and texture preserved; no replacement faceplate.",
+    "Local facial morphs; body movement and liquid animation are runtime effects.",
+    "FaceNeutral and Hurt are complete expressions from Basis; crossfade rather than stacking both at full weight."
+  ]
+}

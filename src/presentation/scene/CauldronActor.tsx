@@ -11,6 +11,7 @@ import {
 import { getOpponentPresentation } from "../content/opponentPresentation";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import { assetBakeoffMode } from "./assetBakeoff";
+import { BrasskinCauldron } from "./BrasskinCauldron";
 
 export type CauldronReaction =
   | "idle"
@@ -382,15 +383,7 @@ function CauldronAssetFallback({ profile }: { profile: CauldronVisualProfile }) 
   );
 }
 
-export function CauldronActor({
-  accent,
-  position,
-  rotation,
-  variant = "rival",
-  scale = 1,
-  reaction = "idle",
-  reactionKey = -1,
-}: {
+interface CauldronActorProps {
   accent: string;
   position: Vector3Tuple;
   rotation?: Vector3Tuple;
@@ -398,7 +391,35 @@ export function CauldronActor({
   scale?: number;
   reaction?: CauldronReaction;
   reactionKey?: number;
-}) {
+}
+
+export function CauldronActor(props: CauldronActorProps) {
+  if (props.variant === "player" || props.variant === "zischbert" || props.variant === "moor-martha") {
+    const character = props.variant === "player" ? "brasskin" : props.variant;
+    return (
+      <ProductionAssetBoundary fallback={(
+        <group position={props.position} rotation={props.rotation} scale={props.scale}>
+          <CauldronAssetFallback profile={HERO_PROFILE} />
+        </group>
+      )}>
+        <Suspense fallback={null}>
+          <BrasskinCauldron {...props} character={character} />
+        </Suspense>
+      </ProductionAssetBoundary>
+    );
+  }
+  return <LegacyCauldronActor {...props} />;
+}
+
+function LegacyCauldronActor({
+  accent,
+  position,
+  rotation,
+  variant = "rival",
+  scale = 1,
+  reaction = "idle",
+  reactionKey = -1,
+}: CauldronActorProps) {
   const animated = useRef<Group>(null);
   const liquid = useRef<Mesh>(null);
   const steam = useRef<Group>(null);

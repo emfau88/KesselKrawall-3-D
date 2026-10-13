@@ -1,0 +1,78 @@
+name: PlayCanvas Bakeoff
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "experiments/playcanvas/**"
+      - "src/core/**"
+      - "package.json"
+      - ".github/workflows/playcanvas-bakeoff.yml"
+  push:
+    paths:
+      - "experiments/playcanvas/**"
+      - "src/core/**"
+      - "package.json"
+      - ".github/workflows/playcanvas-bakeoff.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  product-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install product dependencies
+        run: npm ci
+
+      - name: Test product
+        run: npm test
+
+      - name: Typecheck product
+        run: npm run typecheck
+
+      - name: Build product
+        run: npm run build
+
+  playcanvas-bakeoff:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: experiments/playcanvas
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: experiments/playcanvas/package-lock.json
+
+      - name: Install bakeoff dependencies
+        run: npm ci
+
+      - name: Test isolation contract
+        run: npm test
+
+      - name: Typecheck bakeoff
+        run: npm run typecheck
+
+      - name: Lint bakeoff
+        run: npm run lint
+
+      - name: Check formatting
+        run: npm run fmt
+
+      - name: Build bakeoff
+        run: npm run build

@@ -1,6 +1,9 @@
 import type { Board } from "../../core/types";
 import { assetBakeoffMode, type AssetBakeoffMode } from "./assetBakeoff";
 import { productionAssetUrl, type ProductionAssetId } from "./ProductionAsset";
+import { brasskinAssetId, characterAssetId } from "./character/brasskinAssets";
+import { getRuntimeQualityProfile, type RuntimeQualityProfile } from "./runtimeQuality";
+import { mockupAssetId } from "./mockupAssetIds";
 
 export interface AssetLoadProgress {
   readonly completed: number;
@@ -26,29 +29,32 @@ export function getBattleCriticalAssetIds(
   enemyBoard: Board,
   opponentId: string,
   mode: AssetBakeoffMode = assetBakeoffMode(),
+  qualityTier: RuntimeQualityProfile["tier"] = getRuntimeQualityProfile().tier,
 ): ProductionAssetId[] {
-  const assets: ProductionAssetId[] = ["hero-arena-dais"];
+  const assets: ProductionAssetId[] = [mode === "mockup" ? mockupAssetId("ritual-platform", qualityTier) : "hero-arena-dais", brasskinAssetId(qualityTier)];
+  const authoredOpponent = opponentId === "zischbert" || opponentId === "moor-martha";
+  if (authoredOpponent) assets.push(characterAssetId(opponentId, qualityTier));
 
-  if (mode === "legacy") {
+  if (mode === "mockup") {
+    assets.push(
+      ...(["dungeon-wall-module", "dungeon-stone-arch", "alchemy-shelf", "dungeon-stone-pillar", "wall-candle-sconce", "triple-candleholder", "open-grimoire", "dungeon-floor-module"] as const)
+        .map((slug) => mockupAssetId(slug, qualityTier)),
+    );
+    if (!authoredOpponent) assets.push("quaternius-cauldron-base");
+  } else if (mode === "legacy") {
     assets.push(
       "dungeon-wall",
       "dungeon-wall-arched",
       "dungeon-floor-tile",
-      "hero-cauldron-player",
     );
-    if (opponentId === "moor-martha") assets.push("hero-cauldron-moor");
   } else {
     assets.push(
-      "quaternius-cauldron-base",
       "quaternius-wall-brick",
       "quaternius-door-frame",
       "quaternius-floor-brick",
       "quaternius-torch",
     );
-    if (mode === "golden") {
-      assets.push("hero-cauldron-player-kit");
-      if (opponentId === "moor-martha") assets.push("hero-cauldron-moor-kit");
-    }
+    if (!authoredOpponent) assets.push("quaternius-cauldron-base");
   }
 
   for (const item of [...playerBoard, ...enemyBoard]) {

@@ -1,0 +1,170 @@
+{
+  "version": 2,
+  "id": "moor-martha",
+  "name": "Moor-Martha",
+  "faceStrategy": "original-textured-face-local-morphs",
+  "source": {
+    "file": "art/source/enemies/moor-martha/source.glb",
+    "sha256": "a5d75c37172ae16ac4e34fcb487a85271a925bf52a772767f7d2b619c20f2036",
+    "bytes": 2531072
+  },
+  "coordinates": {
+    "up": "Y",
+    "front": "+Z",
+    "footPivot": 0,
+    "sourceFootOffset": 0.3525960147380829
+  },
+  "variants": {
+    "desktop": {
+      "file": "moor-martha-desktop.glb",
+      "bytes": 3953500,
+      "sha256": "f72d0330bb21961acaeb391feffc2e85b81076bac82475ac8dbd1d2a24cf5882",
+      "triangles": 27984,
+      "vertices": 19639,
+      "meshCount": 2,
+      "materialCount": 2
+    },
+    "mobile": {
+      "file": "moor-martha-mobile.glb",
+      "bytes": 3094588,
+      "sha256": "f4d0fcb9cd0716d96d641214ae1c63dcdc21e4fc92807f33ab4b9f17c4252a1f",
+      "triangles": 17983,
+      "vertices": 13471,
+      "meshCount": 2,
+      "materialCount": 2
+    }
+  },
+  "liquid": {
+    "node": "LiquidSurface",
+    "radius": 0.285,
+    "height": 0.5435,
+    "palette": "poison",
+    "removedBakedFaces": 385
+  },
+  "openingRays": [
+    {
+      "xy": [
+        0,
+        0
+      ],
+      "bodyHitHeight": 0.0595470666885376,
+      "clear": true
+    },
+    {
+      "xy": [
+        0.13679999999999998,
+        0
+      ],
+      "bodyHitHeight": 0.06462478637695312,
+      "clear": true
+    },
+    {
+      "xy": [
+        -0.13679999999999998,
+        0
+      ],
+      "bodyHitHeight": 0.06219685077667236,
+      "clear": true
+    },
+    {
+      "xy": [
+        0,
+        0.13679999999999998
+      ],
+      "bodyHitHeight": 0.06258702278137207,
+      "clear": true
+    },
+    {
+      "xy": [
+        0,
+        -0.13679999999999998
+      ],
+      "bodyHitHeight": 0.06504380702972412,
+      "clear": true
+    },
+    {
+      "xy": [
+        0.13679999999999998,
+        0.13679999999999998
+      ],
+      "bodyHitHeight": 0.02464747428894043,
+      "clear": true
+    },
+    {
+      "xy": [
+        0.13679999999999998,
+        -0.13679999999999998
+      ],
+      "bodyHitHeight": 0.020332813262939453,
+      "clear": true
+    },
+    {
+      "xy": [
+        -0.13679999999999998,
+        0.13679999999999998
+      ],
+      "bodyHitHeight": 0.07458615303039551,
+      "clear": true
+    },
+    {
+      "xy": [
+        -0.13679999999999998,
+        -0.13679999999999998
+      ],
+      "bodyHitHeight": 0.07927477359771729,
+      "clear": true
+    }
+  ],
+  "morphs": {
+    "Body": [
+      "Blink_L",
+      "Blink_R",
+      "Smile",
+      "Surprise",
+      "Hurt",
+      "Look_L",
+      "Look_R",
+      "FaceNeutral"
+    ]
+  },
+  "defaultWeights": {
+    "Blink_L": 0,
+    "Blink_R": 0,
+    "Smile": 0,
+    "Surprise": 0,
+    "Hurt": 0,
+    "Look_L": 0,
+    "Look_R": 0,
+    "FaceNeutral": 0.85
+  },
+  "measuredFace": {
+    "eyesBlenderXZ": [
+      [
+        -0.253,
+        0.404
+      ],
+      [
+        -0.056,
+        0.404
+      ]
+    ],
+    "mouthBlenderXZ": [
+      -0.145,
+      0.314
+    ]
+  },
+  "expressions": [
+    "idle",
+    "joy",
+    "charge",
+    "attack",
+    "hit",
+    "defeat"
+  ],
+  "notes": [
+    "Original generated sculpt and embedded painted texture preserved; no generic replacement faceplate.",
+    "Facial weights are local to measured original features; source mouth identity is preserved.",
+    "Liquid cap removed from Body and replaced by a radial separate mesh with runtime deformation.",
+    "Only scalar metallic/roughness tuned; no claim of newly authored PBR texture maps."
+  ]
+}

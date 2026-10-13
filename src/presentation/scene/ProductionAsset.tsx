@@ -10,8 +10,10 @@ import {
   type Vector3Tuple,
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { MOCKUP_ASSET_DEFINITIONS } from "./mockupAssetIds";
 
 export const PRODUCTION_ASSETS = {
+  ...MOCKUP_ASSET_DEFINITIONS,
   "dungeon-wall": {
     root: "kaykit-dungeon",
     file: "wall.gltf",
@@ -269,6 +271,48 @@ export const PRODUCTION_ASSETS = {
     license: "Project original",
     materialPolicy: "authored",
   },
+  "brasskin-desktop": {
+    root: "characters/brasskin",
+    file: "brasskin-desktop.glb",
+    source: "User-supplied Brasskin sculpt, local Blender morph and brew pipeline",
+    license: "Source provenance pending; see art/source/brasskin/README.md",
+    materialPolicy: "authored",
+  },
+  "brasskin-mobile": {
+    root: "characters/brasskin",
+    file: "brasskin-mobile.glb",
+    source: "User-supplied Brasskin sculpt, local Blender morph and brew pipeline",
+    license: "Source provenance pending; see art/source/brasskin/README.md",
+    materialPolicy: "authored",
+  },
+  "zischbert-desktop": {
+    root: "characters/zischbert",
+    file: "zischbert-desktop.glb",
+    source: "Original 2D Zischbert reference via to3D, local Blender character preparation",
+    license: "See art/source/enemies/reference for source provenance",
+    materialPolicy: "authored",
+  },
+  "zischbert-mobile": {
+    root: "characters/zischbert",
+    file: "zischbert-mobile.glb",
+    source: "Original 2D Zischbert reference via to3D, local Blender character preparation",
+    license: "See art/source/enemies/reference for source provenance",
+    materialPolicy: "authored",
+  },
+  "moor-martha-desktop": {
+    root: "characters/moor-martha",
+    file: "moor-martha-desktop.glb",
+    source: "Original 2D Moor-Martha reference via to3D, local Blender character preparation",
+    license: "See art/source/enemies/reference for source provenance",
+    materialPolicy: "authored",
+  },
+  "moor-martha-mobile": {
+    root: "characters/moor-martha",
+    file: "moor-martha-mobile.glb",
+    source: "Original 2D Moor-Martha reference via to3D, local Blender character preparation",
+    license: "See art/source/enemies/reference for source provenance",
+    materialPolicy: "authored",
+  },
   "hero-cauldron-moor": {
     root: "hero",
     file: "hero-cauldron-moor.glb",
@@ -407,6 +451,7 @@ export function ProductionAsset({
   const resolvedCastShadow = castShadow ?? (
     asset.startsWith("hero-") ||
     asset.startsWith("ingredient-") ||
+    asset.startsWith("mockup-") ||
     asset === "quaternius-cauldron-base"
   );
 
@@ -425,7 +470,7 @@ export function ProductionAsset({
   }, [authoredMaterial, model, opacity, receiveShadow, resolvedCastShadow, tint]);
 
   return (
-    <group position={position} rotation={rotation} scale={scale}>
+    <group position={position} rotation={rotation} scale={scale} userData={{ productionAsset: asset }}>
       <primitive object={model} />
     </group>
   );

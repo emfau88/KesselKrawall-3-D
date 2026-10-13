@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "batch": "B2",
+  "date": "2026-10-13",
+  "workflow": "individual mockup extraction via built-in imagegen -> user converts each PNG with to3D -> original GLB preserved -> technical cleanup and visual acceptance",
+  "reference": "docs/reference-art/final-north-star.png",
+  "tool": "built-in image_gen",
+  "status": "integrated-in-local-opt-in-preview-qa-passed",
+  "runtimeIntegrated": true,
+  "runtimeMode": "art=mockup",
+  "runtimeManifest": "art/source/mockup-runtime-manifest.json",
+  "qaReport": "docs/qa/mockup-environment/report.json",
+  "technicalReview": "art/source/batch-02/TECHNICAL_REVIEW.md",
+  "assets": [
+    {
+      "id": "B2-01",
+      "slug": "dungeon-wall-module",
+      "title": "Steinwand-Modul",
+      "priority": 1,
+      "image": "art/source/batch-02/dungeon-wall-module/reference.png",
+      "prompt": "art/source/batch-02/dungeon-wall-module/prompt.txt",
+      "sourceModel": "art/source/batch-02/dungeon-wall-module/source.glb",
+      "modelStatus": "source-received-and-audited",
+      "uploadedFile": "task_027d0926-0199-4f99-a574-fa7401321bed_model.glb",
+      "integrationNotes": "Solid masonry, horizontal X; fit source proportions and test joins; requires normals, nonmetal material and LOD",
+      "imageAcceptance": "Full isolated object, real RGBA PNG, no flames or UI; raw reconstruction quality not yet verified"
+    },
+    {
+      "id": "B2-02",
+      "slug": "dungeon-stone-arch",
+      "title": "Massiver Steinbogen",
+      "priority": 2,
+      "image": "art/source/batch-02/dungeon-stone-arch/reference.png",
+      "prompt": "art/source/batch-02/dungeon-stone-arch/prompt.txt",
+      "sourceModel": "art/source/batch-02/dungeon-stone-arch/source.glb",
+      "modelStatus": "source-received-and-audited",
+      "uploadedFile": "task_9e473102-4a86-4f68-96fe-e75cd3041488_model.glb",
+      "integrationNotes": "Free opening visually and ray-tested; source front is along X, rotate Y 90 degrees for wall alignment; requires normals, nonmetal material and LOD",
+      "imageAcceptance": "Full isolated object, real RGBA PNG, no flames or UI; raw reconstruction quality not yet verified"
+    },
+    {
+      "id": "B2-03",
+      "slug": "alchemy-shelf",
+      "title": "Bestücktes Alchemistenregal",
+      "priority": 3,
+      "image": "art/source/batch-02/alchemy-shelf/reference.png",
+      "prompt": "art/source/batch-02/alchemy-shelf/prompt.txt",
+      "sourceModel": "art/source/batch-02/alchemy-shelf/source.glb",
+      "modelStatus": "source-received-and-technically-verified",
+      "uploadedFile": "task_d1f976ff-beaf-431c-85c4-d8b246ce7b99_model.glb",
+      "imageAcceptance": "Full isolated object, real RGBA PNG, no flames or UI; raw reconstruction quality not yet verified"
+    },
+    {
+      "id": "B2-04",
+      "slug": "wall-candle-sconce",
+      "title": "Wandkerzenhalter",
+      "priority": 4,
+      "image": "art/source/batch-02/wall-candle-sconce/reference.png",
+      "prompt": "art/source/batch-02/wall-candle-sconce/prompt.txt",
+      "sourceModel": "art/source/batch-02/wall-candle-sconce/source.glb",
+      "modelStatus": "source-received-and-technically-verified",
+      "uploadedFile": "task_d8062095-869a-4ed7-81e9-8eaee8eddec1_model.glb",
+      "imageAcceptance": "Full isolated object, real RGBA PNG, no flames or UI; raw reconstruction quality not yet verified"
+    }
+  ]
+}

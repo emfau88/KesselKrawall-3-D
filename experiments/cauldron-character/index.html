@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#15191d" />
+    <meta
+      name="description"
+      content="Brasskin: animierte Kessel-Charakterprobe mit Mimik und brodelnder Flüssigkeit."
+    />
+    <title>Brasskin · KesselKrawall Charakterprobe</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="masthead">
+        <a class="wordmark" href="./">KESSEL<span>KRAWALL</span></a>
+        <span class="edition">Charakterwerkstatt / 01</span>
+      </header>
+      <main class="workspace">
+        <section class="stage" aria-label="Interaktiver 3D-Kessel">
+          <canvas
+            id="scene"
+            aria-label="Brasskin, ein lebendiger Messingkessel. Ziehen zum Drehen, zwei Finger zum Zoomen."
+          ></canvas>
+          <div class="stage-caption">
+            <span class="eyebrow">VOM MODELL ZUM CHARAKTER</span>
+            <h1>Brasskin</h1>
+            <p>Ein großer Bauch. Eine kleine Seele.</p>
+          </div>
+          <div class="view-controls" aria-label="Kameraansicht">
+            <button data-view="front">Vorne</button
+            ><button class="active" data-view="three-quarter">¾</button
+            ><button data-view="rear">Hinten</button>
+          </div>
+          <div
+            class="scene-status"
+            id="load-status"
+            role="status"
+            aria-live="polite"
+          >
+            Kessel wird vorbereitet …
+          </div>
+          <div class="stage-hint">
+            Ziehen zum Drehen · Pinch / Mausrad zum Zoomen
+          </div>
+        </section>
+        <aside class="panel" aria-label="Charaktersteuerung">
+          <div class="panel-top">
+            <span class="eyebrow">CHARAKTERPROBE</span
+            ><span class="ready-badge" id="ready-badge">Lädt</span>
+          </div>
+          <h2>Was fühlt dein Kessel?</h2>
+          <p class="intro">
+            Augen, Brauen und Mund erzählen mit. Sein Trank reagiert auf jede
+            Stimmung.
+          </p>
+          <div class="state-grid" role="group" aria-label="Animationszustand">
+            <button data-state="idle" class="active" disabled>
+              <span class="state-mark">◡</span><strong>Ruhe</strong
+              ><small>Blinzeln &amp; Brodeln</small>
+            </button>
+            <button data-state="joy" disabled>
+              <span class="state-mark">✧</span><strong>Freude</strong
+              ><small>Ein kleiner Jubel</small>
+            </button>
+            <button data-state="charge" disabled>
+              <span class="state-mark">◇</span><strong>Aufladen</strong
+              ><small>Magie sammelt sich</small>
+            </button>
+            <button data-state="attack" disabled>
+              <span class="state-mark">↗</span><strong>Angriff</strong
+              ><small>Zauber voraus!</small>
+            </button>
+            <button data-state="hit" disabled>
+              <span class="state-mark">!</span><strong>Treffer</strong
+              ><small>Au! Das war gemein.</small>
+            </button>
+            <button data-state="defeat" disabled>
+              <span class="state-mark">⌁</span><strong>Niederlage</strong
+              ><small>Die Magie erlischt</small>
+            </button>
+          </div>
+          <p class="mood-caption" id="mood-caption" aria-live="polite">
+            Er beobachtet die Welt, blinzelt und lässt seinen Trank leise
+            köcheln.
+          </p>
+          <div class="transport">
+            <button id="replay" disabled>↻ Wiederholen</button
+            ><button id="pause" disabled aria-pressed="false">Ⅱ Pause</button>
+          </div>
+          <div class="option-row">
+            <label
+              ><input type="checkbox" id="auto-demo" /> Alle Stimmungen
+              zeigen</label
+            >
+          </div>
+          <div class="option-row">
+            <label
+              ><input type="checkbox" id="reduced-motion" /> Ruhige
+              Bewegung</label
+            >
+          </div>
+          <div class="asset-row">
+            <label for="asset-quality">Modellqualität</label
+            ><select id="asset-quality">
+              <option value="auto">Automatisch</option>
+              <option value="desktop">Desktop</option>
+              <option value="mobile">Mobile</option>
+            </select>
+          </div>
+          <details class="performance">
+            <summary>Messwerte &amp; Modell</summary>
+            <dl>
+              <div>
+                <dt>Modell</dt>
+                <dd id="metric-asset">—</dd>
+              </div>
+              <div>
+                <dt>Dreiecke / Draw Calls</dt>
+                <dd id="metric-render">—</dd>
+              </div>
+              <div>
+                <dt>Frame-Abstand Ø / P95</dt>
+                <dd id="metric-cadence">—</dd>
+              </div>
+              <div>
+                <dt>JS + Render-Aufruf Ø / P95</dt>
+                <dd id="metric-cpu">—</dd>
+              </div>
+              <div>
+                <dt>Texturen im Renderer</dt>
+                <dd id="metric-textures">—</dd>
+              </div>
+            </dl>
+            <p>
+              Lokale Browserwerte, keine GPU-Zeit. Bildabstände enthalten das
+              Display- und Browser-Timing. Echte Mobilgeräte müssen gesondert
+              geprüft werden.
+            </p>
+          </details>
+          <footer class="panel-footer">
+            Gesicht, Trank und Körper sind getrennt steuerbar.<br />Die
+            Charakterprobe verändert das laufende Spiel nicht.
+          </footer>
+        </aside>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

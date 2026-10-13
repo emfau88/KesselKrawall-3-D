@@ -110,6 +110,28 @@ ihre Pixel oder Texturen wurden nicht in die GLBs übernommen.
 
 ## Eigenassets im aktuellen Build
 
+### Nutzerbeauftragte Charakter-Rekonstruktionen (13.10.2026)
+
+Brasskin verwendet das vom Projektinhaber bereitgestellte GLB; Zischbert und
+Moor-Martha wurden auf ausdrücklichen Wunsch aus den originalen Einzelbildern
+des alten KesselKrawall-Repositories mit to3D erzeugt. Desktop- und
+Mobile-Ableitungen unter `public/assets/characters/` bewahren diese Farbtexturen
+und ergänzen reduzierte Geometrie, Normalen, lokale Gesichtsmorphs und getrennte
+Flüssigkeitsmeshes. Herkunft, Quell-Prüfsummen und Generierungsjobs stehen unter
+`art/source/brasskin/` und `art/source/enemies/`.
+
+Dies ist eine **dokumentierte Ausnahme** vom früheren Verbot, Legacy-Bildmaterial
+als Texturgrundlage zu verwenden. Es werden keine 2D-Sprite-Sticker in die neue
+Szene übernommen. Für die bereitgestellten Modelle bzw. Originalbilder liegt
+keine separat nachgewiesene kommerzielle Lizenzfreigabe vor. Weder CC0 noch neue
+Urheberschaft werden behauptet; die Quellen- und Dienstrechte sind vor einer
+kommerziellen Veröffentlichung zu bestätigen.
+
+Die zwölf Originalbilder der ersten Kampagnenzutaten unter
+`art/source/ingredients-campaign-1/` sind nur gesicherte Referenzen. Keine davon
+wurde zusätzlich in ein 3D-Modell umgewandelt oder als neue Runtime-Textur geladen;
+die vorhandenen Zutatenmodelle bleiben bestehen.
+
 Folgende Gruppen werden zusätzlich vollständig im Projektcode erzeugt:
 
 - fünf Ingredient-Podeste,
@@ -125,6 +147,27 @@ keine Drittanbieter-Attribution.
 
 Die drei unter `docs/reference-art/` abgelegten Mockups sind ausschließlich
 user-provided Qualitätsreferenzen und keine Runtime- oder Marketingassets.
+
+## Neue Mockup-Umgebung: lokale opt-in Vergleichsansicht
+
+Neun Assettypen stammen aus individuell generierten Imagegen-Vorlagen,
+abgeleitet von den Nutzer-Mockups, und vom Nutzer separat konvertierten to3D-
+GLBs. Referenzbilder, exakte Prompts und unveränderte Rohmodelle liegen unter
+`art/source/batch-01/`, `batch-02/` und `batch-03/`. Technische Ableitungen unter
+`public/assets/environment/` ergänzen nur Normalen, nichtmetallische Materialwerte,
+Ursprünge, passende Dimensionen, Dochtanker und Desktop-/Mobile-LODs. Es werden
+keine CC0-Rechte oder eine vollständige kommerzielle Rechteprüfung behauptet.
+
+Der separat gelieferte Boden `stone_floor_2m_LOD0.glb` und seine LOD1-Version
+stammen aus einem referenzgeleiteten prozeduralen Export, nicht aus einem
+weiteren to3D-Auftrag. Das bereitgestellte Textur-Herkunftsdokument nennt
+Imagegen für die Materialvorlage. Geometrie, Vertexfarben, Normalen, Tangenten
+und alle drei eingebetteten PBR-PNGs bleiben unverändert; Runtime-Dateien
+ergänzen nur einen JSON-Transform zum Bodenursprung.
+
+Quelle, SHA-256, originale PNG-Hashes und tatsächliche LOD-Metriken:
+`art/source/mockup-runtime-manifest.json`. Die bisherigen Lizenzhinweise für
+Quaternius/KayKit und die Kesselcharaktere gelten weiterhin.
 
 ## Vorlage für neue Einträge
 

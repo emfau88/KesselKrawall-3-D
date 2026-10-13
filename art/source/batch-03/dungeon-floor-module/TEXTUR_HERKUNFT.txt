@@ -1,0 +1,8 @@
+Modus: integrierter image_gen-Bildgenerator; keine CLI/API-Ausführung.
+Referenz: vom Nutzer bereitgestelltes Bild der verwitterten Steinplatten.
+Generiertes Materialbild: 1254 × 1254 Pixel; für das Game-Asset auf
+1024 × 1024 Pixel skaliert. Die Anforderung 2048 × 2048 im Prompt
+wurde vom Bildgenerator nicht als Ausgabeauflösung übernommen.
+
+Vollständiger Generierungsprompt:
+Use case: texture material for a realistic 3D game asset. Input image is a STYLE AND MATERIAL REFERENCE only: the ancient brown-gray worn stone pavers. Generate a square 2048x2048 seamless tileable PBR BASE COLOR texture of ONE CONTINUOUS UNBROKEN surface of the exact same weathered brown-gray limestone/slate material. Flat orthographic overhead macro scan, edge to edge stone material. NO tiles, NO paving arrangement, NO grout lines, NO borders, NO sides, NO perspective, NO background. Warm charcoal and dusty umber stone with muted sandy taupe flecks, fine mineral grains, worn irregular mottling, shallow flaked surface and very sparse hairline cracks. Keep overall luminance medium around RGB 100,88,74. Material is dry, rugged, ancient, matching reference closely. Very high spatial microdetail, restrained contrast. Truly flat diffuse neutral illumination, NO directional shadows, NO specular highlights, NO ambient occlusion, NO vignette. No text or labels. This image will be mapped separately onto modeled stone slabs.
