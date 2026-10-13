@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "batch": "B1",
+  "date": "2026-10-13",
+  "workflow": "individual imagegen extraction from user mockup -> individual to3D GLB -> technical cleanup only",
+  "reference": "docs/reference-art/final-north-star.png",
+  "tool": "built-in image_gen",
+  "status": "images-generated-and-reviewed",
+  "assets": [
+    {
+      "id": "B1-01",
+      "slug": "ritual-platform",
+      "title": "Steinerne Ritualplattform",
+      "image": "art/source/batch-01/ritual-platform/reference.png",
+      "prompt": "art/source/batch-01/ritual-platform/prompt.txt",
+      "sourceModel": "art/source/batch-01/ritual-platform/source.glb",
+      "imageAcceptance": "Complete isolated object, detailed mockup material language, real PNG alpha verified at image corners; no UI/characters/flames",
+      "modelStatus": "pending-conversion"
+    },
+    {
+      "id": "B1-02",
+      "slug": "witch-workbench",
+      "title": "Hexenwerkbank",
+      "image": "art/source/batch-01/witch-workbench/reference.png",
+      "prompt": "art/source/batch-01/witch-workbench/prompt.txt",
+      "sourceModel": "art/source/batch-01/witch-workbench/source.glb",
+      "imageAcceptance": "Complete isolated object, detailed mockup material language, real PNG alpha verified at image corners; no UI/characters/flames",
+      "modelStatus": "pending-conversion"
+    },
+    {
+      "id": "B1-03",
+      "slug": "triple-candleholder",
+      "title": "Dreifacher Kerzenhalter",
+      "image": "art/source/batch-01/triple-candleholder/reference.png",
+      "prompt": "art/source/batch-01/triple-candleholder/prompt.txt",
+      "sourceModel": "art/source/batch-01/triple-candleholder/source.glb",
+      "imageAcceptance": "Complete isolated object, detailed mockup material language, real PNG alpha verified at image corners; no UI/characters/flames",
+      "modelStatus": "pending-conversion"
+    },
+    {
+      "id": "B1-04",
+      "slug": "open-grimoire",
+      "title": "Aufgeschlagenes Grimoire",
+      "image": "art/source/batch-01/open-grimoire/reference.png",
+      "prompt": "art/source/batch-01/open-grimoire/prompt.txt",
+      "sourceModel": "art/source/batch-01/open-grimoire/source.glb",
+      "imageAcceptance": "Complete isolated object, detailed mockup material language, real PNG alpha verified at image corners; no UI/characters/flames",
+      "modelStatus": "pending-conversion"
+    }
+  ]
+}
