@@ -32,6 +32,8 @@ export function IngredientSlotGreybox({
     : "#8a7787";
   return (
     <group
+      name={`ingredient-slot-${index}`}
+      userData={{ ingredientSlot: index }}
       position={position}
       onClick={(event) => {
         event.stopPropagation();

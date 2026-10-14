@@ -11,6 +11,7 @@ __pycache__/
 .tmp-edge-qa/
 .tmp-qa/
 docs/qa/current/
+docs/qa/environment-composition/iterations/
 KayKit_*_FREE.zip
 *MegaKit[[]Standard[]].zip
 art/blender/previews/

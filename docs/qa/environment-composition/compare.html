@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KesselKrawall · Raum- und Kamerakomposition · Vorher / Nachher</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#171219;color:#f0dfc3;font:16px/1.5 system-ui,sans-serif}
+    main{max-width:1800px;margin:auto;padding:24px}h1{font-size:26px;margin:0 0 8px}p{color:#bbae9d;margin:0 0 18px}
+    nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:20px}a{color:#f5c47f}
+    select{font:inherit;background:#2b2029;color:#f0dfc3;border:1px solid #806343;padding:9px;border-radius:6px}
+    .comparison{padding:14px;background:#211923;border:1px solid #614a32;border-radius:10px}
+    .comparison h2{font:600 20px/1.4 system-ui;margin:0 0 12px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    figure{margin:0}figcaption{margin-bottom:8px;color:#e7c18b;font-weight:600}img{width:100%;height:auto;display:block;border-radius:4px;background:#100d11}
+    .note{font-size:14px;margin-top:16px}.portrait .pair{max-width:850px;margin:auto}.north-star{max-width:1100px;margin:24px auto}
+    .metadata{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;font:13px/1.5 ui-monospace,monospace;color:#c8baaa}.metadata span{overflow-wrap:anywhere}
+    details{margin-top:24px}summary{cursor:pointer;color:#e7c18b}label{display:flex;align-items:center;gap:6px}
+    @media(max-width:700px){main{padding:12px}.pair,.metadata{grid-template-columns:1fr}h1{font-size:22px}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>KesselKrawall · Raum und Kamera · Vorher / Nachher</h1>
+  <p>Echte Spielaufnahmen mit denselben GLBs, Materialien, Lichtquellen, Zutaten und Spielständen. Architektur und Kamera sind überarbeitet; im mobilen Querformat sind außerdem die vorhandenen Kampfsteuerungen kompakter angeordnet.</p>
+  <nav>
+    <label>Szene <select id="scene"><option value="workshop">Werkbank</option><option value="battle-zischbert">Arena · Zischbert</option><option value="battle-moor-martha">Arena · Moor-Martha</option></select></label>
+    <label>Ansicht <select id="profile"><option value="desktop">Desktop · 1440 × 900</option><option value="mobile-portrait">Mobile · Hochkant · 390 × 844</option><option value="mobile-landscape">Mobile · Querformat · 844 × 390</option></select></label>
+    <a href="../../../?art=mockup">Neue Komposition spielen</a><a href="../../../?art=mockup&amp;composition=before">Vorherige Komposition spielen</a>
+  </nav>
+  <section class="comparison" aria-label="Vorher und Nachher der Raumkomposition">
+    <h2 id="title">Werkbank · Desktop</h2>
+    <div class="pair">
+      <figure><figcaption>Vorher · neue Assets, bisherige Raumkomposition</figcaption><a id="before-link"><img id="before" alt="Echte Spielaufnahme vor der Raum- und Kameraüberarbeitung"></a></figure>
+      <figure><figcaption>Nachher · Raumabschluss und überarbeitete Kamera</figcaption><a id="after-link"><img id="after" alt="Echte Spielaufnahme nach der Raum- und Kameraüberarbeitung"></a></figure>
+    </div>
+    <div class="metadata" aria-label="Aufnahmedaten"><span id="before-meta">Vorher: orthografische Kamera</span><span id="after-meta">Nachher: Kamera laut QA-Bericht</span></div>
+  </section>
+  <p class="note">Keine synthetischen Vorher-/Nachher-Bilder und keine nachträgliche Bildretusche. Kampfszenen werden über die echte Pause-Schaltfläche angehalten; Kerzen und Idle-Bewegungen laufen weiter. Mobile-Aufnahmen verwenden Viewport-/Touch-Emulation und sind kein physischer Smartphone-Benchmark. Bilder anklicken für die Originalgröße.</p>
+  <details>
+    <summary>North-Star-Mockup als Zielreferenz anzeigen – keine Spielaufnahme</summary>
+    <figure class="north-star"><figcaption>Zielreferenz · Die aktuelle Phase bewertet Raum und Komposition, nicht bereits das vollständige Licht-, Material- und VFX-Ziel.</figcaption><a href="../../reference-art/final-north-star.png"><img src="../../reference-art/final-north-star.png" alt="North-Star-Mockup der atmosphärischen Alchemistenwerkstatt als Gestaltungsvorgabe"></a></figure>
+  </details>
+</main>
+<script>
+  const scene=document.querySelector('#scene');
+  const profile=document.querySelector('#profile');
+  let report=null;
+  function cameraText(camera){
+    if(!camera)return 'Aufnahmedaten nicht verfügbar';
+    const position=camera.position.map(value=>Number(value.toFixed(2))).join(', ');
+    return `${camera.type} · Position [${position}] · ${camera.fov===null?`Zoom ${camera.zoom.toFixed(2)}`:`FOV ${camera.fov.toFixed(1)}°`}`;
+  }
+  function update(){
+    for(const side of ['before','after']){
+      const path=`${scene.value}-${side}-${profile.value}.png`;
+      document.querySelector(`#${side}`).src=path;
+      document.querySelector(`#${side}-link`).href=path;
+      const capture=report?.cases.find(entry=>entry.name===`${scene.value}-${side}-${profile.value}`);
+      document.querySelector(`#${side}-meta`).textContent=`${side==='before'?'Vorher':'Nachher'}: ${cameraText(capture?.snapshot.camera)}`;
+    }
+    document.querySelector('#title').textContent=`${scene.selectedOptions[0].textContent} · ${profile.selectedOptions[0].textContent}`;
+    document.querySelector('.comparison').classList.toggle('portrait',profile.value==='mobile-portrait');
+  }
+  const params=new URLSearchParams(location.search);
+  if([...scene.options].some(option=>option.value===params.get('scene')))scene.value=params.get('scene');
+  if([...profile.options].some(option=>option.value===params.get('profile')))profile.value=params.get('profile');
+  scene.addEventListener('change',update);profile.addEventListener('change',update);update();
+  fetch('report.json').then(response=>response.ok?response.json():null).then(value=>{report=value;update();}).catch(()=>{});
+</script>
+</body>
+</html>

@@ -175,6 +175,8 @@ function ArenaIngredients({ scene, side }: {
         return (
           <group
             key={item?.uid ?? `${side}-empty-${index}`}
+            name={`arena-ingredient-${side}-${index}`}
+            userData={{ ingredientSlot: index, ingredientSide: side }}
             position={ingredientPosition(side, index)}
             rotation={[0, side === "player" ? Math.PI : 0, 0]}
           >

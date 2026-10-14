@@ -74,6 +74,7 @@ import {
 } from "./presentation/content/gameText";
 import { getOpponentPresentation } from "./presentation/content/opponentPresentation";
 import type { GreyboxMode } from "./presentation/scene/GreyboxStage";
+import { isMockupCompositionEnabled } from "./presentation/scene/compositionMode";
 import {
   getBattleCriticalAssetIds,
   preloadBattleAssets,
@@ -976,7 +977,7 @@ export function App() {
 
   return (
     <main
-      className={`game-shell phase-${game.phase} encounter-${stagedOpponent.id}${battlePreparation ? " is-preparing-battle" : ""}`}
+      className={`game-shell phase-${game.phase} encounter-${stagedOpponent.id}${isMockupCompositionEnabled() ? " composition-phase1" : ""}${battlePreparation ? " is-preparing-battle" : ""}`}
       style={{
         "--encounter-accent": stagedPresentation.glow,
         "--encounter-secondary": stagedPresentation.secondaryGlow,

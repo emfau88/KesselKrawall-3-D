@@ -1,9 +1,10 @@
-import { describe, expect, test } from "vitest";
+import { afterEach, describe, expect, test, vi } from "vitest";
 
 import type { Board } from "../../core/types";
 import { getBattleCriticalAssetIds } from "../../presentation/scene/assetReadiness";
 
 const emptyBoard = [null, null, null, null, null] as Board;
+afterEach(() => vi.unstubAllGlobals());
 const heroBoard = [
   { uid: "chili-1", itemId: "chili", level: 1 as const },
   { uid: "shell-1", itemId: "rune-shell", level: 1 as const },
@@ -13,6 +14,15 @@ const heroBoard = [
 ] as Board;
 
 describe("battle asset readiness", () => {
+  test("preloads the passage wood dependency only in the new mockup composition", () => {
+    vi.stubGlobal("window", { location: { search: "?art=mockup" } });
+    const assets = getBattleCriticalAssetIds(emptyBoard, emptyBoard, "zischbert", "mockup", "mobile");
+    expect(assets).toContain("mockup-witch-workbench-mobile");
+    expect(assets).not.toContain("mockup-witch-workbench-desktop");
+    vi.stubGlobal("window", { location: { search: "?art=mockup&composition=before" } });
+    expect(getBattleCriticalAssetIds(emptyBoard, emptyBoard, "zischbert", "mockup", "mobile")).not.toContain("mockup-witch-workbench-mobile");
+  });
+
   test("includes the actual desktop player and visible opponent/ingredient assets", () => {
     const assets = getBattleCriticalAssetIds(heroBoard, emptyBoard, "moor-martha", "golden", "balanced");
 

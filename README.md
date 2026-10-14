@@ -11,30 +11,38 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
-### Neuer Asset-Vergleich auf dem Arbeitsbranch
+### Raum und Kamera auf dem Arbeitsbranch
 
 Neun individuell aus den Mockups abgeleitete und vom Nutzer mit to3D konvertierte
 Modelltypen und ein separat bereitgestellter 2-Meter-Steinboden sind jetzt als
 **opt-in Vergleichsansicht** in Werkbank und Arena spielbar: insgesamt zehn
 neue Assettypen. Die Original-GLBs und ihre Texturen bleiben erhalten; die technische
 Aufbereitung ergänzt Normalen, korrigierte Metallwerte, Dochtanker und
-Desktop-/Mobile-LODs. Die Bilder unten sind echte Spielaufnahmen mit gleichem
-Spielstand, gleichen Zutaten und gleicher Kameraperspektive – keine Mockups.
+Desktop-/Mobile-LODs. Phase 1 ergänzt nun geschlossene Wandanschlüsse,
+Torbogenfüllungen, einen zurückgesetzten Raumabschluss und eine perspektivische
+Kamera mit eigenen Desktop-/Mobile-Ausschnitten. Die Bilder unten sind echte
+Spielaufnahmen mit gleichem Spielstand, gleichen Zutaten, Materialien und
+Lichtquellen – Architektur und Kamera unterscheiden sich bewusst.
 
-Lokal: [neue Ansicht](http://127.0.0.1:5173/?art=mockup) ·
-[bisherige Ansicht](http://127.0.0.1:5173/?art=golden) ·
-[alle 18 Vergleichsaufnahmen](docs/qa/mockup-environment/README.md).
+Lokal: [neue Raumkomposition](http://127.0.0.1:5173/?art=mockup) ·
+[vorherige GLB-Komposition](http://127.0.0.1:5173/?art=mockup&composition=before) ·
+[interaktiver Bildvergleich](http://127.0.0.1:5173/docs/qa/environment-composition/compare.html).
+[Phase-1-Abnahme und Testbericht](docs/qa/environment-composition/README.md) ·
+[früherer Golden-vs-GLB-Vergleich](docs/qa/mockup-environment/README.md).
 Der bestehende GitHub-Pages-Link oben bleibt der veröffentlichte `master`-Stand;
 ein Push des Arbeitsbranchs ist noch kein Pages-Release.
 
-![Werkbank: links bisherige Umgebung, rechts neue GLBs und korrigierte Materialien](docs/qa/mockup-environment/compare-workshop-desktop.png)
+![Werkbank vor und nach der Raum- und Kameraüberarbeitung bei unverändertem Licht](docs/qa/environment-composition/compare-workshop-desktop.png)
 
-![Arena gegen Zischbert: links bisherige Umgebung, rechts neue Steinplattform, Architektur und Deko](docs/qa/mockup-environment/compare-arena-desktop.png)
+![Arena gegen Zischbert vor und nach der Raum- und Kameraüberarbeitung](docs/qa/environment-composition/compare-arena-zischbert-desktop.png)
 
 Der Steinboden ersetzt jetzt die Übergangsböden und bewahrt seine drei PBR-
 Texturen sowie die gelieferten LOD0-/LOD1-Geometrien. Der abschließende
-Licht-/VFX-/Material-Polish bleibt offen. Der Vergleich ist ein belastbarer
-Zwischenstand, noch keine Behauptung, das Mockup-Ziel sei vollständig erreicht.
+Licht-/VFX-/Material-Polish bleibt offen. Die neue Komposition ist ein
+Zwischenstand zur visuellen Abnahme auf `codex/environment-composition-phase1`,
+kein abgeschlossenes Mockup-Matching. Im mobilen Querformat sind die vorhandenen
+Kampfsteuerungen kompakter angeordnet. Die höhere Geometrielast und die
+weiterhin schwache Lichtdramaturgie sind im Abnahmebericht ausdrücklich benannt.
 
 ## Aktueller Stand
 

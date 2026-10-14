@@ -26,6 +26,15 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   touch-action: none;
 }
 
+/* Phase-1 landscape framing: reserve the centre for the duel, keeping all
+   existing controls in the header and the ingredient rail in the bottom inset. */
+@media (orientation: landscape) and (max-height: 580px) {
+  .composition-phase1.phase-battle .battle-hud { grid-template-columns: minmax(0, 1fr) 12.5rem minmax(0, 1fr); gap: .45rem; align-items: start; }
+  .composition-phase1.phase-battle .battle-clock { height: auto; min-height: 70px; padding: .2rem; }
+  .composition-phase1.phase-battle .battle-playback-controls { position: static; transform: none; margin-top: .12rem; }
+  .composition-phase1.phase-battle .combat-ingredient-rail { bottom: max(.5rem, env(safe-area-inset-bottom)); }
+}
+
 .scene-loading {
   position: absolute;
   inset: 0;

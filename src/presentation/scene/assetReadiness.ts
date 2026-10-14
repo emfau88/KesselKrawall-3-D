@@ -4,6 +4,7 @@ import { productionAssetUrl, type ProductionAssetId } from "./ProductionAsset";
 import { brasskinAssetId, characterAssetId } from "./character/brasskinAssets";
 import { getRuntimeQualityProfile, type RuntimeQualityProfile } from "./runtimeQuality";
 import { mockupAssetId } from "./mockupAssetIds";
+import { isMockupCompositionEnabled } from "./compositionMode";
 
 export interface AssetLoadProgress {
   readonly completed: number;
@@ -36,6 +37,9 @@ export function getBattleCriticalAssetIds(
   if (authoredOpponent) assets.push(characterAssetId(opponentId, qualityTier));
 
   if (mode === "mockup") {
+    // The recessed passage reuses the bench's wood atlas. Include that dependency
+    // even if combat is entered without a previously cached workshop scene.
+    if (isMockupCompositionEnabled()) assets.push(mockupAssetId("witch-workbench", qualityTier));
     assets.push(
       ...(["dungeon-wall-module", "dungeon-stone-arch", "alchemy-shelf", "dungeon-stone-pillar", "wall-candle-sconce", "triple-candleholder", "open-grimoire", "dungeon-floor-module"] as const)
         .map((slug) => mockupAssetId(slug, qualityTier)),

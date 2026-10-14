@@ -10,6 +10,7 @@ import { LightingRig } from "./LightingRig";
 import { productionAssetUrl, ProductionAssetBoundary, type ProductionAssetId } from "./ProductionAsset";
 import { getRuntimeQualityProfile } from "./runtimeQuality";
 import { WorkshopGreybox } from "./WorkshopGreybox";
+import { isMockupCompositionEnabled, mockupCameraMode } from "./compositionMode";
 import type { ArenaSceneState, WorkshopSceneState } from "./sceneTypes";
 
 export type GreyboxMode = "workshop" | "arena";
@@ -63,7 +64,7 @@ export function GreyboxStage({
         toneMapping: ACESFilmicToneMapping,
         toneMappingExposure: 1.02,
       }}
-      orthographic
+      orthographic={!isMockupCompositionEnabled() || mockupCameraMode() === "orthographic"}
       shadows={{ type: PCFShadowMap }}
     >
       <color attach="background" args={[background]} />
