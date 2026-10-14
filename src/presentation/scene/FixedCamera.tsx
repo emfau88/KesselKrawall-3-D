@@ -1,13 +1,19 @@
 import { useLayoutEffect } from "react";
 import { useThree } from "@react-three/fiber";
-import { OrthographicCamera } from "three";
+import { OrthographicCamera, PerspectiveCamera } from "three";
 import type { GreyboxMode } from "./GreyboxStage";
+import { isMockupCompositionEnabled } from "./compositionMode";
+import { composeMockupCamera } from "./compositionCamera";
 
 export function FixedCamera({ mode }: { mode: GreyboxMode }) {
   const camera = useThree((state) => state.camera);
   const size = useThree((state) => state.size);
 
   useLayoutEffect(() => {
+    if (isMockupCompositionEnabled() && (camera instanceof PerspectiveCamera || camera instanceof OrthographicCamera)) {
+      composeMockupCamera(camera, mode, size.width, size.height);
+      return;
+    }
     const portrait = size.height > size.width;
     if (mode === "workshop") {
       camera.position.set(portrait ? 1.1 : 0.5, portrait ? 10.8 : 8.25, portrait ? 18.8 : 17.6);

@@ -3,6 +3,9 @@ import { Suspense } from "react";
 import { MockupAsset, MockupCandles } from "./MockupAsset";
 import { ProductionAssetBoundary } from "./ProductionAsset";
 import { MockupFloor } from "./MockupFloor";
+import { MockupRoomArchitecture } from "./MockupRoomArchitecture";
+import { isMockupCompositionEnabled } from "./compositionMode";
+import { COMPOSITION_REAR_WALL_X, MOCKUP_ROOM_LAYOUT } from "./mockupRoomLayout";
 
 /**
  * Isolated assembly of the image-to-3D set. No actor, camera, or combat changes:
@@ -10,6 +13,8 @@ import { MockupFloor } from "./MockupFloor";
  * Models are normalized to Y-up, a ground pivot, and their authored front +Z.
  */
 export function MockupArenaEnvironment() {
+  const composition = isMockupCompositionEnabled();
+  const room = MOCKUP_ROOM_LAYOUT.arena;
   return (
     <group name="mockup-arena-environment">
       <ProductionAssetBoundary fallback={null}>
@@ -19,7 +24,7 @@ export function MockupArenaEnvironment() {
           <MockupAsset asset="ritual-platform" position={[0, -0.29, 0]} />
 
           {/* A contiguous back wall, deliberately behind both characters. */}
-          {[-6.2, -3, 3, 6.2].map((x) => (
+          {(composition ? COMPOSITION_REAR_WALL_X : [-6.2, -3, 3, 6.2]).map((x) => (
             <MockupAsset
               key={`back-wall-${x}`}
               asset="dungeon-wall-module"
@@ -34,7 +39,7 @@ export function MockupArenaEnvironment() {
             <MockupAsset
               key={`side-wall-${side}-${z}`}
               asset="dungeon-wall-module"
-              position={[side * 7.7, -0.17, z]}
+              position={[side * (composition ? room.sideX : 7.7), -0.17, z]}
               rotation={[0, side * -Math.PI / 2, 0]}
               scale={[1, 1.36, 1]}
             />
@@ -91,6 +96,7 @@ export function MockupArenaEnvironment() {
             rotation={[0, 0.28, 0]}
             scale={0.8}
           />
+          {composition && <MockupRoomArchitecture room="arena" />}
         </Suspense>
       </ProductionAssetBoundary>
     </group>

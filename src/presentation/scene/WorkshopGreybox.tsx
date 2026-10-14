@@ -11,6 +11,9 @@ import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import { assetBakeoffMode } from "./assetBakeoff";
 import { MockupAsset, MockupCandles } from "./MockupAsset";
 import { MockupFloor } from "./MockupFloor";
+import { MockupRoomArchitecture } from "./MockupRoomArchitecture";
+import { isMockupCompositionEnabled } from "./compositionMode";
+import { COMPOSITION_REAR_WALL_X, MOCKUP_ROOM_LAYOUT } from "./mockupRoomLayout";
 import type { WorkshopSceneState } from "./sceneTypes";
 import { RESERVE_POSITION, SLOT_POSITIONS } from "./workshopLayout";
 
@@ -292,23 +295,25 @@ function WorkbenchFallback() {
 }
 
 function WorkshopMockupEnvironment() {
+  const composition = isMockupCompositionEnabled();
+  const room = MOCKUP_ROOM_LAYOUT.workshop;
   return (
     <ProductionAssetBoundary fallback={<WorkshopBackdrop />}>
       <Suspense fallback={<WorkshopBackdrop />}>
-        {[-6.4, -3.2, 3.2, 6.4].map((x) => (
+        {(composition ? COMPOSITION_REAR_WALL_X : [-6.4, -3.2, 3.2, 6.4]).map((x) => (
           <MockupAsset key={`wall-${x}`} asset="dungeon-wall-module" position={[x, -0.66, -4.25]} scale={[1, 1.375, 1]} castShadow={false} />
         ))}
         <MockupAsset asset="dungeon-stone-arch" position={[0, -0.66, -4.23]} castShadow={false} />
         {[-1, 1].map((side) => (
           <group key={side}>
-            <MockupAsset asset="dungeon-stone-pillar" position={[side * 5.98, -0.66, -3.98]} scale={0.91} />
-            <MockupAsset asset="dungeon-wall-module" position={[side * 6.9, -0.66, -1.92]} rotation={[0, side * -Math.PI / 2, 0]} scale={[1, 1.375, 1]} castShadow={false} />
+            <MockupAsset asset="dungeon-stone-pillar" position={[side * (composition ? 7.1 : 5.98), -0.66, -3.98]} scale={0.91} />
+            <MockupAsset asset="dungeon-wall-module" position={[side * (composition ? room.sideX : 6.9), -0.66, composition ? -2.65 : -1.92]} rotation={[0, side * -Math.PI / 2, 0]} scale={[1, 1.375, 1]} castShadow={false} />
             <MockupAsset asset="alchemy-shelf" position={[side * 4.82, -0.64, -3.47]} />
             <MockupCandles asset="wall-candle-sconce" position={[side * 1.95, 1.76, -3.94]} light />
           </group>
         ))}
         <MockupFloor />
-        <ProductionAsset asset="quaternius-banner" position={[0, 2.52, -4.55]} scale={0.72} tint="#9876aa" castShadow={false} />
+        {composition ? <MockupRoomArchitecture room="workshop" /> : <ProductionAsset asset="quaternius-banner" position={[0, 2.52, -4.55]} scale={0.72} tint="#9876aa" castShadow={false} />}
       </Suspense>
     </ProductionAssetBoundary>
   );
