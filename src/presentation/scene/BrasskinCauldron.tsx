@@ -9,6 +9,8 @@ import { getRuntimeQualityProfile } from "./runtimeQuality";
 import { LivingLiquid, type LiquidPalette } from "./character/LivingLiquid";
 import { characterAssetId, type CauldronCharacterId } from "./character/brasskinAssets";
 import { createBrasskinPose, updateBrasskinPose } from "./character/brasskinMotion";
+import { lightingLook } from "./lightingLook";
+import { applyLightingMaterial } from "./lightingMaterials";
 
 function setMorph(body: Mesh, name: string, value: number): void {
   const index = body.morphTargetDictionary?.[name];
@@ -81,6 +83,7 @@ export function BrasskinCauldron({
       originals.push({ mesh: node, material: node.material });
       const cloneMaterial = (material: Material): Material => {
         const cloned = material.clone();
+        applyLightingMaterial(cloned, asset, lightingLook());
         ownedMaterials.push(cloned);
         return cloned;
       };
@@ -105,7 +108,7 @@ export function BrasskinCauldron({
       // Textures/Body geometry belong to the loader cache and stay reusable.
       for (const material of ownedMaterials) material.dispose();
     };
-  }, [liquidPalette, model, quality.tier]);
+  }, [asset, liquidPalette, model, quality.tier]);
 
   useFrame(({ clock }) => {
     if (!animated.current || !body) return;
