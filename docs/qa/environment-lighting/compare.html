@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KesselKrawall · Licht und Materialien · Vier Looks</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#161219;color:#ecdfca;font:16px/1.5 system-ui,sans-serif}main{padding:24px;max-width:2400px;margin:auto}
+    h1{font-size:28px;margin:0 0 8px}p{color:#bdb19f;margin:0 0 18px}a{color:#efc285}nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:20px 0}label{display:flex;gap:8px;align-items:center}
+    select,button{font:inherit;color:inherit;background:#30252a;border:1px solid #806443;border-radius:6px;padding:8px}button{cursor:pointer}
+    .scroll{overflow-x:auto;padding-bottom:12px}.comparison{min-width:1450px;background:#211a22;border:1px solid #604d39;border-radius:8px;padding:14px}
+    h2{font-size:19px;margin:0 0 12px}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}figure{margin:0}figcaption{font-weight:650;color:#efc285;margin-bottom:6px}
+    .tag{font-size:13px;min-height:40px;margin:0 0 8px}img{display:block;width:100%;height:auto;background:#100d12}.metrics{font:12px/1.5 ui-monospace,monospace;margin-top:8px;white-space:pre-line;color:#baa994}
+    .play{display:inline-block;margin-top:9px;font-size:14px}.note{font-size:14px;max-width:1100px}.northstar{max-width:1050px;margin:15px auto}.grid2 .comparison{min-width:0}.grid2 .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .portrait .comparison{min-width:1500px}.portrait .tag{min-height:40px}details{margin:24px 0}summary{cursor:pointer;color:#efc285}.grid2.portrait .comparison{min-width:0;max-width:900px;margin:auto}
+    @media(max-width:600px){main{padding:12px}h1{font-size:22px}.grid2 .cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body><main>
+  <h1>Licht und Materialien · Referenz und drei Kandidaten</h1>
+  <p>Phase-1-Kamera, Geometrie, UI und Spielzustand bleiben gleich. Keine Variante ist ausgewählt oder veröffentlicht.</p>
+  <nav>
+    <label>Szene <select id="scene"><option value="workshop">Werkbank</option><option value="battle-zischbert">Kampf · Zischbert</option><option value="battle-moor-martha">Kampf · Moor-Martha</option></select></label>
+    <label>Format <select id="profile"><option value="desktop">Desktop · 1440 × 900</option><option value="mobile-landscape">Mobile quer · 844 × 390</option><option value="mobile-portrait">Mobile hochkant · 390 × 844</option></select></label>
+    <button id="layout" type="button">2 × 2 anordnen</button>
+    <a href="README.md">Abnahmebericht</a><a href="../environment-composition/compare.html">Phase-1-Vergleich</a>
+  </nav>
+  <div class="scroll"><section class="comparison" aria-label="Vier echte Spielaufnahmen im Lichtvergleich">
+    <h2 id="title">Werkbank · Desktop</h2><div class="cards" id="cards"></div>
+  </section></div>
+  <p class="note">Bilder anklicken für Originalgröße. Alle 36 Bilder sind echte, unretuschierte Spielaufnahmen. Kampfszenen sind über die Spielsteuerung pausiert, Idle-Bewegungen und Kerzen laufen weiter. Mobile ist Viewport-/Touch-Emulation, kein physischer Smartphone-Test. Auf kleinen Bildschirmen horizontal scrollen oder die 2 × 2-Anordnung wählen.</p>
+  <p class="note"><strong>Performance-Hinweis:</strong> Die Bildtafeln zeigen Messungen ruhender Szenen. Im ersten aktiven Kampf wurden auch mit Referenzbeleuchtung Hänger von rund 3,4 Sekunden bestätigt. Das ist weiterhin offen; siehe <a href="README.md#offener-performance-befund-erster-aktiver-kampf">Abnahmebericht und Wiederholungsmessung</a>. Keine pauschale 60-FPS- oder Smartphone-Freigabe.</p>
+  <details><summary>North-Star-Mockup als Zielreferenz</summary><figure class="northstar"><figcaption>Gestaltungsvorgabe – keine Spielaufnahme</figcaption><img src="../../reference-art/final-north-star.png" alt="Zielbild mit warmer Alchemistenwerkbank, magischen Akzenten und dunklen Ecken"></figure></details>
+</main>
+<script>
+  const looks=[['reference','Referenz · Phase 1','Unveränderte bisherige Beleuchtung'],['dark','A · Dark Fantasy','Seitliches warmes Licht, tiefe Schatten'],['warm','B · Warm Fantasy','Breiteres Hauptlicht, ausgewogene Lesbarkeit'],['magical','C · Magical Fantasy','Warmer Fokus, violette und türkise Akzente']];
+  const scene=document.querySelector('#scene'),profile=document.querySelector('#profile');let report=null;
+  for(const [id,title,description] of looks){
+    const card=document.createElement('figure');card.id=`card-${id}`;
+    card.innerHTML=`<figcaption>${title}</figcaption><p class="tag">${description}</p><a class="original"><img alt="${title}: echte Spielaufnahme"></a><div class="metrics"></div><a class="play" href="../../../?art=mockup&look=${id}">Diesen Look spielen →</a>`;
+    document.querySelector('#cards').append(card);
+  }
+  function update(){
+    document.body.classList.toggle('portrait',profile.value==='mobile-portrait');
+    document.querySelector('#title').textContent=`${scene.selectedOptions[0].textContent} · ${profile.selectedOptions[0].textContent}`;
+    for(const [look] of looks){
+      const card=document.querySelector(`#card-${look}`),name=`${scene.value}-${look}-${profile.value}`,path=`${name}.png`;
+      card.querySelector('img').src=path;card.querySelector('.original').href=path;
+      const capture=report?.cases.find(entry=>entry.name===name),snapshot=capture?.snapshot;
+      card.querySelector('.metrics').textContent=snapshot?`${snapshot.render.calls} Draw Calls · ${snapshot.render.triangles.toLocaleString('de-DE')} Dreiecke\n${snapshot.lights.filter(light=>light.castShadow).length} Schattenlicht · ${snapshot.lights.find(light=>light.castShadow).shadowMap.join(' × ')}\n${capture.frameTiming?.meanMs?.toFixed(1)??'–'} ms rAF Ø (statische Szene)`:'Messwerte werden geladen …';
+    }
+  }
+  const params=new URLSearchParams(location.search);
+  for(const [id,element] of [['scene',scene],['profile',profile]])if([...element.options].some(option=>option.value===params.get(id)))element.value=params.get(id);
+  if(params.get('layout')==='grid2')document.body.classList.add('grid2');
+  const button=document.querySelector('#layout');function label(){button.textContent=document.body.classList.contains('grid2')?'Vier nebeneinander':'2 × 2 anordnen'}
+  button.addEventListener('click',()=>{document.body.classList.toggle('grid2');label()});label();
+  scene.addEventListener('change',update);profile.addEventListener('change',update);update();
+  fetch('report.json').then(response=>response.ok?response.json():null).then(value=>{report=value;update()}).catch(()=>{});
+</script></body></html>

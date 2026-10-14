@@ -11,6 +11,8 @@ import {
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { MOCKUP_ASSET_DEFINITIONS } from "./mockupAssetIds";
+import { lightingLook } from "./lightingLook";
+import { applyLightingMaterial } from "./lightingMaterials";
 
 export const PRODUCTION_ASSETS = {
   ...MOCKUP_ASSET_DEFINITIONS,
@@ -398,9 +400,12 @@ function polishMaterial(
   tint?: ColorRepresentation,
   authored = false,
   opacity = 1,
+  asset = "",
 ): Material {
+  const look = lightingLook();
+  const cacheKey = `${look}:${asset}:${authored}`;
   if (!tint && opacity === 1) {
-    const cached = polishedMaterialCache.get(material);
+    const cached = polishedMaterialCache.get(material)?.get(cacheKey);
     if (cached) return cached;
   }
   const clone = material.clone();
@@ -419,11 +424,16 @@ function polishMaterial(
       clone.depthWrite = false;
     }
   }
-  if (!tint && opacity === 1) polishedMaterialCache.set(material, clone);
+  applyLightingMaterial(clone, asset, look);
+  if (!tint && opacity === 1) {
+    let entries = polishedMaterialCache.get(material);
+    if (!entries) { entries = new Map(); polishedMaterialCache.set(material, entries); }
+    entries.set(cacheKey, clone);
+  }
   return clone;
 }
 
-const polishedMaterialCache = new WeakMap<Material, Material>();
+const polishedMaterialCache = new WeakMap<Material, Map<string, Material>>();
 
 export function ProductionAsset({
   asset,
@@ -464,10 +474,10 @@ export function ProductionAsset({
       const sourceMaterial = originalMaterial ?? node.material;
       node.userData.productionSourceMaterial = sourceMaterial;
       node.material = Array.isArray(sourceMaterial)
-        ? sourceMaterial.map((material) => polishMaterial(material, tint, authoredMaterial, opacity))
-        : polishMaterial(sourceMaterial, tint, authoredMaterial, opacity);
+        ? sourceMaterial.map((material) => polishMaterial(material, tint, authoredMaterial, opacity, asset))
+        : polishMaterial(sourceMaterial, tint, authoredMaterial, opacity, asset);
     });
-  }, [authoredMaterial, model, opacity, receiveShadow, resolvedCastShadow, tint]);
+  }, [asset, authoredMaterial, model, opacity, receiveShadow, resolvedCastShadow, tint]);
 
   return (
     <group position={position} rotation={rotation} scale={scale} userData={{ productionAsset: asset }}>

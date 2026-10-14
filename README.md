@@ -11,7 +11,33 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
-### Raum und Kamera auf dem Arbeitsbranch
+### Licht und Materialien auf dem Arbeitsbranch
+
+Phase 2 auf `codex/environment-lighting-phase2` ergänzt drei **nicht endgültig
+ausgewählte** Lichtvarianten auf der unveränderten Phase-1-Komposition:
+[A – Dark Fantasy](http://127.0.0.1:5173/?art=mockup&look=dark),
+[B – Warm Fantasy](http://127.0.0.1:5173/?art=mockup&look=warm) und
+[C – Magical Fantasy](http://127.0.0.1:5173/?art=mockup&look=magical).
+Ohne `look`-Parameter bleibt die Phase-1-Beleuchtung aktiv.
+
+[Alle vier Looks nebeneinander vergleichen](http://127.0.0.1:5173/docs/qa/environment-lighting/compare.html) ·
+[Analyse, Empfehlung und Messwerte](docs/qa/environment-lighting/README.md).
+Die Vergleichsbilder zeigen identische Kamera und Spielstände. Nur Licht und
+geklonte Materialparameter unterscheiden sich; Originaltexturen und GLBs bleiben
+unverändert. Kein Merge nach `master`, kein Pages-Release.
+
+Die ruhenden Vergleichsszenen laufen im lokalen Test überwiegend bei rund
+16,7 ms pro Frame. Beim ersten aktiven Kampf wurden jedoch mehrsekündige Hänger
+auch in der Referenz bestätigt; Ursache und Smartphone-Performance bleiben offen.
+Details und Wiederholungsmessung stehen im verlinkten Abnahmebericht.
+
+![Werkbank: Phase-1-Referenz und die drei Lichtkandidaten bei identischer Kamera](docs/qa/environment-lighting/compare-workshop-desktop.png)
+
+![Kampf gegen Zischbert: Referenz und die drei Lichtkandidaten](docs/qa/environment-lighting/compare-battle-zischbert-desktop.png)
+
+![Kampf gegen Moor-Martha: Referenz und die drei Lichtkandidaten](docs/qa/environment-lighting/compare-battle-moor-martha-desktop.png)
+
+### Bisherige Raumüberarbeitung
 
 Neun individuell aus den Mockups abgeleitete und vom Nutzer mit to3D konvertierte
 Modelltypen und ein separat bereitgestellter 2-Meter-Steinboden sind jetzt als
@@ -20,9 +46,8 @@ neue Assettypen. Die Original-GLBs und ihre Texturen bleiben erhalten; die techn
 Aufbereitung ergänzt Normalen, korrigierte Metallwerte, Dochtanker und
 Desktop-/Mobile-LODs. Phase 1 ergänzt nun geschlossene Wandanschlüsse,
 Torbogenfüllungen, einen zurückgesetzten Raumabschluss und eine perspektivische
-Kamera mit eigenen Desktop-/Mobile-Ausschnitten. Die Bilder unten sind echte
-Spielaufnahmen mit gleichem Spielstand, gleichen Zutaten, Materialien und
-Lichtquellen – Architektur und Kamera unterscheiden sich bewusst.
+Kamera mit eigenen Desktop-/Mobile-Ausschnitten. Der archivierte Phase-1-Vergleich
+isoliert diese Raum-/Kameraänderungen bei gleichbleibendem Licht.
 
 Lokal: [neue Raumkomposition](http://127.0.0.1:5173/?art=mockup) ·
 [vorherige GLB-Komposition](http://127.0.0.1:5173/?art=mockup&composition=before) ·
@@ -32,17 +57,12 @@ Lokal: [neue Raumkomposition](http://127.0.0.1:5173/?art=mockup) ·
 Der bestehende GitHub-Pages-Link oben bleibt der veröffentlichte `master`-Stand;
 ein Push des Arbeitsbranchs ist noch kein Pages-Release.
 
-![Werkbank vor und nach der Raum- und Kameraüberarbeitung bei unverändertem Licht](docs/qa/environment-composition/compare-workshop-desktop.png)
-
-![Arena gegen Zischbert vor und nach der Raum- und Kameraüberarbeitung](docs/qa/environment-composition/compare-arena-zischbert-desktop.png)
-
 Der Steinboden ersetzt jetzt die Übergangsböden und bewahrt seine drei PBR-
 Texturen sowie die gelieferten LOD0-/LOD1-Geometrien. Der abschließende
-Licht-/VFX-/Material-Polish bleibt offen. Die neue Komposition ist ein
-Zwischenstand zur visuellen Abnahme auf `codex/environment-composition-phase1`,
-kein abgeschlossenes Mockup-Matching. Im mobilen Querformat sind die vorhandenen
-Kampfsteuerungen kompakter angeordnet. Die höhere Geometrielast und die
-weiterhin schwache Lichtdramaturgie sind im Abnahmebericht ausdrücklich benannt.
+VFX-/Asset-Polish bleibt offen. Phase 1 (`ae4e37e`) ist die unveränderte
+Kompositionsbasis der Lichtvarianten, kein abgeschlossenes Mockup-Matching.
+Im mobilen Querformat sind die vorhandenen Kampfsteuerungen kompakter angeordnet.
+Die höhere Geometrielast ist im Phase-1-Abnahmebericht ausdrücklich benannt.
 
 ## Aktueller Stand
 

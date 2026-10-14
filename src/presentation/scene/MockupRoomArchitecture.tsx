@@ -8,6 +8,8 @@ import { mockupPassageMode } from "./compositionMode";
 import { productionAssetUrl } from "./ProductionAsset";
 import { COMPOSITION_REAR_WALL_X, MOCKUP_ROOM_LAYOUT, PASSAGE_DEPTH, doorwayHalfWidthAt, type MockupRoomKind } from "./mockupRoomLayout";
 import { ProjectedWallBuilder, wallFrontTriangles, type WallRect } from "./projectedWallGeometry";
+import { lightingLook } from "./lightingLook";
+import { applyLightingMaterial } from "./lightingMaterials";
 
 type AtlasRect = readonly [number, number, number, number];
 // Actual solid-stone islands in the retained to3D wall atlas. Never map the whole
@@ -53,14 +55,20 @@ class AtlasGeometry {
 
 function useAuthoredMaterial(slug: "dungeon-wall-module" | "witch-workbench"): Material {
   const model = useLoader(GLTFLoader, productionAssetUrl(mockupAssetId(slug)));
-  return useMemo(() => {
+  const look = lightingLook();
+  const material = useMemo(() => {
     let material: Material | undefined;
     model.scene.traverse((object) => {
       if (!material && object instanceof Mesh) material = Array.isArray(object.material) ? object.material[0] : object.material;
     });
     if (!material) throw new Error(`Architectural material missing: ${slug}`);
-    return material;
-  }, [model, slug]);
+    if (look === "reference") return material;
+    const clone = material.clone();
+    applyLightingMaterial(clone, `mockup-${slug}`, look);
+    return clone;
+  }, [model, slug, look]);
+  useEffect(() => () => { if (look !== "reference") material.dispose(); }, [material, look]);
+  return material;
 }
 
 function useDisposedGeometry(factory: () => BufferGeometry, dependencies: readonly unknown[]) {

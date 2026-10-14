@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { createRequire } from 'node:module';
@@ -15,8 +15,10 @@ const target = positional[0] ?? 'http://127.0.0.1:5173/';
 const out = resolve(root, positional[1] ?? 'docs/qa/environment-composition');
 const flag = name => arguments_.includes(`--${name}`);
 const option = name => arguments_.find(argument => argument.startsWith(`--${name}=`))?.split('=').slice(1).join('=');
+const lighting = flag('lighting');
+const workshopOnly = flag('workshop-only');
 const quick = flag('quick');
-const sampleFrames = !quick && !flag('skip-frame-sampling');
+const sampleFrames = (!quick || flag('measure-frames')) && !flag('skip-frame-sampling');
 const strictLayout = !flag('relaxed-layout');
 const cameraOverride = option('camera');
 const passageOverride = option('passage');
@@ -28,8 +30,10 @@ const profiles = [
   { name: 'mobile-portrait', viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, variant: 'mobile' },
   { name: 'mobile-landscape', viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true, variant: 'mobile' },
 ].filter(profile => !(quick || flag('desktop-only')) || profile.name === 'desktop');
-const opponents = quick ? [[1, 'zischbert']] : [[1, 'zischbert'], [2, 'moor-martha']];
-const modes = flag('after-only') ? ['after'] : flag('before-only') ? ['before'] : ['before', 'after'];
+const opponents = workshopOnly ? [] : quick ? [[1, 'zischbert']] : [[1, 'zischbert'], [2, 'moor-martha']];
+const modes = lighting ? (option('looks') ?? 'reference,dark,warm,magical').split(',') : flag('after-only') ? ['after'] : flag('before-only') ? ['before'] : ['before', 'after'];
+if (lighting) assert.ok(modes.every(mode => ['reference', 'dark', 'warm', 'magical'].includes(mode)));
+const phaseOneEvidence = lighting ? JSON.parse(await readFile(join(root,'docs/qa/environment-composition/report.json'),'utf8')) : null;
 if (!existsSync(process.env.PLAYWRIGHT_BROWSERS_PATH ?? '')) {
   process.env.PLAYWRIGHT_BROWSERS_PATH = join(homedir(), 'AppData/Local/ms-playwright');
 }
@@ -51,6 +55,12 @@ const report = {
   comparisons: [],
   errors: [],
 };
+if (lighting) Object.assign(report, {
+  baseline: 'ae4e37e Phase-1 composition, look=reference',
+  after: 'look=dark / warm / magical; reference remains the default',
+  scope: 'Lighting and cloned material settings only; no camera, UI, geometry or gameplay changes.',
+  comparability: 'Identical camera, viewport, DPR, saved state, RNG, inventory and HUD. Native pause at battle entry; ambient idle animation remains live.',
+});
 const browser = await playwright.chromium.launch({
   headless: true,
   args: process.env.QA_SOFTWARE_RENDERER === '1'
@@ -63,6 +73,11 @@ let activeLabel = 'bootstrap';
 function modeUrl(mode) {
   const url = new URL(target);
   url.searchParams.set('art', 'mockup');
+  if (lighting) {
+    url.searchParams.delete('composition'); url.searchParams.delete('camera'); url.searchParams.delete('passage');
+    url.searchParams.set('look', mode);
+    return url.href;
+  }
   if (mode === 'before') {
     url.searchParams.set('composition', 'before');
     // A comparison baseline must never inherit the new camera override.
@@ -216,7 +231,7 @@ async function sceneSnapshot(page) {
           if (!child.isMesh) return;
           const position = child.geometry.attributes.position;
           meshes.push({ name: child.name, triangles: (child.geometry.index?.count ?? position.count) / 3, normals: Boolean(child.geometry.attributes.normal), castShadow: child.castShadow, receiveShadow: child.receiveShadow,
-            materials: (Array.isArray(child.material) ? child.material : [child.material]).map(material => ({ name: material.name, type: material.type, metalness: material.metalness ?? null, roughness: material.roughness ?? null, colorMap: Boolean(material.map), normalMap: Boolean(material.normalMap), aoMap: Boolean(material.aoMap) })),
+            materials: (Array.isArray(child.material) ? child.material : [child.material]).map(material => ({ name: material.name, type: material.type, metalness: material.metalness ?? null, roughness: material.roughness ?? null, color: material.color?.getHexString(), envMapIntensity: material.envMapIntensity, colorMap: Boolean(material.map), normalMap: Boolean(material.normalMap), aoMap: Boolean(material.aoMap) })),
           });
         });
         const bounds = objectBounds(node);
@@ -224,7 +239,7 @@ async function sceneSnapshot(page) {
       }
       if (node.isLight) {
         const m = node.matrixWorld.elements;
-        lights.push({ type: node.type, color: node.color.getHexString(), intensity: node.intensity, distance: node.distance ?? null, decay: node.decay ?? null, castShadow: node.castShadow, localPosition: node.position.toArray(), worldPosition: [m[12], m[13], m[14]] });
+        lights.push({ type: node.type, color: node.color.getHexString(), intensity: node.intensity, distance: node.distance ?? null, decay: node.decay ?? null, castShadow: node.castShadow, shadowMap: node.castShadow ? node.shadow.mapSize.toArray() : null, localPosition: node.position.toArray(), worldPosition: [m[12], m[13], m[14]] });
       }
     });
     const direction = state.camera.getWorldDirection(state.camera.position.clone());
@@ -286,6 +301,7 @@ async function sceneSnapshot(page) {
       architectureRays,
       render: { calls: state.gl.info.render.calls, triangles: state.gl.info.render.triangles },
       memory: { geometries: state.gl.info.memory.geometries, textures: state.gl.info.memory.textures },
+      lighting: { environmentIntensity: state.scene.environmentIntensity, toneMapping: state.gl.toneMapping, exposure: state.gl.toneMappingExposure, shadowType: state.gl.shadowMap.type },
       dpr: state.gl.getPixelRatio(),
       gpu: debug ? context.getParameter(debug.UNMASKED_RENDERER_WEBGL) : context.getParameter(context.RENDERER),
       hud: { phase: document.querySelector('main')?.className ?? null, pause: document.querySelector('.battle-clock > span')?.textContent ?? null },
@@ -362,14 +378,33 @@ function layoutChecks(snapshot) {
   });
 }
 
-async function frameSample(page) {
+async function frameSample(page, activeOnly = false) {
   if (!sampleFrames) return { skipped: true };
-  return page.evaluate(async () => {
+  return page.evaluate(async ({measureShadows,activeOnly}) => {
     const deltas = [];
-    await new Promise(resolve => {
+    const shadowSamples = [];
+    const longTasks = [];
+    const observer = typeof PerformanceObserver !== 'undefined' ? new PerformanceObserver(list => longTasks.push(...list.getEntries().map(entry=>({start:entry.startTime,duration:entry.duration})))) : null;
+    observer?.observe({entryTypes:['longtask']});
+    let shadowMap, originalShadowRender, renderer, programsBefore;
+    if (measureShadows) {
+      const dependency = performance.getEntriesByType('resource').find(entry => /@react-three_fiber\.js\?/.test(entry.name))?.name;
+      const { _roots } = await import(dependency);
+      const gl = _roots.get(document.querySelector('canvas')).store.getState().gl;
+      renderer = gl; programsBefore = gl.info.programs.length;
+      shadowMap = gl.shadowMap; originalShadowRender = shadowMap.render;
+      // Instrument the existing render pass; no extra draws or scene mutation.
+      shadowMap.render = function(...args) {
+        const start = performance.now(), calls = gl.info.render.calls, triangles = gl.info.render.triangles;
+        try { return originalShadowRender.apply(this,args); }
+        finally { shadowSamples.push({calls:gl.info.render.calls-calls,triangles:gl.info.render.triangles-triangles,cpuSubmissionMs:performance.now()-start}); }
+      };
+    }
+    try { await new Promise(resolve => {
       let previous;
       let warmup = 20;
       function frame(now) {
+        if (activeOnly && (!document.querySelector('.phase-battle') || document.querySelector('.result-panel'))) { resolve(); return; }
         if (previous !== undefined && warmup <= 0) deltas.push(now - previous);
         previous = now;
         warmup--;
@@ -377,17 +412,27 @@ async function frameSample(page) {
         else requestAnimationFrame(frame);
       }
       requestAnimationFrame(frame);
-    });
+    }); } finally { if (shadowMap) shadowMap.render = originalShadowRender; observer?.disconnect(); }
     const sorted = [...deltas].sort((a, b) => a - b);
     const percentile = fraction => sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * fraction))];
     const meanMs = deltas.reduce((sum, value) => sum + value, 0) / deltas.length;
+    const median = values => values.sort((a,b)=>a-b)[Math.floor(values.length/2)];
+    const shadow = shadowSamples.length ? Object.fromEntries(['calls','triangles','cpuSubmissionMs'].map(key=>[key,median(shadowSamples.slice(-120).map(sample=>sample[key]))])) : null;
     return { frames: deltas.length, medianMs: percentile(0.5), p95Ms: percentile(0.95), maxMs: sorted.at(-1), meanMs, observedRafFps: 1000 / meanMs,
-      note: '120 rAF intervals after 20 warm-up frames; includes vsync/headless scheduling, NOT isolated GPU render time or physical-phone performance.',
+      shadow, shadowNote: 'Median existing shadow pass draws and CPU submission time, NOT GPU elapsed time; wrapper restored after sample.',
+      programsBefore, programsAfter: renderer?.info.programs.length, longTasks: longTasks.sort((a,b)=>b.duration-a.duration).slice(0,6),
+      activeOnly,
+      note: 'Up to 120 rAF intervals after 20 warm-up frames; active-only samples stop before result UI. Includes vsync/headless scheduling, NOT isolated GPU render time or physical-phone performance.',
     };
-  });
+  }, {measureShadows:lighting,activeOnly});
 }
 
 async function capture(page, label, snapshot, mode) {
+  // Avoid comparing a blink to open eyes, without freezing or editing the scene.
+  if (lighting) for (let attempt = 0; attempt < 8 && snapshot.characters.some(character => (character.morphs.Blink_L ?? 0) > 0.15); attempt++) {
+    await page.waitForTimeout(80);
+    snapshot = await sceneSnapshot(page);
+  }
   assertMockupMaterials(snapshot);
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${label}: no horizontal page overflow`);
   const layout = layoutChecks(snapshot);
@@ -396,11 +441,11 @@ async function capture(page, label, snapshot, mode) {
   const entry = { name: label, screenshot, snapshot, layout, frameTiming: await frameSample(page) };
   report.cases.push(entry);
   if (mode === 'before') assert.equal(snapshot.camera.type, 'OrthographicCamera', 'comparison baseline retains its old orthographic camera');
-  if (mode === 'after' && strictLayout) {
+  if ((lighting || mode === 'after') && strictLayout) {
     assert.ok(snapshot.slots.length >= 5, 'readable real ingredient-slot markers are available for composition QA');
     assert.deepEqual(layout.filter(check => check.failed).map(check => ({ id: check.id, visibleFraction: check.visibleFraction, centerInViewport: check.centerInViewport, collisions: check.collisions })), [], `${label}: actors and ingredient slots fit the viewport without major HUD occlusion`);
   }
-  if (mode === 'after') {
+  if (lighting || mode === 'after') {
     assert.ok(snapshot.architecture.some(part => part.role === 'room-floor'), 'continuous floor is present, not just cropped tile bounds');
     assert.ok(snapshot.architecture.some(part => part.role === 'wall-fill'), 'actual arch masonry infill is present');
     assert.ok(snapshot.architectureRays.length >= 6, 'actual architecture triangle-ray probes are recorded');
@@ -466,6 +511,33 @@ async function armEntryPause(page) {
 }
 
 function compareScenes() {
+  if (lighting) {
+    for (const profile of profiles) for (const scene of ['workshop', ...opponents.map(([, enemy]) => `battle-${enemy}`)]) {
+      const reference = report.cases.find(entry => entry.name === `${scene}-reference-${profile.name}`);
+      if (!reference) continue;
+      const phaseOne = phaseOneEvidence.cases.find(entry => entry.name === `${scene}-after-${profile.name}`);
+      assert.deepEqual(reference.snapshot.camera, phaseOne.snapshot.camera, 'reference camera matches committed Phase 1');
+      assert.deepEqual(reference.snapshot.render, phaseOne.snapshot.render, 'reference draw/triangle counts match committed Phase 1');
+      const stableLights = snapshot => snapshot.lights.map(({worldPosition,shadowMap,...light})=>light);
+      assert.deepEqual(stableLights(reference.snapshot),stableLights(phaseOne.snapshot),'reference light parameters match committed Phase 1');
+      for (const look of modes.filter(mode => mode !== 'reference')) {
+        const entry = report.cases.find(entry => entry.name === `${scene}-${look}-${profile.name}`);
+        const before = reference.snapshot, after = entry.snapshot;
+        assert.deepEqual(after.camera, before.camera, 'lighting comparison preserves exact camera');
+        assert.deepEqual(after.overlays, before.overlays, 'lighting comparison preserves HUD');
+        assert.equal(after.dpr, before.dpr);
+        assert.equal(after.lights.length, before.lights.length, 'no additional light count');
+        assert.equal(after.lights.filter(light => light.castShadow).length, 1, 'one shadow light only');
+        assert.deepEqual(after.lights.find(light => light.castShadow).shadowMap, before.lights.find(light => light.castShadow).shadowMap, 'shadow texture resolution unchanged');
+        const topology = s => s.productionAssets.map(asset => ({ asset: asset.asset, meshes: asset.meshes.map(mesh => ({ name: mesh.name, triangles: mesh.triangles })) }));
+        assert.deepEqual(topology(after), topology(before), 'original GLB topology unchanged');
+        report.comparisons.push({scene, profile: profile.name, look, cameraIdentical:true, hudIdentical:true, geometryIdentical:true,
+          beforeRender: before.render, afterRender: after.render, beforeTiming:reference.frameTiming, afterTiming:entry.frameTiming,
+          beforeMemory:before.memory, afterMemory:after.memory, shadowMap:after.lights.find(light=>light.castShadow).shadowMap, shadowLights:1 });
+      }
+    }
+    return;
+  }
   for (const profile of profiles) for (const scene of ['workshop', ...opponents.map(([, enemy]) => `battle-${enemy}`)]) {
     const before = report.cases.find(entry => entry.name === `${scene}-before-${profile.name}`);
     const after = report.cases.find(entry => entry.name === `${scene}-after-${profile.name}`);
@@ -546,13 +618,14 @@ try {
       assert.equal(purchased.board[0]?.itemId, 'chili');
       assert.equal(purchased.board[0]?.level, 2, 'native purchase merges level I chili into level II');
       assert.equal(purchased.offers[0].bought, true, 'native offer is sold after purchase');
-      if (mode === 'before') purchasedBaseline = purchased;
+      if (mode === 'before' || (lighting && mode === modes[0])) purchasedBaseline = purchased;
       else if (purchasedBaseline) assert.deepEqual(purchased, purchasedBaseline, 'purchase/merge and inventory unchanged by composition');
       const purchaseCase = { name: `purchase-and-merge-${activeLabel}`, goldBefore: fixture.gold, goldAfter: purchased.gold, board: purchased.board, blockedBattleDuringPurchase: true };
       report.cases.push(purchaseCase);
       const workshop = await waitScene(page, 1);
       assert.ok(assertCharacter(workshop, 'brasskin', profile.variant).front[2] > 0.8, 'workshop character faces the user');
       await capture(page, `workshop-${activeLabel}`, workshop, mode);
+      if (workshopOnly) { await context.close(); continue; }
       purchaseCase.unlockedReserve = await verifyUnlockedReserve(page, purchased, profile, mode);
 
       for (const [round, enemy] of opponents) {
@@ -567,7 +640,7 @@ try {
         await page.getByRole('button', { name: 'Kampf fortsetzen', exact: true }).waitFor({ timeout: 60_000 });
         assert.equal(await page.locator('.battle-preparation').count(), 0, 'readiness gate completes before playable combat');
         const battleRun = await readRun(page);
-        if (mode === 'before') battleBaselines.set(enemy, battleRun);
+        if (mode === 'before' || (lighting && mode === modes[0])) battleBaselines.set(enemy, battleRun);
         else if (battleBaselines.has(enemy)) assert.deepEqual(battleRun, battleBaselines.get(enemy), 'domain battle result and RNG unchanged by composition');
         const battle = await waitScene(page, 2);
         const player = assertCharacter(battle, 'brasskin', profile.variant);
@@ -575,13 +648,21 @@ try {
         assert.ok(player.front[2] < -0.8 && opponent.front[2] > 0.8, 'combatants still face each other');
         assert.ok(player.position[2] - opponent.position[2] > 7, 'the seven-unit VFX travel lane is preserved');
         await capture(page, `battle-${enemy}-${activeLabel}`, battle, mode);
-        await page.getByRole('button', { name: '4×', exact: true }).click();
-        await page.getByRole('button', { name: 'Kampf fortsetzen', exact: true }).click();
+        let activeTiming;
+        if (lighting && sampleFrames) {
+          await page.getByRole('button', { name: '1×', exact: true }).click();
+          await page.getByRole('button', { name: 'Kampf fortsetzen', exact: true }).click();
+          await page.waitForTimeout(700);
+          activeTiming = await frameSample(page, true);
+          assert.ok(activeTiming.frames >= 30, 'active combat performance sample contains at least 30 real battle frames');
+        } else await page.getByRole('button', { name: 'Kampf fortsetzen', exact: true }).click();
+        const spedUp = await page.getByRole('button', { name: '4×', exact: true }).count() > 0;
+        if (spedUp) await page.getByRole('button', { name: '4×', exact: true }).click();
         await page.locator('.result-panel').waitFor({ timeout: 60_000 });
         await page.getByRole('button', { name: 'Zurück zur Werkbank', exact: true }).click();
         await page.locator('.shop-ribbon').waitFor();
         assertCharacter(await waitScene(page, 1), 'brasskin', profile.variant);
-        report.cases.push({ name: `combat-result-and-return-${enemy}-${activeLabel}`, pauseThroughNativeUi: true, native4xPlayback: true, returnedToWorkshop: true });
+        report.cases.push({ name: `combat-result-and-return-${enemy}-${activeLabel}`, pauseThroughNativeUi: true, native4xPlayback: spedUp, returnedToWorkshop: true, activeTiming });
       }
       await context.close();
     }
@@ -589,7 +670,7 @@ try {
   compareScenes();
   const renderedMockupIds = [...new Set(report.cases.flatMap(entry => entry.snapshot?.productionAssets ?? []).map(asset => asset.asset).filter(id => id.startsWith('mockup-')))];
   report.renderedMockupKinds = [...new Set(renderedMockupIds.map(id => id.replace(/-(desktop|mobile)$/, '')))];
-  assert.ok(report.renderedMockupKinds.length >= 10, 'all ten supplied asset types retained across gameplay scenes');
+  assert.ok(report.renderedMockupKinds.length >= (workshopOnly ? 9 : 10), 'supplied asset types retained across gameplay scenes');
   assert.deepEqual(report.errors, [], 'no missing assets or runtime errors');
   report.passed = true;
 } catch (error) {

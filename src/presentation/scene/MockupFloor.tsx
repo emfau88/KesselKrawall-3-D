@@ -7,6 +7,8 @@ import { isMockupCompositionEnabled } from "./compositionMode";
 import { mockupAssetId } from "./mockupAssetIds";
 import { MOCKUP_ROOM_LAYOUT, ROOM_FLOOR_HALF_WIDTH } from "./mockupRoomLayout";
 import { productionAssetUrl } from "./ProductionAsset";
+import { lightingLook } from "./lightingLook";
+import { applyLightingMaterial } from "./lightingMaterials";
 
 /** A two-triangle floor continuation, using the supplied floor's unchanged PBR maps. */
 function RoomFloorContinuation({ arena }: { arena: boolean }) {
@@ -21,8 +23,9 @@ function RoomFloorContinuation({ arena }: { arena: boolean }) {
     });
     if (!source) throw new Error("Supplied stone floor material missing");
     const material = source.clone();
+    applyLightingMaterial(material, "mockup-dungeon-floor-module", lightingLook());
     const textures: Texture[] = [];
-    // UV wrapping is a geometry concern; colour, normal strength and roughness stay authored.
+    // Preserve authored texels and normal maps; only the owned material receives the opt-in grade.
     for (const key of ["map", "normalMap", "roughnessMap", "metalnessMap", "aoMap"] as const) {
       const texture = source[key];
       if (!texture) continue;

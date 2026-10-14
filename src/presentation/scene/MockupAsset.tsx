@@ -4,6 +4,7 @@ import { AdditiveBlending, Color, DoubleSide, Mesh, Quaternion, ShaderMaterial, 
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { ProductionAsset, ProductionAssetBoundary, productionAssetUrl } from "./ProductionAsset";
 import { mockupAssetId, type MockupAssetSlug } from "./mockupAssetIds";
+import { LIGHTING_LOOKS, lightingLook } from "./lightingLook";
 
 type AssetProps = {
   asset: MockupAssetSlug;
@@ -76,11 +77,12 @@ function AnchoredCandles({ asset, light = false }: {
       });
   }, [asset, gltf.scene, id]);
   const lightPosition = anchors[0]!;
+  const look = lightingLook();
   return (
     <group userData={{ mockupCandles: asset }}>
       <ProductionAsset asset={id} />
       {anchors.map((anchor, index) => <WickFlame key={index} position={anchor} phase={index * 1.7} />)}
-      {light && <pointLight color="#ffb76a" intensity={2.6} distance={5.2} decay={2} position={[lightPosition[0], lightPosition[1] + 0.15, lightPosition[2] + 0.12]} />}
+      {light && <pointLight color="#ffb76a" intensity={look === "reference" ? 2.6 : LIGHTING_LOOKS[look].candle} distance={5.2} decay={2} position={[lightPosition[0], lightPosition[1] + 0.15, lightPosition[2] + 0.12]} />}
     </group>
   );
 }
