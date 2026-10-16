@@ -2,7 +2,10 @@
 
 Die zwölf unbearbeiteten Originalbilder sind für eine spätere mögliche
 Rekonstruktion gesammelt. **Es wurden keine Zutaten-3D-Jobs gestartet.**
-Die bisherigen spielbaren Zutatenmodelle bleiben unverändert.
+Die bisherigen Modelle bleiben für Golden und die Vergleichsansicht erhalten.
+Phase 3A verwendet Chili, Schleimpilz und Eierschale als Designreferenzen für neue,
+lokal in Blender gebaute Mockup-Assets; siehe
+[Abnahmebericht](../../../docs/qa/ingredient-art-phase3a/README.md).
 
 Die Zuordnung wurde anhand der tatsächlichen Kampagnendaten und Shopfilter
 des 2D-Repositories geprüft; nicht anhand einer Vermutung oder nur der ersten

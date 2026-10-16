@@ -11,31 +11,32 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
-### Licht und Materialien auf dem Arbeitsbranch
+### Zutaten und Podeste auf dem Arbeitsbranch
 
-Phase 2 auf `codex/environment-lighting-phase2` ergänzt drei **nicht endgültig
-ausgewählte** Lichtvarianten auf der unveränderten Phase-1-Komposition:
-[A – Dark Fantasy](http://127.0.0.1:5173/?art=mockup&look=dark),
-[B – Warm Fantasy](http://127.0.0.1:5173/?art=mockup&look=warm) und
-[C – Magical Fantasy](http://127.0.0.1:5173/?art=mockup&look=magical).
-Ohne `look`-Parameter bleibt die Phase-1-Beleuchtung aktiv.
+Phase 3A auf `codex/ingredient-art-phase3a` baut auf `master` mit den abgeschlossenen
+Phasen 1 und 2 auf. Die freigegebene Beleuchtung **B – Warm Fantasy** ist jetzt
+Standard für `?art=mockup`. Neue dunkle Stein-/Messingpodeste und ausschließlich
+Glut-Chili, Schleimpilz und Runenschale besitzen eigene Blender-Modelle mit
+Desktop-/Mobile-LODs. Spielregeln, Kamera und Umgebung bleiben unverändert.
 
-[Alle vier Looks nebeneinander vergleichen](http://127.0.0.1:5173/docs/qa/environment-lighting/compare.html) ·
-[Analyse, Empfehlung und Messwerte](docs/qa/environment-lighting/README.md).
-Die Vergleichsbilder zeigen identische Kamera und Spielstände. Nur Licht und
-geklonte Materialparameter unterscheiden sich; Originaltexturen und GLBs bleiben
-unverändert. Kein Merge nach `master`, kein Pages-Release.
+[Phase 3A lokal spielen](http://127.0.0.1:5173/?art=mockup) ·
+[Vorher spielen](http://127.0.0.1:5173/?art=mockup&look=warm&ingredients=before) ·
+[Vorher-Nachher-Vergleich mit Mobile und Stufen I–III](http://127.0.0.1:5173/docs/qa/ingredient-art-phase3a/compare.html) ·
+[Abnahme und Performance](docs/qa/ingredient-art-phase3a/README.md).
 
-Die ruhenden Vergleichsszenen laufen im lokalen Test überwiegend bei rund
-16,7 ms pro Frame. Beim ersten aktiven Kampf wurden jedoch mehrsekündige Hänger
-auch in der Referenz bestätigt; Ursache und Smartphone-Performance bleiben offen.
-Details und Wiederholungsmessung stehen im verlinkten Abnahmebericht.
+![Werkbank vor und nach der Zutaten- und Podestüberarbeitung unter identischem Warm-Fantasy-Licht](docs/qa/ingredient-art-phase3a/compare-workshop.png)
 
-![Werkbank: Phase-1-Referenz und die drei Lichtkandidaten bei identischer Kamera](docs/qa/environment-lighting/compare-workshop-desktop.png)
+![Kampfarena vor und nach Phase 3A bei identischer Kamera und gleichem Spielstand](docs/qa/ingredient-art-phase3a/compare-battle.png)
 
-![Kampf gegen Zischbert: Referenz und die drei Lichtkandidaten](docs/qa/environment-lighting/compare-battle-zischbert-desktop.png)
+![Nahaufnahme der drei Zutaten und ihrer Podeste vor und nach Phase 3A](docs/qa/ingredient-art-phase3a/compare-closeup.png)
 
-![Kampf gegen Moor-Martha: Referenz und die drei Lichtkandidaten](docs/qa/environment-lighting/compare-battle-moor-martha-desktop.png)
+Die alten Assets bleiben mit `ingredients=before` erhalten. Die Lichtvarianten
+`look=reference`, `look=dark` und `look=magical` sind weiterhin verfügbar;
+Golden, Legacy und Ecosystem behalten ihre bisherigen Assets und ihr Licht.
+Die [Phase-2-Lichtvergleiche](docs/qa/environment-lighting/README.md) bleiben archiviert.
+Die bekannten mehrsekündigen Hänger beim ersten aktiven Kampf sind nicht durch
+diesen Assetpass behoben. Mobile-Aufnahmen sind PC-Emulation, keine Gerätefreigabe.
+Phase 3A endet zur visuellen Abnahme: kein Merge nach `master`, kein Pages-Release.
 
 ### Bisherige Raumüberarbeitung
 

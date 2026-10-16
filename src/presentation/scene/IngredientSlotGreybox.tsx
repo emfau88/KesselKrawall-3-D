@@ -3,6 +3,8 @@ import type { Vector3Tuple } from "three";
 import type { ItemInstance } from "../../core/types";
 import { getItemDefinition } from "../../core/data";
 import { IngredientModel } from "./IngredientModel";
+import { FantasyPedestal } from "./FantasyPedestal";
+import { ingredientArtEnabled, ingredientRestHeight, isPhase3AItem } from "./ingredientArt";
 
 const FAMILY_ACCENTS = {
   fire: "#ff7545",
@@ -27,6 +29,7 @@ export function IngredientSlotGreybox({
   influence?: "source" | "target" | null;
   onSelect?: () => void;
 }) {
+  const refined = ingredientArtEnabled();
   const accent = item
     ? FAMILY_ACCENTS[getItemDefinition(item.itemId).family]
     : "#8a7787";
@@ -40,22 +43,22 @@ export function IngredientSlotGreybox({
         onSelect?.();
       }}
     >
-      <mesh castShadow receiveShadow position={[0, 0.08, 0]}>
+      {refined ? <FantasyPedestal accent={item ? accent : "#b3a082"} selected={selected || Boolean(influence)} /> : <mesh castShadow receiveShadow position={[0, 0.08, 0]}>
         <cylinderGeometry args={[0.58, 0.68, 0.16, 16]} />
         <meshStandardMaterial
           color={selected ? "#73566f" : influence ? "#5c4656" : "#4a3944"}
           metalness={0.08}
           roughness={0.78}
         />
-      </mesh>
-      <mesh position={[0, 0.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
+      </mesh>}
+      {(!refined || selected) && <mesh position={[0, refined ? 0.24 : 0.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[0.43, 0.035, 7, 24]} />
         <meshStandardMaterial
           color={accent}
           emissive={accent}
           emissiveIntensity={selected ? 1.35 : influence ? 1.12 : item ? 0.68 : 0.22}
         />
-      </mesh>
+      </mesh>}
       {influence && (
         <mesh position={[0, 0.23, 0]} rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[influence === "target" ? 0.5 : 0.47, 0.025, 6, 28]} />
@@ -67,15 +70,15 @@ export function IngredientSlotGreybox({
         </mesh>
       )}
       {item ? (
-        <group position={[0, 0.72, 0]} rotation={[0, index * 0.12 - 0.24, 0]}>
+        <group position={[0, refined && isPhase3AItem(item.itemId) ? ingredientRestHeight(item.level, false, item.itemId) : 0.72, 0]} rotation={[0, index * 0.12 - 0.24, 0]}>
           <IngredientModel itemId={item.itemId} level={item.level} />
         </group>
-      ) : (
+      ) : !refined ? (
         <mesh position={[0, 0.32, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <circleGeometry args={[0.16, 16]} />
           <meshStandardMaterial color="#332a34" roughness={0.9} />
         </mesh>
-      )}
+      ) : null}
     </group>
   );
 }

@@ -5,6 +5,7 @@ import { brasskinAssetId, characterAssetId } from "./character/brasskinAssets";
 import { getRuntimeQualityProfile, type RuntimeQualityProfile } from "./runtimeQuality";
 import { mockupAssetId } from "./mockupAssetIds";
 import { isMockupCompositionEnabled } from "./compositionMode";
+import { ingredientArtEnabled, ingredientArtAsset, isPhase3AItem } from "./ingredientArt";
 
 export interface AssetLoadProgress {
   readonly completed: number;
@@ -37,6 +38,7 @@ export function getBattleCriticalAssetIds(
   if (authoredOpponent) assets.push(characterAssetId(opponentId, qualityTier));
 
   if (mode === "mockup") {
+    if (ingredientArtEnabled()) assets.push(ingredientArtAsset("pedestal", qualityTier));
     // The recessed passage reuses the bench's wood atlas. Include that dependency
     // even if combat is entered without a previously cached workshop scene.
     if (isMockupCompositionEnabled()) assets.push(mockupAssetId("witch-workbench", qualityTier));
@@ -63,6 +65,10 @@ export function getBattleCriticalAssetIds(
 
   for (const item of [...playerBoard, ...enemyBoard]) {
     if (!item) continue;
+    if (mode === "mockup" && ingredientArtEnabled() && isPhase3AItem(item.itemId)) {
+      assets.push(ingredientArtAsset(item.itemId, qualityTier));
+      continue;
+    }
     const asset = HERO_INGREDIENTS[item.itemId];
     if (asset) assets.push(asset);
   }

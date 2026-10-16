@@ -2,6 +2,21 @@
 
 Stand: 22. August 2026
 
+## Ergänzung Phase 3A – 16. Oktober 2026
+
+`public/assets/ingredient-phase3a/` enthält acht neue GLBs: Fantasy-Podest,
+Glut-Chili, Schleimpilz und Runenschale, jeweils als Desktop- und Mobile-LOD.
+Mesh, Farbatlas und Mikronormaltextur sind für dieses Repository erstellte
+Projektassets, reproduzierbar aus `art/blender/build_ingredient_phase3a.py`.
+Keine übernommenen Drittanbieter-Meshes, keine bezahlten Ressourcen und keine
+zusätzliche Drittanbieter-Attribution. Die alten 2D-Zutatenbilder dienen nur als
+Designreferenz; ihre Dateien und die bestehenden GLBs bleiben unverändert.
+Es wird keine neue Lizenz für die übrigen Repository-Inhalte behauptet.
+
+Dateiinventar: `public/assets/ingredient-phase3a/manifest.json`.
+Größen, Geometriebudget, Texturschätzung und SHA-256:
+`docs/qa/ingredient-art-phase3a/assets.json`.
+
 ## Shipping-Status
 
 Der Golden Slice verwendet eine kuratierte, mobil optimierte Auswahl aus drei

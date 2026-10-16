@@ -13,8 +13,10 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { MOCKUP_ASSET_DEFINITIONS } from "./mockupAssetIds";
 import { lightingLook } from "./lightingLook";
 import { applyLightingMaterial } from "./lightingMaterials";
+import { INGREDIENT_ART_ASSETS } from "./ingredientArt";
 
 export const PRODUCTION_ASSETS = {
+  ...INGREDIENT_ART_ASSETS,
   ...MOCKUP_ASSET_DEFINITIONS,
   "dungeon-wall": {
     root: "kaykit-dungeon",

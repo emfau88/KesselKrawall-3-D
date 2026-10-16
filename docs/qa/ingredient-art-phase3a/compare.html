@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KesselKrawall · Zutaten und Podeste · Phase 3A</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#17151a;color:#ecdfc7;font:16px/1.5 system-ui}main{max-width:2400px;margin:auto;padding:24px}h1{font-size:28px;margin:0 0 8px}h2{font-size:19px;margin:0 0 10px}p{max-width:1050px;color:#bcb3a5}nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:20px 0}a{color:#e8bd7c}select,button{background:#302a29;color:#ecdfc7;font:inherit;padding:8px;border:1px solid #816b48;border-radius:5px}.scroll{overflow:auto}.comparison{min-width:1100px;padding:14px;border:1px solid #685638;border-radius:8px;background:#211e23}.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}figure{margin:0}figcaption{color:#dfbc7a;font-weight:600;margin-bottom:8px}img{width:100%;display:block}.metrics{white-space:pre-line;font:12px/1.5 ui-monospace,monospace;color:#b9ad98;margin-top:8px}.portrait{max-width:1000px;margin:auto;min-width:800px}details{margin-top:24px}.note{font-size:14px}summary{cursor:pointer;color:#e8bd7c}@media(max-width:600px){main{padding:12px}h1{font-size:22px}}
+</style></head><body><main>
+<h1>Zutaten und Fantasy-Podeste · Phase 3A</h1>
+<p>Vorher und nachher mit identischem Spielzustand, identischer Kamera und unveränderter Beleuchtung B – Warm Fantasy. Ausschließlich drei Zutaten und ihre Podeste wurden überarbeitet. Kein Merge nach master und kein Pages-Release.</p>
+<nav><label>Ansicht <select id="view">
+<option value="workshop|desktop">Werkbank · Desktop</option><option value="workshop|mobile-portrait">Werkbank · Mobile hochkant</option><option value="workshop|mobile-landscape">Werkbank · Mobile quer</option>
+<option value="battle-zischbert|desktop">Zischbert · Desktop</option><option value="battle-zischbert|mobile-landscape">Zischbert · Mobile quer</option><option value="battle-moor-martha|desktop">Moor-Martha · Desktop</option><option value="battle-moor-martha|mobile-landscape">Moor-Martha · Mobile quer</option>
+<option value="closeup">Nahaufnahme · Drei Zutaten und Podeste</option><option value="levels-1|desktop">Alle drei Zutaten · Stufe I</option><option value="levels-2|desktop">Alle drei Zutaten · Stufe II</option><option value="levels-3|desktop">Alle drei Zutaten · Stufe III</option>
+</select></label><a href="../../../?art=mockup&look=warm&ingredients=before">Vorher spielen</a><a href="../../../?art=mockup">Phase 3A spielen</a><a href="README.md">Abnahmebericht</a></nav>
+<div class="scroll"><section class="comparison"><h2 id="title"></h2><div class="cards">
+<figure><figcaption>Vorher · master 4980b81</figcaption><a id="before-link"><img id="before" alt="Echte Spielaufnahme vor der Zutatenüberarbeitung"></a><div class="metrics" id="before-metrics"></div></figure>
+<figure><figcaption>Nachher · Phase 3A</figcaption><a id="after-link"><img id="after" alt="Echte Spielaufnahme mit neuen Zutaten und Podesten"></a><div class="metrics" id="after-metrics"></div></figure>
+</div></section></div>
+<p class="note">Alle Bilder sind echte Spielaufnahmen, keine Zielbilder oder Offline-Renders. Kämpfe sind über die Spielsteuerung pausiert; Idle-Animationen laufen weiter. Die Nahaufnahme ist ein unretuschierter Ausschnitt aus einer mit 2880 × 1800 gerenderten Werkbank, gleiche Perspektive. Mobile bedeutet Touch-/Viewport-Emulation auf dem PC, keinen Test auf einem Smartphone.</p>
+<p class="note">Die Messwerte beschreiben die sichtbaren Szenen. Der dokumentierte Erstkampf-Hänger bleibt ein separates Problem; dieser Assetpass behauptet keine allgemeine FPS- oder Smartphone-Freigabe. Speicherbytes sind Schätzwerte für sichtbare Geometrie und RGBA8-Texturen, keine gemessene VRAM-Belegung.</p>
+<details><summary>Unbearbeitete 2D-Designreferenzen</summary><div class="cards" style="max-width:780px;grid-template-columns:repeat(3,1fr)">
+<img src="../../../art/source/ingredients-campaign-1/reference/item-chili.png" alt="Original Chilischote"><img src="../../../art/source/ingredients-campaign-1/reference/item-slime-shroom.png" alt="Original Schleimpilz"><img src="../../../art/source/ingredients-campaign-1/reference/item-egg-shell.png" alt="Original Eierschale"></div></details>
+</main><script>
+const view=document.querySelector('#view');let report;
+const requested=new URLSearchParams(location.search).get('view');if([...view.options].some(o=>o.value===requested))view.value=requested;
+function update(){const [scene,profile]=view.value.split('|');document.querySelector('#title').textContent=view.selectedOptions[0].textContent;document.querySelector('.comparison').classList.toggle('portrait',profile==='mobile-portrait');
+for(const mode of ['before','after']){const name=scene==='closeup'?`closeup-${mode}`:`${scene}-${mode}-${profile}`;const path=`${name}.png`;document.querySelector(`#${mode}`).src=path;document.querySelector(`#${mode}-link`).href=path;
+const c=report?.cases.find(c=>c.name===name),m=c?.snapshot.memory,r=c?.snapshot.render;
+document.querySelector(`#${mode}-metrics`).textContent=r?`${r.calls} Draw Calls · ${r.triangles.toLocaleString('de-DE')} Dreiecke (inkl. Schatten)\n${m.geometries} Geometrien · ${m.textures} Texturen im Renderer\n${(m.geometryBytes/1048576).toFixed(2)} MiB Geometrie · ${(m.textureBytesEstimate/1048576).toFixed(2)} MiB Texturschätzung\n${c.frameTiming?.meanMs?.toFixed(1)??'–'} ms rAF Ø · ruhende Szene`:(scene==='closeup'?'Detailausschnitt · alle Zutaten Stufe I':'Zusätzliche Stufenansicht');}}
+view.addEventListener('change',update);update();fetch('report.json').then(r=>r.json()).then(r=>{report=r;update()});
+</script></body></html>

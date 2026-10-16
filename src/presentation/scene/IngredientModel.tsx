@@ -11,6 +11,7 @@ import {
 import { getItemDefinition } from "../../core/data";
 import type { ItemLevel } from "../../core/types";
 import { ProductionAsset, ProductionAssetBoundary, type ProductionAssetId } from "./ProductionAsset";
+import { ingredientArtEnabled, ingredientArtAsset, isPhase3AItem } from "./ingredientArt";
 
 const FAMILY_COLORS = {
   fire: { base: "#c9442f", accent: "#ffb13f", glow: "#e55b2f" },
@@ -99,15 +100,15 @@ function ActivationAura({ family }: { family: keyof typeof FAMILY_COLORS }) {
   );
 }
 
-function LevelDetails({ level, color }: { level: ItemLevel; color: string }) {
+function LevelDetails({ level, color, refined = false }: { level: ItemLevel; color: string; refined?: boolean }) {
   return (
     <group>
       {level > 1 && (
         <group>
           {[0, 1].map((ring) => (
-            <mesh key={ring} rotation={[Math.PI / 2, ring * 0.22, 0]} position={[0, -0.35 + ring * 0.035, 0]}>
-              <torusGeometry args={[0.42 + level * 0.045 + ring * 0.08, level === 3 ? 0.045 : 0.034, 6, ring ? 8 : 28]} />
-              <meshStandardMaterial color={ring ? "#fff0bd" : color} emissive={color} emissiveIntensity={level === 3 ? 1.75 : 1.25} transparent opacity={ring ? 0.78 : 1} />
+            <mesh key={ring} rotation={[Math.PI / 2, ring * 0.22, 0]} position={[0, (refined ? -0.49 : -0.35) + ring * 0.035, 0]}>
+              <torusGeometry args={[refined ? 0.40 + ring * 0.055 : 0.42 + level * 0.045 + ring * 0.08, refined ? 0.014 : level === 3 ? 0.045 : 0.034, 6, ring ? 8 : 28]} />
+              <meshStandardMaterial color={refined ? "#a98848" : ring ? "#fff0bd" : color} metalness={refined ? 0.5 : 0} roughness={refined ? 0.55 : 1} emissive={color} emissiveIntensity={refined ? 0.12 : level === 3 ? 1.75 : 1.25} transparent opacity={ring ? 0.78 : 1} />
             </mesh>
           ))}
           <pointLight color={color} intensity={level === 3 ? 1.6 : 0.85} distance={1.8} position={[0, 0.1, 0]} />
@@ -505,7 +506,8 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
       );
   }
 
-  const heroAsset: ProductionAssetId | null = itemId === "chili"
+  const refined = ingredientArtEnabled() && isPhase3AItem(itemId);
+  const heroAsset: ProductionAssetId | null = refined && isPhase3AItem(itemId) ? ingredientArtAsset(itemId) : itemId === "chili"
     ? "ingredient-chili"
     : itemId === "slime-shroom"
       ? "ingredient-slime-shroom"
@@ -525,7 +527,7 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
       <group ref={actor}>
         {visibleModel}
         {active ? <ActivationAura family={definition.family} /> : null}
-        <LevelDetails level={level} color={colors.accent} />
+        <LevelDetails level={level} color={colors.accent} refined={refined} />
       </group>
     </group>
   );

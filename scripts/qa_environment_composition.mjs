@@ -15,7 +15,8 @@ const target = positional[0] ?? 'http://127.0.0.1:5173/';
 const out = resolve(root, positional[1] ?? 'docs/qa/environment-composition');
 const flag = name => arguments_.includes(`--${name}`);
 const option = name => arguments_.find(argument => argument.startsWith(`--${name}=`))?.split('=').slice(1).join('=');
-const lighting = flag('lighting');
+const ingredientArt = flag('ingredient-art');
+const lighting = flag('lighting') || ingredientArt;
 const workshopOnly = flag('workshop-only');
 const quick = flag('quick');
 const sampleFrames = (!quick || flag('measure-frames')) && !flag('skip-frame-sampling');
@@ -31,8 +32,8 @@ const profiles = [
   { name: 'mobile-landscape', viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true, variant: 'mobile' },
 ].filter(profile => !(quick || flag('desktop-only')) || profile.name === 'desktop');
 const opponents = workshopOnly ? [] : quick ? [[1, 'zischbert']] : [[1, 'zischbert'], [2, 'moor-martha']];
-const modes = lighting ? (option('looks') ?? 'reference,dark,warm,magical').split(',') : flag('after-only') ? ['after'] : flag('before-only') ? ['before'] : ['before', 'after'];
-if (lighting) assert.ok(modes.every(mode => ['reference', 'dark', 'warm', 'magical'].includes(mode)));
+const modes = ingredientArt ? ['before','after'] : lighting ? (option('looks') ?? 'reference,dark,warm,magical').split(',') : flag('after-only') ? ['after'] : flag('before-only') ? ['before'] : ['before', 'after'];
+if (lighting && !ingredientArt) assert.ok(modes.every(mode => ['reference', 'dark', 'warm', 'magical'].includes(mode)));
 const phaseOneEvidence = lighting ? JSON.parse(await readFile(join(root,'docs/qa/environment-composition/report.json'),'utf8')) : null;
 if (!existsSync(process.env.PLAYWRIGHT_BROWSERS_PATH ?? '')) {
   process.env.PLAYWRIGHT_BROWSERS_PATH = join(homedir(), 'AppData/Local/ms-playwright');
@@ -61,6 +62,7 @@ if (lighting) Object.assign(report, {
   scope: 'Lighting and cloned material settings only; no camera, UI, geometry or gameplay changes.',
   comparability: 'Identical camera, viewport, DPR, saved state, RNG, inventory and HUD. Native pause at battle entry; ambient idle animation remains live.',
 });
+if (ingredientArt) Object.assign(report, {baseline:'4980b81 master assets with approved Warm Fantasy',after:'Phase 3A ingredients and pedestals',scope:'Only mockup ingredients/pedestals; same lighting, camera, UI and gameplay.',comparability:'Same saved state, camera, resolution, RNG and Warm Fantasy. Ambient animations remain live.'});
 const browser = await playwright.chromium.launch({
   headless: true,
   args: process.env.QA_SOFTWARE_RENDERER === '1'
@@ -73,6 +75,7 @@ let activeLabel = 'bootstrap';
 function modeUrl(mode) {
   const url = new URL(target);
   url.searchParams.set('art', 'mockup');
+  if (ingredientArt) {url.searchParams.set('look','warm');url.searchParams.set('ingredients',mode);return url.href;}
   if (lighting) {
     url.searchParams.delete('composition'); url.searchParams.delete('camera'); url.searchParams.delete('passage');
     url.searchParams.set('look', mode);
@@ -188,9 +191,11 @@ async function sceneSnapshot(page) {
     const slots = [];
     const architecture = [];
     const lights = [];
+    const cooldowns = [];
     const architectureRayMeshes = new Set();
     let archNode = null;
     state.scene.traverse(node => {
+      if (node.name === 'ingredient-cooldown') cooldowns.push({...node.userData,arc:node.children[1]?.geometry?.parameters?.arc});
       if (node.userData.characterAsset) {
         const body = node.getObjectByName('Body');
         const m = node.matrixWorld.elements;
@@ -294,13 +299,26 @@ async function sceneSnapshot(page) {
         });
       }
     }
+    const geometries = new Set(), textures = new Set(), arrays = new Set();
+    state.scene.traverse(node => {
+      if (!node.isMesh) return;
+      geometries.add(node.geometry);
+      for (const mat of Array.isArray(node.material) ? node.material : [node.material]) for (const value of Object.values(mat)) if (value?.isTexture) textures.add(value);
+    });
+    for (const geometry of geometries) {
+      for (const attr of Object.values(geometry.attributes)) arrays.add(attr.array ?? attr.data?.array);
+      if (geometry.index) arrays.add(geometry.index.array);
+    }
+    const geometryBytes = [...arrays].reduce((n,array)=>n+(array?.byteLength??0),0);
+    const textureBytesEstimate = [...textures].reduce((n,texture)=>n+(texture.image?.width??0)*(texture.image?.height??0)*4*(texture.generateMipmaps?4/3:1),0);
     return {
-      characters, productionAssets, slots, architecture, lights, camera, overlays,
+      characters, productionAssets, slots, architecture, lights, camera, overlays, cooldowns,
       viewport: { width: innerWidth, height: innerHeight, canvas: rect(canvas) },
       floorTiles: productionAssets.filter(asset => asset.asset.startsWith('mockup-dungeon-floor-module')),
       architectureRays,
       render: { calls: state.gl.info.render.calls, triangles: state.gl.info.render.triangles },
-      memory: { geometries: state.gl.info.memory.geometries, textures: state.gl.info.memory.textures },
+      memory: { geometries: state.gl.info.memory.geometries, textures: state.gl.info.memory.textures, geometryBytes, textureBytesEstimate,
+        estimateNote:'Scene-referenced unique attribute/index arrays and RGBA8 texture sizes incl generated mipmaps; excludes driver copies, cache-only assets, render targets and morph buffers. Not measured VRAM.' },
       lighting: { environmentIntensity: state.scene.environmentIntensity, toneMapping: state.gl.toneMapping, exposure: state.gl.toneMappingExposure, shadowType: state.gl.shadowMap.type },
       dpr: state.gl.getPixelRatio(),
       gpu: debug ? context.getParameter(debug.UNMASKED_RENDERER_WEBGL) : context.getParameter(context.RENDERER),
@@ -440,7 +458,7 @@ async function capture(page, label, snapshot, mode) {
   await page.screenshot({ path: join(out, screenshot), fullPage: true });
   const entry = { name: label, screenshot, snapshot, layout, frameTiming: await frameSample(page) };
   report.cases.push(entry);
-  if (mode === 'before') assert.equal(snapshot.camera.type, 'OrthographicCamera', 'comparison baseline retains its old orthographic camera');
+  if (mode === 'before' && !ingredientArt) assert.equal(snapshot.camera.type, 'OrthographicCamera', 'comparison baseline retains its old orthographic camera');
   if ((lighting || mode === 'after') && strictLayout) {
     assert.ok(snapshot.slots.length >= 5, 'readable real ingredient-slot markers are available for composition QA');
     assert.deepEqual(layout.filter(check => check.failed).map(check => ({ id: check.id, visibleFraction: check.visibleFraction, centerInViewport: check.centerInViewport, collisions: check.collisions })), [], `${label}: actors and ingredient slots fit the viewport without major HUD occlusion`);
@@ -510,7 +528,72 @@ async function armEntryPause(page) {
   });
 }
 
+async function verifyIngredientControls(page, purchased, profile, mode) {
+  const label=`${mode}-${profile.name}`;
+  const snapshot=await sceneSnapshot(page);
+  await clickProjected(page,snapshot.slots.find(s=>s.slot===0).interaction,profile);
+  await page.locator('.selection-popover').waitFor();
+  assert.match(await page.locator('.selection-popover').innerText(),/Stufe II/);
+  await clickProjected(page,snapshot.slots.find(s=>s.slot===3).interaction,profile);
+  const moved=await readRun(page);
+  assert.equal(moved.board[3]?.uid,'qa-chili','native slot swap moves the real ingredient');
+  assert.equal(moved.board[0],null);
+  await reloadRun(page,purchased);
+  const mergeFixture={...purchased,gold:20,selectedSlot:null,board:[
+    {uid:'qa-merge-2',itemId:'chili',level:2},{uid:'qa-merge-1',itemId:'chili',level:1},null,null,null,
+  ],offers:[{uid:'qa-upgrade',itemId:'chili',bought:false},...purchased.offers.slice(1)]};
+  await reloadRun(page,mergeFixture);
+  await page.locator('.offer:not([disabled])').first().click();
+  await page.locator('.purchase-feedback').waitFor();
+  await page.waitForFunction(()=>!document.querySelector('.purchase-feedback')&&!document.querySelector('.battle-button')?.disabled);
+  const merged=await readRun(page);
+  assert.equal(merged.board.filter(Boolean).length,1);
+  assert.equal(merged.board.find(Boolean).level,3,'purchase drives complete I→II→III cascade');
+  assert.ok(await page.locator('.synergy.is-active').count()>0,'level III fire synergy remains active');
+  const stageCaptures=[];
+  for(const level of [1,2,3]) {
+    const levels={...purchased,selectedSlot:null,board:['chili','slime-shroom','egg-shell'].map((itemId,i)=>({uid:`qa-stage-${i}`,itemId,level})).concat([null,null])};
+    const state=await reloadRun(page,levels);
+    for(let slot=0;slot<3;slot++) {
+      await clickProjected(page,state.slots.find(s=>s.slot===slot).interaction,profile);
+      await page.locator('.selection-popover').waitFor();
+      assert.match(await page.locator('.selection-popover').innerText(),new RegExp(`Stufe ${['','I','II','III'][level]}(?:\\s|$)`));
+      await clickProjected(page,state.slots.find(s=>s.slot===slot).interaction,profile);
+    }
+    if(profile.name==='desktop') {
+      const path=join(out,`levels-${level}-${label}.png`);await page.screenshot({path});stageCaptures.push(path);
+      if(level===1) {
+        await page.setViewportSize({width:2880,height:1800});await page.waitForTimeout(500);await waitScene(page,1);
+        await page.screenshot({path:join(out,`closeup-${mode}.png`),clip:{x:580,y:700,width:1120,height:690}});
+        await page.setViewportSize(profile.viewport);await page.waitForTimeout(300);
+      }
+    }
+  }
+  // A real existing passive source; its model is deliberately NOT part of this art pass.
+  const buffFixture={...purchased,selectedSlot:null,board:[{uid:'qa-haste',itemId:'ember-core',level:1},{uid:'qa-chili',itemId:'chili',level:1},purchased.board[2],null,null]};
+  const buffState=await reloadRun(page,buffFixture);
+  await clickProjected(page,buffState.slots.find(s=>s.slot===0).interaction,profile);
+  assert.match(await page.locator('.placement-insights').innerText(),/Platz 2/);
+  await clickProjected(page,buffState.slots.find(s=>s.slot===0).interaction,profile);
+  await clickProjected(page,buffState.slots.find(s=>s.slot===1).interaction,profile);
+  assert.match(await page.locator('.placement-insights').innerText(),/→/,'buff changes the displayed cooldown');
+  await reloadRun(page,purchased);
+  report.cases.push({name:`ingredient-interactions-${label}`,swap:true,mergeToIII:true,allThreeItemsAllLevels:true,activeSynergy:true,placementBuff:true,stageCaptures});
+}
+
 function compareScenes() {
+  if (ingredientArt) {
+    for (const profile of profiles) for (const scene of ['workshop',...opponents.map(([,enemy])=>`battle-${enemy}`)]) {
+      const b=report.cases.find(c=>c.name===`${scene}-before-${profile.name}`),a=report.cases.find(c=>c.name===`${scene}-after-${profile.name}`);
+      assert.deepEqual(a.snapshot.camera,b.snapshot.camera,'ingredient pass preserves camera exactly');
+      assert.deepEqual(a.snapshot.overlays,b.snapshot.overlays,'ingredient pass preserves UI');
+      assert.deepEqual(a.snapshot.lighting,b.snapshot.lighting,'no lighting change');
+      const signature=s=>s.lights.map(({worldPosition,...rest})=>rest);
+      assert.deepEqual(signature(a.snapshot),signature(b.snapshot),'no new light or changed light parameters');
+      report.comparisons.push({scene,profile:profile.name,cameraIdentical:true,hudIdentical:true,lightingIdentical:true,beforeRender:b.snapshot.render,afterRender:a.snapshot.render,beforeMemory:b.snapshot.memory,afterMemory:a.snapshot.memory,beforeTiming:b.frameTiming,afterTiming:a.frameTiming});
+    }
+    return;
+  }
   if (lighting) {
     for (const profile of profiles) for (const scene of ['workshop', ...opponents.map(([, enemy]) => `battle-${enemy}`)]) {
       const reference = report.cases.find(entry => entry.name === `${scene}-reference-${profile.name}`);
@@ -625,6 +708,7 @@ try {
       const workshop = await waitScene(page, 1);
       assert.ok(assertCharacter(workshop, 'brasskin', profile.variant).front[2] > 0.8, 'workshop character faces the user');
       await capture(page, `workshop-${activeLabel}`, workshop, mode);
+      if (ingredientArt) await verifyIngredientControls(page,purchased,profile,mode);
       if (workshopOnly) { await context.close(); continue; }
       purchaseCase.unlockedReserve = await verifyUnlockedReserve(page, purchased, profile, mode);
 
@@ -643,21 +727,39 @@ try {
         if (mode === 'before' || (lighting && mode === modes[0])) battleBaselines.set(enemy, battleRun);
         else if (battleBaselines.has(enemy)) assert.deepEqual(battleRun, battleBaselines.get(enemy), 'domain battle result and RNG unchanged by composition');
         const battle = await waitScene(page, 2);
+        if (ingredientArt) {
+          assert.ok(battle.cooldowns.filter(c=>c.side==='player').length>=3,'three real 3D cooldown dials exist');
+          for(const c of battle.cooldowns) assert.ok(Math.abs(c.arc-Math.max(.02,Math.PI*2*c.cooldownProgress))<.0001,'3D cooldown arc matches the unchanged progress');
+        }
         const player = assertCharacter(battle, 'brasskin', profile.variant);
         const opponent = assertCharacter(battle, enemy, profile.variant);
         assert.ok(player.front[2] < -0.8 && opponent.front[2] > 0.8, 'combatants still face each other');
         assert.ok(player.position[2] - opponent.position[2] > 7, 'the seven-unit VFX travel lane is preserved');
         await capture(page, `battle-${enemy}-${activeLabel}`, battle, mode);
         let activeTiming;
-        if (lighting && sampleFrames) {
+        if (lighting && sampleFrames && !ingredientArt) {
           await page.getByRole('button', { name: '1×', exact: true }).click();
           await page.getByRole('button', { name: 'Kampf fortsetzen', exact: true }).click();
           await page.waitForTimeout(700);
           activeTiming = await frameSample(page, true);
           assert.ok(activeTiming.frames >= 30, 'active combat performance sample contains at least 30 real battle frames');
-        } else await page.getByRole('button', { name: 'Kampf fortsetzen', exact: true }).click();
-        const spedUp = await page.getByRole('button', { name: '4×', exact: true }).count() > 0;
-        if (spedUp) await page.getByRole('button', { name: '4×', exact: true }).click();
+        } else {
+          await page.getByRole('button', { name: 'Kampf fortsetzen', exact: true }).click();
+          if (ingredientArt) {
+            await page.waitForTimeout(550);
+            const live=await sceneSnapshot(page);
+            assert.ok(live.cooldowns.some(c=>c.side==='player'&&c.cooldownProgress>0),'live 3D cooldowns advance');
+            assert.ok((await page.locator('.combat-ingredient').first().getAttribute('style')).includes('--cooldown-turn'),'HUD cooldown rendering retained');
+          }
+        }
+        // Native UI activation in one DOM turn: a first-use stall can finish the
+        // short fight between a locator's existence check and its stable click.
+        const spedUp = await page.evaluate(() => {
+          if (document.querySelector('.result-panel')) return false;
+          const button=[...document.querySelectorAll('.battle-playback-controls button')].find(b=>b.textContent==='4×');
+          if (!button) return false;
+          button.click(); return true;
+        });
         await page.locator('.result-panel').waitFor({ timeout: 60_000 });
         await page.getByRole('button', { name: 'Zurück zur Werkbank', exact: true }).click();
         await page.locator('.shop-ribbon').waitFor();

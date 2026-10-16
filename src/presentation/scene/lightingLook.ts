@@ -2,11 +2,11 @@ import { isMockupCompositionEnabled } from "./compositionMode";
 
 export type LightingLook = "reference" | "dark" | "warm" | "magical";
 
-/** No winner is selected: Phase 1 remains the default, including other art modes. */
+/** Warm Fantasy is approved for mockup; explicit comparison looks remain available. */
 export function lightingLook(): LightingLook {
   if (!isMockupCompositionEnabled() || typeof window === "undefined") return "reference";
   const value = new URLSearchParams(window.location.search).get("look");
-  return value === "dark" || value === "warm" || value === "magical" ? value : "reference";
+  return value === "reference" || value === "dark" || value === "magical" ? value : "warm";
 }
 
 // One shadow-casting key and two non-shadow accent lights in every new look.

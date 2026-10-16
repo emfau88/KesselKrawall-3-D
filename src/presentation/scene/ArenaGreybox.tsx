@@ -11,6 +11,8 @@ import { CauldronActor } from "./CauldronActor";
 import type { CauldronReaction } from "./CauldronActor";
 import { BattleVfx } from "./BattleVfx";
 import { IngredientModel } from "./IngredientModel";
+import { FantasyPedestal } from "./FantasyPedestal";
+import { ingredientArtEnabled, ingredientRestHeight, isPhase3AItem } from "./ingredientArt";
 import { OpponentArenaIdentity } from "./OpponentArenaIdentity";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import { getRuntimeQualityProfile } from "./runtimeQuality";
@@ -73,6 +75,7 @@ function IngredientPedestal({
   cooldown: IngredientCooldownState | null;
 }) {
   const dial = useRef<Group>(null);
+  const refined = ingredientArtEnabled();
   const pulse = useRef<Group>(null);
   const family = item ? getItemDefinition(item.itemId).family : null;
   const glow = family ? FAMILY_GLOW[family] : side === "player" ? "#d09b61" : "#8065a8";
@@ -90,16 +93,16 @@ function IngredientPedestal({
 
   return (
     <group scale={side === "player" ? 0.74 : 0.64}>
-      <mesh castShadow receiveShadow position={[0, -0.36, 0]}>
+      {refined ? <FantasyPedestal arena accent={item ? glow : "#b3a082"} selected={active || buffed} /> : <mesh castShadow receiveShadow position={[0, -0.36, 0]}>
         <cylinderGeometry args={[0.68, 0.8, 0.22, 12]} />
         <meshStandardMaterial color={side === "player" ? "#342c31" : "#2c2834"} metalness={0.24} roughness={0.72} />
-      </mesh>
-      <mesh position={[0, -0.235, 0]} rotation={[Math.PI / 2, 0, 0]}>
+      </mesh>}
+      {(!refined || active) && <mesh position={[0, -0.235, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[0.55, active ? 0.055 : 0.035, 7, 32]} />
         <meshStandardMaterial color={glow} emissive={glow} emissiveIntensity={active ? 1.8 : item ? 0.64 : 0.2} transparent opacity={item ? 0.9 : 0.34} />
-      </mesh>
+      </mesh>}
       {item && cooldown && (
-        <group position={[0, -0.145, 0]} rotation={[-Math.PI / 2, 0, -Math.PI / 2]}>
+        <group name="ingredient-cooldown" userData={{ cooldownProgress: cooldown.progress, itemId: item.itemId, side }} position={[0, -0.145, 0]} rotation={[-Math.PI / 2, 0, -Math.PI / 2]}>
           <mesh>
             <torusGeometry args={[0.7, 0.035, 6, 34]} />
             <meshBasicMaterial color="#17121b" transparent opacity={0.76} depthWrite={false} />
@@ -116,7 +119,7 @@ function IngredientPedestal({
           </group>
         </group>
       )}
-      <group ref={dial} position={[0, -0.2, 0]}>
+      {!refined && <group ref={dial} position={[0, -0.2, 0]}>
         {Array.from({ length: 8 }, (_, index) => {
           const angle = index * Math.PI / 4;
           return (
@@ -126,7 +129,7 @@ function IngredientPedestal({
             </mesh>
           );
         })}
-      </group>
+      </group>}
       {buffed && (
         <group rotation={[Math.PI / 2, 0, 0]} position={[0, -0.16, 0]}>
           <mesh><torusGeometry args={[0.43, 0.022, 6, 22, Math.PI * 1.65]} /><meshStandardMaterial color="#8ce3ec" emissive="#63cbdc" emissiveIntensity={1.1} transparent opacity={0.72} /></mesh>
@@ -135,18 +138,18 @@ function IngredientPedestal({
       )}
       <group ref={pulse}>
         {item ? (
-          <IngredientModel
+          <group position={[0, refined && isPhase3AItem(item.itemId) ? ingredientRestHeight(item.level, true, item.itemId) : 0, 0]}><IngredientModel
             active={active}
             animationKey={animationKey}
             itemId={item.itemId}
             level={item.level}
-          />
-        ) : (
+          /></group>
+        ) : !refined ? (
           <mesh position={[0, -0.06, 0]} rotation={[Math.PI / 2, 0, 0]}>
             <torusGeometry args={[0.24, 0.022, 6, 6]} />
             <meshStandardMaterial color={glow} emissive={glow} emissiveIntensity={0.2} transparent opacity={0.28} />
           </mesh>
-        )}
+        ) : null}
       </group>
       {active && <pointLight color={glow} intensity={1.2} distance={2.2} position={[0, 0.28, 0]} />}
     </group>
