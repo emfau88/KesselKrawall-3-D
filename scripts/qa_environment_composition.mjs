@@ -15,7 +15,8 @@ const target = positional[0] ?? 'http://127.0.0.1:5173/';
 const out = resolve(root, positional[1] ?? 'docs/qa/environment-composition');
 const flag = name => arguments_.includes(`--${name}`);
 const option = name => arguments_.find(argument => argument.startsWith(`--${name}=`))?.split('=').slice(1).join('=');
-const ingredientArt = flag('ingredient-art');
+const ingredientPolish = flag('ingredient-polish');
+const ingredientArt = flag('ingredient-art') || ingredientPolish;
 const lighting = flag('lighting') || ingredientArt;
 const workshopOnly = flag('workshop-only');
 const quick = flag('quick');
@@ -32,7 +33,7 @@ const profiles = [
   { name: 'mobile-landscape', viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true, variant: 'mobile' },
 ].filter(profile => !(quick || flag('desktop-only')) || profile.name === 'desktop');
 const opponents = workshopOnly ? [] : quick ? [[1, 'zischbert']] : [[1, 'zischbert'], [2, 'moor-martha']];
-const modes = ingredientArt ? ['before','after'] : lighting ? (option('looks') ?? 'reference,dark,warm,magical').split(',') : flag('after-only') ? ['after'] : flag('before-only') ? ['before'] : ['before', 'after'];
+const modes = ingredientArt ? flag('after-only')?['after']:flag('before-only')?['before']:['before','after'] : lighting ? (option('looks') ?? 'reference,dark,warm,magical').split(',') : flag('after-only') ? ['after'] : flag('before-only') ? ['before'] : ['before', 'after'];
 if (lighting && !ingredientArt) assert.ok(modes.every(mode => ['reference', 'dark', 'warm', 'magical'].includes(mode)));
 const phaseOneEvidence = lighting ? JSON.parse(await readFile(join(root,'docs/qa/environment-composition/report.json'),'utf8')) : null;
 if (!existsSync(process.env.PLAYWRIGHT_BROWSERS_PATH ?? '')) {
@@ -63,6 +64,18 @@ if (lighting) Object.assign(report, {
   comparability: 'Identical camera, viewport, DPR, saved state, RNG, inventory and HUD. Native pause at battle entry; ambient idle animation remains live.',
 });
 if (ingredientArt) Object.assign(report, {baseline:'4980b81 master assets with approved Warm Fantasy',after:'Phase 3A ingredients and pedestals',scope:'Only mockup ingredients/pedestals; same lighting, camera, UI and gameplay.',comparability:'Same saved state, camera, resolution, RNG and Warm Fantasy. Ambient animations remain live.'});
+if (ingredientPolish) Object.assign(report,{baseline:'1539387 Phase 3A assets, ingredients=phase3a',after:'Phase 3A polish, ingredients=polish',scope:'Only three ingredient sculpts and their level mounts; original pedestal base, camera, UI, lighting and rules preserved.'});
+if(flag('resume')){
+  const previous=JSON.parse(await readFile(join(out,'report.json'),'utf8'));
+  assert.equal(previous.baseline,report.baseline);
+  report.cases=previous.cases;report.fixture=previous.fixture;report.errors=previous.errors;
+  report.resumedFrom={date:previous.date,failure:previous.failure};
+  report.warnings=previous.warnings??[];
+  for(const c of previous.cases)if(c.animationObservation&&Object.keys(c.animationObservation.observed).length<3){
+    report.warnings.push(`${c.name}: incomplete active-frame observation during known first-use stalls; missing observations are not treated as successful animation checks.`);
+  }
+}
+const existingCase=name=>report.cases.find(c=>c.name===name);
 const browser = await playwright.chromium.launch({
   headless: true,
   args: process.env.QA_SOFTWARE_RENDERER === '1'
@@ -75,7 +88,7 @@ let activeLabel = 'bootstrap';
 function modeUrl(mode) {
   const url = new URL(target);
   url.searchParams.set('art', 'mockup');
-  if (ingredientArt) {url.searchParams.set('look','warm');url.searchParams.set('ingredients',mode);return url.href;}
+  if (ingredientArt) {url.searchParams.set('look','warm');url.searchParams.set('ingredients',ingredientPolish ? mode==='before'?'phase3a':'polish' : mode==='after'?'phase3a':'before');return url.href;}
   if (lighting) {
     url.searchParams.delete('composition'); url.searchParams.delete('camera'); url.searchParams.delete('passage');
     url.searchParams.set('look', mode);
@@ -192,9 +205,11 @@ async function sceneSnapshot(page) {
     const architecture = [];
     const lights = [];
     const cooldowns = [];
+    const ingredientActors=[];
     const architectureRayMeshes = new Set();
     let archNode = null;
     state.scene.traverse(node => {
+      if(node.userData.ingredientActor)ingredientActors.push({...node.userData,position:node.position.toArray(),rotation:node.rotation.toArray().slice(0,3),scale:node.scale.toArray()});
       if (node.name === 'ingredient-cooldown') cooldowns.push({...node.userData,arc:node.children[1]?.geometry?.parameters?.arc});
       if (node.userData.characterAsset) {
         const body = node.getObjectByName('Body');
@@ -236,6 +251,7 @@ async function sceneSnapshot(page) {
           if (!child.isMesh) return;
           const position = child.geometry.attributes.position;
           meshes.push({ name: child.name, triangles: (child.geometry.index?.count ?? position.count) / 3, normals: Boolean(child.geometry.attributes.normal), castShadow: child.castShadow, receiveShadow: child.receiveShadow,
+            morphNames: child.morphTargetDictionary ?? null, morphWeights: child.morphTargetInfluences ?? null,
             materials: (Array.isArray(child.material) ? child.material : [child.material]).map(material => ({ name: material.name, type: material.type, metalness: material.metalness ?? null, roughness: material.roughness ?? null, color: material.color?.getHexString(), envMapIntensity: material.envMapIntensity, colorMap: Boolean(material.map), normalMap: Boolean(material.normalMap), aoMap: Boolean(material.aoMap) })),
           });
         });
@@ -307,18 +323,19 @@ async function sceneSnapshot(page) {
     });
     for (const geometry of geometries) {
       for (const attr of Object.values(geometry.attributes)) arrays.add(attr.array ?? attr.data?.array);
+      for (const list of Object.values(geometry.morphAttributes)) for (const attr of list) arrays.add(attr.array ?? attr.data?.array);
       if (geometry.index) arrays.add(geometry.index.array);
     }
     const geometryBytes = [...arrays].reduce((n,array)=>n+(array?.byteLength??0),0);
     const textureBytesEstimate = [...textures].reduce((n,texture)=>n+(texture.image?.width??0)*(texture.image?.height??0)*4*(texture.generateMipmaps?4/3:1),0);
     return {
-      characters, productionAssets, slots, architecture, lights, camera, overlays, cooldowns,
+      characters, productionAssets, slots, architecture, lights, camera, overlays, cooldowns, ingredientActors,
       viewport: { width: innerWidth, height: innerHeight, canvas: rect(canvas) },
       floorTiles: productionAssets.filter(asset => asset.asset.startsWith('mockup-dungeon-floor-module')),
       architectureRays,
       render: { calls: state.gl.info.render.calls, triangles: state.gl.info.render.triangles },
       memory: { geometries: state.gl.info.memory.geometries, textures: state.gl.info.memory.textures, geometryBytes, textureBytesEstimate,
-        estimateNote:'Scene-referenced unique attribute/index arrays and RGBA8 texture sizes incl generated mipmaps; excludes driver copies, cache-only assets, render targets and morph buffers. Not measured VRAM.' },
+        estimateNote:'Scene-referenced unique attribute/index/morph arrays and RGBA8 texture sizes incl generated mipmaps; excludes driver copies, cache-only assets and render targets. Not measured VRAM.' },
       lighting: { environmentIntensity: state.scene.environmentIntensity, toneMapping: state.gl.toneMapping, exposure: state.gl.toneMappingExposure, shadowType: state.gl.shadowMap.type },
       dpr: state.gl.getPixelRatio(),
       gpu: debug ? context.getParameter(debug.UNMASKED_RENDERER_WEBGL) : context.getParameter(context.RENDERER),
@@ -445,6 +462,39 @@ async function frameSample(page, activeOnly = false) {
   }, {measureShadows:lighting,activeOnly});
 }
 
+async function observeIngredientAnimations(page) {
+  return page.evaluate(async () => {
+    const dependency = performance.getEntriesByType('resource').find(entry => /@react-three_fiber\.js\?/.test(entry.name))?.name;
+    const { _roots } = await import(dependency);
+    const scene = _roots.get(document.querySelector('canvas')).store.getState().scene;
+    const run=JSON.parse(localStorage.getItem('kessel-krawall-3d-run-v1'));
+    const {createCombatTimeline}=await import('/src/presentation/combat/combatPresentation.ts');
+    const timeline=createCombatTimeline(run.pendingBattle.events);
+    const expectedFirstBeats=Object.fromEntries(run.board.filter(Boolean).map(item=>[item.itemId,timeline.beats.find(b=>b.event.sourceUid===item.uid)?.startsAtMs]));
+    // Presentation serializes combat beats; a 3.8s simulation cooldown does not
+    // imply that the shell's first animation appears within 3.8s of wall time.
+    const deadline=Math.min(45000,Math.max(20000,...Object.values(expectedFirstBeats).filter(Number.isFinite).map(t=>t+8000)));
+    const observed = {};
+    const start = performance.now();
+    await new Promise(resolve => {
+      function frame() {
+        scene.traverse(node => {
+          const {ingredientActor, active, animationKey} = node.userData;
+          if (!['chili','slime-shroom','egg-shell'].includes(ingredientActor) || !active || animationKey < 0) return;
+          // Read the actual animated Group, not just the combat event stream.
+          if (Math.abs(node.rotation.x)+Math.abs(node.rotation.z)+Math.abs(node.scale.y-node.scale.x) > .005) {
+            observed[ingredientActor] = {animationKey,position:node.position.toArray(),rotation:node.rotation.toArray().slice(0,3),scale:node.scale.toArray()};
+          }
+        });
+        if (Object.keys(observed).length===3 || document.querySelector('.result-panel') || performance.now()-start>deadline) resolve();
+        else requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+    return {observed,expectedFirstBeats,deadline,durationMs:performance.now()-start,note:'Read-only rAF observation of active, transformed ingredient Groups during native 1x playback.'};
+  });
+}
+
 async function capture(page, label, snapshot, mode) {
   // Avoid comparing a blink to open eyes, without freezing or editing the scene.
   if (lighting) for (let attempt = 0; attempt < 8 && snapshot.characters.some(character => (character.morphs.Blink_L ?? 0) > 0.15); attempt++) {
@@ -554,6 +604,14 @@ async function verifyIngredientControls(page, purchased, profile, mode) {
   for(const level of [1,2,3]) {
     const levels={...purchased,selectedSlot:null,board:['chili','slime-shroom','egg-shell'].map((itemId,i)=>({uid:`qa-stage-${i}`,itemId,level})).concat([null,null])};
     const state=await reloadRun(page,levels);
+    if(ingredientPolish && mode==='after'){
+      for(const item of ['chili','slime-shroom','egg-shell']){
+        const asset=state.productionAssets.find(a=>a.asset===`ingredient-polish-${item}-${profile.variant}`);
+        assert.ok(asset,`polished ${item} is decoded`);
+        for(const mesh of asset.meshes)assert.deepEqual(mesh.morphWeights,level===1?[0,0]:level===2?[1,0]:[0,1],'sculpted level state is applied per instance');
+      }
+      assert.equal(state.productionAssets.filter(a=>a.asset.includes('tier-mount')).length,level===1?0:3,'tier mounts belong only to upgraded ingredients');
+    }
     for(let slot=0;slot<3;slot++) {
       await clickProjected(page,state.slots.find(s=>s.slot===slot).interaction,profile);
       await page.locator('.selection-popover').waitFor();
@@ -561,10 +619,15 @@ async function verifyIngredientControls(page, purchased, profile, mode) {
       await clickProjected(page,state.slots.find(s=>s.slot===slot).interaction,profile);
     }
     if(profile.name==='desktop') {
-      const path=join(out,`levels-${level}-${label}.png`);await page.screenshot({path});stageCaptures.push(path);
+      const path=join(out,`levels-${level}-${label}.png`);
+      if(ingredientPolish) await capture(page,`levels-${level}-${label}`,await sceneSnapshot(page),mode);
+      else await page.screenshot({path});stageCaptures.push(path);
       if(level===1) {
         await page.setViewportSize({width:2880,height:1800});await page.waitForTimeout(500);await waitScene(page,1);
         await page.screenshot({path:join(out,`closeup-${mode}.png`),clip:{x:580,y:700,width:1120,height:690}});
+        if(ingredientPolish)for(const [item,x,y,width,height] of [['chili',570,650,430,620],['slime-shroom',790,760,490,590],['egg-shell',1190,830,450,580]]){
+          await page.screenshot({path:join(out,`closeup-${item}-${mode}.png`),clip:{x,y,width,height}});
+        }
         await page.setViewportSize(profile.viewport);await page.waitForTimeout(300);
       }
     }
@@ -583,7 +646,8 @@ async function verifyIngredientControls(page, purchased, profile, mode) {
 
 function compareScenes() {
   if (ingredientArt) {
-    for (const profile of profiles) for (const scene of ['workshop',...opponents.map(([,enemy])=>`battle-${enemy}`)]) {
+    if(modes.length<2)return;
+    for (const profile of profiles) for (const scene of ['workshop',...opponents.map(([,enemy])=>`battle-${enemy}`),...(ingredientPolish&&profile.name==='desktop'?['levels-1','levels-2','levels-3']:[])]) {
       const b=report.cases.find(c=>c.name===`${scene}-before-${profile.name}`),a=report.cases.find(c=>c.name===`${scene}-after-${profile.name}`);
       assert.deepEqual(a.snapshot.camera,b.snapshot.camera,'ingredient pass preserves camera exactly');
       assert.deepEqual(a.snapshot.overlays,b.snapshot.overlays,'ingredient pass preserves UI');
@@ -670,6 +734,7 @@ try {
       { uid: 'qa-offer-shell', itemId: 'egg-shell', bought: false },
     ],
   });
+  if(report.fixture)assert.deepEqual(fixture,report.fixture,'resumed run uses the identical fixture');
   report.fixture = fixture;
   await bootstrap.close();
 
@@ -678,6 +743,7 @@ try {
     const battleBaselines = new Map();
     for (const mode of modes) {
       activeLabel = `${mode}-${profile.name}`;
+      if(flag('resume') && opponents.length && opponents.every(([,enemy])=>existingCase(`combat-result-and-return-${enemy}-${activeLabel}`)))continue;
       console.log(`Composition QA: ${activeLabel}`);
       const context = await browser.newContext({ viewport: profile.viewport, isMobile: profile.isMobile, hasTouch: profile.hasTouch, deviceScaleFactor: 1 });
       await context.addInitScript(({ key, snapshot }) => {
@@ -703,16 +769,17 @@ try {
       assert.equal(purchased.offers[0].bought, true, 'native offer is sold after purchase');
       if (mode === 'before' || (lighting && mode === modes[0])) purchasedBaseline = purchased;
       else if (purchasedBaseline) assert.deepEqual(purchased, purchasedBaseline, 'purchase/merge and inventory unchanged by composition');
-      const purchaseCase = { name: `purchase-and-merge-${activeLabel}`, goldBefore: fixture.gold, goldAfter: purchased.gold, board: purchased.board, blockedBattleDuringPurchase: true };
-      report.cases.push(purchaseCase);
+      const purchaseCase = existingCase(`purchase-and-merge-${activeLabel}`)??{ name: `purchase-and-merge-${activeLabel}`, goldBefore: fixture.gold, goldAfter: purchased.gold, board: purchased.board, blockedBattleDuringPurchase: true };
+      if(!existingCase(purchaseCase.name))report.cases.push(purchaseCase);
       const workshop = await waitScene(page, 1);
       assert.ok(assertCharacter(workshop, 'brasskin', profile.variant).front[2] > 0.8, 'workshop character faces the user');
-      await capture(page, `workshop-${activeLabel}`, workshop, mode);
-      if (ingredientArt) await verifyIngredientControls(page,purchased,profile,mode);
+      if(!existingCase(`workshop-${activeLabel}`))await capture(page, `workshop-${activeLabel}`, workshop, mode);
+      if (ingredientArt && !existingCase(`ingredient-interactions-${activeLabel}`)) await verifyIngredientControls(page,purchased,profile,mode);
       if (workshopOnly) { await context.close(); continue; }
-      purchaseCase.unlockedReserve = await verifyUnlockedReserve(page, purchased, profile, mode);
+      if(!purchaseCase.unlockedReserve)purchaseCase.unlockedReserve = await verifyUnlockedReserve(page, purchased, profile, mode);
 
       for (const [round, enemy] of opponents) {
+        if(existingCase(`combat-result-and-return-${enemy}-${activeLabel}`))continue;
         if (round === 2) {
           await reloadRun(page, { ...purchased, phase: 'shop', round: 2, opponentVariant: 0, pendingBattle: null, selectedSlot: null,
               board: [{ uid: 'qa-chili', itemId: 'chili', level: 2 }, { uid: 'qa-shroom', itemId: 'slime-shroom', level: 2 }, { uid: 'qa-shell', itemId: 'egg-shell', level: 1 }, null, null],
@@ -735,8 +802,11 @@ try {
         const opponent = assertCharacter(battle, enemy, profile.variant);
         assert.ok(player.front[2] < -0.8 && opponent.front[2] > 0.8, 'combatants still face each other');
         assert.ok(player.position[2] - opponent.position[2] > 7, 'the seven-unit VFX travel lane is preserved');
-        await capture(page, `battle-${enemy}-${activeLabel}`, battle, mode);
-        let activeTiming;
+        if(!existingCase(`battle-${enemy}-${activeLabel}`))await capture(page, `battle-${enemy}-${activeLabel}`, battle, mode);
+        let activeTiming, animationObservation;
+        const checkAnimations = ingredientPolish && mode==='after' && profile.name==='desktop' && enemy==='moor-martha' && !existingCase(`native-ingredient-animations-${activeLabel}`);
+        if(checkAnimations) await page.getByRole('button',{name:'1×',exact:true}).click();
+        const animationSample = checkAnimations ? observeIngredientAnimations(page) : null;
         if (lighting && sampleFrames && !ingredientArt) {
           await page.getByRole('button', { name: '1×', exact: true }).click();
           await page.getByRole('button', { name: 'Kampf fortsetzen', exact: true }).click();
@@ -752,6 +822,13 @@ try {
             assert.ok((await page.locator('.combat-ingredient').first().getAttribute('style')).includes('--cooldown-turn'),'HUD cooldown rendering retained');
           }
         }
+        if(animationSample){
+          animationObservation=await animationSample;
+          report.cases.push({name:`native-ingredient-animations-${activeLabel}`,animationObservation});
+          if(Object.keys(animationObservation.observed).length<3){
+            (report.warnings??=[]).push(`${activeLabel}: active animation sampling missed ${['chili','slime-shroom','egg-shell'].filter(id=>!animationObservation.observed[id]).join(', ')}. Known first-use stalls remain; this is NOT an all-animations pass.`);
+          }
+        }
         // Native UI activation in one DOM turn: a first-use stall can finish the
         // short fight between a locator's existence check and its stable click.
         const spedUp = await page.evaluate(() => {
@@ -764,7 +841,7 @@ try {
         await page.getByRole('button', { name: 'Zurück zur Werkbank', exact: true }).click();
         await page.locator('.shop-ribbon').waitFor();
         assertCharacter(await waitScene(page, 1), 'brasskin', profile.variant);
-        report.cases.push({ name: `combat-result-and-return-${enemy}-${activeLabel}`, pauseThroughNativeUi: true, native4xPlayback: spedUp, returnedToWorkshop: true, activeTiming });
+        report.cases.push({ name: `combat-result-and-return-${enemy}-${activeLabel}`, pauseThroughNativeUi: true, native4xPlayback: spedUp, returnedToWorkshop: true, activeTiming, animationObservation });
       }
       await context.close();
     }
@@ -784,4 +861,4 @@ try {
   await writeFile(join(out, 'report.json'), JSON.stringify(report, null, 2));
   await browser.close();
 }
-console.log(`Composition QA: ${report.cases.length} cases passed; ${report.cases.filter(entry => entry.screenshot).length} actual game captures; ${report.comparisons.length} paired comparisons; no runtime errors.`);
+console.log(`Composition QA: ${report.cases.length} cases recorded; ${report.cases.filter(entry => entry.screenshot).length} actual game captures; ${report.comparisons.length} paired comparisons; no runtime errors; ${report.warnings?.length??0} observational warnings (see report).`);

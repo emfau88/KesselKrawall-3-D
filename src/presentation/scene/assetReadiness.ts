@@ -5,7 +5,7 @@ import { brasskinAssetId, characterAssetId } from "./character/brasskinAssets";
 import { getRuntimeQualityProfile, type RuntimeQualityProfile } from "./runtimeQuality";
 import { mockupAssetId } from "./mockupAssetIds";
 import { isMockupCompositionEnabled } from "./compositionMode";
-import { ingredientArtEnabled, ingredientArtAsset, isPhase3AItem } from "./ingredientArt";
+import { ingredientArtEnabled, ingredientArtAsset, ingredientMountAsset, ingredientPolishEnabled, isPhase3AItem } from "./ingredientArt";
 
 export interface AssetLoadProgress {
   readonly completed: number;
@@ -67,6 +67,7 @@ export function getBattleCriticalAssetIds(
     if (!item) continue;
     if (mode === "mockup" && ingredientArtEnabled() && isPhase3AItem(item.itemId)) {
       assets.push(ingredientArtAsset(item.itemId, qualityTier));
+      if (ingredientPolishEnabled() && item.level > 1) assets.push(ingredientMountAsset(qualityTier));
       continue;
     }
     const asset = HERO_INGREDIENTS[item.itemId];

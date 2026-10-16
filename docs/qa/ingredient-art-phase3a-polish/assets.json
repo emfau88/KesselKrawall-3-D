@@ -1,0 +1,374 @@
+{
+  "baseline": "1539387",
+  "note": "Unique offline asset buffers; morph bytes are additional. RGBA8 image estimates and RGBA32F morph textures are reported separately. Morph texture minimum follows installed Three.js WebGLMorphtargets: vertices * attribute stride * 16 * targets, before texture-row padding. Excludes driver and render targets. Original pedestal files are reused unchanged.",
+  "desktop": {
+    "before": [
+      {
+        "path": "public/assets/ingredient-phase3a/chili-desktop.glb",
+        "bytes": 389104,
+        "sha256": "b04a929e6dabc32d99b84320e6ab5e02faec7455003c2c6bc4fa2bbdce90606f",
+        "triangles": 2142,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 68660,
+        "morphBufferBytes": 0,
+        "morphTextureBytesMinimum": 0,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 512,
+            "height": 512,
+            "compressedBytes": 282207
+          }
+        ],
+        "textureBytesEstimate": 1485482.6666666665
+      },
+      {
+        "path": "public/assets/ingredient-phase3a/slime-shroom-desktop.glb",
+        "bytes": 465180,
+        "sha256": "98c8aedbd386f60646c012b08803b5cfc590fc7e04d293754f213f8c0e372b0e",
+        "triangles": 2726,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 101092,
+        "morphBufferBytes": 0,
+        "morphTextureBytesMinimum": 0,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 512,
+            "height": 512,
+            "compressedBytes": 325804
+          }
+        ],
+        "textureBytesEstimate": 1485482.6666666665
+      },
+      {
+        "path": "public/assets/ingredient-phase3a/egg-shell-desktop.glb",
+        "bytes": 426636,
+        "sha256": "0e0093d0fce349ebb2caee1e25fe6ed615a7c20624c4540ab91835a36ea4dae2",
+        "triangles": 2194,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 79084,
+        "morphBufferBytes": 0,
+        "morphTextureBytesMinimum": 0,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 512,
+            "height": 512,
+            "compressedBytes": 309277
+          }
+        ],
+        "textureBytesEstimate": 1485482.6666666665
+      }
+    ],
+    "after": [
+      {
+        "path": "public/assets/ingredient-phase3a-polish/chili-desktop.glb",
+        "bytes": 356996,
+        "sha256": "6f791fb72d66c70d77fe8784ddd2c9783b2de27b1b01926abf33d5cbc1aec3d2",
+        "triangles": 1698,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 52716,
+        "morphBufferBytes": 56442,
+        "morphTextureBytesMinimum": 85056,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 512,
+            "height": 512,
+            "compressedBytes": 206548
+          }
+        ],
+        "textureBytesEstimate": 1485482.6666666665
+      },
+      {
+        "path": "public/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+        "bytes": 485612,
+        "sha256": "21c385a486687d2a2266dd1ba892c21196b48004c20805891970fc570985dced",
+        "triangles": 2726,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 102372,
+        "morphBufferBytes": 89796,
+        "morphTextureBytesMinimum": 172032,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 512,
+            "height": 512,
+            "compressedBytes": 251856
+          }
+        ],
+        "textureBytesEstimate": 1485482.6666666665
+      },
+      {
+        "path": "public/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+        "bytes": 416768,
+        "sha256": "dc6e5995e7d72f1d6d53b223e526a7ff6c3116c61397a360a3268af651b16292",
+        "triangles": 1806,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 61908,
+        "morphBufferBytes": 48602,
+        "morphTextureBytesMinimum": 102144,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 512,
+            "height": 512,
+            "compressedBytes": 264915
+          }
+        ],
+        "textureBytesEstimate": 1485482.6666666665
+      }
+    ],
+    "mount": {
+      "path": "public/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+      "bytes": 68760,
+      "sha256": "5ea7722f720641a37cd9780b7c79ca856d8fde4fd48e17f6c3c2dcde02ba0852",
+      "triangles": 702,
+      "drawPrimitives": 2,
+      "geometryBufferBytes": 17044,
+      "morphBufferBytes": 12694,
+      "morphTextureBytesMinimum": 25664,
+      "images": [
+        {
+          "width": 128,
+          "height": 128,
+          "compressedBytes": 34375
+        }
+      ],
+      "textureBytesEstimate": 87381.33333333333
+    },
+    "unchangedPedestal": {
+      "path": "public/assets/ingredient-phase3a/pedestal-desktop.glb",
+      "bytes": 358804,
+      "sha256": "eb1de63d6294a7a370a98f5025666ebaa095c345fe86d8482651bf791ce0a2b0",
+      "triangles": 1642,
+      "drawPrimitives": 3,
+      "geometryBufferBytes": 86300,
+      "morphBufferBytes": 0,
+      "morphTextureBytesMinimum": 0,
+      "images": [
+        {
+          "width": 128,
+          "height": 128,
+          "compressedBytes": 34375
+        },
+        {
+          "width": 512,
+          "height": 512,
+          "compressedBytes": 234265
+        }
+      ],
+      "textureBytesEstimate": 1485482.6666666665
+    }
+  },
+  "mobile": {
+    "before": [
+      {
+        "path": "public/assets/ingredient-phase3a/chili-mobile.glb",
+        "bytes": 166568,
+        "sha256": "5ba36ce6ee35cb25cadf187f506282a388307e3f63ec34cc561e7a5172293c65",
+        "triangles": 1074,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 39116,
+        "morphBufferBytes": 0,
+        "morphTextureBytesMinimum": 0,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "compressedBytes": 89202
+          }
+        ],
+        "textureBytesEstimate": 436906.6666666666
+      },
+      {
+        "path": "public/assets/ingredient-phase3a/slime-shroom-mobile.glb",
+        "bytes": 209280,
+        "sha256": "a60d1db3ae2551daf65ea1875c489d806d0b1a72dbdaab8a108dc6e84c2b5dee",
+        "triangles": 1846,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 68580,
+        "morphBufferBytes": 0,
+        "morphTextureBytesMinimum": 0,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "compressedBytes": 102389
+          }
+        ],
+        "textureBytesEstimate": 436906.6666666666
+      },
+      {
+        "path": "public/assets/ingredient-phase3a/egg-shell-mobile.glb",
+        "bytes": 197912,
+        "sha256": "ddd4d306c2ee36ea109037d462ef175a19d638de6c6f080132f3b0ccda7baa4c",
+        "triangles": 1458,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 54508,
+        "morphBufferBytes": 0,
+        "morphTextureBytesMinimum": 0,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "compressedBytes": 105111
+          }
+        ],
+        "textureBytesEstimate": 436906.6666666666
+      }
+    ],
+    "after": [
+      {
+        "path": "public/assets/ingredient-phase3a-polish/chili-mobile.glb",
+        "bytes": 191364,
+        "sha256": "6b592711550ea151ad9af5cf85427ebc199de513f841c397319595cfe77dc5fc",
+        "triangles": 1174,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 38468,
+        "morphBufferBytes": 39806,
+        "morphTextureBytesMinimum": 62848,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "compressedBytes": 71805
+          }
+        ],
+        "textureBytesEstimate": 436906.6666666666
+      },
+      {
+        "path": "public/assets/ingredient-phase3a-polish/slime-shroom-mobile.glb",
+        "bytes": 291116,
+        "sha256": "6978a069b0d608d62eea8491ef153f23d8309045555413b6d18c361b08090466",
+        "triangles": 2198,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 84676,
+        "morphBufferBytes": 75260,
+        "morphTextureBytesMinimum": 142976,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "compressedBytes": 89588
+          }
+        ],
+        "textureBytesEstimate": 436906.6666666666
+      },
+      {
+        "path": "public/assets/ingredient-phase3a-polish/egg-shell-mobile.glb",
+        "bytes": 210636,
+        "sha256": "50bc9e322f2c8365c49170fe1df03c9ba77ed8252d612c9ad87040f34b409dfa",
+        "triangles": 1358,
+        "drawPrimitives": 3,
+        "geometryBufferBytes": 48564,
+        "morphBufferBytes": 38118,
+        "morphTextureBytesMinimum": 80832,
+        "images": [
+          {
+            "width": 128,
+            "height": 128,
+            "compressedBytes": 34375
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "compressedBytes": 82607
+          }
+        ],
+        "textureBytesEstimate": 436906.6666666666
+      }
+    ],
+    "mount": {
+      "path": "public/assets/ingredient-phase3a-polish/tier-mount-mobile.glb",
+      "bytes": 66048,
+      "sha256": "02c1cf297fb234ce88e3c93023985632546e5fb205f49e00cfdbc05058f5040c",
+      "triangles": 622,
+      "drawPrimitives": 2,
+      "geometryBufferBytes": 15284,
+      "morphBufferBytes": 11734,
+      "morphTextureBytesMinimum": 23104,
+      "images": [
+        {
+          "width": 128,
+          "height": 128,
+          "compressedBytes": 34375
+        }
+      ],
+      "textureBytesEstimate": 87381.33333333333
+    },
+    "unchangedPedestal": {
+      "path": "public/assets/ingredient-phase3a/pedestal-mobile.glb",
+      "bytes": 182216,
+      "sha256": "6e816caa27dcdaf0da9ac9f29907ea0ff2654c2bf203b2efa25a6d20d1bab648",
+      "triangles": 1258,
+      "drawPrimitives": 3,
+      "geometryBufferBytes": 67484,
+      "morphBufferBytes": 0,
+      "morphTextureBytesMinimum": 0,
+      "images": [
+        {
+          "width": 128,
+          "height": 128,
+          "compressedBytes": 34375
+        },
+        {
+          "width": 256,
+          "height": 256,
+          "compressedBytes": 76480
+        }
+      ],
+      "textureBytesEstimate": 436906.6666666666
+    }
+  }
+}

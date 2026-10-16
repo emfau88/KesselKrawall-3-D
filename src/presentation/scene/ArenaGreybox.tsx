@@ -12,7 +12,7 @@ import type { CauldronReaction } from "./CauldronActor";
 import { BattleVfx } from "./BattleVfx";
 import { IngredientModel } from "./IngredientModel";
 import { FantasyPedestal } from "./FantasyPedestal";
-import { ingredientArtEnabled, ingredientRestHeight, isPhase3AItem } from "./ingredientArt";
+import { ingredientArtEnabled, ingredientUpgradeLevel, ingredientRestHeight, isPhase3AItem } from "./ingredientArt";
 import { OpponentArenaIdentity } from "./OpponentArenaIdentity";
 import { ProductionAsset, ProductionAssetBoundary } from "./ProductionAsset";
 import { getRuntimeQualityProfile } from "./runtimeQuality";
@@ -93,7 +93,7 @@ function IngredientPedestal({
 
   return (
     <group scale={side === "player" ? 0.74 : 0.64}>
-      {refined ? <FantasyPedestal arena accent={item ? glow : "#b3a082"} selected={active || buffed} /> : <mesh castShadow receiveShadow position={[0, -0.36, 0]}>
+      {refined ? <FantasyPedestal arena accent={item ? glow : "#b3a082"} selected={active || buffed} upgradeLevel={ingredientUpgradeLevel(item?.itemId, item?.level)} /> : <mesh castShadow receiveShadow position={[0, -0.36, 0]}>
         <cylinderGeometry args={[0.68, 0.8, 0.22, 12]} />
         <meshStandardMaterial color={side === "player" ? "#342c31" : "#2c2834"} metalness={0.24} roughness={0.72} />
       </mesh>}

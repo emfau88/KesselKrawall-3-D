@@ -11,32 +11,39 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
-### Zutaten und Podeste auf dem Arbeitsbranch
+### Zutaten-Polish auf dem Arbeitsbranch
 
-Phase 3A auf `codex/ingredient-art-phase3a` baut auf `master` mit den abgeschlossenen
-Phasen 1 und 2 auf. Die freigegebene Beleuchtung **B – Warm Fantasy** ist jetzt
-Standard für `?art=mockup`. Neue dunkle Stein-/Messingpodeste und ausschließlich
-Glut-Chili, Schleimpilz und Runenschale besitzen eigene Blender-Modelle mit
-Desktop-/Mobile-LODs. Spielregeln, Kamera und Umgebung bleiben unverändert.
+`codex/ingredient-art-phase3a-polish` baut auf Phase 3A, Commit **1539387**, auf.
+Ausschließlich Glut-Chili, Schleimpilz und Runenschale erhalten vollere bzw.
+organischere Formen, abgestimmte Oberflächen und integrierte Upgrades I–III.
+Die Basalt-Messing-Podeste bleiben erhalten; ab Stufe II kommt eine veredelte
+Fassung hinzu. Die schwebenden Stufensteine entfallen nur bei diesen drei Zutaten.
+**B – Warm Fantasy**, Spielregeln, Kamera, UI und Umgebung bleiben unverändert.
+Desktop-/Mobile-LODs entstehen reproduzierbar mit der bestehenden Blender-Pipeline.
 
-[Phase 3A lokal spielen](http://127.0.0.1:5173/?art=mockup) ·
-[Vorher spielen](http://127.0.0.1:5173/?art=mockup&look=warm&ingredients=before) ·
-[Vorher-Nachher-Vergleich mit Mobile und Stufen I–III](http://127.0.0.1:5173/docs/qa/ingredient-art-phase3a/compare.html) ·
-[Abnahme und Performance](docs/qa/ingredient-art-phase3a/README.md).
+[Polish lokal spielen](http://127.0.0.1:5173/?art=mockup) ·
+[1539387 vorher spielen](http://127.0.0.1:5173/?art=mockup&ingredients=phase3a) ·
+[Vorher-Nachher: Desktop, Mobile, Stufen und Einzel-Nahaufnahmen](http://127.0.0.1:5173/docs/qa/ingredient-art-phase3a-polish/compare.html) ·
+[Kritische Abnahme und Performance](docs/qa/ingredient-art-phase3a-polish/README.md).
 
-![Werkbank vor und nach der Zutaten- und Podestüberarbeitung unter identischem Warm-Fantasy-Licht](docs/qa/ingredient-art-phase3a/compare-workshop.png)
+![Alle drei Zutaten auf Stufe I vor und nach dem Polish, identische Spielkamera und Warm Fantasy](docs/qa/ingredient-art-phase3a-polish/compare-workshop.png)
 
-![Kampfarena vor und nach Phase 3A bei identischer Kamera und gleichem Spielstand](docs/qa/ingredient-art-phase3a/compare-battle.png)
+![Stufe III: schwebende Marker gegenüber integrierten Zutaten-Upgrades und veredelten Podesten](docs/qa/ingredient-art-phase3a-polish/compare-levels-3.png)
 
-![Nahaufnahme der drei Zutaten und ihrer Podeste vor und nach Phase 3A](docs/qa/ingredient-art-phase3a/compare-closeup.png)
+![Echte Ingame-Nahaufnahmen der drei Zutaten vor und nach dem Polish](docs/qa/ingredient-art-phase3a-polish/compare-closeup.png)
 
-Die alten Assets bleiben mit `ingredients=before` erhalten. Die Lichtvarianten
+Die Phase-3A-Assets bleiben mit `ingredients=phase3a`, die älteren Assets mit
+`ingredients=before` erhalten. Die Lichtvarianten
 `look=reference`, `look=dark` und `look=magical` sind weiterhin verfügbar;
 Golden, Legacy und Ecosystem behalten ihre bisherigen Assets und ihr Licht.
-Die [Phase-2-Lichtvergleiche](docs/qa/environment-lighting/README.md) bleiben archiviert.
+Die [Phase-3A-Vergleiche](docs/qa/ingredient-art-phase3a/README.md) und
+[Phase-2-Lichtvergleiche](docs/qa/environment-lighting/README.md) bleiben archiviert.
 Die bekannten mehrsekündigen Hänger beim ersten aktiven Kampf sind nicht durch
 diesen Assetpass behoben. Mobile-Aufnahmen sind PC-Emulation, keine Gerätefreigabe.
-Phase 3A endet zur visuellen Abnahme: kein Merge nach `master`, kein Pages-Release.
+Der Polish endet zur visuellen Abnahme: kein Merge nach `master`, kein Pages-Release.
+Die Formensprache ist weiterentwickelt, Brasskins individuelle handgemalt wirkende
+Oberflächenqualität aber noch nicht vollständig erreicht. Keine automatische
+Freigabe für die übrigen 17 Zutaten; Details und Grenzen stehen im Abnahmebericht.
 
 ### Bisherige Raumüberarbeitung
 

@@ -2,6 +2,18 @@
 
 Stand: 22. August 2026
 
+## Ergänzung Phase 3A Polish – 16. Oktober 2026
+
+`public/assets/ingredient-phase3a-polish/` enthält die separat exportierten
+Verfeinerungen von Chili, Schleimpilz und Runenschale sowie eine wiederverwendbare
+Upgrade-Fassung, jeweils Desktop/Mobile. Form, Farbatlas und Normaltextur sind
+lokale Projektassets aus `art/blender/polish_ingredient_phase3a.py`, aufbauend auf
+der vorhandenen Phase-3A-Pipeline. Keine bezahlten oder zusätzlichen externen
+Ressourcen; ursprüngliche GLBs und Referenzgrafiken bleiben unverändert.
+Die Inventare liegen in `public/assets/ingredient-phase3a-polish/manifest.json`
+und `docs/qa/ingredient-art-phase3a-polish/assets.json` (einschließlich Prüfsummen).
+Dies begründet keine zusätzliche Lizenzfreigabe für die Original-2D-Bilder.
+
 ## Ergänzung Phase 3A – 16. Oktober 2026
 
 `public/assets/ingredient-phase3a/` enthält acht neue GLBs: Fantasy-Podest,

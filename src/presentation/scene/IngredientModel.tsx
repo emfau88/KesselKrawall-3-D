@@ -11,7 +11,7 @@ import {
 import { getItemDefinition } from "../../core/data";
 import type { ItemLevel } from "../../core/types";
 import { ProductionAsset, ProductionAssetBoundary, type ProductionAssetId } from "./ProductionAsset";
-import { ingredientArtEnabled, ingredientArtAsset, isPhase3AItem } from "./ingredientArt";
+import { ingredientArtEnabled, ingredientArtAsset, ingredientPolishEnabled, isPhase3AItem } from "./ingredientArt";
 
 const FAMILY_COLORS = {
   fire: { base: "#c9442f", accent: "#ffb13f", glow: "#e55b2f" },
@@ -100,7 +100,10 @@ function ActivationAura({ family }: { family: keyof typeof FAMILY_COLORS }) {
   );
 }
 
-function LevelDetails({ level, color, refined = false }: { level: ItemLevel; color: string; refined?: boolean }) {
+function LevelDetails({ level, color, refined = false, polished = false }: { level: ItemLevel; color: string; refined?: boolean; polished?: boolean }) {
+  // Preserve the exact existing level light. Sculpted growth and the forged
+  // pedestal mount replace only these three ingredients' floating stone badges.
+  if (polished) return level > 1 ? <pointLight color={color} intensity={level === 3 ? 1.6 : 0.85} distance={1.8} position={[0, 0.1, 0]} /> : null;
   return (
     <group>
       {level > 1 && (
@@ -507,6 +510,7 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
   }
 
   const refined = ingredientArtEnabled() && isPhase3AItem(itemId);
+  const polished = refined && ingredientPolishEnabled();
   const heroAsset: ProductionAssetId | null = refined && isPhase3AItem(itemId) ? ingredientArtAsset(itemId) : itemId === "chili"
     ? "ingredient-chili"
     : itemId === "slime-shroom"
@@ -517,17 +521,17 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
   const visibleModel = heroAsset ? (
     <ProductionAssetBoundary fallback={model}>
       <Suspense fallback={model}>
-        <ProductionAsset asset={heroAsset} opacity={faded ? 0.58 : 1} scale={0.98} />
+        <ProductionAsset asset={heroAsset} opacity={faded ? 0.58 : 1} scale={0.98} morphLevel={polished ? level : undefined} />
       </Suspense>
     </ProductionAssetBoundary>
   ) : model;
 
   return (
     <group scale={scale}>
-      <group ref={actor}>
+      <group ref={actor} userData={{ ingredientActor: itemId, level, active, animationKey }}>
         {visibleModel}
         {active ? <ActivationAura family={definition.family} /> : null}
-        <LevelDetails level={level} color={colors.accent} refined={refined} />
+        <LevelDetails level={level} color={colors.accent} refined={refined} polished={polished} />
       </group>
     </group>
   );

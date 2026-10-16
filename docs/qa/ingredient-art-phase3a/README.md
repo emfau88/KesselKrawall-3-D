@@ -11,7 +11,7 @@ weiterhin die bisherigen Zutaten und Podeste.
 ## Ansehen und vergleichen
 
 - [Lokaler Vorher-Nachher-Vergleich](http://127.0.0.1:5173/docs/qa/ingredient-art-phase3a/compare.html)
-- [Phase 3A spielen](http://127.0.0.1:5173/?art=mockup)
+- [Phase 3A spielen](http://127.0.0.1:5173/?art=mockup&ingredients=phase3a)
 - [Alte Zutaten mit identischem Warm Fantasy spielen](http://127.0.0.1:5173/?art=mockup&look=warm&ingredients=before)
 - Weitere Lichtvarianten: `look=reference`, `look=dark`, `look=magical`.
 - Der globale Standard ohne `art=mockup` bleibt Golden. `composition=before`

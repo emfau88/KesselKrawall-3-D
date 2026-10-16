@@ -446,6 +446,7 @@ export function ProductionAsset({
   receiveShadow = true,
   tint,
   opacity = 1,
+  morphLevel,
 }: {
   asset: ProductionAssetId;
   position?: Vector3Tuple;
@@ -455,6 +456,7 @@ export function ProductionAsset({
   receiveShadow?: boolean;
   tint?: ColorRepresentation;
   opacity?: number;
+  morphLevel?: 1 | 2 | 3;
 }) {
   const definition = PRODUCTION_ASSETS[asset];
   const authoredMaterial = "materialPolicy" in definition && definition.materialPolicy === "authored";
@@ -472,6 +474,11 @@ export function ProductionAsset({
       if (!(node instanceof Mesh)) return;
       node.castShadow = resolvedCastShadow;
       node.receiveShadow = receiveShadow;
+      if (morphLevel !== undefined && node.morphTargetDictionary && node.morphTargetInfluences) {
+        for (const [name, index] of Object.entries(node.morphTargetDictionary)) {
+          node.morphTargetInfluences[index] = name === `Level${morphLevel === 2 ? "II" : morphLevel === 3 ? "III" : "I"}` ? 1 : 0;
+        }
+      }
       const originalMaterial = node.userData.productionSourceMaterial as Material | Material[] | undefined;
       const sourceMaterial = originalMaterial ?? node.material;
       node.userData.productionSourceMaterial = sourceMaterial;
@@ -479,7 +486,7 @@ export function ProductionAsset({
         ? sourceMaterial.map((material) => polishMaterial(material, tint, authoredMaterial, opacity, asset))
         : polishMaterial(sourceMaterial, tint, authoredMaterial, opacity, asset);
     });
-  }, [asset, authoredMaterial, model, opacity, receiveShadow, resolvedCastShadow, tint]);
+  }, [asset, authoredMaterial, model, morphLevel, opacity, receiveShadow, resolvedCastShadow, tint]);
 
   return (
     <group position={position} rotation={rotation} scale={scale} userData={{ productionAsset: asset }}>

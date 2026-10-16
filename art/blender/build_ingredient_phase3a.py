@@ -253,7 +253,7 @@ def build_shell():
         blob('Mineral pore',(r*math.cos(a),r*math.sin(a),z),(.012,.012,.017),ceramic,(.34,.26,.14),6,4)
 
 
-def export(name,tier):
+def export(name,tier,morph_vertices=None):
     # Collapse ornamentation into one mesh per material, not a draw per detail.
     vertices=[];faces=[];colors=[];uvs=[];materials=[];face_materials=[];smooth=[]
     # Explicit per-material export avoids a Blender 5.2 multi-material glTF path
@@ -293,10 +293,26 @@ def export(name,tier):
                 part.color_attributes['SurfaceColor'].data[ni].color=paint.data[oi].color
                 part.uv_layers['SurfaceUV'].data[ni].uv=uv.data[oi].uv
         obj=bpy.data.objects.new(f'{name}_{mi}',part);bpy.context.collection.objects.link(obj);obj.select_set(True)
+        if morph_vertices:
+            obj.shape_key_add(name='Basis')
+            for label,coordinates in morph_vertices.items():
+                key=obj.shape_key_add(name=label)
+                for local,global_index in enumerate(indices):key.data[local].co=coordinates[global_index]
         export_objects.append(obj)
         bpy.context.view_layer.objects.active=obj
     data.calc_loop_triangles()
+    if morph_vertices:
+        # Unwrap/bake the fully grown shape so initially tucked-in parts receive
+        # real atlas space rather than black sub-pixel UV islands at level III.
+        for obj in export_objects:
+            obj.active_shape_key_index=len(obj.data.shape_keys.key_blocks)-1
+            obj.show_only_shape_key=True
     bake_surface(name,export_objects,materials)
+    if morph_vertices:
+        for obj in export_objects:
+            obj.active_shape_key_index=0
+            obj.show_only_shape_key=False
+            for key in obj.data.shape_keys.key_blocks:key.value=0
     filename=f'{name}-{tier}.glb'
     bpy.ops.export_scene.gltf(filepath=str(OUT/filename),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_cameras=False,export_lights=False,export_animations=False,export_materials='EXPORT',export_vertex_color='NONE')
     return {'file':filename,'triangles':len(data.loop_triangles),'materials':len(materials),'bytes':(OUT/filename).stat().st_size,'bounds':[[min(v.co[a] for v in data.vertices) for a in range(3)],[max(v.co[a] for v in data.vertices) for a in range(3)]]}
@@ -319,7 +335,7 @@ def bake_surface(name,objects,materials):
         ramp.color_ramp.elements[0].position=.25;ramp.color_ramp.elements[0].color=(.32,.29,.25,1)
         ramp.color_ramp.elements[1].position=.75;ramp.color_ramp.elements[1].color=(1,.95,.86,1)
         links.new(noise.outputs['Fac'],ramp.inputs[0])
-        mix=nodes.new('ShaderNodeMixRGB');mix.blend_type='MULTIPLY';mix.inputs[0].default_value=.65
+        mix=nodes.new('ShaderNodeMixRGB');mix.blend_type='MULTIPLY';mix.inputs[0].default_value=globals().get('SURFACE_GRAIN',.65)
         links.new(vertex.outputs['Color'],mix.inputs[1]);links.new(ramp.outputs[0],mix.inputs[2])
         emit=nodes.new('ShaderNodeEmission');links.new(mix.outputs[0],emit.inputs[0])
         output=nodes.get('Material Output');links.new(emit.outputs[0],output.inputs['Surface'])
@@ -351,11 +367,12 @@ for y in range(128):
         pixels.extend([.5+dx,.5+dy,1,1])
 MICRO.pixels=pixels
 MICRO.pack()
-manifest={'version':1,'source':'Original Blender geometry, legacy ingredient images used as design reference only','assets':[]}
-for tier in ['desktop','mobile']:
-    MOBILE=tier=='mobile'
-    for name,build in [('pedestal',build_pedestal),('chili',build_chili),('slime-shroom',build_shroom),('egg-shell',build_shell)]:
-        reset();build()
-        manifest['assets'].append(export(name,tier))
-(OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf8')
-print('PHASE3A_ASSET_MANIFEST',json.dumps(manifest))
+if __name__ == '__main__':
+    manifest={'version':1,'source':'Original Blender geometry, legacy ingredient images used as design reference only','assets':[]}
+    for tier in ['desktop','mobile']:
+        MOBILE=tier=='mobile'
+        for name,build in [('pedestal',build_pedestal),('chili',build_chili),('slime-shroom',build_shroom),('egg-shell',build_shell)]:
+            reset();build()
+            manifest['assets'].append(export(name,tier))
+    (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf8')
+    print('PHASE3A_ASSET_MANIFEST',json.dumps(manifest))

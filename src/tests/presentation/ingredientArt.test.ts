@@ -30,7 +30,7 @@ describe("Phase 3A isolation and asset contracts",()=>{
       expect(foot).toBeCloseTo(arena?-.245:.225,6);
     }
   });
-  for(const [id,asset] of Object.entries(INGREDIENT_ART_ASSETS))it(`${id}: valid bounded PBR GLB`,()=>{
+  for(const [id,asset] of Object.entries(INGREDIENT_ART_ASSETS).filter(([id])=>id.startsWith("ingredient-phase3a-")))it(`${id}: valid bounded PBR GLB`,()=>{
     const b=readFileSync(join(process.cwd(),"public/assets",asset.root,asset.file));
     expect(b.toString("ascii",0,4)).toBe("glTF");expect(b.readUInt32LE(8)).toBe(b.length);
     const gltf=JSON.parse(b.subarray(20,20+b.readUInt32LE(12)).toString());

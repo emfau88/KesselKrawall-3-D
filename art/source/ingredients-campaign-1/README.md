@@ -6,6 +6,9 @@ Die bisherigen Modelle bleiben für Golden und die Vergleichsansicht erhalten.
 Phase 3A verwendet Chili, Schleimpilz und Eierschale als Designreferenzen für neue,
 lokal in Blender gebaute Mockup-Assets; siehe
 [Abnahmebericht](../../../docs/qa/ingredient-art-phase3a/README.md).
+Der anschließende [Polish-Pass](../../../docs/qa/ingredient-art-phase3a-polish/README.md)
+verfeinert ausschließlich diese drei Modelle und ihre Stufen in einer separaten
+Assetserie. Die Originalbilder und Phase-3A-GLBs bleiben unverändert erhalten.
 
 Die Zuordnung wurde anhand der tatsächlichen Kampagnendaten und Shopfilter
 des 2D-Repositories geprüft; nicht anhand einer Vermutung oder nur der ersten

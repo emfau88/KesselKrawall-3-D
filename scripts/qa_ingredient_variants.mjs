@@ -6,14 +6,16 @@ import {join} from 'node:path';
 const require=createRequire(import.meta.url);
 let playwright;try{playwright=require('playwright')}catch{playwright=require(join(homedir(),'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'))}
 process.env.PLAYWRIGHT_BROWSERS_PATH??=join(homedir(),'AppData/Local/ms-playwright');
-const source=JSON.parse(await readFile('docs/qa/ingredient-art-phase3a/report.json','utf8'));
+const polish=process.argv.includes('--polish');
+const folder=`docs/qa/ingredient-art-phase3a${polish?'-polish':''}`;
+const source=JSON.parse(await readFile(`${folder}/report.json`,'utf8'));
 const target=process.argv[2]??'http://127.0.0.1:5173/';
 const production=process.argv.includes('--production');
 const args=[...(process.platform==='win32'?['--use-angle=d3d11']:[]),'--no-proxy-server'];
 const report={target,browserArgs:args,cases:[],errors:[],warnings:[]};
 const browser=await playwright.chromium.launch({headless:true,args});
 try{
- for(const query of ['art=golden','art=legacy','art=ecosystem','art=mockup','art=mockup&look=reference','art=mockup&look=dark','art=mockup&look=magical','art=mockup&ingredients=before']){
+ for(const query of ['art=golden','art=legacy','art=ecosystem','art=mockup','art=mockup&look=reference','art=mockup&look=dark','art=mockup&look=magical','art=mockup&ingredients=before',...(polish?['art=mockup&ingredients=phase3a']:[])]){
   if(process.argv.includes('--golden-only')&&query!=='art=golden')continue;
   const context=await browser.newContext({viewport:{width:1440,height:900}});
   await context.addInitScript(f=>{localStorage.setItem('kessel-krawall-3d-run-v1',JSON.stringify(f));localStorage.setItem('kessel-krawall-3d-onboarding-v1','complete')},source.fixture);
@@ -25,6 +27,7 @@ try{
   assert.ok(loaded.some(url=>url.includes('brasskin')),'player model is loaded');
   const refined=query.includes('art=mockup')&&!query.includes('ingredients=before');
   assert.equal(loaded.some(url=>url.includes('ingredient-phase3a')),refined,'new assets isolated to the requested art mode');
+  if(polish) assert.equal(loaded.some(url=>url.includes('ingredient-phase3a-polish/')),refined&&!query.includes('ingredients=phase3a'),'polished models do not leak into the Phase 3A reference or old modes');
   await page.locator('.offer:not([disabled])').first().click();await page.locator('.purchase-feedback').waitFor();
   await page.waitForFunction(()=>!document.querySelector('.purchase-feedback')&&document.querySelector('.battle-button')?.disabled===false,null,{timeout:60000});
   const run=await page.evaluate(()=>JSON.parse(localStorage.getItem('kessel-krawall-3d-run-v1')));
@@ -56,11 +59,11 @@ try{
   report.cases.push({query,purchaseMerge:true,battleGate:!gateFallback,reducedGraphicsFallback:gateFallback,refinedAssets:refined,loadedModels:[...new Set(loaded)]});
   await context.close();console.log(`Variant passed${gateFallback?' with readiness fallback':''}: ${query}`);
   }catch(error){
-   const directory='docs/qa/ingredient-art-phase3a/iterations';await mkdir(directory,{recursive:true});
+   const directory=`${folder}/iterations`;await mkdir(directory,{recursive:true});
    await page.screenshot({path:`${directory}/variant-failure.png`});
    const diagnostic={query,error:String(error),body:await page.locator('body').innerText(),runtimeErrors:report.errors};
    await writeFile(`${directory}/variant-failure.json`,JSON.stringify(diagnostic,null,2));console.error(JSON.stringify(diagnostic));throw error;
   }
  }
  assert.deepEqual(report.errors,[]);report.passed=true;
-}finally{await browser.close();await writeFile(`docs/qa/ingredient-art-phase3a/variants${production?'-production':''}.json`,JSON.stringify(report,null,2))}
+}finally{await browser.close();await writeFile(`${folder}/variants${production?'-production':''}.json`,JSON.stringify(report,null,2))}

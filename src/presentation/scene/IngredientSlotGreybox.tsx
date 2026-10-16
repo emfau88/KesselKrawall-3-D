@@ -4,7 +4,7 @@ import type { ItemInstance } from "../../core/types";
 import { getItemDefinition } from "../../core/data";
 import { IngredientModel } from "./IngredientModel";
 import { FantasyPedestal } from "./FantasyPedestal";
-import { ingredientArtEnabled, ingredientRestHeight, isPhase3AItem } from "./ingredientArt";
+import { ingredientArtEnabled, ingredientUpgradeLevel, ingredientRestHeight, isPhase3AItem } from "./ingredientArt";
 
 const FAMILY_ACCENTS = {
   fire: "#ff7545",
@@ -43,7 +43,7 @@ export function IngredientSlotGreybox({
         onSelect?.();
       }}
     >
-      {refined ? <FantasyPedestal accent={item ? accent : "#b3a082"} selected={selected || Boolean(influence)} /> : <mesh castShadow receiveShadow position={[0, 0.08, 0]}>
+      {refined ? <FantasyPedestal accent={item ? accent : "#b3a082"} selected={selected || Boolean(influence)} upgradeLevel={ingredientUpgradeLevel(item?.itemId, item?.level)} /> : <mesh castShadow receiveShadow position={[0, 0.08, 0]}>
         <cylinderGeometry args={[0.58, 0.68, 0.16, 16]} />
         <meshStandardMaterial
           color={selected ? "#73566f" : influence ? "#5c4656" : "#4a3944"}
