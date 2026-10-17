@@ -33,6 +33,9 @@ Phase-3A.1-Zutatenpolish. Beide Rendering-Performance-Korrekturen sind enthalten
   und Rückkehr zur Werkbank; Kampagnenwahl, Grimoire, Anleitung und Audiooptionen.
 - Stabile Lichtslots gegen nachgewiesene Shader-Kompilierungsblockaden bei
   Käufen/Merges; asynchrone Vorbereitung und getrennte Lichtverwaltung im Kampf.
+- Gezielter Mobile-HUD-Pass für übliche Handygrößen: freie Werkbank-/Reserveplätze,
+  kompakte Zutateninfos, sichtbare Preise/Merge-Stufen, modaler Audiomixer und
+  getrennte Lebens-/Statusanzeigen und Kampfsteuerung.
 
 ![Aktuelle Standard-Werkbank: Warm Fantasy, Brasskin und polierte Zutaten](docs/screenshots/current-workshop.png)
 
@@ -97,6 +100,7 @@ Abnahme zeitnah integriert. Vollständig integrierte Branches werden anschließe
 gelöscht; offene Arbeiten werden erhalten. [Vollständige Regeln](docs/DEVELOPMENT_WORKFLOW.md).
 
 - [Konsolidierung, Branch-Audit und Integrationsabnahme](docs/qa/repository-consolidation/README.md)
+- [Mobile-HUD: geprüfte Ansichten, Screenshots und verbleibende Grenzen](docs/qa/mobile-hud/README.md)
 - [Werkbank-/Kauf-Performance: Diagnose, Messungen und Grenzen](docs/qa/workshop-purchase-performance/README.md)
 - [Erstkampf-Performance: Ursache, Fix und Traces](docs/qa/first-combat-performance/README.md)
 - [Zutaten-Polish und archivierte Vorher-Nachher-Vergleiche](docs/qa/ingredient-art-phase3a-polish/README.md)

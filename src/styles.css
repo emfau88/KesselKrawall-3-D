@@ -187,7 +187,11 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   background: linear-gradient(145deg, rgb(39 25 41 / 96%), rgb(19 13 23 / 96%));
   box-shadow: 0 1.1rem 3rem rgb(0 0 0 / 50%), inset 0 0 0 1px rgb(255 236 194 / 5%);
   backdrop-filter: blur(14px);
+  margin: 0;
+  max-height: calc(100dvh - 2rem);
+  overflow: auto;
 }
+.audio-mixer::backdrop { background: rgb(9 6 13 / 58%); }
 
 .audio-mixer header {
   display: flex;
@@ -466,6 +470,7 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
 .board-controls small { color: #a99bad; font-size: .49rem; }
 .board-controls .reserve-control { width: auto; min-width: 3.35rem; border-radius: 999px; padding-inline: .48rem; }
 .reserve-popover { border-color: rgb(188 145 237 / 34%); }
+.selection-popover .selection-close { display: none; }
 
 .shop-ribbon {
   position: absolute;
@@ -537,6 +542,7 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
 .ingredient-portrait svg { width: 84%; height: 84%; overflow: visible; filter: drop-shadow(0 3px 4px rgb(0 0 0 / 54%)); }
 .ingredient-portrait > b { position: absolute; right: .15rem; bottom: .05rem; color: #fff0b8; font-size: .38rem; letter-spacing: -.12em; text-shadow: 0 0 6px var(--offer-color); }
 .offer-copy { min-width: 0; }
+.offer-level { display: none; }
 .offer-copy strong, .offer-copy small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .offer-copy strong { color: #fff4df; font-size: .78rem; }
 .offer-copy small { margin-top: .18rem; color: #baaebe; font-size: .61rem; }
@@ -1343,11 +1349,17 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   .synergy-strip { top: 4.2rem; left: max(.78rem, env(safe-area-inset-left)); }
   .synergy { min-width: auto; padding: .32rem .45rem; }
   .synergy strong { display: none; }
-  .selection-popover { top: 4.4rem; right: max(.6rem, env(safe-area-inset-right)); }
+  .selection-popover { top: max(7rem, calc(env(safe-area-inset-top) + 6.5rem)); right: max(.6rem, env(safe-area-inset-right)); bottom: max(6rem, calc(env(safe-area-inset-bottom) + 5.5rem)); width: 12.5rem; display: flex; flex-direction: column; padding: .55rem; }
+  .selection-popover > span, .selection-popover > strong { padding-right: 2.8rem; }
+  .selection-popover > span, .selection-popover > strong, .selection-popover > button { flex-shrink: 0; }
+  .selection-body { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; }
+  .selection-popover > button:not(.selection-close) { align-self: start; min-height: 44px; }
+  .selection-popover .selection-close { position: absolute; display: grid; place-items: center; top: .3rem; right: .3rem; width: 44px; height: 44px; margin: 0; padding: 0; font-size: 1rem; }
   .utility-controls { top: 3.9rem; right: max(.6rem, env(safe-area-inset-right)); }
-  .utility-controls button { grid-template-columns: 1fr; width: 36px; padding: .25rem; }
+  .utility-controls button { grid-template-columns: 1fr; width: 44px; min-height: 44px; padding: .25rem; }
   .utility-controls span { display: none; }
-  .audio-mixer { top: 6.45rem; right: .6rem; }
+  .audio-mixer { top: 50%; left: 50%; right: auto; width: min(22rem, calc(100vw - 2rem)); transform: translate(-50%, -50%); }
+  .audio-mixer header button { width: 44px; height: 44px; }
   .shop-ribbon { grid-template-columns: minmax(24rem, 3fr) 3.4rem minmax(8.2rem, .9fr); }
   .shop-heading { display: none; }
   .mobile-reroll {
@@ -1364,6 +1376,8 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   .mobile-reroll small { display: block; font-size: .48rem; }
   .offer { min-height: 3.85rem; padding: .44rem .5rem; }
   .ingredient-portrait { width: 2.75rem; height: 2.75rem; }
+  .offer-description { display: none; }
+  .offer-level { display: inline; }
   .interaction-hint { display: none; }
   .board-controls { bottom: 5.8rem; }
   .onboarding { bottom: 5.85rem; }
@@ -1383,12 +1397,12 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   .offer { grid-template-columns: auto minmax(0, 1fr); gap: .32rem; min-height: 3.4rem; padding: .34rem; }
   .ingredient-portrait { width: 2.35rem; height: 2.35rem; }
   .offer-copy strong { font-size: .64rem; }
-  .offer-copy small, .offer-cost { display: none; }
+  .offer-description { display: none; }
+  .offer-level, .offer-cost { display: block; }
   .battle-button { font-size: .64rem; }
   .battle-hud { right: .5rem; left: .5rem; grid-template-columns: 1fr 3.2rem 1fr; gap: .35rem; }
   .combatant { padding: .38rem .44rem; }
   .combatant > div:first-of-type { font-size: .6rem; }
-  .selection-popover { width: 11rem; }
   .board-controls { bottom: 5.15rem; }
   .board-controls button { width: 2.35rem; height: 2.35rem; }
   .onboarding { bottom: 5.2rem; width: min(19rem, calc(100vw - 1rem)); padding: .72rem; }
@@ -1398,7 +1412,6 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   .campaign-options article { min-height: auto; }
   .battle-preparation { width: calc(100vw - 1rem); padding: 1rem; }
   .battle-preparation h2 { font-size: 1.3rem; }
-  .audio-mixer { top: 6.2rem; right: .4rem; width: min(17rem, calc(100vw - .8rem)); }
 }
 
 @media (orientation: portrait) {
@@ -1556,4 +1569,36 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   .result-stats { flex-wrap: wrap; margin-top: .55rem; }
   .result-contributions { margin-top: .55rem; padding: .36rem; }
   .result-contributions article { min-height: 2.15rem; }
+}
+
+/* Focused phone pass: keep the literal workbench reachable.  The info card
+   uses the empty lower band; no duplicate numbered slot toolbar is added. */
+@media (orientation: portrait) and (max-width: 650px) {
+  .phase-shop { --phone-shop-height: 9.25rem; }
+  .phase-shop .shop-ribbon { height: var(--phone-shop-height); grid-template-rows: minmax(0, 1fr) 44px; gap: .3rem; padding: .35rem; }
+  .phase-shop .offer { grid-template-columns: 2rem minmax(0, 1fr); grid-template-rows: 2rem auto; gap: .18rem .25rem; padding: .3rem; min-height: 0; }
+  .phase-shop .offer .ingredient-portrait { grid-column: 1; grid-row: 1; width: 2rem; height: 2rem; }
+  .phase-shop .offer-cost { grid-column: 2; grid-row: 1; justify-self: end; font-size: .75rem; }
+  .phase-shop .offer-copy { grid-column: 1 / -1; grid-row: 2; }
+  .phase-shop .offer-copy strong { font-size: .72rem; }
+  .phase-shop .offer-copy small { font-size: .64rem; margin-top: .12rem; }
+  .phase-shop .selection-popover { left: .55rem; right: .55rem; bottom: calc(var(--phone-shop-height) + max(.35rem, env(safe-area-inset-bottom)) + .65rem); width: auto; max-height: 12rem; }
+  .phase-shop .selection-popover > p { font-size: .72rem; }
+  .phase-shop .placement-insights { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .3rem; margin-top: .35rem; }
+  .phase-shop .placement-insights > span { grid-template-columns: 1fr; gap: .15rem; font-size: .68rem; padding: .3rem; }
+  .phase-shop .placement-insights > span b { font-size: .55rem; }
+  .phase-shop .selection-popover > button:not(.selection-close) { margin-top: .35rem; min-height: 44px; }
+  .phase-shop .onboarding { bottom: calc(var(--phone-shop-height) + max(.35rem, env(safe-area-inset-bottom)) + .65rem); }
+  .phase-shop .purchase-feedback { top: auto; bottom: calc(var(--phone-shop-height) + max(.35rem, env(safe-area-inset-bottom)) + .65rem); }
+
+  /* The second grid row grows after statuses, instead of an absolutely
+     positioned playback bar escaping underneath the enemy health panel. */
+  .phase-battle .battle-hud { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: .3rem; }
+  .phase-battle .player-health { grid-column: 1; grid-row: 1; }
+  .phase-battle .enemy-health { grid-column: 2; grid-row: 1; }
+  .phase-battle .battle-clock { grid-column: 1 / -1; grid-row: 2; display: flex; align-items: center; justify-content: center; gap: .35rem; height: auto; border: 0; background: none; }
+  .phase-battle .battle-clock > span { display: grid; place-items: center; min-width: 44px; min-height: 44px; }
+  .phase-battle .battle-clock > i { inset: auto auto 0 0; height: 2px; }
+  .phase-battle .battle-playback-controls { position: static; transform: none; }
+  .phase-battle .combatant > div:first-of-type { font-size: .65rem; }
 }

@@ -1,0 +1,759 @@
+{
+  "url": "http://127.0.0.1:5210/",
+  "at": "2026-10-17T21:41:40.817Z",
+  "limits": [
+    "Chromium viewport/touch emulation, DPR 1, desktop GPU. Not physical smartphones.",
+    "Preparation timeouts are recorded separately. If encountered, only the existing explicit reduced-graphics button is used; this is not a preparation fix."
+  ],
+  "runs": [
+    {
+      "profile": {
+        "name": "portrait-390",
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        "all-six-touch-targets-uncovered",
+        "info-separated-from-shop-and-menu",
+        "prices-and-merge-levels-visible",
+        "modal-mixer-blocks-background-and-fits",
+        "mixer-close-and-escape",
+        "help-and-info-mutually-exclusive",
+        "selection-close",
+        "native-reserve-and-board-swaps",
+        "native-purchase-and-merge",
+        "battle-status-and-playback-separated"
+      ],
+      "screenshots": [
+        "portrait-390-selected.png",
+        "portrait-390-mixer.png",
+        "portrait-390-battle.png"
+      ],
+      "errors": [],
+      "usedPreparationFallback": false,
+      "workshop": {
+        "viewport": [
+          390,
+          844
+        ],
+        "slots": [
+          {
+            "slot": 0,
+            "x": 97.45338916292287,
+            "y": 435.17107326898685,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 138.4819897476831,
+            "y": 451.2526613450749,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 193.3079074355757,
+            "y": 458.87841522828796,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 249.11649154670766,
+            "y": 452.71938929759887,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 292.32455170403637,
+            "y": 437.6198891554014,
+            "unobstructed": true
+          },
+          {
+            "slot": 5,
+            "x": 326.68094127498836,
+            "y": 465.5660805698778,
+            "unobstructed": true
+          }
+        ],
+        "rects": {
+          ".utility-controls": {
+            "x": 191,
+            "y": 62.390625,
+            "w": 189.40625,
+            "h": 44
+          },
+          ".selection-popover": {
+            "x": 8.796875,
+            "y": 499.546875,
+            "w": 372.40625,
+            "h": 180.453125
+          },
+          ".shop-ribbon": {
+            "x": 5.59375,
+            "y": 690.40625,
+            "w": 378.8125,
+            "h": 148
+          },
+          ".audio-mixer": null,
+          ".player-health": null,
+          ".enemy-health": null,
+          ".battle-playback-controls": null
+        }
+      },
+      "battle": {
+        "viewport": [
+          390,
+          844
+        ],
+        "slots": [
+          {
+            "slot": 0,
+            "x": 74.52386677062434,
+            "y": 515.7857939332071,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 124.21037152391474,
+            "y": 527.9072983964746,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 176.45719106774507,
+            "y": 540.653416470923,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 230.5429891957653,
+            "y": 529.8994072530589,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 282.3839983177637,
+            "y": 519.5917348278178,
+            "unobstructed": true
+          },
+          {
+            "slot": 0,
+            "x": 146.3473498528279,
+            "y": 348.7204429123079,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 176.67493566544113,
+            "y": 343.4438528924548,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 206.00485908660724,
+            "y": 338.3408426441806,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 235.2015860808235,
+            "y": 344.1301242600297,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 265.52758765131006,
+            "y": 350.1433244180134,
+            "unobstructed": true
+          }
+        ],
+        "rects": {
+          ".utility-controls": null,
+          ".selection-popover": null,
+          ".shop-ribbon": null,
+          ".audio-mixer": null,
+          ".player-health": {
+            "x": 8,
+            "y": 8,
+            "w": 184.59375,
+            "h": 70.46875
+          },
+          ".enemy-health": {
+            "x": 197.390625,
+            "y": 8,
+            "w": 184.609375,
+            "h": 70.46875
+          },
+          ".battle-playback-controls": {
+            "x": 122.5,
+            "y": 83.265625,
+            "w": 194.59375,
+            "h": 53.03125
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "profile": {
+        "name": "landscape-844",
+        "width": 844,
+        "height": 390
+      },
+      "checks": [
+        "all-six-touch-targets-uncovered",
+        "info-separated-from-shop-and-menu",
+        "prices-and-merge-levels-visible",
+        "modal-mixer-blocks-background-and-fits",
+        "mixer-close-and-escape",
+        "help-and-info-mutually-exclusive",
+        "selection-close",
+        "native-reserve-and-board-swaps",
+        "native-purchase-and-merge",
+        "battle-status-and-playback-separated"
+      ],
+      "screenshots": [
+        "landscape-844-selected.png",
+        "landscape-844-mixer.png",
+        "landscape-844-battle.png"
+      ],
+      "errors": [],
+      "usedPreparationFallback": false,
+      "workshop": {
+        "viewport": [
+          844,
+          390
+        ],
+        "slots": [
+          {
+            "slot": 0,
+            "x": 307.533807422072,
+            "y": 225.93045646526437,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 354.94552156908406,
+            "y": 245.3489904204669,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 419.98187431639354,
+            "y": 254.70798788506409,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 486.2700692829769,
+            "y": 247.14145736966066,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 536.396128504361,
+            "y": 228.85994383049425,
+            "unobstructed": true
+          },
+          {
+            "slot": 5,
+            "x": 579.7826490905477,
+            "y": 262.9972614696364,
+            "unobstructed": true
+          }
+        ],
+        "rects": {
+          ".utility-controls": {
+            "x": 645,
+            "y": 62.390625,
+            "w": 189.40625,
+            "h": 44
+          },
+          ".selection-popover": {
+            "x": 634.40625,
+            "y": 112,
+            "w": 200,
+            "h": 182
+          },
+          ".shop-ribbon": {
+            "x": 12.796875,
+            "y": 294.609375,
+            "w": 818.40625,
+            "h": 82.59375
+          },
+          ".audio-mixer": null,
+          ".player-health": null,
+          ".enemy-health": null,
+          ".battle-playback-controls": null
+        }
+      },
+      "battle": {
+        "viewport": [
+          844,
+          390
+        ],
+        "slots": [
+          {
+            "slot": 0,
+            "x": 312.2504474966767,
+            "y": 266.63087883730395,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 357.24685515521344,
+            "y": 275.4015309634156,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 404.9644386420068,
+            "y": 284.70259180003444,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 454.53418885001764,
+            "y": 276.84987828987437,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 501.7066812240967,
+            "y": 269.37693225687235,
+            "unobstructed": true
+          },
+          {
+            "slot": 0,
+            "x": 380.05802075915904,
+            "y": 152.97327598175323,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 406.22921890293816,
+            "y": 149.56888463930437,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 431.45546318069563,
+            "y": 146.2874144081789,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 456.60559899843156,
+            "y": 150.01100729430735,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 482.8274746974589,
+            "y": 153.89327618229427,
+            "unobstructed": true
+          }
+        ],
+        "rects": {
+          ".utility-controls": null,
+          ".selection-popover": null,
+          ".shop-ribbon": null,
+          ".audio-mixer": null,
+          ".player-health": {
+            "x": 8,
+            "y": 8,
+            "w": 306.8125,
+            "h": 46.421875
+          },
+          ".enemy-health": {
+            "x": 529.1875,
+            "y": 8,
+            "w": 306.8125,
+            "h": 80.4375
+          },
+          ".battle-playback-controls": {
+            "x": 326.1875,
+            "y": 29.09375,
+            "w": 194.59375,
+            "h": 53.03125
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "profile": {
+        "name": "portrait-430",
+        "width": 430,
+        "height": 932
+      },
+      "checks": [
+        "all-six-touch-targets-uncovered",
+        "info-separated-from-shop-and-menu",
+        "prices-and-merge-levels-visible",
+        "modal-mixer-blocks-background-and-fits",
+        "mixer-close-and-escape",
+        "help-and-info-mutually-exclusive",
+        "selection-close",
+        "native-reserve-and-board-swaps",
+        "native-purchase-and-merge",
+        "battle-status-and-playback-separated"
+      ],
+      "screenshots": [
+        "portrait-430-selected.png",
+        "portrait-430-mixer.png",
+        "portrait-430-battle.png"
+      ],
+      "errors": [],
+      "usedPreparationFallback": false,
+      "workshop": {
+        "viewport": [
+          430,
+          932
+        ],
+        "slots": [
+          {
+            "slot": 0,
+            "x": 107.282652487967,
+            "y": 482.1083415719145,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 152.58911664080645,
+            "y": 499.8666829071207,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 213.13148072269735,
+            "y": 508.28753909095303,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 274.7589693383075,
+            "y": 501.48633984047643,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 322.4721352940307,
+            "y": 484.81248423321574,
+            "unobstructed": true
+          },
+          {
+            "slot": 5,
+            "x": 360.4107076638497,
+            "y": 515.672496553467,
+            "unobstructed": true
+          }
+        ],
+        "rects": {
+          ".utility-controls": {
+            "x": 231,
+            "y": 62.390625,
+            "w": 189.40625,
+            "h": 44
+          },
+          ".selection-popover": {
+            "x": 8.796875,
+            "y": 601.671875,
+            "w": 412.40625,
+            "h": 166.328125
+          },
+          ".shop-ribbon": {
+            "x": 5.59375,
+            "y": 778.40625,
+            "w": 418.8125,
+            "h": 148
+          },
+          ".audio-mixer": null,
+          ".player-health": null,
+          ".enemy-health": null,
+          ".battle-playback-controls": null
+        }
+      },
+      "battle": {
+        "viewport": [
+          430,
+          932
+        ],
+        "slots": [
+          {
+            "slot": 0,
+            "x": 81.96237420642404,
+            "y": 569.1994786087073,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 136.82946239370682,
+            "y": 582.5848366179081,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 194.5238176245716,
+            "y": 596.6599338280809,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 254.24889328252758,
+            "y": 584.7846535069324,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 311.49512610445,
+            "y": 573.4022474638937,
+            "unobstructed": true
+          },
+          {
+            "slot": 0,
+            "x": 161.27456168582415,
+            "y": 384.7149914624064,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 194.76426545046343,
+            "y": 378.88823565849276,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 227.15228515250942,
+            "y": 373.2531579909672,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 259.3932206484923,
+            "y": 379.64606138666784,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 292.88117498936134,
+            "y": 386.28623028150287,
+            "unobstructed": true
+          }
+        ],
+        "rects": {
+          ".utility-controls": null,
+          ".selection-popover": null,
+          ".shop-ribbon": null,
+          ".audio-mixer": null,
+          ".player-health": {
+            "x": 8,
+            "y": 8,
+            "w": 204.59375,
+            "h": 70.46875
+          },
+          ".enemy-health": {
+            "x": 217.390625,
+            "y": 8,
+            "w": 204.609375,
+            "h": 70.46875
+          },
+          ".battle-playback-controls": {
+            "x": 142.5,
+            "y": 83.265625,
+            "w": 194.59375,
+            "h": 53.03125
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "profile": {
+        "name": "landscape-932",
+        "width": 932,
+        "height": 430
+      },
+      "checks": [
+        "all-six-touch-targets-uncovered",
+        "info-separated-from-shop-and-menu",
+        "prices-and-merge-levels-visible",
+        "modal-mixer-blocks-background-and-fits",
+        "mixer-close-and-escape",
+        "help-and-info-mutually-exclusive",
+        "selection-close",
+        "native-reserve-and-board-swaps",
+        "native-purchase-and-merge",
+        "battle-status-and-playback-separated"
+      ],
+      "screenshots": [
+        "landscape-932-selected.png",
+        "landscape-932-mixer.png",
+        "landscape-932-battle.png"
+      ],
+      "errors": [],
+      "usedPreparationFallback": false,
+      "workshop": {
+        "viewport": [
+          932,
+          430
+        ],
+        "slots": [
+          {
+            "slot": 0,
+            "x": 329.89807791335426,
+            "y": 250.51518181072885,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 385.84006686669676,
+            "y": 273.92606767671606,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 463.58113679035006,
+            "y": 285.29989988148867,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 542.8697018201781,
+            "y": 276.0998295774384,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 602.1290882314429,
+            "y": 254.03081122512498,
+            "unobstructed": true
+          },
+          {
+            "slot": 5,
+            "x": 655.5521867730548,
+            "y": 295.42347615121093,
+            "unobstructed": true
+          }
+        ],
+        "rects": {
+          ".utility-controls": {
+            "x": 733,
+            "y": 62.390625,
+            "w": 189.40625,
+            "h": 44
+          },
+          ".selection-popover": {
+            "x": 722.40625,
+            "y": 112,
+            "w": 200,
+            "h": 222
+          },
+          ".shop-ribbon": {
+            "x": 12.796875,
+            "y": 334.609375,
+            "w": 906.40625,
+            "h": 82.59375
+          },
+          ".audio-mixer": null,
+          ".player-health": null,
+          ".enemy-health": null,
+          ".battle-playback-controls": null
+        }
+      },
+      "battle": {
+        "viewport": [
+          932,
+          430
+        ],
+        "slots": [
+          {
+            "slot": 0,
+            "x": 336.87368535697414,
+            "y": 295.6411644544488,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 389.66405236470933,
+            "y": 306.1718669997678,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 445.8750619530647,
+            "y": 317.38492451952897,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 504.36628750985517,
+            "y": 307.9148613429182,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 559.8371107854116,
+            "y": 298.93381853046947,
+            "unobstructed": true
+          },
+          {
+            "slot": 0,
+            "x": 417.8925941074766,
+            "y": 162.84241554476438,
+            "unobstructed": true
+          },
+          {
+            "slot": 1,
+            "x": 447.9243239094469,
+            "y": 158.96706940710646,
+            "unobstructed": true
+          },
+          {
+            "slot": 2,
+            "x": 476.8296475557929,
+            "y": 155.2370766597933,
+            "unobstructed": true
+          },
+          {
+            "slot": 3,
+            "x": 505.66701122768393,
+            "y": 159.47002990922633,
+            "unobstructed": true
+          },
+          {
+            "slot": 4,
+            "x": 535.7830221531726,
+            "y": 163.89067209266096,
+            "unobstructed": true
+          }
+        ],
+        "rects": {
+          ".utility-controls": null,
+          ".selection-popover": null,
+          ".shop-ribbon": null,
+          ".audio-mixer": null,
+          ".player-health": {
+            "x": 8,
+            "y": 8,
+            "w": 350.8125,
+            "h": 46.421875
+          },
+          ".enemy-health": {
+            "x": 573.1875,
+            "y": 8,
+            "w": 350.8125,
+            "h": 80.4375
+          },
+          ".battle-playback-controls": {
+            "x": 370.1875,
+            "y": 29.09375,
+            "w": 194.59375,
+            "h": 53.03125
+          }
+        }
+      },
+      "passed": true
+    }
+  ],
+  "passed": true
+}

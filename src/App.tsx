@@ -360,6 +360,15 @@ export function App() {
   const lastFeedbackBeat = useRef<string | null>(null);
   const soundedResult = useRef<CombatResult | null>(null);
   const resultRevealTimer = useRef<number | null>(null);
+  const audioDialog = useRef<HTMLDialogElement | null>(null);
+
+  useEffect(() => {
+    if (!audioPanelOpen || screen !== "game") return;
+    const dialog = audioDialog.current;
+    if (!dialog) return;
+    dialog.showModal();
+    return () => dialog.close();
+  }, [audioPanelOpen, screen]);
 
   const presentedInventory = useMemo(
     () => getPresentedInventory(purchase, game.board, game.reserve),
@@ -664,6 +673,8 @@ export function App() {
 
   function handleSelectSlot(slot: number) {
     if (purchase) return;
+    setAudioPanelOpen(false);
+    setOnboardingStep(null);
     const result = selectOrSwapSlot(game, slot);
     setGame(result.state);
     setReserveSelected(false);
@@ -678,6 +689,8 @@ export function App() {
   function handleSelectReserve() {
     if (purchase) return;
     if (game.round < 5) return;
+    setAudioPanelOpen(false);
+    setOnboardingStep(null);
     if (game.selectedSlot !== null) {
       const result = swapSlotWithReserve(game, game.selectedSlot);
       setGame(result.state);
@@ -1039,14 +1052,14 @@ export function App() {
         <button
           aria-label="Audiomischung öffnen"
           aria-expanded={audioPanelOpen}
-          onClick={() => setAudioPanelOpen((open) => !open)}
+          onClick={() => { setAudioPanelOpen((open) => !open); setOnboardingStep(null); }}
           type="button"
         >
           ≋<span>Mix</span>
         </button>
         <button
           aria-label="Kurzeinführung anzeigen"
-          onClick={() => setOnboardingStep(0)}
+          onClick={() => { setOnboardingStep(0); setAudioPanelOpen(false); }}
           type="button"
         >
           ?<span>Hilfe</span>
@@ -1061,7 +1074,7 @@ export function App() {
       </nav>
 
       {audioPanelOpen && (
-        <section className="audio-mixer" aria-label="Audiomischung">
+        <dialog className="audio-mixer" aria-label="Audiomischung" ref={audioDialog} onCancel={() => setAudioPanelOpen(false)}>
           <header><strong>Audiomischung</strong><button aria-label="Audiomischung schließen" onClick={() => setAudioPanelOpen(false)} type="button">×</button></header>
           {([
             ["master", "Gesamt"],
@@ -1082,7 +1095,7 @@ export function App() {
               />
             </label>
           ))}
-        </section>
+        </dialog>
       )}
 
       {battlePreparation && (
@@ -1126,44 +1139,48 @@ export function App() {
             })}
           </section>
 
-          {selectedItem && game.selectedSlot !== null && (
+          {selectedItem && game.selectedSlot !== null && !audioPanelOpen && onboardingStep === null && !purchase && (
             <aside className="selection-popover">
+              <button className="selection-close" aria-label="Zutateninfo schließen" type="button" onClick={() => setGame((current) => ({ ...current, selectedSlot: null }))}>×</button>
               <span>Platz {game.selectedSlot + 1}</span>
               <strong>{itemCopy(selectedItem.itemId).name} · Stufe {ROMAN_LEVEL[selectedItem.level]}</strong>
-              <p>{itemCopy(selectedItem.itemId).short}</p>
-              {selectedInsights && (
-                <div className="placement-insights">
-                  <span>
-                    <b>Takt</b>
-                    {selectedInsights.effectiveCooldownMs < selectedInsights.baseCooldownMs
-                      ? `${(selectedInsights.baseCooldownMs / 1_000).toFixed(1)}s → ${(selectedInsights.effectiveCooldownMs / 1_000).toFixed(1)}s`
-                      : `${(selectedInsights.baseCooldownMs / 1_000).toFixed(1)}s`}
-                  </span>
-                  <span className={selectedInsights.outgoing.length > 0 ? "is-active" : undefined}>
-                    <b>Wirkt auf</b>
-                    {selectedInsights.outgoing.length > 0
-                      ? `Platz ${selectedInsights.outgoing.map((entry) => entry.targetSlot + 1).join(", ")} · +${Math.round(Math.max(...selectedInsights.outgoing.map((entry) => entry.value)) * 100)}%`
-                      : "keine andere Zutat"}
-                  </span>
-                  <span className={selectedInsights.incoming.length > 0 ? "is-active" : undefined}>
-                    <b>Profitiert von</b>
-                    {selectedInsights.incoming.length > 0
-                      ? `Platz ${selectedInsights.incoming.map((entry) => entry.sourceSlot + 1).join(", ")}`
-                      : "keinem Platzierungsbuff"}
-                  </span>
-                </div>
-              )}
+              <div className="selection-body">
+                <p>{itemCopy(selectedItem.itemId).short}</p>
+                {selectedInsights && (
+                  <div className="placement-insights">
+                    <span>
+                      <b>Takt</b>
+                      {selectedInsights.effectiveCooldownMs < selectedInsights.baseCooldownMs
+                        ? `${(selectedInsights.baseCooldownMs / 1_000).toFixed(1)}s → ${(selectedInsights.effectiveCooldownMs / 1_000).toFixed(1)}s`
+                        : `${(selectedInsights.baseCooldownMs / 1_000).toFixed(1)}s`}
+                    </span>
+                    <span className={selectedInsights.outgoing.length > 0 ? "is-active" : undefined}>
+                      <b>Wirkt auf</b>
+                      {selectedInsights.outgoing.length > 0
+                        ? `Platz ${selectedInsights.outgoing.map((entry) => entry.targetSlot + 1).join(", ")} · +${Math.round(Math.max(...selectedInsights.outgoing.map((entry) => entry.value)) * 100)}%`
+                        : "keine andere Zutat"}
+                    </span>
+                    <span className={selectedInsights.incoming.length > 0 ? "is-active" : undefined}>
+                      <b>Profitiert von</b>
+                      {selectedInsights.incoming.length > 0
+                        ? `Platz ${selectedInsights.incoming.map((entry) => entry.sourceSlot + 1).join(", ")}`
+                        : "keinem Platzierungsbuff"}
+                    </span>
+                  </div>
+                )}
+              </div>
               <button type="button" disabled={Boolean(purchase)} onClick={handleSellSelected}>
                 Verkaufen · +{getSellValue(selectedItem)} Gold
               </button>
             </aside>
           )}
 
-          {reserveSelected && presentedReserve && (
+          {reserveSelected && presentedReserve && !audioPanelOpen && onboardingStep === null && !purchase && (
             <aside className="selection-popover reserve-popover">
+              <button className="selection-close" aria-label="Zutateninfo schließen" type="button" onClick={() => setReserveSelected(false)}>×</button>
               <span>Reserve</span>
               <strong>{itemCopy(presentedReserve.itemId).name} · Stufe {ROMAN_LEVEL[presentedReserve.level]}</strong>
-              <p>Wähle einen Werkbankplatz zum Tauschen oder verkaufe die Reservezutat.</p>
+              <div className="selection-body"><p>Wähle einen Werkbankplatz zum Tauschen oder verkaufe die Reservezutat.</p></div>
               <button type="button" disabled={Boolean(purchase)} onClick={handleSellReserve}>
                 Verkaufen · +{getSellValue(presentedReserve)} Gold
               </button>
@@ -1198,7 +1215,10 @@ export function App() {
                     <IngredientPortrait itemId={offer.itemId} />
                     <span className="offer-copy">
                       <strong>{offer.bought ? "Verkauft" : copy.name}</strong>
-                      <small>{preview ? `Stufe I + Bestand → Stufe ${ROMAN_LEVEL[preview.resultLevel]}${preview.mergeCount > 1 ? ` · ${preview.mergeCount}×` : ""}` : `Stufe I · ${copy.short}`}</small>
+                      <small>
+                        <span className="offer-description">{preview ? `Stufe I + Bestand → Stufe ${ROMAN_LEVEL[preview.resultLevel]}${preview.mergeCount > 1 ? ` · ${preview.mergeCount}×` : ""}` : `Stufe I · ${copy.short}`}</span>
+                        <span className="offer-level">{preview ? `I → ${ROMAN_LEVEL[preview.resultLevel]}${preview.mergeCount > 1 ? ` · ${preview.mergeCount}×` : ""}` : "Stufe I"}</span>
+                      </small>
                     </span>
                     <span className="offer-cost">{definition.cost} ◉</span>
                   </button>
