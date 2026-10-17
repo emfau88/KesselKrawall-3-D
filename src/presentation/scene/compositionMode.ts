@@ -3,7 +3,7 @@ import { assetBakeoffMode } from "./assetBakeoff";
 export type MockupPassage = "door" | "corridor";
 export type MockupCamera = "perspective" | "orthographic";
 
-/** Opt-in art pass only. The previous GLB layout remains directly playable. */
+/** Approved browser default; composition=before keeps the previous GLB layout. */
 export function isMockupCompositionEnabled(): boolean {
   return assetBakeoffMode() === "mockup" && (
     typeof window === "undefined" || new URLSearchParams(window.location.search).get("composition") !== "before"

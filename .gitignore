@@ -12,6 +12,7 @@ __pycache__/
 .tmp-qa/
 outputs/first-combat-performance/
 outputs/workshop-purchase-performance/
+outputs/repository-consolidation/
 docs/qa/current/
 docs/qa/environment-composition/iterations/
 docs/qa/environment-lighting/iterations/

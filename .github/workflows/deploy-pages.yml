@@ -36,6 +36,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Record published commit
+        run: node -e "require('node:fs').writeFileSync('dist/build-info.json', JSON.stringify({commit:process.env.GITHUB_SHA,ref:process.env.GITHUB_REF,runId:process.env.GITHUB_RUN_ID,builtAt:new Date().toISOString()},null,2))"
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

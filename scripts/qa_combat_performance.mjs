@@ -326,7 +326,7 @@ try {
         else entry.errors.push(event);
       });
       page.on('response', r => { if (r.status() >= 400) entry.errors.push({ type: 'http', status: r.status(), url: r.url() }); });
-      const url = new URL(target.url); url.search = 'art=mockup&look=warm&ingredients=polish';
+      const url = new URL(target.url); url.search = process.argv.includes('--default') ? '' : 'art=mockup&look=warm&ingredients=polish';
       await page.goto(url.href, { waitUntil: 'domcontentloaded' });
       await page.getByRole('button', { name: /Fortsetzen/ }).click(); await waitWorkshop(page);
       assert.deepEqual(await readRun(page), initial);

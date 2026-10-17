@@ -7,7 +7,7 @@ import type { Board } from "../../core/types";
 
 afterEach(()=>vi.unstubAllGlobals());
 describe("Phase 3A isolation and asset contracts",()=>{
-  it.each(["","?art=golden","?art=legacy","?art=ecosystem","?art=mockup&ingredients=before","?art=mockup&composition=before"])("keeps previous assets for %s",search=>{
+  it.each(["?art=golden","?art=legacy","?art=ecosystem","?art=mockup&ingredients=before","?art=mockup&composition=before"])("keeps previous assets for %s",search=>{
     vi.stubGlobal("window",{location:{search}});expect(ingredientArtEnabled()).toBe(false);
   });
   it("enables only the three approved ingredients in mockup",()=>{

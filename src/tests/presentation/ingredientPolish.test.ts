@@ -7,7 +7,7 @@ import type { Board } from "../../core/types";
 
 afterEach(()=>vi.unstubAllGlobals());
 describe("isolated ingredient polish",()=>{
-  it.each(["", "?art=golden", "?art=legacy", "?art=ecosystem", "?art=mockup&ingredients=before", "?art=mockup&ingredients=phase3a", "?art=mockup&composition=before"])("does not affect %s",search=>{
+  it.each(["?art=golden", "?art=legacy", "?art=ecosystem", "?art=mockup&ingredients=before", "?art=mockup&ingredients=phase3a", "?art=mockup&composition=before"])("does not affect %s",search=>{
     vi.stubGlobal("window",{location:{search}});expect(ingredientPolishEnabled()).toBe(false);
   });
   it.each(["warm","dark","reference","magical"])("supports %s without changing the lighting profile",look=>{

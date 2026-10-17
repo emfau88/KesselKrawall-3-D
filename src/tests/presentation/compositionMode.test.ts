@@ -8,8 +8,8 @@ function useQuery(search: string) {
 
 afterEach(() => vi.unstubAllGlobals());
 
-describe("Phase-1 composition opt-in isolation", () => {
-  for (const search of ["", "?art=golden", "?art=legacy", "?art=ecosystem", "?art=unknown"]) {
+describe("approved composition and explicit comparison isolation", () => {
+  for (const search of ["?art=golden", "?art=legacy", "?art=ecosystem"]) {
     it(`does not alter the existing art variant ${search || "(default)"}`, () => {
       useQuery(`${search}${search ? "&" : "?"}camera=perspective&passage=corridor&composition=after`);
       expect(isMockupCompositionEnabled()).toBe(false);

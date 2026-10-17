@@ -36,10 +36,30 @@ for (const target of targets) for (const profile of profiles) {
     await idle();
   }
   async function slot(index) {
-    const p = await page.evaluate(i => window.__combatProbe.slots().find(s => s.slot === i), index);
+    const p = await page.evaluate(i => {
+      const state = window.__combatProbe.state();
+      state.scene.updateMatrixWorld(true);
+      let slot;
+      state.scene.traverse(n => { if (n.userData.ingredientSlot === i) slot = n; });
+      const rect = state.gl.domElement.getBoundingClientRect();
+      const ray = new state.raycaster.constructor();
+      for (const height of [.14, .72, 1, 1.2]) {
+        const v = slot.position.clone().set(0, height, 0).applyMatrix4(slot.matrixWorld).project(state.camera);
+        const p = { slot: i, x: (v.x + 1) * innerWidth / 2, y: (1 - v.y) * innerHeight / 2, localHeight: height };
+        if (document.elementFromPoint(p.x, p.y) !== state.gl.domElement) continue;
+        ray.setFromCamera({ x: (p.x - rect.left) / rect.width * 2 - 1, y: 1 - (p.y - rect.top) / rect.height * 2 }, state.camera);
+        const owner = ray.intersectObjects(state.scene.children, true).map(hit => {
+          for (let n = hit.object; n; n = n.parent) if (n.userData.ingredientSlot !== undefined) return n.userData.ingredientSlot;
+        }).find(n => n !== undefined);
+        if (owner === i) return p;
+      }
+      throw new Error(`Slot ${i} has no uncovered native mesh target`);
+    }, index);
+    const hit = await page.evaluate(p => { const n = document.elementFromPoint(p.x, p.y); return { tag: n?.tagName, class: n?.className, text: n?.textContent?.slice(0, 100) }; }, p);
     assert.ok(p && p.x >= 0 && p.y >= 0 && p.x <= viewport.width && p.y <= viewport.height);
     if (profile === 'desktop') await page.mouse.click(p.x, p.y); else await page.touchscreen.tap(p.x, p.y);
     await page.evaluate(() => new Promise(r => requestAnimationFrame(r)));
+    (row.taps ??= []).push({ slot: index, point: p, hit, selectedSlot: (await read()).selectedSlot, reserve: (await read()).reserve });
   }
   async function buy(index, name) {
     const from = await page.evaluate(() => window.__workshopProbe.data.purchases.length);
@@ -50,7 +70,7 @@ for (const target of targets) for (const profile of profiles) {
     row.purchases.push({ name, phases: phases.map(p => p.phase), after: await read() });
   }
   try {
-    await page.goto(`${target.url}?art=mockup&look=warm`, { waitUntil: 'domcontentloaded' });
+    await page.goto(process.argv.includes('--default') ? target.url : `${target.url}?art=mockup&look=warm`, { waitUntil: 'domcontentloaded' });
     await page.getByRole('button', { name: /Fortsetzen/ }).click(); await idle();
     row.checks.push('menu-and-shop');
     row.heapBefore = await cdp.send('Runtime.getHeapUsage');
@@ -90,7 +110,7 @@ for (const target of targets) for (const profile of profiles) {
     row.probe = await page.evaluate(() => window.__combatProbe.snapshot());
     await page.screenshot({ path: join(out, `${row.label}.png`) });
     assert.deepEqual(row.errors, []); row.passed = true;
-  } catch (e) { row.failure = e.stack; row.passed = false; }
+  } catch (e) { row.failure = e.stack; row.passed = false; row.probe = await page.evaluate(() => window.__combatProbe.snapshot()); await page.screenshot({ path: join(out, `${row.label}-failure.png`) }); }
   finally { await writeFile(join(out, 'report.json'), JSON.stringify(report, null, 2)); await browser.close(); }
   console.log(JSON.stringify({ label: row.label, passed: row.passed, checks: row.checks, failure: row.failure }));
 }

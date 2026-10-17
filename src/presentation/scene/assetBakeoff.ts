@@ -5,12 +5,12 @@ export type AssetBakeoffMode = "legacy" | "ecosystem" | "golden" | "mockup";
  *
  * - ?art=legacy keeps the former KayKit environment.
  * - ?art=ecosystem shows the selected Quaternius ecosystem before hero polish.
- * - the default golden mode adds the KesselKrawall-specific character pass.
- * - ?art=mockup is an opt-in local comparison of the new image-to-3D environment.
+ * - ?art=golden keeps the previous KesselKrawall-specific character pass.
+ * - the browser default is the approved mockup environment, Warm Fantasy and polish.
  */
 export function assetBakeoffMode(): AssetBakeoffMode {
   if (typeof window === "undefined") return "golden";
   const requested = new URLSearchParams(window.location.search).get("art");
-  if (requested === "legacy" || requested === "ecosystem" || requested === "mockup") return requested;
-  return "golden";
+  if (requested === "legacy" || requested === "ecosystem" || requested === "golden" || requested === "mockup") return requested;
+  return "mockup";
 }

@@ -1,0 +1,413 @@
+{
+  "generatedAt": "2026-10-17T20:59:16.876Z",
+  "source": "d39ab63a09fceafb1496dfb009587ccefc2894f5",
+  "previousPublicMaster": "4980b81b313753f582df2065c690df4525d71a0c",
+  "branches": [
+    {
+      "ref": "refs/heads/codex/cauldron-character",
+      "commit": "a989b9e2460bed2801b9c26ff9041c060062d6a0",
+      "countsLatestVsRef": "9\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/heads/codex/environment-composition-phase1",
+      "commit": "ae4e37e6f31e7a999715e413e2e23b81bb0cb4a2",
+      "countsLatestVsRef": "8\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/heads/codex/environment-lighting-phase2",
+      "commit": "911b53b696cebc2cbf4ca80716daa076ca5847ba",
+      "countsLatestVsRef": "7\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/heads/codex/first-combat-performance",
+      "commit": "0456d1ff338de797102aac6d4f6c8664a23f22c2",
+      "countsLatestVsRef": "1\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/heads/codex/ingredient-art-phase3a",
+      "commit": "1539387b1100edadc4d0d159e0d6c678efc2cc1e",
+      "countsLatestVsRef": "3\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/heads/codex/ingredient-art-phase3a-polish",
+      "commit": "353d154524cb9490b3db07a46bcafc8fe17179e1",
+      "countsLatestVsRef": "2\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/heads/codex/playcanvas-bakeoff",
+      "commit": "70a282140e905a068d85852fe587fd9789f2c8d9",
+      "countsLatestVsRef": "14\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/heads/codex/workshop-purchase-performance",
+      "commit": "d39ab63a09fceafb1496dfb009587ccefc2894f5",
+      "countsLatestVsRef": "0\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/heads/master",
+      "commit": "a64054140d52fc66f58f410ae28676d611e3aed3",
+      "countsLatestVsRef": "19\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/cauldron-character",
+      "commit": "a989b9e2460bed2801b9c26ff9041c060062d6a0",
+      "countsLatestVsRef": "9\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/environment-composition-phase1",
+      "commit": "ae4e37e6f31e7a999715e413e2e23b81bb0cb4a2",
+      "countsLatestVsRef": "8\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/environment-lighting-phase2",
+      "commit": "911b53b696cebc2cbf4ca80716daa076ca5847ba",
+      "countsLatestVsRef": "7\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/first-combat-performance",
+      "commit": "0456d1ff338de797102aac6d4f6c8664a23f22c2",
+      "countsLatestVsRef": "1\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/ingredient-art-phase3a",
+      "commit": "1539387b1100edadc4d0d159e0d6c678efc2cc1e",
+      "countsLatestVsRef": "3\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/ingredient-art-phase3a-polish",
+      "commit": "353d154524cb9490b3db07a46bcafc8fe17179e1",
+      "countsLatestVsRef": "2\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/workshop-purchase-performance",
+      "commit": "d39ab63a09fceafb1496dfb009587ccefc2894f5",
+      "countsLatestVsRef": "0\t0",
+      "containedInLatest": true
+    },
+    {
+      "ref": "refs/remotes/origin/master",
+      "commit": "4980b81b313753f582df2065c690df4525d71a0c",
+      "countsLatestVsRef": "4\t0",
+      "containedInLatest": true
+    }
+  ],
+  "localWork": {
+    "preservedFiles": 13,
+    "backup": "outputs/repository-consolidation/preserved-local-work",
+    "contentsPublished": false
+  },
+  "automated": {
+    "unitTests": 184,
+    "testFiles": 28,
+    "typecheck": "passed",
+    "productionBuild": "passed"
+  },
+  "workshop": [
+    {
+      "profile": "integration-desktop",
+      "passed": true,
+      "checks": [
+        "menu-and-shop",
+        "merge-I-II-and-cascade-II-III",
+        "save-and-native-continue",
+        "save-survives-browser-reload",
+        "reserve-purchase-and-native-swaps",
+        "synergy-and-adjacency-presentation"
+      ],
+      "errors": []
+    },
+    {
+      "profile": "integration-landscape",
+      "passed": true,
+      "checks": [
+        "menu-and-shop",
+        "merge-I-II-and-cascade-II-III",
+        "save-and-native-continue",
+        "save-survives-browser-reload",
+        "reserve-purchase-and-native-swaps",
+        "synergy-and-adjacency-presentation"
+      ],
+      "errors": []
+    },
+    {
+      "profile": "integration-portrait",
+      "passed": true,
+      "checks": [
+        "menu-and-shop",
+        "merge-I-II-and-cascade-II-III",
+        "save-and-native-continue",
+        "save-survives-browser-reload",
+        "reserve-purchase-and-native-swaps",
+        "synergy-and-adjacency-presentation"
+      ],
+      "errors": [],
+      "taps": [
+        {
+          "slot": 0,
+          "point": {
+            "slot": 0,
+            "x": 97.45338916292287,
+            "y": 435.17107326898685,
+            "localHeight": 0.14
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "text": ""
+          },
+          "selectedSlot": 0,
+          "reserve": {
+            "uid": "item-4",
+            "itemId": "healing-tuber",
+            "level": 1
+          }
+        },
+        {
+          "slot": 5,
+          "point": {
+            "slot": 5,
+            "x": 329.43342672216227,
+            "y": 446.1284279360312,
+            "localHeight": 0.72
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "text": ""
+          },
+          "selectedSlot": null,
+          "reserve": {
+            "uid": "reserve-0",
+            "itemId": "chili",
+            "level": 1
+          }
+        },
+        {
+          "slot": 0,
+          "point": {
+            "slot": 0,
+            "x": 97.45338916292287,
+            "y": 435.17107326898685,
+            "localHeight": 0.14
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "text": ""
+          },
+          "selectedSlot": 0,
+          "reserve": {
+            "uid": "reserve-0",
+            "itemId": "chili",
+            "level": 1
+          }
+        },
+        {
+          "slot": 5,
+          "point": {
+            "slot": 5,
+            "x": 329.43342672216227,
+            "y": 446.1284279360312,
+            "localHeight": 0.72
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "text": ""
+          },
+          "selectedSlot": null,
+          "reserve": {
+            "uid": "item-4",
+            "itemId": "healing-tuber",
+            "level": 1
+          }
+        },
+        {
+          "slot": 0,
+          "point": {
+            "slot": 0,
+            "x": 97.45338916292287,
+            "y": 435.17107326898685,
+            "localHeight": 0.14
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "text": ""
+          },
+          "selectedSlot": 0,
+          "reserve": {
+            "uid": "item-4",
+            "itemId": "healing-tuber",
+            "level": 1
+          }
+        },
+        {
+          "slot": 1,
+          "point": {
+            "slot": 1,
+            "x": 138.4819897476831,
+            "y": 451.2526613450749,
+            "localHeight": 0.14
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "text": ""
+          },
+          "selectedSlot": null,
+          "reserve": {
+            "uid": "item-4",
+            "itemId": "healing-tuber",
+            "level": 1
+          }
+        },
+        {
+          "slot": 1,
+          "point": {
+            "slot": 1,
+            "x": 138.4819897476831,
+            "y": 451.2526613450749,
+            "localHeight": 0.14
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "text": ""
+          },
+          "selectedSlot": 1,
+          "reserve": {
+            "uid": "item-4",
+            "itemId": "healing-tuber",
+            "level": 1
+          }
+        },
+        {
+          "slot": 0,
+          "point": {
+            "slot": 0,
+            "x": 97.45338916292287,
+            "y": 435.17107326898685,
+            "localHeight": 0.14
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "text": ""
+          },
+          "selectedSlot": null,
+          "reserve": {
+            "uid": "item-4",
+            "itemId": "healing-tuber",
+            "level": 1
+          }
+        },
+        {
+          "slot": 1,
+          "point": {
+            "slot": 1,
+            "x": 138.4819897476831,
+            "y": 451.2526613450749,
+            "localHeight": 0.14
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "text": ""
+          },
+          "selectedSlot": 1,
+          "reserve": null
+        }
+      ]
+    }
+  ],
+  "combat": [
+    {
+      "label": "integration-desktop",
+      "passed": true,
+      "errors": [],
+      "battles": [
+        {
+          "enemy": "zischbert",
+          "resultHash": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+          "missingAnimation": [],
+          "missingVfx": [],
+          "runtimeEvidencePassed": true
+        },
+        {
+          "enemy": "moor-martha",
+          "resultHash": "394bf4f17d23f1af334f3ba694e4671451731ec4e7c93c3ae43d445c1506183a",
+          "missingAnimation": [],
+          "missingVfx": [],
+          "runtimeEvidencePassed": true
+        }
+      ],
+      "preparationCancellation": {
+        "passed": true,
+        "successfulNativeRetry": true,
+        "exactWorkshopPreserved": true
+      }
+    }
+  ],
+  "graphics": [
+    {
+      "variant": "mockup-reference",
+      "passed": true,
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "errors": []
+    },
+    {
+      "variant": "mockup-dark",
+      "passed": true,
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "errors": []
+    },
+    {
+      "variant": "mockup-magical",
+      "passed": true,
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "errors": []
+    },
+    {
+      "variant": "mockup-warm",
+      "passed": true,
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "errors": []
+    },
+    {
+      "variant": "golden",
+      "passed": true,
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "errors": []
+    },
+    {
+      "variant": "legacy",
+      "passed": true,
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "errors": []
+    },
+    {
+      "variant": "ecosystem",
+      "passed": true,
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "errors": []
+    }
+  ],
+  "finding": "Portrait info popover covers the reserved pedestal centre. Native tap on the visible ingredient body succeeds. Test targeting corrected, no runtime/UI changes.",
+  "publicVerification": "Performed after deployment; see public-acceptance.json and deployment links when available. No local URL is publication evidence."
+}

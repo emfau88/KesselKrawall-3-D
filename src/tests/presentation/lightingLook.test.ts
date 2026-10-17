@@ -5,11 +5,11 @@ import { MeshStandardMaterial, Texture } from "three";
 
 afterEach(() => vi.unstubAllGlobals());
 describe("isolated Phase-2 lighting", () => {
-  it.each(["", "?art=golden&look=warm", "?art=legacy&look=dark", "?art=ecosystem&look=magical", "?art=mockup&composition=before&look=warm", "?art=mockup&look=reference"])("preserves the reference in %s", search => {
+  it.each(["?art=golden&look=warm", "?art=legacy&look=dark", "?art=ecosystem&look=magical", "?art=mockup&composition=before&look=warm", "?art=mockup&look=reference"])("preserves the reference in %s", search => {
     vi.stubGlobal("window", {location:{search}});
     expect(lightingLook()).toBe("reference");
   });
-  it.each(["?art=mockup", "?art=mockup&look=unknown"])("defaults approved mockup lighting to Warm Fantasy: %s", search => {
+  it.each(["", "?art=mockup", "?art=mockup&look=unknown"])("defaults approved mockup lighting to Warm Fantasy: %s", search => {
     vi.stubGlobal("window", {location:{search}});
     expect(lightingLook()).toBe("warm");
   });
