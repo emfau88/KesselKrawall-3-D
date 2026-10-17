@@ -78,8 +78,52 @@ Ein lokaler Test und ein Branch-Push gelten ausdrücklich nicht als Live-Nachwei
 Nach dem Deployment werden die öffentliche Build-Identität, echter Standardlook,
 Modelle/Texturen sowie neue Kampagne, Kauf und Speicherstand geprüft. Erst danach
 werden nachweislich integrierte, nicht mehr aktive Entwicklungsbranches gelöscht.
-Die tatsächlichen Deployment- und Aufräumergebnisse werden nach der öffentlichen
-Abnahme in diesem Bericht ergänzt.
+### Tatsächlicher öffentlicher Nachweis
+
+Spielcode-Release: `cac088a6919a90a7fdc0a4ff6ce7592da77a088a`.
+[Pages-Workflow 39069187629](https://github.com/emfau88/KesselKrawall-3-D/actions/runs/39069187629)
+hat Build und Deployment erfolgreich abgeschlossen. Nach dem Fast-Forward
+bestanden lokal erneut alle 184 Tests und der Produktionsbuild; auch der
+Linux-CI-Lauf war erfolgreich.
+
+Der [öffentliche Browsernachweis](public-acceptance.json) verwendet ausschließlich
+`https://emfau88.github.io/KesselKrawall-3-D/`, ohne Grafikparameter, in drei frischen
+Browserkontexten. Die ausgelieferte `build-info.json` bestätigt exakt den
+Release-Commit. Das tatsächlich geladene Bundle ist `index-BbREJy6u.js`.
+Perspektivkamera, Mockup-Werkbank, alle drei polierten Titel-Zutaten und die
+Warm-Fantasy-Akzentlichter mit Intensitäten 14/7 wurden in der echten Szene geprüft.
+
+Desktop, Portrait und Landscape bestehen neue Kampagne, native Einführung,
+ersten Kauf sowie Speichern/Reload/Fortsetzen. Alle beobachteten Modellanfragen
+sind erfolgreich; keine JavaScript-/WebGL-, HTTP- oder unerwarteten Assetfehler.
+Das ist weiterhin Browseremulation, keine physische Smartphone-Abnahme.
+Die mobile Bedienung kann über denselben öffentlichen Link direkt erprobt werden.
+
+Die abschließende Dokumentationsveröffentlichung verändert keinen Spielcode;
+die jeweils aktuell ausgelieferte Master-SHA bleibt unter
+[build-info.json](https://emfau88.github.io/KesselKrawall-3-D/build-info.json) überprüfbar.
+
+### Gelöschte und erhaltene Branches
+
+Nach erfolgreichem Deployment und öffentlicher Abnahme wurden die Spitzen erneut
+gegen den ursprünglichen Audit und ihre vollständige Integration in `master`
+geprüft. Es gab keine offenen Pull Requests. Folgende Branches wurden lokal und
+auf `origin` gelöscht, ohne Force-Push:
+
+- `codex/cauldron-character`
+- `codex/environment-composition-phase1`
+- `codex/environment-lighting-phase2`
+- `codex/ingredient-art-phase3a`
+- `codex/ingredient-art-phase3a-polish`
+- `codex/first-combat-performance`
+- `codex/workshop-purchase-performance`
+
+Zusätzlich wurde der nur lokal angelegte, inzwischen integrierte temporäre
+`codex/repository-consolidation` entfernt. Alle ursprünglichen Commits bleiben
+in der Master-Historie erreichbar. `origin` besitzt danach nur `master`.
+Lokal bleiben `master` sowie `codex/playcanvas-bakeoff` für die aktiven Entwürfe.
+Die 13 vorgefundenen Arbeitsdateien sind nach Integration und Aufräumen erneut
+bytegenau unverändert geprüft; die separate Sicherung bleibt bestehen.
 
 ## Verbleibende Grenzen
 
@@ -89,6 +133,10 @@ schwankt. Die positiven Werkbank-Messungen sind keine generelle Ruckelfreiheits-
 oder Smartphone-Garantie. Die Portrait-Infoanzeige verdeckt Teile des Tisches.
 Auch die vollständige North-Star-Grafikqualität und die Aufwertung der übrigen
 17 Zutaten bleiben spätere Aufgaben, keine Bestandteile dieser Konsolidierung.
+
+Der erfolgreiche CI-Lauf meldet außerdem Deprecation-Hinweise zu den bestehenden
+Actions-Versionen und einen bevorstehenden Runner-Wechsel. Dies blockiert die
+Veröffentlichung nicht; die Actions-/Runner-Pflege ist eine getrennte Folgeaufgabe.
 
 Der geprüfte Stand ist als gemeinsame Basis für die nächste Entwicklungsphase
 geeignet; nicht als endgültige Performance-/Art-Quality-Freigabe aller Geräte.

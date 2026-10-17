@@ -2,9 +2,11 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
 import { join, dirname, resolve } from 'node:path';
+import { existsSync } from 'node:fs';
 
 const git = (...args) => execFileSync('git', args, { encoding: 'utf8' }).trim();
-const out = resolve('outputs/repository-consolidation');
+const opt = (name, fallback) => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3) ?? fallback;
+const out = resolve(opt('out', 'outputs/repository-consolidation'));
 const snapshotPath = join(out, 'before.json');
 const hash = async path => createHash('sha256').update(await readFile(path)).digest('hex');
 if (process.argv.includes('--verify-local')) {
@@ -12,7 +14,8 @@ if (process.argv.includes('--verify-local')) {
   for (const file of snapshot.localWork) if (await hash(file.path) !== file.sha256) throw new Error(`Local work changed: ${file.path}`);
   console.log(`Preserved ${snapshot.localWork.length} pre-existing local files byte-for-byte.`);
 } else {
-  const latest = git('rev-parse', 'origin/codex/workshop-purchase-performance');
+  if (existsSync(snapshotPath)) throw new Error('Snapshot already exists. Use --verify-local or choose a new --out directory.');
+  const latest = git('rev-parse', opt('source', 'master'));
   const refs = git('for-each-ref', '--format=%(refname)', 'refs/heads', 'refs/remotes/origin').split('\n').filter(r => r !== 'refs/remotes/origin/HEAD');
   const branches = refs.map(ref => ({ ref, commit: git('rev-parse', ref),
     countsLatestVsRef: git('rev-list', '--left-right', '--count', `${latest}...${ref}`),

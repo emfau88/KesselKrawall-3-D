@@ -1,0 +1,778 @@
+{
+  "url": "https://emfau88.github.io/KesselKrawall-3-D/",
+  "expectedCommit": "cac088a6919a90a7fdc0a4ff6ce7592da77a088a",
+  "at": "2026-10-17T21:03:31.431Z",
+  "profiles": [
+    {
+      "profile": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "errors": [],
+      "models": [
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Potion_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Chest_Wood.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Potion_2.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Barrel.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        }
+      ],
+      "cancelledAudio": [
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/battle.ogg",
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/boss.ogg",
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/battle.ogg",
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/battle.ogg",
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/boss.ogg",
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/battle.ogg",
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/boss.ogg"
+      ],
+      "menuAssets": [
+        "mockup-witch-workbench-desktop",
+        "ingredient-phase3a-pedestal-desktop",
+        "ingredient-polish-tier-mount-desktop",
+        "ingredient-polish-chili-desktop",
+        "ingredient-phase3a-pedestal-desktop",
+        "ingredient-polish-tier-mount-desktop",
+        "ingredient-polish-slime-shroom-desktop",
+        "ingredient-phase3a-pedestal-desktop",
+        "ingredient-polish-tier-mount-desktop",
+        "ingredient-polish-egg-shell-desktop",
+        "ingredient-phase3a-pedestal-desktop",
+        "ingredient-phase3a-pedestal-desktop"
+      ],
+      "scene": {
+        "assets": [
+          "mockup-open-grimoire-desktop",
+          "mockup-triple-candleholder-desktop",
+          "quaternius-potion-round",
+          "quaternius-potion-tall",
+          "quaternius-chest",
+          "quaternius-barrel",
+          "mockup-witch-workbench-desktop",
+          "ingredient-phase3a-pedestal-desktop",
+          "ingredient-polish-chili-desktop",
+          "ingredient-phase3a-pedestal-desktop",
+          "ingredient-phase3a-pedestal-desktop",
+          "ingredient-phase3a-pedestal-desktop",
+          "ingredient-phase3a-pedestal-desktop"
+        ],
+        "lights": [
+          {
+            "name": "fantasy-rear-accent",
+            "intensity": 14
+          },
+          {
+            "name": "fantasy-readable-rim",
+            "intensity": 7
+          }
+        ],
+        "camera": "PerspectiveCamera",
+        "buffer": [
+          1490,
+          931
+        ]
+      },
+      "passed": true
+    },
+    {
+      "profile": "portrait",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "errors": [],
+      "models": [
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-arch/dungeon-stone-arch-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-arch/dungeon-stone-arch-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/triple-candleholder/triple-candleholder-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/triple-candleholder/triple-candleholder-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/wall-candle-sconce/wall-candle-sconce-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/wall-candle-sconce/wall-candle-sconce-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/zischbert/zischbert-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-floor-module/dungeon-floor-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-floor-module/dungeon-floor-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/egg-shell-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/tier-mount-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/slime-shroom-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/ritual-platform/ritual-platform-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Chest_Wood.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Barrel.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Potion_2.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/alchemy-shelf/alchemy-shelf-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Potion_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/alchemy-shelf/alchemy-shelf-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/ritual-platform/ritual-platform-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/zischbert/zischbert-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-arch/dungeon-stone-arch-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/alchemy-shelf/alchemy-shelf-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/wall-candle-sconce/wall-candle-sconce-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/triple-candleholder/triple-candleholder-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-mobile.glb",
+          "status": 200
+        }
+      ],
+      "cancelledAudio": [
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/battle.ogg"
+      ],
+      "menuAssets": [
+        "mockup-witch-workbench-mobile",
+        "ingredient-phase3a-pedestal-mobile",
+        "ingredient-polish-tier-mount-mobile",
+        "ingredient-polish-chili-mobile",
+        "ingredient-phase3a-pedestal-mobile",
+        "ingredient-polish-tier-mount-mobile",
+        "ingredient-polish-slime-shroom-mobile",
+        "ingredient-phase3a-pedestal-mobile",
+        "ingredient-polish-tier-mount-mobile",
+        "ingredient-polish-egg-shell-mobile",
+        "ingredient-phase3a-pedestal-mobile",
+        "ingredient-phase3a-pedestal-mobile"
+      ],
+      "scene": {
+        "assets": [
+          "mockup-witch-workbench-mobile",
+          "ingredient-phase3a-pedestal-mobile",
+          "ingredient-polish-chili-mobile",
+          "ingredient-phase3a-pedestal-mobile",
+          "ingredient-phase3a-pedestal-mobile",
+          "ingredient-phase3a-pedestal-mobile",
+          "ingredient-phase3a-pedestal-mobile"
+        ],
+        "lights": [
+          {
+            "name": "fantasy-rear-accent",
+            "intensity": 14
+          },
+          {
+            "name": "fantasy-readable-rim",
+            "intensity": 7
+          }
+        ],
+        "camera": "PerspectiveCamera",
+        "buffer": [
+          395,
+          856
+        ]
+      },
+      "passed": true
+    },
+    {
+      "profile": "landscape",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "errors": [],
+      "models": [
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/alchemy-shelf/alchemy-shelf-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-floor-module/dungeon-floor-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/alchemy-shelf/alchemy-shelf-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-floor-module/dungeon-floor-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/triple-candleholder/triple-candleholder-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/zischbert/zischbert-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/wall-candle-sconce/wall-candle-sconce-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/ritual-platform/ritual-platform-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-arch/dungeon-stone-arch-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/triple-candleholder/triple-candleholder-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/wall-candle-sconce/wall-candle-sconce-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-arch/dungeon-stone-arch-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/tier-mount-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/egg-shell-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/slime-shroom-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Potion_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Chest_Wood.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Barrel.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/quaternius/fantasy/Potion_2.gltf",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/ritual-platform/ritual-platform-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/brasskin/brasskin-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/characters/zischbert/zischbert-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a/pedestal-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/witch-workbench/witch-workbench-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-wall-module/dungeon-wall-module-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-arch/dungeon-stone-arch-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/alchemy-shelf/alchemy-shelf-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/wall-candle-sconce/wall-candle-sconce-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/triple-candleholder/triple-candleholder-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/environment/open-grimoire/open-grimoire-mobile.glb",
+          "status": 200
+        },
+        {
+          "url": "https://emfau88.github.io/KesselKrawall-3-D/assets/ingredient-phase3a-polish/chili-mobile.glb",
+          "status": 200
+        }
+      ],
+      "cancelledAudio": [
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/battle.ogg",
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/boss.ogg",
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/battle.ogg",
+        "https://emfau88.github.io/KesselKrawall-3-D/assets/audio/music/boss.ogg"
+      ],
+      "menuAssets": [
+        "mockup-witch-workbench-mobile",
+        "ingredient-phase3a-pedestal-mobile",
+        "ingredient-polish-tier-mount-mobile",
+        "ingredient-polish-chili-mobile",
+        "ingredient-phase3a-pedestal-mobile",
+        "ingredient-polish-tier-mount-mobile",
+        "ingredient-polish-slime-shroom-mobile",
+        "ingredient-phase3a-pedestal-mobile",
+        "ingredient-polish-tier-mount-mobile",
+        "ingredient-polish-egg-shell-mobile",
+        "ingredient-phase3a-pedestal-mobile",
+        "ingredient-phase3a-pedestal-mobile"
+      ],
+      "scene": {
+        "assets": [
+          "mockup-witch-workbench-mobile",
+          "ingredient-phase3a-pedestal-mobile",
+          "ingredient-polish-chili-mobile",
+          "ingredient-phase3a-pedestal-mobile",
+          "ingredient-phase3a-pedestal-mobile",
+          "ingredient-phase3a-pedestal-mobile",
+          "ingredient-phase3a-pedestal-mobile"
+        ],
+        "lights": [
+          {
+            "name": "fantasy-rear-accent",
+            "intensity": 14
+          },
+          {
+            "name": "fantasy-readable-rim",
+            "intensity": 7
+          }
+        ],
+        "camera": "PerspectiveCamera",
+        "buffer": [
+          873,
+          403
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "Fresh isolated browser contexts, no seeded run. Native new-campaign, onboarding, purchase and persistence controls.",
+    "Mobile viewport/touch emulation uses the desktop GPU, not real smartphones. This is a functional smoke, not a new performance benchmark."
+  ],
+  "identity": {
+    "commit": "cac088a6919a90a7fdc0a4ff6ce7592da77a088a",
+    "ref": "refs/heads/master",
+    "runId": "39069187629",
+    "builtAt": "2026-10-17T21:02:01.735Z"
+  },
+  "htmlScripts": [
+    "./assets/index-BbREJy6u.js"
+  ]
+}
