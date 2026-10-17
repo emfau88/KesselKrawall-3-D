@@ -1,5 +1,6 @@
 import { Suspense, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import { animationElapsed, type CombatAnimationTime } from "../combat/combatClock";
 import {
   Group,
   MathUtils,
@@ -384,6 +385,7 @@ function CauldronAssetFallback({ profile }: { profile: CauldronVisualProfile }) 
 }
 
 interface CauldronActorProps {
+  animationTime?: CombatAnimationTime;
   accent: string;
   position: Vector3Tuple;
   rotation?: Vector3Tuple;
@@ -419,6 +421,7 @@ function LegacyCauldronActor({
   scale = 1,
   reaction = "idle",
   reactionKey = -1,
+  animationTime,
 }: CauldronActorProps) {
   const animated = useRef<Group>(null);
   const liquid = useRef<Mesh>(null);
@@ -450,7 +453,7 @@ function LegacyCauldronActor({
       lastKey.current = reactionKey;
       startedAt.current = clock.elapsedTime;
     }
-    const elapsed = clock.elapsedTime - startedAt.current;
+    const elapsed = animationElapsed(animationTime, clock.elapsedTime - startedAt.current);
     const pulse = Math.max(0, 1 - elapsed / 0.62);
     const actionWave = Math.sin(MathUtils.clamp(elapsed / 0.62, 0, 1) * Math.PI);
     const idleRate = moor ? 1.05 : hero ? 1.65 : 1.35;

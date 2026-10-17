@@ -8,6 +8,7 @@ import type {
   OpponentDefinition,
 } from "../../core/types";
 import type { CombatBeat, CombatStatusSnapshot } from "../combat/combatPresentation";
+import type { CombatPresentationClock } from "../combat/combatClock";
 
 export interface PurchaseVisual {
   readonly id: number;
@@ -26,6 +27,9 @@ export interface PurchaseVisual {
 }
 
 export interface CombatFrame {
+  readonly clock: CombatPresentationClock;
+  readonly beatStartsAtMs: number;
+  readonly impactLanded: boolean;
   readonly beatId: string | null;
   readonly eventIndex: number;
   readonly event: CombatEvent | null;

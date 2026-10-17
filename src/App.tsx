@@ -52,11 +52,12 @@ import {
   createEmptyCombatStatuses,
   createCombatTimeline,
   getBeatAt,
-  getPlaybackElapsedMs,
+  getPresentedBeatState,
   getTimelineProgress,
   type BattlePlaybackSpeed,
   type CombatTimeline,
 } from "./presentation/combat/combatPresentation";
+import { advanceCombatTime, PLAYBACK_MULTIPLIER, type CombatPresentationClock } from "./presentation/combat/combatClock";
 import {
   createFloatingCombatNumbers,
   formatFloatingCombatNumber,
@@ -104,8 +105,7 @@ const GreyboxStage = lazy(() => import("./presentation/scene/GreyboxStage"));
 interface Playback {
   readonly result: CombatResult;
   readonly timeline: CombatTimeline;
-  readonly startedAt: number;
-  readonly offsetMs: number;
+  readonly clock: CombatPresentationClock;
   readonly speed: BattlePlaybackSpeed;
   readonly paused: boolean;
 }
@@ -439,42 +439,55 @@ export function App() {
 
   useEffect(() => {
     if (!playback || playback.paused) return;
-    const timer = window.setInterval(() => {
-      const presentationElapsedMs = Math.min(
-        playback.timeline.durationMs,
-        getPlaybackElapsedMs(
-          playback.offsetMs,
-          playback.startedAt,
-          performance.now(),
-          playback.speed,
-          playback.paused,
-        ),
-      );
+    let animationFrame = 0;
+    let previousWallTime = performance.now();
+    let lastPaintAt = -Infinity;
+    let lastEventIndex = -2;
+    let lastLanded = false;
+    const animate = (now: number) => {
+      const presentationElapsedMs = Math.min(playback.timeline.durationMs,
+        advanceCombatTime(playback.clock.timeMs, now - previousWallTime, playback.speed));
+      previousWallTime = now;
+      playback.clock.timeMs = presentationElapsedMs;
       const beat = getBeatAt(playback.timeline, presentationElapsedMs);
       const event = beat?.event ?? null;
-      const snapshot = beat?.snapshot ?? null;
-      setCombat({
-        beatId: beat?.id ?? null,
-        eventIndex: beat?.eventIndex ?? -1,
-        event,
-        events: beat?.events ?? [],
-        emphasis: beat?.emphasis ?? null,
-        statuses: beat?.statuses ?? createEmptyCombatStatuses(),
-        elapsedMs: snapshot?.time ?? 0,
-        playbackProgress: getTimelineProgress(playback.timeline, presentationElapsedMs),
-        playerHp: snapshot?.playerHp ?? playback.result.playerMaxHp,
-        playerShield: snapshot?.playerShield ?? 0,
-        enemyHp: snapshot?.enemyHp ?? playback.result.enemyMaxHp,
-        enemyShield: snapshot?.enemyShield ?? 0,
-      });
+      const { landed, snapshot, statuses } = getPresentedBeatState(beat, presentationElapsedMs);
+      // React UI stays at the existing ~22 Hz, with an immediate publication
+      // on attack/impact boundaries. Three.js reads the shared clock every frame.
+      if (now - lastPaintAt >= 45 || (beat?.eventIndex ?? -1) !== lastEventIndex || landed !== lastLanded) {
+        lastPaintAt = now;
+        lastEventIndex = beat?.eventIndex ?? -1;
+        lastLanded = landed;
+        setCombat({
+          clock: playback.clock,
+          beatStartsAtMs: beat?.startsAtMs ?? 0,
+          impactLanded: landed,
+          beatId: beat?.id ?? null,
+          eventIndex: beat?.eventIndex ?? -1,
+          event,
+          events: beat?.events ?? [],
+          emphasis: beat?.emphasis ?? null,
+          statuses,
+          elapsedMs: snapshot?.time ?? 0,
+          playbackProgress: getTimelineProgress(playback.timeline, presentationElapsedMs),
+          playerHp: snapshot?.playerHp ?? playback.result.playerMaxHp,
+          playerShield: snapshot?.playerShield ?? 0,
+          enemyHp: snapshot?.enemyHp ?? playback.result.enemyMaxHp,
+          enemyShield: snapshot?.enemyShield ?? 0,
+        });
+        setFloatingNumbers(current => current.some(number => number.expiresAt <= presentationElapsedMs)
+          ? current.filter(number => number.expiresAt > presentationElapsedMs) : current);
+      }
 
       if (presentationElapsedMs >= playback.timeline.durationMs) {
-        window.clearInterval(timer);
         setCombat({
+          clock: playback.clock,
+          beatStartsAtMs: presentationElapsedMs,
+          impactLanded: true,
           beatId: playback.timeline.beats.at(-1)?.id ?? null,
           eventIndex: playback.result.events.length,
-          event: playback.result.events.at(-1) ?? null,
-          events: playback.timeline.beats.at(-1)?.events ?? [],
+          event: null,
+          events: [],
           emphasis: playback.timeline.beats.at(-1)?.emphasis ?? null,
           statuses: playback.timeline.beats.at(-1)?.statuses ?? createEmptyCombatStatuses(),
           elapsedMs: playback.result.duration,
@@ -490,14 +503,17 @@ export function App() {
           setGame((current) => showBattleResult(current));
           resultRevealTimer.current = null;
         }, 1_650);
+        return;
       }
-    }, 45);
-    return () => window.clearInterval(timer);
+      animationFrame = window.requestAnimationFrame(animate);
+    };
+    animationFrame = window.requestAnimationFrame(animate);
+    return () => window.cancelAnimationFrame(animationFrame);
   }, [playback]);
 
   useEffect(() => {
     const event = combat?.event;
-    if (!event || combat.eventIndex === lastAudioEvent.current) return;
+    if (!event || !combat.impactLanded || combat.eventIndex === lastAudioEvent.current) return;
     lastAudioEvent.current = combat.eventIndex;
     audioDirector.playCombat(combatSound(event), event.sourceItemId, {
       emphasis: combat.emphasis === "boss" ? "hero" : combat.emphasis ?? "standard",
@@ -505,20 +521,16 @@ export function App() {
       opponentId: stagedOpponent.id,
       enemyCast: event.actor === "enemy",
     });
-  }, [combat?.emphasis, combat?.event, combat?.eventIndex, stagedOpponent.id]);
+  }, [combat?.emphasis, combat?.event, combat?.eventIndex, combat?.impactLanded, stagedOpponent.id]);
 
   useEffect(() => {
-    if (!combat?.beatId || combat.beatId === lastFeedbackBeat.current) return;
+    if (!combat?.beatId || !combat.impactLanded || combat.beatId === lastFeedbackBeat.current) return;
     lastFeedbackBeat.current = combat.beatId;
-    const now = performance.now();
+    const now = combat.clock.timeMs;
     const incoming = createFloatingCombatNumbers(combat.events, combat.beatId, now);
     if (incoming.length === 0) return;
     setFloatingNumbers((current) => mergeFloatingCombatNumbers(current, incoming, now));
-    window.setTimeout(() => {
-      const expiry = performance.now();
-      setFloatingNumbers((current) => current.filter((number) => number.expiresAt > expiry));
-    }, 1_180);
-  }, [combat?.beatId, combat?.events]);
+  }, [combat?.beatId, combat?.events, combat?.impactLanded, combat?.clock]);
 
   useEffect(() => {
     if (game.phase !== "result" || !game.pendingBattle || soundedResult.current === game.pendingBattle) return;
@@ -752,6 +764,9 @@ export function App() {
     setFloatingNumbers([]);
     lastFeedbackBeat.current = null;
     setCombat({
+      clock: { timeMs: 0 },
+      beatStartsAtMs: 0,
+      impactLanded: false,
       beatId: null,
       eventIndex: -1,
       event: null,
@@ -797,15 +812,15 @@ export function App() {
   }
 
   function commitPreparedBattle(preparation: BattlePreparation) {
-    const speed: BattlePlaybackSpeed = game.round === 1 ? 1 : 2;
+    // Start at 1× by default; retain a speed the player explicitly selected.
+    const speed = battleSpeed;
     setGame(preparation.state);
     setLastResult(preparation.result);
     setBattleSpeed(speed);
     setPlayback({
       result: preparation.result,
       timeline: preparation.timeline,
-      startedAt: performance.now(),
-      offsetMs: 0,
+      clock: { timeMs: 0 },
       speed,
       paused: false,
     });
@@ -834,43 +849,12 @@ export function App() {
 
   function handleBattleSpeed(speed: BattlePlaybackSpeed) {
     setBattleSpeed(speed);
-    setPlayback((current) => {
-      if (!current) return current;
-      const now = performance.now();
-      return {
-        ...current,
-        offsetMs: getPlaybackElapsedMs(
-          current.offsetMs,
-          current.startedAt,
-          now,
-          current.speed,
-          current.paused,
-        ),
-        startedAt: now,
-        speed,
-      };
-    });
+    setPlayback(current => current ? { ...current, speed } : current);
     audioDirector.play("select");
   }
 
   function handleBattlePause() {
-    setPlayback((current) => {
-      if (!current) return current;
-      const now = performance.now();
-      const offsetMs = getPlaybackElapsedMs(
-        current.offsetMs,
-        current.startedAt,
-        now,
-        current.speed,
-        current.paused,
-      );
-      return {
-        ...current,
-        offsetMs,
-        startedAt: now,
-        paused: !current.paused,
-      };
-    });
+    setPlayback(current => current ? { ...current, paused: !current.paused } : current);
     audioDirector.play("select");
   }
 
@@ -920,6 +904,7 @@ export function App() {
   }
 
   function startCampaign(campaignId: CampaignId, legacyFamily?: LegacyFamily) {
+    setBattleSpeed(1);
     setGame(enterOpeningShop(resetRun(Date.now() >>> 0, campaignId, legacyFamily)));
     setPurchase(null);
     setPlayback(null);
@@ -990,12 +975,13 @@ export function App() {
 
   return (
     <main
-      className={`game-shell phase-${game.phase} encounter-${stagedOpponent.id}${isMockupCompositionEnabled() ? " composition-phase1" : ""}${battlePreparation ? " is-preparing-battle" : ""}`}
+      className={`game-shell phase-${game.phase} encounter-${stagedOpponent.id}${isMockupCompositionEnabled() ? " composition-phase1" : ""}${battlePreparation ? " is-preparing-battle" : ""}${playback?.paused ? " is-combat-paused" : ""}`}
       style={{
         "--encounter-accent": stagedPresentation.glow,
         "--encounter-secondary": stagedPresentation.secondaryGlow,
         "--encounter-surface": stagedPresentation.floor,
         "--encounter-banner": stagedPresentation.banner,
+        "--combat-speed": PLAYBACK_MULTIPLIER[battleSpeed],
       } as CSSProperties}
     >
       <SceneErrorBoundary>

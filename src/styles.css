@@ -679,6 +679,8 @@ button, canvas { -webkit-tap-highlight-color: transparent; }
   animation: combat-number-rise 1.15s cubic-bezier(.18,.72,.22,1) both;
 }
 .combat-floating-number:nth-child(3n + 1) { --number-x: -2.5rem; }
+.combat-floating-number { animation-duration: calc(1.15s / var(--combat-speed, 1)); }
+.is-combat-paused .combat-floating-number { animation-play-state: paused; }
 .combat-floating-number:nth-child(3n + 2) { --number-x: 2.5rem; }
 .combat-floating-number.target-enemy { top: 27%; }
 .combat-floating-number.target-player { top: 61%; }

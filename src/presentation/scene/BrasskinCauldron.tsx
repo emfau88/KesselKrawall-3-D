@@ -11,6 +11,7 @@ import { characterAssetId, type CauldronCharacterId } from "./character/brasskin
 import { createBrasskinPose, updateBrasskinPose } from "./character/brasskinMotion";
 import { lightingLook } from "./lightingLook";
 import { applyLightingMaterial } from "./lightingMaterials";
+import { animationElapsed, type CombatAnimationTime } from "../combat/combatClock";
 
 function setMorph(body: Mesh, name: string, value: number): void {
   const index = body.morphTargetDictionary?.[name];
@@ -31,7 +32,9 @@ export function BrasskinCauldron({
   footOffset: suppliedFootOffset,
   name: suppliedName,
   liquidPalette: suppliedPalette,
+  animationTime,
 }: {
+  animationTime?: CombatAnimationTime;
   position: Vector3Tuple;
   rotation?: Vector3Tuple;
   scale?: number;
@@ -119,7 +122,7 @@ export function BrasskinCauldron({
       lastReaction.current.reaction = reaction;
     }
     const current = pose.current;
-    updateBrasskinPose(current, reaction, time - startedAt.current, time, reducedMotion.current);
+    updateBrasskinPose(current, reaction, animationElapsed(animationTime, time - startedAt.current), time, reducedMotion.current);
     animated.current.position.y = current.offsetY;
     animated.current.rotation.set(current.rotationX, 0, current.rotationZ);
     animated.current.scale.set(current.scaleX, current.scaleY, current.scaleX);
