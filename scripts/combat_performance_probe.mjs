@@ -1,6 +1,6 @@
 // Browser-only, read-only instrumentation installed before application startup.
 // No renderer finish/readPixels or production diagnostic hooks are introduced.
-export function installCombatProbe({experiment='none',mode='diagnostic'}={}) {
+export function installCombatProbe({experiment='none',mode='diagnostic',gpuPhases=['combat']}={}) {
   const data={marks:[],frames:[],longTasks:[],glSlow:[],glTotals:{},renders:[],shadow:[],programs:[],resources:[],experiments:experiment};
   const roots=new Set();let state,framePrevious,phase='navigation',lastDom='',lastEvent=-2,lastPrograms=-1,lastActors=0;
   const phases=[{t:0,phase:'navigation'}];
@@ -86,7 +86,7 @@ export function installCombatProbe({experiment='none',mode='diagnostic'}={}) {
     // Nested render/PMREM calls are ignored; disjoint samples are discarded.
     const timer=gl.getExtension('EXT_disjoint_timer_query_webgl2');data.gpu.timerQueryAvailable=Boolean(timer);
     if(timer&&mode==='diagnostic'){let running=false,pending=[];const timed=renderer.render;renderer.render=function(...args){
-      if(running||phase!=='combat')return timed.apply(this,args);
+      if(running||!gpuPhases.includes(phase))return timed.apply(this,args);
       for(const q of pending.filter(q=>gl.getQueryParameter(q.query,gl.QUERY_RESULT_AVAILABLE))){if(!gl.getParameter(timer.GPU_DISJOINT_EXT))(data.gpuTimes??=[]).push({t:q.t,ms:gl.getQueryParameter(q.query,gl.QUERY_RESULT)/1e6});gl.deleteQuery(q.query);pending=pending.filter(x=>x!==q);}
       const query=gl.createQuery();running=true;const t=performance.now();gl.beginQuery(timer.TIME_ELAPSED_EXT,query);try{return timed.apply(this,args)}finally{gl.endQuery(timer.TIME_ELAPSED_EXT);running=false;pending.push({query,t});}
     };}

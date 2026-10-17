@@ -1,0 +1,1929 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-17T19:07:41.324Z",
+  "root": "C:\\Users\\madde\\Documents\\ChatGPT\\KesselKrawall3D\\outputs\\workshop-purchase-performance\\matrix",
+  "totalRuns": 40,
+  "groups": [
+    {
+      "key": "baseline/desktop/cold",
+      "n": 5,
+      "buffers": [
+        "{\"width\":1490,\"height\":931,\"dpr\":1}"
+      ],
+      "workshopReadyMs": {
+        "n": 5,
+        "median": 12812.2,
+        "p95": 16190.2,
+        "max": 16190.2
+      },
+      "startupWorstFrameMs": {
+        "n": 5,
+        "median": 3883.1,
+        "p95": 4783.1,
+        "max": 4783.1
+      },
+      "interactionWorstFrameMs": {
+        "n": 5,
+        "median": 4766.5,
+        "p95": 6333,
+        "max": 6333
+      },
+      "framesOver250": 27,
+      "framesOver1000": 16,
+      "longTaskTotalMs": {
+        "n": 5,
+        "median": 15431,
+        "p95": 17759,
+        "max": 17759
+      },
+      "maxLongTaskMs": {
+        "n": 5,
+        "median": 4768,
+        "p95": 6336,
+        "max": 6336
+      },
+      "programsMax": {
+        "n": 5,
+        "median": 114,
+        "p95": 115,
+        "max": 115
+      },
+      "callsMax": {
+        "n": 5,
+        "median": 170,
+        "p95": 170,
+        "max": 170
+      },
+      "geometriesMax": {
+        "n": 5,
+        "median": 72,
+        "p95": 72,
+        "max": 72
+      },
+      "texturesMax": {
+        "n": 5,
+        "median": 57,
+        "p95": 57,
+        "max": 57
+      },
+      "idleFrameMedianMs": {
+        "n": 5,
+        "median": 16.7,
+        "p95": 16.7,
+        "max": 16.7
+      },
+      "actions": [
+        {
+          "name": "merge-first",
+          "totalMs": {
+            "n": 5,
+            "median": 2212.4,
+            "p95": 3340.7,
+            "max": 3340.7
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 4.5,
+            "p95": 9.8,
+            "max": 9.8
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 933.3,
+            "p95": 1783.3,
+            "max": 1783.3
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 321.3,
+            "p95": 1178.9,
+            "max": 1178.9
+          }
+        },
+        {
+          "name": "merge-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 4965.9,
+            "p95": 6060.3,
+            "max": 6060.3
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.6,
+            "p95": 3.8,
+            "max": 3.8
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 3749.8,
+            "p95": 4733.2,
+            "max": 4733.2
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 3126.2,
+            "p95": 4119.1,
+            "max": 4119.1
+          }
+        },
+        {
+          "name": "merge-third",
+          "totalMs": {
+            "n": 5,
+            "median": 6443.5,
+            "p95": 7990,
+            "max": 7990
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 2,
+            "p95": 2.4,
+            "max": 2.4
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 4766.5,
+            "p95": 6333,
+            "max": 6333
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 4644.2,
+            "p95": 6180.2,
+            "max": 6180.2
+          }
+        },
+        {
+          "name": "cascade-first",
+          "totalMs": {
+            "n": 5,
+            "median": 6379.5,
+            "p95": 7441.8,
+            "max": 7441.8
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.5,
+            "p95": 4.2,
+            "max": 4.2
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 4083.1,
+            "p95": 5183.1,
+            "max": 5183.1
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 3938.3,
+            "p95": 5019.9,
+            "max": 5019.9
+          }
+        },
+        {
+          "name": "cascade-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 2428.6,
+            "p95": 2444.9,
+            "max": 2444.9
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.8,
+            "p95": 2.3,
+            "max": 2.3
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 11.7,
+            "p95": 15,
+            "max": 15
+          }
+        },
+        {
+          "name": "purchase-empty",
+          "totalMs": {
+            "n": 5,
+            "median": 1164.3,
+            "p95": 1199.7,
+            "max": 1199.7
+          },
+          "authoredMs": 1120,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 2,
+            "p95": 3.1,
+            "max": 3.1
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 199.9,
+            "max": 199.9
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 6.3,
+            "p95": 28.6,
+            "max": 28.6
+          }
+        }
+      ]
+    },
+    {
+      "key": "baseline/desktop/warm",
+      "n": 5,
+      "buffers": [
+        "{\"width\":1490,\"height\":931,\"dpr\":1}"
+      ],
+      "workshopReadyMs": {
+        "n": 5,
+        "median": 2683,
+        "p95": 15758.2,
+        "max": 15758.2
+      },
+      "startupWorstFrameMs": {
+        "n": 5,
+        "median": 950,
+        "p95": 4333.1,
+        "max": 4333.1
+      },
+      "interactionWorstFrameMs": {
+        "n": 5,
+        "median": 783.4,
+        "p95": 1033.4,
+        "max": 1033.4
+      },
+      "framesOver250": 15,
+      "framesOver1000": 1,
+      "longTaskTotalMs": {
+        "n": 5,
+        "median": 2472,
+        "p95": 3490,
+        "max": 3490
+      },
+      "maxLongTaskMs": {
+        "n": 5,
+        "median": 796,
+        "p95": 1033,
+        "max": 1033
+      },
+      "programsMax": {
+        "n": 5,
+        "median": 114,
+        "p95": 115,
+        "max": 115
+      },
+      "callsMax": {
+        "n": 5,
+        "median": 170,
+        "p95": 170,
+        "max": 170
+      },
+      "geometriesMax": {
+        "n": 5,
+        "median": 72,
+        "p95": 72,
+        "max": 72
+      },
+      "texturesMax": {
+        "n": 5,
+        "median": 57,
+        "p95": 57,
+        "max": 57
+      },
+      "idleFrameMedianMs": {
+        "n": 5,
+        "median": 16.7,
+        "p95": 16.7,
+        "max": 16.7
+      },
+      "actions": [
+        {
+          "name": "merge-first",
+          "totalMs": {
+            "n": 5,
+            "median": 1809.9,
+            "p95": 2233.1,
+            "max": 2233.1
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 2.9,
+            "p95": 4.2,
+            "max": 4.2
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 666.6,
+            "p95": 1033.4,
+            "max": 1033.4
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 15.6,
+            "p95": 411.1,
+            "max": 411.1
+          }
+        },
+        {
+          "name": "merge-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 1797.5,
+            "p95": 2116.1,
+            "max": 2116.1
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.8,
+            "p95": 2.5,
+            "max": 2.5
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 583.3,
+            "p95": 683.3,
+            "max": 683.3
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 13.2,
+            "p95": 307.3,
+            "max": 307.3
+          }
+        },
+        {
+          "name": "merge-third",
+          "totalMs": {
+            "n": 5,
+            "median": 2297.8,
+            "p95": 2609.9,
+            "max": 2609.9
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.4,
+            "p95": 1.6,
+            "max": 1.6
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 666.6,
+            "p95": 966.6,
+            "max": 966.6
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 501.7,
+            "p95": 814.6,
+            "max": 814.6
+          }
+        },
+        {
+          "name": "cascade-first",
+          "totalMs": {
+            "n": 5,
+            "median": 2929.9,
+            "p95": 3013.4,
+            "max": 3013.4
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.4,
+            "p95": 1.8,
+            "max": 1.8
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 650,
+            "p95": 733.2,
+            "max": 733.2
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 496.9,
+            "p95": 585.3,
+            "max": 585.3
+          }
+        },
+        {
+          "name": "cascade-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 2413.6,
+            "p95": 2450.5,
+            "max": 2450.5
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.7,
+            "p95": 2.4,
+            "max": 2.4
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 8,
+            "p95": 13.8,
+            "max": 13.8
+          }
+        },
+        {
+          "name": "purchase-empty",
+          "totalMs": {
+            "n": 5,
+            "median": 1164.5,
+            "p95": 1185,
+            "max": 1185
+          },
+          "authoredMs": 1120,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.4,
+            "p95": 3.7,
+            "max": 3.7
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 6,
+            "p95": 7,
+            "max": 7
+          }
+        }
+      ]
+    },
+    {
+      "key": "baseline/landscape/cold",
+      "n": 5,
+      "buffers": [
+        "{\"width\":873,\"height\":403,\"dpr\":1}"
+      ],
+      "workshopReadyMs": {
+        "n": 5,
+        "median": 9965.6,
+        "p95": 13496.9,
+        "max": 13496.9
+      },
+      "startupWorstFrameMs": {
+        "n": 5,
+        "median": 3883.2,
+        "p95": 3899.9,
+        "max": 3899.9
+      },
+      "interactionWorstFrameMs": {
+        "n": 5,
+        "median": 4633.2,
+        "p95": 4733.1,
+        "max": 4733.1
+      },
+      "framesOver250": 22,
+      "framesOver1000": 18,
+      "longTaskTotalMs": {
+        "n": 5,
+        "median": 15912,
+        "p95": 16471,
+        "max": 16471
+      },
+      "maxLongTaskMs": {
+        "n": 5,
+        "median": 4637,
+        "p95": 4747,
+        "max": 4747
+      },
+      "programsMax": {
+        "n": 5,
+        "median": 114,
+        "p95": 114,
+        "max": 114
+      },
+      "callsMax": {
+        "n": 5,
+        "median": 172,
+        "p95": 172,
+        "max": 172
+      },
+      "geometriesMax": {
+        "n": 5,
+        "median": 74,
+        "p95": 74,
+        "max": 74
+      },
+      "texturesMax": {
+        "n": 5,
+        "median": 57,
+        "p95": 57,
+        "max": 57
+      },
+      "idleFrameMedianMs": {
+        "n": 5,
+        "median": 16.7,
+        "p95": 16.7,
+        "max": 16.7
+      },
+      "actions": [
+        {
+          "name": "merge-first",
+          "totalMs": {
+            "n": 5,
+            "median": 4129.1,
+            "p95": 4312.5,
+            "max": 4312.5
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 2.6,
+            "p95": 3,
+            "max": 3
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 2866.5,
+            "p95": 3049.8,
+            "max": 3049.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 2234,
+            "p95": 2420.4,
+            "max": 2420.4
+          }
+        },
+        {
+          "name": "merge-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 4581,
+            "p95": 4612.8,
+            "max": 4612.8
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.5,
+            "p95": 1.7,
+            "max": 1.7
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 3433.1,
+            "p95": 3466.5,
+            "max": 3466.5
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 2795.6,
+            "p95": 2827.5,
+            "max": 2827.5
+          }
+        },
+        {
+          "name": "merge-third",
+          "totalMs": {
+            "n": 5,
+            "median": 6280,
+            "p95": 6397,
+            "max": 6397
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.3,
+            "p95": 1.6,
+            "max": 1.6
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 4633.2,
+            "p95": 4733.1,
+            "max": 4733.1
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 4482.7,
+            "p95": 4592,
+            "max": 4592
+          }
+        },
+        {
+          "name": "cascade-first",
+          "totalMs": {
+            "n": 5,
+            "median": 6411.6,
+            "p95": 6848.1,
+            "max": 6848.1
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.7,
+            "p95": 1.9,
+            "max": 1.9
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 4133.1,
+            "p95": 4549.8,
+            "max": 4549.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 3988.8,
+            "p95": 4414.4,
+            "max": 4414.4
+          }
+        },
+        {
+          "name": "cascade-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 2414.1,
+            "p95": 2431.6,
+            "max": 2431.6
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.5,
+            "p95": 2.1,
+            "max": 2.1
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 12.4,
+            "p95": 15.4,
+            "max": 15.4
+          }
+        },
+        {
+          "name": "purchase-empty",
+          "totalMs": {
+            "n": 5,
+            "median": 1167.2,
+            "p95": 1181.1,
+            "max": 1181.1
+          },
+          "authoredMs": 1120,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.2,
+            "p95": 1.5,
+            "max": 1.5
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 9.4,
+            "p95": 14.6,
+            "max": 14.6
+          }
+        }
+      ]
+    },
+    {
+      "key": "baseline/portrait/cold",
+      "n": 5,
+      "buffers": [
+        "{\"width\":395,\"height\":856,\"dpr\":1}"
+      ],
+      "workshopReadyMs": {
+        "n": 5,
+        "median": 9779,
+        "p95": 20799,
+        "max": 20799
+      },
+      "startupWorstFrameMs": {
+        "n": 5,
+        "median": 3949.9,
+        "p95": 5316.5,
+        "max": 5316.5
+      },
+      "interactionWorstFrameMs": {
+        "n": 5,
+        "median": 4883.1,
+        "p95": 6933.1,
+        "max": 6933.1
+      },
+      "framesOver250": 36,
+      "framesOver1000": 20,
+      "longTaskTotalMs": {
+        "n": 5,
+        "median": 16095,
+        "p95": 19997,
+        "max": 19997
+      },
+      "maxLongTaskMs": {
+        "n": 5,
+        "median": 4898,
+        "p95": 6948,
+        "max": 6948
+      },
+      "programsMax": {
+        "n": 5,
+        "median": 114,
+        "p95": 115,
+        "max": 115
+      },
+      "callsMax": {
+        "n": 5,
+        "median": 171,
+        "p95": 171,
+        "max": 171
+      },
+      "geometriesMax": {
+        "n": 5,
+        "median": 73,
+        "p95": 73,
+        "max": 73
+      },
+      "texturesMax": {
+        "n": 5,
+        "median": 57,
+        "p95": 57,
+        "max": 57
+      },
+      "idleFrameMedianMs": {
+        "n": 5,
+        "median": 16.7,
+        "p95": 16.7,
+        "max": 16.7
+      },
+      "actions": [
+        {
+          "name": "merge-first",
+          "totalMs": {
+            "n": 5,
+            "median": 4146.2,
+            "p95": 4497.4,
+            "max": 4497.4
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 2.8,
+            "p95": 4.5,
+            "max": 4.5
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 2899.9,
+            "p95": 3049.9,
+            "max": 3049.9
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 2259.7,
+            "p95": 2423.3,
+            "max": 2423.3
+          }
+        },
+        {
+          "name": "merge-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 4463.9,
+            "p95": 5350.7,
+            "max": 5350.7
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.7,
+            "p95": 2.2,
+            "max": 2.2
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 3316.5,
+            "p95": 4166.5,
+            "max": 4166.5
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 2676.1,
+            "p95": 3554.9,
+            "max": 3554.9
+          }
+        },
+        {
+          "name": "merge-third",
+          "totalMs": {
+            "n": 5,
+            "median": 6294.5,
+            "p95": 8591.8,
+            "max": 8591.8
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.5,
+            "p95": 1.7,
+            "max": 1.7
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 4649.8,
+            "p95": 6933.1,
+            "max": 6933.1
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 4496.4,
+            "p95": 6791.2,
+            "max": 6791.2
+          }
+        },
+        {
+          "name": "cascade-first",
+          "totalMs": {
+            "n": 5,
+            "median": 7059,
+            "p95": 7628.5,
+            "max": 7628.5
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.4,
+            "p95": 2.3,
+            "max": 2.3
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 4749.7,
+            "p95": 4883.1,
+            "max": 4883.1
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 4612.1,
+            "p95": 4741.8,
+            "max": 4741.8
+          }
+        },
+        {
+          "name": "cascade-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 2421.4,
+            "p95": 2432.6,
+            "max": 2432.6
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.4,
+            "p95": 2.1,
+            "max": 2.1
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 766.5,
+            "max": 766.5
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.5,
+            "p95": 15.8,
+            "max": 15.8
+          }
+        },
+        {
+          "name": "purchase-empty",
+          "totalMs": {
+            "n": 5,
+            "median": 1180.9,
+            "p95": 1214.4,
+            "max": 1214.4
+          },
+          "authoredMs": 1120,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.5,
+            "p95": 1.7,
+            "max": 1.7
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 33.3,
+            "max": 33.3
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.1,
+            "p95": 11.7,
+            "max": 11.7
+          }
+        }
+      ]
+    },
+    {
+      "key": "candidate/desktop/cold",
+      "n": 5,
+      "buffers": [
+        "{\"width\":1490,\"height\":931,\"dpr\":1}"
+      ],
+      "workshopReadyMs": {
+        "n": 5,
+        "median": 9098.8,
+        "p95": 9606.4,
+        "max": 9606.4
+      },
+      "startupWorstFrameMs": {
+        "n": 5,
+        "median": 1649.9,
+        "p95": 1933.2,
+        "max": 1933.2
+      },
+      "interactionWorstFrameMs": {
+        "n": 5,
+        "median": 16.8,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "framesOver250": 0,
+      "framesOver1000": 0,
+      "longTaskTotalMs": {
+        "n": 5,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "maxLongTaskMs": {
+        "n": 5,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "programsMax": {
+        "n": 5,
+        "median": 23,
+        "p95": 23,
+        "max": 23
+      },
+      "callsMax": {
+        "n": 5,
+        "median": 170,
+        "p95": 170,
+        "max": 170
+      },
+      "geometriesMax": {
+        "n": 5,
+        "median": 72,
+        "p95": 72,
+        "max": 72
+      },
+      "texturesMax": {
+        "n": 5,
+        "median": 57,
+        "p95": 57,
+        "max": 57
+      },
+      "idleFrameMedianMs": {
+        "n": 5,
+        "median": 16.7,
+        "p95": 16.7,
+        "max": 16.7
+      },
+      "actions": [
+        {
+          "name": "merge-first",
+          "totalMs": {
+            "n": 5,
+            "median": 1795.6,
+            "p95": 1795.6,
+            "max": 1795.6
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 3.3,
+            "p95": 3.7,
+            "max": 3.7
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 6.8,
+            "p95": 9.7,
+            "max": 9.7
+          }
+        },
+        {
+          "name": "merge-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 1797.4,
+            "p95": 1813.8,
+            "max": 1813.8
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.6,
+            "p95": 1.8,
+            "max": 1.8
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 6.4,
+            "p95": 14.4,
+            "max": 14.4
+          }
+        },
+        {
+          "name": "merge-third",
+          "totalMs": {
+            "n": 5,
+            "median": 1796.9,
+            "p95": 1814.3,
+            "max": 1814.3
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.3,
+            "p95": 1.5,
+            "max": 1.5
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 9.1,
+            "p95": 12.4,
+            "max": 12.4
+          }
+        },
+        {
+          "name": "cascade-first",
+          "totalMs": {
+            "n": 5,
+            "median": 2429.5,
+            "p95": 2446.2,
+            "max": 2446.2
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 2.1,
+            "p95": 2.4,
+            "max": 2.4
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.9,
+            "p95": 13.8,
+            "max": 13.8
+          }
+        },
+        {
+          "name": "cascade-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 2430.6,
+            "p95": 2432.4,
+            "max": 2432.4
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.4,
+            "p95": 2.2,
+            "max": 2.2
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 12.1,
+            "p95": 14.1,
+            "max": 14.1
+          }
+        },
+        {
+          "name": "purchase-empty",
+          "totalMs": {
+            "n": 5,
+            "median": 1165.5,
+            "p95": 1182.5,
+            "max": 1182.5
+          },
+          "authoredMs": 1120,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.8,
+            "p95": 2,
+            "max": 2
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 9.3,
+            "p95": 14.3,
+            "max": 14.3
+          }
+        }
+      ]
+    },
+    {
+      "key": "candidate/desktop/warm",
+      "n": 5,
+      "buffers": [
+        "{\"width\":1490,\"height\":931,\"dpr\":1}"
+      ],
+      "workshopReadyMs": {
+        "n": 5,
+        "median": 1841.5,
+        "p95": 1866.5,
+        "max": 1866.5
+      },
+      "startupWorstFrameMs": {
+        "n": 5,
+        "median": 600.1,
+        "p95": 633.3,
+        "max": 633.3
+      },
+      "interactionWorstFrameMs": {
+        "n": 5,
+        "median": 16.8,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "framesOver250": 0,
+      "framesOver1000": 0,
+      "longTaskTotalMs": {
+        "n": 5,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "maxLongTaskMs": {
+        "n": 5,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "programsMax": {
+        "n": 5,
+        "median": 23,
+        "p95": 25,
+        "max": 25
+      },
+      "callsMax": {
+        "n": 5,
+        "median": 170,
+        "p95": 170,
+        "max": 170
+      },
+      "geometriesMax": {
+        "n": 5,
+        "median": 72,
+        "p95": 72,
+        "max": 72
+      },
+      "texturesMax": {
+        "n": 5,
+        "median": 57,
+        "p95": 57,
+        "max": 57
+      },
+      "idleFrameMedianMs": {
+        "n": 5,
+        "median": 16.7,
+        "p95": 16.7,
+        "max": 16.7
+      },
+      "actions": [
+        {
+          "name": "merge-first",
+          "totalMs": {
+            "n": 5,
+            "median": 1795.3,
+            "p95": 1812.3,
+            "max": 1812.3
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.7,
+            "p95": 1.9,
+            "max": 1.9
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 12.1,
+            "p95": 14.6,
+            "max": 14.6
+          }
+        },
+        {
+          "name": "merge-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 1799,
+            "p95": 1813.8,
+            "max": 1813.8
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.2,
+            "p95": 1.3,
+            "max": 1.3
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 11.3,
+            "p95": 13.7,
+            "max": 13.7
+          }
+        },
+        {
+          "name": "merge-third",
+          "totalMs": {
+            "n": 5,
+            "median": 1797.4,
+            "p95": 1798.3,
+            "max": 1798.3
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1,
+            "p95": 1.5,
+            "max": 1.5
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.1,
+            "p95": 14.8,
+            "max": 14.8
+          }
+        },
+        {
+          "name": "cascade-first",
+          "totalMs": {
+            "n": 5,
+            "median": 2413.7,
+            "p95": 2429.3,
+            "max": 2429.3
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.6,
+            "p95": 2.5,
+            "max": 2.5
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 8.2,
+            "p95": 9.2,
+            "max": 9.2
+          }
+        },
+        {
+          "name": "cascade-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 2431.3,
+            "p95": 2448.2,
+            "max": 2448.2
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.3,
+            "p95": 1.4,
+            "max": 1.4
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.7,
+            "p95": 15.5,
+            "max": 15.5
+          }
+        },
+        {
+          "name": "purchase-empty",
+          "totalMs": {
+            "n": 5,
+            "median": 1164.8,
+            "p95": 1165.4,
+            "max": 1165.4
+          },
+          "authoredMs": 1120,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.2,
+            "p95": 1.6,
+            "max": 1.6
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 6.8,
+            "p95": 12.1,
+            "max": 12.1
+          }
+        }
+      ]
+    },
+    {
+      "key": "candidate/landscape/cold",
+      "n": 5,
+      "buffers": [
+        "{\"width\":873,\"height\":403,\"dpr\":1}"
+      ],
+      "workshopReadyMs": {
+        "n": 5,
+        "median": 8830,
+        "p95": 9551.2,
+        "max": 9551.2
+      },
+      "startupWorstFrameMs": {
+        "n": 5,
+        "median": 1633.2,
+        "p95": 2350,
+        "max": 2350
+      },
+      "interactionWorstFrameMs": {
+        "n": 5,
+        "median": 16.8,
+        "p95": 33.4,
+        "max": 33.4
+      },
+      "framesOver250": 0,
+      "framesOver1000": 0,
+      "longTaskTotalMs": {
+        "n": 5,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "maxLongTaskMs": {
+        "n": 5,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "programsMax": {
+        "n": 5,
+        "median": 23,
+        "p95": 23,
+        "max": 23
+      },
+      "callsMax": {
+        "n": 5,
+        "median": 172,
+        "p95": 172,
+        "max": 172
+      },
+      "geometriesMax": {
+        "n": 5,
+        "median": 74,
+        "p95": 74,
+        "max": 74
+      },
+      "texturesMax": {
+        "n": 5,
+        "median": 57,
+        "p95": 57,
+        "max": 57
+      },
+      "idleFrameMedianMs": {
+        "n": 5,
+        "median": 16.7,
+        "p95": 16.7,
+        "max": 16.7
+      },
+      "actions": [
+        {
+          "name": "merge-first",
+          "totalMs": {
+            "n": 5,
+            "median": 1794.6,
+            "p95": 1795.5,
+            "max": 1795.5
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 2.9,
+            "p95": 3.2,
+            "max": 3.2
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 9.8,
+            "p95": 10.3,
+            "max": 10.3
+          }
+        },
+        {
+          "name": "merge-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 1812.9,
+            "p95": 1816.2,
+            "max": 1816.2
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.4,
+            "p95": 2,
+            "max": 2
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.3,
+            "p95": 13.4,
+            "max": 13.4
+          }
+        },
+        {
+          "name": "merge-third",
+          "totalMs": {
+            "n": 5,
+            "median": 1812.9,
+            "p95": 1827.4,
+            "max": 1827.4
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.4,
+            "p95": 1.8,
+            "max": 1.8
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 13.2,
+            "p95": 16.1,
+            "max": 16.1
+          }
+        },
+        {
+          "name": "cascade-first",
+          "totalMs": {
+            "n": 5,
+            "median": 2431.5,
+            "p95": 2445.5,
+            "max": 2445.5
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.5,
+            "p95": 2.1,
+            "max": 2.1
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.8,
+            "p95": 13.5,
+            "max": 13.5
+          }
+        },
+        {
+          "name": "cascade-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 2431,
+            "p95": 2441.3,
+            "max": 2441.3
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.8,
+            "p95": 2.4,
+            "max": 2.4
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 11.3,
+            "p95": 15.6,
+            "max": 15.6
+          }
+        },
+        {
+          "name": "purchase-empty",
+          "totalMs": {
+            "n": 5,
+            "median": 1164.7,
+            "p95": 1182.1,
+            "max": 1182.1
+          },
+          "authoredMs": 1120,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.3,
+            "p95": 1.4,
+            "max": 1.4
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.8,
+            "p95": 11.7,
+            "max": 11.7
+          }
+        }
+      ]
+    },
+    {
+      "key": "candidate/portrait/cold",
+      "n": 5,
+      "buffers": [
+        "{\"width\":395,\"height\":856,\"dpr\":1}"
+      ],
+      "workshopReadyMs": {
+        "n": 5,
+        "median": 8963.7,
+        "p95": 10188,
+        "max": 10188
+      },
+      "startupWorstFrameMs": {
+        "n": 5,
+        "median": 1866.6,
+        "p95": 2266.6,
+        "max": 2266.6
+      },
+      "interactionWorstFrameMs": {
+        "n": 5,
+        "median": 16.8,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "framesOver250": 0,
+      "framesOver1000": 0,
+      "longTaskTotalMs": {
+        "n": 5,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "maxLongTaskMs": {
+        "n": 5,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "programsMax": {
+        "n": 5,
+        "median": 23,
+        "p95": 23,
+        "max": 23
+      },
+      "callsMax": {
+        "n": 5,
+        "median": 171,
+        "p95": 171,
+        "max": 171
+      },
+      "geometriesMax": {
+        "n": 5,
+        "median": 73,
+        "p95": 73,
+        "max": 73
+      },
+      "texturesMax": {
+        "n": 5,
+        "median": 57,
+        "p95": 57,
+        "max": 57
+      },
+      "idleFrameMedianMs": {
+        "n": 5,
+        "median": 16.7,
+        "p95": 16.7,
+        "max": 16.7
+      },
+      "actions": [
+        {
+          "name": "merge-first",
+          "totalMs": {
+            "n": 5,
+            "median": 1797,
+            "p95": 1810.5,
+            "max": 1810.5
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 2.8,
+            "p95": 3.2,
+            "max": 3.2
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 11.1,
+            "p95": 12.9,
+            "max": 12.9
+          }
+        },
+        {
+          "name": "merge-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 1813.1,
+            "p95": 1831.6,
+            "max": 1831.6
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.6,
+            "p95": 2.2,
+            "max": 2.2
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 12.5,
+            "p95": 17.9,
+            "max": 17.9
+          }
+        },
+        {
+          "name": "merge-third",
+          "totalMs": {
+            "n": 5,
+            "median": 1797.1,
+            "p95": 1814.3,
+            "max": 1814.3
+          },
+          "authoredMs": 1740,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.5,
+            "p95": 2.6,
+            "max": 2.6
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 13.1,
+            "p95": 15.4,
+            "max": 15.4
+          }
+        },
+        {
+          "name": "cascade-first",
+          "totalMs": {
+            "n": 5,
+            "median": 2430.1,
+            "p95": 2431.6,
+            "max": 2431.6
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.3,
+            "p95": 2.6,
+            "max": 2.6
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.6,
+            "p95": 11.8,
+            "max": 11.8
+          }
+        },
+        {
+          "name": "cascade-repeat",
+          "totalMs": {
+            "n": 5,
+            "median": 2429.8,
+            "p95": 2431.8,
+            "max": 2431.8
+          },
+          "authoredMs": 2360,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.9,
+            "p95": 2.4,
+            "max": 2.4
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.2,
+            "p95": 12.1,
+            "max": 12.1
+          }
+        },
+        {
+          "name": "purchase-empty",
+          "totalMs": {
+            "n": 5,
+            "median": 1179.5,
+            "p95": 1182.1,
+            "max": 1182.1
+          },
+          "authoredMs": 1120,
+          "firstReactCommitMs": {
+            "n": 5,
+            "median": 1.3,
+            "p95": 2.1,
+            "max": 2.1
+          },
+          "worstFrameMs": {
+            "n": 5,
+            "median": 16.8,
+            "p95": 16.8,
+            "max": 16.8
+          },
+          "timerOverdueMaxMs": {
+            "n": 5,
+            "median": 10.5,
+            "p95": 14.4,
+            "max": 14.4
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "P95 uses the nearest rank; n=5 cannot establish a population tail. Maxima and raw runs remain available.",
+    "Frame intervals overlap action boundaries and are not summed with animation durations. React commits are not measured render CPU time.",
+    "Shader program counts are Three live registrations, not a count of native compilations. GPU timing is only present in diagnostic runs.",
+    "Geometry/texture counts are retained Three resources, not GPU bytes or total process memory.",
+    "Cold means fresh Chromium process/context/HTTP/JS/WebGL, not a reset of OS/driver caches. Mobile means desktop browser emulation.",
+    "Fixture restores between cascade cases are excluded from individual action windows; whole interaction windows include them.",
+    "Menu-scene-ready is the first Brasskin/three-ingredient sample, not a promise that all background GLBs have loaded. Workshop-ready follows the native continue click and two animation frames."
+  ]
+}

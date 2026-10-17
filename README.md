@@ -11,6 +11,20 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
+### Werkbank-/Kauf-Performance auf dem Arbeitsbranch
+
+`codex/workshop-purchase-performance` baut exakt auf dem Kampf-Fix `0456d1f` auf.
+Eine gezielte Lichtslot-Verwaltung reduziert nachgewiesene Shader-Wartezeiten bei
+Kauf und Merge; Modelle, Lichtwirkung, UI, Regeln und Animationstiming bleiben
+erhalten. In 120 korrigierten Kauf-/Merge-Aktionen: maximal 33,4 ms Frameintervall,
+keine mehrsekündigen Interaktionsblockaden. Initiale Start-Hänger und höhere
+laufende GPU-Kosten bleiben dokumentierte Grenzen. Die Kampfregression wurde
+auf Nutzerwunsch auf eine kleine Stichprobe gekürzt.
+
+[Werkbank-Diagnose und technische Abnahme](docs/qa/workshop-purchase-performance/README.md) ·
+[lokaler Produktionskandidat](http://127.0.0.1:5202/?art=mockup).
+Kein Pages-Release, kein Merge nach `master`.
+
 ### Technische Erstkampf-Abnahme auf dem Arbeitsbranch
 
 `codex/first-combat-performance` basiert exakt auf dem Zutaten-Polish `353d154`.

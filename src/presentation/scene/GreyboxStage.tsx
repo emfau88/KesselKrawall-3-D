@@ -5,6 +5,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 import { ArenaGreybox } from "./ArenaGreybox";
 import { CombatLightBudget } from "./CombatLightBudget";
+import { WorkshopLightBudget } from "./WorkshopLightBudget";
 import { syncCombatLightSlots } from "./combatLightSlots";
 import { prepareScenePrograms } from "./prepareScenePrograms";
 import { getOpponentPresentation } from "../content/opponentPresentation";
@@ -111,6 +112,7 @@ export function GreyboxStage({
       shadows={{ type: PCFShadowMap }}
     >
       <CombatLightBudget active={mode === "arena"} />
+      <WorkshopLightBudget active={mode === "workshop"} />
       <PreparedSceneRenderer preparing={preparing} readinessKey={readinessKey} assets={criticalAssets} decoded={decoded} onReady={onSceneReady} />
       <color attach="background" args={[background]} />
       <fog

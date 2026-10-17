@@ -63,14 +63,14 @@ process.env.PLAYWRIGHT_BROWSERS_PATH ??= join(homedir(), 'AppData/Local/ms-playw
 await mkdir(out, { recursive: true });
 const sha = value => createHash('sha256').update(typeof value === 'string' ? value : JSON.stringify(value)).digest('hex');
 const summaryPath = join(out, 'summary.json');
-const options = { count, activeMs, finishSpeed, mode, profiles, ingredients, scenarios, targetEntries, fixtureHash: sha(initialFixture) };
+const options = { count, activeMs, finishSpeed, mode, profiles, ingredients, scenarios, targetEntries, fixtureHash: sha(initialFixture), returnPurchase: flag('return-purchase') };
 const expectedGroups = count * profiles.length * ingredients.length * targetEntries.length;
 const expectedSamples = expectedGroups * scenarios.length;
 const report = flag('resume') && existsSync(summaryPath)
   ? JSON.parse(await readFile(summaryPath, 'utf8'))
   : {
     schemaVersion: 1, startedAt: new Date().toISOString(), options, expectedGroups, expectedSamples,
-    baselineCommit: '353d154524cb9490b3db07a46bcafc8fe17179e1',
+    baselineCommit: opt('baseline-commit', '353d154524cb9490b3db07a46bcafc8fe17179e1'),
     cacheDefinition: {
       cold: 'Fresh browser process, isolated context, empty HTTP cache, fresh JS and WebGL. GPU-driver/ANGLE caches are not forcibly reset.',
       warmReload: 'Same browser/context, reload with HTTP cache preserved; fresh JS and WebGL.',
@@ -205,7 +205,7 @@ async function restoreFixture(page, fixture) {
   }, { key: runKey, fixture }, { timeout: 30_000 });
   await waitWorkshop(page);
 }
-async function finishAndReturn(page) {
+async function finishAndReturn(page, label) {
   if (finishSpeed === 4 && !(await page.locator('.result-panel').count())) {
     await page.evaluate(() => {
       const button = [...document.querySelectorAll('.battle-playback-controls button')].find(b => b.textContent.trim() === '4×');
@@ -214,8 +214,13 @@ async function finishAndReturn(page) {
   }
   await page.locator('.result-panel').waitFor({ timeout: 120_000 });
   const completed = await readRun(page);
+  if (flag('return-purchase')) await mark(page, `${label}:return-intent`);
   await page.getByRole('button', { name: 'Zurück zur Werkbank', exact: true }).click();
   await waitWorkshop(page);
+  if (flag('return-purchase')) {
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    await mark(page, `${label}:return-ready`);
+  }
   return completed;
 }
 
@@ -355,12 +360,29 @@ for (const profile of profiles) for (const art of ingredients) for (let repetiti
         };
         const samplePath = join(out, `${sampleId}.json`);
         await writeFile(samplePath, JSON.stringify(record, null, 2));
-        const completed = await finishAndReturn(page);
+        const completed = await finishAndReturn(page, sampleId);
         assert.equal(sha(completed.pendingBattle), resultDigest, 'Full native combat result agrees with the initial deterministic simulation');
         record.fullNativeResultReached = true;
         record.completionPlaybackSpeed = finishSpeed;
         record.errors = errors.slice(errorStart);
         record.completedPhase = completed.phase;
+        if (flag('return-purchase')) {
+          // External legal QA fixture only, after native return; same renderer.
+          // Kept outside the unchanged active-combat measurement window.
+          await restoreFixture(page, initialFixture);
+          await purchaseAndSwap(page, profile, `${sampleId}:post-return`);
+          const returned = await page.evaluate(() => window.__combatProbe.snapshot());
+          const returnStart = returned.marks.find(m => m.name === `${sampleId}:return-intent`).t;
+          const returnReady = returned.marks.find(m => m.name === `${sampleId}:return-ready`).t;
+          const purchaseStart = returned.marks.find(m => m.name === `${sampleId}:post-return:purchase-start`).t;
+          const purchaseEnd = returned.marks.find(m => m.name === `${sampleId}:post-return:purchase-end`).t;
+          record.returnPurchase = {
+            returnToReadyMs: returnReady - returnStart, purchaseTotalMs: purchaseEnd - purchaseStart,
+            worstReturnFrameMs: Math.max(0, ...returned.frames.filter(f => f.t >= returnStart && f.t <= returnReady).map(f => f.ms)),
+            worstPurchaseFrameMs: Math.max(0, ...returned.frames.filter(f => f.t >= purchaseStart && f.t <= purchaseEnd).map(f => f.ms)),
+            longTasks: returned.longTasks.filter(t => t.t >= returnStart), data: sliceData(returned, returnStart, returned.now),
+          };
+        }
         assert.deepEqual(record.errors, [], 'No new runtime or asset errors during native battle');
         await writeFile(samplePath, JSON.stringify(record, null, 2));
         const compact = { id: sampleId, groupId, build, profile: profile.name, ingredients: art, repetition, name, enemy, metrics, resultDigest, fullNativeResultReached: true, errors: record.errors, file: `${sampleId}.json` };
