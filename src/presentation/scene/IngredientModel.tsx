@@ -10,6 +10,7 @@ import {
 
 import { getItemDefinition } from "../../core/data";
 import type { ItemLevel } from "../../core/types";
+import { animationElapsed, type CombatAnimationTime } from "../combat/combatClock";
 import { ProductionAsset, ProductionAssetBoundary, type ProductionAssetId } from "./ProductionAsset";
 import { ingredientArtEnabled, ingredientArtAsset, ingredientPolishEnabled, isPhase3AItem } from "./ingredientArt";
 
@@ -134,12 +135,13 @@ function LevelDetails({ level, color, refined = false, polished = false }: { lev
   );
 }
 
-export function IngredientModel({ itemId, level, faded = false, active = false, animationKey = -1 }: {
+export function IngredientModel({ itemId, level, faded = false, active = false, animationKey = -1, animationTime }: {
   itemId: string;
   level: ItemLevel;
   faded?: boolean;
   active?: boolean;
   animationKey?: number;
+  animationTime?: CombatAnimationTime;
 }) {
   const actor = useRef<Group>(null);
   const lastKey = useRef(animationKey);
@@ -155,7 +157,7 @@ export function IngredientModel({ itemId, level, faded = false, active = false, 
       lastKey.current = animationKey;
       startedAt.current = clock.elapsedTime;
     }
-    const elapsed = clock.elapsedTime - startedAt.current;
+    const elapsed = animationElapsed(animationTime, clock.elapsedTime - startedAt.current);
     const action = active
       ? Math.sin(MathUtils.clamp(elapsed / 0.58, 0, 1) * Math.PI)
       : 0;

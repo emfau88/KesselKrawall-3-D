@@ -101,6 +101,7 @@ gelöscht; offene Arbeiten werden erhalten. [Vollständige Regeln](docs/DEVELOPM
 
 - [Konsolidierung, Branch-Audit und Integrationsabnahme](docs/qa/repository-consolidation/README.md)
 - [Mobile-HUD: geprüfte Ansichten, Screenshots und verbleibende Grenzen](docs/qa/mobile-hud/README.md)
+- [Combat-Timing-Pass: gemeinsamer Takt für Flug, Einschlag, Schaden und Pause](docs/qa/combat-timing/README.md)
 - [Werkbank-/Kauf-Performance: Diagnose, Messungen und Grenzen](docs/qa/workshop-purchase-performance/README.md)
 - [Erstkampf-Performance: Ursache, Fix und Traces](docs/qa/first-combat-performance/README.md)
 - [Zutaten-Polish und archivierte Vorher-Nachher-Vergleiche](docs/qa/ingredient-art-phase3a-polish/README.md)

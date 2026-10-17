@@ -19,6 +19,8 @@ import { getRuntimeQualityProfile } from "./runtimeQuality";
 import { assetBakeoffMode } from "./assetBakeoff";
 import { MockupArenaEnvironment } from "./MockupArenaEnvironment";
 import type { ArenaSceneState } from "./sceneTypes";
+import { animationElapsed, type CombatAnimationTime } from "../combat/combatClock";
+import { combatMotionTiming } from "../combat/combatMotion";
 
 const PLAYER_POSITION: Vector3Tuple = [-0.28, 1.25, 4.02];
 const ENEMY_POSITION: Vector3Tuple = [0.28, 1.16, -3.7];
@@ -52,11 +54,13 @@ function reactionFor(
   const otherHp = side === "player" ? scene.combat?.enemyHp : scene.combat?.playerHp;
   if ((ownHp ?? 1) <= 0) return "defeat";
   if ((otherHp ?? 1) <= 0) return "victory";
-  if (event.target === side && event.actor !== side) return "hit";
+  if (event.target === side && event.actor !== side) return scene.combat?.impactLanded ? "hit" : "idle";
   if (event.actor !== side) return "idle";
+  if (event.code === "status.poisonTick" || event.code === "status.burnTick") return "idle";
+  if (!scene.combat?.impactLanded) return "cast";
   if (event.kind === "shield") return "guard";
   if (event.kind === "heal" || event.kind === "cleanse") return "heal";
-  return "cast";
+  return "idle";
 }
 
 function IngredientPedestal({
@@ -66,6 +70,7 @@ function IngredientPedestal({
   side,
   buffed,
   cooldown,
+  animationTime,
 }: {
   item: ItemInstance | null;
   active: boolean;
@@ -73,6 +78,7 @@ function IngredientPedestal({
   side: "player" | "enemy";
   buffed: boolean;
   cooldown: IngredientCooldownState | null;
+  animationTime?: CombatAnimationTime;
 }) {
   const dial = useRef<Group>(null);
   const refined = ingredientArtEnabled();
@@ -85,9 +91,10 @@ function IngredientPedestal({
       dial.current.rotation.y = clock.elapsedTime * (side === "player" ? 0.24 : -0.2);
     }
     if (pulse.current) {
-      const wave = active ? 1 + Math.sin(clock.elapsedTime * 10) * 0.09 : 1;
+      const time = animationElapsed(animationTime, clock.elapsedTime);
+      const wave = active ? 1 + Math.sin(time * 10) * 0.09 : 1;
       pulse.current.scale.setScalar(wave);
-      pulse.current.position.y = active ? 0.05 + Math.sin(clock.elapsedTime * 8) * 0.035 : 0;
+      pulse.current.position.y = active ? 0.05 + Math.sin(time * 8) * 0.035 : 0;
     }
   });
 
@@ -141,6 +148,7 @@ function IngredientPedestal({
           <group position={[0, refined && isPhase3AItem(item.itemId) ? ingredientRestHeight(item.level, true, item.itemId) : 0, 0]}><IngredientModel
             active={active}
             animationKey={animationKey}
+            animationTime={animationTime}
             itemId={item.itemId}
             level={item.level}
           /></group>
@@ -184,8 +192,9 @@ function ArenaIngredients({ scene, side }: {
             rotation={[0, side === "player" ? Math.PI : 0, 0]}
           >
             <IngredientPedestal
-              active={Boolean(item && scene.combat?.event?.sourceUid === item.uid)}
+              active={Boolean(item && scene.combat?.event?.sourceUid === item.uid && !scene.combat.impactLanded)}
               animationKey={scene.combat?.eventIndex ?? -1}
+              animationTime={scene.combat ? { clock: scene.combat.clock, startsAtMs: scene.combat.beatStartsAtMs } : undefined}
               item={item}
               side={side}
               buffed={buffedSlots.has(index)}
@@ -691,6 +700,11 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
   const mockup = assetBakeoffMode() === "mockup";
   const eventKey = scene.combat?.eventIndex ?? -1;
   const activeEvent = scene.combat?.event;
+  const reactionKey = eventKey * 2 + (scene.combat?.impactLanded ? 1 : 0);
+  const animationTime = scene.combat && !scene.outcome ? {
+    clock: scene.combat.clock,
+    startsAtMs: scene.combat.beatStartsAtMs + (activeEvent && scene.combat.impactLanded ? combatMotionTiming(activeEvent).impactAtMs : 0),
+  } : undefined;
   const activeBoard = activeEvent?.actor === "enemy" ? scene.opponent.board : scene.board;
   const activeSlot = activeEvent
     ? activeBoard.findIndex((item) => item?.uid === activeEvent.sourceUid)
@@ -827,7 +841,8 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
         accent="#d87442"
         position={PLAYER_POSITION}
         reaction={reactionFor("player", scene)}
-        reactionKey={eventKey}
+        reactionKey={reactionKey}
+        animationTime={animationTime}
         rotation={[0, Math.PI, 0]}
         scale={1.04}
         variant="player"
@@ -836,14 +851,15 @@ export function ArenaGreybox({ scene }: { scene: ArenaSceneState }) {
         accent={presentation.liquid}
         position={ENEMY_POSITION}
         reaction={reactionFor("enemy", scene)}
-        reactionKey={eventKey}
+        reactionKey={reactionKey}
+        animationTime={animationTime}
         scale={presentation.scale}
         variant={scene.opponent.id}
       />
       <ArenaIngredients scene={scene} side="player" />
       <ArenaIngredients scene={scene} side="enemy" />
       {scene.combat?.event && (
-        <BattleVfx key={scene.combat.eventIndex} frame={scene.combat} opponentId={scene.opponent.id} sourcePosition={sourcePosition} />
+        <BattleVfx key={scene.combat.eventIndex} frame={{ ...scene.combat, event: scene.combat.event }} opponentId={scene.opponent.id} sourcePosition={sourcePosition} />
       )}
       {scene.outcome && <OutcomeVfx outcome={scene.outcome} />}
       {!mockup && <RunePillar side={-1} />}

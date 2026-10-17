@@ -1,6 +1,8 @@
 import type { CombatEvent } from "../../core/types";
+import { combatMotionTiming } from "./combatMotion";
+import { PLAYBACK_MULTIPLIER, type BattlePlaybackSpeed } from "./combatClock";
 
-export type BattlePlaybackSpeed = 1 | 2 | 4;
+export type { BattlePlaybackSpeed } from "./combatClock";
 
 export interface CombatBeat {
   readonly id: string;
@@ -12,6 +14,9 @@ export interface CombatBeat {
   readonly durationMs: number;
   readonly emphasis: "ambient" | "standard" | "hero" | "boss";
   readonly statuses: CombatStatusSnapshot;
+  readonly previousSnapshot: CombatEvent | null;
+  readonly previousStatuses: CombatStatusSnapshot;
+  readonly motion: ReturnType<typeof combatMotionTiming>;
 }
 
 export interface TimedCombatStatus {
@@ -46,12 +51,6 @@ export interface CombatTimeline {
   readonly beats: readonly CombatBeat[];
   readonly durationMs: number;
 }
-
-const SPEED_MULTIPLIER: Readonly<Record<BattlePlaybackSpeed, number>> = {
-  1: 1,
-  2: 1.65,
-  4: 2.45,
-};
 
 const POISON_INTERVAL_MS = 2_000;
 const BURN_INTERVAL_MS = 1_000;
@@ -210,8 +209,13 @@ export function createCombatTimeline(events: readonly CombatEvent[]): CombatTime
 
     const event = primaryEvent(grouped);
     const emphasis = emphasisFor(event);
-    const durationMs = durationFor(emphasis, grouped.length);
+    const motion = combatMotionTiming(event);
+    // Like the original game's minimumHoldMs: never truncate flight/impact
+    // when a dense beat or fast playback advances to the next event.
+    const durationMs = Math.max(durationFor(emphasis, grouped.length), motion.visibleMs + 180);
     const snapshot = grouped[grouped.length - 1] ?? event;
+    const previousSnapshot = beats.at(-1)?.snapshot ?? null;
+    const previousStatuses = beats.at(-1)?.statuses ?? createEmptyCombatStatuses();
     grouped.forEach((groupedEvent) => applyStatusEvent(statuses, groupedEvent));
     beats.push({
       id: `${first.time}:${first.actor}:${first.sourceUid}:${index}`,
@@ -223,6 +227,9 @@ export function createCombatTimeline(events: readonly CombatEvent[]): CombatTime
       durationMs,
       emphasis,
       statuses: snapshotStatuses(statuses, snapshot.time),
+      previousSnapshot,
+      previousStatuses,
+      motion,
     });
     startsAtMs += durationMs;
     index = cursor;
@@ -242,7 +249,16 @@ export function getPlaybackElapsedMs(
   paused: boolean,
 ): number {
   if (paused) return offsetMs;
-  return offsetMs + Math.max(0, now - startedAt) * SPEED_MULTIPLIER[speed];
+  return offsetMs + Math.max(0, now - startedAt) * PLAYBACK_MULTIPLIER[speed];
+}
+
+export function getPresentedBeatState(beat: CombatBeat | null, presentationTimeMs: number) {
+  const landed = Boolean(beat && presentationTimeMs >= beat.startsAtMs + beat.motion.impactAtMs);
+  return {
+    landed,
+    snapshot: beat ? landed ? beat.snapshot : beat.previousSnapshot : null,
+    statuses: beat ? landed ? beat.statuses : beat.previousStatuses : createEmptyCombatStatuses(),
+  };
 }
 
 export function getBeatAt(

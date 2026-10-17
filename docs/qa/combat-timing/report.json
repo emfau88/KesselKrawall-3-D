@@ -1,0 +1,1478 @@
+{
+  "url": "http://127.0.0.1:5210/",
+  "at": "2026-10-17T22:36:04.123Z",
+  "limits": [
+    "Focused functional/trajectory checks, not a new performance benchmark.",
+    "Mobile is viewport/touch emulation on desktop GPU, not a smartphone test.",
+    "Pause is triggered through existing UI handlers, no clock/GL/simulation overrides."
+  ],
+  "runs": [
+    {
+      "name": "desktop-zischbert-1x",
+      "round": 1,
+      "speed": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "errors": [],
+      "defaultSpeed": "true",
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "pauseAndSpeedChange": {
+        "passed": true,
+        "sample": {
+          "id": 0,
+          "progress": 0.3147916666790858,
+          "position": [
+            -1.1192858828777523,
+            2.4535909604176327,
+            1.8090749999001503
+          ],
+          "rotation": [
+            0.32888000000476897,
+            0.4604320000066766,
+            0,
+            "XYZ"
+          ],
+          "elapsedMs": 411.1000000059612
+        }
+      },
+      "observations": {
+        "effects": {
+          "0": {
+            "index": 0,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 13341.199999988079,
+            "hpBefore": [
+              "100 +0",
+              "20 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 95,
+            "impactFrames": 64,
+            "contactAt": 15178.09999999404,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 15178.09999999404
+          },
+          "1": {
+            "index": 1,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 16421.09999999404,
+            "hpBefore": [
+              "100 +0",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 29,
+            "impactFrames": 21,
+            "contactAt": 17178.69999998808,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 17178.69999998808
+          },
+          "2": {
+            "index": 2,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 17707,
+            "hpBefore": [
+              "96 +0",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 40,
+            "impactFrames": 21,
+            "contactAt": 18641.09999999404,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "3": {
+            "index": 3,
+            "item": "cinder-berry",
+            "travels": true,
+            "firstAt": 19189.09999999404,
+            "hpBefore": [
+              "96 +0",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 32,
+            "impactFrames": 18,
+            "contactAt": 19973.29999998212,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 19973.29999998212
+          },
+          "4": {
+            "index": 4,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 20504.59999999404,
+            "hpBefore": [
+              "93 +0",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 17,
+            "contactAt": 20672.19999998808,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 20672.19999998808
+          },
+          "5": {
+            "index": 5,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 21552.79999998212,
+            "hpBefore": [
+              "93 +6",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 10,
+            "contactAt": 21752.69999998808,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 21752.69999998808
+          },
+          "6": {
+            "index": 6,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 22257.899999976158,
+            "hpBefore": [
+              "93 +6",
+              "14 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 21,
+            "contactAt": 22421.399999976158,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 22421.399999976158
+          },
+          "7": {
+            "index": 7,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 22957.899999976158,
+            "hpBefore": [
+              "93 +6",
+              "13 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 24,
+            "impactFrames": 22,
+            "contactAt": 23688.59999999404,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 23688.59999999404
+          },
+          "8": {
+            "index": 8,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 24237.399999976158,
+            "hpBefore": [
+              "93 +6",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 29,
+            "impactFrames": 22,
+            "contactAt": 24971.19999998808,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 24971.19999998808
+          },
+          "9": {
+            "index": 9,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 25520.899999976158,
+            "hpBefore": [
+              "93 +2",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 38,
+            "impactFrames": 22,
+            "contactAt": 26457.29999998212,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "10": {
+            "index": 10,
+            "item": "cinder-berry",
+            "travels": true,
+            "firstAt": 26988.29999998212,
+            "hpBefore": [
+              "93 +2",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 29,
+            "impactFrames": 19,
+            "contactAt": 27777.59999999404,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 27777.59999999404
+          },
+          "11": {
+            "index": 11,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 28330.59999999404,
+            "hpBefore": [
+              "92 +0",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 15,
+            "contactAt": 28482.69999998808,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 28482.69999998808
+          },
+          "12": {
+            "index": 12,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 29381.59999999404,
+            "hpBefore": [
+              "92 +6",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 10,
+            "contactAt": 29559.399999976158,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 29559.399999976158
+          },
+          "13": {
+            "index": 13,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 30070,
+            "hpBefore": [
+              "92 +6",
+              "7 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 28,
+            "impactFrames": 22,
+            "contactAt": 30805.5,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 30805.5
+          },
+          "14": {
+            "index": 14,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 31336.5,
+            "hpBefore": [
+              "92 +6",
+              "3 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 28,
+            "impactFrames": 21,
+            "contactAt": 32088.19999998808,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 32088.19999998808
+          },
+          "15": {
+            "index": 15,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 32621,
+            "hpBefore": [
+              "92 +2",
+              "3 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 32786.5,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 32786.5
+          },
+          "16": {
+            "index": 16,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 33320.69999998808,
+            "hpBefore": [
+              "92 +2",
+              "2 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 41,
+            "impactFrames": 21,
+            "contactAt": 34271.69999998808,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "17": {
+            "index": 17,
+            "item": "cinder-berry",
+            "travels": true,
+            "firstAt": 34803,
+            "hpBefore": [
+              "92 +2",
+              "2 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 30,
+            "impactFrames": 18,
+            "contactAt": 35586.69999998808,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 35586.69999998808
+          },
+          "18": {
+            "index": 18,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 36120.5,
+            "hpBefore": [
+              "91 +0",
+              "2 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 16,
+            "contactAt": 36285.69999998808,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 36285.69999998808
+          },
+          "19": {
+            "index": 19,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 37170.89999997616,
+            "hpBefore": [
+              "91 +6",
+              "2 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 10,
+            "contactAt": 37377,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 37377
+          }
+        },
+        "maxTransientLights": 3,
+        "pauseOnFlight": false,
+        "pausedFlight": true,
+        "pauseOnImpact": false,
+        "pausedImpact": true
+      },
+      "frames": {
+        "maxMs": 166.60000000000036,
+        "over250": 0,
+        "over1000": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "desktop-zischbert-4x",
+      "round": 1,
+      "speed": 4,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "errors": [],
+      "defaultSpeed": "true",
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "pauseAndSpeedChange": {
+        "passed": true,
+        "sample": {
+          "id": 0,
+          "progress": 0.3723749998783037,
+          "position": [
+            -0.8897665553369007,
+            2.592184395922144,
+            1.346105000978438
+          ],
+          "rotation": [
+            0.3509919999532687,
+            0.4913887999345761,
+            0,
+            "XYZ"
+          ],
+          "elapsedMs": 438.7399999415858
+        }
+      },
+      "observations": {
+        "effects": {
+          "0": {
+            "index": 0,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 11593.40000000596,
+            "hpBefore": [
+              "100 +0",
+              "20 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 72,
+            "impactFrames": 46,
+            "contactAt": 12893.300000011921,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 12893.300000011921
+          },
+          "1": {
+            "index": 1,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 13723.700000017881,
+            "hpBefore": [
+              "100 +0",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 11,
+            "impactFrames": 9,
+            "contactAt": 14021.700000017881,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 14021.700000017881
+          },
+          "2": {
+            "index": 2,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 14257.40000000596,
+            "hpBefore": [
+              "96 +0",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 8,
+            "contactAt": 14641.40000000596,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "3": {
+            "index": 3,
+            "item": "cinder-berry",
+            "travels": true,
+            "firstAt": 14855.90000000596,
+            "hpBefore": [
+              "96 +0",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 13,
+            "impactFrames": 9,
+            "contactAt": 15171.700000017881,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 15171.700000017881
+          },
+          "4": {
+            "index": 4,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 15390.300000011921,
+            "hpBefore": [
+              "93 +0",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 9,
+            "contactAt": 15455.90000000596,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 15455.90000000596
+          },
+          "5": {
+            "index": 5,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 15825.40000000596,
+            "hpBefore": [
+              "93 +6",
+              "16 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 9,
+            "contactAt": 15890.700000017881,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 15890.700000017881
+          },
+          "6": {
+            "index": 6,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 16138.5,
+            "hpBefore": [
+              "93 +6",
+              "14 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 7,
+            "contactAt": 16191.600000023842,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 16191.600000023842
+          },
+          "7": {
+            "index": 7,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 16392,
+            "hpBefore": [
+              "93 +6",
+              "13 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 11,
+            "impactFrames": 9,
+            "contactAt": 16699.20000001788,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 16699.20000001788
+          },
+          "8": {
+            "index": 8,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 16928.70000001788,
+            "hpBefore": [
+              "93 +6",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 12,
+            "impactFrames": 8,
+            "contactAt": 17226.80000001192,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 17226.80000001192
+          },
+          "9": {
+            "index": 9,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 17443.80000001192,
+            "hpBefore": [
+              "93 +2",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 9,
+            "contactAt": 17823.600000023842,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "10": {
+            "index": 10,
+            "item": "cinder-berry",
+            "travels": true,
+            "firstAt": 18042.90000000596,
+            "hpBefore": [
+              "93 +2",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 13,
+            "impactFrames": 9,
+            "contactAt": 18360,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 18360
+          },
+          "11": {
+            "index": 11,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 18573.600000023842,
+            "hpBefore": [
+              "92 +0",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 7,
+            "contactAt": 18645.5,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 18645.5
+          },
+          "12": {
+            "index": 12,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 19007.20000001788,
+            "hpBefore": [
+              "92 +6",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 9,
+            "contactAt": 19074,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 19074
+          },
+          "13": {
+            "index": 13,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 19332,
+            "hpBefore": [
+              "92 +6",
+              "7 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 10,
+            "impactFrames": 9,
+            "contactAt": 19592.80000001192,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 19592.80000001192
+          },
+          "14": {
+            "index": 14,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 19830.30000001192,
+            "hpBefore": [
+              "92 +6",
+              "3 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 12,
+            "impactFrames": 9,
+            "contactAt": 20125.90000000596,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 20125.90000000596
+          },
+          "15": {
+            "index": 15,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 20346.20000001788,
+            "hpBefore": [
+              "92 +2",
+              "3 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 9,
+            "contactAt": 20406.100000023842,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 20406.100000023842
+          },
+          "16": {
+            "index": 16,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 20622.90000000596,
+            "hpBefore": [
+              "92 +2",
+              "2 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 16,
+            "impactFrames": 9,
+            "contactAt": 21009.5,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "17": {
+            "index": 17,
+            "item": "cinder-berry",
+            "travels": true,
+            "firstAt": 21222.40000000596,
+            "hpBefore": [
+              "92 +2",
+              "2 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 12,
+            "impactFrames": 9,
+            "contactAt": 21539.90000000596,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 21539.90000000596
+          },
+          "18": {
+            "index": 18,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 21775,
+            "hpBefore": [
+              "91 +0",
+              "2 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 6,
+            "contactAt": 21843.20000001788,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 21843.20000001788
+          },
+          "19": {
+            "index": 19,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 22206.100000023842,
+            "hpBefore": [
+              "91 +6",
+              "2 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 8,
+            "contactAt": 22262.20000001788,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 22262.20000001788
+          }
+        },
+        "maxTransientLights": 3,
+        "pauseOnFlight": false,
+        "pausedFlight": true,
+        "pauseOnImpact": false,
+        "pausedImpact": true
+      },
+      "frames": {
+        "maxMs": 66.60000000000218,
+        "over250": 0,
+        "over1000": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "mobile-martha-2x",
+      "round": 2,
+      "speed": 2,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "errors": [],
+      "defaultSpeed": "true",
+      "resultHash": "394bf4f17d23f1af334f3ba694e4671451731ec4e7c93c3ae43d445c1506183a",
+      "pauseAndSpeedChange": {
+        "passed": true,
+        "sample": {
+          "id": 0,
+          "progress": 0.327448529382838,
+          "position": [
+            -0.15438853432504973,
+            2.9651929403895636,
+            -1.1989994119891771
+          ],
+          "rotation": [
+            0.3861319999842639,
+            0.27029239998898474,
+            0,
+            "XYZ"
+          ],
+          "elapsedMs": 482.66499998032987
+        }
+      },
+      "observations": {
+        "effects": {
+          "0": {
+            "index": 0,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 12081.90000000596,
+            "hpBefore": [
+              "100 +0",
+              "86 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 65,
+            "impactFrames": 27,
+            "contactAt": 13311.59999999404,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16
+          },
+          "1": {
+            "index": 1,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 13859.300000011921,
+            "hpBefore": [
+              "100 +0",
+              "86 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 13,
+            "contactAt": 14315.300000011921,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 14315.300000011921
+          },
+          "2": {
+            "index": 2,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 14641.09999999404,
+            "hpBefore": [
+              "100 +0",
+              "77 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 25,
+            "impactFrames": 13,
+            "contactAt": 15214.59999999404,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "3": {
+            "index": 3,
+            "item": "nightwing",
+            "travels": true,
+            "firstAt": 15541.800000011921,
+            "hpBefore": [
+              "100 +0",
+              "77 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 13,
+            "contactAt": 15979.300000011921,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 15979.300000011921
+          },
+          "4": {
+            "index": 4,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 16292.699999988079,
+            "hpBefore": [
+              "95 +0",
+              "77 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 16403.80000001192,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 16403.80000001192
+          },
+          "5": {
+            "index": 5,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 16945.59999999404,
+            "hpBefore": [
+              "95 +6",
+              "77 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 17031.90000000596,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 17031.90000000596
+          },
+          "6": {
+            "index": 6,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 17359.90000000596,
+            "hpBefore": [
+              "95 +4",
+              "77 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 17458.19999998808,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 17458.19999998808
+          },
+          "7": {
+            "index": 7,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 17775.80000001192,
+            "hpBefore": [
+              "95 +4",
+              "74 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 25,
+            "impactFrames": 13,
+            "contactAt": 18360.90000000596,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16
+          },
+          "8": {
+            "index": 8,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 18675.40000000596,
+            "hpBefore": [
+              "95 +4",
+              "74 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 18775.59999999404,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 18775.59999999404
+          },
+          "9": {
+            "index": 9,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 19108.59999999404,
+            "hpBefore": [
+              "95 +1",
+              "74 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 19210.80000001192,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 19210.80000001192
+          },
+          "10": {
+            "index": 10,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 19525.5,
+            "hpBefore": [
+              "95 +1",
+              "72 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 13,
+            "contactAt": 19974.40000000596,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 19974.40000000596
+          },
+          "11": {
+            "index": 11,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 20307.5,
+            "hpBefore": [
+              "95 +1",
+              "63 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 25,
+            "impactFrames": 13,
+            "contactAt": 20876.5,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "12": {
+            "index": 12,
+            "item": "nightwing",
+            "travels": true,
+            "firstAt": 21207.80000001192,
+            "hpBefore": [
+              "95 +1",
+              "63 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 13,
+            "contactAt": 21642.09999999404,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 21642.09999999404
+          },
+          "13": {
+            "index": 13,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 21959.69999998808,
+            "hpBefore": [
+              "91 +0",
+              "63 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 22060.69999998808,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 22060.69999998808
+          },
+          "14": {
+            "index": 14,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 22612.40000000596,
+            "hpBefore": [
+              "91 +6",
+              "63 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 25,
+            "impactFrames": 13,
+            "contactAt": 23173.30000001192,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16
+          },
+          "15": {
+            "index": 15,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 23495.09999999404,
+            "hpBefore": [
+              "91 +6",
+              "63 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 23594.5,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 23594.5
+          },
+          "16": {
+            "index": 16,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 23925.59999999404,
+            "hpBefore": [
+              "91 +2",
+              "63 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 24028.40000000596,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 24028.40000000596
+          },
+          "17": {
+            "index": 17,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 24342.19999998808,
+            "hpBefore": [
+              "91 +2",
+              "59 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 13,
+            "contactAt": 24796.5,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 24796.5
+          },
+          "19": {
+            "index": 19,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 25126.80000001192,
+            "hpBefore": [
+              "91 +2",
+              "50 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 25,
+            "impactFrames": 13,
+            "contactAt": 25691.90000000596,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 25691.90000000596
+          },
+          "20": {
+            "index": 20,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 26035.09999999404,
+            "hpBefore": [
+              "91 +2",
+              "32 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 14,
+            "contactAt": 26115.19999998808,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 26115.19999998808
+          },
+          "21": {
+            "index": 21,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 26455.80000001192,
+            "hpBefore": [
+              "90 +0",
+              "32 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 24,
+            "impactFrames": 13,
+            "contactAt": 27007.90000000596,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16
+          },
+          "22": {
+            "index": 22,
+            "item": "nightwing",
+            "travels": true,
+            "firstAt": 27342.30000001192,
+            "hpBefore": [
+              "90 +0",
+              "32 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 13,
+            "contactAt": 27778.59999999404,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 27778.59999999404
+          },
+          "23": {
+            "index": 23,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 28113.5,
+            "hpBefore": [
+              "85 +0",
+              "32 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 28207.09999999404,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 28207.09999999404
+          },
+          "24": {
+            "index": 24,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 28741.69999998808,
+            "hpBefore": [
+              "85 +6",
+              "32 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 28842,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 28842
+          },
+          "25": {
+            "index": 25,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 29158.19999998808,
+            "hpBefore": [
+              "85 +2",
+              "32 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 13,
+            "contactAt": 29608.59999999404,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 29608.59999999404
+          },
+          "27": {
+            "index": 27,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 29941.69999998808,
+            "hpBefore": [
+              "85 +2",
+              "23 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 25,
+            "impactFrames": 13,
+            "contactAt": 30507.80000001192,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 30507.80000001192
+          },
+          "28": {
+            "index": 28,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 30841.40000000596,
+            "hpBefore": [
+              "72 +0",
+              "23 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 25,
+            "impactFrames": 13,
+            "contactAt": 31409.5,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "29": {
+            "index": 29,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 31743,
+            "hpBefore": [
+              "72 +0",
+              "23 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 31824.69999998808,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 31824.69999998808
+          },
+          "30": {
+            "index": 30,
+            "item": "nightwing",
+            "travels": true,
+            "firstAt": 32157.09999999404,
+            "hpBefore": [
+              "72 +0",
+              "20 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 13,
+            "contactAt": 32590.59999999404,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 32590.59999999404
+          },
+          "31": {
+            "index": 31,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 32924.80000001192,
+            "hpBefore": [
+              "67 +0",
+              "20 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 18,
+            "impactFrames": 13,
+            "contactAt": 33376.5,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 33376.5
+          },
+          "32": {
+            "index": 32,
+            "item": "egg-shell",
+            "travels": false,
+            "firstAt": 33690.59999999404,
+            "hpBefore": [
+              "67 +0",
+              "11 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 33789.90000000596,
+            "contactProgress": 1,
+            "contactDistance": 1.1102230246251565e-16,
+            "hpChangedAt": 33789.90000000596
+          },
+          "33": {
+            "index": 33,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 34342.40000000596,
+            "hpBefore": [
+              "67 +6",
+              "11 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 25,
+            "impactFrames": 13,
+            "contactAt": 34910.59999999404,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16
+          },
+          "34": {
+            "index": 34,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 35223.59999999404,
+            "hpBefore": [
+              "67 +6",
+              "11 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 35324.80000001192,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 35324.80000001192
+          },
+          "35": {
+            "index": 35,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 35658.5,
+            "hpBefore": [
+              "67 +4",
+              "11 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 35757.40000000596,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 35757.40000000596
+          },
+          "36": {
+            "index": 36,
+            "item": "slime-shroom",
+            "travels": true,
+            "firstAt": 36073.30000001192,
+            "hpBefore": [
+              "67 +4",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 24,
+            "impactFrames": 14,
+            "contactAt": 36641,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16
+          },
+          "37": {
+            "index": 37,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 36974.5,
+            "hpBefore": [
+              "67 +4",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 37072.40000000596,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 37072.40000000596
+          },
+          "38": {
+            "index": 38,
+            "item": "slime-shroom",
+            "travels": false,
+            "firstAt": 37409.09999999404,
+            "hpBefore": [
+              "67 +3",
+              "9 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 0,
+            "impactFrames": 13,
+            "contactAt": 37489.40000000596,
+            "contactProgress": 1,
+            "contactDistance": 2.7755575615628914e-16,
+            "hpChangedAt": 37489.40000000596
+          },
+          "39": {
+            "index": 39,
+            "item": "chili",
+            "travels": true,
+            "firstAt": 37823.5,
+            "hpBefore": [
+              "67 +3",
+              "5 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 18,
+            "impactFrames": 13,
+            "contactAt": 38277.40000000596,
+            "contactProgress": 1,
+            "contactDistance": 2.482534153247273e-16,
+            "hpChangedAt": 38277.40000000596
+          },
+          "40": {
+            "index": 40,
+            "item": "nightwing",
+            "travels": true,
+            "firstAt": 38608.5,
+            "hpBefore": [
+              "67 +3",
+              "0 +0"
+            ],
+            "maxProgress": 1,
+            "flightFrames": 17,
+            "impactFrames": 13,
+            "contactAt": 39040.40000000596,
+            "contactProgress": 1,
+            "contactDistance": 1.6653345369377348e-16,
+            "hpChangedAt": 39040.40000000596
+          }
+        },
+        "maxTransientLights": 3,
+        "pauseOnFlight": false,
+        "pausedFlight": true,
+        "pauseOnImpact": false,
+        "pausedImpact": true
+      },
+      "frames": {
+        "maxMs": 33.30000000000109,
+        "over250": 0,
+        "over1000": 0
+      },
+      "passed": true
+    }
+  ],
+  "passed": true
+}

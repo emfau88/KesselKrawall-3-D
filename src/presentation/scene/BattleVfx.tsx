@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Group, MathUtils, type Vector3Tuple } from "three";
+import { Group, Mesh, MathUtils, type Material, type PointLight, type Vector3Tuple } from "three";
 
 import { getItemDefinition } from "../../core/data";
 import { getOpponentPresentation, type SignatureVfx } from "../content/opponentPresentation";
 import type { CombatFrame } from "./sceneTypes";
+import { combatMotionPhase, itemMotion } from "../combat/combatMotion";
 
 const EVENT_COLORS = {
   damage: "#ff8a4a",
@@ -19,38 +20,6 @@ const EVENT_COLORS = {
   echo: "#c39af0",
   boss: "#ed5d7d",
 } as const;
-
-interface ItemMotionProfile {
-  readonly duration: number;
-  readonly height: number;
-  readonly arc: number;
-  readonly spin: number;
-  readonly impact: number;
-}
-
-const DEFAULT_MOTION: ItemMotionProfile = { duration: 0.56, height: 1.34, arc: 1.08, spin: 0.16, impact: 1.72 };
-const ITEM_MOTION: Readonly<Record<string, ItemMotionProfile>> = {
-  chili: { duration: 0.48, height: 1.18, arc: 0.72, spin: 0.28, impact: 1.92 },
-  "dragon-tooth": { duration: 0.44, height: 0.72, arc: 0.3, spin: 0.12, impact: 2.15 },
-  "ember-core": { duration: 0.58, height: 1.48, arc: 1.25, spin: 0.2, impact: 1.82 },
-  "cinder-berry": { duration: 0.52, height: 1.38, arc: 0.86, spin: 0.25, impact: 1.9 },
-  "slime-shroom": { duration: 0.68, height: 1.72, arc: 1.34, spin: 0.14, impact: 2.1 },
-  nightwing: { duration: 0.46, height: 1.8, arc: 1.55, spin: 0.34, impact: 1.68 },
-  "witch-eye": { duration: 0.62, height: 1.26, arc: 0.72, spin: 0.12, impact: 2.05 },
-  "venom-bulb": { duration: 0.64, height: 1.56, arc: 1.18, spin: 0.18, impact: 2.25 },
-  "egg-shell": { duration: 0.54, height: 1.12, arc: 0.82, spin: 0.16, impact: 2.2 },
-  "healing-tuber": { duration: 0.72, height: 1.68, arc: 1.28, spin: 0.12, impact: 2.32 },
-  "gold-spoon": { duration: 0.4, height: 0.92, arc: 0.38, spin: 0.42, impact: 1.92 },
-  "moon-salt": { duration: 0.5, height: 1.48, arc: 0.9, spin: 0.3, impact: 1.92 },
-  "frost-shard": { duration: 0.42, height: 0.9, arc: 0.42, spin: 0.22, impact: 2.02 },
-  "ice-bell": { duration: 0.58, height: 1.42, arc: 1.02, spin: 0.18, impact: 2.2 },
-  "winter-bloom": { duration: 0.7, height: 1.78, arc: 1.2, spin: 0.14, impact: 2.38 },
-  "rime-clock": { duration: 0.52, height: 1.34, arc: 0.78, spin: 0.32, impact: 1.88 },
-  "mirror-shard": { duration: 0.44, height: 1.1, arc: 0.55, spin: 0.36, impact: 2.02 },
-  "echo-bell": { duration: 0.66, height: 1.62, arc: 1.36, spin: 0.18, impact: 2.3 },
-  "rune-cup": { duration: 0.64, height: 1.5, arc: 1.16, spin: 0.16, impact: 2.24 },
-  "time-thread": { duration: 0.76, height: 1.92, arc: 1.48, spin: 0.2, impact: 2.45 },
-};
 
 const FAMILY_PROJECTILE_COLOR = {
   fire: "#ff7848",
@@ -307,7 +276,7 @@ function ImpactShape({ itemId, kind, color }: {
         {[0, 1, 2, 3].map((index) => (
           <mesh key={index} position={[Math.cos(index * Math.PI / 2) * 0.58, Math.sin(index * Math.PI / 2) * 0.58, 0]} rotation={[0, 0, index * Math.PI / 2]}>
             <octahedronGeometry args={[0.085, 0]} />
-            <meshBasicMaterial color="#d8ffff" toneMapped={false} />
+            <meshBasicMaterial color="#d8ffff" toneMapped={false} transparent />
           </mesh>
         ))}
       </group>
@@ -357,7 +326,7 @@ function ImpactShape({ itemId, kind, color }: {
     return (
       <group>
         {[0, 1, 2].map((index) => <mesh key={index} rotation={[Math.PI / 2, index * 0.45, index * 0.78]} scale={1 + index * 0.28}><torusGeometry args={[0.34, 0.032, 6, 30]} /><meshBasicMaterial color={index === 1 ? "#f0d5ff" : color} toneMapped={false} transparent opacity={0.82 - index * 0.14} depthWrite={false} /></mesh>)}
-        {[0, 1, 2, 3, 4, 5].map((index) => <mesh key={`shard-${index}`} position={[Math.cos(index * Math.PI / 3) * 0.58, Math.sin(index * 1.4) * 0.34, Math.sin(index * Math.PI / 3) * 0.4]}><octahedronGeometry args={[0.08, 0]} /><meshBasicMaterial color="#f4dcff" toneMapped={false} /></mesh>)}
+        {[0, 1, 2, 3, 4, 5].map((index) => <mesh key={`shard-${index}`} position={[Math.cos(index * Math.PI / 3) * 0.58, Math.sin(index * 1.4) * 0.34, Math.sin(index * Math.PI / 3) * 0.4]}><octahedronGeometry args={[0.08, 0]} /><meshBasicMaterial color="#f4dcff" toneMapped={false} transparent /></mesh>)}
       </group>
     );
   }
@@ -376,7 +345,7 @@ function ImpactShape({ itemId, kind, color }: {
       {[0, 1, 2, 3, 4, 5].map((index) => (
         <mesh key={index} position={[Math.cos(index * Math.PI / 3) * 0.56, Math.sin(index * 1.7) * 0.35, Math.sin(index * Math.PI / 3) * 0.3]}>
           <octahedronGeometry args={[0.055 + (index % 2) * 0.025, 0]} />
-          <meshBasicMaterial color="#fff0c2" toneMapped={false} />
+          <meshBasicMaterial color="#fff0c2" toneMapped={false} transparent />
         </mesh>
       ))}
     </group>
@@ -432,7 +401,7 @@ function OpponentSignatureShape({ signature, color, secondary, phase }: {
 }
 
 export function BattleVfx({ frame, sourcePosition, opponentId }: {
-  frame: CombatFrame;
+  frame: CombatFrame & { event: NonNullable<CombatFrame["event"]> };
   sourcePosition?: Vector3Tuple;
   opponentId?: string;
 }) {
@@ -440,48 +409,66 @@ export function BattleVfx({ frame, sourcePosition, opponentId }: {
   const trail = useRef<Group>(null);
   const anticipation = useRef<Group>(null);
   const impact = useRef<Group>(null);
-  const startedAt = useRef<number | null>(null);
+  const root = useRef<Group>(null);
+  const impactLight = useRef<PointLight>(null);
+  const fadingMaterials = useRef<Array<{ material: Material; opacity: number }>>([]);
   const event = frame.event;
-  if (!event) return null;
-
+  const timing = combatMotionPhase(event, 0);
+  const telemetry = useRef({ combatVfx: true, eventIndex: frame.eventIndex, itemId: event.sourceItemId,
+    travels: timing.travels, progress: 0, landed: false, elapsedMs: 0, impactProgress: 0 });
+  useLayoutEffect(() => {
+    const owned: Array<{ material: Material; opacity: number }> = [];
+    impact.current?.traverse(node => {
+      if (!(node instanceof Mesh)) return;
+      for (const material of Array.isArray(node.material) ? node.material : [node.material]) {
+        if (material.transparent) owned.push({ material, opacity: material.opacity });
+      }
+    });
+    fadingMaterials.current = owned;
+  }, []);
   const opponentPresentation = getOpponentPresentation(opponentId ?? "rival");
   const enemySignature = event.actor === "enemy";
   const color = eventColor(frame);
-  const motion = event.sourceItemId ? ITEM_MOTION[event.sourceItemId] ?? DEFAULT_MOTION : DEFAULT_MOTION;
+  const motion = itemMotion(event.sourceItemId);
   const playerPoint: Vector3Tuple = [-0.28, 2.05, 4.02];
   const enemyPoint: Vector3Tuple = [0.28, 1.92, -3.7];
-  const source = sourcePosition ?? (event.actor === "player" ? playerPoint : enemyPoint);
   const destination = event.target === "player" ? playerPoint : enemyPoint;
-  const selfTargeted = event.actor === event.target;
+  const source = timing.travels ? sourcePosition ?? (event.actor === "player" ? playerPoint : enemyPoint) : destination;
+  const selfTargeted = !timing.travels;
 
-  useFrame(({ clock }) => {
+  useFrame(() => {
     if (!projectile.current || !trail.current || !anticipation.current || !impact.current) return;
-    startedAt.current ??= clock.elapsedTime;
-    const elapsed = clock.elapsedTime - startedAt.current;
-    const castDuration = selfTargeted ? 0 : 0.26;
-    const flightDuration = motion.duration;
-    const flightElapsed = elapsed - castDuration;
-    const progress = MathUtils.clamp(flightElapsed / flightDuration, 0, 1);
+    const elapsedMs = Math.max(0, frame.clock.timeMs - frame.beatStartsAtMs);
+    const elapsed = elapsedMs / 1_000;
+    const phase = combatMotionPhase(event, elapsedMs);
+    const progress = phase.flightProgress;
+    if (root.current) {
+      root.current.userData.progress = progress;
+      root.current.userData.landed = phase.landed;
+      root.current.userData.elapsedMs = elapsedMs;
+      root.current.userData.impactProgress = phase.impactProgress;
+    }
     const sideArc = (frame.eventIndex % 2 === 0 ? 1 : -1) * Math.sin(progress * Math.PI) * motion.arc;
     const flightHeight = motion.height;
-    anticipation.current.visible = selfTargeted ? elapsed < 0.3 : elapsed < castDuration;
+    anticipation.current.visible = elapsedMs < phase.chargeMs;
     anticipation.current.position.set(...source);
-    const anticipationPulse = MathUtils.clamp(elapsed / Math.max(castDuration, 0.3), 0, 1);
+    const anticipationPulse = MathUtils.clamp(elapsedMs / phase.chargeMs, 0, 1);
     anticipation.current.scale.setScalar(0.5 + Math.sin(anticipationPulse * Math.PI) * 0.62);
     anticipation.current.rotation.z = elapsed * 4.2;
-    projectile.current.visible = !selfTargeted && flightElapsed >= 0 && progress < 1;
+    projectile.current.visible = !selfTargeted && elapsedMs >= phase.chargeMs && !phase.landed;
     projectile.current.position.set(
       MathUtils.lerp(source[0], destination[0], progress) + sideArc,
       MathUtils.lerp(source[1], destination[1], progress) + Math.sin(progress * Math.PI) * flightHeight,
       MathUtils.lerp(source[2], destination[2], progress),
     );
-    projectile.current.rotation.x += 0.11;
-    projectile.current.rotation.y += motion.spin;
+    projectile.current.rotation.x = elapsed * 0.8;
+    projectile.current.rotation.y = elapsed * motion.spin * 4;
 
-    trail.current.visible = !selfTargeted && flightElapsed >= 0 && progress > 0.02 && progress < 1;
+    trail.current.visible = !selfTargeted && elapsedMs >= phase.chargeMs && elapsedMs < phase.visibleMs;
     trail.current.children.forEach((particle, index) => {
-      const trailingProgress = MathUtils.clamp(progress - 0.038 - index * 0.047, 0, 1);
-      particle.visible = trailingProgress > 0 && progress < 1;
+      const rawProgress = (elapsedMs - phase.chargeMs) / Math.max(1, phase.flightMs) - 0.038 - index * 0.047;
+      const trailingProgress = MathUtils.clamp(rawProgress, 0, 1);
+      particle.visible = rawProgress > 0 && rawProgress < 1;
       const trailingArc = (frame.eventIndex % 2 === 0 ? 1 : -1) * Math.sin(trailingProgress * Math.PI) * motion.arc;
       particle.position.set(
         MathUtils.lerp(source[0], destination[0], trailingProgress) + trailingArc,
@@ -489,23 +476,24 @@ export function BattleVfx({ frame, sourcePosition, opponentId }: {
         MathUtils.lerp(source[2], destination[2], trailingProgress),
       );
       const particleScale = Math.max(0.18, 0.92 - index * 0.085) * (0.84 + Math.sin(elapsed * 18 + index) * 0.12);
-      particle.scale.setScalar(particleScale);
-      particle.rotation.x += 0.08 + index * 0.006;
-      particle.rotation.y += 0.11;
+      particle.scale.setScalar(particleScale * (1 - MathUtils.smoothstep(trailingProgress, 0.8, 1)));
+      particle.rotation.x = elapsed * (4.8 + index * 0.36);
+      particle.rotation.y = elapsed * 6.6;
     });
 
-    const impactProgress = selfTargeted
-      ? MathUtils.clamp(elapsed / 0.72, 0, 1)
-      : MathUtils.clamp((elapsed - castDuration - flightDuration * 0.78) / 0.3, 0, 1);
-    impact.current.visible = impactProgress > 0 && impactProgress < 1;
+    const impactProgress = phase.impactProgress;
+    impact.current.visible = phase.landed && impactProgress < 1;
     impact.current.position.set(...destination);
     const impactScale = event.kind === "poisonBurst" ? 2.55 : selfTargeted ? Math.max(2.15, motion.impact) : motion.impact;
     impact.current.scale.setScalar(0.28 + impactProgress * impactScale);
     impact.current.rotation.y = impactProgress * 2.1;
+    const alpha = 1 - MathUtils.smoothstep(impactProgress, 0.25, 1);
+    for (const entry of fadingMaterials.current) entry.material.opacity = entry.opacity * alpha;
+    if (impactLight.current) impactLight.current.intensity = 1.75 * alpha;
   });
 
   return (
-    <group>
+    <group ref={root} name="combat-vfx" userData={telemetry.current}>
       <group ref={anticipation} visible={false}>
         {enemySignature && <OpponentSignatureShape color={opponentPresentation.glow} phase="cast" secondary={opponentPresentation.secondaryGlow} signature={opponentPresentation.signature} />}
         <mesh rotation={[Math.PI / 2, 0, 0]}>
@@ -529,7 +517,7 @@ export function BattleVfx({ frame, sourcePosition, opponentId }: {
       <group ref={impact} visible={false}>
         {enemySignature && <OpponentSignatureShape color={opponentPresentation.glow} phase="impact" secondary={opponentPresentation.secondaryGlow} signature={opponentPresentation.signature} />}
         <ImpactShape color={color} itemId={event.sourceItemId} kind={event.kind} />
-        <pointLight userData={{ combatTransientLight: true }} color={color} intensity={1.75} distance={3.2} />
+        <pointLight ref={impactLight} userData={{ combatTransientLight: true }} color={color} intensity={1.75} distance={3.2} />
       </group>
     </group>
   );
