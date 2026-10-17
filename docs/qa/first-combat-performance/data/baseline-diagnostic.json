@@ -1,0 +1,6029 @@
+{
+  "label": "desktop-polish-cold-1",
+  "errors": [],
+  "network": [
+    {
+      "url": "http://127.0.0.1:5197/assets/rolldown-runtime-hePW80VL.js",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/r3f-vendor-DjNAxG_B.js",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/index-DCbcnK5-.js",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/GreyboxStage-D9TcWM08.js",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/coin-transfer.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/merge-level-3.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/sell.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/merge-level-2.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/ui-select.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/reroll.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/error.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/cauldron-full.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/combat/fire.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/combat/hit.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/combat/shield.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/combat/poison.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/combat/heal.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/combat/frost.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/combat/echo.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/result-victory.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/audio/sfx/result-defeat.ogg",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/characters/brasskin/brasskin-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/characters/zischbert/zischbert-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a/pedestal-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/chili-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/Potion_2.gltf",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/Barrel.gltf",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/Potion_1.gltf",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/characters/brasskin/brasskin-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/chili-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a/pedestal-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/cb678bfa-e740-4e97-9e5d-a7b664127ba4",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/Chest_Wood.gltf",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/505798ea-c6fb-4821-915b-1d969c687e11",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/6a80b4a9-59a0-483c-97e0-26a4291cbaf7",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/d599420b-91ea-413c-82c0-4cf518ec60c7",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/Potion_2.bin",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_ORM.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_BaseColor.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_Normal.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/Barrel.bin",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_BaseColor.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_ORM.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_Normal.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_BaseColor.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_ORM.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_Normal.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_BaseColor.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_ORM.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/Potion_1.bin",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_Normal.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/51860c41-e07c-4cb8-aa66-70d2a5148147",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/931879aa-5c42-4349-909d-f593ad5bf0e0",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/f5be5a07-e7d6-48cb-8ee8-c494924b6237",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/920a23a2-14c8-4a37-b464-4bf33e7e3661",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/acaa38dd-37f7-4834-945a-a2e359803144",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/92600456-549c-4407-8457-1372d062e70b",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/f970b148-ec2f-4fc6-ae9e-e0342220e3e3",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/83604451-0da8-4c1a-917a-a45b3c4f2a58",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/9e36f2d6-f0ad-46c1-bc91-fa95d6657d3a",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/36581c17-0984-405c-ba0d-b9f7949c22a9",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/fe8f508b-7744-496a-b841-59537c88e401",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/64c033ec-e164-465f-a9cb-5618a79c405f",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/6fe1fb2a-e8b6-4438-a15e-b222c2bae918",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/0f9f0c05-405f-4aa0-b156-81e0a4e5e12d",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/52dfb671-46d4-4e69-980b-57161ffe26e0",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/f67b98ac-e579-4b43-a8cc-6c1f782fe6c7",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_BaseColor.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_ORM.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_Normal.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_BaseColor.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_ORM.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_Normal.png",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/quaternius/fantasy/Chest_Wood.bin",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/15de58a8-7fb4-47f1-bafe-a91a09b5971e",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/characters/zischbert/zischbert-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/characters/brasskin/brasskin-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a/pedestal-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/chili-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/e05ae04c-6c2a-443e-8f82-6ce89051fc46",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/4d6615ed-7fb0-4350-ac05-b3a4ca1c61a4",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/f1cdc9e3-289f-4629-a92f-d60b0aaf4283",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/29eb36de-d3bd-437c-b574-375b959fc6a3",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/35b9251a-58a3-4c0b-aa59-cd2165c8b79c",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/5d65cdc1-c541-468e-9e61-afb9f28e46da",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/2b7c5de6-34f8-42da-8943-800ba1629336",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/7acccc10-f91d-439e-afd7-90183cedd8df",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/2b58b9f4-cd58-479e-952e-835734e47122",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/1e2c45a4-5858-4e58-b7f3-ce136e7a76a7",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/69120992-69d9-4973-98aa-5d0d18696849",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/6e18ef81-ff6c-4710-b257-1d71c5d4affb",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/ce1c0473-ddcd-4b28-bc59-5477e4fdf595",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/0c41d8ac-1536-4739-aced-8522eb899bd6",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/81f6ee8b-e09c-4e3d-8f01-fcc8884bc61e",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/eec4fc78-d665-4ce8-82d1-538706b3ae50",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/1006f122-be38-4adf-80be-c1fcdef529db",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/0b5fcccd-273e-414c-a37a-d2fcc9280303",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/a82f2e48-7c04-4c0e-8953-07cc63e8a0de",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/1af39888-5522-47c2-a253-429e490ac849",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/35a4d06f-809c-42c9-b127-34e53c1c47dd",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/9f1774ff-096d-4836-b975-e0940f3df69f",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/cfcfc7c9-bf47-4296-9669-3e8050b528b1",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/42b3bdae-d337-4916-a312-994664233081",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:5197/31d1653c-3c4d-4624-baaf-87344b919c94",
+      "disk": false,
+      "serviceWorker": false,
+      "status": 200
+    }
+  ],
+  "run": {
+    "version": 1,
+    "campaignId": "grand-tournament",
+    "activeFamilies": [
+      "fire",
+      "poison",
+      "guard"
+    ],
+    "phase": "battle",
+    "round": 1,
+    "gold": 4,
+    "seals": 3,
+    "victories": 0,
+    "board": [
+      {
+        "uid": "qa-chili",
+        "itemId": "chili",
+        "level": 2
+      },
+      {
+        "uid": "qa-shroom",
+        "itemId": "slime-shroom",
+        "level": 1
+      },
+      {
+        "uid": "qa-shell",
+        "itemId": "egg-shell",
+        "level": 1
+      },
+      null,
+      null
+    ],
+    "reserve": null,
+    "offers": [
+      {
+        "uid": "qa-offer-chili",
+        "itemId": "chili",
+        "bought": true
+      },
+      {
+        "uid": "qa-offer-shroom",
+        "itemId": "slime-shroom",
+        "bought": false
+      },
+      {
+        "uid": "qa-offer-shell",
+        "itemId": "egg-shell",
+        "bought": false
+      }
+    ],
+    "rerollsUsed": 0,
+    "selectedSlot": null,
+    "rngState": 1263214630,
+    "idCounter": 5,
+    "opponentVariant": 0,
+    "openingProtectionUsed": false,
+    "pendingBattle": {
+      "winner": "player",
+      "reason": "knockout",
+      "duration": 6000,
+      "events": [
+        {
+          "time": 3000,
+          "kind": "damage",
+          "code": "item.damage",
+          "actor": "player",
+          "target": "enemy",
+          "sourceUid": "qa-chili",
+          "sourceItemId": "chili",
+          "amount": 9,
+          "playerHp": 100,
+          "playerShield": 0,
+          "enemyHp": 11,
+          "enemyShield": 0
+        },
+        {
+          "time": 3200,
+          "kind": "damage",
+          "code": "item.damage",
+          "actor": "enemy",
+          "target": "player",
+          "sourceUid": "zischbert-0-chili",
+          "sourceItemId": "chili",
+          "amount": 4,
+          "playerHp": 96,
+          "playerShield": 0,
+          "enemyHp": 11,
+          "enemyShield": 0
+        },
+        {
+          "time": 3600,
+          "kind": "poison",
+          "code": "item.poison",
+          "actor": "player",
+          "target": "enemy",
+          "sourceUid": "qa-shroom",
+          "sourceItemId": "slime-shroom",
+          "amount": 3,
+          "playerHp": 96,
+          "playerShield": 0,
+          "enemyHp": 11,
+          "enemyShield": 0
+        },
+        {
+          "time": 3600,
+          "kind": "damage",
+          "code": "item.damage",
+          "actor": "enemy",
+          "target": "player",
+          "sourceUid": "zischbert-1-cinder-berry",
+          "sourceItemId": "cinder-berry",
+          "amount": 3,
+          "playerHp": 93,
+          "playerShield": 0,
+          "enemyHp": 11,
+          "enemyShield": 0
+        },
+        {
+          "time": 3800,
+          "kind": "shield",
+          "code": "item.shield",
+          "actor": "player",
+          "target": "player",
+          "sourceUid": "qa-shell",
+          "sourceItemId": "egg-shell",
+          "amount": 6,
+          "playerHp": 93,
+          "playerShield": 6,
+          "enemyHp": 11,
+          "enemyShield": 0
+        },
+        {
+          "time": 4000,
+          "kind": "poison",
+          "code": "status.poisonTick",
+          "actor": "player",
+          "target": "enemy",
+          "sourceUid": "qa-shroom",
+          "sourceItemId": "slime-shroom",
+          "amount": 2,
+          "playerHp": 93,
+          "playerShield": 6,
+          "enemyHp": 9,
+          "enemyShield": 0
+        },
+        {
+          "time": 6000,
+          "kind": "poison",
+          "code": "status.poisonTick",
+          "actor": "player",
+          "target": "enemy",
+          "sourceUid": "qa-shroom",
+          "sourceItemId": "slime-shroom",
+          "amount": 1,
+          "playerHp": 93,
+          "playerShield": 6,
+          "enemyHp": 8,
+          "enemyShield": 0
+        },
+        {
+          "time": 6000,
+          "kind": "damage",
+          "code": "item.damage",
+          "actor": "player",
+          "target": "enemy",
+          "sourceUid": "qa-chili",
+          "sourceItemId": "chili",
+          "amount": 8,
+          "playerHp": 93,
+          "playerShield": 6,
+          "enemyHp": 0,
+          "enemyShield": 0
+        }
+      ],
+      "playerStats": [
+        {
+          "uid": "qa-chili",
+          "itemId": "chili",
+          "level": 2,
+          "triggers": 2,
+          "hpDamage": 17,
+          "shieldDamage": 0,
+          "totalDamage": 17,
+          "healing": 0,
+          "shield": 0,
+          "poisonApplied": 0
+        },
+        {
+          "uid": "qa-shroom",
+          "itemId": "slime-shroom",
+          "level": 1,
+          "triggers": 1,
+          "hpDamage": 3,
+          "shieldDamage": 0,
+          "totalDamage": 3,
+          "healing": 0,
+          "shield": 0,
+          "poisonApplied": 3
+        },
+        {
+          "uid": "qa-shell",
+          "itemId": "egg-shell",
+          "level": 1,
+          "triggers": 1,
+          "hpDamage": 0,
+          "shieldDamage": 0,
+          "totalDamage": 0,
+          "healing": 0,
+          "shield": 6,
+          "poisonApplied": 0
+        }
+      ],
+      "enemyStats": [
+        {
+          "uid": "zischbert-0-chili",
+          "itemId": "chili",
+          "level": 1,
+          "triggers": 1,
+          "hpDamage": 4,
+          "shieldDamage": 0,
+          "totalDamage": 4,
+          "healing": 0,
+          "shield": 0,
+          "poisonApplied": 0
+        },
+        {
+          "uid": "zischbert-1-cinder-berry",
+          "itemId": "cinder-berry",
+          "level": 1,
+          "triggers": 1,
+          "hpDamage": 3,
+          "shieldDamage": 0,
+          "totalDamage": 3,
+          "healing": 0,
+          "shield": 0,
+          "poisonApplied": 0
+        }
+      ],
+      "finalPlayerHp": 93,
+      "finalPlayerShield": 6,
+      "finalEnemyHp": 0,
+      "finalEnemyShield": 0,
+      "playerMaxHp": 100,
+      "enemyMaxHp": 20
+    }
+  },
+  "data": {
+    "marks": [
+      {
+        "name": "probe-installed",
+        "t": 118.5
+      },
+      {
+        "name": "menu",
+        "t": 417.80000001192093,
+        "detail": {
+          "text": ""
+        }
+      },
+      {
+        "name": "workshop",
+        "t": 3401.4000000059605,
+        "detail": {
+          "text": ""
+        }
+      },
+      {
+        "name": "renderer-instrumented",
+        "t": 4263.600000023842
+      },
+      {
+        "name": "workshop-usable",
+        "t": 5392.100000023842
+      },
+      {
+        "name": "purchase-start",
+        "t": 5419.600000023842
+      },
+      {
+        "name": "ingredient-activation",
+        "t": 12294.5,
+        "detail": {
+          "eventIndex": 0,
+          "actors": [
+            {
+              "ingredientActor": "slime-shroom",
+              "level": 1,
+              "active": false,
+              "animationKey": -1,
+              "rotation": [
+                0,
+                0.008083243962810899,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "egg-shell",
+              "level": 1,
+              "active": false,
+              "animationKey": -1,
+              "rotation": [
+                0,
+                0.003229473077793492,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "chili",
+              "level": 1,
+              "active": false,
+              "animationKey": -1,
+              "rotation": [
+                0,
+                0,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "chili",
+              "level": 1,
+              "active": false,
+              "animationKey": -1,
+              "rotation": [
+                0,
+                0,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "chili",
+              "level": 2,
+              "active": true,
+              "animationKey": 0,
+              "rotation": [
+                0,
+                0,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "purchase-end",
+        "t": 16837
+      },
+      {
+        "name": "swap-end",
+        "t": 17248.70000001788
+      },
+      {
+        "name": "battle-click",
+        "t": 17250.30000001192
+      },
+      {
+        "name": "preparation",
+        "t": 17290.20000001788,
+        "detail": {
+          "text": "Zischbert"
+        }
+      },
+      {
+        "name": "combat",
+        "t": 22867.80000001192,
+        "detail": {
+          "text": ""
+        }
+      },
+      {
+        "name": "native-active-observed",
+        "t": 22897.20000001788
+      },
+      {
+        "name": "ingredient-activation",
+        "t": 27709.90000000596,
+        "detail": {
+          "eventIndex": 4,
+          "actors": [
+            {
+              "ingredientActor": "chili",
+              "level": 2,
+              "active": false,
+              "animationKey": 4,
+              "rotation": [
+                -5.878304635907295e-17,
+                0.01353090323940677,
+                2.694222958124177e-17,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "slime-shroom",
+              "level": 1,
+              "active": false,
+              "animationKey": 4,
+              "rotation": [
+                0,
+                -0.04160071573215337,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "egg-shell",
+              "level": 1,
+              "active": true,
+              "animationKey": 4,
+              "rotation": [
+                0,
+                0.050827530899431754,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "chili",
+              "level": 1,
+              "active": false,
+              "animationKey": 4,
+              "rotation": [
+                0,
+                0.01353090323940677,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "cinder-berry",
+              "level": 1,
+              "active": false,
+              "animationKey": 4,
+              "rotation": [
+                0,
+                -0.04160071573215337,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "ingredient-activation",
+        "t": 32417.20000001788,
+        "detail": {
+          "eventIndex": 8,
+          "actors": [
+            {
+              "ingredientActor": "chili",
+              "level": 2,
+              "active": true,
+              "animationKey": 8,
+              "rotation": [
+                0,
+                -0.07420171070146941,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "slime-shroom",
+              "level": 1,
+              "active": false,
+              "animationKey": 8,
+              "rotation": [
+                0,
+                -0.036295881589483124,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "egg-shell",
+              "level": 1,
+              "active": false,
+              "animationKey": 8,
+              "rotation": [
+                0,
+                0.025871863714149176,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "chili",
+              "level": 1,
+              "active": false,
+              "animationKey": 8,
+              "rotation": [
+                0,
+                -0.07420171070146941,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "ingredientActor": "cinder-berry",
+              "level": 1,
+              "active": false,
+              "animationKey": 8,
+              "rotation": [
+                0,
+                -0.036295881589483124,
+                0,
+                "XYZ"
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "frames": [
+      {
+        "t": 176.1,
+        "ms": 16.69999999999999,
+        "phase": "navigation"
+      },
+      {
+        "t": 192.8,
+        "ms": 16.700000000000017,
+        "phase": "navigation"
+      },
+      {
+        "t": 209.5,
+        "ms": 16.69999999999999,
+        "phase": "navigation"
+      },
+      {
+        "t": 226.1,
+        "ms": 16.599999999999994,
+        "phase": "navigation"
+      },
+      {
+        "t": 242.8,
+        "ms": 16.700000000000017,
+        "phase": "navigation"
+      },
+      {
+        "t": 259.5,
+        "ms": 16.69999999999999,
+        "phase": "navigation"
+      },
+      {
+        "t": 276.1,
+        "ms": 16.600000000000023,
+        "phase": "navigation"
+      },
+      {
+        "t": 292.8,
+        "ms": 16.69999999999999,
+        "phase": "menu"
+      },
+      {
+        "t": 426.1,
+        "ms": 133.3,
+        "phase": "menu"
+      },
+      {
+        "t": 792.8,
+        "ms": 366.69999999999993,
+        "phase": "menu"
+      },
+      {
+        "t": 942.7,
+        "ms": 149.9000000000001,
+        "phase": "menu"
+      },
+      {
+        "t": 1609.4,
+        "ms": 666.7,
+        "phase": "menu"
+      },
+      {
+        "t": 1659.4,
+        "ms": 50,
+        "phase": "menu"
+      },
+      {
+        "t": 1742.7,
+        "ms": 83.29999999999995,
+        "phase": "menu"
+      },
+      {
+        "t": 1809.4,
+        "ms": 66.70000000000005,
+        "phase": "menu"
+      },
+      {
+        "t": 1859.4,
+        "ms": 50,
+        "phase": "menu"
+      },
+      {
+        "t": 1942.7,
+        "ms": 83.29999999999995,
+        "phase": "menu"
+      },
+      {
+        "t": 1992.7,
+        "ms": 50,
+        "phase": "menu"
+      },
+      {
+        "t": 2076,
+        "ms": 83.29999999999995,
+        "phase": "menu"
+      },
+      {
+        "t": 2109.3,
+        "ms": 33.30000000000018,
+        "phase": "workshop"
+      },
+      {
+        "t": 4809.3,
+        "ms": 2700,
+        "phase": "workshop"
+      },
+      {
+        "t": 4842.5,
+        "ms": 33.19999999999982,
+        "phase": "workshop"
+      },
+      {
+        "t": 5259.3,
+        "ms": 416.8000000000002,
+        "phase": "workshop"
+      },
+      {
+        "t": 5275.9,
+        "ms": 16.599999999999454,
+        "phase": "workshop"
+      },
+      {
+        "t": 5342.6,
+        "ms": 66.70000000000073,
+        "phase": "workshop"
+      },
+      {
+        "t": 5375.9,
+        "ms": 33.29999999999927,
+        "phase": "workshop"
+      },
+      {
+        "t": 5392.5,
+        "ms": 16.600000000000364,
+        "phase": "workshop"
+      },
+      {
+        "t": 5409.3,
+        "ms": 16.800000000000182,
+        "phase": "workshop"
+      },
+      {
+        "t": 5425.9,
+        "ms": 16.599999999999454,
+        "phase": "workshop"
+      },
+      {
+        "t": 5442.6,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 5675.9,
+        "ms": 233.29999999999927,
+        "phase": "workshop"
+      },
+      {
+        "t": 5692.6,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 5709.2,
+        "ms": 16.599999999999454,
+        "phase": "workshop"
+      },
+      {
+        "t": 5725.9,
+        "ms": 16.699999999999818,
+        "phase": "workshop"
+      },
+      {
+        "t": 5742.6,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 5792.6,
+        "ms": 50,
+        "phase": "workshop"
+      },
+      {
+        "t": 5925.8,
+        "ms": 133.19999999999982,
+        "phase": "workshop"
+      },
+      {
+        "t": 9259,
+        "ms": 3333.2,
+        "phase": "workshop"
+      },
+      {
+        "t": 9292.4,
+        "ms": 33.399999999999636,
+        "phase": "workshop"
+      },
+      {
+        "t": 9309.1,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 9325.8,
+        "ms": 16.69999999999891,
+        "phase": "workshop"
+      },
+      {
+        "t": 12225.6,
+        "ms": 2899.800000000001,
+        "phase": "workshop"
+      },
+      {
+        "t": 12275.6,
+        "ms": 50,
+        "phase": "workshop"
+      },
+      {
+        "t": 12292.3,
+        "ms": 16.69999999999891,
+        "phase": "workshop"
+      },
+      {
+        "t": 12508.9,
+        "ms": 216.60000000000036,
+        "phase": "workshop"
+      },
+      {
+        "t": 12525.6,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 12542.2,
+        "ms": 16.600000000000364,
+        "phase": "workshop"
+      },
+      {
+        "t": 12558.9,
+        "ms": 16.69999999999891,
+        "phase": "workshop"
+      },
+      {
+        "t": 12575.7,
+        "ms": 16.80000000000109,
+        "phase": "workshop"
+      },
+      {
+        "t": 12592.3,
+        "ms": 16.599999999998545,
+        "phase": "workshop"
+      },
+      {
+        "t": 12609,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 12625.6,
+        "ms": 16.600000000000364,
+        "phase": "workshop"
+      },
+      {
+        "t": 12642.2,
+        "ms": 16.600000000000364,
+        "phase": "workshop"
+      },
+      {
+        "t": 12658.9,
+        "ms": 16.69999999999891,
+        "phase": "workshop"
+      },
+      {
+        "t": 12675.6,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 12692.3,
+        "ms": 16.69999999999891,
+        "phase": "workshop"
+      },
+      {
+        "t": 12709,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 12725.7,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 16258.8,
+        "ms": 3533.0999999999985,
+        "phase": "workshop"
+      },
+      {
+        "t": 16308.8,
+        "ms": 50,
+        "phase": "workshop"
+      },
+      {
+        "t": 16325.5,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 16542.1,
+        "ms": 216.59999999999854,
+        "phase": "workshop"
+      },
+      {
+        "t": 16558.7,
+        "ms": 16.600000000002183,
+        "phase": "workshop"
+      },
+      {
+        "t": 16575.4,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 16592.1,
+        "ms": 16.69999999999709,
+        "phase": "workshop"
+      },
+      {
+        "t": 16825.5,
+        "ms": 233.40000000000146,
+        "phase": "workshop"
+      },
+      {
+        "t": 16842.1,
+        "ms": 16.599999999998545,
+        "phase": "workshop"
+      },
+      {
+        "t": 16858.8,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 16875.5,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 16908.8,
+        "ms": 33.29999999999927,
+        "phase": "workshop"
+      },
+      {
+        "t": 16925.4,
+        "ms": 16.600000000002183,
+        "phase": "workshop"
+      },
+      {
+        "t": 16942.1,
+        "ms": 16.69999999999709,
+        "phase": "workshop"
+      },
+      {
+        "t": 16958.8,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 16975.4,
+        "ms": 16.600000000002183,
+        "phase": "workshop"
+      },
+      {
+        "t": 16992.1,
+        "ms": 16.69999999999709,
+        "phase": "workshop"
+      },
+      {
+        "t": 17008.7,
+        "ms": 16.600000000002183,
+        "phase": "workshop"
+      },
+      {
+        "t": 17025.5,
+        "ms": 16.799999999999272,
+        "phase": "workshop"
+      },
+      {
+        "t": 17042.1,
+        "ms": 16.599999999998545,
+        "phase": "workshop"
+      },
+      {
+        "t": 17058.8,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 17075.5,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 17092.1,
+        "ms": 16.599999999998545,
+        "phase": "workshop"
+      },
+      {
+        "t": 17108.8,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 17125.4,
+        "ms": 16.600000000002183,
+        "phase": "workshop"
+      },
+      {
+        "t": 17142,
+        "ms": 16.599999999998545,
+        "phase": "workshop"
+      },
+      {
+        "t": 17158.7,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 17175.4,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 17192.1,
+        "ms": 16.69999999999709,
+        "phase": "workshop"
+      },
+      {
+        "t": 17208.8,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 17225.5,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 17242.1,
+        "ms": 16.599999999998545,
+        "phase": "workshop"
+      },
+      {
+        "t": 17258.8,
+        "ms": 16.700000000000728,
+        "phase": "workshop"
+      },
+      {
+        "t": 17275.4,
+        "ms": 16.600000000002183,
+        "phase": "workshop"
+      },
+      {
+        "t": 17292.1,
+        "ms": 16.69999999999709,
+        "phase": "preparation"
+      },
+      {
+        "t": 18225.3,
+        "ms": 933.2000000000007,
+        "phase": "preparation"
+      },
+      {
+        "t": 18242.1,
+        "ms": 16.799999999999272,
+        "phase": "preparation"
+      },
+      {
+        "t": 18325.4,
+        "ms": 83.30000000000291,
+        "phase": "preparation"
+      },
+      {
+        "t": 18392,
+        "ms": 66.59999999999854,
+        "phase": "preparation"
+      },
+      {
+        "t": 18442.1,
+        "ms": 50.099999999998545,
+        "phase": "preparation"
+      },
+      {
+        "t": 18458.7,
+        "ms": 16.600000000002183,
+        "phase": "preparation"
+      },
+      {
+        "t": 18475.4,
+        "ms": 16.700000000000728,
+        "phase": "preparation"
+      },
+      {
+        "t": 18492.1,
+        "ms": 16.69999999999709,
+        "phase": "preparation"
+      },
+      {
+        "t": 18508.7,
+        "ms": 16.600000000002183,
+        "phase": "preparation"
+      },
+      {
+        "t": 18525.4,
+        "ms": 16.700000000000728,
+        "phase": "preparation"
+      },
+      {
+        "t": 18592,
+        "ms": 66.59999999999854,
+        "phase": "preparation"
+      },
+      {
+        "t": 18742.1,
+        "ms": 150.09999999999854,
+        "phase": "preparation"
+      },
+      {
+        "t": 22775.2,
+        "ms": 4033.100000000002,
+        "phase": "preparation"
+      },
+      {
+        "t": 22825.2,
+        "ms": 50,
+        "phase": "preparation"
+      },
+      {
+        "t": 22841.8,
+        "ms": 16.599999999998545,
+        "phase": "preparation"
+      },
+      {
+        "t": 22858.5,
+        "ms": 16.700000000000728,
+        "phase": "preparation"
+      },
+      {
+        "t": 22875.2,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 22891.8,
+        "ms": 16.599999999998545,
+        "phase": "combat"
+      },
+      {
+        "t": 22908.6,
+        "ms": 16.799999999999272,
+        "phase": "combat"
+      },
+      {
+        "t": 23008.5,
+        "ms": 99.90000000000146,
+        "phase": "combat"
+      },
+      {
+        "t": 23025.2,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 23041.8,
+        "ms": 16.599999999998545,
+        "phase": "combat"
+      },
+      {
+        "t": 23058.5,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 23075.2,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 23091.8,
+        "ms": 16.599999999998545,
+        "phase": "combat"
+      },
+      {
+        "t": 23108.5,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 23125.2,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 23141.9,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 27541.7,
+        "ms": 4399.799999999999,
+        "phase": "combat"
+      },
+      {
+        "t": 27675,
+        "ms": 133.29999999999927,
+        "phase": "combat"
+      },
+      {
+        "t": 27691.6,
+        "ms": 16.599999999998545,
+        "phase": "combat"
+      },
+      {
+        "t": 27708.4,
+        "ms": 16.80000000000291,
+        "phase": "combat"
+      },
+      {
+        "t": 32324.9,
+        "ms": 4616.5,
+        "phase": "combat"
+      },
+      {
+        "t": 32391.5,
+        "ms": 66.59999999999854,
+        "phase": "combat"
+      },
+      {
+        "t": 32408.1,
+        "ms": 16.599999999998545,
+        "phase": "combat"
+      },
+      {
+        "t": 32424.8,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 32441.5,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 32458.2,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 32491.5,
+        "ms": 33.29999999999927,
+        "phase": "combat"
+      },
+      {
+        "t": 32508.1,
+        "ms": 16.599999999998545,
+        "phase": "combat"
+      },
+      {
+        "t": 32524.8,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 32541.5,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      },
+      {
+        "t": 32558.1,
+        "ms": 16.599999999998545,
+        "phase": "combat"
+      },
+      {
+        "t": 32574.9,
+        "ms": 16.80000000000291,
+        "phase": "combat"
+      },
+      {
+        "t": 32624.8,
+        "ms": 49.89999999999782,
+        "phase": "combat"
+      },
+      {
+        "t": 32641.4,
+        "ms": 16.600000000002183,
+        "phase": "combat"
+      },
+      {
+        "t": 32658.1,
+        "ms": 16.69999999999709,
+        "phase": "combat"
+      },
+      {
+        "t": 32674.8,
+        "ms": 16.700000000000728,
+        "phase": "combat"
+      }
+    ],
+    "longTasks": [
+      {
+        "t": 296,
+        "ms": 127,
+        "phase": "menu"
+      },
+      {
+        "t": 428.7000000178814,
+        "ms": 67,
+        "phase": "menu"
+      },
+      {
+        "t": 503,
+        "ms": 291,
+        "phase": "menu"
+      },
+      {
+        "t": 802.6000000238419,
+        "ms": 89,
+        "phase": "menu"
+      },
+      {
+        "t": 914.9000000059605,
+        "ms": 200,
+        "phase": "menu"
+      },
+      {
+        "t": 2124.100000023842,
+        "ms": 605,
+        "phase": "workshop"
+      },
+      {
+        "t": 2731.2000000178814,
+        "ms": 2093,
+        "phase": "workshop"
+      },
+      {
+        "t": 5471.200000017881,
+        "ms": 209,
+        "phase": "workshop"
+      },
+      {
+        "t": 5735.9000000059605,
+        "ms": 55,
+        "phase": "workshop"
+      },
+      {
+        "t": 5794.300000011921,
+        "ms": 135,
+        "phase": "workshop"
+      },
+      {
+        "t": 5944.100000023842,
+        "ms": 3320,
+        "phase": "workshop"
+      },
+      {
+        "t": 9331.600000023842,
+        "ms": 2903,
+        "phase": "workshop"
+      },
+      {
+        "t": 12294,
+        "ms": 229,
+        "phase": "workshop"
+      },
+      {
+        "t": 12726.100000023842,
+        "ms": 3540,
+        "phase": "workshop"
+      },
+      {
+        "t": 16328.40000000596,
+        "ms": 217,
+        "phase": "workshop"
+      },
+      {
+        "t": 16593,
+        "ms": 240,
+        "phase": "workshop"
+      },
+      {
+        "t": 17285.40000000596,
+        "ms": 51,
+        "phase": "preparation"
+      },
+      {
+        "t": 17336.90000000596,
+        "ms": 896,
+        "phase": "preparation"
+      },
+      {
+        "t": 18593.5,
+        "ms": 149,
+        "phase": "preparation"
+      },
+      {
+        "t": 18755.600000023842,
+        "ms": 4024,
+        "phase": "preparation"
+      },
+      {
+        "t": 23152,
+        "ms": 4399,
+        "phase": "combat"
+      },
+      {
+        "t": 27554,
+        "ms": 120,
+        "phase": "combat"
+      },
+      {
+        "t": 27720.600000023842,
+        "ms": 4614,
+        "phase": "combat"
+      },
+      {
+        "t": 32340.70000001788,
+        "ms": 55,
+        "phase": "combat"
+      }
+    ],
+    "glSlow": [
+      {
+        "name": "texImage2D",
+        "t": 2476.100000023842,
+        "ms": 17,
+        "phase": "menu",
+        "pname": 0
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 3464.800000011921,
+        "ms": 10.699999988079071,
+        "phase": "workshop",
+        "program": {
+          "id": 1,
+          "defines": []
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 3483.4000000059605,
+        "ms": 43.400000005960464,
+        "phase": "workshop",
+        "program": {
+          "id": 2,
+          "defines": []
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 3534.800000011921,
+        "ms": 36.69999998807907,
+        "phase": "workshop",
+        "program": {
+          "id": 3,
+          "defines": [
+            "#define USE_INSTANCING"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 3575.4000000059605,
+        "ms": 14.700000017881393,
+        "phase": "workshop",
+        "program": {
+          "id": 4,
+          "defines": []
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 3599.600000023842,
+        "ms": 60.099999994039536,
+        "phase": "workshop",
+        "program": {
+          "id": 5,
+          "defines": []
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 3662.2000000178814,
+        "ms": 525.5,
+        "phase": "workshop",
+        "program": {
+          "id": 6,
+          "defines": []
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 4268,
+        "ms": 9.800000011920929,
+        "phase": "workshop",
+        "program": {
+          "id": 7,
+          "defines": [
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 4282.9000000059605,
+        "ms": 178.30000001192093,
+        "phase": "workshop",
+        "program": {
+          "id": 8,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 4471.700000017881,
+        "ms": 180.2999999821186,
+        "phase": "workshop",
+        "program": {
+          "id": 9,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 4656.200000017881,
+        "ms": 159.19999998807907,
+        "phase": "workshop",
+        "program": {
+          "id": 10,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 5473.200000017881,
+        "ms": 10.799999982118607,
+        "phase": "workshop",
+        "program": {
+          "id": 11,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 5501.600000023842,
+        "ms": 175.69999998807907,
+        "phase": "workshop",
+        "program": {
+          "id": 12,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 5982,
+        "ms": 13.900000005960464,
+        "phase": "workshop",
+        "program": {
+          "id": 14,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 5999.600000023842,
+        "ms": 16.19999998807907,
+        "phase": "workshop",
+        "program": {
+          "id": 15,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 6030.5,
+        "ms": 30.600000023841858,
+        "phase": "workshop",
+        "program": {
+          "id": 16,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 6068.5,
+        "ms": 260,
+        "phase": "workshop",
+        "program": {
+          "id": 17,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 6331.800000011921,
+        "ms": 229.5,
+        "phase": "workshop",
+        "program": {
+          "id": 18,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 6564.100000023842,
+        "ms": 242.19999998807907,
+        "phase": "workshop",
+        "program": {
+          "id": 19,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 6810.100000023842,
+        "ms": 226.69999998807907,
+        "phase": "workshop",
+        "program": {
+          "id": 20,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 7046.5,
+        "ms": 244.7000000178814,
+        "phase": "workshop",
+        "program": {
+          "id": 21,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 7297.200000017881,
+        "ms": 237.2999999821186,
+        "phase": "workshop",
+        "program": {
+          "id": 22,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getShaderInfoLog",
+        "t": 7534.5,
+        "ms": 7,
+        "phase": "workshop"
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 7549.800000011921,
+        "ms": 250.40000000596046,
+        "phase": "workshop",
+        "program": {
+          "id": 23,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_TANGENT",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 7806.200000017881,
+        "ms": 228.59999999403954,
+        "phase": "workshop",
+        "program": {
+          "id": 24,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 8039.9000000059605,
+        "ms": 244,
+        "phase": "workshop",
+        "program": {
+          "id": 25,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_SKINNING",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 8292.40000000596,
+        "ms": 281.5,
+        "phase": "workshop",
+        "program": {
+          "id": 26,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 8576.700000017881,
+        "ms": 314.09999999403954,
+        "phase": "workshop",
+        "program": {
+          "id": 27,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 8892.90000000596,
+        "ms": 11.599999994039536,
+        "phase": "workshop",
+        "program": {
+          "id": 28,
+          "defines": [
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 8906.600000023842,
+        "ms": 341,
+        "phase": "workshop",
+        "program": {
+          "id": 29,
+          "defines": [
+            "#define USE_INSTANCING",
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 9249.100000023842,
+        "ms": 10,
+        "phase": "workshop",
+        "program": {
+          "id": 30,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_SIZEATTENUATION"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 9269.800000011921,
+        "ms": 27.30000001192093,
+        "phase": "workshop",
+        "program": {
+          "id": 31,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 9335.90000000596,
+        "ms": 205.09999999403954,
+        "phase": "workshop",
+        "program": {
+          "id": 35,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 9543.800000011921,
+        "ms": 207.5,
+        "phase": "workshop",
+        "program": {
+          "id": 36,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 9753.600000023842,
+        "ms": 208,
+        "phase": "workshop",
+        "program": {
+          "id": 37,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 9964.100000023842,
+        "ms": 206.7999999821186,
+        "phase": "workshop",
+        "program": {
+          "id": 38,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 10173.90000000596,
+        "ms": 193.80000001192093,
+        "phase": "workshop",
+        "program": {
+          "id": 39,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 10371.600000023842,
+        "ms": 198.19999998807907,
+        "phase": "workshop",
+        "program": {
+          "id": 40,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 10573.700000017881,
+        "ms": 201.90000000596046,
+        "phase": "workshop",
+        "program": {
+          "id": 41,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_TANGENT",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 10778.100000023842,
+        "ms": 212.59999999403954,
+        "phase": "workshop",
+        "program": {
+          "id": 42,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 10993.300000011921,
+        "ms": 211.30000001192093,
+        "phase": "workshop",
+        "program": {
+          "id": 43,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_SKINNING",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 11207.90000000596,
+        "ms": 243,
+        "phase": "workshop",
+        "program": {
+          "id": 44,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getShaderInfoLog",
+        "t": 11450.90000000596,
+        "ms": 4.9000000059604645,
+        "phase": "workshop"
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 11458.40000000596,
+        "ms": 313.40000000596046,
+        "phase": "workshop",
+        "program": {
+          "id": 45,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 11774.700000017881,
+        "ms": 265.5,
+        "phase": "workshop",
+        "program": {
+          "id": 46,
+          "defines": [
+            "#define USE_INSTANCING",
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 12042.5,
+        "ms": 190.90000000596046,
+        "phase": "workshop",
+        "program": {
+          "id": 47,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 12240.700000017881,
+        "ms": 5.5999999940395355,
+        "phase": "workshop",
+        "program": {
+          "id": 48,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 12247.300000011921,
+        "ms": 11.300000011920929,
+        "phase": "workshop",
+        "program": {
+          "id": 49,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 12259.800000011921,
+        "ms": 4.699999988079071,
+        "phase": "workshop",
+        "program": {
+          "id": 50,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 12265.300000011921,
+        "ms": 10.099999994039536,
+        "phase": "workshop",
+        "program": {
+          "id": 51,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 12302.300000011921,
+        "ms": 215.80000001192093,
+        "phase": "workshop",
+        "program": {
+          "id": 52,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 12729.5,
+        "ms": 247.7000000178814,
+        "phase": "workshop",
+        "program": {
+          "id": 53,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 12980.700000017881,
+        "ms": 298.2999999821186,
+        "phase": "workshop",
+        "program": {
+          "id": 54,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 13281.90000000596,
+        "ms": 309.80000001192093,
+        "phase": "workshop",
+        "program": {
+          "id": 55,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 13594.300000011921,
+        "ms": 250.40000000596046,
+        "phase": "workshop",
+        "program": {
+          "id": 56,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 13846.90000000596,
+        "ms": 240.90000000596046,
+        "phase": "workshop",
+        "program": {
+          "id": 57,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 14090.40000000596,
+        "ms": 227.5,
+        "phase": "workshop",
+        "program": {
+          "id": 58,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 14325,
+        "ms": 248.5,
+        "phase": "workshop",
+        "program": {
+          "id": 59,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_TANGENT",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 14575.800000011921,
+        "ms": 249.30000001192093,
+        "phase": "workshop",
+        "program": {
+          "id": 60,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 14828.100000023842,
+        "ms": 250.19999998807907,
+        "phase": "workshop",
+        "program": {
+          "id": 61,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_SKINNING",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 15081.100000023842,
+        "ms": 286.5,
+        "phase": "workshop",
+        "program": {
+          "id": 62,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 15370.5,
+        "ms": 310.60000002384186,
+        "phase": "workshop",
+        "program": {
+          "id": 63,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 15685.100000023842,
+        "ms": 342.09999999403954,
+        "phase": "workshop",
+        "program": {
+          "id": 64,
+          "defines": [
+            "#define USE_INSTANCING",
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 16029.800000011921,
+        "ms": 235.59999999403954,
+        "phase": "workshop",
+        "program": {
+          "id": 65,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 16268.700000017881,
+        "ms": 9.699999988079071,
+        "phase": "workshop",
+        "program": {
+          "id": 66,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 16279.40000000596,
+        "ms": 11.5,
+        "phase": "workshop",
+        "program": {
+          "id": 67,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 16292,
+        "ms": 5.4000000059604645,
+        "phase": "workshop",
+        "program": {
+          "id": 68,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 16298.300000011921,
+        "ms": 9.400000005960464,
+        "phase": "workshop",
+        "program": {
+          "id": 69,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 16335.300000011921,
+        "ms": 208.09999999403954,
+        "phase": "workshop",
+        "program": {
+          "id": 70,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 16595,
+        "ms": 10.5,
+        "phase": "workshop",
+        "program": {
+          "id": 71,
+          "defines": [
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 16610.100000023842,
+        "ms": 219.59999999403954,
+        "phase": "workshop",
+        "program": {
+          "id": 72,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 17349.30000001192,
+        "ms": 9.800000011920929,
+        "phase": "preparation",
+        "program": {
+          "id": 73,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 17363.30000001192,
+        "ms": 217.30000001192093,
+        "phase": "preparation",
+        "program": {
+          "id": 74,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 17583.70000001788,
+        "ms": 308.19999998807907,
+        "phase": "preparation",
+        "program": {
+          "id": 75,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 17894.5,
+        "ms": 6.9000000059604645,
+        "phase": "preparation",
+        "program": {
+          "id": 76,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 17903.600000023842,
+        "ms": 10.5,
+        "phase": "preparation",
+        "program": {
+          "id": 77,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 17915.40000000596,
+        "ms": 7.0999999940395355,
+        "phase": "preparation",
+        "program": {
+          "id": 78,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 17927.90000000596,
+        "ms": 293.59999999403954,
+        "phase": "preparation",
+        "program": {
+          "id": 79,
+          "defines": [
+            "#define USE_INSTANCING",
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 18222.90000000596,
+        "ms": 9.400000005960464,
+        "phase": "preparation",
+        "program": {
+          "id": 80,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_SIZEATTENUATION"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 18778,
+        "ms": 298.80000001192093,
+        "phase": "preparation",
+        "program": {
+          "id": 81,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 19080,
+        "ms": 301.2000000178814,
+        "phase": "preparation",
+        "program": {
+          "id": 82,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 19385.100000023842,
+        "ms": 298.7999999821186,
+        "phase": "preparation",
+        "program": {
+          "id": 83,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 19687.70000001788,
+        "ms": 315.69999998807907,
+        "phase": "preparation",
+        "program": {
+          "id": 84,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 20007.40000000596,
+        "ms": 293.7000000178814,
+        "phase": "preparation",
+        "program": {
+          "id": 85,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_TANGENT",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 20305,
+        "ms": 328.40000000596046,
+        "phase": "preparation",
+        "program": {
+          "id": 86,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 20637.90000000596,
+        "ms": 270.30000001192093,
+        "phase": "preparation",
+        "program": {
+          "id": 87,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 20911.40000000596,
+        "ms": 294.90000000596046,
+        "phase": "preparation",
+        "program": {
+          "id": 88,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 21209.70000001788,
+        "ms": 481.5,
+        "phase": "preparation",
+        "program": {
+          "id": 89,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 21695.600000023842,
+        "ms": 325.39999997615814,
+        "phase": "preparation",
+        "program": {
+          "id": 90,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 22031.70000001788,
+        "ms": 297.7999999821186,
+        "phase": "preparation",
+        "program": {
+          "id": 91,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 22332.100000023842,
+        "ms": 11.299999982118607,
+        "phase": "preparation",
+        "program": {
+          "id": 92,
+          "defines": [
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 22347.90000000596,
+        "ms": 416.09999999403954,
+        "phase": "preparation",
+        "program": {
+          "id": 93,
+          "defines": [
+            "#define USE_INSTANCING",
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 22766.5,
+        "ms": 9.5,
+        "phase": "preparation",
+        "program": {
+          "id": 94,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_SIZEATTENUATION"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 22785.80000001192,
+        "ms": 12.699999988079071,
+        "phase": "preparation",
+        "program": {
+          "id": 95,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 22800.80000001192,
+        "ms": 4.199999988079071,
+        "phase": "preparation",
+        "program": {
+          "id": 96,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 22805.90000000596,
+        "ms": 8.300000011920929,
+        "phase": "preparation",
+        "program": {
+          "id": 97,
+          "defines": [
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 22816.40000000596,
+        "ms": 9.400000005960464,
+        "phase": "preparation",
+        "program": {
+          "id": 98,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 23159.30000001192,
+        "ms": 397.80000001192093,
+        "phase": "combat",
+        "program": {
+          "id": 99,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 23560.90000000596,
+        "ms": 339.30000001192093,
+        "phase": "combat",
+        "program": {
+          "id": 100,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 23903.30000001192,
+        "ms": 326.80000001192093,
+        "phase": "combat",
+        "program": {
+          "id": 101,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 24232.90000000596,
+        "ms": 322.7000000178814,
+        "phase": "combat",
+        "program": {
+          "id": 102,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 24558.100000023842,
+        "ms": 340.5,
+        "phase": "combat",
+        "program": {
+          "id": 103,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_TANGENT",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 24901.80000001192,
+        "ms": 343.5,
+        "phase": "combat",
+        "program": {
+          "id": 104,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 25248.80000001192,
+        "ms": 326,
+        "phase": "combat",
+        "program": {
+          "id": 105,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 25577.20000001788,
+        "ms": 334.69999998807907,
+        "phase": "combat",
+        "program": {
+          "id": 106,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 25914.100000023842,
+        "ms": 472.2999999821186,
+        "phase": "combat",
+        "program": {
+          "id": 107,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 26389.100000023842,
+        "ms": 335.69999998807907,
+        "phase": "combat",
+        "program": {
+          "id": 108,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 26728.30000001192,
+        "ms": 6.699999988079071,
+        "phase": "combat",
+        "program": {
+          "id": 109,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 26738.70000001788,
+        "ms": 346.90000000596046,
+        "phase": "combat",
+        "program": {
+          "id": 110,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 27089.40000000596,
+        "ms": 451,
+        "phase": "combat",
+        "program": {
+          "id": 111,
+          "defines": [
+            "#define USE_INSTANCING",
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 27542.90000000596,
+        "ms": 7.200000017881393,
+        "phase": "combat",
+        "program": {
+          "id": 112,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 27560.600000023842,
+        "ms": 84,
+        "phase": "combat",
+        "program": {
+          "id": 113,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 27646.40000000596,
+        "ms": 4.300000011920929,
+        "phase": "combat",
+        "program": {
+          "id": 114,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 27651.40000000596,
+        "ms": 8.300000011920929,
+        "phase": "combat",
+        "program": {
+          "id": 115,
+          "defines": [
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 27661.100000023842,
+        "ms": 9.199999988079071,
+        "phase": "combat",
+        "program": {
+          "id": 116,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 27726.30000001192,
+        "ms": 354.5,
+        "phase": "combat",
+        "program": {
+          "id": 117,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 28084.20000001788,
+        "ms": 360.5,
+        "phase": "combat",
+        "program": {
+          "id": 118,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 28447.40000000596,
+        "ms": 355.09999999403954,
+        "phase": "combat",
+        "program": {
+          "id": 119,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 28806.40000000596,
+        "ms": 349.40000000596046,
+        "phase": "combat",
+        "program": {
+          "id": 120,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 29158.600000023842,
+        "ms": 366.7999999821186,
+        "phase": "combat",
+        "program": {
+          "id": 121,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_TANGENT",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 29528.40000000596,
+        "ms": 353,
+        "phase": "combat",
+        "program": {
+          "id": 122,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getShaderInfoLog",
+        "t": 29881.5,
+        "ms": 7.4000000059604645,
+        "phase": "combat"
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 29892.20000001788,
+        "ms": 343.7999999821186,
+        "phase": "combat",
+        "program": {
+          "id": 123,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 30238.30000001192,
+        "ms": 347.40000000596046,
+        "phase": "combat",
+        "program": {
+          "id": 124,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 30588.30000001192,
+        "ms": 502.09999999403954,
+        "phase": "combat",
+        "program": {
+          "id": 125,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 31094.90000000596,
+        "ms": 368.80000001192093,
+        "phase": "combat",
+        "program": {
+          "id": 126,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 31466,
+        "ms": 7.4000000059604645,
+        "phase": "combat",
+        "program": {
+          "id": 127,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 31475.100000023842,
+        "ms": 357,
+        "phase": "combat",
+        "program": {
+          "id": 128,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 31835.40000000596,
+        "ms": 488.30000001192093,
+        "phase": "combat",
+        "program": {
+          "id": 129,
+          "defines": [
+            "#define USE_INSTANCING",
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 32326.40000000596,
+        "ms": 6.9000000059604645,
+        "phase": "combat",
+        "program": {
+          "id": 130,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 32344.100000023842,
+        "ms": 20.599999994039536,
+        "phase": "combat",
+        "program": {
+          "id": 131,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 32365.600000023842,
+        "ms": 4.5999999940395355,
+        "phase": "combat",
+        "program": {
+          "id": 132,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 32371,
+        "ms": 8.800000011920929,
+        "phase": "combat",
+        "program": {
+          "id": 133,
+          "defines": [
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 32381.20000001788,
+        "ms": 8.799999982118607,
+        "phase": "combat",
+        "program": {
+          "id": 134,
+          "defines": [
+            "#define USE_MAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 32687.5,
+        "ms": 387.80000001192093,
+        "phase": "combat",
+        "program": {
+          "id": 135,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 33080.60000002384,
+        "ms": 375.69999998807907,
+        "phase": "combat",
+        "program": {
+          "id": 136,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 33459.70000001788,
+        "ms": 366.69999998807907,
+        "phase": "combat",
+        "program": {
+          "id": 137,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 33829.20000001788,
+        "ms": 368.90000000596046,
+        "phase": "combat",
+        "program": {
+          "id": 138,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 34201.10000002384,
+        "ms": 376.19999998807907,
+        "phase": "combat",
+        "program": {
+          "id": 139,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_TANGENT",
+            "#define USE_COLOR",
+            "#define USE_COLOR_ALPHA",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 34581.90000000596,
+        "ms": 380,
+        "phase": "combat",
+        "program": {
+          "id": 140,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 2",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 34965.40000000596,
+        "ms": 360,
+        "phase": "combat",
+        "program": {
+          "id": 141,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_MORPHTARGETS",
+            "#define USE_MORPHNORMALS",
+            "#define MORPHTARGETS_TEXTURE_STRIDE 2",
+            "#define MORPHTARGETS_COUNT 8",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 35327.80000001192,
+        "ms": 346.30000001192093,
+        "phase": "combat",
+        "program": {
+          "id": 142,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 35680.20000001788,
+        "ms": 520.0999999940395,
+        "phase": "combat",
+        "program": {
+          "id": 143,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 36203,
+        "ms": 399,
+        "phase": "combat",
+        "program": {
+          "id": 144,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_MAP",
+            "#define USE_ENVMAP",
+            "#define USE_NORMALMAP",
+            "#define USE_NORMALMAP_TANGENTSPACE",
+            "#define USE_ROUGHNESSMAP",
+            "#define USE_METALNESSMAP",
+            "#define USE_COLOR",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 36604.80000001192,
+        "ms": 7.199999988079071,
+        "phase": "combat",
+        "program": {
+          "id": 145,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 36613.60000002384,
+        "ms": 370.39999997615814,
+        "phase": "combat",
+        "program": {
+          "id": 146,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 36988.30000001192,
+        "ms": 559.9000000059605,
+        "phase": "combat",
+        "program": {
+          "id": 147,
+          "defines": [
+            "#define USE_INSTANCING",
+            "#define USE_FOG",
+            "#define USE_ENVMAP",
+            "#define USE_SHADOWMAP",
+            "#define USE_CLEARCOAT"
+          ]
+        }
+      },
+      {
+        "name": "getProgramInfoLog",
+        "t": 37551.20000001788,
+        "ms": 7.199999988079071,
+        "phase": "combat",
+        "program": {
+          "id": 148,
+          "defines": [
+            "#define USE_FOG",
+            "#define USE_SHADOWMAP"
+          ]
+        }
+      }
+    ],
+    "glTotals": {
+      "texImage2D": {
+        "calls": 10,
+        "ms": 17.099999994039536,
+        "maxMs": 17
+      },
+      "texImage3D": {
+        "calls": 2,
+        "ms": 2,
+        "maxMs": 2
+      },
+      "bufferData": {
+        "calls": 1223,
+        "ms": 7.499999850988388,
+        "maxMs": 0.19999998807907104
+      },
+      "createProgram": {
+        "calls": 148,
+        "ms": 0.7999999821186066,
+        "maxMs": 0.10000002384185791
+      },
+      "shaderSource": {
+        "calls": 296,
+        "ms": 41.29999998211861,
+        "maxMs": 0.5
+      },
+      "compileShader": {
+        "calls": 296,
+        "ms": 0.699999988079071,
+        "maxMs": 0.10000002384185791
+      },
+      "attachShader": {
+        "calls": 296,
+        "ms": 0.30000001192092896,
+        "maxMs": 0.10000002384185791
+      },
+      "linkProgram": {
+        "calls": 148,
+        "ms": 1.600000023841858,
+        "maxMs": 0.10000002384185791
+      },
+      "getProgramInfoLog": {
+        "calls": 148,
+        "ms": 30424.499999940395,
+        "maxMs": 559.9000000059605
+      },
+      "getShaderInfoLog": {
+        "calls": 296,
+        "ms": 91.99999991059303,
+        "maxMs": 7.4000000059604645
+      },
+      "getProgramParameter": {
+        "calls": 444,
+        "ms": 29.30000013113022,
+        "maxMs": 0.9000000059604645
+      },
+      "getActiveUniform": {
+        "calls": 8680,
+        "ms": 24.199999928474426,
+        "maxMs": 0.30000001192092896
+      },
+      "getUniformLocation": {
+        "calls": 8680,
+        "ms": 20.00000011920929,
+        "maxMs": 0.20000001788139343
+      },
+      "getActiveAttrib": {
+        "calls": 412,
+        "ms": 1.2000000774860382,
+        "maxMs": 0.10000002384185791
+      },
+      "useProgram": {
+        "calls": 6091,
+        "ms": 4.099999964237213,
+        "maxMs": 0.10000002384185791
+      },
+      "drawElements": {
+        "calls": 19825,
+        "ms": 11.100000321865082,
+        "maxMs": 0.19999998807907104
+      },
+      "texSubImage2D": {
+        "calls": 104,
+        "ms": 43.300000101327896,
+        "maxMs": 3.300000011920929
+      },
+      "drawElementsInstanced": {
+        "calls": 148,
+        "ms": 0.20000001788139343,
+        "maxMs": 0.10000002384185791
+      },
+      "drawArrays": {
+        "calls": 4049,
+        "ms": 3.0999999344348907,
+        "maxMs": 0.10000002384185791
+      },
+      "texSubImage3D": {
+        "calls": 13,
+        "ms": 3.0999999940395355,
+        "maxMs": 1.600000023841858
+      },
+      "generateMipmap": {
+        "calls": 47,
+        "ms": 0.30000001192092896,
+        "maxMs": 0.10000002384185791
+      },
+      "bufferSubData": {
+        "calls": 556,
+        "ms": 2.799999952316284,
+        "maxMs": 0.20000001788139343
+      }
+    },
+    "renders": [
+      {
+        "t": 4264.5,
+        "ms": 552.9000000059605,
+        "phase": "workshop",
+        "points": 3,
+        "programs": 4,
+        "calls": 73,
+        "triangles": 4610
+      },
+      {
+        "t": 5471.4000000059605,
+        "ms": 208.59999999403954,
+        "phase": "workshop",
+        "points": 3,
+        "programs": 6,
+        "calls": 64,
+        "triangles": 6974
+      },
+      {
+        "t": 5963,
+        "ms": 3300,
+        "phase": "workshop",
+        "points": 7,
+        "programs": 23,
+        "calls": 146,
+        "triangles": 468490
+      },
+      {
+        "t": 9268.300000011921,
+        "ms": 39.69999998807907,
+        "phase": "workshop",
+        "points": 7,
+        "programs": 26,
+        "calls": 146,
+        "triangles": 468490
+      },
+      {
+        "t": 9332.5,
+        "ms": 2902.100000023842,
+        "phase": "workshop",
+        "points": 6,
+        "programs": 39,
+        "calls": 147,
+        "triangles": 468882
+      },
+      {
+        "t": 12239.300000011921,
+        "ms": 39,
+        "phase": "workshop",
+        "points": 6,
+        "programs": 43,
+        "calls": 147,
+        "triangles": 468882
+      },
+      {
+        "t": 12295.90000000596,
+        "ms": 223.30000001192093,
+        "phase": "workshop",
+        "points": 7,
+        "programs": 44,
+        "calls": 155,
+        "triangles": 468946
+      },
+      {
+        "t": 12524.200000017881,
+        "ms": 2.4000000059604645,
+        "phase": "workshop",
+        "points": 7,
+        "programs": 43,
+        "calls": 155,
+        "triangles": 468946
+      },
+      {
+        "t": 12726.600000023842,
+        "ms": 3539.7999999821186,
+        "phase": "workshop",
+        "points": 9,
+        "programs": 56,
+        "calls": 166,
+        "triangles": 472382
+      },
+      {
+        "t": 16267.90000000596,
+        "ms": 42.5,
+        "phase": "workshop",
+        "points": 9,
+        "programs": 60,
+        "calls": 166,
+        "triangles": 472382
+      },
+      {
+        "t": 16329.40000000596,
+        "ms": 215.2000000178814,
+        "phase": "workshop",
+        "points": 7,
+        "programs": 59,
+        "calls": 149,
+        "triangles": 465550
+      },
+      {
+        "t": 16594,
+        "ms": 238.10000002384186,
+        "phase": "workshop",
+        "points": 7,
+        "programs": 60,
+        "calls": 144,
+        "triangles": 466498
+      },
+      {
+        "t": 17341.40000000596,
+        "ms": 891.7000000178814,
+        "phase": "preparation",
+        "points": 7,
+        "programs": 54,
+        "calls": 184,
+        "triangles": 112768
+      },
+      {
+        "t": 18756.5,
+        "ms": 4022.7000000178814,
+        "phase": "preparation",
+        "points": 12,
+        "programs": 68,
+        "calls": 322,
+        "triangles": 766517
+      },
+      {
+        "t": 22784.70000001788,
+        "ms": 44.400000005960464,
+        "phase": "preparation",
+        "points": 12,
+        "programs": 72,
+        "calls": 322,
+        "triangles": 766517
+      },
+      {
+        "t": 22844.600000023842,
+        "ms": 3.2999999821186066,
+        "phase": "preparation",
+        "points": 12,
+        "programs": 70,
+        "calls": 322,
+        "triangles": 766517
+      },
+      {
+        "t": 23155.90000000596,
+        "ms": 4395.0999999940395,
+        "phase": "combat",
+        "points": 14,
+        "programs": 84,
+        "calls": 333,
+        "triangles": 767429
+      },
+      {
+        "t": 27558.90000000596,
+        "ms": 115.30000001192093,
+        "phase": "combat",
+        "points": 14,
+        "programs": 88,
+        "calls": 328,
+        "triangles": 767005
+      },
+      {
+        "t": 27723.100000023842,
+        "ms": 4611.0999999940395,
+        "phase": "combat",
+        "points": 15,
+        "programs": 102,
+        "calls": 335,
+        "triangles": 767597
+      },
+      {
+        "t": 32342.80000001192,
+        "ms": 52.599999994039536,
+        "phase": "combat",
+        "points": 14,
+        "programs": 106,
+        "calls": 324,
+        "triangles": 767077
+      },
+      {
+        "t": 32456.70000001788,
+        "ms": 4.5,
+        "phase": "combat",
+        "points": 15,
+        "programs": 104,
+        "calls": 343,
+        "triangles": 768005
+      },
+      {
+        "t": 32683.5,
+        "ms": 4876,
+        "phase": "combat",
+        "points": 16,
+        "programs": 118,
+        "calls": 344,
+        "triangles": 767657
+      }
+    ],
+    "shadow": [
+      {
+        "t": 4266.5,
+        "ms": 14.100000023841858,
+        "phase": "workshop"
+      },
+      {
+        "t": 5471.700000017881,
+        "ms": 19.599999994039536,
+        "phase": "workshop"
+      },
+      {
+        "t": 5981.200000017881,
+        "ms": 86.09999999403954,
+        "phase": "workshop"
+      },
+      {
+        "t": 9269.40000000596,
+        "ms": 36.900000005960464,
+        "phase": "workshop"
+      },
+      {
+        "t": 12239.90000000596,
+        "ms": 36.599999994039536,
+        "phase": "workshop"
+      },
+      {
+        "t": 16268.200000017881,
+        "ms": 40.599999994039536,
+        "phase": "workshop"
+      },
+      {
+        "t": 16594.30000001192,
+        "ms": 12.800000011920929,
+        "phase": "workshop"
+      },
+      {
+        "t": 18765.70000001788,
+        "ms": 10.900000005960464,
+        "phase": "preparation"
+      },
+      {
+        "t": 22785.20000001788,
+        "ms": 41.599999994039536,
+        "phase": "preparation"
+      },
+      {
+        "t": 27560.100000023842,
+        "ms": 111.19999998807907,
+        "phase": "combat"
+      },
+      {
+        "t": 32343.5,
+        "ms": 47.5,
+        "phase": "combat"
+      }
+    ],
+    "programs": [],
+    "resources": [
+      {
+        "name": "http://127.0.0.1:5197/assets/index-DCbcnK5-.js",
+        "start": 114.10000002384186,
+        "ms": 157.69999998807907,
+        "transfer": 93174,
+        "encoded": 92874,
+        "decoded": 306431
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/rolldown-runtime-hePW80VL.js",
+        "start": 114.60000002384186,
+        "ms": 28.19999998807907,
+        "transfer": 1016,
+        "encoded": 716,
+        "decoded": 716
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+        "start": 114.60000002384186,
+        "ms": 167.09999999403954,
+        "transfer": 196683,
+        "encoded": 196383,
+        "decoded": 770322
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/r3f-vendor-DjNAxG_B.js",
+        "start": 114.7000000178814,
+        "ms": 126.40000000596046,
+        "transfer": 53830,
+        "encoded": 53530,
+        "decoded": 169212
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/index-D6v0-W3h.css",
+        "start": 114.80000001192093,
+        "ms": 33.400000005960464,
+        "transfer": 12509,
+        "encoded": 12209,
+        "decoded": 55429
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/GreyboxStage-D9TcWM08.js",
+        "start": 475.80000001192093,
+        "ms": 26.19999998807907,
+        "transfer": 34889,
+        "encoded": 34589,
+        "decoded": 145963
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/coin-transfer.ogg",
+        "start": 847.7000000178814,
+        "ms": 85.2999999821186,
+        "transfer": 13115,
+        "encoded": 12815,
+        "decoded": 12815
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/sell.ogg",
+        "start": 848,
+        "ms": 85.80000001192093,
+        "transfer": 15346,
+        "encoded": 15046,
+        "decoded": 15046
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/merge-level-2.ogg",
+        "start": 848.3000000119209,
+        "ms": 85.69999998807907,
+        "transfer": 10712,
+        "encoded": 10412,
+        "decoded": 10412
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/merge-level-3.ogg",
+        "start": 848.5,
+        "ms": 84.90000000596046,
+        "transfer": 16279,
+        "encoded": 15979,
+        "decoded": 15979
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/reroll.ogg",
+        "start": 848.7000000178814,
+        "ms": 88.5,
+        "transfer": 16288,
+        "encoded": 15988,
+        "decoded": 15988
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/ui-select.ogg",
+        "start": 848.9000000059605,
+        "ms": 88.2000000178814,
+        "transfer": 15567,
+        "encoded": 15267,
+        "decoded": 15267
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/error.ogg",
+        "start": 849.1000000238419,
+        "ms": 93.59999999403954,
+        "transfer": 16145,
+        "encoded": 15845,
+        "decoded": 15845
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/cauldron-full.ogg",
+        "start": 849.2000000178814,
+        "ms": 95.40000000596046,
+        "transfer": 16291,
+        "encoded": 15991,
+        "decoded": 15991
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/combat/fire.ogg",
+        "start": 849.3000000119209,
+        "ms": 97.5,
+        "transfer": 18917,
+        "encoded": 18617,
+        "decoded": 18617
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/combat/hit.ogg",
+        "start": 849.4000000059605,
+        "ms": 100.30000001192093,
+        "transfer": 12994,
+        "encoded": 12694,
+        "decoded": 12694
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/combat/poison.ogg",
+        "start": 849.6000000238419,
+        "ms": 100.89999997615814,
+        "transfer": 17491,
+        "encoded": 17191,
+        "decoded": 17191
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/combat/shield.ogg",
+        "start": 849.7000000178814,
+        "ms": 100.19999998807907,
+        "transfer": 19238,
+        "encoded": 18938,
+        "decoded": 18938
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/combat/heal.ogg",
+        "start": 849.8000000119209,
+        "ms": 101,
+        "transfer": 23064,
+        "encoded": 22764,
+        "decoded": 22764
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/combat/frost.ogg",
+        "start": 849.9000000059605,
+        "ms": 102.90000000596046,
+        "transfer": 20332,
+        "encoded": 20032,
+        "decoded": 20032
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/combat/echo.ogg",
+        "start": 850,
+        "ms": 106.30000001192093,
+        "transfer": 15153,
+        "encoded": 14853,
+        "decoded": 14853
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/result-victory.ogg",
+        "start": 850.1000000238419,
+        "ms": 119.09999999403954,
+        "transfer": 17624,
+        "encoded": 17324,
+        "decoded": 17324
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/sfx/result-defeat.ogg",
+        "start": 850.1000000238419,
+        "ms": 119.2999999821186,
+        "transfer": 19560,
+        "encoded": 19260,
+        "decoded": 19260
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+        "start": 871.7000000178814,
+        "ms": 161.09999999403954,
+        "transfer": 1964468,
+        "encoded": 1964168,
+        "decoded": 1964168
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/characters/brasskin/brasskin-desktop.glb",
+        "start": 871.9000000059605,
+        "ms": 811.9000000059605,
+        "transfer": 3952760,
+        "encoded": 3952460,
+        "decoded": 3952460
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/characters/zischbert/zischbert-desktop.glb",
+        "start": 872.1000000238419,
+        "ms": 816.2999999821186,
+        "transfer": 3997456,
+        "encoded": 3997156,
+        "decoded": 3997156
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a/pedestal-desktop.glb",
+        "start": 872.2000000178814,
+        "ms": 142.90000000596046,
+        "transfer": 359104,
+        "encoded": 358804,
+        "decoded": 358804
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+        "start": 872.5,
+        "ms": 194.2000000178814,
+        "transfer": 1720000,
+        "encoded": 1719700,
+        "decoded": 1719700
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+        "start": 872.8000000119209,
+        "ms": 160.30000001192093,
+        "transfer": 1552876,
+        "encoded": 1552576,
+        "decoded": 1552576
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+        "start": 873,
+        "ms": 206,
+        "transfer": 1570820,
+        "encoded": 1570520,
+        "decoded": 1570520
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+        "start": 873.2000000178814,
+        "ms": 254.19999998807907,
+        "transfer": 1664768,
+        "encoded": 1664468,
+        "decoded": 1664468
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+        "start": 873.4000000059605,
+        "ms": 211,
+        "transfer": 1455188,
+        "encoded": 1454888,
+        "decoded": 1454888
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+        "start": 873.5,
+        "ms": 254.40000000596046,
+        "transfer": 1421680,
+        "encoded": 1421380,
+        "decoded": 1421380
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+        "start": 890.6000000238419,
+        "ms": 252.09999999403954,
+        "transfer": 1483300,
+        "encoded": 1483000,
+        "decoded": 1483000
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+        "start": 890.9000000059605,
+        "ms": 262.80000001192093,
+        "transfer": 1448184,
+        "encoded": 1447884,
+        "decoded": 1447884
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/chili-desktop.glb",
+        "start": 891.1000000238419,
+        "ms": 253.5,
+        "transfer": 357296,
+        "encoded": 356996,
+        "decoded": 356996
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+        "start": 891.1000000238419,
+        "ms": 942.1999999880791,
+        "transfer": 5681072,
+        "encoded": 5680772,
+        "decoded": 5680772
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+        "start": 891.2000000178814,
+        "ms": 269.69999998807907,
+        "transfer": 485912,
+        "encoded": 485612,
+        "decoded": 485612
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+        "start": 891.4000000059605,
+        "ms": 268.2000000178814,
+        "transfer": 417068,
+        "encoded": 416768,
+        "decoded": 416768
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/music/menu.ogg",
+        "start": 1115.4000000059605,
+        "ms": 64.2000000178814,
+        "transfer": 210466,
+        "encoded": 210166,
+        "decoded": 210166
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+        "start": 1140.1000000238419,
+        "ms": 927.5999999940395,
+        "transfer": 300,
+        "encoded": 0,
+        "decoded": 0
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/music/boss.ogg",
+        "start": 1140.5,
+        "ms": 44.20000001788139,
+        "transfer": 1098169,
+        "encoded": 1097869,
+        "decoded": 1097869
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+        "start": 1978.6000000238419,
+        "ms": 8.799999982118607,
+        "transfer": 72747,
+        "encoded": 72447,
+        "decoded": 72447
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+        "start": 3414.800000011921,
+        "ms": 1729,
+        "transfer": 300,
+        "encoded": 1552576,
+        "decoded": 1552576
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+        "start": 3417.300000011921,
+        "ms": 1725.300000011921,
+        "transfer": 300,
+        "encoded": 1447884,
+        "decoded": 1447884
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+        "start": 3417.9000000059605,
+        "ms": 1749.5999999940395,
+        "transfer": 300,
+        "encoded": 1719700,
+        "decoded": 1719700
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/characters/brasskin/brasskin-desktop.glb",
+        "start": 3418.7000000178814,
+        "ms": 1790.2999999821186,
+        "transfer": 300,
+        "encoded": 3952460,
+        "decoded": 3952460
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a/pedestal-desktop.glb",
+        "start": 3420,
+        "ms": 1737.800000011921,
+        "transfer": 300,
+        "encoded": 358804,
+        "decoded": 358804
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/chili-desktop.glb",
+        "start": 3421.2000000178814,
+        "ms": 1736.199999988079,
+        "transfer": 300,
+        "encoded": 356996,
+        "decoded": 356996
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+        "start": 3422,
+        "ms": 1743.7000000178814,
+        "transfer": 300,
+        "encoded": 485612,
+        "decoded": 485612
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+        "start": 3423.300000011921,
+        "ms": 1733.199999988079,
+        "transfer": 300,
+        "encoded": 416768,
+        "decoded": 416768
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+        "start": 4830.800000011921,
+        "ms": 345.40000000596046,
+        "transfer": 1570820,
+        "encoded": 1570520,
+        "decoded": 1570520
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+        "start": 4831.200000017881,
+        "ms": 342.5,
+        "transfer": 1455188,
+        "encoded": 1454888,
+        "decoded": 1454888
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+        "start": 4831.5,
+        "ms": 345.30000001192093,
+        "transfer": 1664768,
+        "encoded": 1664468,
+        "decoded": 1664468
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+        "start": 4831.9000000059605,
+        "ms": 321.7000000178814,
+        "transfer": 300,
+        "encoded": 1421380,
+        "decoded": 1421380
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+        "start": 4832.700000017881,
+        "ms": 363.5,
+        "transfer": 300,
+        "encoded": 5680772,
+        "decoded": 5680772
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+        "start": 4834.4000000059605,
+        "ms": 315.5,
+        "transfer": 300,
+        "encoded": 1483000,
+        "decoded": 1483000
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/Potion_1.gltf",
+        "start": 4846.5,
+        "ms": 300.7000000178814,
+        "transfer": 2718,
+        "encoded": 2418,
+        "decoded": 2418
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/Potion_2.gltf",
+        "start": 4846.9000000059605,
+        "ms": 299.90000000596046,
+        "transfer": 2718,
+        "encoded": 2418,
+        "decoded": 2418
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/Chest_Wood.gltf",
+        "start": 4847.5,
+        "ms": 314.30000001192093,
+        "transfer": 21702,
+        "encoded": 21402,
+        "decoded": 21402
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/Barrel.gltf",
+        "start": 4847.800000011921,
+        "ms": 299.69999998807907,
+        "transfer": 4611,
+        "encoded": 4311,
+        "decoded": 4311
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/ambience/cauldron-bubbles.ogg",
+        "start": 4883.100000023842,
+        "ms": 294.7999999821186,
+        "transfer": 45923,
+        "encoded": 45623,
+        "decoded": 45623
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/Potion_2.bin",
+        "start": 5274,
+        "ms": 6.300000011920929,
+        "transfer": 19972,
+        "encoded": 19672,
+        "decoded": 19672
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_BaseColor.png",
+        "start": 5274.300000011921,
+        "ms": 11,
+        "transfer": 273239,
+        "encoded": 272939,
+        "decoded": 272939
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_ORM.png",
+        "start": 5274.4000000059605,
+        "ms": 10.300000011920929,
+        "transfer": 253245,
+        "encoded": 252945,
+        "decoded": 252945
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_Normal.png",
+        "start": 5274.600000023842,
+        "ms": 11.699999988079071,
+        "transfer": 337913,
+        "encoded": 337613,
+        "decoded": 337613
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/Barrel.bin",
+        "start": 5280.9000000059605,
+        "ms": 5.9000000059604645,
+        "transfer": 57444,
+        "encoded": 57144,
+        "decoded": 57144
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_BaseColor.png",
+        "start": 5281.5,
+        "ms": 9.800000011920929,
+        "transfer": 240649,
+        "encoded": 240349,
+        "decoded": 240349
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_ORM.png",
+        "start": 5281.700000017881,
+        "ms": 12.5,
+        "transfer": 174648,
+        "encoded": 174348,
+        "decoded": 174348
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_Normal.png",
+        "start": 5281.9000000059605,
+        "ms": 15.5,
+        "transfer": 241034,
+        "encoded": 240734,
+        "decoded": 240734
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_BaseColor.png",
+        "start": 5282,
+        "ms": 14.600000023841858,
+        "transfer": 189512,
+        "encoded": 189212,
+        "decoded": 189212
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_ORM.png",
+        "start": 5282,
+        "ms": 15,
+        "transfer": 168576,
+        "encoded": 168276,
+        "decoded": 168276
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_Normal.png",
+        "start": 5282.200000017881,
+        "ms": 17.299999982118607,
+        "transfer": 273363,
+        "encoded": 273063,
+        "decoded": 273063
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/Potion_1.bin",
+        "start": 5283.300000011921,
+        "ms": 16.80000001192093,
+        "transfer": 18500,
+        "encoded": 18200,
+        "decoded": 18200
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_BaseColor.png",
+        "start": 5283.5,
+        "ms": 15.200000017881393,
+        "transfer": 300,
+        "encoded": 272939,
+        "decoded": 272939
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_ORM.png",
+        "start": 5283.700000017881,
+        "ms": 16.599999994039536,
+        "transfer": 300,
+        "encoded": 252945,
+        "decoded": 252945
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Props_Normal.png",
+        "start": 5283.800000011921,
+        "ms": 17.80000001192093,
+        "transfer": 300,
+        "encoded": 337613,
+        "decoded": 337613
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/Chest_Wood.bin",
+        "start": 5373.5,
+        "ms": 10.200000017881393,
+        "transfer": 184656,
+        "encoded": 184356,
+        "decoded": 184356
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_BaseColor.png",
+        "start": 5374.5,
+        "ms": 3.4000000059604645,
+        "transfer": 300,
+        "encoded": 240349,
+        "decoded": 240349
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_ORM.png",
+        "start": 5374.700000017881,
+        "ms": 4.0999999940395355,
+        "transfer": 300,
+        "encoded": 174348,
+        "decoded": 174348
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Furniture_Normal.png",
+        "start": 5374.800000011921,
+        "ms": 4.9000000059604645,
+        "transfer": 300,
+        "encoded": 240734,
+        "decoded": 240734
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_BaseColor.png",
+        "start": 5375.100000023842,
+        "ms": 5.699999988079071,
+        "transfer": 300,
+        "encoded": 189212,
+        "decoded": 189212
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_ORM.png",
+        "start": 5375.200000017881,
+        "ms": 6.799999982118607,
+        "transfer": 300,
+        "encoded": 168276,
+        "decoded": 168276
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/quaternius/fantasy/T_Trim_Metal_Normal.png",
+        "start": 5375.4000000059605,
+        "ms": 8.5,
+        "transfer": 300,
+        "encoded": 273063,
+        "decoded": 273063
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+        "start": 5953.200000017881,
+        "ms": 3.4000000059604645,
+        "transfer": 69060,
+        "encoded": 68760,
+        "decoded": 68760
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+        "start": 16320.200000017881,
+        "ms": 3.4000000059604645,
+        "transfer": 300,
+        "encoded": 68760,
+        "decoded": 68760
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+        "start": 17293.20000001788,
+        "ms": 11.900000005960464,
+        "transfer": 1964468,
+        "encoded": 1964168,
+        "decoded": 1964168
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/characters/zischbert/zischbert-desktop.glb",
+        "start": 17295.30000001192,
+        "ms": 964.8000000119209,
+        "transfer": 3997456,
+        "encoded": 3997156,
+        "decoded": 3997156
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/characters/brasskin/brasskin-desktop.glb",
+        "start": 17320.70000001788,
+        "ms": 944.5999999940395,
+        "transfer": 3952760,
+        "encoded": 3952460,
+        "decoded": 3952460
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a/pedestal-desktop.glb",
+        "start": 17321,
+        "ms": 11.700000017881393,
+        "transfer": 359104,
+        "encoded": 358804,
+        "decoded": 358804
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+        "start": 17321.30000001192,
+        "ms": 30.80000001192093,
+        "transfer": 1720000,
+        "encoded": 1719700,
+        "decoded": 1719700
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+        "start": 17321.5,
+        "ms": 26.100000023841858,
+        "transfer": 1552876,
+        "encoded": 1552576,
+        "decoded": 1552576
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+        "start": 17321.90000000596,
+        "ms": 27.700000017881393,
+        "transfer": 1570820,
+        "encoded": 1570520,
+        "decoded": 1570520
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+        "start": 17322.100000023842,
+        "ms": 34.29999998211861,
+        "transfer": 1664768,
+        "encoded": 1664468,
+        "decoded": 1664468
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+        "start": 17322.30000001192,
+        "ms": 50,
+        "transfer": 1455188,
+        "encoded": 1454888,
+        "decoded": 1454888
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+        "start": 17322.5,
+        "ms": 51.5,
+        "transfer": 1421680,
+        "encoded": 1421380,
+        "decoded": 1421380
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+        "start": 17322.70000001788,
+        "ms": 52.5,
+        "transfer": 1483300,
+        "encoded": 1483000,
+        "decoded": 1483000
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+        "start": 17323.100000023842,
+        "ms": 55.39999997615814,
+        "transfer": 1448184,
+        "encoded": 1447884,
+        "decoded": 1447884
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+        "start": 17323.30000001192,
+        "ms": 1073.800000011921,
+        "transfer": 5681072,
+        "encoded": 5680772,
+        "decoded": 5680772
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/chili-desktop.glb",
+        "start": 17323.600000023842,
+        "ms": 58.099999994039536,
+        "transfer": 357296,
+        "encoded": 356996,
+        "decoded": 356996
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+        "start": 17324,
+        "ms": 55.900000005960464,
+        "transfer": 300,
+        "encoded": 68760,
+        "decoded": 68760
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+        "start": 17324.30000001192,
+        "ms": 60.599999994039536,
+        "transfer": 485912,
+        "encoded": 485612,
+        "decoded": 485612
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+        "start": 17324.5,
+        "ms": 61,
+        "transfer": 417068,
+        "encoded": 416768,
+        "decoded": 416768
+      },
+      {
+        "name": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+        "start": 22873.90000000596,
+        "ms": 6.0999999940395355,
+        "transfer": 531499,
+        "encoded": 531199,
+        "decoded": 531199
+      }
+    ],
+    "experiments": "none",
+    "gpu": {
+      "vendor": "Google Inc. (AMD)",
+      "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "extensions": [
+        "EXT_clip_control",
+        "EXT_color_buffer_float",
+        "EXT_color_buffer_half_float",
+        "EXT_conservative_depth",
+        "EXT_depth_clamp",
+        "EXT_disjoint_timer_query_webgl2",
+        "EXT_float_blend",
+        "EXT_polygon_offset_clamp",
+        "EXT_render_snorm",
+        "EXT_texture_compression_bptc",
+        "EXT_texture_compression_rgtc",
+        "EXT_texture_filter_anisotropic",
+        "EXT_texture_mirror_clamp_to_edge",
+        "EXT_texture_norm16",
+        "KHR_parallel_shader_compile",
+        "NV_shader_noperspective_interpolation",
+        "OES_draw_buffers_indexed",
+        "OES_sample_variables",
+        "OES_shader_multisample_interpolation",
+        "OES_texture_float_linear",
+        "OVR_multiview2",
+        "WEBGL_blend_func_extended",
+        "WEBGL_clip_cull_distance",
+        "WEBGL_compressed_texture_s3tc",
+        "WEBGL_compressed_texture_s3tc_srgb",
+        "WEBGL_debug_renderer_info",
+        "WEBGL_debug_shaders",
+        "WEBGL_lose_context",
+        "WEBGL_multi_draw",
+        "WEBGL_polygon_mode",
+        "WEBGL_provoking_vertex",
+        "WEBGL_stencil_texturing"
+      ],
+      "dpr": 1,
+      "drawingBuffer": [
+        1490,
+        931
+      ],
+      "timerQueryAvailable": true
+    },
+    "gpuTimes": [
+      {
+        "t": 22877.80000001192,
+        "ms": 12.59432
+      },
+      {
+        "t": 22899.30000001192,
+        "ms": 15.6108
+      },
+      {
+        "t": 22910.70000001788,
+        "ms": 13.4895
+      },
+      {
+        "t": 23022.90000000596,
+        "ms": 12.51909
+      },
+      {
+        "t": 23030.30000001192,
+        "ms": 14.62588
+      },
+      {
+        "t": 23044.30000001192,
+        "ms": 12.23488
+      },
+      {
+        "t": 23061,
+        "ms": 12.23727
+      },
+      {
+        "t": 23076.80000001192,
+        "ms": 12.25751
+      },
+      {
+        "t": 23094.100000023842,
+        "ms": 12.48161
+      },
+      {
+        "t": 23111.80000001192,
+        "ms": 12.68777
+      },
+      {
+        "t": 23127.70000001788,
+        "ms": 12.11276
+      },
+      {
+        "t": 23155.70000001788,
+        "ms": 16.70554
+      },
+      {
+        "t": 27558.70000001788,
+        "ms": 19.24422
+      },
+      {
+        "t": 27682.80000001192,
+        "ms": 16.76526
+      },
+      {
+        "t": 27711.70000001788,
+        "ms": 18.1454
+      },
+      {
+        "t": 27723,
+        "ms": 22.48692
+      },
+      {
+        "t": 32342.70000001788,
+        "ms": 21.43534
+      },
+      {
+        "t": 32402.70000001788,
+        "ms": 17.96945
+      },
+      {
+        "t": 32419.5,
+        "ms": 17.61449
+      },
+      {
+        "t": 32431.5,
+        "ms": 14.71291
+      },
+      {
+        "t": 32456.600000023842,
+        "ms": 14.9062
+      },
+      {
+        "t": 32463.40000000596,
+        "ms": 15.29483
+      },
+      {
+        "t": 32494,
+        "ms": 16.8371
+      },
+      {
+        "t": 32509.90000000596,
+        "ms": 14.62378
+      },
+      {
+        "t": 32526.600000023842,
+        "ms": 15.16054
+      },
+      {
+        "t": 32549.5,
+        "ms": 37.48697
+      },
+      {
+        "t": 32564.30000001192,
+        "ms": 24.42812
+      }
+    ],
+    "now": 37561.10000002384,
+    "browser": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "hardwareConcurrency": 16,
+      "deviceMemory": 16,
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "visibilityState": "visible"
+    },
+    "renderer": {
+      "programs": 118,
+      "render": {
+        "frame": 156,
+        "calls": 344,
+        "triangles": 767657,
+        "points": 88,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 194,
+        "textures": 61
+      }
+    }
+  }
+}

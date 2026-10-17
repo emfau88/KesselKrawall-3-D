@@ -1,0 +1,2654 @@
+{
+  "label": "desktop-polish-cold-1",
+  "input": "outputs/first-combat-performance/diagnostic/desktop-polish-cold-1.json",
+  "alignment": {
+    "originUs": 211153810701,
+    "matchedUserTimingMarks": 15,
+    "markerSpreadUs": 163
+  },
+  "rendererThread": {
+    "pid": 75376,
+    "tid": 61156
+  },
+  "gpuThread": {
+    "pid": 59228,
+    "tid": 24964
+  },
+  "environment": {
+    "browser": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "hardwareConcurrency": 16,
+      "deviceMemory": 16,
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "visibilityState": "visible"
+    },
+    "gpu": {
+      "vendor": "Google Inc. (AMD)",
+      "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "extensions": [
+        "EXT_clip_control",
+        "EXT_color_buffer_float",
+        "EXT_color_buffer_half_float",
+        "EXT_conservative_depth",
+        "EXT_depth_clamp",
+        "EXT_disjoint_timer_query_webgl2",
+        "EXT_float_blend",
+        "EXT_polygon_offset_clamp",
+        "EXT_render_snorm",
+        "EXT_texture_compression_bptc",
+        "EXT_texture_compression_rgtc",
+        "EXT_texture_filter_anisotropic",
+        "EXT_texture_mirror_clamp_to_edge",
+        "EXT_texture_norm16",
+        "KHR_parallel_shader_compile",
+        "NV_shader_noperspective_interpolation",
+        "OES_draw_buffers_indexed",
+        "OES_sample_variables",
+        "OES_shader_multisample_interpolation",
+        "OES_texture_float_linear",
+        "OVR_multiview2",
+        "WEBGL_blend_func_extended",
+        "WEBGL_clip_cull_distance",
+        "WEBGL_compressed_texture_s3tc",
+        "WEBGL_compressed_texture_s3tc_srgb",
+        "WEBGL_debug_renderer_info",
+        "WEBGL_debug_shaders",
+        "WEBGL_lose_context",
+        "WEBGL_multi_draw",
+        "WEBGL_polygon_mode",
+        "WEBGL_provoking_vertex",
+        "WEBGL_stencil_texturing"
+      ],
+      "dpr": 1,
+      "drawingBuffer": [
+        1490,
+        931
+      ],
+      "timerQueryAvailable": true
+    },
+    "experiments": "none"
+  },
+  "marks": [
+    {
+      "name": "probe-installed",
+      "t": 118.5
+    },
+    {
+      "name": "menu",
+      "t": 417.80000001192093,
+      "detail": {
+        "text": ""
+      }
+    },
+    {
+      "name": "workshop",
+      "t": 3401.4000000059605,
+      "detail": {
+        "text": ""
+      }
+    },
+    {
+      "name": "renderer-instrumented",
+      "t": 4263.600000023842
+    },
+    {
+      "name": "workshop-usable",
+      "t": 5392.100000023842
+    },
+    {
+      "name": "purchase-start",
+      "t": 5419.600000023842
+    },
+    {
+      "name": "ingredient-activation",
+      "t": 12294.5,
+      "detail": {
+        "eventIndex": 0,
+        "actors": [
+          {
+            "ingredientActor": "slime-shroom",
+            "level": 1,
+            "active": false,
+            "animationKey": -1,
+            "rotation": [
+              0,
+              0.008083243962810899,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "egg-shell",
+            "level": 1,
+            "active": false,
+            "animationKey": -1,
+            "rotation": [
+              0,
+              0.003229473077793492,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "chili",
+            "level": 1,
+            "active": false,
+            "animationKey": -1,
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "chili",
+            "level": 1,
+            "active": false,
+            "animationKey": -1,
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "chili",
+            "level": 2,
+            "active": true,
+            "animationKey": 0,
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "purchase-end",
+      "t": 16837
+    },
+    {
+      "name": "swap-end",
+      "t": 17248.70000001788
+    },
+    {
+      "name": "battle-click",
+      "t": 17250.30000001192
+    },
+    {
+      "name": "preparation",
+      "t": 17290.20000001788,
+      "detail": {
+        "text": "Zischbert"
+      }
+    },
+    {
+      "name": "combat",
+      "t": 22867.80000001192,
+      "detail": {
+        "text": ""
+      }
+    },
+    {
+      "name": "native-active-observed",
+      "t": 22897.20000001788
+    },
+    {
+      "name": "ingredient-activation",
+      "t": 27709.90000000596,
+      "detail": {
+        "eventIndex": 4,
+        "actors": [
+          {
+            "ingredientActor": "chili",
+            "level": 2,
+            "active": false,
+            "animationKey": 4,
+            "rotation": [
+              -5.878304635907295e-17,
+              0.01353090323940677,
+              2.694222958124177e-17,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "slime-shroom",
+            "level": 1,
+            "active": false,
+            "animationKey": 4,
+            "rotation": [
+              0,
+              -0.04160071573215337,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "egg-shell",
+            "level": 1,
+            "active": true,
+            "animationKey": 4,
+            "rotation": [
+              0,
+              0.050827530899431754,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "chili",
+            "level": 1,
+            "active": false,
+            "animationKey": 4,
+            "rotation": [
+              0,
+              0.01353090323940677,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "cinder-berry",
+            "level": 1,
+            "active": false,
+            "animationKey": 4,
+            "rotation": [
+              0,
+              -0.04160071573215337,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "ingredient-activation",
+      "t": 32417.20000001788,
+      "detail": {
+        "eventIndex": 8,
+        "actors": [
+          {
+            "ingredientActor": "chili",
+            "level": 2,
+            "active": true,
+            "animationKey": 8,
+            "rotation": [
+              0,
+              -0.07420171070146941,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "slime-shroom",
+            "level": 1,
+            "active": false,
+            "animationKey": 8,
+            "rotation": [
+              0,
+              -0.036295881589483124,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "egg-shell",
+            "level": 1,
+            "active": false,
+            "animationKey": 8,
+            "rotation": [
+              0,
+              0.025871863714149176,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "chili",
+            "level": 1,
+            "active": false,
+            "animationKey": 8,
+            "rotation": [
+              0,
+              -0.07420171070146941,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "ingredientActor": "cinder-berry",
+            "level": 1,
+            "active": false,
+            "animationKey": 8,
+            "rotation": [
+              0,
+              -0.036295881589483124,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "navigation",
+      "frameCount": 7,
+      "medianFrameMs": 16.69999999999999,
+      "maxFrameMs": 16.700000000000017,
+      "framesOver250ms": 0,
+      "longTaskCount": 0,
+      "longTaskTotalMs": 0,
+      "maxLongTaskMs": 0,
+      "gpuSampleCount": 0,
+      "gpuMedianMs": null,
+      "gpuMaxMs": null
+    },
+    {
+      "phase": "menu",
+      "frameCount": 12,
+      "medianFrameMs": 83.29999999999995,
+      "maxFrameMs": 666.7,
+      "framesOver250ms": 2,
+      "longTaskCount": 5,
+      "longTaskTotalMs": 774,
+      "maxLongTaskMs": 291,
+      "gpuSampleCount": 0,
+      "gpuMedianMs": null,
+      "gpuMaxMs": null
+    },
+    {
+      "phase": "workshop",
+      "frameCount": 73,
+      "medianFrameMs": 16.700000000000728,
+      "maxFrameMs": 3533.0999999999985,
+      "framesOver250ms": 5,
+      "longTaskCount": 11,
+      "longTaskTotalMs": 13546,
+      "maxLongTaskMs": 3540,
+      "gpuSampleCount": 0,
+      "gpuMedianMs": null,
+      "gpuMaxMs": null
+    },
+    {
+      "phase": "preparation",
+      "frameCount": 17,
+      "medianFrameMs": 16.799999999999272,
+      "maxFrameMs": 4033.100000000002,
+      "framesOver250ms": 2,
+      "longTaskCount": 4,
+      "longTaskTotalMs": 5120,
+      "maxLongTaskMs": 4024,
+      "gpuSampleCount": 0,
+      "gpuMedianMs": null,
+      "gpuMaxMs": null
+    },
+    {
+      "phase": "combat",
+      "frameCount": 32,
+      "medianFrameMs": 16.700000000000728,
+      "maxFrameMs": 4616.5,
+      "framesOver250ms": 2,
+      "longTaskCount": 4,
+      "longTaskTotalMs": 9188,
+      "maxLongTaskMs": 4614,
+      "gpuSampleCount": 27,
+      "gpuMedianMs": 15.16054,
+      "gpuMaxMs": 37.48697
+    }
+  ],
+  "glTotals": {
+    "texImage2D": {
+      "calls": 10,
+      "ms": 17.099999994039536,
+      "maxMs": 17
+    },
+    "texImage3D": {
+      "calls": 2,
+      "ms": 2,
+      "maxMs": 2
+    },
+    "bufferData": {
+      "calls": 1223,
+      "ms": 7.499999850988388,
+      "maxMs": 0.19999998807907104
+    },
+    "createProgram": {
+      "calls": 148,
+      "ms": 0.7999999821186066,
+      "maxMs": 0.10000002384185791
+    },
+    "shaderSource": {
+      "calls": 296,
+      "ms": 41.29999998211861,
+      "maxMs": 0.5
+    },
+    "compileShader": {
+      "calls": 296,
+      "ms": 0.699999988079071,
+      "maxMs": 0.10000002384185791
+    },
+    "attachShader": {
+      "calls": 296,
+      "ms": 0.30000001192092896,
+      "maxMs": 0.10000002384185791
+    },
+    "linkProgram": {
+      "calls": 148,
+      "ms": 1.600000023841858,
+      "maxMs": 0.10000002384185791
+    },
+    "getProgramInfoLog": {
+      "calls": 148,
+      "ms": 30424.499999940395,
+      "maxMs": 559.9000000059605
+    },
+    "getShaderInfoLog": {
+      "calls": 296,
+      "ms": 91.99999991059303,
+      "maxMs": 7.4000000059604645
+    },
+    "getProgramParameter": {
+      "calls": 444,
+      "ms": 29.30000013113022,
+      "maxMs": 0.9000000059604645
+    },
+    "getActiveUniform": {
+      "calls": 8680,
+      "ms": 24.199999928474426,
+      "maxMs": 0.30000001192092896
+    },
+    "getUniformLocation": {
+      "calls": 8680,
+      "ms": 20.00000011920929,
+      "maxMs": 0.20000001788139343
+    },
+    "getActiveAttrib": {
+      "calls": 412,
+      "ms": 1.2000000774860382,
+      "maxMs": 0.10000002384185791
+    },
+    "useProgram": {
+      "calls": 6091,
+      "ms": 4.099999964237213,
+      "maxMs": 0.10000002384185791
+    },
+    "drawElements": {
+      "calls": 19825,
+      "ms": 11.100000321865082,
+      "maxMs": 0.19999998807907104
+    },
+    "texSubImage2D": {
+      "calls": 104,
+      "ms": 43.300000101327896,
+      "maxMs": 3.300000011920929
+    },
+    "drawElementsInstanced": {
+      "calls": 148,
+      "ms": 0.20000001788139343,
+      "maxMs": 0.10000002384185791
+    },
+    "drawArrays": {
+      "calls": 4049,
+      "ms": 3.0999999344348907,
+      "maxMs": 0.10000002384185791
+    },
+    "texSubImage3D": {
+      "calls": 13,
+      "ms": 3.0999999940395355,
+      "maxMs": 1.600000023841858
+    },
+    "generateMipmap": {
+      "calls": 47,
+      "ms": 0.30000001192092896,
+      "maxMs": 0.10000002384185791
+    },
+    "bufferSubData": {
+      "calls": 556,
+      "ms": 2.799999952316284,
+      "maxMs": 0.20000001788139343
+    }
+  },
+  "slowRenders": [
+    {
+      "t": 4264.5,
+      "ms": 552.9,
+      "phase": "workshop",
+      "points": 3,
+      "programs": 4,
+      "calls": 73,
+      "triangles": 4610,
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 4,
+            "overlappedWallMs": 527.6,
+            "maxCallMs": 180.3
+          }
+        },
+        "programIds": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "mainTask": {
+          "wallMs": 2093.528,
+          "threadCpuMs": 181.374
+        },
+        "angleWorkerTasks": 24,
+        "angleWorkerThreadCpuMs": 533.217,
+        "mainThreadGcUnionMs": 1.14,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 527.234
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 4.322
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.816
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 1.684
+          },
+          {
+            "name": "(garbage collector)",
+            "url": "",
+            "ms": 1.226
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 1.175
+          },
+          {
+            "name": "bufferData",
+            "url": "",
+            "ms": 1.042
+          },
+          {
+            "name": "n",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.036
+          },
+          {
+            "name": "computeBoundingSphere",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.017
+          },
+          {
+            "name": "bindVertexArray",
+            "url": "",
+            "ms": 1.013
+          },
+          {
+            "name": "S",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.007
+          },
+          {
+            "name": "kp",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.001
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 5963,
+      "ms": 3300,
+      "phase": "workshop",
+      "points": 7,
+      "programs": 23,
+      "calls": 146,
+      "triangles": 468490,
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 17,
+            "overlappedWallMs": 3182.3,
+            "maxCallMs": 341
+          },
+          "getShaderInfoLog": {
+            "calls": 1,
+            "overlappedWallMs": 7,
+            "maxCallMs": 7
+          }
+        },
+        "programIds": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "mainTask": {
+          "wallMs": 3320.047,
+          "threadCpuMs": 158.111
+        },
+        "angleWorkerTasks": 107,
+        "angleWorkerThreadCpuMs": 3119.891,
+        "mainThreadGcUnionMs": 0.709,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 3181.622
+          },
+          {
+            "name": "texSubImage2D",
+            "url": "",
+            "ms": 32.332
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 15.799
+          },
+          {
+            "name": "o",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 5.154
+          },
+          {
+            "name": "bufferData",
+            "url": "",
+            "ms": 4.525
+          },
+          {
+            "name": "fromBufferAttribute",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 4.137
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 4.127
+          },
+          {
+            "name": "a",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.848
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.487
+          },
+          {
+            "name": "distanceToSquared",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.153
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.078
+          },
+          {
+            "name": "now",
+            "url": "",
+            "ms": 2.029
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 9332.5,
+      "ms": 2902.1,
+      "phase": "workshop",
+      "points": 6,
+      "programs": 39,
+      "calls": 147,
+      "triangles": 468882,
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 13,
+            "overlappedWallMs": 2858,
+            "maxCallMs": 313.4
+          },
+          "getShaderInfoLog": {
+            "calls": 1,
+            "overlappedWallMs": 4.9,
+            "maxCallMs": 4.9
+          }
+        },
+        "programIds": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "mainTask": {
+          "wallMs": 2903.267,
+          "threadCpuMs": 69.454
+        },
+        "angleWorkerTasks": 78,
+        "angleWorkerThreadCpuMs": 2930.134,
+        "mainThreadGcUnionMs": 1.079,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 2858.828
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 7.352
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 4.305
+          },
+          {
+            "name": "getUniformLocation",
+            "url": "",
+            "ms": 4.181
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.693
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 2.568
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 2.161
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 2.009
+          },
+          {
+            "name": "Ot",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.536
+          },
+          {
+            "name": "Jm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.312
+          },
+          {
+            "name": "(garbage collector)",
+            "url": "",
+            "ms": 1.278
+          },
+          {
+            "name": "Cm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.027
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 12726.600000023842,
+      "ms": 3539.8,
+      "phase": "workshop",
+      "points": 9,
+      "programs": 56,
+      "calls": 166,
+      "triangles": 472382,
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 13,
+            "overlappedWallMs": 3497.4,
+            "maxCallMs": 342.1
+          }
+        },
+        "programIds": [
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65
+        ],
+        "mainTask": {
+          "wallMs": 3540.606,
+          "threadCpuMs": 75.643
+        },
+        "angleWorkerTasks": 78,
+        "angleWorkerThreadCpuMs": 3564.975,
+        "mainThreadGcUnionMs": 0,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 3499.125
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 5.689
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 5.261
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 5.149
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 4.099
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 2.589
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.159
+          },
+          {
+            "name": "b",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.018
+          },
+          {
+            "name": "Ot",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.926
+          },
+          {
+            "name": "RegExp: ^[ \\t]*#include +<([\\w\\d./]+)>",
+            "url": "",
+            "ms": 1.294
+          },
+          {
+            "name": "getUniformLocation",
+            "url": "",
+            "ms": 1.25
+          },
+          {
+            "name": "copy",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.022
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 17341.40000000596,
+      "ms": 891.7,
+      "phase": "preparation",
+      "points": 7,
+      "programs": 54,
+      "calls": 184,
+      "triangles": 112768,
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 8,
+            "overlappedWallMs": 862.8,
+            "maxCallMs": 308.2
+          }
+        },
+        "programIds": [
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80
+        ],
+        "mainTask": {
+          "wallMs": 896.048,
+          "threadCpuMs": 40.127
+        },
+        "angleWorkerTasks": 45,
+        "angleWorkerThreadCpuMs": 903.823,
+        "mainThreadGcUnionMs": 0,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 861.993
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 3.126
+          },
+          {
+            "name": "Wc",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.127
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.1
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.965
+          },
+          {
+            "name": "Jm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.589
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 1.22
+          },
+          {
+            "name": "n",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.194
+          },
+          {
+            "name": "h",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.095
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 1.07
+          },
+          {
+            "name": "zm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.029
+          },
+          {
+            "name": "RegExp: #pragma unroll_loop_start\\s+for\\s*\\(\\s*int\\s+i\\s*=\\s*(\\d+)\\s*;\\s*i\\s*<\\s*(\\d+)\\s*;\\s*i\\s*\\+\\+\\s*\\)\\s*{([\\s\\S]+?)}\\s+#pragma unroll_loop_end",
+            "url": "",
+            "ms": 1.027
+          }
+        ],
+        "resourceCompletions": [
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+            "completionMs": 17352.1,
+            "durationMs": 30.8
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+            "completionMs": 17347.6,
+            "durationMs": 26.1
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+            "completionMs": 17349.6,
+            "durationMs": 27.7
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+            "completionMs": 17356.4,
+            "durationMs": 34.3
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+            "completionMs": 17372.3,
+            "durationMs": 50
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+            "completionMs": 17374,
+            "durationMs": 51.5
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+            "completionMs": 17375.2,
+            "durationMs": 52.5
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+            "completionMs": 17378.5,
+            "durationMs": 55.4
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/chili-desktop.glb",
+            "completionMs": 17381.7,
+            "durationMs": 58.1
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+            "completionMs": 17379.9,
+            "durationMs": 55.9
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+            "completionMs": 17384.9,
+            "durationMs": 60.6
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+            "completionMs": 17385.5,
+            "durationMs": 61
+          }
+        ]
+      }
+    },
+    {
+      "t": 18756.5,
+      "ms": 4022.7,
+      "phase": "preparation",
+      "points": 12,
+      "programs": 68,
+      "calls": 322,
+      "triangles": 766517,
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 14,
+            "overlappedWallMs": 3943.4,
+            "maxCallMs": 481.5
+          }
+        },
+        "programIds": [
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94
+        ],
+        "mainTask": {
+          "wallMs": 4023.95,
+          "threadCpuMs": 108.79
+        },
+        "angleWorkerTasks": 84,
+        "angleWorkerThreadCpuMs": 4015.059,
+        "mainThreadGcUnionMs": 0,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 3945.887
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 15.993
+          },
+          {
+            "name": "texSubImage2D",
+            "url": "",
+            "ms": 7.514
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 6.23
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 5.939
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 4.46
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 4.227
+          },
+          {
+            "name": "fromBufferAttribute",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.345
+          },
+          {
+            "name": "min",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.951
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.656
+          },
+          {
+            "name": "a",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.104
+          },
+          {
+            "name": "Ot",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.099
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 23155.90000000596,
+      "ms": 4395.1,
+      "phase": "combat",
+      "points": 14,
+      "programs": 84,
+      "calls": 333,
+      "triangles": 767429,
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 14,
+            "overlappedWallMs": 4351.1,
+            "maxCallMs": 472.3
+          }
+        },
+        "programIds": [
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112
+        ],
+        "mainTask": {
+          "wallMs": 4399.719,
+          "threadCpuMs": 94.499
+        },
+        "angleWorkerTasks": 84,
+        "angleWorkerThreadCpuMs": 4423.453,
+        "mainThreadGcUnionMs": 1.968,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 4349.484
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 4.655
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 4.284
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 3.459
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 3.439
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 3.096
+          },
+          {
+            "name": "getUniformLocation",
+            "url": "",
+            "ms": 2.837
+          },
+          {
+            "name": "(garbage collector)",
+            "url": "",
+            "ms": 2.149
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 2.121
+          },
+          {
+            "name": "now",
+            "url": "",
+            "ms": 1.922
+          },
+          {
+            "name": "Wc",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.493
+          },
+          {
+            "name": "Wm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.087
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 27723.100000023842,
+      "ms": 4611.1,
+      "phase": "combat",
+      "points": 15,
+      "programs": 102,
+      "calls": 335,
+      "triangles": 767597,
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 14,
+            "overlappedWallMs": 4561,
+            "maxCallMs": 502.1
+          },
+          "getShaderInfoLog": {
+            "calls": 1,
+            "overlappedWallMs": 7.4,
+            "maxCallMs": 7.4
+          }
+        },
+        "programIds": [
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130
+        ],
+        "mainTask": {
+          "wallMs": 4614.422,
+          "threadCpuMs": 91.997
+        },
+        "angleWorkerTasks": 84,
+        "angleWorkerThreadCpuMs": 4623.992,
+        "mainThreadGcUnionMs": 1.675,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 4561.755
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 11.034
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 8.012
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.984
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.292
+          },
+          {
+            "name": "h",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.209
+          },
+          {
+            "name": "a",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.021
+          },
+          {
+            "name": "Ot",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.016
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 1.667
+          },
+          {
+            "name": "wm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.548
+          },
+          {
+            "name": "getUniformLocation",
+            "url": "",
+            "ms": 1.543
+          },
+          {
+            "name": "Cm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.538
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 32683.5,
+      "ms": 4876,
+      "phase": "combat",
+      "points": 16,
+      "programs": 118,
+      "calls": 344,
+      "triangles": 767657,
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 14,
+            "overlappedWallMs": 4825.4,
+            "maxCallMs": 559.9
+          }
+        },
+        "programIds": [
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148
+        ],
+        "mainTask": {
+          "wallMs": 4878.064,
+          "threadCpuMs": 98.988
+        },
+        "angleWorkerTasks": 84,
+        "angleWorkerThreadCpuMs": 4905.737,
+        "mainThreadGcUnionMs": 0,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 4825.202
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 12.496
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 5.915
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 5.146
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 3.758
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 3.529
+          },
+          {
+            "name": "getUniformLocation",
+            "url": "",
+            "ms": 2.106
+          },
+          {
+            "name": "Wc",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.881
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 1.554
+          },
+          {
+            "name": "g",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.539
+          },
+          {
+            "name": "y",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.085
+          },
+          {
+            "name": "uniform1iv",
+            "url": "",
+            "ms": 1.029
+          }
+        ],
+        "resourceCompletions": []
+      }
+    }
+  ],
+  "slowTasks": [
+    {
+      "t": 503,
+      "ms": 291,
+      "phase": "menu",
+      "evidence": {
+        "glSlow": {},
+        "programIds": [],
+        "mainTask": {
+          "wallMs": 291.259,
+          "threadCpuMs": 57.596
+        },
+        "angleWorkerTasks": 0,
+        "angleWorkerThreadCpuMs": 0,
+        "mainThreadGcUnionMs": 0,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "(program)",
+            "url": "",
+            "ms": 291
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 2124.100000023842,
+      "ms": 605,
+      "phase": "workshop",
+      "evidence": {
+        "glSlow": {
+          "texImage2D": {
+            "calls": 1,
+            "overlappedWallMs": 17,
+            "maxCallMs": 17
+          }
+        },
+        "programIds": [],
+        "mainTask": {
+          "wallMs": 605.022,
+          "threadCpuMs": 36.797
+        },
+        "angleWorkerTasks": 0,
+        "angleWorkerThreadCpuMs": 0,
+        "mainThreadGcUnionMs": 113.384,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "Ie",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 227.565
+          },
+          {
+            "name": "Kh.setSize",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 77.564
+          },
+          {
+            "name": "(garbage collector)",
+            "url": "",
+            "ms": 70.136
+          },
+          {
+            "name": "Nh",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 34.873
+          },
+          {
+            "name": "L",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 30.484
+          },
+          {
+            "name": "Kh",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 26.604
+          },
+          {
+            "name": "getExtension",
+            "url": "",
+            "ms": 20.959
+          },
+          {
+            "name": "texImage2D",
+            "url": "",
+            "ms": 17.227
+          },
+          {
+            "name": "createTexture",
+            "url": "",
+            "ms": 9.935
+          },
+          {
+            "name": "getParameter",
+            "url": "",
+            "ms": 8.969
+          },
+          {
+            "name": "set outputColorSpace",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 7.135
+          },
+          {
+            "name": "queueMicrotask",
+            "url": "",
+            "ms": 6.257
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 2731.2000000178814,
+      "ms": 2093,
+      "phase": "workshop",
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 10,
+            "overlappedWallMs": 1218.7,
+            "maxCallMs": 525.5
+          }
+        },
+        "programIds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "mainTask": {
+          "wallMs": 2093.528,
+          "threadCpuMs": 181.374
+        },
+        "angleWorkerTasks": 60,
+        "angleWorkerThreadCpuMs": 1214.488,
+        "mainThreadGcUnionMs": 7.591,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 1219.31
+          },
+          {
+            "name": "ensureContext",
+            "url": "http://127.0.0.1:5197/assets/index-DCbcnK5-.js",
+            "ms": 521.182
+          },
+          {
+            "name": "(program)",
+            "url": "",
+            "ms": 200.18
+          },
+          {
+            "name": "(garbage collector)",
+            "url": "",
+            "ms": 6.983
+          },
+          {
+            "name": "load",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 6.735
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 6.165
+          },
+          {
+            "name": "Cp",
+            "url": "http://127.0.0.1:5197/assets/index-DCbcnK5-.js",
+            "ms": 3.812
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.606
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 3.163
+          },
+          {
+            "name": "e",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.078
+          },
+          {
+            "name": "bufferData",
+            "url": "",
+            "ms": 2.96
+          },
+          {
+            "name": "listener",
+            "url": "",
+            "ms": 2.883
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 5944.100000023842,
+      "ms": 3320,
+      "phase": "workshop",
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 17,
+            "overlappedWallMs": 3182.3,
+            "maxCallMs": 341
+          },
+          "getShaderInfoLog": {
+            "calls": 1,
+            "overlappedWallMs": 7,
+            "maxCallMs": 7
+          }
+        },
+        "programIds": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "mainTask": {
+          "wallMs": 3320.047,
+          "threadCpuMs": 158.111
+        },
+        "angleWorkerTasks": 108,
+        "angleWorkerThreadCpuMs": 3121.195,
+        "mainThreadGcUnionMs": 0.709,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 3181.622
+          },
+          {
+            "name": "texSubImage2D",
+            "url": "",
+            "ms": 32.332
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 15.799
+          },
+          {
+            "name": "(program)",
+            "url": "",
+            "ms": 7.224
+          },
+          {
+            "name": "o",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 5.154
+          },
+          {
+            "name": "bufferData",
+            "url": "",
+            "ms": 4.525
+          },
+          {
+            "name": "fromBufferAttribute",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 4.137
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 4.127
+          },
+          {
+            "name": "a",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.848
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.487
+          },
+          {
+            "name": "distanceToSquared",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.153
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.078
+          }
+        ],
+        "resourceCompletions": [
+          {
+            "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+            "completionMs": 5956.6,
+            "durationMs": 3.4
+          }
+        ]
+      }
+    },
+    {
+      "t": 9331.600000023842,
+      "ms": 2903,
+      "phase": "workshop",
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 13,
+            "overlappedWallMs": 2858,
+            "maxCallMs": 313.4
+          },
+          "getShaderInfoLog": {
+            "calls": 1,
+            "overlappedWallMs": 4.9,
+            "maxCallMs": 4.9
+          }
+        },
+        "programIds": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "mainTask": {
+          "wallMs": 2903.267,
+          "threadCpuMs": 69.454
+        },
+        "angleWorkerTasks": 78,
+        "angleWorkerThreadCpuMs": 2930.134,
+        "mainThreadGcUnionMs": 1.079,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 2858.828
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 7.352
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 4.305
+          },
+          {
+            "name": "getUniformLocation",
+            "url": "",
+            "ms": 4.181
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.693
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 2.568
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 2.161
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 2.009
+          },
+          {
+            "name": "Ot",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.536
+          },
+          {
+            "name": "Jm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.312
+          },
+          {
+            "name": "(garbage collector)",
+            "url": "",
+            "ms": 1.278
+          },
+          {
+            "name": "Cm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.027
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 12726.100000023842,
+      "ms": 3540,
+      "phase": "workshop",
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 13,
+            "overlappedWallMs": 3497.4,
+            "maxCallMs": 342.1
+          }
+        },
+        "programIds": [
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65
+        ],
+        "mainTask": {
+          "wallMs": 3540.606,
+          "threadCpuMs": 75.643
+        },
+        "angleWorkerTasks": 78,
+        "angleWorkerThreadCpuMs": 3564.975,
+        "mainThreadGcUnionMs": 0,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 3499.125
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 5.689
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 5.261
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 5.149
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 4.099
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 2.589
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.159
+          },
+          {
+            "name": "b",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.018
+          },
+          {
+            "name": "Ot",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.926
+          },
+          {
+            "name": "RegExp: ^[ \\t]*#include +<([\\w\\d./]+)>",
+            "url": "",
+            "ms": 1.294
+          },
+          {
+            "name": "getUniformLocation",
+            "url": "",
+            "ms": 1.25
+          },
+          {
+            "name": "copy",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.022
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 17336.90000000596,
+      "ms": 896,
+      "phase": "preparation",
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 8,
+            "overlappedWallMs": 862.8,
+            "maxCallMs": 308.2
+          }
+        },
+        "programIds": [
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80
+        ],
+        "mainTask": {
+          "wallMs": 896.048,
+          "threadCpuMs": 40.127
+        },
+        "angleWorkerTasks": 45,
+        "angleWorkerThreadCpuMs": 903.823,
+        "mainThreadGcUnionMs": 0,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 861.993
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 3.126
+          },
+          {
+            "name": "(program)",
+            "url": "",
+            "ms": 2.181
+          },
+          {
+            "name": "Wc",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.127
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.1
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.965
+          },
+          {
+            "name": "Jm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.589
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 1.22
+          },
+          {
+            "name": "n",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.194
+          },
+          {
+            "name": "h",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.095
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 1.07
+          },
+          {
+            "name": "intersectsObject",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.041
+          }
+        ],
+        "resourceCompletions": [
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+            "completionMs": 17352.1,
+            "durationMs": 30.8
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+            "completionMs": 17347.6,
+            "durationMs": 26.1
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+            "completionMs": 17349.6,
+            "durationMs": 27.7
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+            "completionMs": 17356.4,
+            "durationMs": 34.3
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+            "completionMs": 17372.3,
+            "durationMs": 50
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+            "completionMs": 17374,
+            "durationMs": 51.5
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+            "completionMs": 17375.2,
+            "durationMs": 52.5
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+            "completionMs": 17378.5,
+            "durationMs": 55.4
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/chili-desktop.glb",
+            "completionMs": 17381.7,
+            "durationMs": 58.1
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/tier-mount-desktop.glb",
+            "completionMs": 17379.9,
+            "durationMs": 55.9
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+            "completionMs": 17384.9,
+            "durationMs": 60.6
+          },
+          {
+            "name": "http://127.0.0.1:5197/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+            "completionMs": 17385.5,
+            "durationMs": 61
+          }
+        ]
+      }
+    },
+    {
+      "t": 18755.600000023842,
+      "ms": 4024,
+      "phase": "preparation",
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 14,
+            "overlappedWallMs": 3943.4,
+            "maxCallMs": 481.5
+          }
+        },
+        "programIds": [
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94
+        ],
+        "mainTask": {
+          "wallMs": 4023.95,
+          "threadCpuMs": 108.79
+        },
+        "angleWorkerTasks": 84,
+        "angleWorkerThreadCpuMs": 4015.059,
+        "mainThreadGcUnionMs": 0,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 3945.887
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 15.993
+          },
+          {
+            "name": "texSubImage2D",
+            "url": "",
+            "ms": 7.514
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 6.23
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 5.939
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 4.46
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 4.227
+          },
+          {
+            "name": "fromBufferAttribute",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 3.345
+          },
+          {
+            "name": "min",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.951
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.656
+          },
+          {
+            "name": "a",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.104
+          },
+          {
+            "name": "Ot",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.099
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 23152,
+      "ms": 4399,
+      "phase": "combat",
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 14,
+            "overlappedWallMs": 4351.1,
+            "maxCallMs": 472.3
+          }
+        },
+        "programIds": [
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112
+        ],
+        "mainTask": {
+          "wallMs": 4399.719,
+          "threadCpuMs": 94.499
+        },
+        "angleWorkerTasks": 84,
+        "angleWorkerThreadCpuMs": 4423.453,
+        "mainThreadGcUnionMs": 1.968,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 4349.484
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 4.655
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 4.284
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 3.459
+          },
+          {
+            "name": "getProgramParameter",
+            "url": "",
+            "ms": 3.439
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 3.096
+          },
+          {
+            "name": "getUniformLocation",
+            "url": "",
+            "ms": 2.837
+          },
+          {
+            "name": "(garbage collector)",
+            "url": "",
+            "ms": 2.332
+          },
+          {
+            "name": "(program)",
+            "url": "",
+            "ms": 2.218
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 2.121
+          },
+          {
+            "name": "now",
+            "url": "",
+            "ms": 1.922
+          },
+          {
+            "name": "Wc",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.493
+          }
+        ],
+        "resourceCompletions": []
+      }
+    },
+    {
+      "t": 27720.600000023842,
+      "ms": 4614,
+      "phase": "combat",
+      "evidence": {
+        "glSlow": {
+          "getProgramInfoLog": {
+            "calls": 14,
+            "overlappedWallMs": 4561,
+            "maxCallMs": 502.1
+          },
+          "getShaderInfoLog": {
+            "calls": 1,
+            "overlappedWallMs": 7.4,
+            "maxCallMs": 7.4
+          }
+        },
+        "programIds": [
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130
+        ],
+        "mainTask": {
+          "wallMs": 4614.422,
+          "threadCpuMs": 91.997
+        },
+        "angleWorkerTasks": 84,
+        "angleWorkerThreadCpuMs": 4623.992,
+        "mainThreadGcUnionMs": 1.675,
+        "cpuProfileSampledWallAttribution": [
+          {
+            "name": "getProgramInfoLog",
+            "url": "",
+            "ms": 4561.755
+          },
+          {
+            "name": "getShaderInfoLog",
+            "url": "",
+            "ms": 11.034
+          },
+          {
+            "name": "shaderSource",
+            "url": "",
+            "ms": 8.012
+          },
+          {
+            "name": "getActiveUniform",
+            "url": "",
+            "ms": 2.984
+          },
+          {
+            "name": "Vm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.292
+          },
+          {
+            "name": "h",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.209
+          },
+          {
+            "name": "a",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.021
+          },
+          {
+            "name": "Ot",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 2.016
+          },
+          {
+            "name": "proto.<computed>",
+            "url": "",
+            "ms": 1.667
+          },
+          {
+            "name": "wm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.548
+          },
+          {
+            "name": "getUniformLocation",
+            "url": "",
+            "ms": 1.543
+          },
+          {
+            "name": "Cm",
+            "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+            "ms": 1.538
+          }
+        ],
+        "resourceCompletions": []
+      }
+    }
+  ],
+  "fullProfileSampledWallAttribution": [
+    {
+      "name": "getProgramInfoLog",
+      "url": "",
+      "ms": 30461.846
+    },
+    {
+      "name": "(program)",
+      "url": "",
+      "ms": 2383.554
+    },
+    {
+      "name": "(idle)",
+      "url": "",
+      "ms": 1469.055
+    },
+    {
+      "name": "ensureContext",
+      "url": "http://127.0.0.1:5197/assets/index-DCbcnK5-.js",
+      "ms": 521.182
+    },
+    {
+      "name": "Ie",
+      "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+      "ms": 227.565
+    },
+    {
+      "name": "(garbage collector)",
+      "url": "",
+      "ms": 164.46
+    },
+    {
+      "name": "patch",
+      "url": "http://127.0.0.1:5197/assets/GreyboxStage-D9TcWM08.js",
+      "ms": 158.008
+    },
+    {
+      "name": "(anonymous)",
+      "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+      "ms": 147.022
+    },
+    {
+      "name": "(anonymous)",
+      "url": "http://127.0.0.1:5197/assets/GreyboxStage-D9TcWM08.js",
+      "ms": 112.232
+    },
+    {
+      "name": "getShaderInfoLog",
+      "url": "",
+      "ms": 95.313
+    },
+    {
+      "name": "Kh.setSize",
+      "url": "http://127.0.0.1:5197/assets/three-vendor-BU5lmK3L.js",
+      "ms": 77.564
+    },
+    {
+      "name": "fetch",
+      "url": "",
+      "ms": 59.079
+    }
+  ],
+  "limits": [
+    "CPU-profile sample time is wall-time attribution, not thread CPU consumption; native synchronous waits accrue samples.",
+    "Main-task tdur is renderer-thread CPU time. ANGLE worker tdur belongs to GPU-process CPU threads, not GPU hardware execution.",
+    "ANGLE worker trace names expose work scheduling but not internal D3D compiler or driver call stacks.",
+    "GPU timer queries measure submitted GPU draw work, not CPU shader compilation or synchronous GL API waits; unavailable/lost queries must not be treated as zero.",
+    "Timer query data is sparse and asynchronous. The final outstanding queries may not have completed when the snapshot was taken.",
+    "Nested trace events are not added together. GC uses the union of renderer-main GC spans.",
+    "glSlow only stores calls above the probe threshold; its sum can be lower than glTotals.",
+    "Instrumentation and simultaneous CDP tracing/CPU profiling can perturb timing. Use repeated minimally instrumented measurements for acceptance."
+  ]
+}

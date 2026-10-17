@@ -1,0 +1,1598 @@
+{
+  "generatedAt": "2026-10-17T17:41:06.485Z",
+  "target": "http://127.0.0.1:5198/",
+  "fixtureSource": "docs/qa/ingredient-art-phase3a-polish/report.json",
+  "fixtureHash": "0b20b6dac7562ba4a17db4bce81b4c79c6ece618e25e77eccad58820854d5373",
+  "scope": "Native full Zischbert playback, preparation gate and deterministic results across seven supported graphics variants.",
+  "limitation": "Functional browser smoke, not a performance benchmark. HTTP, browser and GPU-driver caches are not controlled; desktop browser only.",
+  "browserArgs": [
+    "--use-angle=d3d11",
+    "--no-proxy-server"
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "dpr": 1,
+  "cases": [
+    {
+      "id": "mockup-reference",
+      "art": "mockup",
+      "look": "reference",
+      "errors": [],
+      "cancelledMedia": [
+        {
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "loadedModels": [
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_2.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Chest_Wood.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Barrel.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        }
+      ],
+      "passed": true,
+      "url": "http://127.0.0.1:5198/?art=mockup&look=reference",
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "preparationGate": true,
+      "nativeSpeed": 4,
+      "fullPlayback": true,
+      "transitions": [
+        {
+          "phase": "menu",
+          "t": 78.40000000596046
+        },
+        {
+          "phase": "shop",
+          "t": 857.4000000059605
+        },
+        {
+          "phase": "preparation",
+          "t": 5767.5
+        },
+        {
+          "phase": "battle",
+          "t": 8332.800000011921
+        },
+        {
+          "phase": "result",
+          "t": 17655.90000000596
+        }
+      ],
+      "resultText": "KESSEL-SIEGSauber gebraut!Zischbert · Der zündelnde Auftakt12s Kampf20 Schaden6 GoldZutaten-Chronik20 Gesamtschaden★Runenschale · I18 Schild3×✦Glut-Chili · I12 Schaden3×●Schleimpilz · I8 Schaden · 9 Gift3×Zurück zur WerkbankHauptmenü",
+      "winner": "player",
+      "duration": 12000
+    },
+    {
+      "id": "mockup-dark",
+      "art": "mockup",
+      "look": "dark",
+      "errors": [],
+      "cancelledMedia": [
+        {
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "loadedModels": [
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_2.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Chest_Wood.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Barrel.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        }
+      ],
+      "passed": true,
+      "url": "http://127.0.0.1:5198/?art=mockup&look=dark",
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "preparationGate": true,
+      "nativeSpeed": 4,
+      "fullPlayback": true,
+      "transitions": [
+        {
+          "phase": "menu",
+          "t": 71.19999998807907
+        },
+        {
+          "phase": "shop",
+          "t": 235.90000000596046
+        },
+        {
+          "phase": "preparation",
+          "t": 3710.0999999940395
+        },
+        {
+          "phase": "battle",
+          "t": 6410.299999982119
+        },
+        {
+          "phase": "result",
+          "t": 15692.5
+        }
+      ],
+      "resultText": "KESSEL-SIEGSauber gebraut!Zischbert · Der zündelnde Auftakt12s Kampf20 Schaden6 GoldZutaten-Chronik20 Gesamtschaden★Runenschale · I18 Schild3×✦Glut-Chili · I12 Schaden3×●Schleimpilz · I8 Schaden · 9 Gift3×Zurück zur WerkbankHauptmenü",
+      "winner": "player",
+      "duration": 12000
+    },
+    {
+      "id": "mockup-magical",
+      "art": "mockup",
+      "look": "magical",
+      "errors": [],
+      "cancelledMedia": [
+        {
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "loadedModels": [
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_2.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Chest_Wood.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Barrel.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        }
+      ],
+      "passed": true,
+      "url": "http://127.0.0.1:5198/?art=mockup&look=magical",
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "preparationGate": true,
+      "nativeSpeed": 4,
+      "fullPlayback": true,
+      "transitions": [
+        {
+          "phase": "menu",
+          "t": 104.7999999821186
+        },
+        {
+          "phase": "shop",
+          "t": 496.09999999403954
+        },
+        {
+          "phase": "preparation",
+          "t": 1220.0999999940395
+        },
+        {
+          "phase": "battle",
+          "t": 2413.2999999821186
+        },
+        {
+          "phase": "result",
+          "t": 11693
+        }
+      ],
+      "resultText": "KESSEL-SIEGSauber gebraut!Zischbert · Der zündelnde Auftakt12s Kampf20 Schaden6 GoldZutaten-Chronik20 Gesamtschaden★Runenschale · I18 Schild3×✦Glut-Chili · I12 Schaden3×●Schleimpilz · I8 Schaden · 9 Gift3×Zurück zur WerkbankHauptmenü",
+      "winner": "player",
+      "duration": 12000
+    },
+    {
+      "id": "mockup-warm",
+      "art": "mockup",
+      "look": "warm",
+      "errors": [],
+      "cancelledMedia": [
+        {
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "loadedModels": [
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-wall-module/dungeon-wall-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/open-grimoire/open-grimoire-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/witch-workbench/witch-workbench-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a/pedestal-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/chili-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/egg-shell-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/ingredient-phase3a-polish/slime-shroom-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-floor-module/dungeon-floor-module-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/ritual-platform/ritual-platform-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-arch/dungeon-stone-arch-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/dungeon-stone-pillar/dungeon-stone-pillar-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/alchemy-shelf/alchemy-shelf-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/wall-candle-sconce/wall-candle-sconce-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/environment/triple-candleholder/triple-candleholder-desktop.glb",
+          "status": 200
+        }
+      ],
+      "passed": true,
+      "url": "http://127.0.0.1:5198/?art=mockup&look=warm",
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "preparationGate": true,
+      "nativeSpeed": 4,
+      "fullPlayback": true,
+      "transitions": [
+        {
+          "phase": "menu",
+          "t": 86.2000000178814
+        },
+        {
+          "phase": "shop",
+          "t": 360.60000002384186
+        },
+        {
+          "phase": "preparation",
+          "t": 977.1000000238419
+        },
+        {
+          "phase": "battle",
+          "t": 3965.9000000059605
+        },
+        {
+          "phase": "result",
+          "t": 13235.90000000596
+        }
+      ],
+      "resultText": "KESSEL-SIEGSauber gebraut!Zischbert · Der zündelnde Auftakt12s Kampf20 Schaden6 GoldZutaten-Chronik20 Gesamtschaden★Runenschale · I18 Schild3×✦Glut-Chili · I12 Schaden3×●Schleimpilz · I8 Schaden · 9 Gift3×Zurück zur WerkbankHauptmenü",
+      "winner": "player",
+      "duration": 12000
+    },
+    {
+      "id": "golden",
+      "art": "golden",
+      "errors": [],
+      "cancelledMedia": [
+        {
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/audio/music/boss.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "loadedModels": [
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/hero-arena-dais.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Wall_UnevenBrick_Straight.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/DoorFrame_Round_Brick.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Floor_UnevenBrick.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Torch_Metal.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-chili.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-slime-shroom.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/hero-arena-dais.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Wall_UnevenBrick_Straight.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/DoorFrame_Round_Brick.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Floor_UnevenBrick.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Torch_Metal.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-chili.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-slime-shroom.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-rune-shell.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/CandleStick_Triple.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Barrel.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Chest_Wood.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Banner_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Shelf_Small_Bottles.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/BookStand.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_2.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Prop_Vine5.gltf",
+          "status": 200
+        }
+      ],
+      "passed": true,
+      "url": "http://127.0.0.1:5198/?art=golden",
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "preparationGate": true,
+      "nativeSpeed": 4,
+      "fullPlayback": true,
+      "transitions": [
+        {
+          "phase": "menu",
+          "t": 72.19999998807907
+        },
+        {
+          "phase": "shop",
+          "t": 275.89999997615814
+        },
+        {
+          "phase": "preparation",
+          "t": 345.89999997615814
+        },
+        {
+          "phase": "battle",
+          "t": 4716.0999999940395
+        },
+        {
+          "phase": "result",
+          "t": 14012.59999999404
+        }
+      ],
+      "resultText": "KESSEL-SIEGSauber gebraut!Zischbert · Der zündelnde Auftakt12s Kampf20 Schaden6 GoldZutaten-Chronik20 Gesamtschaden★Runenschale · I18 Schild3×✦Glut-Chili · I12 Schaden3×●Schleimpilz · I8 Schaden · 9 Gift3×Zurück zur WerkbankHauptmenü",
+      "winner": "player",
+      "duration": 12000,
+      "screenshot": "golden-zischbert-result.png"
+    },
+    {
+      "id": "legacy",
+      "art": "legacy",
+      "errors": [],
+      "cancelledMedia": [
+        {
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "loadedModels": [
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/hero-arena-dais.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/wall_arched.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/wall.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/floor_tile_large.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-chili.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-slime-shroom.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/wall_shelves.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/shelves.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/hero-workbench.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-chili.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-slime-shroom.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-rune-shell.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/bottle_A_green.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/wall_arched.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/wall.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/floor_tile_large.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/wall_cracked.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/pillar_decorated.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/candle_triple.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/crates_stacked.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/bottle_A_brown.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/barrel_small_stack.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/torch_mounted.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/hero-arena-dais.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/CandleStick_Triple.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/wall.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/wall_arched.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/floor_tile_large.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-chili.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-slime-shroom.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/kaykit-dungeon/banner_patternC_red.gltf",
+          "status": 200
+        }
+      ],
+      "passed": true,
+      "url": "http://127.0.0.1:5198/?art=legacy",
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "preparationGate": true,
+      "nativeSpeed": 4,
+      "fullPlayback": true,
+      "transitions": [
+        {
+          "phase": "menu",
+          "t": 64.59999999403954
+        },
+        {
+          "phase": "shop",
+          "t": 216
+        },
+        {
+          "phase": "preparation",
+          "t": 957.8999999761581
+        },
+        {
+          "phase": "battle",
+          "t": 2168.899999976158
+        },
+        {
+          "phase": "result",
+          "t": 11463.199999988079
+        }
+      ],
+      "resultText": "KESSEL-SIEGSauber gebraut!Zischbert · Der zündelnde Auftakt12s Kampf20 Schaden6 GoldZutaten-Chronik20 Gesamtschaden★Runenschale · I18 Schild3×✦Glut-Chili · I12 Schaden3×●Schleimpilz · I8 Schaden · 9 Gift3×Zurück zur WerkbankHauptmenü",
+      "winner": "player",
+      "duration": 12000
+    },
+    {
+      "id": "ecosystem",
+      "art": "ecosystem",
+      "errors": [],
+      "cancelledMedia": [
+        {
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "loadedModels": [
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/hero-arena-dais.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Wall_UnevenBrick_Straight.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/DoorFrame_Round_Brick.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Floor_UnevenBrick.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Torch_Metal.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-chili.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-slime-shroom.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/hero-arena-dais.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/brasskin/brasskin-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/characters/zischbert/zischbert-desktop.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Wall_UnevenBrick_Straight.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/DoorFrame_Round_Brick.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Floor_UnevenBrick.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Torch_Metal.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-chili.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-slime-shroom.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/hero/ingredient-rune-shell.glb",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/CandleStick_Triple.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Banner_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Chest_Wood.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Shelf_Small_Bottles.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Barrel.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/BookStand.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_1.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/fantasy/Potion_2.gltf",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:5198/assets/quaternius/village/Prop_Vine5.gltf",
+          "status": 200
+        }
+      ],
+      "passed": true,
+      "url": "http://127.0.0.1:5198/?art=ecosystem",
+      "resultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2",
+      "preparationGate": true,
+      "nativeSpeed": 4,
+      "fullPlayback": true,
+      "transitions": [
+        {
+          "phase": "menu",
+          "t": 73.2000000178814
+        },
+        {
+          "phase": "shop",
+          "t": 290.2000000178814
+        },
+        {
+          "phase": "preparation",
+          "t": 365.5
+        },
+        {
+          "phase": "battle",
+          "t": 1221.2000000178814
+        },
+        {
+          "phase": "result",
+          "t": 10665.800000011921
+        }
+      ],
+      "resultText": "KESSEL-SIEGSauber gebraut!Zischbert · Der zündelnde Auftakt12s Kampf20 Schaden6 GoldZutaten-Chronik20 Gesamtschaden★Runenschale · I18 Schild3×✦Glut-Chili · I12 Schaden3×●Schleimpilz · I8 Schaden · 9 Gift3×Zurück zur WerkbankHauptmenü",
+      "winner": "player",
+      "duration": 12000
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "HeadlessChrome/151.0.7922.34",
+    "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "jsVersion": "15.1.206.8"
+  },
+  "system": {
+    "gpu": {
+      "devices": [
+        {
+          "vendorId": 4098,
+          "deviceId": 5761,
+          "subSysId": 466358339,
+          "revision": 200,
+          "vendorString": "",
+          "deviceString": "AMD Radeon(TM) Graphics",
+          "driverVendor": "AMD",
+          "driverVersion": "31.0.12028.9001"
+        },
+        {
+          "vendorId": 4318,
+          "deviceId": 9504,
+          "subSysId": 466358339,
+          "revision": 161,
+          "vendorString": "",
+          "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+          "driverVendor": "",
+          "driverVersion": "32.0.15.6607"
+        },
+        {
+          "vendorId": 5140,
+          "deviceId": 140,
+          "subSysId": 0,
+          "revision": 0,
+          "vendorString": "",
+          "deviceString": "Microsoft Basic Render Driver",
+          "driverVendor": "",
+          "driverVersion": "10.0.26100.9711"
+        }
+      ],
+      "auxAttributes": {
+        "amdSwitchable": false,
+        "bgra8OverlaySupport": "SOFTWARE",
+        "canSupportThreadedTextureMailbox": false,
+        "directComposition": true,
+        "directMLFeatureLevel": "Not supported",
+        "directRenderingVersion": "",
+        "displayType": "ANGLE_D3D11",
+        "dx12FeatureLevel": "Not supported",
+        "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+        "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+        "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+        "glResetNotificationStrategy": 33362,
+        "glVendor": "Google Inc. (AMD)",
+        "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+        "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+        "glWsVendor": "Google Inc. (AMD)",
+        "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+        "inProcessGpu": false,
+        "initializationTime": 0.127109,
+        "isAsan": false,
+        "isClangCoverage": false,
+        "jpegDecodeAcceleratorSupported": false,
+        "maxMsaaSamples": "8",
+        "nv12OverlaySupport": "SCALING",
+        "optimus": false,
+        "p010OverlaySupport": "SOFTWARE",
+        "passthroughCmdDecoder": true,
+        "pixelShaderVersion": "5.0",
+        "processCrashCount": 0,
+        "rgb10a2OverlaySupport": "SCALING",
+        "sandboxed": false,
+        "skiaBackendType": "GaneshGL",
+        "subpixelFontRendering": true,
+        "supportsD3dSharedImages": false,
+        "supportsDirectML": false,
+        "supportsDx12": false,
+        "supportsOverlays": true,
+        "supportsVulkan": false,
+        "targetCpuBits": 64,
+        "vertexShaderVersion": "5.0",
+        "visibilityCallbackCallCount": 0,
+        "vulkanVersion": "Not supported",
+        "yuy2OverlaySupport": "SOFTWARE"
+      },
+      "featureStatus": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "disabled_off",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      },
+      "driverBugWorkarounds": [
+        "disable_d3d11_vp9_ksvc_decoding",
+        "disable_d3d12_video_encoder",
+        "disable_direct_composition_sw_video_overlays",
+        "disable_h264_accelerator_sw_brc",
+        "disable_nv12_dynamic_textures",
+        "disable_svc_encoding",
+        "disable_video_overlay_if_moving",
+        "disable_vp_auto_hdr",
+        "disable_vp_scaling",
+        "disable_vp_super_resolution",
+        "enable_webgl_timer_query_extensions",
+        "exit_on_context_lost",
+        "force_rgb10a2_overlay_support",
+        "limit_d3d11_video_decoder_to_11_0",
+        "disabled_extension_GL_KHR_blend_equation_advanced",
+        "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+      ],
+      "videoDecoding": [],
+      "videoEncoding": []
+    },
+    "modelName": "",
+    "modelVersion": "",
+    "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-rOVRYq\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+  },
+  "expectedResultHash": "7c249bf9f6191ae55a35b5155ba7117837966d4bb1edd077e7b1222a092f69c2"
+}

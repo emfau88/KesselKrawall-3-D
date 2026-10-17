@@ -1,0 +1,869 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-17T17:31:55.532Z",
+  "description": "Lossless gzip copies of completed combat benchmark raw JSON. Decompressing each .json.gz reproduces the source JSON bytes exactly. Original source directories are not modified.",
+  "compression": "gzip, level 9",
+  "matrices": [
+    {
+      "name": "final-matrix-desktop",
+      "sourceDirectory": "C:\\Users\\madde\\Documents\\ChatGPT\\KesselKrawall3D\\outputs\\first-combat-performance\\final-matrix-desktop",
+      "samples": 40,
+      "completedGroups": 10,
+      "summary": {
+        "sourceFile": "C:\\Users\\madde\\Documents\\ChatGPT\\KesselKrawall3D\\outputs\\first-combat-performance\\final-matrix-desktop\\summary.json",
+        "originalSha256": "9896e3c96bc0109be09719153da7b87fb65cc7d9cad332653c8629fe86ffb0ee",
+        "originalBytes": 247046,
+        "file": "final-matrix-desktop/summary.json",
+        "portableSha256": "9abb563b705fe1765f45a68702934f1360473e0b929879207f6e72643ae1256e",
+        "portableBytes": 247376
+      },
+      "files": [
+        {
+          "sourceFile": "baseline-desktop-polish-r1-cold.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r1-cold.json.gz",
+          "originalSha256": "82fd5639836acf1bc0dec2bf204eca099d09eed157f4852d2dd91963393e527b",
+          "compressedSha256": "d2961a5a161b616d26ecc11b71ac731023add4246a8f00f1010b2e860ab743d4",
+          "originalBytes": 152340,
+          "compressedBytes": 17656
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r1-warm-reload.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r1-warm-reload.json.gz",
+          "originalSha256": "ca1afac2379df75f9abf87c67b0865078c6b39908cb045a28291f8fc721fc8c6",
+          "compressedSha256": "901fef6dc2224f64bce319f6f28a546a00dcb42574139b71e9143e9c7e700e52",
+          "originalBytes": 175273,
+          "compressedBytes": 18436
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r1-second-moor.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r1-second-moor.json.gz",
+          "originalSha256": "5d60fdd835fafaf698b3a881a03413f6245f4e6de10cfcfe3f8ce6f47c973738",
+          "compressedSha256": "7cb0a9b9b47a43169f20c57c745c0792c125c67de3d0845528c4a982572cc64f",
+          "originalBytes": 192866,
+          "compressedBytes": 16448
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r1-repeat-zischbert.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r1-repeat-zischbert.json.gz",
+          "originalSha256": "6668398e0fb416a89b35bf8f9b628c03768b5d6086b82a28681ad3a983090d46",
+          "compressedSha256": "ea8cfa90550e91786b3371fab54742af82166f28bf54b47d30524e59761b6f48",
+          "originalBytes": 109549,
+          "compressedBytes": 13460
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r1-cold.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r1-cold.json.gz",
+          "originalSha256": "345116b8a330fbd570fbb6a254388531da9c85aab5bd5f03be92af449009aff0",
+          "compressedSha256": "2f3a7cc9bd707ab039594c6588672963cef52e0844d22cadce12e9eaea9b6f3b",
+          "originalBytes": 259331,
+          "compressedBytes": 21195
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r1-warm-reload.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r1-warm-reload.json.gz",
+          "originalSha256": "994aefd054eaf3a4a03d76a09e93fc4a4015dc384161fcc5225de0db853eec04",
+          "compressedSha256": "e84959ace356c7a75ced00fc9f8a271f09a08e918cb5e1fc48af282b59a3c1a1",
+          "originalBytes": 257459,
+          "compressedBytes": 21140
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r1-second-moor.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r1-second-moor.json.gz",
+          "originalSha256": "cb6f389ee7bb16713317e949038033b7236f106c23e800224d8cddf649c0fb30",
+          "compressedSha256": "0b4631f4ca47ddbeb78183c28cbef0e25c595f1635e6d2aed7458696a743d572",
+          "originalBytes": 220491,
+          "compressedBytes": 16924
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r1-repeat-zischbert.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r1-repeat-zischbert.json.gz",
+          "originalSha256": "98639dee3ba5b14cc3267b3e803bf2629506d6231a2ecbdd21d6aa2e220ad319",
+          "compressedSha256": "2c432d3c5e9d0dee640f9e391fac91c86ba9d8f797f61d74641f6e93c6765b32",
+          "originalBytes": 188360,
+          "compressedBytes": 16045
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r2-cold.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r2-cold.json.gz",
+          "originalSha256": "61975aea324e30b94664a77326a5a18de8b781fb9e606ff7a0042cbd1809cadc",
+          "compressedSha256": "04c21de11189ae3a788d0b5389d55d54f267cf0b985c6f02a413f19633ef4d2d",
+          "originalBytes": 257840,
+          "compressedBytes": 21057
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r2-warm-reload.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r2-warm-reload.json.gz",
+          "originalSha256": "2c85698b3f3110fbef80a77cd798e0337d9b9a996c87c224e1c81054a32b5e68",
+          "compressedSha256": "bbd5c93e9e53cfa7eab4a602ea94cb20db1beb329fce78c8558f5d4a3233761b",
+          "originalBytes": 259010,
+          "compressedBytes": 21041
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r2-second-moor.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r2-second-moor.json.gz",
+          "originalSha256": "27a713c4b732d3b4500384730f82cc3cf54258aa4141c0de37386bc722de101e",
+          "compressedSha256": "015ed1926d17634c8cc3993bd57a2c266b622f4fffbf26a33171e3772c30f608",
+          "originalBytes": 220581,
+          "compressedBytes": 17077
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r2-repeat-zischbert.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r2-repeat-zischbert.json.gz",
+          "originalSha256": "c2c86ea686e6ccc929340363a0ce512a229f1fa464f192493a9ba34bf3f92c19",
+          "compressedSha256": "b80d251c10a4f497d4b59ffd3a4837e74fe890f2c9b54337b26c995c0b914455",
+          "originalBytes": 189864,
+          "compressedBytes": 16170
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r2-cold.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r2-cold.json.gz",
+          "originalSha256": "0febd8f291a87a4737fc35924b209e4bca9f00adcd52a0eb5b672f5a1a9db1da",
+          "compressedSha256": "cd349c9f640dce1eee676b1c4bc0633b5bf7f0ede6b5054637a025e50e9ceafc",
+          "originalBytes": 153668,
+          "compressedBytes": 17892
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r2-warm-reload.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r2-warm-reload.json.gz",
+          "originalSha256": "ca398cdbb7fd6d4f2881f60059a2b498092b9e38ca8913a6cba72a138eaf2e77",
+          "compressedSha256": "4668f1fe9df61a1546e6f8dfc0ddd6dcad5e11cdfc9eed392be77ef19a1cc5a4",
+          "originalBytes": 157754,
+          "compressedBytes": 17856
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r2-second-moor.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r2-second-moor.json.gz",
+          "originalSha256": "1ea74b9fb9364d721d7b9e492593c3d28ab18f7836b337217eeedf169ac9910b",
+          "compressedSha256": "b82e568744a57243720757a9d03b17cf18d9e4c475d763e4aab0a77e2a01ab5a",
+          "originalBytes": 114762,
+          "compressedBytes": 13429
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r2-repeat-zischbert.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r2-repeat-zischbert.json.gz",
+          "originalSha256": "5342afeb2991b7d1402567773a633bca3120bfe09275a1d6778fb18eef3b00a3",
+          "compressedSha256": "dcde10c352ba3235997f687dba37b34c2b0657645525081c27169e17f86c3c73",
+          "originalBytes": 95790,
+          "compressedBytes": 12760
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r3-cold.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r3-cold.json.gz",
+          "originalSha256": "6e2819a8dfaf125fa77c60a7719a80c86e2ba61f9c58aaca7d8d4c89cb2220a4",
+          "compressedSha256": "a5cc2d47d4a70ad51019c2adea4c1f5d10f955dd06e7b6b4e94e81bacfc444c7",
+          "originalBytes": 153205,
+          "compressedBytes": 17780
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r3-warm-reload.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r3-warm-reload.json.gz",
+          "originalSha256": "957ed19eae0bbc58a99955c7710786495d6dcd5c7e95ceb3a71ffe9811e57033",
+          "compressedSha256": "8d6b19ae0071172dba7ff2aeb6e27c65e1a4d74b5dadfc2d374bf0f948d82988",
+          "originalBytes": 158468,
+          "compressedBytes": 17999
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r3-second-moor.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r3-second-moor.json.gz",
+          "originalSha256": "c3eb26372ea30cbbda8766c62781635a899c1a680e9f7e6c621482ddbcf7e54e",
+          "compressedSha256": "bdb49ef2036558a0e81ea51c069b3f372f0cc4e5596e101eea3ca6b6c9c3c5ea",
+          "originalBytes": 116739,
+          "compressedBytes": 13614
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r3-repeat-zischbert.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r3-repeat-zischbert.json.gz",
+          "originalSha256": "a4b4c387f332d1db1a99b6de6aab555efc3bebc2a099877a59c5bcf756d6435f",
+          "compressedSha256": "0f16d5c9e739f2b907ca3b3069a0348cbf7957a96a802939362497c11b2c70ce",
+          "originalBytes": 99514,
+          "compressedBytes": 13092
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r3-cold.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r3-cold.json.gz",
+          "originalSha256": "0b57230269cace78502bc53ff0b62b3828963005c45aa014a96b693c1eae6578",
+          "compressedSha256": "a3548e135057be67e691ecfe36c1d53047b9847ca8c24351abeccd2cc207ef5e",
+          "originalBytes": 255496,
+          "compressedBytes": 21275
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r3-warm-reload.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r3-warm-reload.json.gz",
+          "originalSha256": "ecb560a7efe1e954efd42ff69e5f189973ae9085409e4b979b13a4caf6a7376d",
+          "compressedSha256": "8d51b70eea8185a163f35fb9671c0a7cb785d3584c04ee732ea31b358425069c",
+          "originalBytes": 255466,
+          "compressedBytes": 21095
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r3-second-moor.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r3-second-moor.json.gz",
+          "originalSha256": "689e55e949119f1b31b671177c788daf6ce8f3b52e3d482f1772b18258fff8f3",
+          "compressedSha256": "907ab2d010147c782e3cc8b40944b59ddb343be7d8639b7fdeac56d4cca04ba3",
+          "originalBytes": 219253,
+          "compressedBytes": 16934
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r3-repeat-zischbert.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r3-repeat-zischbert.json.gz",
+          "originalSha256": "e1f9ec99cb5bbd4805c579be0699b4058fc61191d70929f9866739fe938abfbb",
+          "compressedSha256": "373a3572308725059590eaab0d5f436a815f29f410f26d24161b31ce5c87151d",
+          "originalBytes": 187511,
+          "compressedBytes": 15924
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r4-cold.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r4-cold.json.gz",
+          "originalSha256": "7447e813e2731d197a9b9e92a495654f9f1c9df0498a13651e877fa793504207",
+          "compressedSha256": "372b4d1c9b43e12f27878dcae82fd67174334e6ad04bb2421167fd2a96dd2b67",
+          "originalBytes": 253950,
+          "compressedBytes": 21154
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r4-warm-reload.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r4-warm-reload.json.gz",
+          "originalSha256": "89f2e0169e5cf19b88a5b07dd5e63f00423f05c09750624bc9f312bf57146693",
+          "compressedSha256": "1e4de6c44281b28baa63c33ec3036cb7999aa20c99db0fb92900e8b6130d946c",
+          "originalBytes": 259232,
+          "compressedBytes": 21170
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r4-second-moor.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r4-second-moor.json.gz",
+          "originalSha256": "e0a0174e9da761889918a116a122ee49c90165eaa3d096c823f3514bb0b9bf4a",
+          "compressedSha256": "3085c1d4b41844f915c4ac8a3830672450f9065d3df745e6cfda05b7b63272de",
+          "originalBytes": 218613,
+          "compressedBytes": 16997
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r4-repeat-zischbert.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r4-repeat-zischbert.json.gz",
+          "originalSha256": "20605d932fd7222c5bf5c75f84698f6feca09989456539c24d0f66e52f2e2b93",
+          "compressedSha256": "d01eafc93c9c63dcfa70a76289b9fe8da08da1cfc07d87cc6dc7c19e5d572c78",
+          "originalBytes": 188667,
+          "compressedBytes": 16010
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r4-cold.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r4-cold.json.gz",
+          "originalSha256": "1aef69a690a6bf327f05f30fdb6d85da0859a4990419edb3340c478cc02e9a0c",
+          "compressedSha256": "53a02e2c4d2541567b80ce6a466f4e6d37119e076bbeb0175328507c7861a503",
+          "originalBytes": 153645,
+          "compressedBytes": 17890
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r4-warm-reload.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r4-warm-reload.json.gz",
+          "originalSha256": "dff754d6f4e06972709375317ddd59313432c86719d12d0e4ae4b4cd03c6bd3a",
+          "compressedSha256": "ad31d7218cefbe8bd2fd4811009d670a19828be103914e82638d425d30c876ba",
+          "originalBytes": 155247,
+          "compressedBytes": 17718
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r4-second-moor.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r4-second-moor.json.gz",
+          "originalSha256": "dd9b7d3494c1027d9f89fec6ce47e4093d58f1a069731fe8c440d4166b38392e",
+          "compressedSha256": "fc423936c6a674ed647275ba5bfbfce15cf5e26f37cb8b794a75682f228a0db8",
+          "originalBytes": 111524,
+          "compressedBytes": 13316
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r4-repeat-zischbert.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r4-repeat-zischbert.json.gz",
+          "originalSha256": "559064f9e88d3db1050bc118b1778ff15f5a7d916b8c834b682a8aa2849980c7",
+          "compressedSha256": "09d7626b44069840812c6581e8dec525c2a64da05696265fe1abb00f73b9e137",
+          "originalBytes": 98584,
+          "compressedBytes": 12978
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r5-cold.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r5-cold.json.gz",
+          "originalSha256": "5feea99557ba469c4dfdaa31f943321b75043c63747e125852abf051110e4a11",
+          "compressedSha256": "f88a53d9bb97219f2a6a296c36442fd4fc940e76f83f5d16575223993699f99e",
+          "originalBytes": 155597,
+          "compressedBytes": 17934
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r5-warm-reload.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r5-warm-reload.json.gz",
+          "originalSha256": "64dab56418b23ceaf50f53ac010e4d832609e98a36b58f461eaaccf7b814cb83",
+          "compressedSha256": "ea772007d6545ac75b08a3c68b17c6f19b798d4b223b0cb53153906b5e00328d",
+          "originalBytes": 177446,
+          "compressedBytes": 18745
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r5-second-moor.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r5-second-moor.json.gz",
+          "originalSha256": "4f4df04b92ce083a6fca4971032301c9cb58985cf4c685047684e0388f475e8a",
+          "compressedSha256": "b5c26bf08122de9b7b7d0afb8b3322b0c3edfc4ad7c4883baf6c9d782684cded",
+          "originalBytes": 127442,
+          "compressedBytes": 14047
+        },
+        {
+          "sourceFile": "baseline-desktop-polish-r5-repeat-zischbert.json",
+          "file": "final-matrix-desktop/baseline-desktop-polish-r5-repeat-zischbert.json.gz",
+          "originalSha256": "2922c4d0af5f44f45615f07d4876d40bdcaebe125343dea355638b9e1cc2b268",
+          "compressedSha256": "c269d6cad6d20ed1df8279979073c849dff47c35e86d9db5a25eeb15b9c321df",
+          "originalBytes": 159452,
+          "compressedBytes": 15424
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r5-cold.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r5-cold.json.gz",
+          "originalSha256": "e9b05da30bebb848234b8423050542b19741f4f72e4c5b2810271988ac87fb8d",
+          "compressedSha256": "21a5c1afd7711a031525320d89d0920f99d6b3381dd50f7e497652b1484ea724",
+          "originalBytes": 253095,
+          "compressedBytes": 21105
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r5-warm-reload.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r5-warm-reload.json.gz",
+          "originalSha256": "d5f04cdc266ac533d45edd16aec742503bfd175c237c8e40f68bf075a642fa60",
+          "compressedSha256": "33ffb540be7e20620c6fbc34d2e46e69d49ca34eda1c5e2e00194e255db1b8b6",
+          "originalBytes": 247027,
+          "compressedBytes": 20282
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r5-second-moor.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r5-second-moor.json.gz",
+          "originalSha256": "bc1c289e3a646ebfc7a138779412a902676de4e5f633e66f6aed44dc9fbf9bcc",
+          "compressedSha256": "b8af2ad83e104d58212b115986ef9a43507621437ee7486b316b51f2fffdcdb4",
+          "originalBytes": 193284,
+          "compressedBytes": 16051
+        },
+        {
+          "sourceFile": "fix-desktop-polish-r5-repeat-zischbert.json",
+          "file": "final-matrix-desktop/fix-desktop-polish-r5-repeat-zischbert.json.gz",
+          "originalSha256": "c23e2280f2252901ce2bfeeac5ab462a5e9ceac997e7a72e750485d751ab881c",
+          "compressedSha256": "04640af7f86377f31fcb278f3e49bc58b6751151fc004c29adb80247795eb14a",
+          "originalBytes": 176325,
+          "compressedBytes": 15370
+        }
+      ],
+      "originalBytes": 7379720,
+      "compressedBytes": 692490
+    },
+    {
+      "name": "final-matrix-mobile",
+      "sourceDirectory": "C:\\Users\\madde\\Documents\\ChatGPT\\KesselKrawall3D\\outputs\\first-combat-performance\\final-matrix-mobile",
+      "samples": 40,
+      "completedGroups": 20,
+      "summary": {
+        "sourceFile": "C:\\Users\\madde\\Documents\\ChatGPT\\KesselKrawall3D\\outputs\\first-combat-performance\\final-matrix-mobile\\summary.json",
+        "originalSha256": "96de297510b1f1866d9c5c44e2d7d1dea26681767ca9c978a72b9a544cab8d95",
+        "originalBytes": 384086,
+        "file": "final-matrix-mobile/summary.json",
+        "portableSha256": "399caeb0271108257c825f8791ccae7b8a994167d565efc0129548d48e8c5772",
+        "portableBytes": 384416
+      },
+      "files": [
+        {
+          "sourceFile": "baseline-portrait-polish-r1-cold.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r1-cold.json.gz",
+          "originalSha256": "ee6d0e5c37f2df1243fe45138d4384ba491013b36b6e28ec0004bb7270301d5c",
+          "compressedSha256": "62ba8bc63b92102dd291d490f855862f25e8f49a8aa8403a3d88f051c75e724b",
+          "originalBytes": 155167,
+          "compressedBytes": 17875
+        },
+        {
+          "sourceFile": "baseline-portrait-polish-r1-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r1-warm-reload.json.gz",
+          "originalSha256": "627247403cb8b83e2af73259cd3f5967b077249283e42ab4ef971e0513a8ddcb",
+          "compressedSha256": "c5676f4330341dfe6301063f2f99a7b550daf48a0c3ac57d1034e92c8029e310",
+          "originalBytes": 193869,
+          "compressedBytes": 18776
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r1-cold.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r1-cold.json.gz",
+          "originalSha256": "d512353a5243c1c351e36dd3fb1a8a5eeff9732080100baf8a257372874ebe67",
+          "compressedSha256": "3827a87cc60dc016f8dd8c9757d25be84851dcb49d99ef924bd965347a1c1447",
+          "originalBytes": 259358,
+          "compressedBytes": 21095
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r1-warm-reload.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r1-warm-reload.json.gz",
+          "originalSha256": "bc53faa6ad67a65eda34763d88fee6257cf4bb77735b546c604204adb5d1beb6",
+          "compressedSha256": "3063653d140e6dc0be041ab90bf2b506d69c28c82bc158e035791bcbffb96223",
+          "originalBytes": 252906,
+          "compressedBytes": 20457
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r2-cold.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r2-cold.json.gz",
+          "originalSha256": "7872f6bb910e003b3181fcf82483a8425d2ccee98375cb79611b54964c0df785",
+          "compressedSha256": "5b757a924f1177c70f4499aade724a4a66b6fb424ff8aa86d4f141018d399576",
+          "originalBytes": 256467,
+          "compressedBytes": 21117
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r2-warm-reload.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r2-warm-reload.json.gz",
+          "originalSha256": "b31ed9fbd8aab25f84d33ff902521d2ffa623b8d3b40ec331d357c2dc252cadb",
+          "compressedSha256": "34961519ec2f0e033fb4d8e274e5448240471a169e42c04b17f299a7a87aa6f1",
+          "originalBytes": 249292,
+          "compressedBytes": 20199
+        },
+        {
+          "sourceFile": "baseline-portrait-polish-r2-cold.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r2-cold.json.gz",
+          "originalSha256": "880c175f42104d8e74b05c94cb63e881b445881ced83536ffb7a56764ed3c580",
+          "compressedSha256": "2d2f3dde8d0f628c17ba85df9eb669165131a87d5332f4ad709ce068dcd24767",
+          "originalBytes": 155389,
+          "compressedBytes": 17919
+        },
+        {
+          "sourceFile": "baseline-portrait-polish-r2-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r2-warm-reload.json.gz",
+          "originalSha256": "fa7fc9c55268c998debf2bc1756645bcb713c740dbaaf96a3d3908113e6b1293",
+          "compressedSha256": "0ada7e381a1abecab1a28e1d93a9c8e09c2b682fb5ec323bba232f4ddf1071a9",
+          "originalBytes": 181394,
+          "compressedBytes": 18389
+        },
+        {
+          "sourceFile": "baseline-portrait-polish-r3-cold.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r3-cold.json.gz",
+          "originalSha256": "ea84f6a4c4e6d205dc3a1284ebd37dd646273287f4f8ac524d1b64392736d143",
+          "compressedSha256": "62e5517589c994e685c09d9749974f5e1f56c6a7466f6702500adfe2734d3a35",
+          "originalBytes": 154710,
+          "compressedBytes": 17829
+        },
+        {
+          "sourceFile": "baseline-portrait-polish-r3-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r3-warm-reload.json.gz",
+          "originalSha256": "d0786235df5e12af9eea12677c95c2f65fb488281e03768277936aef9dca2ce3",
+          "compressedSha256": "230ec0f8f8e2ed03b341a45ce447e63eefbfdca4c3b6ec09089ddca468a8277e",
+          "originalBytes": 192759,
+          "compressedBytes": 18689
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r3-cold.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r3-cold.json.gz",
+          "originalSha256": "fa7209a1dcf76857f14950e694188c94df1b14edee5d2608476aeb956870d774",
+          "compressedSha256": "e05f126bd46d8c891289f832326ceefd623a7546e7870529b0bed421a832b4ba",
+          "originalBytes": 256334,
+          "compressedBytes": 21165
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r3-warm-reload.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r3-warm-reload.json.gz",
+          "originalSha256": "8939678feecf6353ff9bba5087723fce63b76ee36e04a0fc0d24463baa8eb2f4",
+          "compressedSha256": "d9859f05283bd6306cedd53c2ebd8c0f0248a044d5c7b690972a672fcd024bbc",
+          "originalBytes": 250735,
+          "compressedBytes": 20257
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r4-cold.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r4-cold.json.gz",
+          "originalSha256": "a2ae8f9274737544febd17333e2727d5835e58e262ad768f9bf65e84255b43f3",
+          "compressedSha256": "4920d11334eb1fff5549692e997de043c253d277a46dd640116ecad26d884e3d",
+          "originalBytes": 259070,
+          "compressedBytes": 21071
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r4-warm-reload.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r4-warm-reload.json.gz",
+          "originalSha256": "d5650c54d8301cd5fa3230f1fe49ddb3010e1b2516e4e3ac1d6a5e736ff4002f",
+          "compressedSha256": "2128c545ce5e5203e7de5c7947c121b29116a2d790631acdcb9c82c437c448b1",
+          "originalBytes": 253682,
+          "compressedBytes": 20290
+        },
+        {
+          "sourceFile": "baseline-portrait-polish-r4-cold.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r4-cold.json.gz",
+          "originalSha256": "771ec83217ef25aee9fbad21b6c7d698896dd58b9b5b8d0a6793b751f86bd1ab",
+          "compressedSha256": "2e5815dab84b26f81a5d399af9ed070b5212a8cca9420a94554ecbbf1202cfcd",
+          "originalBytes": 156045,
+          "compressedBytes": 17967
+        },
+        {
+          "sourceFile": "baseline-portrait-polish-r4-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r4-warm-reload.json.gz",
+          "originalSha256": "d38108b50b05e936c56a4a66679c1018f5a2a3fe330cc3e910d9262cfd0c3647",
+          "compressedSha256": "2570c56ca717b86e2abef5a4a0e081066bc0e357d79c87b8be8efdd00cda5b8d",
+          "originalBytes": 192372,
+          "compressedBytes": 18681
+        },
+        {
+          "sourceFile": "baseline-portrait-polish-r5-cold.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r5-cold.json.gz",
+          "originalSha256": "b099f3884974c29835be9de973a3df4b60354c339a8140a4eff00ccd66b5d662",
+          "compressedSha256": "f4f9353843af7365c584e1a3a69ee32af934581d98b79584be3f47e9854a19c3",
+          "originalBytes": 157424,
+          "compressedBytes": 18030
+        },
+        {
+          "sourceFile": "baseline-portrait-polish-r5-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-portrait-polish-r5-warm-reload.json.gz",
+          "originalSha256": "203990bb7aad1e4d1fc11e84bce3a55d332d4e8e56d609b39754b809160751af",
+          "compressedSha256": "c7cab832e00fd3d53013d5be0e98542e4f4dc0f5f9e11bcc31c09b6d81e4d6cf",
+          "originalBytes": 155276,
+          "compressedBytes": 17592
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r5-cold.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r5-cold.json.gz",
+          "originalSha256": "936f0965ddd48883b2071b377199b1ab93135466b0dc8294ea58dd7f6c3244f7",
+          "compressedSha256": "8a478636fb1b2036324bba7b4ccf132cae481151ef8c1acf181f97db44bf2c02",
+          "originalBytes": 258702,
+          "compressedBytes": 21155
+        },
+        {
+          "sourceFile": "fix-portrait-polish-r5-warm-reload.json",
+          "file": "final-matrix-mobile/fix-portrait-polish-r5-warm-reload.json.gz",
+          "originalSha256": "cd5bcd3994acdc0d0285012ac62718006fd1e7116600358fcfeaa902aeb0517c",
+          "compressedSha256": "91044849226524a037d8226348102160fe91a0a73413f781952f1a512bd7f560",
+          "originalBytes": 250644,
+          "compressedBytes": 20478
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r1-cold.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r1-cold.json.gz",
+          "originalSha256": "33af64b3abc25de9d083cbc1ea72eed008732827392ebe6ea9bb8c932aefdd51",
+          "compressedSha256": "e9c1e9b4ebb85bcd1142946838679312cade5ccf0dba1433f5874d84a8a44cdd",
+          "originalBytes": 155322,
+          "compressedBytes": 17952
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r1-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r1-warm-reload.json.gz",
+          "originalSha256": "804a1f2b6f4deaa574a713c217e4588332c17119e459d764fabc351f1128b511",
+          "compressedSha256": "1772fbae4e94385933e0c72faf193cb2f858169a327ad9ba4cb6250e7c900950",
+          "originalBytes": 154915,
+          "compressedBytes": 17598
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r1-cold.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r1-cold.json.gz",
+          "originalSha256": "1ec1c624e697de0efdf8369ce71cdb53f0155f824c3f7d7d7af079264aabcf9d",
+          "compressedSha256": "044d6e97c72ff64761602d2c7ee8ebd41ccc9ca791993993166005eed9ab5c1c",
+          "originalBytes": 258971,
+          "compressedBytes": 21096
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r1-warm-reload.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r1-warm-reload.json.gz",
+          "originalSha256": "dcb0fa24a052403f02664ff447ae7688b1a51931cdf162a92415e662ddf37b20",
+          "compressedSha256": "587d0f286eb98000173bed263e19b3e4a60567781a918d9c29708a40a8e88476",
+          "originalBytes": 262077,
+          "compressedBytes": 21122
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r2-cold.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r2-cold.json.gz",
+          "originalSha256": "9ac457a529f01fec0c581193eb4b8c43c29b1fbe92e5546148e72f6676aa2b0d",
+          "compressedSha256": "da8140cf142aba32ed4972992a3e20dd95d49992f19557e1308daa0c9265f959",
+          "originalBytes": 255452,
+          "compressedBytes": 21011
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r2-warm-reload.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r2-warm-reload.json.gz",
+          "originalSha256": "8f4f28a2a371738fb3f63930b6b1a715814a130f48106cb839cb5dced896fe0e",
+          "compressedSha256": "4b33898fcbaba67f303fb19f46ef0e52848665f93301214df9f27644e3dd5b9d",
+          "originalBytes": 250558,
+          "compressedBytes": 20477
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r2-cold.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r2-cold.json.gz",
+          "originalSha256": "8af0116f9f339c6fa3f2ba8be720f259dfebe80fb47fb8eef7e8da1695fe1dbb",
+          "compressedSha256": "eabea9a9c8c0ecf12f8cd9d6eb414bf4304b6942bbb32cb92ec330a2d3bc3fb5",
+          "originalBytes": 152999,
+          "compressedBytes": 17625
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r2-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r2-warm-reload.json.gz",
+          "originalSha256": "7c045573e49e15033cab5b64fc4ce87462e805e2a69008e96ac51d21e7d012b1",
+          "compressedSha256": "d3e082b10886103171191e4f4f66d458cad559bb32f5fb5eeeafaf3fc7b421b2",
+          "originalBytes": 179219,
+          "compressedBytes": 18564
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r3-cold.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r3-cold.json.gz",
+          "originalSha256": "d16d831d5e3a38bf0c0d9fe9884f5363b86938d4fbbe4e867ce4e55204f969b5",
+          "compressedSha256": "bf7302edd4c48f8881972f645f5dc39ff03271492251078c938bc755b53e2d7a",
+          "originalBytes": 153463,
+          "compressedBytes": 17793
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r3-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r3-warm-reload.json.gz",
+          "originalSha256": "607f83c99c07877a50ee8f8e20cd7dee2d12e36682a0b778a6745f9b1dd7132d",
+          "compressedSha256": "d47a4288d58f39bc77392b5ae8dca09d2d82bed55a9e324e22d5159e7f76ba99",
+          "originalBytes": 155321,
+          "compressedBytes": 17662
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r3-cold.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r3-cold.json.gz",
+          "originalSha256": "83aa9b00417977dd194fbba94f27e85d0d26e49b80bf2b857032c2cd8a6d9184",
+          "compressedSha256": "25e0666165b851ae4ce282c0019ec4c6239f6294bff1918d90156db21db98ceb",
+          "originalBytes": 255819,
+          "compressedBytes": 21064
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r3-warm-reload.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r3-warm-reload.json.gz",
+          "originalSha256": "d4955053e21bfccf54a13ac705ef536d2f4fbc9333e9f500e897ecda05bc6e34",
+          "compressedSha256": "6b0f1d3fafc59bc9f5410b608b8e48ffd3d39e3c7925510a09a27282382c3e84",
+          "originalBytes": 249899,
+          "compressedBytes": 20673
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r4-cold.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r4-cold.json.gz",
+          "originalSha256": "012577e82927770ec47072e84c00d5fc6674e980f074a1851f6fc3f1ca994f72",
+          "compressedSha256": "3c8d4bc14028ee25e850d1774913bbc15fcfc1e7e48b6908aba57ded70e62fd4",
+          "originalBytes": 255714,
+          "compressedBytes": 20863
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r4-warm-reload.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r4-warm-reload.json.gz",
+          "originalSha256": "7ced888a26589d76790de8a6ff7f221bdeaa87615056a7c01ffba3564b0989ce",
+          "compressedSha256": "2fea70c6e311fc815d7d5365b7d122e4a3bde88b47a2e3a771f462c2ea14788b",
+          "originalBytes": 250988,
+          "compressedBytes": 20189
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r4-cold.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r4-cold.json.gz",
+          "originalSha256": "372c9f6f09607576d66b8c90988d28535c1f608663c2036382c3dff99a9f96b6",
+          "compressedSha256": "0275961e18ba7a354bfaa4e005f46e352798bded99e4c56d3a6ef2d06a4672a3",
+          "originalBytes": 152065,
+          "compressedBytes": 17568
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r4-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r4-warm-reload.json.gz",
+          "originalSha256": "35b0968b61829d951cc08da8b5959bbaef3520f7b9fbf1c62399c827b40a3fa4",
+          "compressedSha256": "59b48ea538c9d148065c6450db6a4b4b4ec7d3f703ee67783d52ae6b304d47e8",
+          "originalBytes": 180585,
+          "compressedBytes": 18483
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r5-cold.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r5-cold.json.gz",
+          "originalSha256": "9d692885893c32336d6dd6a25b9bd717fee5da3afa38890c3094ed8f59012473",
+          "compressedSha256": "44b963a753ee9c68999f11ea4602b1fbe06f0e31ea5ed1c1ae1c769ffd95648e",
+          "originalBytes": 148623,
+          "compressedBytes": 17335
+        },
+        {
+          "sourceFile": "baseline-landscape-polish-r5-warm-reload.json",
+          "file": "final-matrix-mobile/baseline-landscape-polish-r5-warm-reload.json.gz",
+          "originalSha256": "b6eb2a7d32243e90dc3b53a6e2a221ecdaeed4c0ba525194226cdc5dd78c03dc",
+          "compressedSha256": "9f8ce0f536e85d693f353a69e6bf546c64d38a460b28b6caae7f0203b2d8d14c",
+          "originalBytes": 162477,
+          "compressedBytes": 18018
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r5-cold.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r5-cold.json.gz",
+          "originalSha256": "09c97a8f5d457ca132edee1fa2623ac3b6ca2210561abe675f9b1a03c76b633c",
+          "compressedSha256": "43b507bccc590901f655d39c13e575ea7a136c720148787bb96da2c97b0cb9e6",
+          "originalBytes": 259151,
+          "compressedBytes": 21231
+        },
+        {
+          "sourceFile": "fix-landscape-polish-r5-warm-reload.json",
+          "file": "final-matrix-mobile/fix-landscape-polish-r5-warm-reload.json.gz",
+          "originalSha256": "00bc539f7faea07012873408c30a8632ee18c8e6071aa8e1435cf759d662896a",
+          "compressedSha256": "6ec2c122d412ae72eba9838e171cd39f6ad0735dc568a01b1e61cee1f48d8b40",
+          "originalBytes": 253972,
+          "compressedBytes": 20551
+        }
+      ],
+      "originalBytes": 8389185,
+      "compressedBytes": 775906
+    },
+    {
+      "name": "final-matrix-old-art",
+      "sourceDirectory": "C:\\Users\\madde\\Documents\\ChatGPT\\KesselKrawall3D\\outputs\\first-combat-performance\\final-matrix-old-art",
+      "samples": 20,
+      "completedGroups": 10,
+      "summary": {
+        "sourceFile": "C:\\Users\\madde\\Documents\\ChatGPT\\KesselKrawall3D\\outputs\\first-combat-performance\\final-matrix-old-art\\summary.json",
+        "originalSha256": "8b55ac38482d0719cd8b5eee16c539134609c1b67a09c2ff8d2f798af5554295",
+        "originalBytes": 193552,
+        "file": "final-matrix-old-art/summary.json",
+        "portableSha256": "1132bbfcd60b57fb1736c7a8516f227e356375180d3c5682a74e70583b144325",
+        "portableBytes": 193822
+      },
+      "files": [
+        {
+          "sourceFile": "baseline-desktop-phase3a-r1-cold.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r1-cold.json.gz",
+          "originalSha256": "4ca0fed48504cf1b412510bbc4edda0c4dd99bc43597641db79a8cc4161b25ae",
+          "compressedSha256": "7126e954aa2c9e4b407c47d60750830937f846c9695e20a62ee8125f3fa371c3",
+          "originalBytes": 148184,
+          "compressedBytes": 17353
+        },
+        {
+          "sourceFile": "baseline-desktop-phase3a-r1-warm-reload.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r1-warm-reload.json.gz",
+          "originalSha256": "e445a3488bea42c1874b9885b0b1457c8115a81adb184533c86a024c03916f09",
+          "compressedSha256": "7680c0d61cb4aa0919b8fbb6607ddf09420375d0a0fdecc84410dc6aec2221c1",
+          "originalBytes": 150213,
+          "compressedBytes": 17333
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r1-cold.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r1-cold.json.gz",
+          "originalSha256": "e13eec333e1dbc6d216414be5e5d597f945a80572f937304d03fef792bd0b68b",
+          "compressedSha256": "8462641dd3d2f15fd8ddabb8c83d6093097ee5e1229fcb9ea26942fb3ad2029c",
+          "originalBytes": 250068,
+          "compressedBytes": 20646
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r1-warm-reload.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r1-warm-reload.json.gz",
+          "originalSha256": "17bf2956bc2b923335089e358b5408c939919f13bee88e830a7cdb37cfb00a7b",
+          "compressedSha256": "0fb22522bc30c7ad208a6e437afea910152b522aaaff2bc7a98891b889a50268",
+          "originalBytes": 243256,
+          "compressedBytes": 20145
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r2-cold.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r2-cold.json.gz",
+          "originalSha256": "5acd5987140fad68a1eb4437569f967d4600f8e6325ab806f7afa158c06bb468",
+          "compressedSha256": "8aa0fec69841d8ead79f28823fa37bad08ecb68f5c49df3186a1f519074f8e6e",
+          "originalBytes": 254516,
+          "compressedBytes": 21146
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r2-warm-reload.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r2-warm-reload.json.gz",
+          "originalSha256": "5dd61030d74cdd13b1fbbb8910f431e3b4775f0169a2f5907534566fffd66487",
+          "compressedSha256": "686da4d2c1ad72f31c9e335014089cd749cf60e20296c767c969a1096211404b",
+          "originalBytes": 256666,
+          "compressedBytes": 20704
+        },
+        {
+          "sourceFile": "baseline-desktop-phase3a-r2-cold.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r2-cold.json.gz",
+          "originalSha256": "9c74a4abf860c0b3f5fc1a47ddd3eeb8eadbaff7e49050f9ca2bcddd8c337ec4",
+          "compressedSha256": "a622b53ad6255eca8b6bfd8bb2f989a82c6ab2f47ae3e55c49c55b61255c8761",
+          "originalBytes": 158160,
+          "compressedBytes": 17903
+        },
+        {
+          "sourceFile": "baseline-desktop-phase3a-r2-warm-reload.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r2-warm-reload.json.gz",
+          "originalSha256": "0cb840ffb66b9449cfb0e7891bbbf7ec9940da82189723f14618a13f2480f441",
+          "compressedSha256": "dc61c296cb25d42620e6e0367b509b9d64fbf67ac17dc38c842a76b02bf59fc4",
+          "originalBytes": 179632,
+          "compressedBytes": 18583
+        },
+        {
+          "sourceFile": "baseline-desktop-phase3a-r3-cold.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r3-cold.json.gz",
+          "originalSha256": "d70a32db19000996d5775f22ca55822f542be2282a59bb41154e6b9a359207fa",
+          "compressedSha256": "6aa779ff7f909343717150f4b7fd0da0215ff2663a5276790769a9f115d1395d",
+          "originalBytes": 155438,
+          "compressedBytes": 17715
+        },
+        {
+          "sourceFile": "baseline-desktop-phase3a-r3-warm-reload.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r3-warm-reload.json.gz",
+          "originalSha256": "7a082c43b5c1b4b91273de2cad6f4da184c1405712b5b3c76662f7a472182900",
+          "compressedSha256": "d873f2088646f91b2d27ade39bd457aff5440011c8ed1df631d6d0f77c494ef6",
+          "originalBytes": 173294,
+          "compressedBytes": 18398
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r3-cold.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r3-cold.json.gz",
+          "originalSha256": "3de7aeead349231f5fe38b65417e9e26cd19b6879c1baad1323212d43f5c9fa4",
+          "compressedSha256": "ba52d3724cc95402bd3ac84f34c228e6c0f00ce13c6faf7621a8083a6c8cf309",
+          "originalBytes": 248290,
+          "compressedBytes": 21022
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r3-warm-reload.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r3-warm-reload.json.gz",
+          "originalSha256": "387bb20dd1f0e0ada655544e9d253b354dc5d1e0bb963037df5e28d5d708a8cf",
+          "compressedSha256": "076e16d59df35b02d3eba37060c6dc8d11c3534de0fe24145361463ae361aae0",
+          "originalBytes": 256907,
+          "compressedBytes": 20812
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r4-cold.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r4-cold.json.gz",
+          "originalSha256": "19360e646fab031742a3079bae69dd3f8417b7a090f5a4afb80eb7c390bae616",
+          "compressedSha256": "00c0fa5ed5ce7bcca29f9c47c8578661ec533c737acc8a11a28bd22a7bb5eb48",
+          "originalBytes": 252476,
+          "compressedBytes": 21126
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r4-warm-reload.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r4-warm-reload.json.gz",
+          "originalSha256": "adba44299b8a194d0727bbde5144d4f777974bf9abb329c4dbe2965778d717f5",
+          "compressedSha256": "638da1d73c37f7d3556c60cce4b960ef38ed82c6f9d673ee3fafd185e1955b98",
+          "originalBytes": 254094,
+          "compressedBytes": 20865
+        },
+        {
+          "sourceFile": "baseline-desktop-phase3a-r4-cold.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r4-cold.json.gz",
+          "originalSha256": "a5f871d32311e020dc7efd27032871c59530f71355c798dc93513780d8e93ec4",
+          "compressedSha256": "6af3d3dbdd465cdcd009bc8cc41e38f5578e383cbce94b460bd0dac81557350a",
+          "originalBytes": 148464,
+          "compressedBytes": 17395
+        },
+        {
+          "sourceFile": "baseline-desktop-phase3a-r4-warm-reload.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r4-warm-reload.json.gz",
+          "originalSha256": "630f2cbeb036fcea55a2b78f59496f3a1f73680ef00dfd53611733b353b86e58",
+          "compressedSha256": "d09c5911a11aa0adc86b858cf32d396c4a4bac1bb07590c9c414b202316d8e2e",
+          "originalBytes": 150402,
+          "compressedBytes": 17224
+        },
+        {
+          "sourceFile": "baseline-desktop-phase3a-r5-cold.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r5-cold.json.gz",
+          "originalSha256": "82d53e6b21721886667956068b8e325eb6c5301e82b9c7c8e6a5da034902211a",
+          "compressedSha256": "b4c0bf0551d03c445e3f606c240f619b3ed873ee94363b7710f3009f94588856",
+          "originalBytes": 147318,
+          "compressedBytes": 17409
+        },
+        {
+          "sourceFile": "baseline-desktop-phase3a-r5-warm-reload.json",
+          "file": "final-matrix-old-art/baseline-desktop-phase3a-r5-warm-reload.json.gz",
+          "originalSha256": "2819b9001e75f412654e3cd72bf3f6727f55882d1e468f92eb7179993d65ed9b",
+          "compressedSha256": "6240de0e46dfdcb85f99b23091f8fae48b3424de897f07d13b66c6957f1e8ce3",
+          "originalBytes": 153402,
+          "compressedBytes": 17475
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r5-cold.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r5-cold.json.gz",
+          "originalSha256": "66c699fa6f88425a4e79c1a37165c5efda5b5c63e19185b0f0f07be48b722416",
+          "compressedSha256": "fd0c871d6ef044b8bf4b8c75276516eb2aed29efe334971aec5d274762e264d9",
+          "originalBytes": 270203,
+          "compressedBytes": 22151
+        },
+        {
+          "sourceFile": "fix-desktop-phase3a-r5-warm-reload.json",
+          "file": "final-matrix-old-art/fix-desktop-phase3a-r5-warm-reload.json.gz",
+          "originalSha256": "815c5ba9c0fff8a087c078f9afadf1888b9913f51b0fd6a96aa9ce69ca7eff4f",
+          "compressedSha256": "9f7358dc76796a9795ba41407338acde921db3aa1428eeed69062be49ba0ea3b",
+          "originalBytes": 251840,
+          "compressedBytes": 20871
+        }
+      ],
+      "originalBytes": 4102823,
+      "compressedBytes": 386276
+    }
+  ],
+  "totals": {
+    "matrices": 3,
+    "samples": 100,
+    "rawFiles": 100,
+    "originalBytes": 19871728,
+    "compressedBytes": 1854672
+  }
+}

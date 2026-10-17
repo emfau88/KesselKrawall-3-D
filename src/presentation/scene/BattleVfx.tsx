@@ -524,12 +524,12 @@ export function BattleVfx({ frame, sourcePosition, opponentId }: {
       </group>
       <group ref={projectile}>
         <ProjectileShape color={color} itemId={event.sourceItemId} />
-        <pointLight color={color} intensity={1.3} distance={2.4} />
+        <pointLight userData={{ combatTransientLight: true }} color={color} intensity={1.3} distance={2.4} />
       </group>
       <group ref={impact} visible={false}>
         {enemySignature && <OpponentSignatureShape color={opponentPresentation.glow} phase="impact" secondary={opponentPresentation.secondaryGlow} signature={opponentPresentation.signature} />}
         <ImpactShape color={color} itemId={event.sourceItemId} kind={event.kind} />
-        <pointLight color={color} intensity={1.75} distance={3.2} />
+        <pointLight userData={{ combatTransientLight: true }} color={color} intensity={1.75} distance={3.2} />
       </group>
     </group>
   );

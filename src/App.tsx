@@ -989,6 +989,7 @@ export function App() {
         <Suspense fallback={<div className="scene-loading"><i /><span>Werkstatt wird angeheizt …</span></div>}>
           <GreyboxStage
             mode={mode}
+            preparing={Boolean(battlePreparation)}
             criticalAssets={battlePreparation?.stage === "decoding" ? battlePreparation.criticalAssets : []}
             onSceneReady={handleSceneReady}
             readinessKey={battlePreparation?.stage === "decoding" ? `${battlePreparation.id}:decoded` : undefined}

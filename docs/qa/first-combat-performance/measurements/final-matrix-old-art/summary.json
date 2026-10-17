@@ -1,0 +1,3618 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-17T17:16:23.646Z",
+  "options": {
+    "count": 5,
+    "activeMs": 10000,
+    "finishSpeed": 4,
+    "mode": "light",
+    "profiles": [
+      {
+        "name": "desktop",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "mobile": false
+      }
+    ],
+    "ingredients": [
+      "phase3a"
+    ],
+    "scenarios": [
+      "cold",
+      "warm-reload"
+    ],
+    "targetEntries": [
+      [
+        "baseline",
+        "http://127.0.0.1:5197/"
+      ],
+      [
+        "fix",
+        "http://127.0.0.1:5198/"
+      ]
+    ],
+    "fixtureHash": "0b20b6dac7562ba4a17db4bce81b4c79c6ece618e25e77eccad58820854d5373"
+  },
+  "expectedGroups": 10,
+  "expectedSamples": 20,
+  "baselineCommit": "353d154524cb9490b3db07a46bcafc8fe17179e1",
+  "cacheDefinition": {
+    "cold": "Fresh browser process, isolated context, empty HTTP cache, fresh JS and WebGL. GPU-driver/ANGLE caches are not forcibly reset.",
+    "warmReload": "Same browser/context, reload with HTTP cache preserved; fresh JS and WebGL.",
+    "second": "Moor-Martha after native result and workshop return; no reload, same renderer. Exact QA save restored in isolated React state.",
+    "repeat": "Zischbert repeated after prior native fight(s) and workshop return; no reload, same renderer and identical Zischbert fixture. Selected scenarios identify whether Moor-Martha preceded it."
+  },
+  "measurement": "Continuous rAF and Long Task observation before app startup. No dropped warm-up frames; active measurement at native 1×. Headless Chromium on desktop GPU, mobile viewport/touch emulation only. No CPU throttle.",
+  "groups": [
+    {
+      "id": "baseline-desktop-phase3a-r1",
+      "build": "baseline",
+      "target": "http://127.0.0.1:5197/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 1,
+      "startedAt": "2026-10-17T17:16:23.649Z",
+      "completed": true,
+      "samples": [
+        "baseline-desktop-phase3a-r1-cold",
+        "baseline-desktop-phase3a-r1-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.115136,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-0Op8bH\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "353d154524cb9490b3db07a46bcafc8fe17179e1"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "dc15f889ccdb75795fe3e01b954ded8c65b5d9bd1c843930ba58d2972e7f1b06",
+        "scripts": [
+          "./assets/index-DCbcnK5-.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:17:57.522Z"
+    },
+    {
+      "id": "fix-desktop-phase3a-r1",
+      "build": "fix",
+      "target": "http://127.0.0.1:5198/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 1,
+      "startedAt": "2026-10-17T17:17:57.814Z",
+      "completed": true,
+      "samples": [
+        "fix-desktop-phase3a-r1-cold",
+        "fix-desktop-phase3a-r1-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.12394,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-CIGaC1\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "working-tree-candidate; bundle names and HTML SHA recorded below"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "c418e1ed1c733ff703bcdd911d3c336900e05bf67f2d071a2fffe8621b6882a0",
+        "scripts": [
+          "./assets/index-BATde8RD.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:18:45.596Z"
+    },
+    {
+      "id": "fix-desktop-phase3a-r2",
+      "build": "fix",
+      "target": "http://127.0.0.1:5198/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 2,
+      "startedAt": "2026-10-17T17:18:46.195Z",
+      "completed": true,
+      "samples": [
+        "fix-desktop-phase3a-r2-cold",
+        "fix-desktop-phase3a-r2-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.124164,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-3hwwYN\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "working-tree-candidate; bundle names and HTML SHA recorded below"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "c418e1ed1c733ff703bcdd911d3c336900e05bf67f2d071a2fffe8621b6882a0",
+        "scripts": [
+          "./assets/index-BATde8RD.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:19:56.949Z"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r2",
+      "build": "baseline",
+      "target": "http://127.0.0.1:5197/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 2,
+      "startedAt": "2026-10-17T17:19:57.384Z",
+      "completed": true,
+      "samples": [
+        "baseline-desktop-phase3a-r2-cold",
+        "baseline-desktop-phase3a-r2-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.131644,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-uWi18s\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "353d154524cb9490b3db07a46bcafc8fe17179e1"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "dc15f889ccdb75795fe3e01b954ded8c65b5d9bd1c843930ba58d2972e7f1b06",
+        "scripts": [
+          "./assets/index-DCbcnK5-.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:21:03.220Z"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r3",
+      "build": "baseline",
+      "target": "http://127.0.0.1:5197/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 3,
+      "startedAt": "2026-10-17T17:21:03.504Z",
+      "completed": true,
+      "samples": [
+        "baseline-desktop-phase3a-r3-cold",
+        "baseline-desktop-phase3a-r3-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.106992,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-x3gNjh\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "353d154524cb9490b3db07a46bcafc8fe17179e1"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "dc15f889ccdb75795fe3e01b954ded8c65b5d9bd1c843930ba58d2972e7f1b06",
+        "scripts": [
+          "./assets/index-DCbcnK5-.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:22:01.108Z"
+    },
+    {
+      "id": "fix-desktop-phase3a-r3",
+      "build": "fix",
+      "target": "http://127.0.0.1:5198/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 3,
+      "startedAt": "2026-10-17T17:22:04.311Z",
+      "completed": true,
+      "samples": [
+        "fix-desktop-phase3a-r3-cold",
+        "fix-desktop-phase3a-r3-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.131882,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-JnuF8O\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "working-tree-candidate; bundle names and HTML SHA recorded below"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/boss.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/boss.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "c418e1ed1c733ff703bcdd911d3c336900e05bf67f2d071a2fffe8621b6882a0",
+        "scripts": [
+          "./assets/index-BATde8RD.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:23:18.609Z"
+    },
+    {
+      "id": "fix-desktop-phase3a-r4",
+      "build": "fix",
+      "target": "http://127.0.0.1:5198/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 4,
+      "startedAt": "2026-10-17T17:23:19.196Z",
+      "completed": true,
+      "samples": [
+        "fix-desktop-phase3a-r4-cold",
+        "fix-desktop-phase3a-r4-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.157402,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-lDylVr\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "working-tree-candidate; bundle names and HTML SHA recorded below"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "c418e1ed1c733ff703bcdd911d3c336900e05bf67f2d071a2fffe8621b6882a0",
+        "scripts": [
+          "./assets/index-BATde8RD.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:24:37.251Z"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r4",
+      "build": "baseline",
+      "target": "http://127.0.0.1:5197/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 4,
+      "startedAt": "2026-10-17T17:24:37.637Z",
+      "completed": true,
+      "samples": [
+        "baseline-desktop-phase3a-r4-cold",
+        "baseline-desktop-phase3a-r4-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.12456,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-DK82OO\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "353d154524cb9490b3db07a46bcafc8fe17179e1"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "dc15f889ccdb75795fe3e01b954ded8c65b5d9bd1c843930ba58d2972e7f1b06",
+        "scripts": [
+          "./assets/index-DCbcnK5-.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:26:04.489Z"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r5",
+      "build": "baseline",
+      "target": "http://127.0.0.1:5197/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 5,
+      "startedAt": "2026-10-17T17:26:04.774Z",
+      "completed": true,
+      "samples": [
+        "baseline-desktop-phase3a-r5-cold",
+        "baseline-desktop-phase3a-r5-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.150585,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-J6QXTq\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "353d154524cb9490b3db07a46bcafc8fe17179e1"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/boss.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/boss.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5197/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "dc15f889ccdb75795fe3e01b954ded8c65b5d9bd1c843930ba58d2972e7f1b06",
+        "scripts": [
+          "./assets/index-DCbcnK5-.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:27:48.181Z"
+    },
+    {
+      "id": "fix-desktop-phase3a-r5",
+      "build": "fix",
+      "target": "http://127.0.0.1:5198/",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 5,
+      "startedAt": "2026-10-17T17:27:48.802Z",
+      "completed": true,
+      "samples": [
+        "fix-desktop-phase3a-r5-cold",
+        "fix-desktop-phase3a-r5-warm-reload"
+      ],
+      "environment": {
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "HeadlessChrome/151.0.7922.34",
+          "revision": "@782af9cb30a53f54487e5d2e44738645a8ec457c",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+          "jsVersion": "15.1.206.8"
+        },
+        "system": {
+          "gpu": {
+            "devices": [
+              {
+                "vendorId": 4098,
+                "deviceId": 5761,
+                "subSysId": 466358339,
+                "revision": 200,
+                "vendorString": "",
+                "deviceString": "AMD Radeon(TM) Graphics",
+                "driverVendor": "AMD",
+                "driverVersion": "31.0.12028.9001"
+              },
+              {
+                "vendorId": 4318,
+                "deviceId": 9504,
+                "subSysId": 466358339,
+                "revision": 161,
+                "vendorString": "",
+                "deviceString": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                "driverVendor": "",
+                "driverVersion": "32.0.15.6607"
+              },
+              {
+                "vendorId": 5140,
+                "deviceId": 140,
+                "subSysId": 0,
+                "revision": 0,
+                "vendorString": "",
+                "deviceString": "Microsoft Basic Render Driver",
+                "driverVendor": "",
+                "driverVersion": "10.0.26100.9711"
+              }
+            ],
+            "auxAttributes": {
+              "amdSwitchable": false,
+              "bgra8OverlaySupport": "SOFTWARE",
+              "canSupportThreadedTextureMailbox": false,
+              "directComposition": true,
+              "directMLFeatureLevel": "Not supported",
+              "directRenderingVersion": "",
+              "displayType": "ANGLE_D3D11",
+              "dx12FeatureLevel": "Not supported",
+              "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 GL_WEBGL_video_texture ",
+              "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+              "glRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001681) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.12028.9001)",
+              "glResetNotificationStrategy": 33362,
+              "glVendor": "Google Inc. (AMD)",
+              "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+              "glWsVendor": "Google Inc. (AMD)",
+              "glWsVersion": "1.5 (ANGLE 2.1.28222 git hash: 6dab7c7e742b)",
+              "inProcessGpu": false,
+              "initializationTime": 0.139496,
+              "isAsan": false,
+              "isClangCoverage": false,
+              "jpegDecodeAcceleratorSupported": false,
+              "maxMsaaSamples": "8",
+              "nv12OverlaySupport": "SCALING",
+              "optimus": false,
+              "p010OverlaySupport": "SOFTWARE",
+              "passthroughCmdDecoder": true,
+              "pixelShaderVersion": "5.0",
+              "processCrashCount": 0,
+              "rgb10a2OverlaySupport": "SCALING",
+              "sandboxed": false,
+              "skiaBackendType": "GaneshGL",
+              "subpixelFontRendering": true,
+              "supportsD3dSharedImages": false,
+              "supportsDirectML": false,
+              "supportsDx12": false,
+              "supportsOverlays": true,
+              "supportsVulkan": false,
+              "targetCpuBits": 64,
+              "vertexShaderVersion": "5.0",
+              "visibilityCallbackCallCount": 0,
+              "vulkanVersion": "Not supported",
+              "yuy2OverlaySupport": "SOFTWARE"
+            },
+            "featureStatus": {
+              "2d_canvas": "enabled",
+              "direct_rendering_display_compositor": "disabled_off_ok",
+              "gpu_compositing": "enabled",
+              "multiple_raster_threads": "enabled_on",
+              "opengl": "enabled_on",
+              "rasterization": "enabled",
+              "raw_draw": "disabled_off_ok",
+              "skia_graphite": "disabled_off",
+              "trees_in_viz": "disabled_off",
+              "video_decode": "enabled",
+              "video_encode": "enabled",
+              "webgl": "enabled",
+              "webgpu": "enabled",
+              "webnn": "disabled_off"
+            },
+            "driverBugWorkarounds": [
+              "disable_d3d11_vp9_ksvc_decoding",
+              "disable_d3d12_video_encoder",
+              "disable_direct_composition_sw_video_overlays",
+              "disable_h264_accelerator_sw_brc",
+              "disable_nv12_dynamic_textures",
+              "disable_svc_encoding",
+              "disable_video_overlay_if_moving",
+              "disable_vp_auto_hdr",
+              "disable_vp_scaling",
+              "disable_vp_super_resolution",
+              "enable_webgl_timer_query_extensions",
+              "exit_on_context_lost",
+              "force_rgb10a2_overlay_support",
+              "limit_d3d11_video_decoder_to_11_0",
+              "disabled_extension_GL_KHR_blend_equation_advanced",
+              "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+            ],
+            "videoDecoding": [],
+            "videoEncoding": []
+          },
+          "modelName": "",
+          "modelVersion": "",
+          "commandLine": "\"C:\\Users\\madde\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=d3d11 --no-proxy-server --user-data-dir=\"C:\\Users\\madde\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-s3C7Qe\" --remote-debugging-pipe --no-startup-window --allow-pre-commit-input --disable-gpu-process-for-dx12-info-collection --disable-cookie-encryption"
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mobileEmulation": false,
+        "headless": true,
+        "cpuThrottlingRate": 1,
+        "probeMode": "light",
+        "sourceCommit": "working-tree-candidate; bundle names and HTML SHA recorded below"
+      },
+      "cancelledMediaRequests": [
+        {
+          "navigation": "cold",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        },
+        {
+          "navigation": "warm-reload",
+          "type": "requestfailed",
+          "url": "http://127.0.0.1:5198/assets/audio/music/battle.ogg",
+          "message": "net::ERR_ABORTED"
+        }
+      ],
+      "bundleIdentity": {
+        "htmlSha256": "c418e1ed1c733ff703bcdd911d3c336900e05bf67f2d071a2fffe8621b6882a0",
+        "scripts": [
+          "./assets/index-BATde8RD.js"
+        ]
+      },
+      "allNavigationErrors": [],
+      "completedAt": "2026-10-17T17:29:28.916Z"
+    }
+  ],
+  "samples": [
+    {
+      "id": "baseline-desktop-phase3a-r1-cold",
+      "groupId": "baseline-desktop-phase3a-r1",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 1,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 34,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 5216.5,
+          "p99Ms": 5266.399999999998,
+          "maxMs": 5266.399999999998,
+          "meanMs": 480.86176470588225,
+          "above50": 9,
+          "above100": 7,
+          "above250": 3,
+          "above1000": 3
+        },
+        "combat": {
+          "frames": 18,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 5266.399999999998,
+          "p99Ms": 5266.399999999998,
+          "maxMs": 5266.399999999998,
+          "meanMs": 610.161111111111,
+          "above50": 4,
+          "above100": 4,
+          "above250": 2,
+          "above1000": 2
+        },
+        "strictCombat": {
+          "frames": 17,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 5266.399999999998,
+          "p99Ms": 5266.399999999998,
+          "maxMs": 5266.399999999998,
+          "meanMs": 645.0705882352939,
+          "above50": 4,
+          "above100": 4,
+          "above250": 2,
+          "above1000": 2
+        },
+        "longTaskCount": 7,
+        "maxLongTaskMs": 5272,
+        "totalBlockingTimeMs": 15142,
+        "activeLongTaskCount": 3,
+        "maxActiveLongTaskMs": 5272,
+        "strictActiveLongTaskCount": 3,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 5366.5999999940395,
+        "clickToFirstActiveRafMs": 5372.699999988079,
+        "activeObservationWallMs": 10971.300000011921,
+        "phaseBoundaryFrames": [
+          {
+            "t": 23580.5,
+            "ms": 16.599999999998545,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 28947,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 5168.9000000059605,
+        "navigationToFirstActiveMs": 28940.90000000596,
+        "purchasePresentationMs": 15590.699999988079,
+        "nativeSwapRoundTripMs": 100.30000001192093,
+        "speedSelectionAfterReadyMs": 0.800000011920929
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r1-cold.json.gz"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r1-warm-reload",
+      "groupId": "baseline-desktop-phase3a-r1",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 1,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 41,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4883.200000000001,
+          "p99Ms": 5316.399999999998,
+          "maxMs": 5316.399999999998,
+          "meanMs": 427.6268292682926,
+          "above50": 8,
+          "above100": 5,
+          "above250": 4,
+          "above1000": 4
+        },
+        "combat": {
+          "frames": 23,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4883.200000000001,
+          "p99Ms": 5316.399999999998,
+          "maxMs": 5316.399999999998,
+          "meanMs": 461.5782608695652,
+          "above50": 2,
+          "above100": 2,
+          "above250": 2,
+          "above1000": 2
+        },
+        "strictCombat": {
+          "frames": 22,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4883.200000000001,
+          "p99Ms": 5316.399999999998,
+          "maxMs": 5316.399999999998,
+          "meanMs": 481.79999999999995,
+          "above50": 2,
+          "above100": 2,
+          "above250": 2,
+          "above1000": 2
+        },
+        "longTaskCount": 6,
+        "maxLongTaskMs": 5311,
+        "totalBlockingTimeMs": 16316,
+        "activeLongTaskCount": 3,
+        "maxActiveLongTaskMs": 5311,
+        "strictActiveLongTaskCount": 3,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 6917.5,
+        "clickToFirstActiveRafMs": 6925.0999999940395,
+        "activeObservationWallMs": 10599.09999999404,
+        "phaseBoundaryFrames": [
+          {
+            "t": 19865.1,
+            "ms": 16.69999999999709,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 26781.5,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 4535.700000017881,
+        "navigationToFirstActiveMs": 26773.90000000596,
+        "purchasePresentationMs": 12424.90000000596,
+        "nativeSwapRoundTripMs": 83.40000000596046,
+        "speedSelectionAfterReadyMs": 0.19999998807907104
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r1-warm-reload.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r1-cold",
+      "groupId": "fix-desktop-phase3a-r1",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 1,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 669,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 66.70000000000073,
+          "maxMs": 150,
+          "meanMs": 18.185500747384157,
+          "above50": 12,
+          "above100": 3,
+          "above250": 0,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 539,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50.10000000000218,
+          "maxMs": 133.20000000000073,
+          "meanMs": 17.624489795918365,
+          "above50": 6,
+          "above100": 1,
+          "above250": 0,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 537,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50.10000000000218,
+          "maxMs": 133.20000000000073,
+          "meanMs": 17.628119180633146,
+          "above50": 6,
+          "above100": 1,
+          "above250": 0,
+          "above1000": 0
+        },
+        "longTaskCount": 4,
+        "maxLongTaskMs": 154,
+        "totalBlockingTimeMs": 180,
+        "activeLongTaskCount": 0,
+        "maxActiveLongTaskMs": 0,
+        "strictActiveLongTaskCount": 0,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 2645.5999999940395,
+        "clickToFirstActiveRafMs": 2658.800000005962,
+        "activeObservationWallMs": 9514.5,
+        "phaseBoundaryFrames": [
+          {
+            "t": 16230.4,
+            "ms": 16.600000000000364,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 18880.4,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 28363.3,
+            "ms": 16.599999999998545,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 7397.799999982119,
+        "navigationToFirstActiveMs": 18867.19999998808,
+        "purchasePresentationMs": 8649.90000000596,
+        "nativeSwapRoundTripMs": 100.69999998807907,
+        "speedSelectionAfterReadyMs": 0.9000000059604645
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r1-cold.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r1-warm-reload",
+      "groupId": "fix-desktop-phase3a-r1",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 1,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 591,
+          "p50Ms": 16.69999999999891,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50.099999999998545,
+          "maxMs": 150,
+          "meanMs": 17.963282571912014,
+          "above50": 6,
+          "above100": 2,
+          "above250": 0,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 552,
+          "p50Ms": 16.69999999999891,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50,
+          "maxMs": 66.5,
+          "meanMs": 17.269927536231883,
+          "above50": 2,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 550,
+          "p50Ms": 16.69999999999891,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50,
+          "maxMs": 66.5,
+          "meanMs": 17.272,
+          "above50": 2,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "longTaskCount": 3,
+        "maxLongTaskMs": 147,
+        "totalBlockingTimeMs": 160,
+        "activeLongTaskCount": 0,
+        "maxActiveLongTaskMs": 0,
+        "strictActiveLongTaskCount": 0,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 1090.0999999940395,
+        "clickToFirstActiveRafMs": 1091.5,
+        "activeObservationWallMs": 9517.40000000596,
+        "phaseBoundaryFrames": [
+          {
+            "t": 7479.7,
+            "ms": 16.699999999999818,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 8563,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 18079.3,
+            "ms": 16.700000000000728,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 4671.700000017881,
+        "navigationToFirstActiveMs": 8561.59999999404,
+        "purchasePresentationMs": 2651.399999976158,
+        "nativeSwapRoundTripMs": 74.59999999403954,
+        "speedSelectionAfterReadyMs": 0.7000000178813934
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r1-warm-reload.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r2-cold",
+      "groupId": "fix-desktop-phase3a-r2",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 2,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 690,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 16.80000000000291,
+          "p99Ms": 83.29999999999927,
+          "maxMs": 816.6000000000022,
+          "meanMs": 19.419565217391305,
+          "above50": 11,
+          "above100": 5,
+          "above250": 1,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 541,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50,
+          "maxMs": 150,
+          "meanMs": 17.620887245841033,
+          "above50": 3,
+          "above100": 1,
+          "above250": 0,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 539,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50,
+          "maxMs": 150,
+          "meanMs": 17.624489795918365,
+          "above50": 3,
+          "above100": 1,
+          "above250": 0,
+          "above1000": 0
+        },
+        "longTaskCount": 6,
+        "maxLongTaskMs": 747,
+        "totalBlockingTimeMs": 939,
+        "activeLongTaskCount": 0,
+        "maxActiveLongTaskMs": 0,
+        "strictActiveLongTaskCount": 0,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 3854.9000000059605,
+        "clickToFirstActiveRafMs": 3857.100000023842,
+        "activeObservationWallMs": 9536.5,
+        "phaseBoundaryFrames": [
+          {
+            "t": 25599.2,
+            "ms": 816.6000000000022,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 28632.5,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 38148.7,
+            "ms": 16.599999999998545,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 6585.5999999940395,
+        "navigationToFirstActiveMs": 28630.29999998212,
+        "purchasePresentationMs": 9397.09999999404,
+        "nativeSwapRoundTripMs": 4231.4000000059605,
+        "speedSelectionAfterReadyMs": 1.7000000178813934
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r2-cold.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r2-warm-reload",
+      "groupId": "fix-desktop-phase3a-r2",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 2,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 691,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 33.399999999999636,
+          "maxMs": 116.60000000000036,
+          "meanMs": 17.12431259044863,
+          "above50": 3,
+          "above100": 1,
+          "above250": 0,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 567,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.700000000000728,
+          "p99Ms": 16.80000000000291,
+          "maxMs": 33.400000000001455,
+          "meanMs": 16.695590828924164,
+          "above50": 0,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 565,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.700000000000728,
+          "p99Ms": 16.80000000000291,
+          "maxMs": 33.400000000001455,
+          "meanMs": 16.695575221238936,
+          "above50": 0,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "longTaskCount": 2,
+        "maxLongTaskMs": 126,
+        "totalBlockingTimeMs": 138,
+        "activeLongTaskCount": 0,
+        "maxActiveLongTaskMs": 0,
+        "strictActiveLongTaskCount": 0,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 2359.800000011921,
+        "clickToFirstActiveRafMs": 2370.39999998808,
+        "activeObservationWallMs": 9473,
+        "phaseBoundaryFrames": [
+          {
+            "t": 15643.1,
+            "ms": 16.600000000000364,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 18009.7,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 27459.4,
+            "ms": 16.700000000000728,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 4675.5,
+        "navigationToFirstActiveMs": 17999.100000023842,
+        "purchasePresentationMs": 10630.800000011921,
+        "nativeSwapRoundTripMs": 73.30000001192093,
+        "speedSelectionAfterReadyMs": 0.3999999761581421
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r2-warm-reload.json.gz"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r2-cold",
+      "groupId": "baseline-desktop-phase3a-r2",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 2,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 56,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 3949.7999999999993,
+          "p99Ms": 4899.799999999999,
+          "maxMs": 4899.799999999999,
+          "meanMs": 325.58035714285717,
+          "above50": 10,
+          "above100": 6,
+          "above250": 4,
+          "above1000": 4
+        },
+        "combat": {
+          "frames": 40,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 3949.7999999999993,
+          "p99Ms": 4899.799999999999,
+          "maxMs": 4899.799999999999,
+          "meanMs": 350.8175,
+          "above50": 5,
+          "above100": 4,
+          "above250": 3,
+          "above1000": 3
+        },
+        "strictCombat": {
+          "frames": 38,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4266.5,
+          "p99Ms": 4899.799999999999,
+          "maxMs": 4899.799999999999,
+          "meanMs": 368.4078947368421,
+          "above50": 5,
+          "above100": 4,
+          "above250": 3,
+          "above1000": 3
+        },
+        "longTaskCount": 7,
+        "maxLongTaskMs": 4916,
+        "totalBlockingTimeMs": 16662,
+        "activeLongTaskCount": 4,
+        "maxActiveLongTaskMs": 4916,
+        "strictActiveLongTaskCount": 4,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 4199.5,
+        "clickToFirstActiveRafMs": 4208.699999994038,
+        "activeObservationWallMs": 14014.09999999404,
+        "phaseBoundaryFrames": [
+          {
+            "t": 14451.8,
+            "ms": 16.599999999998545,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 18651.6,
+            "ms": 16.599999999998545,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 32667.7,
+            "ms": 16.600000000002183,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 6441,
+        "navigationToFirstActiveMs": 18642.40000000596,
+        "purchasePresentationMs": 7857.100000023842,
+        "nativeSwapRoundTripMs": 76.09999999403954,
+        "speedSelectionAfterReadyMs": 0.5999999940395355
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r2-cold.json.gz"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r2-warm-reload",
+      "groupId": "baseline-desktop-phase3a-r2",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 2,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 174,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 66.70000000000073,
+          "p99Ms": 3916.5,
+          "maxMs": 4633.0999999999985,
+          "meanMs": 99.13333333333331,
+          "above50": 9,
+          "above100": 5,
+          "above250": 4,
+          "above1000": 4
+        },
+        "combat": {
+          "frames": 156,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 3916.5,
+          "maxMs": 4633.0999999999985,
+          "meanMs": 84.18461538461538,
+          "above50": 4,
+          "above100": 3,
+          "above250": 3,
+          "above1000": 3
+        },
+        "strictCombat": {
+          "frames": 155,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 3916.5,
+          "maxMs": 4633.0999999999985,
+          "meanMs": 84.61999999999999,
+          "above50": 4,
+          "above100": 3,
+          "above250": 3,
+          "above1000": 3
+        },
+        "longTaskCount": 7,
+        "maxLongTaskMs": 4648,
+        "totalBlockingTimeMs": 13983,
+        "activeLongTaskCount": 4,
+        "maxActiveLongTaskMs": 4648,
+        "strictActiveLongTaskCount": 4,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 4116.9000000059605,
+        "clickToFirstActiveRafMs": 4125.5,
+        "activeObservationWallMs": 13120.5,
+        "phaseBoundaryFrames": [
+          {
+            "t": 13180,
+            "ms": 16.600000000000364,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 17296.5,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 4114.4000000059605,
+        "navigationToFirstActiveMs": 17287.90000000596,
+        "purchasePresentationMs": 6174.0999999940395,
+        "nativeSwapRoundTripMs": 56,
+        "speedSelectionAfterReadyMs": 0.4000000059604645
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r2-warm-reload.json.gz"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r3-cold",
+      "groupId": "baseline-desktop-phase3a-r3",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 3,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 51,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4233.100000000002,
+          "p99Ms": 4733,
+          "maxMs": 4733,
+          "meanMs": 364.6921568627451,
+          "above50": 10,
+          "above100": 8,
+          "above250": 4,
+          "above1000": 4
+        },
+        "combat": {
+          "frames": 36,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4499.799999999999,
+          "p99Ms": 4733,
+          "maxMs": 4733,
+          "meanMs": 396.28333333333336,
+          "above50": 5,
+          "above100": 5,
+          "above250": 3,
+          "above1000": 3
+        },
+        "strictCombat": {
+          "frames": 35,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4499.799999999999,
+          "p99Ms": 4733,
+          "maxMs": 4733,
+          "meanMs": 407.12857142857143,
+          "above50": 5,
+          "above100": 5,
+          "above250": 3,
+          "above1000": 3
+        },
+        "longTaskCount": 7,
+        "maxLongTaskMs": 4739,
+        "totalBlockingTimeMs": 17158,
+        "activeLongTaskCount": 4,
+        "maxActiveLongTaskMs": 4739,
+        "strictActiveLongTaskCount": 4,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 4333.5,
+        "clickToFirstActiveRafMs": 4342.799999982119,
+        "activeObservationWallMs": 14254.799999982119,
+        "phaseBoundaryFrames": [
+          {
+            "t": 15138.8,
+            "ms": 16.599999999998545,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 19472,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 4647.300000011921,
+        "navigationToFirstActiveMs": 19462.70000001788,
+        "purchasePresentationMs": 10315,
+        "nativeSwapRoundTripMs": 83.30000001192093,
+        "speedSelectionAfterReadyMs": 0.3999999761581421
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r3-cold.json.gz"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r3-warm-reload",
+      "groupId": "baseline-desktop-phase3a-r3",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 3,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 105,
+          "p50Ms": 16.699999999999818,
+          "p95Ms": 683.2999999999993,
+          "p99Ms": 5199.9,
+          "maxMs": 5783.200000000001,
+          "meanMs": 160.62952380952382,
+          "above50": 10,
+          "above100": 7,
+          "above250": 6,
+          "above1000": 4
+        },
+        "combat": {
+          "frames": 88,
+          "p50Ms": 16.69999999999891,
+          "p95Ms": 683.2999999999993,
+          "p99Ms": 5783.200000000001,
+          "maxMs": 5783.200000000001,
+          "meanMs": 169.69090909090912,
+          "above50": 5,
+          "above100": 5,
+          "above250": 5,
+          "above1000": 3
+        },
+        "strictCombat": {
+          "frames": 86,
+          "p50Ms": 16.69999999999891,
+          "p95Ms": 683.2999999999993,
+          "p99Ms": 5783.200000000001,
+          "maxMs": 5783.200000000001,
+          "meanMs": 173.24883720930234,
+          "above50": 5,
+          "above100": 5,
+          "above250": 5,
+          "above1000": 3
+        },
+        "longTaskCount": 8,
+        "maxLongTaskMs": 5799,
+        "totalBlockingTimeMs": 14604,
+        "activeLongTaskCount": 5,
+        "maxActiveLongTaskMs": 5799,
+        "strictActiveLongTaskCount": 5,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 1934.2999999821186,
+        "clickToFirstActiveRafMs": 1941.2000000059606,
+        "activeObservationWallMs": 14916.40000000596,
+        "phaseBoundaryFrames": [
+          {
+            "t": 4410.1,
+            "ms": 16.800000000000182,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 6343.3,
+            "ms": 16.699999999999818,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 21259.4,
+            "ms": 16.700000000000728,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 2146.199999988079,
+        "navigationToFirstActiveMs": 6336.399999976158,
+        "purchasePresentationMs": 2100.699999988079,
+        "nativeSwapRoundTripMs": 72.40000000596046,
+        "speedSelectionAfterReadyMs": 0.5
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r3-warm-reload.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r3-cold",
+      "groupId": "fix-desktop-phase3a-r3",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 3,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 599,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 33.400000000001455,
+          "p99Ms": 116.70000000000073,
+          "maxMs": 366.7000000000007,
+          "meanMs": 20.644741235392317,
+          "above50": 18,
+          "above100": 6,
+          "above250": 2,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 455,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 33.400000000001455,
+          "p99Ms": 83.40000000000146,
+          "maxMs": 366.7000000000007,
+          "meanMs": 20.914945054945047,
+          "above50": 14,
+          "above100": 4,
+          "above250": 2,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 453,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 33.400000000001455,
+          "p99Ms": 83.40000000000146,
+          "maxMs": 366.7000000000007,
+          "meanMs": 20.860044150110372,
+          "above50": 14,
+          "above100": 4,
+          "above250": 2,
+          "above1000": 0
+        },
+        "longTaskCount": 10,
+        "maxLongTaskMs": 299,
+        "totalBlockingTimeMs": 628,
+        "activeLongTaskCount": 6,
+        "maxActiveLongTaskMs": 299,
+        "strictActiveLongTaskCount": 5,
+        "phaseBoundaryLongTasks": [
+          {
+            "t": 25030.20000001788,
+            "ms": 72,
+            "phase": "preparation"
+          }
+        ],
+        "clickToReadyMs": 2849.4000000059605,
+        "clickToFirstActiveRafMs": 2854.399999982117,
+        "activeObservationWallMs": 9522.799999982119,
+        "phaseBoundaryFrames": [
+          {
+            "t": 22188.2,
+            "ms": 16.700000000000728,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 25038.1,
+            "ms": 16.69999999999709,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 34537.7,
+            "ms": 50,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 5224.700000017881,
+        "navigationToFirstActiveMs": 25033.100000023842,
+        "purchasePresentationMs": 13900.09999999404,
+        "nativeSwapRoundTripMs": 80.5,
+        "speedSelectionAfterReadyMs": 67.09999999403954
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r3-cold.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r3-warm-reload",
+      "groupId": "fix-desktop-phase3a-r3",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 3,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 676,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 66.70000000000073,
+          "maxMs": 283.40000000000146,
+          "meanMs": 18.441124260355036,
+          "above50": 10,
+          "above100": 2,
+          "above250": 1,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 538,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50,
+          "maxMs": 83.39999999999782,
+          "meanMs": 17.657434944237913,
+          "above50": 5,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 536,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50,
+          "maxMs": 83.39999999999782,
+          "meanMs": 17.661194029850748,
+          "above50": 5,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "longTaskCount": 4,
+        "maxLongTaskMs": 193,
+        "totalBlockingTimeMs": 261,
+        "activeLongTaskCount": 0,
+        "maxActiveLongTaskMs": 0,
+        "strictActiveLongTaskCount": 0,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 2939.2999999821186,
+        "clickToFirstActiveRafMs": 2954.000000005959,
+        "activeObservationWallMs": 9516.800000011921,
+        "phaseBoundaryFrames": [
+          {
+            "t": 20447.3,
+            "ms": 16.700000000000728,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 23397.1,
+            "ms": 16.69999999999709,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 32880.1,
+            "ms": 16.599999999998545,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 6253.799999982119,
+        "navigationToFirstActiveMs": 23382.399999976158,
+        "purchasePresentationMs": 9104.40000000596,
+        "nativeSwapRoundTripMs": 114.30000001192093,
+        "speedSelectionAfterReadyMs": 0.30000001192092896
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r3-warm-reload.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r4-cold",
+      "groupId": "fix-desktop-phase3a-r4",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 4,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 648,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 33.30000000000291,
+          "p99Ms": 66.70000000000437,
+          "maxMs": 200,
+          "meanMs": 19.495061728395065,
+          "above50": 18,
+          "above100": 3,
+          "above250": 0,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 501,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 33.30000000000291,
+          "p99Ms": 66.59999999999854,
+          "maxMs": 166.60000000000218,
+          "meanMs": 18.961277445109786,
+          "above50": 9,
+          "above100": 1,
+          "above250": 0,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 499,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 33.30000000000291,
+          "p99Ms": 66.70000000000437,
+          "maxMs": 166.60000000000218,
+          "meanMs": 18.937074148296592,
+          "above50": 9,
+          "above100": 1,
+          "above250": 0,
+          "above1000": 0
+        },
+        "longTaskCount": 4,
+        "maxLongTaskMs": 187,
+        "totalBlockingTimeMs": 275,
+        "activeLongTaskCount": 0,
+        "maxActiveLongTaskMs": 0,
+        "strictActiveLongTaskCount": 0,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 3128.199999988079,
+        "clickToFirstActiveRafMs": 3139.0999999940395,
+        "activeObservationWallMs": 9500.09999999404,
+        "phaseBoundaryFrames": [
+          {
+            "t": 25276.3,
+            "ms": 16.700000000000728,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 28409.5,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 37892.4,
+            "ms": 33.30000000000291,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 7552.199999988079,
+        "navigationToFirstActiveMs": 28398.59999999404,
+        "purchasePresentationMs": 17264.70000001788,
+        "nativeSwapRoundTripMs": 127.80000001192093,
+        "speedSelectionAfterReadyMs": 1.4000000059604645
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r4-cold.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r4-warm-reload",
+      "groupId": "fix-desktop-phase3a-r4",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 4,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 680,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 16.80000000000291,
+          "p99Ms": 66.70000000000073,
+          "maxMs": 166.70000000000073,
+          "meanMs": 18.185441176470587,
+          "above50": 9,
+          "above100": 2,
+          "above250": 0,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 541,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 50,
+          "maxMs": 66.70000000000073,
+          "meanMs": 17.590203327171896,
+          "above50": 4,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 539,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 16.80000000000291,
+          "p99Ms": 50,
+          "maxMs": 66.70000000000073,
+          "meanMs": 17.59369202226345,
+          "above50": 4,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "longTaskCount": 3,
+        "maxLongTaskMs": 160,
+        "totalBlockingTimeMs": 250,
+        "activeLongTaskCount": 0,
+        "maxActiveLongTaskMs": 0,
+        "strictActiveLongTaskCount": 0,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 2845.0999999940395,
+        "clickToFirstActiveRafMs": 2853.4000000119195,
+        "activeObservationWallMs": 9518.40000000596,
+        "phaseBoundaryFrames": [
+          {
+            "t": 22017.3,
+            "ms": 16.700000000000728,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 24867.1,
+            "ms": 16.69999999999709,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 34366.7,
+            "ms": 16.599999999998545,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 5807.699999988079,
+        "navigationToFirstActiveMs": 24858.79999998212,
+        "purchasePresentationMs": 12029.200000017881,
+        "nativeSwapRoundTripMs": 108.19999998807907,
+        "speedSelectionAfterReadyMs": 0.4000000059604645
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r4-warm-reload.json.gz"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r4-cold",
+      "groupId": "baseline-desktop-phase3a-r4",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 4,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 37,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4866.399999999998,
+          "p99Ms": 7666.399999999998,
+          "maxMs": 7666.399999999998,
+          "meanMs": 491.87297297297283,
+          "above50": 12,
+          "above100": 8,
+          "above250": 3,
+          "above1000": 3
+        },
+        "combat": {
+          "frames": 19,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 7666.399999999998,
+          "p99Ms": 7666.399999999998,
+          "maxMs": 7666.399999999998,
+          "meanMs": 688.5684210526314,
+          "above50": 5,
+          "above100": 4,
+          "above250": 2,
+          "above1000": 2
+        },
+        "strictCombat": {
+          "frames": 18,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 7666.399999999998,
+          "p99Ms": 7666.399999999998,
+          "maxMs": 7666.399999999998,
+          "meanMs": 725.8999999999999,
+          "above50": 5,
+          "above100": 4,
+          "above250": 2,
+          "above1000": 2
+        },
+        "longTaskCount": 7,
+        "maxLongTaskMs": 7669,
+        "totalBlockingTimeMs": 16891,
+        "activeLongTaskCount": 4,
+        "maxActiveLongTaskMs": 7669,
+        "strictActiveLongTaskCount": 4,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 5114.5,
+        "clickToFirstActiveRafMs": 5123.0999999940395,
+        "activeObservationWallMs": 13061.59999999404,
+        "phaseBoundaryFrames": [
+          {
+            "t": 19835.6,
+            "ms": 16.69999999999709,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 24952,
+            "ms": 16.599999999998545,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 5409.200000017881,
+        "navigationToFirstActiveMs": 24943.40000000596,
+        "purchasePresentationMs": 11735.90000000596,
+        "nativeSwapRoundTripMs": 85.90000000596046,
+        "speedSelectionAfterReadyMs": 0.7000000178813934
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r4-cold.json.gz"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r4-warm-reload",
+      "groupId": "baseline-desktop-phase3a-r4",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 4,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 40,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4733.1,
+          "p99Ms": 9149.600000000002,
+          "maxMs": 9149.600000000002,
+          "meanMs": 603.7275000000001,
+          "above50": 8,
+          "above100": 5,
+          "above250": 4,
+          "above1000": 3
+        },
+        "combat": {
+          "frames": 23,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 8916.3,
+          "p99Ms": 9149.600000000002,
+          "maxMs": 9149.600000000002,
+          "meanMs": 805.0434782608697,
+          "above50": 3,
+          "above100": 2,
+          "above250": 2,
+          "above1000": 2
+        },
+        "strictCombat": {
+          "frames": 22,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 8916.3,
+          "p99Ms": 9149.600000000002,
+          "maxMs": 9149.600000000002,
+          "meanMs": 840.8772727272728,
+          "above50": 3,
+          "above100": 2,
+          "above250": 2,
+          "above1000": 2
+        },
+        "longTaskCount": 6,
+        "maxLongTaskMs": 9145,
+        "totalBlockingTimeMs": 23046,
+        "activeLongTaskCount": 3,
+        "maxActiveLongTaskMs": 9145,
+        "strictActiveLongTaskCount": 3,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 5629.300000011921,
+        "clickToFirstActiveRafMs": 5642.9000000059605,
+        "activeObservationWallMs": 18507.29999998212,
+        "phaseBoundaryFrames": [
+          {
+            "t": 13519.9,
+            "ms": 16.69999999999891,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 19153,
+            "ms": 16.700000000000728,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 4169.4000000059605,
+        "navigationToFirstActiveMs": 19139.40000000596,
+        "purchasePresentationMs": 9085.199999988079,
+        "nativeSwapRoundTripMs": 56,
+        "speedSelectionAfterReadyMs": 0.3999999761581421
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r4-warm-reload.json.gz"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r5-cold",
+      "groupId": "baseline-desktop-phase3a-r5",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 5,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 38,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4649.799999999999,
+          "p99Ms": 5433,
+          "maxMs": 5433,
+          "meanMs": 432.87631578947367,
+          "above50": 10,
+          "above100": 7,
+          "above250": 4,
+          "above1000": 4
+        },
+        "combat": {
+          "frames": 20,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 4649.799999999999,
+          "p99Ms": 5433,
+          "maxMs": 5433,
+          "meanMs": 531.64,
+          "above50": 5,
+          "above100": 4,
+          "above250": 2,
+          "above1000": 2
+        },
+        "strictCombat": {
+          "frames": 19,
+          "p50Ms": 16.700000000000728,
+          "p95Ms": 5433,
+          "p99Ms": 5433,
+          "maxMs": 5433,
+          "meanMs": 558.7473684210524,
+          "above50": 5,
+          "above100": 4,
+          "above250": 2,
+          "above1000": 2
+        },
+        "longTaskCount": 7,
+        "maxLongTaskMs": 5441,
+        "totalBlockingTimeMs": 15223,
+        "activeLongTaskCount": 3,
+        "maxActiveLongTaskMs": 5441,
+        "strictActiveLongTaskCount": 3,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 5816.9000000059605,
+        "clickToFirstActiveRafMs": 5824.4000000000015,
+        "activeObservationWallMs": 10609.59999999404,
+        "phaseBoundaryFrames": [
+          {
+            "t": 21910.4,
+            "ms": 16.600000000002183,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 27726.9,
+            "ms": 16.600000000002183,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 7565.199999988079,
+        "navigationToFirstActiveMs": 27719.40000000596,
+        "purchasePresentationMs": 13962.90000000596,
+        "nativeSwapRoundTripMs": 106.5,
+        "speedSelectionAfterReadyMs": 0.7999999821186066
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r5-cold.json.gz"
+    },
+    {
+      "id": "baseline-desktop-phase3a-r5-warm-reload",
+      "groupId": "baseline-desktop-phase3a-r5",
+      "build": "baseline",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 5,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 53,
+          "p50Ms": 16.700000000004366,
+          "p95Ms": 6283,
+          "p99Ms": 7549.5999999999985,
+          "maxMs": 7549.5999999999985,
+          "meanMs": 462.55849056603773,
+          "above50": 11,
+          "above100": 8,
+          "above250": 4,
+          "above1000": 4
+        },
+        "combat": {
+          "frames": 35,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 7199.800000000003,
+          "p99Ms": 7549.5999999999985,
+          "maxMs": 7549.5999999999985,
+          "meanMs": 441.4114285714286,
+          "above50": 3,
+          "above100": 2,
+          "above250": 2,
+          "above1000": 2
+        },
+        "strictCombat": {
+          "frames": 34,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 7199.800000000003,
+          "p99Ms": 7549.5999999999985,
+          "maxMs": 7549.5999999999985,
+          "meanMs": 453.9029411764705,
+          "above50": 3,
+          "above100": 2,
+          "above250": 2,
+          "above1000": 2
+        },
+        "longTaskCount": 8,
+        "maxLongTaskMs": 7556,
+        "totalBlockingTimeMs": 22763,
+        "activeLongTaskCount": 3,
+        "maxActiveLongTaskMs": 7556,
+        "strictActiveLongTaskCount": 3,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 9076.300000011921,
+        "clickToFirstActiveRafMs": 9082.800000005962,
+        "activeObservationWallMs": 15429.300000011921,
+        "phaseBoundaryFrames": [
+          {
+            "t": 26482,
+            "ms": 1766.5,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 33798.4,
+            "ms": 16.700000000004366,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 6035.0999999940395,
+        "navigationToFirstActiveMs": 33791.90000000596,
+        "purchasePresentationMs": 18150,
+        "nativeSwapRoundTripMs": 158.80000001192093,
+        "speedSelectionAfterReadyMs": 0.19999998807907104
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "baseline-desktop-phase3a-r5-warm-reload.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r5-cold",
+      "groupId": "fix-desktop-phase3a-r5",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 5,
+      "name": "cold",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 634,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 50,
+          "p99Ms": 100,
+          "maxMs": 283.40000000000146,
+          "meanMs": 21.976025236593063,
+          "above50": 23,
+          "above100": 6,
+          "above250": 1,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 445,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 50,
+          "p99Ms": 66.69999999999709,
+          "maxMs": 216.6999999999971,
+          "meanMs": 21.459775280898874,
+          "above50": 14,
+          "above100": 2,
+          "above250": 0,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 443,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 49.900000000001455,
+          "p99Ms": 66.69999999999709,
+          "maxMs": 216.6999999999971,
+          "meanMs": 21.293227990970657,
+          "above50": 13,
+          "above100": 2,
+          "above250": 0,
+          "above1000": 0
+        },
+        "longTaskCount": 5,
+        "maxLongTaskMs": 277,
+        "totalBlockingTimeMs": 583,
+        "activeLongTaskCount": 1,
+        "maxActiveLongTaskMs": 57,
+        "strictActiveLongTaskCount": 0,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 4383.399999976158,
+        "clickToFirstActiveRafMs": 4415.299999982119,
+        "activeObservationWallMs": 9549.800000011921,
+        "phaseBoundaryFrames": [
+          {
+            "t": 29525.2,
+            "ms": 116.70000000000073,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 33825,
+            "ms": 50,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 43324.6,
+            "ms": 66.69999999999709,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 7538.700000017881,
+        "navigationToFirstActiveMs": 33793.09999999404,
+        "purchasePresentationMs": 21248.40000000596,
+        "nativeSwapRoundTripMs": 253.80000001192093,
+        "speedSelectionAfterReadyMs": 1.7000000178813934
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r5-cold.json.gz"
+    },
+    {
+      "id": "fix-desktop-phase3a-r5-warm-reload",
+      "groupId": "fix-desktop-phase3a-r5",
+      "build": "fix",
+      "profile": "desktop",
+      "ingredients": "phase3a",
+      "repetition": 5,
+      "name": "warm-reload",
+      "enemy": "zischbert",
+      "metrics": {
+        "pipeline": {
+          "frames": 643,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 33.30000000000291,
+          "p99Ms": 66.69999999999709,
+          "maxMs": 283.3000000000029,
+          "meanMs": 19.387402799377913,
+          "above50": 16,
+          "above100": 2,
+          "above250": 1,
+          "above1000": 0
+        },
+        "combat": {
+          "frames": 502,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 33.30000000000291,
+          "p99Ms": 66.69999999999709,
+          "maxMs": 100,
+          "meanMs": 18.890239043824703,
+          "above50": 11,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "strictCombat": {
+          "frames": 500,
+          "p50Ms": 16.69999999999709,
+          "p95Ms": 33.30000000000291,
+          "p99Ms": 66.69999999999709,
+          "maxMs": 100,
+          "meanMs": 18.899199999999997,
+          "above50": 11,
+          "above100": 0,
+          "above250": 0,
+          "above1000": 0
+        },
+        "longTaskCount": 4,
+        "maxLongTaskMs": 206,
+        "totalBlockingTimeMs": 267,
+        "activeLongTaskCount": 0,
+        "maxActiveLongTaskMs": 0,
+        "strictActiveLongTaskCount": 0,
+        "phaseBoundaryLongTasks": [],
+        "clickToReadyMs": 2989.199999988079,
+        "clickToFirstActiveRafMs": 2991.5999999880805,
+        "activeObservationWallMs": 9490.5,
+        "phaseBoundaryFrames": [
+          {
+            "t": 35256.2,
+            "ms": 16.69999999999709,
+            "phase": "preparation",
+            "phaseStart": "workshop"
+          },
+          {
+            "t": 38239.4,
+            "ms": 16.700000000004366,
+            "phase": "combat",
+            "phaseStart": "preparation"
+          },
+          {
+            "t": 47705.6,
+            "ms": 16.599999999998545,
+            "phase": "result",
+            "phaseStart": "combat"
+          }
+        ],
+        "navigationToWorkshopUsableMs": 8591.800000011921,
+        "navigationToFirstActiveMs": 38237,
+        "purchasePresentationMs": 26225.69999998808,
+        "nativeSwapRoundTripMs": 195,
+        "speedSelectionAfterReadyMs": 0.4000000059604645
+      },
+      "resultDigest": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96",
+      "fullNativeResultReached": true,
+      "errors": [],
+      "file": "fix-desktop-phase3a-r5-warm-reload.json.gz"
+    }
+  ],
+  "deterministicDigests": {
+    "zischbert:952c5fe30ba5fbc366bc156601a59da44c051860d8aa7bdeb9828d07e5c7d0b2:1263214630:0": "7fd2d1ac6356c88638834a9147cfc53ec016eada3087683fc44802ffc059cb96"
+  },
+  "failures": [],
+  "updatedAt": "2026-10-17T17:29:29.407Z",
+  "completedAt": "2026-10-17T17:29:29.406Z",
+  "aggregates": [
+    {
+      "configuration": "baseline/desktop/phase3a/cold",
+      "measurements": 5,
+      "maxFrameMs": {
+        "min": 4733,
+        "median": 5266.399999999998,
+        "max": 7666.399999999998
+      },
+      "clickToReadyMs": {
+        "min": 4199.5,
+        "median": 5114.5,
+        "max": 5816.9000000059605
+      },
+      "above250Total": 12,
+      "maxActiveLongTaskMs": {
+        "min": 4739,
+        "median": 5272,
+        "max": 7669
+      }
+    },
+    {
+      "configuration": "baseline/desktop/phase3a/warm-reload",
+      "measurements": 5,
+      "maxFrameMs": {
+        "min": 4633.0999999999985,
+        "median": 5783.200000000001,
+        "max": 9149.600000000002
+      },
+      "clickToReadyMs": {
+        "min": 1934.2999999821186,
+        "median": 5629.300000011921,
+        "max": 9076.300000011921
+      },
+      "above250Total": 14,
+      "maxActiveLongTaskMs": {
+        "min": 4648,
+        "median": 5799,
+        "max": 9145
+      }
+    },
+    {
+      "configuration": "fix/desktop/phase3a/cold",
+      "measurements": 5,
+      "maxFrameMs": {
+        "min": 133.20000000000073,
+        "median": 166.60000000000218,
+        "max": 366.7000000000007
+      },
+      "clickToReadyMs": {
+        "min": 2645.5999999940395,
+        "median": 3128.199999988079,
+        "max": 4383.399999976158
+      },
+      "above250Total": 2,
+      "maxActiveLongTaskMs": {
+        "min": 0,
+        "median": 0,
+        "max": 299
+      }
+    },
+    {
+      "configuration": "fix/desktop/phase3a/warm-reload",
+      "measurements": 5,
+      "maxFrameMs": {
+        "min": 33.400000000001455,
+        "median": 66.70000000000073,
+        "max": 100
+      },
+      "clickToReadyMs": {
+        "min": 1090.0999999940395,
+        "median": 2845.0999999940395,
+        "max": 2989.199999988079
+      },
+      "above250Total": 0,
+      "maxActiveLongTaskMs": {
+        "min": 0,
+        "median": 0,
+        "max": 0
+      }
+    }
+  ],
+  "evidencePackage": {
+    "format": "gzip-json",
+    "lossless": true,
+    "originalSummarySha256": "8b55ac38482d0719cd8b5eee16c539134609c1b67a09c2ff8d2f798af5554295",
+    "manifest": "../manifest.json"
+  }
+}

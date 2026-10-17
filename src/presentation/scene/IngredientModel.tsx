@@ -54,7 +54,7 @@ function ActivationAura({ family }: { family: keyof typeof FAMILY_COLORS }) {
             </mesh>
           );
         })}
-        <pointLight color={colors.glow} intensity={2.2} distance={2.2} />
+        <pointLight userData={{ combatTransientLight: true }} color={colors.glow} intensity={2.2} distance={2.2} />
       </group>
     );
   }
@@ -77,7 +77,7 @@ function ActivationAura({ family }: { family: keyof typeof FAMILY_COLORS }) {
           <torusGeometry args={[0.62, 0.04, 7, 8]} />
           <meshStandardMaterial color="#e9ffff" emissive={colors.glow} emissiveIntensity={1.7} transparent opacity={0.84} />
         </mesh>
-        <pointLight color={colors.glow} intensity={1.5} distance={2} />
+        <pointLight userData={{ combatTransientLight: true }} color={colors.glow} intensity={1.5} distance={2} />
       </group>
     );
   }
@@ -88,14 +88,14 @@ function ActivationAura({ family }: { family: keyof typeof FAMILY_COLORS }) {
           const angle = index / 6 * Math.PI * 2;
           return <mesh key={index} position={[Math.cos(angle) * 0.52, 0.1 + index % 2 * 0.22, Math.sin(angle) * 0.52]} rotation={[0, angle, 0]} scale={[0.44, 1.25, 0.44]}><octahedronGeometry args={[0.1, 0]} /><meshStandardMaterial color={index % 2 ? colors.accent : "#ffffff"} emissive={colors.glow} emissiveIntensity={1.6} transparent opacity={0.82} depthWrite={false} /></mesh>;
         })}
-        <pointLight color={colors.glow} intensity={1.7} distance={2.2} />
+        <pointLight userData={{ combatTransientLight: true }} color={colors.glow} intensity={1.7} distance={2.2} />
       </group>
     );
   }
   return (
     <group>
       {[0, 1, 2].map((index) => <mesh key={index} rotation={[Math.PI / 2, index * 0.7, index * 0.65]} scale={0.72 + index * 0.28}><torusGeometry args={[0.5, 0.035, 6, 28]} /><meshStandardMaterial color={index === 1 ? "#f2ddff" : colors.accent} emissive={colors.glow} emissiveIntensity={1.4} transparent opacity={0.76 - index * 0.13} depthWrite={false} /></mesh>)}
-      <pointLight color={colors.glow} intensity={1.55} distance={2.15} />
+      <pointLight userData={{ combatTransientLight: true }} color={colors.glow} intensity={1.55} distance={2.15} />
     </group>
   );
 }

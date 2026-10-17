@@ -11,6 +11,19 @@ deploybares Browsergame mit TypeScript, Vite, React, Three.js und
 Desktop sowie Mobile Landscape und Portrait werden unterstützt. Das Spiel
 läuft vollständig clientseitig und benötigt kein Konto.
 
+### Technische Erstkampf-Abnahme auf dem Arbeitsbranch
+
+`codex/first-combat-performance` basiert exakt auf dem Zutaten-Polish `353d154`.
+Der nachgewiesene Renderingfehler entsteht durch neue Shader-Varianten bei
+wechselnden Effektlichtzahlen. Der gezielte Fix stabilisiert deren Anzahl mit
+Nulllicht-Slots und bereitet die tatsächlich montierte Arena asynchron im
+bestehenden Lade-Gate vor. Reale Beleuchtung, Grafikassets, UI und Spielregeln
+bleiben erhalten. Werkbank- und Kaufhänger sind damit nicht pauschal behoben.
+
+[Diagnose, Traces und vollständige technische Abnahme](docs/qa/first-combat-performance/README.md) ·
+[lokaler Produktionskandidat](http://127.0.0.1:5198/?art=mockup).
+Dieser Arbeitsbranch ist kein Pages-Release; `master` wird nicht verändert.
+
 ### Zutaten-Polish auf dem Arbeitsbranch
 
 `codex/ingredient-art-phase3a-polish` baut auf Phase 3A, Commit **1539387**, auf.

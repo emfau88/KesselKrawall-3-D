@@ -1,9 +1,12 @@
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { Suspense, useMemo, useRef } from "react";
+import { Suspense, useLayoutEffect, useMemo, useRef } from "react";
 import { ACESFilmicToneMapping, PCFShadowMap } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 import { ArenaGreybox } from "./ArenaGreybox";
+import { CombatLightBudget } from "./CombatLightBudget";
+import { syncCombatLightSlots } from "./combatLightSlots";
+import { prepareScenePrograms } from "./prepareScenePrograms";
 import { getOpponentPresentation } from "../content/opponentPresentation";
 import { FixedCamera } from "./FixedCamera";
 import { LightingRig } from "./LightingRig";
@@ -18,20 +21,57 @@ export type GreyboxMode = "workshop" | "arena";
 function BattleAssetGate({
   assets,
   readinessKey,
-  onReady,
+  onDecoded,
 }: {
   assets: readonly ProductionAssetId[];
   readinessKey: string;
-  onReady: (readinessKey: string) => void;
+  onDecoded: (readinessKey: string) => void;
 }) {
   const urls = useMemo(() => assets.map(productionAssetUrl), [assets]);
   useLoader(GLTFLoader, urls);
-  const renderedFrames = useRef(0);
-  useFrame(() => {
-    renderedFrames.current += 1;
-    if (renderedFrames.current !== 2) return;
-    onReady(readinessKey);
-  });
+  useLayoutEffect(() => onDecoded(readinessKey), [onDecoded, readinessKey]);
+  return null;
+}
+
+/** Own the normal render call only so preparation can await asynchronous linking.
+ * Existing animation callbacks still run. The last workshop frame stays behind
+ * the existing preparation overlay until the actual arena is ready to draw.
+ */
+function PreparedSceneRenderer({ preparing, readinessKey, assets, decoded, onReady }: {
+  preparing: boolean; readinessKey?: string; assets: readonly ProductionAssetId[];
+  decoded: React.MutableRefObject<string | undefined>;
+  onReady?: (key: string) => void;
+}) {
+  const preparation = useRef<{ key: string; ready: boolean; frames: number; cancel: () => void } | undefined>(undefined);
+  useLayoutEffect(() => () => { preparation.current?.cancel(); preparation.current = undefined; }, [preparing, readinessKey]);
+  useFrame(({ gl, scene, camera }) => {
+    if (!preparing) { preparation.current = undefined; gl.render(scene, camera); return; }
+    if (!readinessKey || decoded.current !== readinessKey) return;
+    let current = preparation.current;
+    if (!current || current.key !== readinessKey) {
+      // These actual render nodes must have committed, not just their downloads.
+      const required = assets.filter(id => /^(brasskin|zischbert|moor-martha)-/.test(id) || id.startsWith("ingredient-") || id.includes("ritual-platform") || id === "hero-arena-dais");
+      const found = new Set<string>();
+      scene.traverse(node => {
+        if (node.userData.productionAsset) found.add(node.userData.productionAsset);
+        if (node.userData.characterAsset) found.add(node.userData.characterAsset);
+      });
+      if (required.some(id => !found.has(id))) return;
+      if (isMockupCompositionEnabled() && !scene.environment) return;
+      current = { key: readinessKey, ready: false, frames: 0, cancel: () => {} };
+      preparation.current = current;
+      syncCombatLightSlots(scene, camera);
+      const pending = current;
+      const compilation = prepareScenePrograms(gl, scene, camera);
+      current.cancel = compilation.cancel;
+      void compilation.ready.then(ready => { pending.ready = ready; });
+      return;
+    }
+    if (!current.ready) return;
+    gl.render(scene, camera);
+    current.frames++;
+    if (current.frames === 2) onReady?.(readinessKey);
+  }, 1);
   return null;
 }
 
@@ -42,6 +82,7 @@ export function GreyboxStage({
   criticalAssets = [],
   readinessKey,
   onSceneReady,
+  preparing = false,
 }: {
   mode: GreyboxMode;
   workshop: WorkshopSceneState;
@@ -49,7 +90,9 @@ export function GreyboxStage({
   criticalAssets?: readonly ProductionAssetId[];
   readinessKey?: string;
   onSceneReady?: (readinessKey: string) => void;
+  preparing?: boolean;
 }) {
+  const decoded = useRef<string | undefined>(undefined);
   const quality = getRuntimeQualityProfile();
   const arenaPresentation = getOpponentPresentation(arena.opponent.id);
   const background = mode === "workshop" ? "#171016" : arenaPresentation.background;
@@ -67,6 +110,8 @@ export function GreyboxStage({
       orthographic={!isMockupCompositionEnabled() || mockupCameraMode() === "orthographic"}
       shadows={{ type: PCFShadowMap }}
     >
+      <CombatLightBudget active={mode === "arena"} />
+      <PreparedSceneRenderer preparing={preparing} readinessKey={readinessKey} assets={criticalAssets} decoded={decoded} onReady={onSceneReady} />
       <color attach="background" args={[background]} />
       <fog
         attach="fog"
@@ -81,7 +126,7 @@ export function GreyboxStage({
       {readinessKey && onSceneReady && criticalAssets.length > 0 && (
         <ProductionAssetBoundary fallback={null}>
           <Suspense fallback={null}>
-            <BattleAssetGate assets={criticalAssets} onReady={onSceneReady} readinessKey={readinessKey} />
+            <BattleAssetGate assets={criticalAssets} onDecoded={key => { decoded.current = key; }} readinessKey={readinessKey} />
           </Suspense>
         </ProductionAssetBoundary>
       )}

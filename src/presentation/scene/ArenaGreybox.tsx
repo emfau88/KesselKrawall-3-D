@@ -151,7 +151,7 @@ function IngredientPedestal({
           </mesh>
         ) : null}
       </group>
-      {active && <pointLight color={glow} intensity={1.2} distance={2.2} position={[0, 0.28, 0]} />}
+      {active && <pointLight userData={{ combatTransientLight: true }} color={glow} intensity={1.2} distance={2.2} position={[0, 0.28, 0]} />}
     </group>
   );
 }
@@ -473,7 +473,7 @@ function OutcomeVfx({ outcome }: { outcome: NonNullable<ArenaSceneState["outcome
           <meshBasicMaterial color={index % 2 ? "#c3ef68" : "#f7d98a"} toneMapped={false} transparent opacity={0.78} depthWrite={false} />
         </mesh>
       ))}
-      <pointLight color="#f2c66f" intensity={4.2} distance={5.4} position={[0, 1.1, 0]} />
+      <pointLight userData={{ combatTransientLight: true }} color="#f2c66f" intensity={4.2} distance={5.4} position={[0, 1.1, 0]} />
     </group>
   );
 }

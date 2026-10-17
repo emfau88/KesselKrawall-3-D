@@ -10,6 +10,7 @@ Thumbs.db
 __pycache__/
 .tmp-edge-qa/
 .tmp-qa/
+outputs/first-combat-performance/
 docs/qa/current/
 docs/qa/environment-composition/iterations/
 docs/qa/environment-lighting/iterations/
